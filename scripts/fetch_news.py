@@ -153,6 +153,20 @@ FEEDS = {
     "fly-atis": [
         ("Google News", "https://news.google.com/rss/search?q=KMYF+OR+%22Montgomery+Field%22+airport&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "fit-24h": [
+        ("Google News", "https://news.google.com/rss/search?q=%2224+Hour+Fitness%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "fit-run": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+running+OR+marathon+OR+%22half+marathon%22&hl=en-US&gl=US&ceid=US:en"),
+        ("Runner's World", "https://www.runnersworld.com/rss/all.xml/"),
+    ],
+    "fit-lift": [
+        ("BarBend", "https://barbend.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=weightlifting+OR+powerlifting+OR+%22strength+training%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "fit-plans": [
+        ("Google News", "https://news.google.com/rss/search?q=%22workout+plan%22+OR+%22fitness+app%22+OR+%22strength+training%22+study&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20

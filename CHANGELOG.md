@@ -2,6 +2,11 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.1.0 (2026-10-11): Wolfie's Hobby Hub and Fitness
+- Renamed to Wolfie's Hobby Hub with a wolf logo (logo.svg), new app icons and link preview image
+- Fitness hobby with subs: 24 Hour Fitness, Running SD, Weight Lifting, Plans & Apps (with news feeds)
+- Hobby menu: 8 per row on desktop, 4 on tablets, 3 on phones
+
 ## 2.0.0 (2026-10-11): Production ready
 - Compact hobby menu (3 per row on phones, 5 on desktop), tagline moved to tooltip
 - Offline support via service worker (sw.js), offline banner, stale-news warning

@@ -1212,5 +1212,531 @@ const HOBBIES = [
         ]
       }
     ]
+  },
+  {
+    id: "fitness",
+    name: "Fitness",
+    icon: "💪",
+    accent: "#ff5d73",
+    tagline: "Gym, running in SD, lifting and plans",
+    subs: [
+      {
+        id: "fit-24h",
+        name: "24 Hour Fitness",
+        icon: "🕒",
+        labels: {
+          podcasts: "Guides"
+        },
+        podcasts: [
+          {
+            name: "24 Hour Fitness",
+            desc: "Official site: memberships, clubs and classes.",
+            url: "https://www.24hourfitness.com/"
+          },
+          {
+            name: "Find a club",
+            desc: "Official club finder, search by city or zip.",
+            url: "https://www.24hourfitness.com/health_clubs/find-a-gym/"
+          },
+          {
+            name: "Clubs in San Diego (map)",
+            desc: "24 Hour Fitness locations around San Diego on Google Maps.",
+            url: "https://www.google.com/maps/search/24+Hour+Fitness+San+Diego"
+          },
+          {
+            name: "Clubs in Tempe (map)",
+            desc: "24 Hour Fitness locations around Tempe and Phoenix.",
+            url: "https://www.google.com/maps/search/24+Hour+Fitness+Tempe+AZ"
+          },
+          {
+            name: "Group class schedule",
+            desc: "Find your club's class times.",
+            url: "https://www.google.com/search?q=24+Hour+Fitness+class+schedule+San+Diego"
+          },
+          {
+            name: "24 Hour Fitness app",
+            desc: "Check in, book classes and track workouts.",
+            url: "https://www.google.com/search?q=24+Hour+Fitness+app"
+          },
+          {
+            name: "Gym beginner guide",
+            desc: "How to use the gym floor and machines with confidence.",
+            url: "https://www.youtube.com/results?search_query=beginner+gym+guide+how+to+use+machines"
+          },
+          {
+            name: "Clubs with a pool",
+            desc: "Super Sport clubs with pool, sauna or courts.",
+            url: "https://www.google.com/search?q=24+Hour+Fitness+Super+Sport+San+Diego+pool"
+          },
+          {
+            name: "Membership help",
+            desc: "Freeze, cancel or change your plan.",
+            url: "https://www.google.com/search?q=24+Hour+Fitness+membership+freeze+cancel+help"
+          },
+          {
+            name: "Member reviews",
+            desc: "See what members say about each SD club.",
+            url: "https://www.google.com/maps/search/24+Hour+Fitness+reviews+San+Diego"
+          }
+        ],
+        youtube: [
+          {
+            name: "24 Hour Fitness",
+            desc: "Official channel: workouts and trainer tips.",
+            url: "https://www.youtube.com/results?search_query=24+Hour+Fitness"
+          },
+          {
+            name: "Jeff Nippard",
+            desc: "Science-based gym workouts and programs.",
+            url: "https://www.youtube.com/results?search_query=Jeff+Nippard"
+          },
+          {
+            name: "Jeremy Ethier",
+            desc: "Clear, research-backed gym training.",
+            url: "https://www.youtube.com/results?search_query=Jeremy+Ethier"
+          },
+          {
+            name: "Renaissance Periodization",
+            desc: "Dr. Mike on muscle growth and technique.",
+            url: "https://www.youtube.com/results?search_query=Renaissance+Periodization"
+          },
+          {
+            name: "ATHLEAN-X",
+            desc: "Jeff Cavaliere's training and injury-proofing tips.",
+            url: "https://www.youtube.com/results?search_query=ATHLEAN-X"
+          },
+          {
+            name: "Mind Pump TV",
+            desc: "Trainers answer real gym questions.",
+            url: "https://www.youtube.com/results?search_query=Mind+Pump+TV"
+          },
+          {
+            name: "Garage Gym Reviews",
+            desc: "Equipment and training reviews.",
+            url: "https://www.youtube.com/results?search_query=Garage+Gym+Reviews"
+          },
+          {
+            name: "Squat University",
+            desc: "Fix pain and move better under the bar.",
+            url: "https://www.youtube.com/results?search_query=Squat+University"
+          },
+          {
+            name: "Fitness Blender",
+            desc: "Free full-length workouts for any level.",
+            url: "https://www.youtube.com/results?search_query=Fitness+Blender"
+          },
+          {
+            name: "Sydney Cummings Houdyshell",
+            desc: "Daily follow-along workouts.",
+            url: "https://www.youtube.com/results?search_query=Sydney+Cummings+Houdyshell"
+          }
+        ],
+        newsSources: [
+          {
+            name: "24 Hour Fitness",
+            url: "https://www.24hourfitness.com/"
+          },
+          {
+            name: "Google News: 24 Hour Fitness",
+            url: "https://news.google.com/search?q=24%20Hour%20Fitness"
+          },
+          {
+            name: "Club Industry",
+            url: "https://www.clubindustry.com/"
+          },
+          {
+            name: "Athletech News",
+            url: "https://athletechnews.com/"
+          }
+        ]
+      },
+      {
+        id: "fit-run",
+        name: "Running SD",
+        icon: "🏃",
+        labels: {
+          podcasts: "Guides"
+        },
+        podcasts: [
+          {
+            name: "San Diego Track Club",
+            desc: "SD's big running club: group workouts and the Balboa Park 8 Miler.",
+            url: "https://www.google.com/search?q=San+Diego+Track+Club"
+          },
+          {
+            name: "Mission Bay loop",
+            desc: "Flat bay-side miles with water views.",
+            url: "https://www.google.com/maps/search/Mission+Bay+Park+running+path"
+          },
+          {
+            name: "Coronado Silver Strand",
+            desc: "Long flat run along the bayshore bikeway.",
+            url: "https://www.google.com/maps/search/Silver+Strand+Bikeway+Coronado"
+          },
+          {
+            name: "Lake Miramar loop",
+            desc: "Classic 5-mile paved lake loop.",
+            url: "https://www.google.com/maps/search/Lake+Miramar+Reservoir"
+          },
+          {
+            name: "Balboa Park trails",
+            desc: "Shady loops, hills and the park's trail system.",
+            url: "https://www.google.com/maps/search/Balboa+Park+trails+San+Diego"
+          },
+          {
+            name: "Torrey Pines",
+            desc: "Hilly trail runs above the ocean.",
+            url: "https://www.google.com/maps/search/Torrey+Pines+State+Natural+Reserve"
+          },
+          {
+            name: "Lake Murray",
+            desc: "Paved out-and-back with lake views.",
+            url: "https://www.google.com/maps/search/Lake+Murray+Community+Park+San+Diego"
+          },
+          {
+            name: "SD half marathons",
+            desc: "Upcoming San Diego half marathons and 5Ks.",
+            url: "https://running.life/half-marathons/united-states/california/san-diego"
+          },
+          {
+            name: "Rock 'n' Roll San Diego",
+            desc: "San Diego's big marathon and half.",
+            url: "https://www.google.com/search?q=Rock+n+Roll+San+Diego+marathon"
+          },
+          {
+            name: "Run clubs",
+            desc: "Social run clubs around San Diego.",
+            url: "https://www.google.com/search?q=San+Diego+run+clubs+weekly"
+          }
+        ],
+        youtube: [
+          {
+            name: "The Running Channel",
+            desc: "Training tips, gear and races.",
+            url: "https://www.youtube.com/results?search_query=The+Running+Channel"
+          },
+          {
+            name: "Ben Parkes",
+            desc: "Running coach: plans, form and motivation.",
+            url: "https://www.youtube.com/results?search_query=Ben+Parkes"
+          },
+          {
+            name: "Sage Canaday",
+            desc: "Pro runner coaching on training and racing.",
+            url: "https://www.youtube.com/results?search_query=Sage+Canaday"
+          },
+          {
+            name: "The Run Experience",
+            desc: "Form, strength and injury prevention.",
+            url: "https://www.youtube.com/results?search_query=The+Run+Experience"
+          },
+          {
+            name: "Believe in the Run",
+            desc: "Shoe reviews and running talk.",
+            url: "https://www.youtube.com/results?search_query=Believe+in+the+Run"
+          },
+          {
+            name: "Seth James DeMoor",
+            desc: "Trail and marathon coaching.",
+            url: "https://www.youtube.com/results?search_query=Seth+James+DeMoor"
+          },
+          {
+            name: "Kofuzi",
+            desc: "Running shoe and race gear reviews.",
+            url: "https://www.youtube.com/results?search_query=Kofuzi"
+          },
+          {
+            name: "Coach Parry",
+            desc: "Training plans and running science.",
+            url: "https://www.youtube.com/results?search_query=Coach+Parry"
+          },
+          {
+            name: "Global Triathlon Network",
+            desc: "Run, swim and bike technique.",
+            url: "https://www.youtube.com/results?search_query=Global+Triathlon+Network"
+          },
+          {
+            name: "Running in San Diego",
+            desc: "Routes and races around SD.",
+            url: "https://www.youtube.com/results?search_query=San+Diego+running+route"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Runner's World",
+            url: "https://www.runnersworld.com/"
+          },
+          {
+            name: "iRunFar (trail)",
+            url: "https://www.irunfar.com/"
+          },
+          {
+            name: "Google News: SD running",
+            url: "https://news.google.com/search?q=San%20Diego%20running%20race"
+          },
+          {
+            name: "Strava",
+            url: "https://www.strava.com/"
+          }
+        ]
+      },
+      {
+        id: "fit-lift",
+        name: "Weight Lifting",
+        icon: "🏋️",
+        podcasts: [
+          {
+            name: "Barbell Medicine Podcast",
+            desc: "Doctors and coaches on strength and health.",
+            url: "https://podcasts.apple.com/us/search?term=Barbell%20Medicine%20Podcast"
+          },
+          {
+            name: "Stronger By Science",
+            desc: "Greg Nuckols' team on the research behind lifting.",
+            url: "https://podcasts.apple.com/us/search?term=Stronger%20By%20Science"
+          },
+          {
+            name: "Mark Bell's Power Project",
+            desc: "Powerlifting, training and life with Mark Bell.",
+            url: "https://podcasts.apple.com/us/search?term=Mark%20Bell%27s%20Power%20Project"
+          },
+          {
+            name: "BarBend Podcast",
+            desc: "Big names across powerlifting, weightlifting and strongman.",
+            url: "https://podcasts.apple.com/us/search?term=BarBend%20Podcast"
+          },
+          {
+            name: "Weightlifting House",
+            desc: "Olympic weightlifting champions and coaches.",
+            url: "https://podcasts.apple.com/us/search?term=Weightlifting%20House"
+          },
+          {
+            name: "The Absolute Strength Podcast",
+            desc: "Kyle Hunt on training, nutrition and mindset.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Absolute%20Strength%20Podcast"
+          },
+          {
+            name: "Barbell Shrugged",
+            desc: "Long-form strength and CrossFit conversations.",
+            url: "https://podcasts.apple.com/us/search?term=Barbell%20Shrugged"
+          },
+          {
+            name: "Revive Stronger",
+            desc: "Evidence-based muscle and strength training.",
+            url: "https://podcasts.apple.com/us/search?term=Revive%20Stronger"
+          },
+          {
+            name: "Starting Strength Radio",
+            desc: "Mark Rippetoe on barbell basics.",
+            url: "https://podcasts.apple.com/us/search?term=Starting%20Strength%20Radio"
+          },
+          {
+            name: "Mind Pump",
+            desc: "Four trainers on fitness, muscle and fat loss.",
+            url: "https://podcasts.apple.com/us/search?term=Mind%20Pump"
+          }
+        ],
+        youtube: [
+          {
+            name: "Jeff Nippard",
+            desc: "Science-based programs and technique.",
+            url: "https://www.youtube.com/results?search_query=Jeff+Nippard"
+          },
+          {
+            name: "Alan Thrall",
+            desc: "Barbell form and no-nonsense lifting.",
+            url: "https://www.youtube.com/results?search_query=Alan+Thrall"
+          },
+          {
+            name: "Calgary Barbell",
+            desc: "Powerlifting coaching and programming.",
+            url: "https://www.youtube.com/results?search_query=Calgary+Barbell"
+          },
+          {
+            name: "Renaissance Periodization",
+            desc: "Muscle growth with Dr. Mike Israetel.",
+            url: "https://www.youtube.com/results?search_query=Renaissance+Periodization"
+          },
+          {
+            name: "Squat University",
+            desc: "Mobility and pain-free lifting.",
+            url: "https://www.youtube.com/results?search_query=Squat+University"
+          },
+          {
+            name: "Juggernaut Training Systems",
+            desc: "Strength coaching and form fixes.",
+            url: "https://www.youtube.com/results?search_query=Juggernaut+Training+Systems"
+          },
+          {
+            name: "Starting Strength",
+            desc: "Rippetoe's barbell lift tutorials.",
+            url: "https://www.youtube.com/results?search_query=Starting+Strength"
+          },
+          {
+            name: "Torokhtiy",
+            desc: "Olympic weightlifting technique.",
+            url: "https://www.youtube.com/results?search_query=Torokhtiy"
+          },
+          {
+            name: "Brian Alsruhe",
+            desc: "Strongman-style strength and conditioning.",
+            url: "https://www.youtube.com/results?search_query=Brian+Alsruhe"
+          },
+          {
+            name: "Mike Thurston",
+            desc: "Training and physique building.",
+            url: "https://www.youtube.com/results?search_query=Mike+Thurston"
+          }
+        ],
+        newsSources: [
+          {
+            name: "BarBend",
+            url: "https://barbend.com/"
+          },
+          {
+            name: "T-Nation",
+            url: "https://www.t-nation.com/"
+          },
+          {
+            name: "Stronger By Science",
+            url: "https://www.strongerbyscience.com/"
+          },
+          {
+            name: "Google News: weightlifting",
+            url: "https://news.google.com/search?q=weightlifting%20OR%20powerlifting"
+          }
+        ]
+      },
+      {
+        id: "fit-plans",
+        name: "Plans & Apps",
+        icon: "📋",
+        labels: {
+          podcasts: "Guides"
+        },
+        podcasts: [
+          {
+            name: "r/Fitness wiki",
+            desc: "Free, well-tested beginner guide and programs.",
+            url: "https://thefitness.wiki/"
+          },
+          {
+            name: "Recommended routines",
+            desc: "Proven free programs for every level.",
+            url: "https://thefitness.wiki/routines/strength-training-muscle-building/"
+          },
+          {
+            name: "StrongLifts 5x5",
+            desc: "Simple 3-day barbell plan for beginners.",
+            url: "https://stronglifts.com/5x5/"
+          },
+          {
+            name: "Couch to 5K",
+            desc: "9-week plan from zero to running 5K.",
+            url: "https://www.google.com/search?q=Couch+to+5K+plan"
+          },
+          {
+            name: "Hevy app",
+            desc: "Free workout log with routines and progress.",
+            url: "https://www.google.com/search?q=Hevy+workout+app"
+          },
+          {
+            name: "Strong app",
+            desc: "Simple gym log for sets, reps and PRs.",
+            url: "https://www.google.com/search?q=Strong+workout+tracker+app"
+          },
+          {
+            name: "Strava",
+            desc: "Track runs and rides and see local segments.",
+            url: "https://www.strava.com/"
+          },
+          {
+            name: "One-rep max calculator",
+            desc: "Estimate your max from any set.",
+            url: "https://www.google.com/search?q=one+rep+max+calculator"
+          },
+          {
+            name: "TDEE calculator",
+            desc: "Daily calories to lose, keep or gain weight.",
+            url: "https://www.google.com/search?q=TDEE+calculator"
+          },
+          {
+            name: "Daily stretching routine",
+            desc: "Follow-along mobility for desk and car days.",
+            url: "https://www.youtube.com/results?search_query=10+minute+daily+stretching+routine"
+          }
+        ],
+        youtube: [
+          {
+            name: "Yoga With Adriene",
+            desc: "Free yoga for mobility and recovery.",
+            url: "https://www.youtube.com/results?search_query=Yoga+With+Adriene"
+          },
+          {
+            name: "Tom Merrick",
+            desc: "Bodyweight Warrior flexibility routines.",
+            url: "https://www.youtube.com/results?search_query=Tom+Merrick"
+          },
+          {
+            name: "GMB Fitness",
+            desc: "Bodyweight skills and mobility.",
+            url: "https://www.youtube.com/results?search_query=GMB+Fitness"
+          },
+          {
+            name: "The Ready State",
+            desc: "Kelly Starrett on mobility and pain.",
+            url: "https://www.youtube.com/results?search_query=The+Ready+State"
+          },
+          {
+            name: "Bob & Brad",
+            desc: "Physical therapists on aches and fixes.",
+            url: "https://www.youtube.com/results?search_query=Bob+%26+Brad"
+          },
+          {
+            name: "Hybrid Calisthenics",
+            desc: "Friendly bodyweight progressions.",
+            url: "https://www.youtube.com/results?search_query=Hybrid+Calisthenics"
+          },
+          {
+            name: "Caroline Girvan",
+            desc: "Structured dumbbell programs.",
+            url: "https://www.youtube.com/results?search_query=Caroline+Girvan"
+          },
+          {
+            name: "Heather Robertson",
+            desc: "Free full workout plans.",
+            url: "https://www.youtube.com/results?search_query=Heather+Robertson"
+          },
+          {
+            name: "Fitness Blender",
+            desc: "Free workouts sorted by goal and length.",
+            url: "https://www.youtube.com/results?search_query=Fitness+Blender"
+          },
+          {
+            name: "Jeremy Ethier",
+            desc: "Build a plan that fits your week.",
+            url: "https://www.youtube.com/results?search_query=Jeremy+Ethier"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Stronger By Science",
+            url: "https://www.strongerbyscience.com/"
+          },
+          {
+            name: "Runner's World",
+            url: "https://www.runnersworld.com/"
+          },
+          {
+            name: "Google News: fitness",
+            url: "https://news.google.com/search?q=fitness%20training%20study"
+          },
+          {
+            name: "r/Fitness",
+            url: "https://www.reddit.com/r/Fitness/"
+          }
+        ]
+      }
+    ]
   }
 ];

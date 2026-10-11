@@ -1,6 +1,6 @@
 {
-  "name": "Hobby Hub",
-  "short_name": "Hobby Hub",
+  "name": "Wolfie's Hobby Hub",
+  "short_name": "Wolfie's Hub",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0b0f17",
@@ -15,12 +15,6 @@
       "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ],
   "description": "Podcasts, YouTube and news for my hobbies, with big buttons for the road.",

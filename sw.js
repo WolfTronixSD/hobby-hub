@@ -1,8 +1,8 @@
-// Hobby Hub service worker: keeps the site usable with a weak signal.
+// Wolfie's Hobby Hub service worker: keeps the site usable with a weak signal.
 // Pages and news.json: network first, fall back to the saved copy.
 // Versioned files (?v=) and icons: saved copy first.
-const CACHE = "hobby-hub-2.0.0";
-const PRECACHE = ["./", "manifest.webmanifest", "icons/icon-192.png"];
+const CACHE = "hobby-hub-2.1.0";
+const PRECACHE = ["./", "manifest.webmanifest", "logo.svg", "icons/icon-192.png"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

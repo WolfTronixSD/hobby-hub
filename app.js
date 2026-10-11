@@ -180,13 +180,13 @@
   const SITE = "https://wolftronixsd.github.io/hobby-hub/";
   const shareBackdrop = $("#shareBackdrop");
   const shareLink = () => ($("#shareHere").checked ? SITE + location.hash : SITE);
-  const shareText = () => "Check out Hobby Hub: podcasts, YouTube and news for my hobbies. " + shareLink();
+  const shareText = () => "Check out Wolfie's Hobby Hub: podcasts, YouTube and news for my hobbies. " + shareLink();
   function updateShare() {
     const url = shareLink(), text = shareText();
     $("#shareUrl").value = url;
     $("#shareSms").href = "sms:?&body=" + encodeURIComponent(text);
     $("#shareWa").href = "https://wa.me/?text=" + encodeURIComponent(text);
-    $("#shareMail").href = "mailto:?subject=" + encodeURIComponent("Hobby Hub") + "&body=" + encodeURIComponent(text);
+    $("#shareMail").href = "mailto:?subject=" + encodeURIComponent("Wolfie's Hobby Hub") + "&body=" + encodeURIComponent(text);
   }
   $("#shareNative").hidden = !navigator.share;
   $("#shareBtn").addEventListener("click", () => { updateShare(); shareBackdrop.hidden = false; });
@@ -195,7 +195,7 @@
   shareBackdrop.addEventListener("click", (e) => { if (e.target === shareBackdrop) shareBackdrop.hidden = true; });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") shareBackdrop.hidden = true; });
   $("#shareNative").addEventListener("click", () => {
-    navigator.share({ title: "Hobby Hub", text: "Podcasts, YouTube and news for my hobbies", url: shareLink() }).catch(() => {});
+    navigator.share({ title: "Wolfie's Hobby Hub", text: "Podcasts, YouTube and news for my hobbies", url: shareLink() }).catch(() => {});
   });
   $("#shareCopy").addEventListener("click", () => {
     const btn = $("#shareCopy");

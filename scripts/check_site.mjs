@@ -1,4 +1,4 @@
-// Sanity checks for Hobby Hub. Run: node scripts/check_site.mjs
+// Sanity checks for Wolfie's Hobby Hub. Run: node scripts/check_site.mjs
 // Fails (exit 1) on broken data so a bad edit never reaches the live site.
 import { readFileSync } from "node:fs";
 

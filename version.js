@@ -1,6 +1,20 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.0.0";
+const APP_VERSION = "2.1.0";
 const CHANGELOG = [
+  {
+    version: "2.1.0",
+    date: "2026-10-11",
+    title: "Wolfie's Hobby Hub and Fitness",
+    changes: [
+      "New name: Wolfie's Hobby Hub, with a wolf logo and matching app icon",
+      "New Fitness button with 24 Hour Fitness, Running SD, Weight Lifting and Plans & Apps",
+      "24 Hour Fitness: club finder, SD and Tempe club maps, classes, app and membership help",
+      "Running SD: routes like Mission Bay, Lake Miramar and Torrey Pines, run clubs and races",
+      "Weight Lifting: top strength podcasts and YouTube coaches",
+      "Plans & Apps: free programs, workout apps, calculators and stretching",
+      "Hobby menu now fits 2 rows on desktop"
+    ]
+  },
   {
     version: "2.0.0",
     date: "2026-10-11",
