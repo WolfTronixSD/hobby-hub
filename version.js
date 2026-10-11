@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.4.0";
+const APP_VERSION = "2.5.0";
 const CHANGELOG = [
+  {
+    version: "2.5.0",
+    date: "2026-10-11",
+    title: "Hamfests and live comedy",
+    changes: [
+      "Ham Radio now has two sections: Shows & News and Hamfests",
+      "Hamfests: upcoming events with dates and countdowns (HamTastic San Diego, Pacificon, SuperFest Mesa, Quartzfest, Yuma, HamCation, Hamvention)",
+      "Past events drop off automatically; the monthly W6TRW swap meet always shows its next date",
+      "Comedy: new Live Shows section for clubs and tours in San Diego, Tempe/Phoenix and Germany"
+    ]
+  },
   {
     version: "2.4.0",
     date: "2026-10-11",

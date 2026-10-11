@@ -12,7 +12,7 @@ from html import unescape
 from pathlib import Path
 
 FEEDS = {
-    "ham": [
+    "ham-main": [
         ("ARRL", "https://www.arrl.org/arrl.rss"),
         ("Southgate ARC", "https://www.southgatearc.org/feed/"),
         ("Hackaday", "https://hackaday.com/category/radio-hacks/feed/"),
@@ -202,6 +202,12 @@ FEEDS = {
     ],
     "med-binaural": [
         ("Google News", "https://news.google.com/rss/search?q=%22binaural+beats%22+OR+%22brainwave+entrainment%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "ham-events": [
+        ("Google News", "https://news.google.com/rss/search?q=hamfest+OR+%22ham+radio+convention%22+OR+Hamvention+OR+%22swap+meet%22+amateur+radio&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "com-live": [
+        ("Google News", "https://news.google.com/rss/search?q=comedy+show+%22San+Diego%22+OR+Tempe+OR+Phoenix&hl=en-US&gl=US&ceid=US:en"),
     ],
 }
 PER_FEED = 8

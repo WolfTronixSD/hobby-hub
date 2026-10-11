@@ -6,37 +6,232 @@ const HOBBIES = [
     icon: "📡",
     accent: "#ff9f43",
     tagline: "Antennas, DX, POTA and everything on the air",
-    podcasts: [
-      { name: "Ham Radio Workbench", desc: "Deep dives on DIY projects, electronics and technical ham topics.", url: "https://www.hamradioworkbench.com/" },
-      { name: "QSO Today", desc: "Eric Guth 4Z1UG interviews a new ham every week about their journey.", url: "https://www.qsotoday.com/" },
-      { name: "ICQ Podcast", desc: "Long-running weekly amateur radio news and feature show.", url: "https://www.icqpodcast.com/" },
-      { name: "Ham Radio Crash Course", desc: "Josh KI6NAZ and Leah KN6NWZ with tips, mail and exam questions.", url: "https://www.hamradiocrashcourse.com/" },
-      { name: "This Week in Amateur Radio", desc: "The news magazine of the airwaves, every week.", url: "https://www.twiar.org/" },
-      { name: "Amateur Radio Newsline", desc: "Weekly ham radio news bulletin, perfect for the commute.", url: "https://www.arnewsline.org/" },
-      { name: "ARRL On the Air", desc: "The ARRL's podcast for getting on the air and operating better.", url: "https://www.arrl.org/on-the-air-podcast" },
-      { name: "Everyday Ham", desc: "Relaxed conversations with hams, plus Hamvention coverage.", url: "https://everydayham.buzzsprout.com/" },
-      { name: "Ham Radio 360", desc: "Interviews, gear and operating, including Ham Radio 360 Workbench.", url: "https://www.hamradio360.com/" },
-      { name: "100 Watts and a Wire", desc: "Portable, field and low-key operating with a friendly crew.", url: "https://www.100wattsandawire.com/" }
-    ],
-    youtube: [
-      { name: "Ham Radio Crash Course", desc: "Josh KI6NAZ: reviews, tutorials and antennas.", url: "https://www.youtube.com/@HamRadioCrashCourse" },
-      { name: "Ham Radio 2.0", desc: "Jason KC5HWB reviews new radios, modes and gear.", url: "https://www.youtube.com/c/HamRadio20" },
-      { name: "Ham Radio DX", desc: "Hayden VK7HH: education, POTA and experiments.", url: "https://www.youtube.com/@HamRadioDX" },
-      { name: "KM4ACK", desc: "Raspberry Pi in the shack, digital modes, portable ops.", url: "https://www.youtube.com/@KM4ACK" },
-      { name: "KB9VBR Antennas", desc: "Michael's antennas, POTA and Ham Radio Q&A.", url: "https://www.youtube.com/@KB9VBRAntennas" },
-      { name: "Tech Minds", desc: "SDR, antenna building, satellites and digital decoding.", url: "https://www.youtube.com/c/TechMindsOfficial" },
-      { name: "Ask Dave (KE0OG)", desc: "Dave Casler explains radio theory in plain language.", url: "https://www.youtube.com/user/davecasler" },
-      { name: "K0LWC", desc: "Gear reviews, hobby news and honest takes.", url: "https://www.youtube.com/@K0LWC" },
-      { name: "W2AEW", desc: "Test equipment and RF electronics on the bench.", url: "https://www.youtube.com/@w2aew" },
-      { name: "OH8STN", desc: "Off-grid, portable and emergency communications.", url: "https://www.youtube.com/@OH8STN" }
-    ],
-    newsSources: [
-      { name: "ARRL News", url: "https://www.arrl.org/news" },
-      { name: "Southgate ARC", url: "https://www.southgatearc.org/" },
-      { name: "Hackaday Radio Hacks", url: "https://hackaday.com/category/radio-hacks/" },
-      { name: "RTL-SDR Blog", url: "https://www.rtl-sdr.com/" },
-      { name: "Amateur Radio Newsline", url: "https://www.arnewsline.org/" },
-      { name: "Google News: Ham Radio", url: "https://news.google.com/search?q=%22amateur%20radio%22%20OR%20%22ham%20radio%22" }
+    subs: [
+      {
+        id: "ham-main",
+        name: "Shows & News",
+        icon: "🎙️",
+        podcasts: [
+          { name: "Ham Radio Workbench", desc: "Deep dives on DIY projects, electronics and technical ham topics.", url: "https://www.hamradioworkbench.com/" },
+          { name: "QSO Today", desc: "Eric Guth 4Z1UG interviews a new ham every week about their journey.", url: "https://www.qsotoday.com/" },
+          { name: "ICQ Podcast", desc: "Long-running weekly amateur radio news and feature show.", url: "https://www.icqpodcast.com/" },
+          { name: "Ham Radio Crash Course", desc: "Josh KI6NAZ and Leah KN6NWZ with tips, mail and exam questions.", url: "https://www.hamradiocrashcourse.com/" },
+          { name: "This Week in Amateur Radio", desc: "The news magazine of the airwaves, every week.", url: "https://www.twiar.org/" },
+          { name: "Amateur Radio Newsline", desc: "Weekly ham radio news bulletin, perfect for the commute.", url: "https://www.arnewsline.org/" },
+          { name: "ARRL On the Air", desc: "The ARRL's podcast for getting on the air and operating better.", url: "https://www.arrl.org/on-the-air-podcast" },
+          { name: "Everyday Ham", desc: "Relaxed conversations with hams, plus Hamvention coverage.", url: "https://everydayham.buzzsprout.com/" },
+          { name: "Ham Radio 360", desc: "Interviews, gear and operating, including Ham Radio 360 Workbench.", url: "https://www.hamradio360.com/" },
+          { name: "100 Watts and a Wire", desc: "Portable, field and low-key operating with a friendly crew.", url: "https://www.100wattsandawire.com/" }
+        ],
+        youtube: [
+          { name: "Ham Radio Crash Course", desc: "Josh KI6NAZ: reviews, tutorials and antennas.", url: "https://www.youtube.com/@HamRadioCrashCourse" },
+          { name: "Ham Radio 2.0", desc: "Jason KC5HWB reviews new radios, modes and gear.", url: "https://www.youtube.com/c/HamRadio20" },
+          { name: "Ham Radio DX", desc: "Hayden VK7HH: education, POTA and experiments.", url: "https://www.youtube.com/@HamRadioDX" },
+          { name: "KM4ACK", desc: "Raspberry Pi in the shack, digital modes, portable ops.", url: "https://www.youtube.com/@KM4ACK" },
+          { name: "KB9VBR Antennas", desc: "Michael's antennas, POTA and Ham Radio Q&A.", url: "https://www.youtube.com/@KB9VBRAntennas" },
+          { name: "Tech Minds", desc: "SDR, antenna building, satellites and digital decoding.", url: "https://www.youtube.com/c/TechMindsOfficial" },
+          { name: "Ask Dave (KE0OG)", desc: "Dave Casler explains radio theory in plain language.", url: "https://www.youtube.com/user/davecasler" },
+          { name: "K0LWC", desc: "Gear reviews, hobby news and honest takes.", url: "https://www.youtube.com/@K0LWC" },
+          { name: "W2AEW", desc: "Test equipment and RF electronics on the bench.", url: "https://www.youtube.com/@w2aew" },
+          { name: "OH8STN", desc: "Off-grid, portable and emergency communications.", url: "https://www.youtube.com/@OH8STN" }
+        ],
+        newsSources: [
+          { name: "ARRL News", url: "https://www.arrl.org/news" },
+          { name: "Southgate ARC", url: "https://www.southgatearc.org/" },
+          { name: "Hackaday Radio Hacks", url: "https://hackaday.com/category/radio-hacks/" },
+          { name: "RTL-SDR Blog", url: "https://www.rtl-sdr.com/" },
+          { name: "Amateur Radio Newsline", url: "https://www.arnewsline.org/" },
+          { name: "Google News: Ham Radio", url: "https://news.google.com/search?q=%22amateur%20radio%22%20OR%20%22ham%20radio%22" }
+        ]
+      },
+      {
+        id: "ham-events",
+        name: "Hamfests",
+        icon: "🎪",
+        labels: {
+          podcasts: "Events",
+          icon: "📅",
+          heading: "links"
+        },
+        events: [
+          {
+            name: "Pacificon",
+            date: "2026-10-16",
+            end: "2026-10-18",
+            place: "San Ramon, CA",
+            desc: "ARRL Pacific Division Convention: talks, vendors and swap meet.",
+            url: "https://www.pacificon.org/"
+          },
+          {
+            name: "HamTastic San Diego",
+            date: "2026-10-17",
+            place: "Fiesta Island, Mission Bay, San Diego",
+            desc: "SANDRA's open-air ham day, sunrise to whenever. Your home turf!",
+            url: "https://www.hamtasticsd.com/"
+          },
+          {
+            name: "W6TRW Swap Meet",
+            date: null,
+            place: "Torrance, CA",
+            desc: "Monthly SoCal swap meet, last Saturday of every month.",
+            url: "https://w6trw.com/",
+            recur: "last-saturday"
+          },
+          {
+            name: "SuperFest",
+            date: "2026-11-07",
+            place: "Arizona Athletic Grounds, Mesa, AZ",
+            desc: "ARRL Arizona State Convention, close to Tempe.",
+            url: "https://superfest.superstitionarc.org/"
+          },
+          {
+            name: "Quartzfest",
+            date: "2027-01-17",
+            end: "2027-01-23",
+            place: "Quartzsite, AZ",
+            desc: "A week of ham radio camping and seminars in the desert.",
+            url: "https://quartzfest.org/"
+          },
+          {
+            name: "HamCation",
+            date: "2027-02-12",
+            end: "2027-02-14",
+            place: "Orlando, FL",
+            desc: "One of the biggest US hamfests.",
+            url: "https://www.hamcation.com/"
+          },
+          {
+            name: "Yuma Hamfest",
+            date: "2027-02-19",
+            end: "2027-02-20",
+            place: "Yuma County Fairgrounds, AZ",
+            desc: "Big Southwest hamfest. Date not final (Feb 19-20 or 26-27), check before you go.",
+            url: "https://www.yumahamfest.com/"
+          },
+          {
+            name: "Dayton Hamvention",
+            date: "2027-05-21",
+            end: "2027-05-23",
+            place: "Greene County Fairgrounds, Xenia, OH",
+            desc: "The world's largest ham radio gathering.",
+            url: "https://hamvention.org/"
+          }
+        ],
+        podcasts: [
+          {
+            name: "ARRL hamfest calendar",
+            desc: "Every ARRL-sanctioned hamfest and convention.",
+            url: "https://www.arrl.org/hamfests-and-conventions-calendar"
+          },
+          {
+            name: "HamTastic San Diego",
+            desc: "San Diego's ham radio day on Fiesta Island.",
+            url: "https://www.hamtasticsd.com/"
+          },
+          {
+            name: "SuperFest (Mesa, AZ)",
+            desc: "Arizona State Convention near Tempe.",
+            url: "https://superfest.superstitionarc.org/"
+          },
+          {
+            name: "Yuma Hamfest",
+            desc: "Southwest hamfest every February.",
+            url: "https://www.yumahamfest.com/"
+          },
+          {
+            name: "Quartzfest",
+            desc: "Ham radio camping week in Quartzsite, AZ.",
+            url: "https://quartzfest.org/"
+          },
+          {
+            name: "Pacificon",
+            desc: "ARRL Pacific Division Convention, Bay Area.",
+            url: "https://www.pacificon.org/"
+          },
+          {
+            name: "W6TRW swap meet",
+            desc: "Monthly SoCal swap, last Saturday.",
+            url: "https://w6trw.com/"
+          },
+          {
+            name: "Dayton Hamvention",
+            desc: "The big one, every May in Ohio.",
+            url: "https://hamvention.org/"
+          },
+          {
+            name: "HamCation",
+            desc: "Orlando's huge February hamfest.",
+            url: "https://www.hamcation.com/"
+          },
+          {
+            name: "Hamfests near me",
+            desc: "Search for swap meets around you.",
+            url: "https://www.google.com/search?q=hamfest+swap+meet+near+me"
+          }
+        ],
+        youtube: [
+          {
+            name: "Hamvention walkthrough",
+            desc: "Tour the flea market and halls.",
+            url: "https://www.youtube.com/results?search_query=Hamvention+walkthrough"
+          },
+          {
+            name: "HamCation tour",
+            desc: "What's new at HamCation.",
+            url: "https://www.youtube.com/results?search_query=HamCation+tour"
+          },
+          {
+            name: "Quartzfest",
+            desc: "Ham radio in the desert.",
+            url: "https://www.youtube.com/results?search_query=Quartzfest+ham+radio"
+          },
+          {
+            name: "Pacificon",
+            desc: "Talks and highlights.",
+            url: "https://www.youtube.com/results?search_query=Pacificon+ham+radio"
+          },
+          {
+            name: "Hamfest tips",
+            desc: "How to shop a swap meet.",
+            url: "https://www.youtube.com/results?search_query=hamfest+tips+buying+used+radio"
+          },
+          {
+            name: "Hamfest haul",
+            desc: "What people found this year.",
+            url: "https://www.youtube.com/results?search_query=hamfest+haul"
+          },
+          {
+            name: "Ham Radio 2.0 at Hamvention",
+            desc: "Interviews from the show floor.",
+            url: "https://www.youtube.com/results?search_query=Ham+Radio+2.0+Hamvention"
+          },
+          {
+            name: "HRCC at Hamvention",
+            desc: "Ham Radio Crash Course coverage.",
+            url: "https://www.youtube.com/results?search_query=Ham+Radio+Crash+Course+Hamvention"
+          },
+          {
+            name: "Yuma Hamfest",
+            desc: "Southwest hamfest coverage.",
+            url: "https://www.youtube.com/results?search_query=Yuma+Hamfest"
+          },
+          {
+            name: "Forums and talks",
+            desc: "Recorded hamfest forums.",
+            url: "https://www.youtube.com/results?search_query=hamfest+forum+presentation+amateur+radio"
+          }
+        ],
+        newsSources: [
+          {
+            name: "ARRL hamfest calendar",
+            url: "https://www.arrl.org/hamfests-and-conventions-calendar"
+          },
+          {
+            name: "Google News: hamfests",
+            url: "https://news.google.com/search?q=hamfest%20OR%20%22ham%20radio%20convention%22%20OR%20Hamvention"
+          }
+        ]
+      }
     ]
   },
   {
@@ -2399,6 +2594,134 @@ const HOBBIES = [
           {
             name: "Google News: comedy",
             url: "https://news.google.com/search?q=comedy%20special%20OR%20stand-up%20comedian"
+          }
+        ]
+      },
+      {
+        id: "com-live",
+        name: "Live Shows",
+        icon: "🎤",
+        labels: {
+          podcasts: "Shows",
+          icon: "🎟️",
+          heading: "links"
+        },
+        podcasts: [
+          {
+            name: "The Comedy Store La Jolla",
+            desc: "Big names and local comics in La Jolla.",
+            url: "https://www.google.com/search?q=The+Comedy+Store+La+Jolla+tickets"
+          },
+          {
+            name: "American Comedy Co.",
+            desc: "Gaslamp club, 818 6th Ave, San Diego.",
+            url: "https://www.google.com/search?q=American+Comedy+Co+San+Diego+shows"
+          },
+          {
+            name: "Comedy shows in San Diego",
+            desc: "Everything on this week, all venues.",
+            url: "https://www.google.com/search?q=comedy+shows+San+Diego+this+week"
+          },
+          {
+            name: "Tempe Improv",
+            desc: "Tempe's comedy club at Cornerstone Mall.",
+            url: "https://www.google.com/search?q=Tempe+Improv+comedy+shows"
+          },
+          {
+            name: "Stand Up Live Phoenix",
+            desc: "Downtown Phoenix comedy club.",
+            url: "https://www.google.com/search?q=Stand+Up+Live+Phoenix+shows"
+          },
+          {
+            name: "Comedy shows in Phoenix and Tempe",
+            desc: "Everything on this week.",
+            url: "https://www.google.com/search?q=comedy+shows+Phoenix+Tempe+this+week"
+          },
+          {
+            name: "Big tours on Ticketmaster",
+            desc: "Arena comedy tours near you.",
+            url: "https://www.ticketmaster.com/search?q=comedy"
+          },
+          {
+            name: "German comedians on tour",
+            desc: "Comedy tickets in Germany on Eventim.",
+            url: "https://www.google.com/search?q=eventim+Comedy+Tickets+Tournee"
+          },
+          {
+            name: "German comedians in the US",
+            desc: "Rare US dates by German comics.",
+            url: "https://www.google.com/search?q=German+comedian+US+tour+2027"
+          },
+          {
+            name: "Netflix Is A Joke Fest",
+            desc: "LA's big comedy festival.",
+            url: "https://www.google.com/search?q=Netflix+Is+A+Joke+Fest+dates"
+          }
+        ],
+        youtube: [
+          {
+            name: "Comedy Store La Jolla",
+            desc: "Clips from the club.",
+            url: "https://www.youtube.com/results?search_query=Comedy+Store+La+Jolla"
+          },
+          {
+            name: "Tempe Improv",
+            desc: "Clips and promos.",
+            url: "https://www.youtube.com/results?search_query=Tempe+Improv+comedy"
+          },
+          {
+            name: "Don't Tell Comedy",
+            desc: "Secret-location stand-up sets.",
+            url: "https://www.youtube.com/results?search_query=Don%27t+Tell+Comedy"
+          },
+          {
+            name: "Comedy Cellar",
+            desc: "NYC's legendary club.",
+            url: "https://www.youtube.com/results?search_query=Comedy+Cellar"
+          },
+          {
+            name: "Laugh Factory",
+            desc: "Hollywood club sets.",
+            url: "https://www.youtube.com/results?search_query=Laugh+Factory"
+          },
+          {
+            name: "Just For Laughs",
+            desc: "Montreal festival highlights.",
+            url: "https://www.youtube.com/results?search_query=Just+For+Laughs"
+          },
+          {
+            name: "Netflix Is A Joke",
+            desc: "Festival and special clips.",
+            url: "https://www.youtube.com/results?search_query=Netflix+Is+A+Joke"
+          },
+          {
+            name: "Dry Bar Comedy",
+            desc: "Clean live stand-up.",
+            url: "https://www.youtube.com/results?search_query=Dry+Bar+Comedy"
+          },
+          {
+            name: "Quatsch Comedy Club",
+            desc: "Berlin's classic stand-up club.",
+            url: "https://www.youtube.com/results?search_query=Quatsch+Comedy+Club"
+          },
+          {
+            name: "NightWash Live",
+            desc: "German stand-up from the stage.",
+            url: "https://www.youtube.com/results?search_query=NightWash+live"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Google News: SD comedy shows",
+            url: "https://news.google.com/search?q=comedy%20San%20Diego%20show"
+          },
+          {
+            name: "Google News: Phoenix comedy shows",
+            url: "https://news.google.com/search?q=comedy%20Phoenix%20OR%20Tempe%20show"
+          },
+          {
+            name: "Vulture: Comedy",
+            url: "https://www.vulture.com/comedy/"
           }
         ]
       }

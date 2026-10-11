@@ -222,6 +222,47 @@
     }
   }
 
+  // Upcoming events: past ones drop off automatically
+  const lastSaturday = (y, m) => { const d = new Date(y, m + 1, 0); d.setDate(d.getDate() - ((d.getDay() + 1) % 7)); return d; };
+  const eventRange = (ev, today) => {
+    if (ev.recur === "last-saturday") {
+      let d = lastSaturday(today.getFullYear(), today.getMonth());
+      if (d < today) d = lastSaturday(today.getFullYear(), today.getMonth() + 1);
+      return [d, d];
+    }
+    return [new Date(ev.date + "T00:00"), new Date((ev.end || ev.date) + "T00:00")];
+  };
+  function eventsView(h) {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const day = 864e5;
+    const fmt = (d) => d.toLocaleDateString(undefined, { month: "short", day: "numeric", ...(d.getFullYear() !== today.getFullYear() ? { year: "numeric" } : {}) });
+    const items = h.events
+      .map((ev) => ({ ev, r: eventRange(ev, today) }))
+      .filter((x) => x.r[1] >= today)
+      .sort((a, b) => a.r[0] - b.r[0]);
+    if (!items.length) return "";
+    const when = ([start, end]) => {
+      const days = Math.round((start - today) / day);
+      if (days <= 0) return "Happening now";
+      if (days === 1) return "Tomorrow";
+      if (days < 14) return `In ${days} days`;
+      if (days < 60) return `In ${Math.round(days / 7)} weeks`;
+      return `In ${Math.round(days / 30)} months`;
+    };
+    return `<div class="section-title"><h2>📅 Coming up</h2><span>${items.length} events</span></div>
+      <div class="events">${items.map(({ ev, r }) => `
+        <a class="card event" href="${esc(ev.url)}" target="_blank" rel="noopener">
+          <div class="ev-date"><b>${r[0].toLocaleDateString(undefined, { month: "short" })}</b><span>${r[0].getDate()}</span></div>
+          <div class="body">
+            <div class="src">${when(r)} · ${fmt(r[0])}${+r[1] !== +r[0] ? " to " + fmt(r[1]) : ""}${ev.recur ? " (monthly)" : ""}</div>
+            <h3>${esc(ev.name)}</h3>
+            <p>📍 ${esc(ev.place)}<br>${esc(ev.desc)}</p>
+          </div>
+          <span class="go">›</span>
+        </a>`).join("")}</div>
+      <div class="section-title"><h2>${h.icon} Calendars and links</h2></div>`;
+  }
+
   function render() {
     const parent = HOBBIES.find((x) => x.id === hobbyId) || HOBBIES[0];
     hobbyId = parent.id;
@@ -268,6 +309,9 @@
       html = historyView();
     } else {
       html = newsView(h);
+    }
+    if (h.events && tab === "podcasts") {
+      html = eventsView(h) + html.replace(/^\s*<div class="section-title">.*?<\/div>/s, "");
     }
     if (h.weather && tab === "podcasts") {
       html = `<div class="wx-panel" id="wxPanel" data-loc="${esc(h.weather.name)}"><p class="empty">Loading live weather…</p></div>` + html;

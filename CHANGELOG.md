@@ -2,6 +2,12 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.5.0 (2026-10-11): Hamfests and live comedy
+- Ham Radio split into subs ham-main (former content, news key renamed from ham) and ham-events
+- Subs can list `events` (date, end, place, url, or recur: "last-saturday"); past events are hidden automatically
+- Comedy: com-live sub with club and tour links
+- check_site validates events
+
 ## 2.4.0 (2026-10-11): Meditation, George Carlin and iPhone fixes
 - Meditation hobby with subs med-guided, med-sadhguru, med-hicks, med-goldman, med-bowls, med-binaural
 - George Carlin replaces Kill Tony in World Comedy YouTube picks

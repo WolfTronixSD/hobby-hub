@@ -28,6 +28,11 @@ const checkLeaf = (h, path) => {
     if (!Array.isArray(h[k]) || !h[k].length) { fail(`${path}: ${k} is empty`); continue; }
     h[k].forEach((x, i) => { if (!x.name) fail(`${path}.${k}[${i}]: missing name`); checkUrl(`${path}.${k}[${i}]`, x.url); });
   }
+  (h.events || []).forEach((ev, i) => {
+    if (!ev.name || !ev.place) fail(`${path}.events[${i}]: missing name or place`);
+    if (!ev.recur && !/^\d{4}-\d{2}-\d{2}$/.test(ev.date || "")) fail(`${path}.events[${i}]: bad date ${ev.date}`);
+    checkUrl(`${path}.events[${i}]`, ev.url);
+  });
   leaves.push(h.id);
 };
 for (const h of HOBBIES) {

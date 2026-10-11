@@ -85,6 +85,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .wx-day b { font-size: 20px; }
 .wx-day small { color: var(--muted); font-size: 14px; }
 
+/* Events */
+.events { display: grid; gap: 12px; margin-bottom: 22px; }
+.event .ev-date {
+  flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 64px; height: 68px; border-radius: 16px; background: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.event .ev-date b { font-size: 14px; text-transform: uppercase; color: var(--accent); }
+.event .ev-date span { font-size: 26px; font-weight: 800; line-height: 1; }
+
 /* Hobby selector: compact big-tap tiles */
 .hobbies { display: grid; grid-template-columns: repeat(var(--hcols, 8), 1fr); gap: 12px; margin-top: 8px; }
 .hobby {
