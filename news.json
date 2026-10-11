@@ -1,13 +1,7 @@
 {
- "updated": "2026-10-11T21:51:06.657429+00:00",
+ "updated": "2026-10-11T22:02:54.485051+00:00",
  "topics": {
   "ham": [
-   {
-    "title": "Local schools take STEM education to space through amateur radio projects",
-    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQRWVCd3B1X1J6YnpFa3J6TC1nQzJtTkllLWVqQk9DVUM4bDhFbFB0MUo4ZFRKalJwZzQ2WVFYTy1ZVVZUdGFtYWtnZG9zVnRIY2F2bTZ5ZUNRVjBWdkFrbXRhYVlUOE5na3ltdDFTWW5IRG00QWowR1RueFRmVXZjR0V3cDYtSXJ1VFRJcFFyWXZqZm5BTmNWZlZXR3M2SUR3ejNJbXRB?oc=5",
-    "source": "Alachua Chronicle",
-    "date": "2026-10-10T22:54:43+00:00"
-   },
    {
     "title": "ARRL Headquarters Closing Early on Friday, October 9, 2026",
     "link": "http://www.arrl.org/news/view/arrl-headquarters-closing-early-on-friday-october-9-2026",
@@ -121,6 +115,12 @@
     "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNS0dRclNzVWFKeXlUUjNGc01VVnZ3MnFjUEFFaXVDMmpYeWpBZjl3QmxUbFljRUREYUhBZFYyVVJaV3hoTGRnT1VwWXlCSWxoOS11VDl4QXFTVEZadlVpN0FtNGgyR084TmJ5eGc5a3RWcG12dWNvSnJVbko4a0RjZmNHWmFDNloyejRjV2NCaXFyOVJ3MzRkeHJHN2g?oc=5",
     "source": "Cleveland.com",
     "date": "2026-10-01T07:00:00+00:00"
+   },
+   {
+    "title": "Ham radio training offered in Whatcom County",
+    "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQOW9sTkZmNmJxM3Axd0NzVDZpNTkxblZqX3ZFdzhtR2FBUFFNNERSdHJVYmo5WWhJU1AweGVteUFpWkFTNW01NXl1NlQwaXg0UHN2bVhGYWFCUzJiMVdKNXJXTGszdVBiMU9NWFhuTlFXSU1EQ1RBZWZjVndwc1B4UTc0NWlXeDdZUm9IWlQ3X0w3V3FMMkE?oc=5",
+    "source": "Blaine Northern Light",
+    "date": "2026-10-01T04:35:53+00:00"
    },
    {
     "title": "Synthetic Aperture Radar Drone Gets Interferometric Imaging",
@@ -367,6 +367,12 @@
     "date": "2026-09-24T07:00:00+00:00"
    },
    {
+    "title": "With the new VENTUNO Q board, Arduino hopes to make robotics development easier",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOZkNYbVhBamhnMGlFVUFHckMzTnFaaXppNTltdHVhMHZ3WlJHZ0VybVRRRW01RWxMWmhFLVl5Q3BKZWJTbTJZNHNtcUU4ZjJyRXdicHlubzFxcloxaHNiUUlSeExzWGRiU1JaNFctQm1PNHFGenhDc24xelJ5RThYcFhLVlRmRE8wbkdOVkdzS1duVE93ZDl3TGx0Yl9weGM?oc=5",
+    "source": "The Robot Report",
+    "date": "2026-09-23T18:21:32+00:00"
+   },
+   {
     "title": "Running Local LLMs on the Arduino® UNO™ Q Board: a Practical Guide",
     "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxORXF1cUpMOUNTRW1vU05lRnQtNl9kNHRKMlIyd1Y5SkZ5d3kyUEIzeUhTNkp2YXdwaDZJdXNBTndLNExrMHpaYWhjMXJ4Ul8tdjJnTjRTT0ZDVU1jcy1lclluZHhNamRmUzhfWDU1R3JabUtiY1ExZFd5SlNQQWhYMXpNNkJ6T0JpbHhYTEFMc2FIUQ?oc=5",
     "source": "EE Times",
@@ -395,12 +401,6 @@
     "link": "https://hackaday.com/2026/07/15/pinch-puts-an-arduino-on-a-usb-c-connector/",
     "source": "Hackaday",
     "date": "2026-07-16T02:00:59+00:00"
-   },
-   {
-    "title": "Anthony Mark Arduino Obituary Dec 23, 2020",
-    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1hNEc0OWw2Mi1fMjdYc1Yyb0dILXhTLXVybTJDZG9UZzVia1h0QURRUk9TaXJSc1l3Nm40OU5VV3ZWazZsTnlMSGZ0a1VTQ2RJNm04dXVnZDB4VllfSFc2N0VzYmVuem0wR1ZN?oc=5",
-    "source": "suessfuneralhome.net",
-    "date": "2026-06-14T06:12:06+00:00"
    },
    {
     "title": "The Uncooperative Mirror Will Not Help You",
@@ -709,16 +709,22 @@
   ],
   "ai": [
    {
+    "title": "EU Tech Chief Says AI Act Can Contain Rogue Agents",
+    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQMHlXWnB4a1dLaXh4RGdHNW90QTEzRGItMU5acHhOQ0FibmFQZzdoSURxTi1rTDl4WElkOVZqMGdEX1dfdS1qdUV2c2JSSlBWeWR6UlpQejAtRlk3S1Qzc05QSGpxTUs2R2Z3eHBORmZzbnVveGxlSzc3WU9kLUlmVldHY0dDaDdXWE80Z2ZDTHJDX2dHV2xfbVlNYVpnMGJpd24wbllSWkFucGNt?oc=5",
+    "source": "PYMNTS.com",
+    "date": "2026-10-11T21:52:13+00:00"
+   },
+   {
     "title": "Will the HomeView be Apple’s first smart home success?",
     "link": "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/",
     "source": "TechCrunch",
     "date": "2026-10-11T21:14:40+00:00"
    },
    {
-    "title": "Bill Gates warns cyberattacks most imminent AI threat",
-    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQUC1DN051QkpxYXIzTkY0c1I3Vk1FMUw4NGowWnhBcGVMTU00SGoxVkVqd1BHaWo5UWphSmk1RzBQdVYtSnlfMVBYMDQ5U1VNcHBISG4yamZTcTNIVktqN2lHb3FrcXJrM1FhQjU2UmhrUEc0UjhaM1U4OFBEZTI0RXc5aFJyLWJtLVpaZHNkRjUwXzdT?oc=5",
-    "source": "Japan Today",
-    "date": "2026-10-11T21:00:00+00:00"
+    "title": "AI goes rogue again: Anthropic’s Claude submits false tip on unsolved homicide case",
+    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNUExUNWRuU0FLUndxaURDdDNELXozNDBKeU1uYXoxNW9McXMxd0liRzZVZVFVMUhSQTlPQ3hNcDRDM05KeHdGY3d2UnlmZFlnQkNSUGFHX3B0WkRiNjFzNlhHRWNaV3FQaFN1Sy1rWG0zRVI3TktEaGlCQW9rcFlnSUtIS0FWWmdaVHFocmpGdWtWSE0yc0lPVXpZZ1FRakltaDg1UTAxdWpCUmx4M2VzcG1BMUp2bXZVSDdSUllUbF83bElSTEE?oc=5",
+    "source": "Syracuse.com",
+    "date": "2026-10-11T20:56:00+00:00"
    },
    {
     "title": "Amazon Is in Talks to Buy AI Startup Decart, WSJ Reports",
@@ -751,16 +757,22 @@
     "date": "2026-10-11T14:00:00+00:00"
    },
    {
+    "title": "SpaceX vs. Micron: Which Is the Better Artificial Intelligence (AI) Stock to Own for the Next 5 Years?",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcjRkNmdXalhQbUJ1eXlmRUJmTjI5VGtLeWZGa2xvdjFhYVBrUldZeHFvdjE5UVRzWE1EY3ZDR29HcEplVjlJVUQwNDUzNzJwT0VPU1BJS1l4VkkwZjNzYzdSR3JPRmxjcXIteGozN2pZRWs2VktDektxMm5uNjVzelZkNDNJWEtCZTZETXY2MDRLOTAyX0FEcVQ3ZUx5dGc2?oc=5",
+    "source": "Yahoo Finance",
+    "date": "2026-10-11T12:05:00+00:00"
+   },
+   {
+    "title": "AI Has a God Problem Stretching From the Vatican to the Baptist Pulpit",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOS3RlMXZFZDNGcU1KUzRJeF9fOWVCNzNUUl9vRTYzREtnYTZvR0NCdURTNjNqbk9wNW5tbzdZc3FlRXZGZUFucGNzTGxxcWhSM2g4SGRsNklxdWRhVWdTRm53Z2FMMXVSUWlHbkJBQnVHM3VrWmNabEhwbzlfNGlHZGpzbHJOdFhiVnFSUFFHeTV2X2V6cmc4UE43cFplTkNUV2otSm5zb0xCVUU?oc=5",
+    "source": "WSJ",
+    "date": "2026-10-11T09:30:00+00:00"
+   },
+   {
     "title": "Learning to use local AI is exciting, overwhelming, and frustrating",
     "link": "https://www.theverge.com/ai-artificial-intelligence/1008484/learning-local-ai-hermes-qwen-model-mac-studio-testing-diary-progress",
     "source": "The Verge",
     "date": "2026-10-11T04:53:46+00:00"
-   },
-   {
-    "title": "Anthropic Is Banishing Its Model Evals From the Internet",
-    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPNW1PNnNxaUY1ZHEzS21SMk9HZDE5ajZnTEhSZUNyNUZtVnVzRk93ak1IUS1nQWRJYndEOV9FQUc1dENmSEFPSm40dDJFMGItdW4wQjhkSmpZd1Y3aWpHbkx6NTR2TlRMS0YzaF9SU0xWYms2VzhZajI0OUVhMl9QMi1ITnJ6ZlNWRldsc1lCeHk?oc=5",
-    "source": "Gizmodo",
-    "date": "2026-10-10T22:52:14+00:00"
    },
    {
     "title": "Satya Nadella says we should assume all AI models are ‘compromised’",
@@ -811,12 +823,6 @@
     "date": "2026-10-09T23:45:03+00:00"
    },
    {
-    "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
-    "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNSW45eVowQUtrRDU1czZqQ25KNW1UU0VLc201dkpjOEpJR2NFYUNmTnhITG94WnB6WlNsVkFfRzV5ZU1MeUJpY0NqX19lNVcyN3NLdXpSYk1xb0twRl85Z1RLRVllUVpNQTFPal9FaWp1SnNoNk8tbnN1a1ZpN1MxNVhR?oc=5",
-    "source": "The New York Times",
-    "date": "2026-10-09T23:15:12+00:00"
-   },
-   {
     "title": "AI agent makers are promising privacy — will they deliver?",
     "link": "https://www.theverge.com/ai-artificial-intelligence/1009051/privacy-ai-agent-promises-openai-meta-muse-dots",
     "source": "The Verge",
@@ -833,12 +839,6 @@
     "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQS095NGg1SGdvMzZKSjktTWo5ZkFWMkJmdGsxRHJuRHJ6bUYzcV80V3RnUkpIYmp2OHlhNDZxZjVuaWJVQUl4WUhSX1JQZDM4eXlYMGVGRmh2ZUZ1bDljYVZSSDRocGR5LUUtYU56QVh1d1RoUVhFcDZZWGxXWGw1SFpSSVcyVEtWZVh1b2kwUlhfQURUOXhPOWVLOXNtTWNzem9PRGdfMFNoaXFvbGx2MVln?oc=5",
     "source": "University of California, Berkeley",
     "date": "2026-10-09T17:40:46+00:00"
-   },
-   {
-    "title": "Philadelphia police receive false homicide tip from Anthropic AI model",
-    "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWDd5WGx1ZzZpQU5XblFlR1VXUkZIeXQ2NU9qb3VicEZZaDJLakJrVHo3cnFlU21zLVkzaHNHWFpwRVU2cWZiSFlvaFpRNER1OFFsYVlsUWdwM19PUWF5R090cTVYOUItcW5Fa1EtNUFmV0N3Y0pPQXRvMlIwZGNEa2lReUfSAYoBQVVfeXFMTy05SzV2eFh0VEdUMkRBQTdmbkRtSS0wLTdBbDlQUDJ6Y1VtOHpiTlJiM3UtaXM2ZWtrNEFlU0E5bFF5U1B0aUNrclU3cU10UklJVWlJc3RSalBvVDJZYU5HWUZFbkZBOXZMMnpUeVBkbkxTT1VtZ0twQUhGNkY3YUR5b1J5dzl5S0Fn?oc=5",
-    "source": "The Hill",
-    "date": "2026-10-09T15:44:00+00:00"
    },
    {
     "title": "Trump decrees that anyone who uses the term Artificial Intelligence is now ‘The Enemy!’",
@@ -1001,6 +1001,12 @@
   ],
   "food": [
    {
+    "title": "The fall season starts for Cardinal Spirits with new house-made recipes",
+    "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1ZZlFUWDIwXzc5bEpJRzNjVi1TX3drcDhrR2g3alpHOTd4MlFpdnRaNHRUYlJkTmJkYTJYVnF4YVQ2b3dEZFdXYjR6S2kyRlBTajdRSDNzN3lTVFdraGk3T3k3NFBFSDhOWEZUaUJFVlFhUnVHUE1fTmY1am5xUQ?oc=5",
+    "source": "Indiana Daily Student",
+    "date": "2026-10-11T20:32:00+00:00"
+   },
+   {
     "title": "Aspiring chef Brooklyn Beckham brutally trolled for cooking ‘burnt’ spaghetti: ‘That looks dreadful’",
     "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNUDJhTXZWaU8yWHpsaXZCQnRhT19Fc1I1SUJXSWt5NENFNGZrWmlhY1JiOUZyXy1qdWdmSno5cjIxczJuSm5xSHhwZ2dndS1fRnRxU0RNZWotY1lzaUlmLWZETy1LZUhGeWtWelVWOU5DdERzV0lyZEQteWZpcDE2a3NmWHh1NXVvVjZIRGxHbDVJSTRBME90MGVpb0IwUHp0?oc=5",
     "source": "Page Six",
@@ -1023,12 +1029,6 @@
     "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSXpSaFJUT2NUV1pnbEx0LTgyLUozbVZrMXhrcDltOU9uT0ZoN2d4al9MdWJmVEVQLU1Ec2YteThhY2lUMUp0RUNkam9YM3NFaFh6dFFpdENBZl9YUnlQUTRKNnllakF0OHRLTUs0eDM0ekl2VTRGUWZ3M1BxaDlzczNTMA?oc=5",
     "source": "WCVB",
     "date": "2026-10-11T14:13:00+00:00"
-   },
-   {
-    "title": "Our 10 Most-Saved Bean Soup Recipes Are Cozy, Hearty, and Full of Flavor",
-    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9IOTZXMWJVTlhHQ1pvQUZSaTR4OTlEZU9jVjJpdXdNblg5LW54QnM3WTQ3dGhLUm0xUzBwdEV1UXBfYnN4dm9MOEZOX09nZ3VOc3hxVnVpV3BtbU10bXBnRkV3N0V5MTZxUjZSTGtDZ1QwRXc?oc=5",
-    "source": "Serious Eats",
-    "date": "2026-10-11T13:20:00+00:00"
    },
    {
     "title": "During a trip to Portugal, I was introduced to a light, flaky puff pastry. Hoping to share this treat back home, I took my first ever cooking class. See link below ⬇️ 📸 Provided by Aladar Nesser and Kim Lucine",
@@ -1471,6 +1471,12 @@
   ],
   "roadtrips": [
    {
+    "title": "Man missing in Great Smoky Mountains National Park found dead after days long search, family confirms",
+    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOUHBVano4MW5ncUhmU2dzLUZTeDliTE53NUpONVFzYW1weUVQMzAyeDA2aXRpMWVLZFpvZEdkMjYtQk5MeWZ0MjBwa3VIUlNaRk5VM2ctcjlzU1E2dm5obXJMVXV0UGRaLWZmYWJhOFJLRkNsb3V6Mkg2ODdCUW4ybkZQZVZNRU54QlZyZGp1WTR4N2tSODZFWTZQWVEyd1JvWU5fS2xrVU53Mk5Fd05VVVZvRksxenc1OVFmbGhYOE02RVY5b1hvdQ?oc=5",
+    "source": "WVLT",
+    "date": "2026-10-11T21:44:00+00:00"
+   },
+   {
     "title": "Zion National Park, Springdale in flash flood warning",
     "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQTFNCZmF5NFlwTjZ4UTJhQ0V3UzcwanRPbGI1dXlSaG5XM0UzaDVPWmJyU0VtQnJlVHlJQVdkVG5ObmVBbGhwRDlCODhvQkE2cHZpQ0t3dkxKV0FRLXI0REY0QS1jTE1veXJvSmhMMmdFTzdRSkgybjNtQ2Z1QlVJZmhjLWpBcWZ2UDdoSk0xd2dHZ1Bx0gGaAUFVX3lxTE1ZMzJ1cXZLcm5yTWpFRjNXYjhNM0RsVjM5d0pnemFlVXlHUUV3STFMWU5BUUR0YXhBckFSLTNoMlU4UGZiN0h1QWRZUFBiZzUtUHJCNE1iOGNsWERHSmllaHpvcndGVUlFcjQ1YkpXSDFYNUVkWXRSYVpxTWUzaC1XSERtQWpnakoxYkI0MWQ4clNmRVBpVGh5QWc?oc=5",
     "source": "ABC4 Utah",
@@ -1493,12 +1499,6 @@
     "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1veUd5dk9tQnNoeWRzTWgxbnNLY0FKMjByLVRhTkQ3NUtUVk1tSG5JZVZVTTNEQ0ZPNnVDZW1QdXhodjFtM0NTNmkxbExYY1M3SGZvWkhTc1F2cTU5eFg4b0tteWhJUFFxM0E?oc=5",
     "source": "EarthSky",
     "date": "2026-10-11T17:21:04+00:00"
-   },
-   {
-    "title": "2026 Honda Prelude Road Trip Review: Our Hybrid Coupe Shows Its Sweeter Side",
-    "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBwRi1kd0I1bkljakdrNGphU2V4ekJ6ZV9QYk1uMTFuVjV5U1FEUTdQbmpOWmZqQklDUk1RZURsMHpYS3FTaS1KZ09LZjNLcHZ1WFJKZDBnc1lZcnpHRHlvN2hCaXN0UW1XSEo4YU9lOWYweU42OFFwTC1fNGI0Zw?oc=5",
-    "source": "Edmunds",
-    "date": "2026-10-11T13:05:06+00:00"
    },
    {
     "title": "The Greek National Park Suffocated by Fish Farming",
@@ -1631,16 +1631,16 @@
     "date": "2026-10-11T04:00:00+00:00"
    },
    {
-    "title": "Japan's tourist spending windfall shrinks as Chinese visitors plunge",
-    "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbUNJMm9aQ2xpVTNFMWpOdHdrQ0dseDQxOTV6RFFJRUhFeWc4eFd5VVhyRVZUbWhBeVBNMmdxanNJRG9VX2NDSGlDUnhZSXNBcUkyVWx1MGItUFkzbGxTZE54ZTJWZGxHUFRVdjIxQ29EZElia3c5U3pteU9RLUg2eTVHRkFzTUZvcFpBUGVEb0Q2SDFFQV9rR0d2cDZlS2t2R1gzVUU1RlYzaUthVGxrTHlzejZfek0?oc=5",
-    "source": "Nikkei Asia",
-    "date": "2026-10-08T19:17:00+00:00"
-   },
-   {
     "title": "Unforgettable Travel Company Launches Advisor-First Asia Specialist Collection",
     "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQQTJUVERXczNUM3VrSHJoMndzNlUycTc2azVrSERZdk1UVGZyNTdJQ2tNSWh3MzVsamVxN3FSMVNLS2hpUHg4SUlvVk1ONjZBVFE5UmhaYWg4dHY5UF93VkRyVDJKWXR1bklkM3NpMC1pbEpvVVdtbUNGekF1NV9nbmdnYVlISTRlbE50WEVZb0tKN2YzSVNkTlpUSFJuZUlfRm1Ia3BuNENBbU04NmwxTlZzSk04WFVvZksxUjdfbFVUNW1GdGt0eS1EVUtHek9vY2FpcQ?oc=5",
     "source": "Travel Market Report",
     "date": "2026-10-08T12:22:34+00:00"
+   },
+   {
+    "title": "Why Unforgettable Travel Is Launching Its New Unforgettable Asia Brand",
+    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQVHAxTEVpMFM5Y3dtc1lYaG9NakZYQnBiV241UUlfRkRQVjZSSXlfa2J6aWIxeFBMVnpHU1hKbFN4cVdqVGljRklGdVNmZkZaM3NXaDlaZUU2bDdEb0M0TFJacEZ5aTRYYXFMRE92ZXZ3RVE4TDNzbDBxYlNxNUdja2NCMA?oc=5",
+    "source": "TravelAge West",
+    "date": "2026-10-07T21:51:33+00:00"
    },
    {
     "title": "Unforgettable Travel Company aims to simplify selling Asia",
@@ -2165,6 +2165,24 @@
   ],
   "sd-news": [
    {
+    "title": "Operativo policial cerca de SDSU deja 40 arrestos por delitos graves y decomiso de armas",
+    "link": "https://timesofsandiego.com/crime/2026/10/11/arrestos-delitos-graves-sdsu-college-area/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T22:02:19+00:00"
+   },
+   {
+    "title": "MarketInk: SD Press Club to honor San Diego Magazine’s Troy and Claire Johnson at awards ceremony",
+    "link": "https://timesofsandiego.com/business/2026/10/11/marketink-sd-press-club-to-honor-san-diego-magazines-troy-and-claire-johnson-at-awards-ceremony/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T22:00:00+00:00"
+   },
+   {
+    "title": "Recomiendan evitar las playas de San Diego tras el paso de la tormenta Rachel",
+    "link": "https://timesofsandiego.com/community/2026/10/11/tormenta-postropical-rachel-playas-san-diego/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T21:54:39+00:00"
+   },
+   {
     "title": "Del Mar to host free pedestrian safety workshop with DMCC, UCSD and CHP",
     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPY0FXVWM0Z3Zubi1hLUQzOGFKaW5YQ3Vlem1BdnQ5M0tDMlAydG9idGJaX3dmRDdVQ1Iyd0lKenRIbzhNeTZRY215SzBmWUpmczlLOGNJTDZKRnZLb3VpbmFlaFpXd2VWMW1MSEJZMlBXbWY4Wnl4SkI2NnllOUJXZXVvQ3IxZWZsdDMySUc4VjAzQ0xrOE5ja1dXUDRUUkhjUmJ3TExvSW53MllDenFQWG1qOTA0X25wN1pn?oc=5",
     "source": "San Diego Union-Tribune",
@@ -2213,28 +2231,10 @@
     "date": "2026-10-11T16:00:00+00:00"
    },
    {
-    "title": "Becerra hasn’t made education a priority. California education leaders aren’t worried",
-    "link": "https://timesofsandiego.com/education/2026/10/11/becerra-hasnt-made-education-a-priority-california-education-leaders-arent-worried/",
-    "source": "Times of San Diego",
-    "date": "2026-10-11T15:00:00+00:00"
-   },
-   {
     "title": "Oregon State overwhelms San Diego State with 66-14 victory in Corvallis",
     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeEVkOTI4am1aSlZtUmIzZ1hST0JPWjZ3RE1WYjZRZEp1aVZoTkdtZTBqU2FDdXFqY094aEdycThnOXVnLU9KOWoyMVZiZUlmSHV6Rm04UzZzLUFDZzhCUWVmVGJuQ2FCNE1WYkRCWUVjSVAtaTQ2cnpiODAxQUVrRG1zS21odVVjandTTWM2UVhGWXNXY1gyR1Z5QWJJcTVJMFdBdlBxU0x0OXpZUTctLUs1clRpcHVQdjFj?oc=5",
     "source": "OregonLive.com",
     "date": "2026-10-11T05:32:00+00:00"
-   },
-   {
-    "title": "Rachel-related rainfall expected to continue overnight, tropical storm watch for San Diego still in effect",
-    "link": "https://timesofsandiego.com/weather/2026/10/10/rachel-related-rainfall-expected-to-continue-overnight-tropical-storm-watch-for-san-diego-still-in-effect/",
-    "source": "Times of San Diego",
-    "date": "2026-10-11T00:01:39+00:00"
-   },
-   {
-    "title": "San Diego man sentenced to 12 years in prison for scheme holding immigrants captive for ransom",
-    "link": "https://timesofsandiego.com/crime/2026/10/10/san-diego-man-sentenced-to-12-years-in-prison-for-scheme-holding-immigrants-captive-for-ransom/",
-    "source": "Times of San Diego",
-    "date": "2026-10-10T23:00:00+00:00"
    },
    {
     "title": "Nick Canepa: Baseball in January? That’s one way to fix what’s wrong with the sport",
@@ -2253,6 +2253,702 @@
     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOemtOZWl4RGV1XzBucC1yTmlSQlVsVXRlckxZZFlpVkpLTUxTZnE2V0Y5cDZScHJZQ0dDUEswZkk5QkFMbkhjNmxQb0xWNzE1OGRYX2N5Q2poallIaWo3UXVfTzVWcF95UjF4a0dTLXVtRWtqTTBKaG9lN1dwMjd2Wl8zQWhEMFM4MmtUMklhSDBwVjEzVUFKU2xKNlhkN1JTaFhmaHNCLU50YkthYWhWR2dEYno5ZGozQksxaEl6N01mcXliNHBIeWNoY9IB0wFBVV95cUxNYTQ1azBtMUtCZ2ktMmlveU9jckNlTFdDMnpockdPbm5PS0RsUUVGaWE2R1Fxa2JvWkM5SmlwM0Y0MHFqRnQ2M0xyX1k5bHJYX0ttMlUwNkI3aTJfN3pETHVuMlRtc043cVdxMGdjakVPb21laXhZVEUteExCZ0pENVBhTWdmOTZlY0d0S0FTNU16a2NxdTV0aEZlUTNJMWgwaUY5TGlVR1l1bmg5c2FrTzB1ckF1bTVaN1Nqel93R1FZWWdDVE82NUg2Yko2TlRKT2xn?oc=5",
     "source": "NBC 7 San Diego",
     "date": "2026-10-09T23:19:35+00:00"
+   }
+  ],
+  "sd-snorkel": [
+   {
+    "title": "Beach closure extended in Imperial Beach due to sewage contamination",
+    "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQN3VnYzY4dVdSQkpmTVlOTHphZFlXS2wxM2xHU0dJR212NklYbng3eXFwM1hyMUlKM21sVFVzZC1BdXZrODVaM19JdHNHNkVJekVfcnJ2T2xJVEtSU0IzdFJpU1BhYzNWVTlUb2RybER2bHlXOTF3UFdhWUwwcWRZanlRbm1JVGR3Y0VMTXhGOXVQYm1lMGdfRHNBVGlmYm42YkhudWk0Wk40aThmMENES3phZVhGR3BxUEVRTA?oc=5",
+    "source": "Times of San Diego",
+    "date": "2026-08-23T07:00:00+00:00"
+   },
+   {
+    "title": "How to snorkel with the sharks in La Jolla this summer",
+    "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOOFhkZ196SEgzYnEycFpIdTFsY0FuRXI0VjA1dTJUNk1LMXJZR0hpRXNtcUdyWW9sam9ENjRJMW92OTdkV1FEUjFTcjZtY3BvWWk3UGttMVlrVlJtZHZQNmJjc2s2WW1sZm1vU0tTemFFRUVjWkNJMDdwSFVXMGRzZUtZZmNuRWJzeHlBQzJXZHNGNV9wbEhzcDk5Tkl6cmRINlhhOWRRUzkzWXE3N0E?oc=5",
+    "source": "Axios",
+    "date": "2026-07-08T07:00:00+00:00"
+   },
+   {
+    "title": "La Jolla Leopard Sharks: When to See Them & Where to Go [2026]",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1qNEt6WkcxczNscXJ4Nm5QM3hIVmhpQmpqbVItM0NBSTIzS1l4OUI5Z2VfZnJaV09TNnByeEZDNkVhSmNhb0FEOXg0bi0tbXBxMm9PUHhGZEh6RTg?oc=5",
+    "source": "La Jolla Mom",
+    "date": "2026-07-06T07:00:00+00:00"
+   },
+   {
+    "title": "'Dos and don'ts' for visiting La Jolla Cove during sea lion pupping season",
+    "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQUHB6bVdyU3VmMHkxWnRNN2xVbWxzUEZXX2Z2UHNRN2Roa2MxVXEtcDBXRDFzYzJvWk5xWmFMYzdvREc5c21FVG04aGEyak9GN2FzdHN3SDEwV3RZbFYyVnd0dUFHYzRseVBDSThCRThBT2U1NEZEa3ZoN0QyZUUyS3k0Vi13VjhqcGw2NU8zcDhXQUtqQzJXNGE4VW1LY25LcGphcTBGLWFreXJCVk1pajNORDNadm9LdEN2U2xFUkVuaEdRRHFwSUx4cU9nNFFBZmJrc3dWRWJ1Q2E3YUVIVUZnOHhRN1dZ?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-04-05T07:00:00+00:00"
+   },
+   {
+    "title": "Beloved California beach reopens after disgusting incident — experts say whether it’s safe to swim",
+    "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQTmdoaFNCMW9ESERIVzRFa0U1WXRuYkVhelJndU1teko3NlZ6NmpUUU1CQno0STU1ZG03WFpfS0tXdUpQRHFYS0pVWFVpZVNvVmN0OHo4SkZZdTRpc3J6T0pPVE1ubDg3UG1JSXhzY3p2YmwzVDdwQkxLaGxfekpybjJMWWMwakcyRGtac0JyTXJWYTg0bVY4MG1vTEMzU2pZNU1zUlRlcnY0Qkh5UkxoaS1Ba3lSWTJ0QmttX1ZUcW0tSVI2elVhUjk0MndFV0E?oc=5",
+    "source": "New York Post",
+    "date": "2026-03-31T07:00:00+00:00"
+   },
+   {
+    "title": "Officials extend beach closure in Coronado amid sewage contamination",
+    "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOWWJJbVVmSDVYMm55Z1ctWkNzWHBqaENjeThLNUs1WXBlbWhiZFc0VV92VWZtYTBvZ0dSTF9NYlhhckFtX1FSRXNHaDZFSWZ4VDlGSlFtN0ZFMmdxekhVWWI0OGY1T0J2bkppaDUyek9uLVNremxsVmdrd1pVcHFIT2d3NTRYTFN0anRUbld3dDIzQVFnblU1amg2d1VWVW1FQmJ2anFkeHYwM09VTUJHS1hZd0lyUmlCZHVGcw?oc=5",
+    "source": "Times of San Diego",
+    "date": "2026-03-29T07:00:00+00:00"
+   },
+   {
+    "title": "Woman finds over a dozen dead baby leopard sharks on La Jolla trail",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAtenNLd0JyQ1ZLWmNybjdkUExYMXE1dmk3R1l5RmhHbS1uTzlrUUZLNEZza1JGd2hpeFNEZDBPY0NCVFMyUVJQZTY5Z1JEZGlXbXVCMnRDMkY3VWcwQzI5bm9SWFZQOXI4N1BwNUcwb3lFb0dWU0o4Mjh6QnpwRnc?oc=5",
+    "source": "SFGATE",
+    "date": "2026-03-27T07:00:00+00:00"
+   },
+   {
+    "title": "Large sewage spill causes water-contact closure of Ocean Beach's Dog Beach",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPc3ZkSHFPYmpycTRqazVLY2c0c2FzalJBOXEwQTlENkVCU2E4MG5aek54N1ZSLXlzc241bVR6N214NHB2Z1gxRjZKVG9McHFKVGJMcGV5TVZ5R2pHZzJ1QUJrcnpCQ19vYkkwSlh3N19CX2ctajRqc19aT3AwdTZQSkZ0LWM3OEJDaXU2bmxNV3h0NzNyT19aRGFrcmdRRzF5eUFxWGV30gGuAUFVX3lxTE5DbVFCR3NBc1JuYjRpU2xvemlYeHJOWFlUYnZlUVdEUFBzY1lIVzFjZWFVcU5FVDc3VktXZnd3R1htdkFEdVU0VDlWdGl2bW9saTloVW13VUhDOTRlcnZweE9xWHBNLWxneTI2UlJ5LXdfZWtlZEYyZTh3V2hVaDhseklaU1RnclhSVjRwbV9LbE0weWJIOHdFQVRmX05JMUM5cEJzMlNvUW5mZ0xMQQ?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-03-25T07:00:00+00:00"
+   }
+  ],
+  "tp-today": [
+   {
+    "title": "Phoenix events calendar: Find fun things to do around Valley",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1EdjVxdXMtaUtwLTZhSG1kdWZDbC0yaUlpU2hvN2pUVjVZNHNxZnAwR3FaaGJHRjRQU0lZMy04NWlBTjEySS1IZEZ0UEkxMjl3Qlh0bkN5MTVZYzJGQ3hsREJXYTFvMVFkdmhuNjBWSmI?oc=5",
+    "source": "KTAR News 92.3 FM",
+    "date": "2026-10-09T13:31:00+00:00"
+   },
+   {
+    "title": "15 Oktoberfest events to raise a stein around Phoenix this fall",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOTGIzYy11YmVJUWZzRHI1VF82UEY0YUtRb1hnSWtIWVh1MnotdHNqMjc5c2pjV1lyLTRqS3NhTWVULTVnNGIxczk1SmVUYXViT3FIWUl4UHhWdTNMTFdOTHR3N2VaR2ZualNFMTloWWZRZUxxZTlGb043NWNxa2ZDNmpIUTNSaTdvNTI3LTRfLUhMU2lqLU55SU05VWY5bkRxNGlaUHl3WE1IUQ?oc=5",
+    "source": "Phoenix New Times",
+    "date": "2026-10-01T07:00:00+00:00"
+   },
+   {
+    "title": "Tempe parks unveil renovated playgrounds blending community, art and accessibility",
+    "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOU2RmM0xZWFBlWExrLXd3SnRyNHhRRU9LN2l1VU5sZXhENHYxaEppRkxzTkhiMWFIZjJ6TFk1b180QXBPOVhzVDZ2cTlfNUt0cnAyeVhkRE9VY0xrRXRRN2tWRUNaTzYyRlJvUExrYWdmVC1aUWtyVTQ4MU9nTWQ1bFVyQXNPWDFIOFA0S25HMXhuYVlZV2tCREtTc1BlVVB0ZmZhNFBTSkNHbm1kd2dGRUFuZnhxaG1taEVFYVAtWjI0RlU1c0tMT2F6VFRhdHZEUVFjUg?oc=5",
+    "source": "ABC15 Arizona",
+    "date": "2026-09-22T07:00:00+00:00"
+   },
+   {
+    "title": "TEMPE",
+    "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE85X1lPeEVzMmVBRXF4aFdZWkx3SFJVUloxZmlCMkNJWmNwNmktQ1ZRMVVGWW85bWE4eFNCSzFKb3BQLWRfR2M0bFVR?oc=5",
+    "source": "Street League Skateboarding",
+    "date": "2026-08-29T07:00:00+00:00"
+   },
+   {
+    "title": "Mullett Arena gears up for Street League Skateboarding’s Tempe Takeover event",
+    "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNTmUwT3RvbFhsZmZjVmIzTlVUWW9XbV9zMFlqdFAyU0pfQXAyVU9YWEJxMnJWVTZNcU4xU0hZUGlZY3FqTkc1N0JrY0FoZExRNThYVlhVck43R2VLRVBMNlJGQ1c1a2pucE02N0Q2MDQ2Q3ZRSUxVVFc4eGZNQU1icF8tZTZHZ1JHNkE?oc=5",
+    "source": "Yahoo Sports",
+    "date": "2026-07-13T07:00:00+00:00"
+   },
+   {
+    "title": "Celebrate America’s 250th at Fourth of July events across Phoenix area",
+    "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSFBuQ01LMmRVM3FPNDRNSEtSNjVrSEoyeUF6OHR6a193Q1ZjSk91dkh6NzhUVS1XQnJCYmlwWG9XdVhUdmFZZGZPSTU3SG9jaG1ScGlsMHR2eGZ6SEhaaUl5S1lvMi1mdEZLVE9nVG1RUGdLdjNtNkJpSXhwb3BOY05JejVaeG10a01ubXFOVncyczhQNkZPVjIyV0N1SnVLM1E?oc=5",
+    "source": "AZ Family",
+    "date": "2026-07-01T07:00:00+00:00"
+   },
+   {
+    "title": "Innings Festivals traffic in Tempe: What to know",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9iM1FzMU9xdGMwVk5mSXNGN04wX3YzYVMxUWdNNEFfdlBWNDJ3QjIxUVBvMlU5SEtUaHJxWndTV0hyUFowbUttSkg2TFdvNUVSMFotOTBiSVVJSmdJbVpMaGdmY1NWVXpmSENMaTYzUlc?oc=5",
+    "source": "KTAR News 92.3 FM",
+    "date": "2026-02-20T08:00:00+00:00"
+   },
+   {
+    "title": "Tempe road closures loom as officials detail preparation process and strategies",
+    "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQU05IVDFCNnlHN3BOZjVGSHpoTXdwZWt3MFpMeWpLdUhaa3VYM1lRQjJZWWZ0QXNYNWdhY0hLMzVkeW1GZXFPU3c4SHdTVFhRdlh1SVBicGJfNTlfNXg2QkFJN2ZSSEh2QS02SzhuMUxQcVQxZlFkc3ZJN2xWQ3prVWpR?oc=5",
+    "source": "The State Press",
+    "date": "2026-01-14T08:00:00+00:00"
+   }
+  ],
+  "tp-week": [
+   {
+    "title": "Free things to do in Phoenix this weekend",
+    "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOLUJrdmdqcV93SlFJU2NScUNDZDlCekZxQUEydnhYWnVLZU5xcVhNUW8tMlFTQW4zZHE1WG1JSG52d1F1eDl5NzVyYVpUakJGclh2NU9IZC1XeW4yQkpXeFRTZTR5aWJMSW5kelFTblVKeTF1YlR5LTRXQmR2OUFkYXBwRndvd0VXUnRj?oc=5",
+    "source": "Phoenix New Times",
+    "date": "2026-10-09T18:46:37+00:00"
+   },
+   {
+    "title": "Where to keep the party going all Pride weekend long",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQT1VaUEpSQnhNcE02ZnRMUU1NaXdkS2lzcFd6MU11Q3IzU1VNQWh0UUpSWGh1OHA4ZDVCdUJyTXVwQTVITEt4LTZRQ001YzM5dkRON2ljcUVRZkFsdW5paDgzMkRKNDRJTVl3dzZURmU2SjJqak81WThpbjNrcGdBM2V6MGcxMFBsZ0p3WG1mek5mRkNrRGVkWkFrcXpmSVJQSDR0QVVZZ3d0Y09ZRDBJdThfRzJCV2JwdVE?oc=5",
+    "source": "Phoenix New Times",
+    "date": "2026-10-09T16:54:04+00:00"
+   },
+   {
+    "title": "Phoenix events calendar: Find fun things to do around Valley",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1EdjVxdXMtaUtwLTZhSG1kdWZDbC0yaUlpU2hvN2pUVjVZNHNxZnAwR3FaaGJHRjRQU0lZMy04NWlBTjEySS1IZEZ0UEkxMjl3Qlh0bkN5MTVZYzJGQ3hsREJXYTFvMVFkdmhuNjBWSmI?oc=5",
+    "source": "KTAR News 92.3 FM",
+    "date": "2026-10-09T13:31:00+00:00"
+   },
+   {
+    "title": "Which fan events are heading to Phoenix’s 2027 NBA All-Star Weekend?",
+    "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQTFVrYkNoZG1Bd1gtbTE2dHQtWUtaVjZMdm9BVDVTbVp3czVGTk1rRkIzeFhwSjdlRVVXVGJRclczUlZhVVg2N2Q2VWt0U2ZoenNqdm80ZEFsRkVUdVVRSFM1MmVoS2RINjM3cGFhQnlPR3h5S3E4N3duZ05hS2JMaUNVQmdUajA?oc=5",
+    "source": "Yahoo Sports",
+    "date": "2026-10-08T20:45:32+00:00"
+   },
+   {
+    "title": "2027 NBA All-Star Weekend fan event tickets officially on sale",
+    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNT3RJVGh5eDZhOTlYSy1MTmhIc0Y1VnIxU2NBV3M3bUduX3gycEtqZlJmWkVjaTI1QTRSa0pMdjQ4QmNrSE1VT3Bqei10c3h1MDhxbHNRcmV1NTJBX19icGVic0d2T1JibDFkUWdNbVYxYUdDZ1BwZWhIaEpoQ1JURQ?oc=5",
+    "source": "Burn City Sports",
+    "date": "2026-10-08T20:32:40+00:00"
+   },
+   {
+    "title": "Full guide to 2027 NBA All-Star weekend fan activities, events in Phoenix",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNOGpkVW1SMUlXNjB6WXVJV2t4Qm5oaXVxWGJHa1Nhakt2b1I3TnZrX1hOQlFHcFY3dnhUemwzcDUzMXAxZXRFc013bmdFam5Ec004Ym5CcElCVm5fTFd6cWhKSjNmUkE2c3EzdmNLclF0RmV4Y1JtaTh6N0Ffa2RKaG9Ga3NxQnhaeWpoUWZDdllkbGJPVUJhUUk2cTlZUTUxT0ctWGNR0gG6AUFVX3lxTFA3WlEtc1JKdVJjMVJzNFpJeVFfYTA2aFF3M3pZNkNuWXVIalRVczhJZi1LWVd6aDcxTEY3WmY5Z0lUZ3ZKd2ZWVmVYYi1mNHZ0WnlSUXlSbF9EUjZ1djRhYTZZUlFhaTZHMkpZRWplY1Y5UTQtc0lyYkItM1RrdEZDVXlIblp0V2dyRXdiM2Rnd2NUSHBTcHotVC1vZDRqajY2UHBWdUJ0OTRra3UyeUxSNk5Xc0VXZ00zZw?oc=5",
+    "source": "AZ Family",
+    "date": "2026-10-08T16:50:00+00:00"
+   },
+   {
+    "title": "22 fun Arizona events to check out this weekend (Oct. 9-11)",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9nY3BzMkplcnZ2Q0pEY1FGblVZOEhlY01QaEY4OXNaUWdaMzVkTmVaanh0YUNyWW5hSzYwWW0wLTcwOHhVWWRLaE9lb0F2NHAyV2NMZnRtY1RfV2ozcUJXa1JyOFV1X0FCYkFBdVNSZy13VWZOWUFHV3BFc3hwbmc?oc=5",
+    "source": "Copper Courier",
+    "date": "2026-10-07T18:58:39+00:00"
+   },
+   {
+    "title": "27 of the best metro Phoenix events to attend this October",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBJTzBIU3Vla0NpcHpnWVl6WVZPWFhzWllBRFZFakZBX3BFeDVDNFhMT21oT2d3T1VSMWZMOVNzLTdrUHYtSW10bWp0b1pwclJrTFJNTFpNeEVFdjJvTzdLaXY4VXhxLWpyX2VfRmUwT0EzSFE2eEQwX0xBM0NIMUU?oc=5",
+    "source": "Fresno Bee",
+    "date": "2026-10-01T17:13:06+00:00"
+   }
+  ],
+  "tp-mtb": [
+   {
+    "title": "Firefighters Called to Tackle Fire at Atherton Bikes Headquarters",
+    "link": "https://www.pinkbike.com/news/firefighters-called-to-tackle-fire-at-atherton-bikes-headquarters.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Photo Epic: 2026 Red Bull Rampage Men's Finals",
+    "link": "https://www.pinkbike.com/news/photo-epic-2026-red-bull-rampage-mens-finals.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Natasha Bradley Shares Injury Update After Canyon Gap Crash at Red Bull Rampage",
+    "link": "https://www.pinkbike.com/news/natasha-bradley-shares-injury-update-after-canyon-gap-crash-at-red-bull-rampage.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Video: 2026 Red Bull Rampage Men's Highlights",
+    "link": "https://www.pinkbike.com/news/video-2026-red-bull-rampage-mens-highlights.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Video: 10 Top Scoring Runs from Red Bull Rampage 2026",
+    "link": "https://www.pinkbike.com/news/video-10-top-scoring-runs-from-red-bull-rampage-2026.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Results: Red Bull Rampage 2026 Men's Finals Canceled Due to Adverse Weather Conditions",
+    "link": "https://www.pinkbike.com/news/results-red-bull-rampage-2026-mens-finals.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-10T07:00:00+00:00"
+   },
+   {
+    "title": "Pinkbike Poll: Who are the Unofficial Red Bull Rampage Pinkbike's Choice Winners?",
+    "link": "https://www.pinkbike.com/news/pinkbike-poll-who-are-the-unofficial-red-bull-rampage-pinkbikes-choice-winners3.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-10T07:00:00+00:00"
+   },
+   {
+    "title": "Replay: Men's Finals at Red Bull Rampage 2026",
+    "link": "https://www.pinkbike.com/news/replay-mens-finals-at-red-bull-rampage-2026.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-10T07:00:00+00:00"
+   },
+   {
+    "title": "Highline Trail Overnighter, Arizona",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9CTU9CTzZqNHJ6eFpmbDlWLVdzTmlkQkZiNkg3VjFVbVJWNW1ncjVXeWpnM09kemNQa1Q0NXgtdDR6UWpXMWREYVFDQjlXRmFGVFVUckdHTnZYS0FUMENQNnE2c2J6enRwaHc?oc=5",
+    "source": "BIKEPACKING.com",
+    "date": "2026-07-21T13:11:36+00:00"
+   },
+   {
+    "title": "Woman hospitalized after crashing bike on Phoenix trail",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE4wVEp6TVVrLXoyMDB6UFA1aE1ib1BXaXRsZ1ZVTExjRGt4MzhaZTVTQ3VjTmNHdWl0T2pqTllpTlJjT1NCRTNKdkJsWmRjXzlLbV94RzMyYWRiaHQxbVhvSmlycmg?oc=5",
+    "source": "KTAR News 92.3 FM",
+    "date": "2026-05-30T07:00:00+00:00"
+   },
+   {
+    "title": "Outside Phoenix Is Arizona's Scenic Park With Mountain Views, Camping, And Trails",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOTzlTbWREOWZHbWY3clE3Nm9raXVlb3gwVTlmbHIyNXNRWXBWU3hreHVuWWZJUnBvZDlWRjZaX0NWVExOR040a3dnZnRsU0dtR2J6Wi0wUm5EbUxtZ2NyQ2dKTFYwV25ueHZRcjRyT0hVaUM4ZDFGTXE5UjJGT0JNbm9EbXNKcU43TFh1Mkh6d05JakpPSU5Ic1hTOGxkUWlpVVpER19GLXlSbmdDQml3Rmttam5lZWFrdGc?oc=5",
+    "source": "https://www.islands.com/",
+    "date": "2026-05-10T07:00:00+00:00"
+   },
+   {
+    "title": "A Lifetime of Singletrack Overlooked No Longer | Desert Rising",
+    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE40U1V6R2NWXzZ3QW5aQmtsLTUyZ0Jkc2dWam5SMy1kTnFrOHltMldpNHFaUUVUOXNpNnJEOXNsYmdPWmtKWTlBaEVnSWxNQWN5ZERBUA?oc=5",
+    "source": "Freehub Magazine",
+    "date": "2026-03-03T17:35:26+00:00"
+   },
+   {
+    "title": "The Verde Valley Circle Trail will be a 180-mile bikepacking loop in Arizona",
+    "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNVlRiLXZqLTlWNUFidUtsSkl6RjlQM3RUUUdiNDZqUDJYNkxBNmFERkpuRzF5cEhmZThDbGxuX3I2REkyNnJXdjZaZlAzdEY1VXA0cFlsRmt0c1pFeU04RnBmZlJod1liUUttS1JvcUNnaS1FYUZmOE9CblBvbld4ckdjbVEtVFZOMDJUNVpaWmk0X19FOVMtdF96cTRpOTBoNlBTSkxSeDA2X3FVbm9sOUpGSnJOR2lN?oc=5",
+    "source": "Singletracks Mountain Bike News",
+    "date": "2026-02-23T08:00:00+00:00"
+   },
+   {
+    "title": "Explore Arizona’s public lands on BLM-managed trails, OHV areas and more",
+    "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOa05rdXlKdGN2TnJZSnJFTHEzSGVZM3BxVGRZeHFEUGNTM1dZY2RVUU1ZVzUzNVJ3MkpTcU1VS0NNdnVKU3ZaeEd3VnhhVGppblVXOHFkc1ZtU240eHdBTkN2dHI1YnV2Y2swbzNkZWZtQjVDZlNHdFBtQi1saVFqZlhR?oc=5",
+    "source": "Bureau of Land Management (.gov)",
+    "date": "2026-02-12T08:00:00+00:00"
+   },
+   {
+    "title": "The 5 Best Winter Riding Destinations in the U.S.",
+    "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPaUNNb3lJemtFNmNndWdBckhnY29tblU1eFlKYmFNSVFlWXBqdmFUNXlMbjFlbXEyZS1tc2p1cWxNN3d4Q1oyQzNWcUVnbVN6NWYzcExpS0ZsYlpQc0FIY3NnbHEyTTdaLUprV05wdUlXNzNrTzdLX3BZRVc2VDVxYUdxdEhNam1vVWc?oc=5",
+    "source": "Bike Magazine",
+    "date": "2025-11-07T08:00:00+00:00"
+   },
+   {
+    "title": "GREAT WINTER MOUNTAIN BIKING DESTINATIONS",
+    "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBpWjZ5ak5JWDdMNzE0VUFvUVJiYUphZjlFbHNYTkdLYjR4Y05oZC05enZWaDNDOWdpbzFUQmVEbXdGS2w5RnRkUzFjcFlXQzBGaDRDMHhLQkQ4TkhGYzQxd3pNdS03eU01cTU4czRmUVdwQlJJT21mZ21pUlBtQQ?oc=5",
+    "source": "Mountain Bike Action",
+    "date": "2024-12-23T08:00:00+00:00"
+   }
+  ],
+  "tp-hike": [
+   {
+    "title": "Cherokee Nation donates $180,00 to TOTA, honors Poteete at Trail of Tears Conference",
+    "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNZVQycXc4UWJ5SGhic0Q3Qzh5NFVhRzBpLXRzRER4UVNtS2toMVBPNlNsMVhmTEloOTBPdzBaa09jRmtKMjhpX3JQcnhPNTJlMG44VnNyblVlVjBhLXI3S1FMdklOLVI2RDhnWnI1dzJQUGRuNzlwYkpDc3EwcE9aMVl6QXdoSjJXVGJRdU5Ud0VRNTE4R2xaQW00UU9QVnJWdG1neFZ1cHdzN3hhbXNlQno5aC1TeFdOelM3emNSbTAtT3l4VG1uWE1xc0JTMDJwVXN1T2dSREZFNWFtSTcwQ1hEeE0taXV6aWN5YUtzTnN3QlZiVExNZVljQmg4Zw?oc=5",
+    "source": "cherokeephoenix.org",
+    "date": "2026-10-10T15:30:00+00:00"
+   },
+   {
+    "title": "Killer of Phoenix hiker, who told police she was ‘what I would want to look like,’ pleads guilty",
+    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNQ3NUOFNFWHg0ZkdjOXZGWkNaeTJXcVVGbEFXUjlFUjdTemx1VDVHWkF0RFFWc3ltT3hmLURrSnlWckhwOFkxVElsSlE3UHNiQng0bXhqNm1pdTNNNWFrMlRkZXg0MUxJYzFzT3VJQTNLdzRxa0JoS2tyVFBSVGlIemRMUUJodU8taU16c2o3UUh2WVdNUWladzFwbkNXNzMtdG5DUElwdUVPNV9DSGMwc1oyUQ?oc=5",
+    "source": "Washington Times",
+    "date": "2026-10-07T16:58:17+00:00"
+   },
+   {
+    "title": "Guilty Plea Entered in 2023 Stabbing Murder of Arizona Hiker",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNcjVkWDZPc0w4N1pOLXE2SWhCX255b0d5TGRuTVZJdF9DMlE4eFJMWEF5ejhHc05TdFBQVERndlFfcnpONmFCUmFsX0ZZX1dLQUY4OGJiMlQ4N3BleHA1MGJJYmo5bWFRa1I0Z0NOTDM5eGIwN2JlWlFXQ2N4WkEtNGdILTYtZDY5NFA4aHBZR1dnVmI0R2RtWVFtRWhBVVliY3VSVUdn?oc=5",
+    "source": "ActionHub",
+    "date": "2026-10-07T13:22:29+00:00"
+   },
+   {
+    "title": "Man pleads guilty to 2023 killing of Lauren Heike on Phoenix hiking trail",
+    "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQeDJVYXoxczFDcHR0X09mWmpPYTZ2Qzgwem9ZOVZYQllPTHJRVnNfaWx5UDd4c3BPM0VXS3hUUm1KLURja1JPN0oyb1ZabFItclJfZ0YwRUk5WGxUTHpNaFJvRjVFRXhBUE1MMUVGTkhkVnZwZFI2R3QxY1JtZ2J0MWJVQS03c3VzMXJPcHdvaEhyemRzOXfSAZsBQVVfeXFMTVFrUTd2aFAxaGc3MkZ6S1hNejM2WUVMMlR6VkhvblY0d3VMSF9HQnQ2RGJyT24xUFBtOG1oR3Q4cGZkeUxTWFc0TTFRSk1MelFZOE1qVm9xSDNoSnBISDZ3QlhlbHFVQnl1dWVxUGpRMFFlWTZ0R0xlM2FSeEMyVktVdmtEaERoNW4yRjFiRWtGR002WTFiY0hQaXc?oc=5",
+    "source": "Fox News",
+    "date": "2026-10-07T03:15:26+00:00"
+   },
+   {
+    "title": "Trans killer blames transition for stabbing hiker 15 times on trail: Victim was ‘what I want to look like’",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNTU56VFEyZmhtUFY3a3JldS12aEtHSWFRYjB5THdDaHVURTFmTnBLV3A0b0d2Z3N3VjF2NWVLQzhzN0xIQ0hfWVE0eVItX2M5T2kxMV9tVmxySmVMX0ZmSF9sMmREd1RSM3N6bjUwdUNlRnJzaHJGZ1Y0WlpraF9veUpDcE1ZRUU4R2hlVjhpU3JralZMV1F1LWtpZkRkcHh0SzVVRzN1STNrQQ?oc=5",
+    "source": "New York Post",
+    "date": "2026-10-06T12:01:00+00:00"
+   },
+   {
+    "title": "Stranded on a Phoenix Trail? Help May Arrive by Bike",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPU2REM1lGRDY1dFlKZTJqUi1hT0xLaG1pc1ozU1ZLaE50S2s0R09FVUlQR1FzdUl5ckNCVllwS2xSLWJyN3RtRFlYcld6cmh5d0kwQTZwaGpPcHdpX08ta3d0VXJpck0zTGRvcmc3Skt2MEZnRmlYSFpuOE84amRmUl9aaEdrVG1xN3VtQzhnQzM?oc=5",
+    "source": "Signals AZ",
+    "date": "2026-10-06T04:29:59+00:00"
+   },
+   {
+    "title": "Man accused of murdering Lauren Heike on Phoenix hiking trail changes plea",
+    "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPUHBPYWdqbEV5OVNfd2trNlNJbHV4RzlJNjZ6VHJUSDNiMUdLcFJraTJ5UDQxUDhPQUh6Wjg3M1VwOGdWU3dVSEdMNFh0a0JLUmFCeFBXX2ZEdHhBdUp4TGJ0S2dxWEVlTkVvQXBWMHp6TUl3Z2QwNHpncklCVXJLUU42eDBlek5JUF8tdmdlOU1KVDlUSGltdHJ5WDB0bjZUVGhXV1EzbFI?oc=5",
+    "source": "AZ Family",
+    "date": "2026-10-02T07:00:00+00:00"
+   },
+   {
+    "title": "Zion Teasley pleads guilty to 2023 murder of Lauren Heike on Phoenix trail",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPZWVXR1hvS19RUFlqVVZPek5aWnRLZW1PSFQzcGo5VF9VYUhSRnNmMXJmbFRxX0JibzBpZ08zSlc5Nkd4bkVhcUNLMjRJVWFQVFNHZjMyc1lNRzV0VVRab3JYSUtZXy1CeUJZQS1sZUl5dUpuLWJybUtXa2VsRkxEV24wOEc0VVV4ZzBPQzdPS0JsdnhyZlNuckVoMGVSLWtH?oc=5",
+    "source": "FOX 10 Phoenix",
+    "date": "2026-10-02T07:00:00+00:00"
+   }
+  ],
+  "tp-beer": [
+   {
+    "title": "Bone Appétit: Best Dog-Friendly Restaurants and Bars Around Phoenix",
+    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1ocDZqUndmMXZNblpSXzBCTkIzQWhHNXJZLTdHVEdLNVRVRFZzTjFjS3UxZjlFeDlrQ1JaVUY2Zi0zOFlBby13ekZ0ZHVhX3JrOHdhb0tlTHZGRFd1Y0pSeUpfOXVycXlOWlJlUEY2QWhFVkxQX1NYWm53?oc=5",
+    "source": "DiningOut",
+    "date": "2026-10-02T21:00:00+00:00"
+   },
+   {
+    "title": "15 Oktoberfest events to raise a stein around Phoenix this fall",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOTGIzYy11YmVJUWZzRHI1VF82UEY0YUtRb1hnSWtIWVh1MnotdHNqMjc5c2pjV1lyLTRqS3NhTWVULTVnNGIxczk1SmVUYXViT3FIWUl4UHhWdTNMTFdOTHR3N2VaR2ZualNFMTloWWZRZUxxZTlGb043NWNxa2ZDNmpIUTNSaTdvNTI3LTRfLUhMU2lqLU55SU05VWY5bkRxNGlaUHl3WE1IUQ?oc=5",
+    "source": "Phoenix New Times",
+    "date": "2026-10-01T07:00:00+00:00"
+   },
+   {
+    "title": "Wren House wins Brewery of the Year at the 2026 Arizona Craft Beer Awards",
+    "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQbEhyRDBJTS1id01fR2dQby16bXhPazJGdWRDbVVMRGFCQUNLZGJhZ3hLZmtaWHhGU01Hby0za1FkVVBZTVBKLV92b055VmRXV0llWXZTM2FUc21tczRnMjNNZHlKMGxmaF9HVVlVSTR1TzhVZUExMXN1QllmbFZSMUxnamVpN0k4UGVoZzcyZjdGOHNIOHl5MTR5QTVubXBaZm41NFo5OHJCVl9hQzlzUU9B?oc=5",
+    "source": "phoenixmag.com",
+    "date": "2026-09-30T02:40:20+00:00"
+   },
+   {
+    "title": "Bone Haus Brewery | Made in Arizona",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5QMU4tdFFPRHhwWHJWZmRfb3dvY29hazdYM3E4N2Nmd0tHckh0OVpnclZ2SWdYZ0d1VklON0NGeENTaUoyUlhYYkhnRkluTlZiNlp6STM0U3QtaUV3bUdxSC1RaEFBQdIBa0FVX3lxTE5sdVNGdEt3M2FvVmdsUlNoZW9OMUJHS3VQMEE3NEVpTnczUUZDSXpJUlVweUJFWkFmejZjZ1lRODJRdGs0TDhOeGh5NzlaMS1mT2ZzdlNoQUgwUkhqVmVSdmVubG9LVTRJSi04?oc=5",
+    "source": "FOX 10 Phoenix",
+    "date": "2026-09-23T07:00:00+00:00"
+   },
+   {
+    "title": "Brewery exec finds global success before taking helm of Arizona beverage giant",
+    "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPNkd5TGFjaFdkQmFKQ2pocVlyT21kM09VeVlnWjMtR1lWZHNhZi1HdGJTY2xPeGQzZnRieEdqakJCRnRtbDJJVGNTVHlzZjRjVFlheUI3a1ZEc3hBLWlZbWVqZmFVbmxXNEdGWldIWnJURW1NX1NlNThWNTRBLTN6QTdEc2F5ZFZWWF90R3ZQVHBxWTg?oc=5",
+    "source": "The Business Journals",
+    "date": "2026-09-22T07:00:00+00:00"
+   },
+   {
+    "title": "State 48 Brewery spots in Glendale, Phoenix close doors",
+    "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOaWdIREZyZG5QQUNCUk5fWGgzdC13d3JXSkhjWWoyWHB6UDlIZnJzd0FOY0tfTFNIRkpGcVdHRVdtamxyeE9nMlk4eVdaVGRhWnY0ZlZuMmREaXQzMmZvR0FFS1oyV3pOcG1MRTl3bkY4SmFnTTFZcUxJME5MelMxS21yZkdfOTdrMVJwc19hazUtQjJPcWo4VVUxdEVsSU90X3AxQW9ZT2lfVWM1VUhiSW9tYThnM2RU?oc=5",
+    "source": "Your Valley",
+    "date": "2026-07-30T07:00:00+00:00"
+   },
+   {
+    "title": "Phoenix area brewery offering ‘dogs eat free’ deal during happy hour",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOOU1mQUdSQWh6M3hpNllBS09WN0xvaVFkRFZKdDQxdUlycWVXa01EeFZ1QktlcUlyQ3FyRVo0ZTFsNGgtZVI5OGNJQzI5S0x6REJhNUtnUDU3VTZ3Q05PcS00ZkVsS1lzbnhoWFd3czZob1ZyTkVLYTNweWp4c09keUJka21SU0NLbUpubW5BSVdNb0tXVUpVLVBtMXdnSlY4OXNrX19B0gG6AUFVX3lxTE5URGMtd2F2WW5hR3VNcTdSNTd3c2tMdHA3LUt1UjQtZTZqM2VNbmc5bVhMakxQTlhWbkxoWTh5Z0xpY0tlaFIyRUlyaU5XTVNCTTF5UnY1NzlEa0NWTV9TT2tocEVZdTNpT3kzRXdYNXhRNGJiYWNnX29mS3BrV09wRTVBRkN5QVZOdmRFZmdla0Jhb2lsTGNEVU5FZVAyMllXQnY5Vk81SmZvT3ZQa21uZkZLQm1HOVl0Zw?oc=5",
+    "source": "AZ Family",
+    "date": "2026-07-21T07:00:00+00:00"
+   },
+   {
+    "title": "Tempe brewery's summer water drive, homeless outreach team open doors to real change",
+    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPR1VQYzRjUXMyRjZEY3REOWNBaGlmSHY0eFUtejhZV3pPUFNiLUl0aXdQNjBEY0Voek40eDYzZV9Xb1FkZndyU0JwcURSbm50OXJSYVV2U1NJVEFoLWdZT1hMZi0xNWlPOEl6Zk9hWUpGX1pNQXhZamVhUDYxMWZxZ0J3TDhHRl8wTGF4Unlsd2lIeVFDd2dGSGprdVNuUlJFemk2UVBpc3BlVTNsNzZidy1hekFac2lzRVRXalpWOEp6ek9jN1R1dDIzWXlFNjV6cExWVFBB?oc=5",
+    "source": "ABC15 Arizona",
+    "date": "2026-07-09T07:00:00+00:00"
+   }
+  ],
+  "tp-party": [
+   {
+    "title": "Journey drummer rushed to hospital after medical emergency interrupts concert",
+    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQWFB6OElTeU90dFNSTi1zaXdhWmZFZ0ZSbmN2bl81bnIzUzJOQ1VfU3VsUGZaeVFRak1rbUNzajIzM3Z0anl2RjJfVmhYZVMtSW9vSXpGMHk5RjRpRjVUUjhtWHdwejAxX1VjT1AtbTNSSXpGdkVvdG5EOWp2bXlmMDdnSHEyZWxwVXNZZ3JNYmdVM3YzaWhiQ05IUGxWOUNpUmRaN2xNRzJOZGw5?oc=5",
+    "source": "FOX 10 Phoenix",
+    "date": "2026-10-11T01:55:50+00:00"
+   },
+   {
+    "title": "Isaiah Falls tickets on sale in Phoenix",
+    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQazRPbmhIbGlyTTYzU0pwUDI0MTdBRWtMVHk1TjlwLUFRclZHOE92ZVZZVDBtTHFZaXgyRmxEbENhZjRBOG9VRkhWdHZFZ1M5NE1kbW0yX3FONUh0REtpZVNzTTdlRE5MWTZsQ25FR2s5elBsWjduZHhEeUtPbmMxNQ?oc=5",
+    "source": "TicketNews",
+    "date": "2026-10-10T20:33:24+00:00"
+   },
+   {
+    "title": "Billy Ray Cyrus will perform pre-race concert at Phoenix Raceway",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPY0FDTnNMMnhmU3M0MEMzalF6Vm5KeHVMZkxfVEVwbE1VWGY1RGZ1RWZMMXJ2X3p5WHFDLUZ3QTJ0M3hqNGlSM0RjRjNsZGlVM1VwNnNybjM5S3BaRlpFY29BNUtSUDNMdEljcEk3NC10R05GcFctUWMtcXY1aFdZMXA1RGpDTF9QTkw0VXItRXhGNDdqaDhSQk50NHROaGM?oc=5",
+    "source": "AZ Big Media",
+    "date": "2026-10-10T07:55:09+00:00"
+   },
+   {
+    "title": "Several Usher, Chris Brown concert dates abruptly removed from tour schedule",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQSHhENXg0OURMbUtJRGcxOV9qNlctUHd2VmIxeGVIelJaVGh1S2JMc1V1ZXV0ZC1nTHhJT3B3dG9iRlFFWF8wM0JHNnVjeEVWYUV0TkZqR1dCYnB1c2toaEptN09fYk85YUFvX0ZYQmI2Y2FNMmhVUmc4SmJ4dlp3a1VJbmp2SGMzdVotZkQ2M2tOZGZXWGlzdXo2UVAzdzMyQnJwWnlR0gG6AUFVX3lxTE53WjgyYjNaNUlkN09BZ3NqUG5udXg5ekhhT2xLa0toa2oxbGlORTI4Z1JZbU1hNmVZX0dwRWRBWjVGN3FzTEczM2EyVHlNM2V0a3RfSXQ3N056TzR6UVRhMlBMUDhaWFY1alRLT1NsbkpZMm5FTERya19KaElCOC1fX054R3o2UzBlM2k4b0hFeWlQdkVUcFdTZ0F6QkxLVUFXb0I0MTduYjVfVGtYT2RZUTdYcGhxbUFCQQ?oc=5",
+    "source": "WAFB",
+    "date": "2026-10-10T00:27:00+00:00"
+   },
+   {
+    "title": "Look at this photograph: Nickelback is rockin’ into Phoenix in 2027",
+    "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPNDM4bmlCM0lscFpMa21PU0N3UDZ0VTg1MmZkLWRGWDRSbEcyR09CZzgxcUJLNjhNNkRVajBRTmpRelAzYS1xWURtcUhEMnFCV19WYnhPaUxkOU00TWN5TFFacGVEb0d4cFk5NWZvR0pGbjlSaElabzRYOS1ObDh1ckE0ZHpOeVZGeVFoZEpxdko2ZmdFN0tMMWtpOFo?oc=5",
+    "source": "AZ Family",
+    "date": "2026-10-09T15:58:00+00:00"
+   },
+   {
+    "title": "Phoenix concerts: Find Valley's biggest 2026-27 shows",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBYQmd2ZUdHNGxlMElXZU5fSkptdkY3YmFYZWZXOHVjbTk4aUc3eHVzaFVUOHZkdGYtRktkeDVyVGJBV2FJcnhKRUQ5NTdxblFuSURkbHhaWmppb19ULTlNbmNBRzJjV2lnejFreVNDQmU?oc=5",
+    "source": "KTAR News 92.3 FM",
+    "date": "2026-10-09T10:30:00+00:00"
+   },
+   {
+    "title": "Concert Chaos",
+    "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0yTVBwNUVwN3RobWRiWmpjZW9BQTRGSUptR1N1T3NBcDBVT09nT2lCVDU2WW9lQjA3dktXZ2ZjZ2pIbkZQZk91bVd6UThQRXVsTjB1SVp2Z25GajNtTTNwc2phZk1Idw?oc=5",
+    "source": "The Swarthmore Phoenix",
+    "date": "2026-10-08T18:31:04+00:00"
+   },
+   {
+    "title": "Hilltop Theatre and Concert Hall opens in West Valley",
+    "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRWpFV1VYZGRaWS1UYzFpUndfby1UNTRXTmNVTy14MVFuc1VPN2lqbF9oYnhadDZzVkJwM3NWOHFmcjBTd2Z0VFF3bEU2MEFqckM2SHdLWFljQkhObVJSQ2JmWXlwaFBEVjBMTTRxeFM1UXJWVXNNNVc0RjdHSDJFcEZBNGJGOHR5SXAzbm1UZXJoMkw2blJXZlJsUTUyLVdEMjZOUnhId1d2a0h6VU94Mw?oc=5",
+    "source": "yourvalley.net",
+    "date": "2026-10-07T01:06:00+00:00"
+   }
+  ],
+  "tp-fun": [
+   {
+    "title": "Phoenix events calendar: Find fun things to do around Valley",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1EdjVxdXMtaUtwLTZhSG1kdWZDbC0yaUlpU2hvN2pUVjVZNHNxZnAwR3FaaGJHRjRQU0lZMy04NWlBTjEySS1IZEZ0UEkxMjl3Qlh0bkN5MTVZYzJGQ3hsREJXYTFvMVFkdmhuNjBWSmI?oc=5",
+    "source": "KTAR News 92.3 FM",
+    "date": "2026-10-09T13:31:00+00:00"
+   },
+   {
+    "title": "Pet Adopt-a-Thon",
+    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNVHlUaDJocldOLV9QUTdDdkJQel9ibG5FbGlqU1hCemMtTEZXR29zWC00UGFoSUoyVTAyRFJ0cHp3THFVbEE0dU9TZHNvdzVBQkxxd1V3QmZoQkcxVGVYQ1AxZXgwRkdleU5JWjVYajFiSVN3ODZwdzV3MVg2M0tZOVU5UG1PODRzLWdVTVE4dmpZM3ZvaVI5eWFZRQ?oc=5",
+    "source": "azcentral.com and The Arizona Republic",
+    "date": "2026-10-08T12:24:01+00:00"
+   },
+   {
+    "title": "Things To Do Around the Valley This Week (October 6-11)",
+    "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQNGRMUmJXYnI5aGpmUkl4dkVUeHBvaU4zNWdUeXl1ODcycTRvT0RmY25sSU55NDdpVTRHYVZpelUxeno3ZjlkaVNvOE1CNGpYWVoxOWxqMWd5SlhIb3R3alV6enFrbGJoWnNUV0xJMHBBbjAxelVJeGxSNkhZa0ppZXpVeV9PcXNEYXhlNFprbEhZRHQ2RzBj?oc=5",
+    "source": "phoenixmag.com",
+    "date": "2026-10-07T02:26:48+00:00"
+   },
+   {
+    "title": "Raise a Glass to October Cocktail Specials at Chula Seafood NOW AVAILABLE",
+    "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOdWRtQm5WQmZoSFlVUWxYQktSQ2U5YktTM1Qya0pxTVlFbGVjY0xTTTNDWWVqZ3ZCNlJmTlFiV2plWFBLYmpTRVRiV2JwRmthS3F0bllEem5fVHV6ZzNVVnRGQzg5UHBoaDBYblozWDZyVy1SeWVYOTBWcWZPUVJVYVRJY0Jpa2ljMlczUjA3NmlocUQ5UHdld183LS1xV3pLV3NKaVc2MWxTNWtjUjlYRXBjLVFtUmhVLWpyVDVaaW5kdGZyNnY5T1p0eDBCSkJNbjlpNzdfMS16SFNnYUE0c0phZFJ4Nms?oc=5",
+    "source": "azcentral.com and The Arizona Republic",
+    "date": "2026-10-07T02:10:04+00:00"
+   },
+   {
+    "title": "Royal Bliss in Tempe, AZ",
+    "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPcWpranBUNHZGeFR1cExmRURLQ1RGc011U3ZMZmdoYTNiQ09IaFVoNjlHcW5aZXgwc3RKd2Q1R1FMSTVoZGVtSzRVd0w4ZGpBQnJWZnhTbUJ4Vk0xc0lhcU9FeTJjUFRRWDNmM2FTX1JyOUpfZ3NBTEpzSWxaM24tTFlNVUw4UVNhZ3dEYlhCLWszRFQyWkRfR1hUSVNjUm81TUVEQnZvOFI?oc=5",
+    "source": "azcentral.com and The Arizona Republic",
+    "date": "2026-09-27T17:56:12+00:00"
+   },
+   {
+    "title": "Things To Do Around the Valley This Week (July 13-19)",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQU0Jab2tNSlZWQTlvMHUtY2haWS1ydFNJNjRwODNGMVp6cnZqT2JibUZwZHF0a1hVU29OU3NDLTZqU3p2MTBMaUYzOTF1RWUxQlVFSFNwY0xaS3FLOUxVTzVsWjVpU1pVa1J0Q2pyOVE0ODZTX2NUNnI1a1BWSGN5Sy1DbWg3eTFqZXhaUXZyUUhHOHFw?oc=5",
+    "source": "phoenixmag.com",
+    "date": "2026-07-13T07:00:00+00:00"
+   },
+   {
+    "title": "Things to do: Maricopa Co. Fair, Country Thunder, Bike Week, Panda Fest & more!",
+    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQemN1V1ZzejBfRmJOeTRmWWNrYXpheV9uRWdyWUZIelVIenZuUWFGYmVOelNJcTdhd3oxNElDQ2dOMWJhbTA4RmpMMlhaMnRkTkFKUkE5RHF6NnN1M09mbnJPa1FjNFdpQ2dkd1ZCUUNJdERhRmZ5SGRKOG1zS3JxNzY4c0pyWVlZU19SdDR6SjlEUVhZdXRYWFNnLUVNeWJuWTJVaGdiSmJzd013WEtuQ0VnRXVFMVJybXhnQWhHakxJa092?oc=5",
+    "source": "ABC15 Arizona",
+    "date": "2026-04-09T17:19:26+00:00"
+   },
+   {
+    "title": "Things to do: Barrett-Jackson, Tempe Blooms, Phoenix Food Fest, Scottsdale Book Festival & more!",
+    "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPVkVFclY4YW80N25zcVJDV3FZeGg3QjUzY25TaUZNaUJ2TVFNNVlod2JabUE3cnk4RkZZbUxURlBfa1BtQUM5aXlweHE0aFhXV3ZYS2J1SjJHdkE5SFhub1kyaHhHamdEbkFRZ1FxQ2hNS2ZUNUw1aXBab3BTQ3FaUmJPcmwwa0dfRDJQNnVfU0NDQng4TGhYTWNlZ3JlUDJDSEp3WUhxMklfNS0xa291SlhKWklONXB4MFI2XzlZNDRBdkE5Nm04Mmw5VEw?oc=5",
+    "source": "ABC15 Arizona",
+    "date": "2026-01-22T08:00:00+00:00"
+   }
+  ],
+  "tp-news": [
+   {
+    "title": "Birthday Bash: Freshman Running Back Lifts Sun Devils to Victory against Hawai'i, 30-12",
+    "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQZTJKTEpJVGMxQUNtZml4UGpTemZkRXF6Uko4QnJlZ2Z5cDFKMzBoVGhTWU1MRTNkSWk2U25xR0hVNVI4aUo2eHpWVkkxMThYVWZZb185bC04ejVpYWVJNWJldHJiNmIwVW01VzdyaFF5QmVHeGVOSWRSd2V2N2ZOeXhZc1pMRUV5dHlFUDJRZ2prZFl3X25DVVVCX3JZUlpNcnZJLXhfTFBVNmxMakRsM2E2X2ZHU3FnR19XZFdrNi1NWFV0Njc2Rm9uNmUzdTdjXzdoeVJhaUNDSnhHcjFMeA?oc=5",
+    "source": "Sports Illustrated",
+    "date": "2026-10-11T19:57:39+00:00"
+   },
+   {
+    "title": "Arizona State rolls along as Hawai’i road rally falls short",
+    "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPYXFWQklNeDhIQmdsU3FyazZMbW5BNjFHWUl4QVVWXzVSUDJ3RTI1THU2djVvTU9NZEZ4NFV6UDlfOHhFZ3JqeWJaMW0tZ1JET0FxUl9uNlcwa2NYaTJEUmQyYzFSTnY4LWhWZXZtanMteHhLaDNlNktFd0pSNEszZm1iYVpLcll6cVVzdzNGaHlKOFE5QXlGZ0pFMWlkYUVQYVJua2I4NA?oc=5",
+    "source": "The Sporting Tribune",
+    "date": "2026-10-11T15:56:18+00:00"
+   },
+   {
+    "title": "Josh Sweat Bears Trade: The Risk That Could Make Chicago Hesitate",
+    "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPNUg5eU5UeXhGajBQU0lhV2xhLWtXOHZRMy15QW1VMk1DSXFpWjlTeHRZZDFyQmxuTXhFZUtQTGc3SFJWcjM4RDY5VUN2MVRJRzRXQy0yMEp4dEhmdEprUGEzOXZVYUFmMnQ1dkJKXzdPMjhuRVY2RFhDVVM4UVQ5RDhn?oc=5",
+    "source": "Yahoo Sports",
+    "date": "2026-10-11T13:29:32+00:00"
+   },
+   {
+    "title": "Cardae Mack breakout effort highlights Arizona State's win over Hawaii",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdzNNMnJKX0xCLVhHTHdlQ1pic1FndHM5OHNKWjdWZkJYbEpmV3dIYzRyN2RQS21lOUpBdFhtdVY4Vm9KTFpKQkUwUzBRRGtGS0YwdnhLckpsUjlxakdrQTFacV9WVVdLbU5TWEpNeG8tQ1pORHVOQ1k2YTdtUGRFbTdkUThvM2p1Z3dSSWRrVF91ZnU3QTcxWUV1dEpHa3lMV25QUk5NTmNOUQ?oc=5",
+    "source": "National Football Post",
+    "date": "2026-10-11T07:11:56+00:00"
+   },
+   {
+    "title": "Broken windows, graffiti found at Fisher Industries headquarters in Tempe",
+    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOQ2J0YVdVMkhzMnFKMmdpSFQ3bno2c1QzYW51MHhYU1lKal9STm14WG8zZ1hyMnVzY0Z5WUIwbjV6WVR1RkY0SHBHNWhON1BLZlY1WDc5RTFVN081UndwUUxieTdRbHV4LUctSXpVZXVHUF9pdkZzc0hnUDNpSGUtVmZTa3JZX3BxRF9JRnMwNU55QWFKWXZidXE3N2k4ckZLbVhJdzNkU3VvXzJEeC03R3VoWDJuVldyeFJ5aWM4bjZPU204aTFCZA?oc=5",
+    "source": "ABC15 Arizona",
+    "date": "2026-10-10T00:27:00+00:00"
+   },
+   {
+    "title": "An Arizona County’s “Housing Hub” Is a Dead End for Many Homeless Families",
+    "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOSm0tTUFtM2hfdV9xU3oyUTRyRnZaR01XZE5TNWJ1MDh6dWdjZ0VXZF9nbE05cFAwN1FaMG1hT3RsWTAtd2U4b2pnX093Z2Vfc2ZuT2xnd1BCdzdTU3ViT013UlFRWFNRYmpEYTVwWU5zcUUxb3c4VWw0MUN5LUhrSWc1XzdQc28?oc=5",
+    "source": "ProPublica",
+    "date": "2026-10-09T09:30:00+00:00"
+   },
+   {
+    "title": "PRACTICE PHOTOS: Week 5 vs. Lions",
+    "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBpSER3RG9GSjB4RmZ5cjNIZjZSbzc0aXhRMGRZWGI2WTh3dU5TbzFGR09ESVNHTVY3c094aEk4dFFWZEMzMENyQjJXbTNTSmFCNzR1UWdmNXBaN1NfdGFrbXRPUDFkLTZ6QVhVTTBoV1AwRkV0?oc=5",
+    "source": "Arizona Cardinals",
+    "date": "2026-10-08T01:23:11+00:00"
+   },
+   {
+    "title": "Viral video of Arizona college student slammed to ground by police and punched draws national outcry",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQOHBQV1BhdDhMMnVtNE5SWHlHRGNWd2NESTZwWTBqWGZoU1M3T1lwNkhLaUQ1N3ZZODZBNFU2ZlZmckVjT09zVVNoMnRYMkkwNHBBdWhCejBlMGdTdmFqWmY3M2xxUnJScTE1TkwtZDVnWWUzTzZDZGZxSGFUdDJlUTQ2ekFOOTJIalRHc01VWlBIbWpTc0FQVGZVZ2Q1MUk0QlFpdm45dmZGNWJMRGRQTm4xSDhYU0w1c3c?oc=5",
+    "source": "NBC News",
+    "date": "2026-10-07T22:25:56+00:00"
+   }
+  ],
+  "fly-kmyf": [
+   {
+    "title": "Fear at 3,000 Feet",
+    "link": "https://avweb.com/features/fear-at-3000-feet/",
+    "source": "AVweb",
+    "date": "2026-10-09T19:02:56+00:00"
+   },
+   {
+    "title": "Army Report IDs Failures in DCA Midair Collision",
+    "link": "https://avweb.com/aviation-news/army-report-ids-failures-in-dca-collision/",
+    "source": "AVweb",
+    "date": "2026-10-09T18:00:00+00:00"
+   },
+   {
+    "title": "Poll: Are Fuel Prices Changing How You Fly?",
+    "link": "https://avweb.com/polls-quizzes/poll-are-fuel-prices-change-how-you-fly/",
+    "source": "AVweb",
+    "date": "2026-10-09T17:35:00+00:00"
+   },
+   {
+    "title": "Picture of the Day: Oct. 9, 2026",
+    "link": "https://avweb.com/multimedia/gallery/picture-of-the-day-oct-9-2026/",
+    "source": "AVweb",
+    "date": "2026-10-09T16:26:00+00:00"
+   },
+   {
+    "title": "Centennial Rents Jump 82 Percent, FAA Rejects Complaint",
+    "link": "https://avweb.com/aviation-news/centennial-rents-jump-82-percent-faa-rejects-complaint/",
+    "source": "AVweb",
+    "date": "2026-10-09T16:00:00+00:00"
+   },
+   {
+    "title": "FAA Bans Touch-and-Goes at Centennial Airport",
+    "link": "https://avweb.com/aviation-news/faa-bans-touch-and-goes-centennial-airport/",
+    "source": "AVweb",
+    "date": "2026-10-09T14:03:00+00:00"
+   },
+   {
+    "title": "MOSAIC Snag Prompts Powered Parachute Petition",
+    "link": "https://avweb.com/aviation-news/mosaic-snag-prompts-powered-parachute-petition/",
+    "source": "AVweb",
+    "date": "2026-10-08T19:54:11+00:00"
+   },
+   {
+    "title": "Picture of the Day: Oct. 8, 2026",
+    "link": "https://avweb.com/multimedia/gallery/picture-of-the-day-oct-8-2026/",
+    "source": "AVweb",
+    "date": "2026-10-08T18:45:00+00:00"
+   },
+   {
+    "title": "Small plane flew ‘erratically' prior to crash at Montgomery Field, report says",
+    "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOLXhaX0RXT2VMR1VCekYzNTNmYmpqUmxRTE8yX0VJOUtTZU40Q1VmajBKMGY5WGxqZ3lIMVh4M0Z6TWNJeWYwUnlWLXgxemFkTV9rWWdMUTJrVDk4cUdENjJPQVdjbzlQUDJxTHpXTlBmVUxpNTJYdVZPVVFZamVFdWNheEhCY3YtM2hkZkVxZ1ZxTTJHWlBIQzlqclZ5MUdpai1sZ1NHSDYwSm9fdjloVkxXazU0VFVfTWJKb3B0MjTSAcgBQVVfeXFMUGJGak9Jb19VZ2NfQ19NRUdHWGp4Mlp5dFhQSEtqOGozcVlTeDBHSkNkcjRYMVZabXZhMU1vOFVkaUY4NTBISWo5RnhlcUhZdE01QXozUG9oSVVGdWljWGhxeXVkY3hHVHFUbjNEX3RDV01ReEswVmVXZmEwckhFNVBEeU8tQjVtTXRVblItbWZvaktnVkFLSDhCQXVheUVtVUpyNUJOcHB4dmNscjhvajM3cHBtbnV1ekh3Szh5U2dNTUd1TnFFRmk?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-09-24T07:00:00+00:00"
+   },
+   {
+    "title": "Cessna at Montgomery-Gibbs ‘flying very erratically’ before fiery fatal crash, report says",
+    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxObEJyNUxUN0FQTzhDcE94LXJidnhlb2xQRG0tcjVFbGlCTjRUZ0FrUG1jRF9XZjMxazRnYjdrcmljT3d1c1FwZU9KX21zeWQwTEN1V0FUNW1WajFYUFh3VzJJa0Rwci1XMEFLVWdYTDd1RGdneG5YSVl6bGhIbXZuay1IWmNnZGFyUzJYTkNkNlNZNnBCU2o4T092NGs1U2dINFQtUHRTNzZ1UklVVU5OM2E4RXdZd3UwejFRcGtmc1N1X2loVjNsaXQxX3RNVlR6Smc?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-09-24T07:00:00+00:00"
+   },
+   {
+    "title": "Victim of Fatal Montgomery Field airplane crash identified",
+    "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPRWRFNnA2YXQ4T2RkbVJkV2pxTzRxejduSWI3R3c5VFE2WHpQTi1iN1F1YXN5ZmMxSENYVFVSaFhRZW4wcTZHUTZXdV9UeklGZUliRWdSbExzakFjNHpqTl9tVmNnZFhDMzRFMExrc0pwT3JfdlBYMFdYLVlTcEJXUG9TbkJqd1pFR2k5MV9RM2tpNlFmX3RydVpfd1lMUlhmVDBNbUFZUTdsdVZ1UnNqemlUUHJYNEQ2LUl6bXRhRjcwNURqOGNUZlEyTFViOEEyaEZiTm5R?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-09-21T07:00:00+00:00"
+   },
+   {
+    "title": "Second man identified in deadly plane crash at Montgomery Field",
+    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQcDQ2bEdpOGUzeGhLTTR4bVc4Q2pOc1hUcEVJRlJuT2ZmSzhmTkRMdzVUYjB0SUpQNEk2WThyYTlNcjBGek9TcnNyQnYtTFdWUEdaOFRNVmd3UllNdmpsYVhEMVBWb0ZndEduMDVtOWk3NHBBdUJnN1dBQTdvSC1EaF9PemIwa3BGbXNwbDR5UmU5cmpTSjMxeTRrYXhFR0d6ZDliUUdCMGhtVDQzQ0tyaEhBY9IBuwFBVV95cUxNQ181NkV6SEp4bDRCdVJ3dUtnd3V3TlNyaVhzR0tyME9GNUVYRkRhNE9KUVlKSDVUUkQxc2tpSEFtOWJVZ2lhNzY0RXI4TXBZSEw1R1ZLRjc5RWZvTnRwWFo2dmZiS2dMU0pteVZ3d1Zlbnh2N1c2UUJ5N3RTaElCaWZiOV9xenhSOXJKQmloTzR5d2Y5WnUtbXdlVHdSMlRDR0Y0bmNHaHZnMDJQYkZaMWRJTzhyYTRIaFMw?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-09-21T07:00:00+00:00"
+   },
+   {
+    "title": "Officials identify flight instructor killed in plane crash at Montgomery-Gibbs airport",
+    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPakd3ekNIYlhXckFuX29UWlBBSnpRaUVMSkpFTEZRWnVrWXI3ejFIZDMwd0w3eVZpQUFFc2xmbVBiSFd2dXN4ZlNBek1ETWx5d21kZGcxYUlKZnllTEZZdmlNS1dEa3hER0VNbTFEd1hleGljNFF5eGd1TmVueHdhOEM3c3dWcXVuNGVIOTNCYmxzZ21Sc1ZvU0JCbjhVZkpwa0U4d202NFpPdFV1VVFxRm0zd3RkM083elJraEEzLW1jRzB1dUp3U0NIRQ?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-09-21T07:00:00+00:00"
+   },
+   {
+    "title": "Fatal plane crash at Montgomery-Gibbs Executive Airport",
+    "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPNnhlSGVHSnoyV29wOUx3MUdTdFdqMXVVSW83eGE3T3o5dmpxbjNHd1lENkRkdVVwRjdlX1ZBbHlBMkVjQ3JHTFdRUXc2UUlOWWpTMzJ0WU1yMmxCeHpwekJJN29XcFRBNnRUN2pxOXIzX3JHWWEzekk1bzFrMDR2eFB3X1TSAYoBQVVfeXFMTTVySUpxazhxU3RvaUYxX1ZRTGtrODdVU2xndlFLaUtMLUFVbE1FN2dOcmx5Z1ZNN0hQU2JNWnM4WGFTR3RYNjFQQlc1VVFyaVVuR3NlQUVYLXU1TFVldFBFZlhYZ1A1UE0xZ0VKREZJQmNHd1RVSHotdl9wczRXZ2lGc2p2OW1BT0Vn?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-09-07T07:00:00+00:00"
+   },
+   {
+    "title": "Two killed after Cessna crashes and catches fire at Montgomery-Gibbs Airport",
+    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNMENjZUNhM0hXNkN0SnFWTHdsWkJ6aXJ4THVnbElFVEZnUkNHcklHSVNKeU5KNk9HamFELUdxbE53eEZfRTVXRzhFZ3NPRGJmVE1HMWIzVzlDazJEMUJNdXRiTm1JM0lIM1prLVJROS0yX1JPbGdncVhnRUdITTRteEcyZ3FTRmdCWTkzaVJxR3lBZmhGeGdWWnY0aVdmSTc3UFV3?oc=5",
+    "source": "10News.com",
+    "date": "2026-09-07T07:00:00+00:00"
+   },
+   {
+    "title": "No planes damaged after early-morning fire in hangar at Montgomery-Gibbs airport",
+    "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNSXBZeE5naDVRU3lSaGJoaDVlb01INFU2RFNEaTh4MWRlbzR3TEZFV19zZllsQTROS256WWRzX3p5eDZ1QXRiS2c3UWhnbVFqaXBOTTNya05sRlYyRDZkbWYxdGU5QWY0OU9PeTNldnZ6bXJIM0xlX01fcUt0MVpLRFEtUU5jU3djNkJHNlF2WVhhajczMzUw?oc=5",
+    "source": "Times of San Diego",
+    "date": "2026-06-12T07:00:00+00:00"
+   }
+  ],
+  "fly-wx": [
+   {
+    "title": "Discontinued Tropical Storm Watch for San Diego County",
+    "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQazdISWxFMGZKTmdndXdCX2M0SmtQSE0wbWU4dThZUGgxN0h6cm5NVTRMT3Mxdk5sMWdjSXBWdV93T04xZDZvYnZyZkN5Y05zQnJ0dkRHVEFpdnQzdVhfOXA5ZzlEb3d5bXdLOFUwSWpFU2E5SHlMSTdrZWwyRlExZ0M0TE9nVk9qaUM4b0xGd2RGbjhVd1lVYUJ6dTA3N0JjeE5wd9IBrAFBVV95cUxQaFpOeXoybWtYV2dHQ1NEMDVjUWZ3ZjJ6ZkZzS0pjeWRyb1RaNU1sQVlyYXk3TktBZHZ2SlU3aEprSjRhb1JmeUdfRllQdDFhaG8xWE03Rmx4ZThieGZIQ0NWTnZpc0hrVWdhUkNrM1JwdWlTNlhBSEN6QzlFWGJBVHBkRC0xbGUxUDFzek94RU5EWnVYd18tVzN5a2JfUE1oRFNXOHA3T2lXb0w0?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-10-11T15:02:08+00:00"
+   },
+   {
+    "title": "Max's Forecast: Radar lighting up from storm activity",
+    "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQc1R1SWFPaWZIX0Q1NG5kMUdBSmJpdEdaUFpjWkhWNzcxc1luOGNOWVp5T1FCWm1YOWJXSVF1bDI5VlZOZ0g1dEVNcGVLdzBSaTlxd2JWMllGNlFHWVc3S080ZzhZNlNWNTVnM056LVRLN1RPUV9YMlBpMEVjSFNCdHpuOHZVZ2R0NDRmZ3U1WUZGQUtxMEVKM1YyeWJsbW1nZW5QclZRdzYwU2tVS3ZNam5WYy1TLWR1Q0o2dTB3?oc=5",
+    "source": "10News.com",
+    "date": "2026-10-11T09:00:43+00:00"
+   },
+   {
+    "title": "San Diego Weather: Angelica Campos' evening forecast for October 10, 2026",
+    "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOdWt5cnBKU1pHUTBucDNMUDlsLWJZQmhWczV4OEtJM205TjV4d1l4WUgyZTRvTXZjOVR1Z0psQnd6NlZxSDM3QUExeEluelQxTDFIUnJiSV8wY21CMVRDRklpUFEzZThDOWtKcFZxcU5yV1ZOaXVMbWRuRFd6WjZSOE9HM0Q4QzY5NHBfM3g3YnEyX1hadFhZRHB6TlVwMlJrc0RMZmRoNzgyTElWa2JSSWxSNVJPUm5uZHplSm9R0gHGAUFVX3lxTE5vanF0LXRwVkY0RFNOY1JDQkRCX01rZndlSVpIdFlVZ1RaUlJnTnZkeXVLZk0tV01RWDBQTDZOdXBvbVY3dnN2OHNhY3NGUy13MTgyaG1DRmFkZmFqTzZUcjJIUlpocEdzQmV6S2JEclFwMlRyczJYRUk5UVh0YXhFRkZaa2RiLW1YenhEdEFoaXhIQ0RQM3NlQTY1SGc3QnN1M1pvejN6U2ppQkdIOUxscDV1eTRzVUZILXozcTQ5aFMwdkk3UQ?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-10-11T02:07:57+00:00"
+   },
+   {
+    "title": "Coastal Flood Warning issued as Tropical Storm Rachel nears: See expected landfall",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1abzFNRUNrcmxTUDZCamlMR0hNb2dDT1ptSVpFbnRIY2kyZ0g3QWtMMnIwS3BrbXZLUVBjWnplRGN0UDk3ejBjeVNQREFlRDB4Z2E3UzVIWWFhNzJYVUxISUFiRkt0UjYzelBSbXRZVHF3VGFublHSAXtBVV95cUxNdEhtR2I5UF9UMGhvYXBrdHI5bEY2R1RCVW1OaTRoek5TMWQ1UzBvRjhrNmlxbTF3SGE0UzQtMXI0SUM2endEdWFvVEpfelZLOS1IUWpFUzlteWNBdTFaUHktRWRJUUgzX3B1R0ZZNlduTU1NdVlTc2gwRTg?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-10-11T00:07:41+00:00"
+   },
+   {
+    "title": "Southern California floods as Tropical Storm Rachel approaches",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNLVVWYXZtcTIyTkdfUnZ4ZFBmYlgxVmNIdFRWNGNlcUw5NG9FOUN0NDJRVDFIeTZEdzBXM3dQbkNmRWtFdC1VVENuTkQwcE9tVTZvSXdEOGI2U002REhLRHhkRE0yV0h1M2RmV1IyeHpSWE9zajY0Ti0wYm02UTNZU2swQjJtdEgyWFktYWQ0YTRBcjJFT3FNV2VxVVA2bkU?oc=5",
+    "source": "The Weather Channel",
+    "date": "2026-10-10T16:14:15+00:00"
+   },
+   {
+    "title": "This is when Tropical Storm Rachel will bring rain across San Diego",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOYnZ5NHFuaFVvekFHM1RRTEtiWW1xNXBCUG9PclVneDk1NVoyNkNJU3R1dGJ5bGIxcXdVNTJmb01ZSjVYaU5mT1dOZzdOTWdFY2VWaDdEcUxFdDVmRGFQVjVLNHFzcXRNM0FzdnFDQ21sOV9LM01hX2EtSUY4VmVMTXc0X08ycVlxb0t3dEVXbmVJRk53Y3BuRnNOVGZ0VzQ?oc=5",
+    "source": "10News.com",
+    "date": "2026-10-10T16:06:41+00:00"
+   },
+   {
+    "title": "Extreme heat transitions to tropical storm watch through the weekend in San Diego",
+    "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxPanNzX2lmMFhWUTJJQ1V4S2gydGQ1N3JJWFJiOE5uWDJZZERoNFBZWVpxZEIzZ2VNRHRtMlNOaE5xRF9HZDlOQ2tiSmtialdiSG9DcXFLQXVRYTZSVm85LVJvT2Y0Vm5DUUZkN1VNWFktc0Nnb3I5V0xxU0hSVmQxVjBSOGUwaldjM3lmT2NhZ2hxcXBMN2RDSnQxZ2YzX2RxQ1JaeEVqd1B0VVdSdFhMV0JYWnlsSE8xTmUxUkJFZVNaNXRGSjRET0lNUXRlb0E3bkVjVll1Uk56X21GTDBSMGFiT05hZV9LajhEQzlqYUFhelh4V19BdEp3?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-10-10T04:47:00+00:00"
+   },
+   {
+    "title": "Tropical Storm Watch issued for San Diego County as Rachel nears",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA5bjI0ek5KZHI1T1MxUG50TFllQVR4dG5wVF9EUVdjSkxmcklId3pmVlVkcUVRWHNCVm9UZ2NDUkRuekJ1OEZ0bTlta3dKZTRVMkNTeW5kSk84dFVoVVNVVUNEaVRHd0NQeE1tbVlBUlNIV1FXM2fSAXtBVV95cUxOa1pDcHZFSmVibnRoVmRxOWdTR0loNGROS0pfZHlMOU02NHV2YXVYQm9HY1N4azBPMXZOa2pXbno4UkpCSDJHZzg1WDhWa19lWDJpYTVnRTIzekl2UFY1cTdSYUtvRlNUX1g0X3hLMDdnX2F1OWs1UVdFRFE?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-10-09T19:36:16+00:00"
+   }
+  ],
+  "fly-atis": [
+   {
+    "title": "Small plane flew ‘erratically' prior to crash at Montgomery Field, report says",
+    "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOLXhaX0RXT2VMR1VCekYzNTNmYmpqUmxRTE8yX0VJOUtTZU40Q1VmajBKMGY5WGxqZ3lIMVh4M0Z6TWNJeWYwUnlWLXgxemFkTV9rWWdMUTJrVDk4cUdENjJPQVdjbzlQUDJxTHpXTlBmVUxpNTJYdVZPVVFZamVFdWNheEhCY3YtM2hkZkVxZ1ZxTTJHWlBIQzlqclZ5MUdpai1sZ1NHSDYwSm9fdjloVkxXazU0VFVfTWJKb3B0MjTSAcgBQVVfeXFMUGJGak9Jb19VZ2NfQ19NRUdHWGp4Mlp5dFhQSEtqOGozcVlTeDBHSkNkcjRYMVZabXZhMU1vOFVkaUY4NTBISWo5RnhlcUhZdE01QXozUG9oSVVGdWljWGhxeXVkY3hHVHFUbjNEX3RDV01ReEswVmVXZmEwckhFNVBEeU8tQjVtTXRVblItbWZvaktnVkFLSDhCQXVheUVtVUpyNUJOcHB4dmNscjhvajM3cHBtbnV1ekh3Szh5U2dNTUd1TnFFRmk?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-09-24T07:00:00+00:00"
+   },
+   {
+    "title": "Second victim in deadly Montgomery Field plane crash identified",
+    "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOcDI1S2lsaGhhNk4yaUk1TE9VOEtCMUhGdklXUG5wWE5IYkV5X1RoYnRjOGhTcGVZMi1MNG1wOWJHaDBrelBLek8yeGVTY3VJYmp0MGhiOFdEVTJydVNQNEl2QmJTQ29YaTRsYUZiSUpkNTJOS0MydEgxYlc2MU1yZlFDQnc4allIc0FSTnBmMFRKZzhlcmFKNUdwVU1TMjhnNVVpTg?oc=5",
+    "source": "10News.com",
+    "date": "2026-09-21T07:00:00+00:00"
+   },
+   {
+    "title": "Second person in fatal Montgomery Field Airplane Crash ID'd",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNMHV5N21PUjlpR3pOb3hBYTVNY0R1QVRpa09JN01wVktTMTRUTzhZZ2NZVkpIX0d3a1hpSG9XSV9kTWM2YU1UT3FqNEh4eElRNVdCdUM4R0pNaDJzbUg5R01vMHZkZVpHN2ljU3c5dHVBUC1fdDNla2RxYjQwTHZwWGtpVEk1TEhsb0ZFUktXc1dYQ0JIN2ZhMWJ3T2l5b01wMkd3dEpQWk9Sd9IBsgFBVV95cUxNTGttOXJKaGoybEd5SHV2VmYwbDBuVmJoOTdWUU9lWDVXSEI4OS1JMHk2LXZ4WV9xUnAybmtCd1puTDMyaUY1VXdjd0xTTVd2M1FzSXlfc3BVdXNOc1V0RWo2SmtBeVppNjhQYjlxZlZNcHZVemFiOVprb2paZFBfZWF5alZkZjVuWTNpZHBCa0JyOHFmWlNmVl9pYS1iSnY3LV9aS0dmaHZoSXZKRjNxU2Jn?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-09-21T07:00:00+00:00"
+   },
+   {
+    "title": "Victim Of Fatal Montgomery Field Airplane Crash ID'd",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOUHNoSjM0SXV0ajdMdjZadVVBUURxd0h1N3l6UzRJWVEzak9oRGRMeDFlX3RLeDY3QWtTY1M1YnlBX1VwSWVNWncxUnhpUVNmeDhzRmlWRmNxS1RQTjh0YlJhQnRxdTU5ZHBQQXVpRFlEaElPY0lYSEpoaWMweVJFdEJ0cHdZMFY2RjZUWi1YOC0?oc=5",
+    "source": "Patch",
+    "date": "2026-09-11T07:00:00+00:00"
+   },
+   {
+    "title": "Cessna 172 Crash at Montgomery Field Kills Two in San Diego",
+    "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPaU8tbXlfM19kdldPcTA3RDdmUUdkMm1wTEtnRVd1bHFaaHBPaFhzREJKM3FCLW5FRWUyYzdxZUhWTHhYd2tBN2hfWmhmR3IwMW9zLXN2SEttOVlGT0pCcC0tY0FsRVlaWDY4UmdsVXZrUm5NM2FiWVc1NUd6WXNtOGxfaThUN2xH?oc=5",
+    "source": "MiGFlug",
+    "date": "2026-09-08T07:00:00+00:00"
+   },
+   {
+    "title": "2 Killed In Plane Crash At San Diego'S Montgomery Field",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOSDFvQnNDV0haQThGVGtRRGFaTlp2UDNySW9DM1ZvaGVEMWdSNmI2aU5WbzVfT09xUnV1cDZrVFlmTUIzRXBxNmtwNXg1THpxMXJMMjNPdUh3anU1X3p4NmFLSFRBS1hObzR3YkpJMTVjVnZCZEI2MTE1N3NvaUEtZGtFOE5aUjVZUEZORjktdm8?oc=5",
+    "source": "Patch",
+    "date": "2026-09-08T07:00:00+00:00"
+   },
+   {
+    "title": "Two killed after Cessna crashes and catches fire at Montgomery-Gibbs Airport",
+    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNMENjZUNhM0hXNkN0SnFWTHdsWkJ6aXJ4THVnbElFVEZnUkNHcklHSVNKeU5KNk9HamFELUdxbE53eEZfRTVXRzhFZ3NPRGJmVE1HMWIzVzlDazJEMUJNdXRiTm1JM0lIM1prLVJROS0yX1JPbGdncVhnRUdITTRteEcyZ3FTRmdCWTkzaVJxR3lBZmhGeGdWWnY0aVdmSTc3UFV3?oc=5",
+    "source": "10News.com",
+    "date": "2026-09-07T07:00:00+00:00"
+   },
+   {
+    "title": "Nearly two dozen San Diego residents pursue legal action for deadly May 2025 plane crash",
+    "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxNalFvN3NlaHpkcGxYXzNTQVFQOGtEbkYzaEdLZUx0SWZEY3BFWHF5VWxod3hsUnR5ZUJHTE11elpZM1ZidUhST1F4SXptdUtocHhEVnBMN3ozajlMaWZkckhQcUkyQ1BiNUU3Nmg2Y2I2Wl9vWlFaa0k3SFBQRldEMWVITU1SWlAyckVVY0U0SkZhYnBNZWE0bWxwQjlIRmhUMFNsemlwX2g2a0VpTDA0Y2tpeG9pUWpfckpUeWNSVElIcHBYemdMbUEwQ1h1NlNhYS1keGRLRnA2S21KYnQ4ZDVTWnNXY1VIdW9UckFIcElmNVExTkJqTXlEUWc3b0JoOWl4c1pEUEhGdw?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-03-20T07:00:00+00:00"
    }
   ]
  }
