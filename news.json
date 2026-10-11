@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T21:24:01.666571+00:00",
+ "updated": "2026-10-11T21:36:59.201652+00:00",
  "topics": {
   "ham": [
    {
@@ -367,12 +367,6 @@
     "date": "2026-09-24T07:00:00+00:00"
    },
    {
-    "title": "With the new VENTUNO Q board, Arduino hopes to make robotics development easier",
-    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOZkNYbVhBamhnMGlFVUFHckMzTnFaaXppNTltdHVhMHZ3WlJHZ0VybVRRRW01RWxMWmhFLVl5Q3BKZWJTbTJZNHNtcUU4ZjJyRXdicHlubzFxcloxaHNiUUlSeExzWGRiU1JaNFctQm1PNHFGenhDc24xelJ5RThYcFhLVlRmRE8wbkdOVkdzS1duVE93ZDl3TGx0Yl9weGM?oc=5",
-    "source": "The Robot Report",
-    "date": "2026-09-23T18:21:32+00:00"
-   },
-   {
     "title": "Running Local LLMs on the Arduino® UNO™ Q Board: a Practical Guide",
     "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxORXF1cUpMOUNTRW1vU05lRnQtNl9kNHRKMlIyd1Y5SkZ5d3kyUEIzeUhTNkp2YXdwaDZJdXNBTndLNExrMHpaYWhjMXJ4Ul8tdjJnTjRTT0ZDVU1jcy1lclluZHhNamRmUzhfWDU1R3JabUtiY1ExZFd5SlNQQWhYMXpNNkJ6T0JpbHhYTEFMc2FIUQ?oc=5",
     "source": "EE Times",
@@ -401,6 +395,12 @@
     "link": "https://hackaday.com/2026/07/15/pinch-puts-an-arduino-on-a-usb-c-connector/",
     "source": "Hackaday",
     "date": "2026-07-16T02:00:59+00:00"
+   },
+   {
+    "title": "Anthony Mark Arduino Obituary Dec 23, 2020",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1hNEc0OWw2Mi1fMjdYc1Yyb0dILXhTLXVybTJDZG9UZzVia1h0QURRUk9TaXJSc1l3Nm40OU5VV3ZWazZsTnlMSGZ0a1VTQ2RJNm04dXVnZDB4VllfSFc2N0VzYmVuem0wR1ZN?oc=5",
+    "source": "suessfuneralhome.net",
+    "date": "2026-06-14T06:12:06+00:00"
    },
    {
     "title": "The Uncooperative Mirror Will Not Help You",
@@ -611,12 +611,6 @@
     "date": "2026-10-11T13:05:59+00:00"
    },
    {
-    "title": "Appeals filed against Project Primestone, high-tech GPU testing lab",
-    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbjA4T05jcnZKekY2aGxQZlZEN0NtNlg5YTJrajNTUEdLVVNwSzduN2dKYWJvdEtqTllaZVJmcWtXYi1lMm41d1lYUEhwbkN6MzItUlNZRTBweGRTVW9vdHpRRVlrek54MEdfU0MwTkl4ZzBxNF9qT2dxZG8tSlgzMHdzSDd2N25RanF6Q19QMlZEU0RyMDBLRWNPcU42cW8?oc=5",
-    "source": "Colorado Springs Gazette",
-    "date": "2026-10-11T13:00:00+00:00"
-   },
-   {
     "title": "Developer turns classic Windows Minesweeper into hand-holding 'big-budget, Triple-A’ parody",
     "link": "https://www.tomshardware.com/video-games/developer-turns-classic-windows-minesweeper-into-hand-holding-big-budget-triple-a-parody-browser-reboot-mocks-modern-gaming-with-chatty-npcs-internal-monologues-and-promised-loot-boxes",
     "source": "Tom's Hardware",
@@ -677,6 +671,12 @@
     "date": "2026-10-09T17:52:15+00:00"
    },
    {
+    "title": "Introducing on-demand CPU and memory profiling with flamegraphs for Workers and Durable Objects",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9JUW5yT1IzWGNUazllb1poeG9nSHRMUUQzRlVFalhzdngyTS1BM2h1WGo0bEp6Y0xNWEdkVENubG5kSlA4S1dwYTRVeGVUbzNUbG51NVAzNFJzcjdhVUphckpid0F5X2c?oc=5",
+    "source": "Cloudflare Blog",
+    "date": "2026-10-09T13:08:31+00:00"
+   },
+   {
     "title": "Wall Street is inventing an entirely new financial system around Nvidia's AI chips",
     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPMEpqbXIyV2NmNG9fQUpudG13WWZUbUJMdlQxRU51Qy12cTVEUlNYZlp4d3J5dkUweDhhUURFUDVPYlFWLU9pNlJfd0FkOEFkb2JWQ1FOcUJTYWJZeDJFQzJEdHpxVkk0bkNRVDJYdUI4YXRSVlFfNjZyUUxUQm9zRU9uY3dNa2ZkcDBfWHhNQlIxRkZ1Y2JF?oc=5",
     "source": "Business Insider",
@@ -709,16 +709,16 @@
   ],
   "ai": [
    {
-    "title": "Amazon in talks to buy AI startup Decart for around $7 billion, WSJ reports",
-    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOSTR0SUxydGYzRDJmaGtaWkRTYkkybS1GWlRkZFFnMjVXRFlZX0hHMUtVdFdIN0ZyQk0wMk1LNFhaUml3Y3FlRUV6SWFxVk9UUFg3MTUzelJtZU8tdjVpREpVS0owdkt2aVJhMUVObjg1TlRTREtZQzBINHJTTFloWDNBQTFCVl9yOE9HNXhBazJWMElncnlIZWNPdG5IY25ObFg0SGswNks5MkF0ODM4bEVRWkhjS3ZqcXVuWlVnamU0dw?oc=5",
-    "source": "Reuters",
-    "date": "2026-10-11T21:17:43+00:00"
-   },
-   {
     "title": "Will the HomeView be Apple’s first smart home success?",
     "link": "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/",
     "source": "TechCrunch",
     "date": "2026-10-11T21:14:40+00:00"
+   },
+   {
+    "title": "Bill Gates warns cyberattacks most imminent AI threat",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQUC1DN051QkpxYXIzTkY0c1I3Vk1FMUw4NGowWnhBcGVMTU00SGoxVkVqd1BHaWo5UWphSmk1RzBQdVYtSnlfMVBYMDQ5U1VNcHBISG4yamZTcTNIVktqN2lHb3FrcXJrM1FhQjU2UmhrUEc0UjhaM1U4OFBEZTI0RXc5aFJyLWJtLVpaZHNkRjUwXzdT?oc=5",
+    "source": "Japan Today",
+    "date": "2026-10-11T21:00:00+00:00"
    },
    {
     "title": "Amazon Is in Talks to Buy AI Startup Decart, WSJ Reports",
@@ -879,6 +879,12 @@
     "date": "2026-10-09T22:18:49+00:00"
    },
    {
+    "title": "Review: BetaFPV Meteor75 Pro II Analog Edition – 1S Tiny Whoop with Serious Power",
+    "link": "https://oscarliang.com/betafpv-meteor75-pro-ii-analog/",
+    "source": "Oscar Liang",
+    "date": "2026-10-09T15:24:34+00:00"
+   },
+   {
     "title": "Russian FPV Drone Units Select Munitions for Every Target",
     "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOdDZvOFFIT05nT1hpZzlnMDNobTZOUDVHSVZCVDFKQU1JajJtZVJvM2tmU1JFYU1XaHlzcWNyZ1dPckhuajZGdGsxc1F3TTIxczhZQlZrQTVOU3JnZHkwQ3JFWWtfYlNjUEhVdUZUTFBoTTNpWXYyeUFPYWhHNW1EMnlfekxNMU5yU2FvVmhGUHhqUFgzNzJ2a2hMd1VWeXM?oc=5",
     "source": "Военное дело",
@@ -945,10 +951,28 @@
     "date": "2026-10-06T14:58:00+00:00"
    },
    {
+    "title": "The Cheapest 5″ FPV Drone Build in 2026 – The $100 Budget Build Is No More :(",
+    "link": "https://oscarliang.com/cheapest-fpv-drone-build/",
+    "source": "Oscar Liang",
+    "date": "2026-10-05T23:00:14+00:00"
+   },
+   {
     "title": "Ambition, Thy Name is a 3D Printed Transonic R/C Jet",
     "link": "https://hackaday.com/2026/10/05/ambition-thy-name-is-a-3d-printed-transonic-r-c-jet/",
     "source": "Hackaday",
     "date": "2026-10-05T23:00:10+00:00"
+   },
+   {
+    "title": "Forgotten FPV Trends: Clever Ideas That Never Went Mainstream, But Could They Return?",
+    "link": "https://oscarliang.com/forgotten-fpv-trends/",
+    "source": "Oscar Liang",
+    "date": "2026-10-02T21:48:18+00:00"
+   },
+   {
+    "title": "How to Fix FC Board Alignment in Betaflight: No More Guessing!",
+    "link": "https://oscarliang.com/betaflight-fc-board-alignment-wizard/",
+    "source": "Oscar Liang",
+    "date": "2026-09-30T18:00:05+00:00"
    },
    {
     "title": "Ukraine Develops “Mangal” Modular FPV Drone Interceptor System",
@@ -963,34 +987,260 @@
     "date": "2026-09-29T05:00:43+00:00"
    },
    {
-    "title": "Trying a New Radial Impeller Design for Quadcopters",
-    "link": "https://hackaday.com/2026/09/21/trying-a-new-radial-impeller-design-for-quadcopters/",
-    "source": "Hackaday",
-    "date": "2026-09-21T20:00:03+00:00"
+    "title": "Building a 1S 3inch Toothpick Under 30 Minutes (Analog FPV, Air65 Electronics on a Crux3 Frame)",
+    "link": "https://oscarliang.com/1s-3inch-analog-build/",
+    "source": "Oscar Liang",
+    "date": "2026-09-27T18:17:30+00:00"
    },
    {
-    "title": "Open Source Acoustic Drone Detection",
-    "link": "https://hackaday.com/2026/09/10/open-source-acoustic-drone-detection/",
-    "source": "Hackaday",
-    "date": "2026-09-10T11:00:38+00:00"
+    "title": "Tutorial: How to Use a Multimeter to Test Your FPV Drone – The Best $10 You’ll Ever Spend!",
+    "link": "https://oscarliang.com/multimeter-fpv/",
+    "source": "Oscar Liang",
+    "date": "2026-09-24T23:00:44+00:00"
+   }
+  ],
+  "food": [
+   {
+    "title": "Aspiring chef Brooklyn Beckham brutally trolled for cooking ‘burnt’ spaghetti: ‘That looks dreadful’",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNUDJhTXZWaU8yWHpsaXZCQnRhT19Fc1I1SUJXSWt5NENFNGZrWmlhY1JiOUZyXy1qdWdmSno5cjIxczJuSm5xSHhwZ2dndS1fRnRxU0RNZWotY1lzaUlmLWZETy1LZUhGeWtWelVWOU5DdERzV0lyZEQteWZpcDE2a3NmWHh1NXVvVjZIRGxHbDVJSTRBME90MGVpb0IwUHp0?oc=5",
+    "source": "Page Six",
+    "date": "2026-10-11T18:12:00+00:00"
    },
    {
-    "title": "Making a Pole Balance Itself With Propellers",
-    "link": "https://hackaday.com/2026/09/04/making-a-pole-balance-itself-with-propellers/",
-    "source": "Hackaday",
-    "date": "2026-09-04T20:00:14+00:00"
+    "title": "Picking Your Perfect Pumpkin for Cooking or Carving",
+    "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNdFdITWlvOE9SbW5TZ2dXZGtiXzN3U185cWxvVHo1V3VOSzJZTVcyNFRkR1VxdzZlUnUzX2JMRzEtQ29YWlVBalQxNkVISWJhRUc4aUNMSElma3pPYkphZl91UG5zQm5lOGxLYXJ0OGxXNkdYSGRlNjZnQ2hRXzlJVGY2SVp6anBudFNWcGw0UVo1ckxkS2ZrbG9WQlBfaVBidWp3N0I4LUlWSkFmYkRocWlBaGM?oc=5",
+    "source": "The State Journal-Register",
+    "date": "2026-10-11T18:05:45+00:00"
    },
    {
-    "title": "Simulating UAVs In Unreal Engine",
-    "link": "https://hackaday.com/2026/08/31/simulating-uavs-in-unreal-engine/",
-    "source": "Hackaday",
-    "date": "2026-08-31T18:30:12+00:00"
+    "title": "Unattended cooking causes kitchen fire in Springfield",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOdE5paWJuVFpkb0tXSV9sSUxiMWMtSkloS2xHTzN5NXhYalJWQmh0aFdUSDVFOXRWcHliSWdERG1wcHNhRzR5VVZRWDNUV181VG1SeFZhbzJyZkVMdkZJRzFYb1pPTjNQa19fb0RwOWF5ZXZHUE9QaW9HN2kxXzJGUWZYalJWR0pRTzQzTnVja1lLdXRhSDJVUUpqOWxPNWtYZEJ6aUFRQ2JHZ9IBrwFBVV95cUxQeW1jWHB2THZRbkgxYW1ndWN1UElpclY4ZlhKMVdwVm1WVDJOSTRqM0c5LXRpTDRhcnpOdVJiTFNzSktOVkIxLW9qenFZNGxlOWNQUGpfWTBYLVdadG94WWwxdVJMclBOaDN0am1NYktGdUFsQmRmSVRxYXg4U3gxX0lOd1Q5QW9nc3lFenZpSDEzLXRRVUg5c2R2Y1Z2NjZUckZhM3FBZVJ3c2VwSjBv?oc=5",
+    "source": "WWLP",
+    "date": "2026-10-11T17:03:25+00:00"
    },
    {
-    "title": "Submersible drone analyzes ice",
-    "link": "https://hackaday.com/2026/08/14/submersible-drone-analyzes-ice/",
-    "source": "Hackaday",
-    "date": "2026-08-14T23:00:21+00:00"
+    "title": "3 arrested in used cooking oil heist were age 16-18, police say",
+    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSXpSaFJUT2NUV1pnbEx0LTgyLUozbVZrMXhrcDltOU9uT0ZoN2d4al9MdWJmVEVQLU1Ec2YteThhY2lUMUp0RUNkam9YM3NFaFh6dFFpdENBZl9YUnlQUTRKNnllakF0OHRLTUs0eDM0ekl2VTRGUWZ3M1BxaDlzczNTMA?oc=5",
+    "source": "WCVB",
+    "date": "2026-10-11T14:13:00+00:00"
+   },
+   {
+    "title": "Our 10 Most-Saved Bean Soup Recipes Are Cozy, Hearty, and Full of Flavor",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9IOTZXMWJVTlhHQ1pvQUZSaTR4OTlEZU9jVjJpdXdNblg5LW54QnM3WTQ3dGhLUm0xUzBwdEV1UXBfYnN4dm9MOEZOX09nZ3VOc3hxVnVpV3BtbU10bXBnRkV3N0V5MTZxUjZSTGtDZ1QwRXc?oc=5",
+    "source": "Serious Eats",
+    "date": "2026-10-11T13:20:00+00:00"
+   },
+   {
+    "title": "During a trip to Portugal, I was introduced to a light, flaky puff pastry. Hoping to share this treat back home, I took my first ever cooking class. See link below ⬇️ 📸 Provided by Aladar Nesser and Kim Lucine",
+    "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQOTlqQnlZa3ExWlBMeFFIclJNZWRockdKdEw5THlwVGQ1QVlwOWF0ZGU3a2V3aElLX2V6SkNTQVZrSDlKeDB5RkxWWEVVTTFMYmF5bms0S1ZKc1ZlTzVQczFvd19xd0xyQUtqVmd4aE0xaHZJNnNKZDFZbVdYOEpXR1dmRFZ3d05FNnExQWZGb05ZV0R4ZEVxOU1nN0lJRkN2OVJlOWZXd3ZWSUc2MjJUaEtzaWZPTi1tRzlOTVFGYzlQTXFSX0p5WUtaZlg5czhlLUY4c1NmaXJuTDBFSmg0?oc=5",
+    "source": "Facebook",
+    "date": "2026-10-11T10:00:10+00:00"
+   },
+   {
+    "title": "The 38 Best Restaurants in Tokyo, According to a Local Expert",
+    "link": "https://www.eater.com/maps/best-restaurants-tokyo-japan",
+    "source": "Eater",
+    "date": "2026-10-08T18:10:30+00:00"
+   },
+   {
+    "title": "These 3 Plant-Based Recipes Were Inspired by a Decade of Learning From Buddhist Temple Chefs",
+    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNS196bnMwTEViVGVnT3N4ZElETkgyY2NOZlhJXzItN3lSUUlJRkhfQ2FIcjZsZEJ1eDJzUnR6aTYxUkhSejRDRGIwOUMxeTFtajdJVkZDVEtJMFYxX3lwTWVma0ZhRkFNVk5uVFZUVEdSY3NBVW9TVHU4NXRpT1IzcG5iVC1uZ2FfWEM4ZGJyWmw5c1E1aGo1azIxYw?oc=5",
+    "source": "Oprah Daily",
+    "date": "2026-10-06T22:00:00+00:00"
+   },
+   {
+    "title": "13 Very Cool Food Gifts to Buy Before They Sell Out",
+    "link": "https://www.eater.com/shopping/920231/best-cool-food-gifts-that-will-sell-out-limited-edition",
+    "source": "Eater",
+    "date": "2026-10-06T19:45:22+00:00"
+   },
+   {
+    "title": "The Fine Dining Flip",
+    "link": "https://www.eater.com/dining-out/991367/restaurants-flipping-into-more-affordable-restaurants-trend",
+    "source": "Eater",
+    "date": "2026-10-06T17:38:05+00:00"
+   },
+   {
+    "title": "Chicago’s Muhājir Honors the Spice Route with Flame-Grilled Food From Across the World",
+    "link": "https://www.eater.com/video/990933/chicago-muhajir-restaurant-flame-grilled-food-video",
+    "source": "Eater",
+    "date": "2026-10-06T14:25:20+00:00"
+   },
+   {
+    "title": "Our 5 Most-Saved Recipes Last Week",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1IbUY4d2Q5Q0pVWVZSajVVLVhWc0hOQ0FrZUN4VlNqRXdTemwwbHBudDJKVkdfaWdSRWpPTWo4X3NNNGJVTTNVZmdvWXBaamlNcF9xWHVLOUFfVEFIa1RSdEFxdWpXSmIyZHFQSllheE1DUQ?oc=5",
+    "source": "Allrecipes",
+    "date": "2026-10-06T07:00:00+00:00"
+   },
+   {
+    "title": "The Best Food Advent Calendars of 2026 (Yes, They’re Already Here)",
+    "link": "https://www.eater.com/23943616/best-advent-calendars-to-buy-now-2026-chocolate-tea-jam",
+    "source": "Eater",
+    "date": "2026-10-05T16:04:00+00:00"
+   },
+   {
+    "title": "The Hottest New Food Show Is a ‘Making the Restaurant’ Series",
+    "link": "https://www.eater.com/pre-shift/989802/restaurant-behind-the-scenes-series-pre-shift",
+    "source": "Eater",
+    "date": "2026-10-01T19:31:52+00:00"
+   },
+   {
+    "title": "The 38 Best Restaurants in Mexico City, According to a Local Culinary Guide",
+    "link": "https://www.eater.com/maps/best-mexico-city-restaurants-38",
+    "source": "Eater",
+    "date": "2026-10-01T13:00:30+00:00"
+   },
+   {
+    "title": "Steal My Food Itinerary: 3 Days in Sifnos, Greece",
+    "link": "https://www.eater.com/dining-out/987536/steal-my-food-itinerary-3-days-in-sifnos-greece",
+    "source": "Eater",
+    "date": "2026-09-25T16:41:33+00:00"
+   }
+  ],
+  "longevity": [
+   {
+    "title": "Fight Aging! Newsletter, October 12th 2026",
+    "link": "https://www.fightaging.org/archives/2026/10/fight-aging-newsletter-october-12th-2026/",
+    "source": "Fight Aging!",
+    "date": "2026-10-11T11:53:13+00:00"
+   },
+   {
+    "title": "Scientists discover 5 hidden brain patterns behind depression",
+    "link": "https://www.sciencedaily.com/releases/2026/10/261008005251.htm",
+    "source": "ScienceDaily",
+    "date": "2026-10-09T18:34:02+00:00"
+   },
+   {
+    "title": "Arguing that Methionine Restriction is Actually Cysteine Restriction",
+    "link": "https://www.fightaging.org/archives/2026/10/arguing-that-methionine-restriction-is-actually-cysteine-restriction/",
+    "source": "Fight Aging!",
+    "date": "2026-10-09T18:12:38+00:00"
+   },
+   {
+    "title": "Gut Bacteria Molecule Slows Atherosclerosis in Mice",
+    "link": "https://lifespan.io/gut-bacteria-molecule-slows-atherosclerosis-in-mice/",
+    "source": "Lifespan.io",
+    "date": "2026-10-09T16:39:39+00:00"
+   },
+   {
+    "title": "The secret to longer life? Scientists believe a 194-year-old tortoise could unlock clues",
+    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPZVZDTXpYcEVNbnI2b01yV3JZYzZiRW1VcHJvOWZMUFRQU3FjaF9UN3RTQXBiR0RMT0xLTENxdW84aWtvTkR4QUZiTy1XTS1McFBCZmVKVVlHWm9OdlIta3VQOXl4amg3dU9LWkFVZUxSNW9ZMWlGbTBmZFlEOWtqQQ?oc=5",
+    "source": "CNN",
+    "date": "2026-10-09T12:30:45+00:00"
+   },
+   {
+    "title": "Only one workout helped older adults lose fat and keep muscle",
+    "link": "https://www.sciencedaily.com/releases/2026/10/261007233348.htm",
+    "source": "ScienceDaily",
+    "date": "2026-10-09T10:57:40+00:00"
+   },
+   {
+    "title": "‘Superagers’ Are Living—and Thriving—Long Past 80. Could I Be One of Them?",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1CMzlVMEtKNXJITnU2LUxwRjBuUktTNGlSdWN6NV9mWlZvRFhFOENzakZLcDZwNXhabkpDSlFCVC1Ka2V3UEtfV2ZLckN3UVhkaGFRM3BtX0RfTTFVVkdkc3J5czZKTVRHVzZlWnZEcGFYUnc?oc=5",
+    "source": "WSJ",
+    "date": "2026-10-09T10:26:00+00:00"
+   },
+   {
+    "title": "IGFBP5 Overexpression Reduces Dental Follicle Stem Cell Senescence in the Treatment of Periodontitis",
+    "link": "https://www.fightaging.org/archives/2026/10/igfbp5-overexpression-reduces-dental-follicle-stem-cell-senescence-in-the-treatment-of-periodontitis/",
+    "source": "Fight Aging!",
+    "date": "2026-10-09T10:22:10+00:00"
+   },
+   {
+    "title": "Assessing the Burden of Somatic Mutation in Healthy Individuals versus Cancer Patients",
+    "link": "https://www.fightaging.org/archives/2026/10/assessing-the-burden-of-somatic-mutation-in-healthy-individuals-versus-cancer-patients/",
+    "source": "Fight Aging!",
+    "date": "2026-10-09T10:11:35+00:00"
+   },
+   {
+    "title": "Untangling Differences in Senescent Cellular Signaling",
+    "link": "https://lifespan.io/untangling-differences-in-senescent-cellular-signaling/",
+    "source": "Lifespan.io",
+    "date": "2026-10-08T18:41:33+00:00"
+   },
+   {
+    "title": "Succinate Dehydrogenase as a Regulator of the Regenerative Capacity of the Heart",
+    "link": "https://www.fightaging.org/archives/2026/10/succinate-dehydrogenase-as-a-regulator-of-the-regenerative-capacity-of-the-heart/",
+    "source": "Fight Aging!",
+    "date": "2026-10-08T18:21:24+00:00"
+   },
+   {
+    "title": "An Aging Clock Built on Speech Analysis Data",
+    "link": "https://www.fightaging.org/archives/2026/10/an-aging-clock-built-on-speech-analysis-data/",
+    "source": "Fight Aging!",
+    "date": "2026-10-08T10:22:06+00:00"
+   },
+   {
+    "title": "The Gut Microbiome Worsens the Maladaptive Immune Response to Stroke",
+    "link": "https://www.fightaging.org/archives/2026/10/the-gut-microbiome-worsens-the-maladaptive-immune-response-to-stroke/",
+    "source": "Fight Aging!",
+    "date": "2026-10-08T10:11:29+00:00"
+   },
+   {
+    "title": "Exercise Slows Epigenetic Aging and Improves Cognitive Function in Cancer Survivors",
+    "link": "https://www.fightaging.org/archives/2026/10/exercise-slows-epigenetic-aging-and-improves-cognitive-function-in-cancer-survivors/",
+    "source": "Fight Aging!",
+    "date": "2026-10-07T18:11:01+00:00"
+   },
+   {
+    "title": "The Longevity Blueprint: 5 Everyday Signs You’re Tracked for a Longer Life",
+    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOb29kakE1NkVzYUgxWEVDTTZoamFidVU0SW56TGg1R3dROENmNEpfSFFseWZKZEx6SnV0NWxBUE0zVVZDUW9QbUpIUUdkcmFZZXlEaFNrbUxYMnhNUHpYdlB2VlNiWldKLW9PdkJHTk1aTmp1OUlBRGV1Yk16eUFjaVVLODZFaGI2SEhsSnp3Z0xUdTBOR3ZuLURPZ1AxZGRDdjRFU0dUSzZaV1dBalZtRWhDdU9jNzVEY1NRNU5PNC11clVFa1E?oc=5",
+    "source": "Kiplinger",
+    "date": "2026-10-07T17:32:46+00:00"
+   },
+   {
+    "title": "Evipedia Goes Hugging Face",
+    "link": "https://lifespan.io/evipedia-goes-hugging-face/",
+    "source": "Lifespan.io",
+    "date": "2026-10-07T16:34:38+00:00"
+   },
+   {
+    "title": "In a longevity economy, ageing populations are an advantage",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOdThPSVc3TTZSR042MTFrQ20wZDBTTXNzOE5CaWxHcGNFc0ZCb0pTd0lTV1YtMWtVdGtEei14SlVKTmdVVlh3aXV3aFcwM0xLY1R5NW9fcXQ0RnlYRjBlR3J3Z0p0SFVWdTF6NkdYYU0tMTdfR3VlSjBKNDg0WXY4dU5SU0RxTHBJb0NpcndCbWhPZ3JTR29Razh3b1pydDBwak9HNVhJM3BxbVU?oc=5",
+    "source": "The World Economic Forum",
+    "date": "2026-10-07T07:00:00+00:00"
+   },
+   {
+    "title": "Declining Autophagy Impairs Senescent Cell Clearance",
+    "link": "https://lifespan.io/declining-autophagy-impairs-senescent-cell-clearance/",
+    "source": "Lifespan.io",
+    "date": "2026-10-06T17:15:31+00:00"
+   },
+   {
+    "title": "Longevity guru Bryan Johnson: \"People really want me to die\"",
+    "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPTkhYbE5ZM0NBd2c4Qm8yVlRWSmVxUlJFWTJkQVZScHpoOGp5T0ZXV2RicnpqTWg4bjN6NThnMTlGTGdkMm4wZlFsMWlGZ28wMW5fZmx5YjdUWDRMNGxibGVta19MVzJfVTF2OWhHYUgwZWFjN2Y0bXNtTFg0UVdhMDln?oc=5",
+    "source": "Axios",
+    "date": "2026-10-06T12:51:47+00:00"
+   },
+   {
+    "title": "Can you live longer for $5,500? Longevity clinics are the buzzy new trend at nonprofit hospitals",
+    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQQkd6cWI5MkFXNmh3LWJZQ1IzamhOV29SZGVUdnpfdzNRa0R6cE1GRUZpVHNyNU1ucTN2S3NRbEtNLUF3cW5iOWtycXJWd0E2bnVpaFA5bUU4ZHJkT000WUZLTTZDek1kYWEyQUNpcGFDZG1qY1oxMmZJTGwyRDU4bDl4dEo3eFhWMGx4aEphQ2FwS2djOW1XRA?oc=5",
+    "source": "STAT",
+    "date": "2026-10-06T10:01:36+00:00"
+   },
+   {
+    "title": "Sardinian village may be a new longevity hotspot, UIC research finds",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQN2lnQVEyM3Vwa0NIY2xrVHVxZmUyNnVRc2Fjb2dYX1ZaTmR1TU43Qnl3X2ZaWlVybUJFUE9xRU51Y0FTYm1PMUJWbkUwYUxUemxJdEp3XzRWVFRNaUFtVlVmcUkwb0hqSTR5aHhYVTZJaHlPUlNCZlRzSkNCdXoxSGVxWFZmQXpEVUdzak1nc3dkdXR2?oc=5",
+    "source": "UIC today",
+    "date": "2026-10-06T01:26:33+00:00"
+   },
+   {
+    "title": "There's a New 'Blue Zone'—And It Holds Clues to Women's Longevity",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOWEJVZkVmT3M0aF9GamkzcTJDWjZCTjNRekh5UVA1dkVVU25qd1pleTdDVEJrQUMxWmpvWVJmejY4elJ5T2hwVXBZWU9jODRzMHNlR2lmYWFRTTduUEtYeGlYcGszTWhlNC1LVmVac1M5SHYtaU5hZ1NBRDJrTGdQZG5Jd0R6b21CczJHZlRfNzdhRjNw?oc=5",
+    "source": "National Geographic",
+    "date": "2026-10-05T23:08:31+00:00"
+   },
+   {
+    "title": "The Biomarkers That Predict Mortality Risk",
+    "link": "https://lifespan.io/the-biomarkers-that-predict-mortality-risk/",
+    "source": "Lifespan.io",
+    "date": "2026-10-05T19:11:27+00:00"
+   },
+   {
+    "title": "Your gut may be making a molecule that raises Alzheimer’s risk",
+    "link": "https://www.sciencedaily.com/releases/2026/09/260930225459.htm",
+    "source": "ScienceDaily",
+    "date": "2026-10-03T12:13:21+00:00"
    }
   ]
  }
