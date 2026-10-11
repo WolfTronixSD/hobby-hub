@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 1.9.0 (2026-10-11): Share with friends
+- New Share button: text, WhatsApp, email, copy link
+
 ## 1.8.0 (2026-10-11): Tempe, Flying and Snorkeling
 - New Tempe, AZ button with the same categories as San Diego
 - New Flying button: KMYF, Weather, ATIS KMYF

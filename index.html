@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1.8.0">
+<link rel="stylesheet" href="styles.css?v=1.9.0">
 </head>
 <body>
   <div class="bg-glow" aria-hidden="true"></div>
@@ -21,10 +21,13 @@
       <span class="logo">⚡</span>
       <div>
         <h1>Hobby Hub <button class="ver" id="versionBtn" aria-label="Version history"></button></h1>
-        <p class="sub">Podcasts, YouTube and news for the road</p>
+        <p class="subtitle">Podcasts, YouTube and news for the road</p>
       </div>
     </div>
-    <button class="icon-btn" id="themeBtn" aria-label="Toggle light or dark">🌙</button>
+    <div class="top-actions">
+      <button class="icon-btn" id="shareBtn" aria-label="Share with friends">📤</button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle light or dark">🌙</button>
+    </div>
   </header>
 
   <nav class="hobbies" id="hobbyNav" aria-label="Hobbies"></nav>
@@ -36,6 +39,23 @@
     <button data-tab="news"><span>📰</span>News</button>
   </nav>
 
+  <div class="share-backdrop" id="shareBackdrop" hidden>
+    <div class="share-panel" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+      <h2 id="shareTitle">Share Hobby Hub</h2>
+      <p class="share-sub">Send your friends a link. They get every feature, no login needed.</p>
+      <label class="share-scope"><input type="checkbox" id="shareHere" checked> Open on the page I'm looking at</label>
+      <div class="share-grid">
+        <button class="share-opt" id="shareNative"><span>📲</span>Share…</button>
+        <a class="share-opt" id="shareSms" href="#"><span>💬</span>Text</a>
+        <a class="share-opt" id="shareWa" href="#" target="_blank" rel="noopener"><span>🟢</span>WhatsApp</a>
+        <a class="share-opt" id="shareMail" href="#"><span>✉️</span>Email</a>
+        <button class="share-opt" id="shareCopy"><span>🔗</span>Copy link</button>
+      </div>
+      <input class="share-url" id="shareUrl" readonly aria-label="Link to share">
+      <button class="share-close" id="shareClose">Close</button>
+    </div>
+  </div>
+
   <main id="content" tabindex="-1"></main>
 
   <footer class="foot">
@@ -44,8 +64,8 @@
     <a href="https://github.com/WolfTronixSD/hobby-hub">Source on GitHub</a>
   </footer>
 
-  <script src="version.js?v=1.8.0"></script>
-  <script src="data.js?v=1.8.0"></script>
-  <script src="app.js?v=1.8.0"></script>
+  <script src="version.js?v=1.9.0"></script>
+  <script src="data.js?v=1.9.0"></script>
+  <script src="app.js?v=1.9.0"></script>
 </body>
 </html>

@@ -46,12 +46,13 @@ body {
 .top { display: flex; align-items: center; justify-content: space-between; padding: 20px 0 12px; }
 .brand { display: flex; align-items: center; gap: 14px; }
 .logo {
+  flex: none;
   display: grid; place-items: center; width: 56px; height: 56px; font-size: 30px;
   border-radius: 18px; background: linear-gradient(135deg, var(--accent), #5b78ff);
   box-shadow: 0 8px 30px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 h1 { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
-.sub { margin: 2px 0 0; color: var(--muted); font-size: 16px; }
+.subtitle { margin: 2px 0 0; color: var(--muted); font-size: 16px; }
 
 button { font: inherit; color: inherit; cursor: pointer; }
 .icon-btn {
@@ -142,6 +143,39 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
 .listen a:hover { border-color: var(--accent); }
 .card.podcast { align-items: flex-start; }
 
+/* Share */
+.top-actions { display: flex; gap: 10px; }
+.share-backdrop {
+  position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 16px;
+  background: rgba(5, 8, 14, 0.6); backdrop-filter: blur(6px);
+}
+.share-backdrop[hidden] { display: none; }
+.share-panel {
+  width: min(520px, 100%); padding: 22px; border-radius: var(--radius);
+  background: var(--bg); border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.share-panel h2 { margin: 0; font-size: 24px; }
+.share-sub { margin: 6px 0 12px; color: var(--muted); font-size: 16px; }
+.share-scope { display: flex; align-items: center; gap: 10px; min-height: 48px; font-size: 16px; }
+.share-scope input { width: 24px; height: 24px; accent-color: var(--accent); }
+.share-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+.share-opt {
+  min-height: var(--tap); display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 18px; border: 2px solid var(--border); background: var(--panel);
+  color: var(--text); text-decoration: none; font-size: 19px; font-weight: 700;
+}
+.share-opt span { font-size: 24px; }
+.share-opt[hidden] { display: none; }
+.share-opt:hover { border-color: var(--accent); }
+.share-url {
+  width: 100%; margin-top: 12px; min-height: 48px; padding: 0 14px; border-radius: 14px;
+  border: 1px solid var(--border); background: var(--panel); color: var(--text); font: inherit; font-size: 15px;
+}
+.share-close {
+  width: 100%; margin-top: 10px; min-height: 56px; border-radius: 16px; border: 0;
+  background: var(--accent); color: #0b0f17; font-size: 18px; font-weight: 800;
+}
+
 /* Version */
 .ver {
   vertical-align: middle; margin-left: 6px; padding: 4px 10px; min-height: 32px;
@@ -192,6 +226,12 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .hobby:last-child:nth-child(odd) { grid-column: span 2; }
   .subs { grid-template-columns: 1fr 1fr; }
   .sub:last-child:nth-child(odd) { grid-column: span 2; }
+  .icon-btn { width: 48px; height: 48px; font-size: 22px; border-radius: 14px; }
+  .top-actions { gap: 8px; }
+  .logo { width: 46px; height: 46px; font-size: 24px; border-radius: 14px; }
+  .brand { gap: 10px; min-width: 0; }
+
+  .share-opt { font-size: 17px; gap: 6px; }
   .sub { font-size: 16px; flex-direction: column; gap: 2px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.8.0";
+const APP_VERSION = "1.9.0";
 const CHANGELOG = [
+  {
+    version: "1.9.0",
+    date: "2026-10-11",
+    title: "Share with friends",
+    changes: [
+      "New 📤 Share button: send the site by text, WhatsApp, email or copy the link",
+      "Option to share the exact hobby page you're looking at",
+      "Fixed the header subtitle looking like a button on phones"
+    ]
+  },
   {
     version: "1.8.0",
     date: "2026-10-11",
