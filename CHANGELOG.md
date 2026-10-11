@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 1.5.0 (2026-10-11): 3D Printing and Bambu Lab
+- New 3D Printing hobby and Bambu Lab section with guides, YouTube and news
+
 ## 1.4.0 (2026-10-11): Food and Longevity Hacks
 - New Food and Longevity Hacks hobbies with podcasts, YouTube and news
 - Hobby buttons in a 3×3 grid on big screens

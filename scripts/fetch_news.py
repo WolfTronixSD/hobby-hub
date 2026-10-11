@@ -62,6 +62,16 @@ FEEDS = {
         ("ScienceDaily", "https://www.sciencedaily.com/rss/health_medicine/healthy_aging.xml"),
         ("Google News", "https://news.google.com/rss/search?q=longevity+OR+healthspan+OR+%22aging+research%22&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "printing": [
+        ("3DPrint.com", "https://3dprint.com/feed/"),
+        ("Fabbaloo", "https://www.fabbaloo.com/feed"),
+        ("Hackaday", "https://hackaday.com/category/3d-printer-hacks/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%223D+printing%22+OR+%223D+printer%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "bambu": [
+        ("Hackaday", "https://hackaday.com/tag/bambu-lab/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22Bambu+Lab%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 24

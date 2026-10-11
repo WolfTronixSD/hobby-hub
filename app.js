@@ -107,10 +107,16 @@
     root.style.setProperty("--accent", h.accent);
         document.querySelectorAll(".hobby").forEach((b) => b.setAttribute("aria-pressed", b.dataset.id === hobbyId));
     document.querySelectorAll("#tabNav button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
+    const pod = document.querySelector('#tabNav button[data-tab="podcasts"]');
+    const guides = !!(h.labels && h.labels.podcasts);
+    pod.innerHTML = guides ? `<span>📘</span>${esc(h.labels.podcasts)}` : "<span>🎧</span>Podcasts";
 
     let html;
     if (tab === "podcasts") {
-      html = `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} podcasts</h2></div>
+      html = h.labels && h.labels.podcasts
+        ? `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} ${esc(h.labels.podcasts.toLowerCase())}</h2></div>
+              <div class="grid">${h.podcasts.map(ytCard).join("").replace(/card yt/g, "card guide")}</div>`
+        : `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} podcasts</h2></div>
               <div class="grid">${h.podcasts.map(podcastCard).join("")}</div>`;
     } else if (tab === "youtube") {
       html = `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} YouTube channels</h2></div>

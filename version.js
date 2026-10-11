@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.4.0";
+const APP_VERSION = "1.5.0";
 const CHANGELOG = [
+  {
+    version: "1.5.0",
+    date: "2026-10-11",
+    title: "3D Printing and Bambu Lab",
+    changes: [
+      "New 3D Printing hobby: podcasts, YouTube and news",
+      "New Bambu Lab section: official guides, MakerWorld, Bambu-focused videos and news"
+    ]
+  },
   {
     version: "1.4.0",
     date: "2026-10-11",

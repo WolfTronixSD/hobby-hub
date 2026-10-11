@@ -349,5 +349,84 @@ const HOBBIES = [
       { name: "Examine", url: "https://examine.com/" },
       { name: "Google News: Longevity", url: "https://news.google.com/search?q=longevity%20OR%20healthspan%20OR%20%22aging%20research%22" }
     ]
+  },
+  {
+    id: "printing",
+    name: "3D Printing",
+    icon: "🖨️",
+    accent: "#ff8a3d",
+    tagline: "FDM, resin, filaments, CAD and slicing",
+    podcasts: [
+      { name: "3D Printing Today", desc: "Long-running weekly show on desktop 3D printing.", url: "https://podcasts.apple.com/us/search?term=3D%20Printing%20Today" },
+      { name: "3DPOD", desc: "3DPrint.com's interviews across the 3D printing world.", url: "https://podcasts.apple.com/us/search?term=3DPOD%203DPrint.com" },
+      { name: "Printing Money", desc: "Industry news and analysis on additive manufacturing.", url: "https://podcasts.apple.com/us/search?term=Printing%20Money%20additive%20manufacturing" },
+      { name: "The Additive Snack", desc: "Short, friendly dives into additive manufacturing.", url: "https://podcasts.apple.com/us/search?term=The%20Additive%20Snack" },
+      { name: "The Cool Parts Show", desc: "Stories behind remarkable 3D printed parts.", url: "https://podcasts.apple.com/us/search?term=The%20Cool%20Parts%20Show" },
+      { name: "AM Radio", desc: "Additive Manufacturing Media's podcast.", url: "https://podcasts.apple.com/us/search?term=AM%20Radio%20Additive%20Manufacturing" },
+      { name: "3D Hangouts (Adafruit)", desc: "Weekly 3D design and printing projects from Adafruit.", url: "https://podcasts.apple.com/us/search?term=3D%20Hangouts%20Adafruit" },
+      { name: "Hackaday Podcast", desc: "Weekly hacks, with plenty of 3D printing.", url: "https://hackaday.libsyn.com/" },
+      { name: "The Electromaker Show", desc: "Weekly maker news including new printers.", url: "https://www.electromaker.io/blog/article/the-electromaker-show-podcast" },
+      { name: "The Adam Savage Project", desc: "Adam Savage on making, tools and builds.", url: "https://podcasts.apple.com/us/search?term=Still%20Untitled%20The%20Adam%20Savage%20Project" }
+    ],
+    youtube: [
+      { name: "CNC Kitchen", desc: "Stefan tests strength, settings and materials scientifically.", url: "https://www.youtube.com/@CNCKitchen" },
+      { name: "Maker's Muse", desc: "Design tips, printer reviews and clever prints.", url: "https://www.youtube.com/@MakersMuse" },
+      { name: "Thomas Sanladerer", desc: "Thoughtful printer reviews and deep dives.", url: "https://www.youtube.com/@ThomasSanladerer" },
+      { name: "Teaching Tech", desc: "Calibration guides and printer upgrades.", url: "https://www.youtube.com/@TeachingTech" },
+      { name: "Uncle Jessy", desc: "Printer reviews and fun projects.", url: "https://www.youtube.com/@UncleJessy" },
+      { name: "3D Printing Nerd", desc: "Joel's prints, events and printer news.", url: "https://www.youtube.com/@3DPrintingNerd" },
+      { name: "Slant 3D", desc: "Print farm know-how and design for printing.", url: "https://www.youtube.com/@Slant3D" },
+      { name: "CHEP (Filament Friday)", desc: "Weekly beginner-friendly printing tips.", url: "https://www.youtube.com/results?search_query=CHEP+Filament+Friday" },
+      { name: "Lost in Tech", desc: "Printer reviews, mods and comparisons.", url: "https://www.youtube.com/results?search_query=Lost+in+Tech+3D+printing" },
+      { name: "Nero 3dp", desc: "High-speed printing and hardware deep dives.", url: "https://www.youtube.com/results?search_query=Nero+3dp" }
+    ],
+    newsSources: [
+      { name: "3DPrint.com", url: "https://3dprint.com/" },
+      { name: "Fabbaloo", url: "https://www.fabbaloo.com/" },
+      { name: "Hackaday: 3D Printer Hacks", url: "https://hackaday.com/category/3d-printer-hacks/" },
+      { name: "All3DP", url: "https://all3dp.com/" },
+      { name: "Printables", url: "https://www.printables.com/" },
+      { name: "Google News: 3D Printing", url: "https://news.google.com/search?q=%223D%20printing%22%20OR%20%223D%20printer%22" }
+    ]
+  },
+  {
+    id: "bambu",
+    name: "Bambu Lab",
+    icon: "🟩",
+    accent: "#00c853",
+    tagline: "X1, P1, A1 and H2 printers, AMS, MakerWorld",
+    labels: { podcasts: "Guides" },
+    podcasts: [
+      { name: "Bambu Lab Wiki", desc: "Official guides, maintenance and troubleshooting.", url: "https://wiki.bambulab.com/" },
+      { name: "MakerWorld", desc: "Bambu's model library with one-tap printing.", url: "https://makerworld.com/" },
+      { name: "Bambu Studio", desc: "Download the official slicer.", url: "https://bambulab.com/en/download/studio" },
+      { name: "Bambu Lab Forum", desc: "Official community forum for questions and fixes.", url: "https://forum.bambulab.com/" },
+      { name: "r/BambuLab", desc: "The busy Reddit community for Bambu owners.", url: "https://www.reddit.com/r/BambuLab/" },
+      { name: "Bambu Lab Blog", desc: "Product news and firmware announcements.", url: "https://blog.bambulab.com/" },
+      { name: "BambuStudio on GitHub", desc: "Release notes and source for the slicer.", url: "https://github.com/bambulab/BambuStudio" },
+      { name: "Bambu Lab Store", desc: "Printers, AMS, filament and spare parts.", url: "https://bambulab.com/" },
+      { name: "Printables", desc: "Huge free model library that works great with Bambu.", url: "https://www.printables.com/" },
+      { name: "Podcast episodes about Bambu", desc: "Search podcast episodes that cover Bambu Lab.", url: "https://podcasts.apple.com/us/search?term=Bambu%20Lab" }
+    ],
+    youtube: [
+      { name: "Bambu Lab (official)", desc: "Product launches, tutorials and maintenance.", url: "https://www.youtube.com/results?search_query=Bambu+Lab+official" },
+      { name: "Teaching Tech on Bambu", desc: "Setup, calibration and upgrade guides.", url: "https://www.youtube.com/results?search_query=Teaching+Tech+Bambu+Lab" },
+      { name: "CNC Kitchen on Bambu", desc: "Strength tests and settings on Bambu printers.", url: "https://www.youtube.com/results?search_query=CNC+Kitchen+Bambu" },
+      { name: "Uncle Jessy on Bambu", desc: "Reviews and projects with Bambu printers.", url: "https://www.youtube.com/results?search_query=Uncle+Jessy+Bambu+Lab" },
+      { name: "Maker's Muse on Bambu", desc: "Honest reviews and design tips for Bambu.", url: "https://www.youtube.com/results?search_query=Makers+Muse+Bambu+Lab" },
+      { name: "Thomas Sanladerer on Bambu", desc: "In-depth Bambu reviews and analysis.", url: "https://www.youtube.com/results?search_query=Thomas+Sanladerer+Bambu" },
+      { name: "3D Printing Nerd on Bambu", desc: "Bambu launches, prints and events.", url: "https://www.youtube.com/results?search_query=3D+Printing+Nerd+Bambu" },
+      { name: "AMS tips and tricks", desc: "Multi-color printing with the AMS.", url: "https://www.youtube.com/results?search_query=Bambu+AMS+tips+multicolor" },
+      { name: "Bambu maintenance guides", desc: "Nozzle swaps, cleaning and lubrication.", url: "https://www.youtube.com/results?search_query=Bambu+Lab+maintenance+guide" },
+      { name: "Best Bambu upgrades", desc: "Mods and accessories worth printing.", url: "https://www.youtube.com/results?search_query=best+Bambu+Lab+upgrades+mods" }
+    ],
+    newsSources: [
+      { name: "Bambu Lab Blog", url: "https://blog.bambulab.com/" },
+      { name: "Bambu Lab Wiki", url: "https://wiki.bambulab.com/" },
+      { name: "MakerWorld", url: "https://makerworld.com/" },
+      { name: "Bambu Lab Forum", url: "https://forum.bambulab.com/" },
+      { name: "r/BambuLab", url: "https://www.reddit.com/r/BambuLab/" },
+      { name: "Google News: Bambu Lab", url: "https://news.google.com/search?q=%22Bambu%20Lab%22" }
+    ]
   }
 ];
