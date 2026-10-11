@@ -1,6 +1,14 @@
-// Bump APP_VERSION and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.3.0";
+// Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
+const APP_VERSION = "1.3.1";
 const CHANGELOG = [
+  {
+    version: "1.3.1",
+    date: "2026-10-11",
+    title: "Always load the newest version",
+    changes: [
+      "Fixed phones and browsers showing an old cached copy after an update"
+    ]
+  },
   {
     version: "1.3.0",
     date: "2026-10-11",

@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 1.3.1 (2026-10-11): Always load the newest version
+- Fixed browsers showing an old cached copy after an update
+
 ## 1.3.0 (2026-10-11): Computers, AI and DIY Drones
 - New Computers, AI and DIY Drones hobbies with podcasts, YouTube and news
 - Hobby buttons in a 4-column grid on big screens
