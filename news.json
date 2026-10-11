@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T20:51:40.996635+00:00",
+ "updated": "2026-10-11T21:16:59.305308+00:00",
  "topics": {
   "ham": [
    {
@@ -291,6 +291,280 @@
     "link": "https://randomnerdtutorials.com/esp-idf-esp32-web-server-access-point/",
     "source": "Random Nerd Tutorials",
     "date": "2026-08-31T10:17:05+00:00"
+   }
+  ],
+  "arduino": [
+   {
+    "title": "Porting a weather station app from the Arduino® GIGA™ R1 to the Arduino® UNO™ R4 boards",
+    "link": "https://blog.arduino.cc/2026/10/09/porting-a-weather-station-app-from-the-arduino-giga-r1-to-the-arduino-uno-r4-boards/",
+    "source": "Arduino Blog",
+    "date": "2026-10-09T10:54:54+00:00"
+   },
+   {
+    "title": "Arduino R4 Universal Case / Universal Enclosure #3DThursday #3DPrinting",
+    "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPd25zRzNWRDVZY2c1dF9Bd3gycy1KZVBvUVRsb1NUVU9qQkdzR3hQQzZhU0hOTjlqaDNrLTU1Ym1mYXZSSDFocjF4OFRRdWhWQjhLRlBRTnRtN2pKdFlQUEtwdVN3RVdMYmNkVHlyZEVZVWotc2w1U2RQWUcyeVJqVE45WjUzQVBCdGNWZlFEMHlzUXFndHU0Mkw2aHBEMGRrMHdkTno4cGY?oc=5",
+    "source": "Adafruit",
+    "date": "2026-10-08T23:00:47+00:00"
+   },
+   {
+    "title": "One year of UNO Q: built together, open by design",
+    "link": "https://blog.arduino.cc/2026/10/08/one-year-of-uno-q-built-together-open-by-design/",
+    "source": "Arduino Blog",
+    "date": "2026-10-08T09:35:25+00:00"
+   },
+   {
+    "title": "Gerald S. Arduino Obituary (2026) - Wheaton, IL - Hultgren Funeral Home and Cremation Center - Wheaton",
+    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPNEZSU21kWEI0T21ZQVZlY2ZXT29DV1NWUmVSLWFrbE05QzAtQ096emZQcnZ5TzhRM0RfbmU4ZzRkb2dxcE9qNHRxeHFrS2Nvalg1LWhWWDREWnVydGp5ejZHTFV5UHBzV3o3a2dxUTJNYTZmbmluRUNYQzQ0cUJEb052bw?oc=5",
+    "source": "Legacy | Obituary",
+    "date": "2026-10-08T07:00:00+00:00"
+   },
+   {
+    "title": "This #cottagecore cyberdeck is perfect for literal fieldwork",
+    "link": "https://blog.arduino.cc/2026/10/06/this-cottagecore-cyberdeck-is-perfect-for-literal-fieldwork/",
+    "source": "Arduino Blog",
+    "date": "2026-10-06T20:36:56+00:00"
+   },
+   {
+    "title": "What can you build, when AI can interact with the real world?",
+    "link": "https://blog.arduino.cc/2026/10/06/what-can-you-build-when-ai-can-interact-with-the-real-world/",
+    "source": "Arduino Blog",
+    "date": "2026-10-06T11:01:11+00:00"
+   },
+   {
+    "title": "From Home Assistant to AI agents: what Linux unlocks on the Arduino® UNO™ Q board",
+    "link": "https://blog.arduino.cc/2026/10/05/from-home-assistant-to-ai-agents-what-linux-unlocks-on-the-arduino-uno-q-board/",
+    "source": "Arduino Blog",
+    "date": "2026-10-05T10:54:24+00:00"
+   },
+   {
+    "title": "An Arduino® UNO™ Q lets this vintage terminal answer questions without internet access",
+    "link": "https://blog.arduino.cc/2026/10/01/an-arduino-uno-q-lets-this-vintage-terminal-answer-questions-without-internet-access/",
+    "source": "Arduino Blog",
+    "date": "2026-10-01T16:49:56+00:00"
+   },
+   {
+    "title": "This mouse droid knows how to party",
+    "link": "https://blog.arduino.cc/2026/10/01/this-mouse-droid-knows-how-to-party/",
+    "source": "Arduino Blog",
+    "date": "2026-10-01T13:48:21+00:00"
+   },
+   {
+    "title": "How little does an AI agent need, and how cheap can it get?",
+    "link": "https://blog.arduino.cc/2026/09/30/how-little-does-an-ai-agent-need-and-how-cheap-can-it-get/",
+    "source": "Arduino Blog",
+    "date": "2026-09-30T12:25:07+00:00"
+   },
+   {
+    "title": "Arduino UNO-Q Weather Dashboard",
+    "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE54eUstbDJ0cE1XLUZvRTNCQVNpblRaZDFSdnVsMmV0Z0hXYlVuQVkxek9NdHBRYV80ZXZxcTFlTzltVkNZWjU0akFrNjJaUUoyZU8yV1NmSFZGT29kNDhobWZaMUZZTE5ZcWtvM3BxdjY1Mjh6djJR?oc=5",
+    "source": "Elektor Magazine",
+    "date": "2026-09-26T19:42:29+00:00"
+   },
+   {
+    "title": "Test Arduino’s VENTUNO Q SBC for free",
+    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMnZOYUJaQjlQYmF4X2I5ODhESXUzeWo2XzFlYlQyWF81M2M1ZHdRdHBaSk9WMjB1RHpnVGttdXNJQjlmV3Q4LXd3OGUtempMN3lscGp6ZWY3NDhRYmd5cURYVEV0aDltMnFzSkJFYTl6cXg2WTR4ZndzTTVfTHM2S0FZTXUzRVVULUNDeXpnb0hZYVRCX2NvTDBVdGVLZw?oc=5",
+    "source": "Electronics Weekly",
+    "date": "2026-09-24T07:00:00+00:00"
+   },
+   {
+    "title": "With the new VENTUNO Q board, Arduino hopes to make robotics development easier",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOZkNYbVhBamhnMGlFVUFHckMzTnFaaXppNTltdHVhMHZ3WlJHZ0VybVRRRW01RWxMWmhFLVl5Q3BKZWJTbTJZNHNtcUU4ZjJyRXdicHlubzFxcloxaHNiUUlSeExzWGRiU1JaNFctQm1PNHFGenhDc24xelJ5RThYcFhLVlRmRE8wbkdOVkdzS1duVE93ZDl3TGx0Yl9weGM?oc=5",
+    "source": "The Robot Report",
+    "date": "2026-09-23T18:21:32+00:00"
+   },
+   {
+    "title": "Running Local LLMs on the Arduino® UNO™ Q Board: a Practical Guide",
+    "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxORXF1cUpMOUNTRW1vU05lRnQtNl9kNHRKMlIyd1Y5SkZ5d3kyUEIzeUhTNkp2YXdwaDZJdXNBTndLNExrMHpaYWhjMXJ4Ul8tdjJnTjRTT0ZDVU1jcy1lclluZHhNamRmUzhfWDU1R3JabUtiY1ExZFd5SlNQQWhYMXpNNkJ6T0JpbHhYTEFMc2FIUQ?oc=5",
+    "source": "EE Times",
+    "date": "2026-09-10T07:00:00+00:00"
+   },
+   {
+    "title": "Arduino Opens Pre-Orders for the Powerful VENTUNO Q, Its Second UNO-Branded Single-Board Computer",
+    "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPbWhlY1drSHhrd1lsWFIwWUpVSzM2ek10VjBDS2UxYl9lTWdQckV0STlNdDZSYlVMLXRiR2lhMXJoS0wyOXpURGVacmFKbGxPXzVNbHBJM1RNc0k0bllPSlBiT29RbXVVdFpQYkQxUmNDZFNKZVQybGdHYVJGRmZXWGJtZDhmSVk4RWo4YV9ocU1hdTVnR0dBd3RBY2N4N0QtcDFXR1hSUlRJS09GMWVGT2dCWFFqLWROc0h1LTgwbm91WFBTT0cyR1kzd0FBc2dFYmxzbA?oc=5",
+    "source": "Hackster.io",
+    "date": "2026-08-25T14:45:50+00:00"
+   },
+   {
+    "title": "Arduino VENTUNO Q is Here: Bringing Agentic AI to the Physical World with Qualcomm Dragonwing IQ8 Series",
+    "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNUDZFOFJ1Wm1Xc3F5eG93Q2pkYXdRSTRQMmkwQXRIdFhWVnlVOTNOZ1JYLVVkeHloTmsyakpmcGZiU25CNTczckNPZmMzWmFsMU0wellnLVRZOVZIZ190UVVsTGFod3NKZ1hZdmY4Y09zZ0llOGFCYnByYXdxekF0WE52YVJZZkliUTJ4Vmh5ZG1wOGRqSmU1dmNKNUs1NEdhdmthRkJzdXJCVC1QMHVzcg?oc=5",
+    "source": "Qualcomm",
+    "date": "2026-08-25T07:00:00+00:00"
+   },
+   {
+    "title": "Improving the Microcontroller Gaming Performance with PicoGame",
+    "link": "https://hackaday.com/2026/07/28/improving-the-microcontroller-gaming-performance-with-picogame/",
+    "source": "Hackaday",
+    "date": "2026-07-28T23:00:00+00:00"
+   },
+   {
+    "title": "Pinch Puts an Arduino On a USB-C Connector",
+    "link": "https://hackaday.com/2026/07/15/pinch-puts-an-arduino-on-a-usb-c-connector/",
+    "source": "Hackaday",
+    "date": "2026-07-16T02:00:59+00:00"
+   },
+   {
+    "title": "The Uncooperative Mirror Will Not Help You",
+    "link": "https://hackaday.com/2026/05/30/the-uncooperative-mirror-will-not-help-you/",
+    "source": "Hackaday",
+    "date": "2026-05-30T17:00:41+00:00"
+   },
+   {
+    "title": "Camera Slider: Build Instead of Buy Goes Awry",
+    "link": "https://hackaday.com/2026/05/04/building-a-camera-slider-instead-of-buying-one-goes-awry/",
+    "source": "Hackaday",
+    "date": "2026-05-05T05:00:34+00:00"
+   },
+   {
+    "title": "The Arduino UNO, Basically",
+    "link": "https://hackaday.com/2026/04/26/the-arduino-uno-basically/",
+    "source": "Hackaday",
+    "date": "2026-04-26T08:00:34+00:00"
+   },
+   {
+    "title": "KernelUNO, An OS For The Arduino Uno",
+    "link": "https://hackaday.com/2026/04/23/kerneluno-an-os-for-the-arduino-uno/",
+    "source": "Hackaday",
+    "date": "2026-04-23T11:00:35+00:00"
+   },
+   {
+    "title": "Python Comes to the Arduino Uno Q",
+    "link": "https://hackaday.com/2026/04/15/python-comes-to-the-arduino-uno-q/",
+    "source": "Hackaday",
+    "date": "2026-04-15T23:00:46+00:00"
+   }
+  ],
+  "garden": [
+   {
+    "title": "Smart Irrigation: How Digital Tools Help Cities And Growers Save Water",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQYkdiVWdJelJpS1pEc2NhUE1mTnFTUUtMdWw3dGc4aDk2cU1BUnVYYkFRT2p6VHFXbnlnNzFUQ2p2UlB2c0JxbFRrd1ZUalNkWWRsYVhONDdST1hER0VlSDNNYjB3Q29NUXczUzBfamNDSGhuV1lSWk9VUlgzSjg5MDllX3NRYU5HbzFYZjNDSXg4LWRacEhPZEg5Um5jTldHcGtQT2RIeVlvdw?oc=5",
+    "source": "Water Online",
+    "date": "2026-10-09T22:04:49+00:00"
+   },
+   {
+    "title": "The City of Hastings is offering a smart irrigation program",
+    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNdDJ1UFJKNzFtTlBRV3ZoczFyTUg1WTlGUjI3MVN3aUlQTDVXVW1YTGpSak9CdUxvakFjaGhiVVVVQnI4Y2h2U0dySWVUS1NuRUdBRk9wdWJYNkpqYzFUQkJiRUJhT1lWMEw1al9kMkZmY0ZPWnRDRmFmckdaZVJmZkdMZXA1ZXY3MUNCamEzVDRTZ2l6VDczUC1CTQ?oc=5",
+    "source": "KSNB",
+    "date": "2026-10-09T01:16:35+00:00"
+   },
+   {
+    "title": "India Home Hydroponics Market Size, Share,Trends, Growth Analysis Report, 2030",
+    "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZUtzb3k5ZDg4ZUJtcWVuYlk1eC1OTkJDalJfUVh2UXpUdjBPRDJ1TGFFTS1FdHRsMy1TVFBHRWt2R0M0dzFtTi1SNGl2ZlVfdW9uUklCZGtlTXNVOGNwVFItZG1lU2JwUXRfblp4YlZDcnRxcFFZQkVrSjZBS29xcnJuam1FWHhKSC1nNldMaENZZw?oc=5",
+    "source": "MarketsandMarkets",
+    "date": "2026-10-08T20:55:05+00:00"
+   },
+   {
+    "title": "Loose leaf lettuce leader lauds hydroponics",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNbGZrY0FLS1poUHVQYzdRTWh2b0JzNEo1Z0hpSTZZaFVTaUV1YlVoQWlfZVJkUlczVGtSQzlrY1l5Z29nMmtBRW51T3poSERPeDk3dzdpYlp3WmxWc2ZRT01IamRZRzNNZENjWFd3a2RVX203NmJDVmU3eXVvc3NVUkY2MGc5cHMtZUJSb3VfZjk?oc=5",
+    "source": "Hortidaily",
+    "date": "2026-10-08T11:46:31+00:00"
+   },
+   {
+    "title": "Grant helps Indiana High School take their hydroponics system up a notch",
+    "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOcFNyWV9uQm42d3FLcTJhVlpkMS01MVdDOFZWWkNoemJKbndvOVFEYm9UNlA2Xy16SXZ1OWJJenNiVldkVjI4aWxGN3pZQ3BYNUk0MEZlRGRfekNJRTJWYUJPdnI5ZkNMQkRwWENsLXkyU0pqX1pta3dCaUJXMGs0MU1hb1JIVVozbWlPX19NR3V5YlBOY1I5TVgwQWxyZzJBM3lqeWtOR3h2UTFrMkgyTDdiQ3pmZDh4NURVSmRDNzM?oc=5",
+    "source": "Vertical Farm Daily",
+    "date": "2026-10-06T16:15:46+00:00"
+   },
+   {
+    "title": "Indiana High School takes their hydroponics system up a notch thanks to U.S.D.A. grant",
+    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOeWlPaFdQTGo5S0hZY1dBcWl5cEhpV2lQVWVqZEFaOWZQc096TDFSUnFueGduLS1yS1h6dFhYU1BKLWRUSGFoU3NEalI3c2VPQk4yZUl5T1F6MVZSZUF1bHpHRFZoQ2w3a3RsVmtKRGJpdmhRdmNscXJvYnlFUDBKMzRLXzRfa1p1Qm0xblc3YUhKN1BBTEhqaklYdVNDN2xLclp3Y3lmOE54SzEyd2FudkNFSUhsZ01URGFvT2RFWS1WQdIBxwFBVV95cUxQOFdFNGlFRXhwUkxnV0tjdHg3dTlqR2hnOE5icTBmcHJ2bXlERXAzRDBFWUZVTkFZeW9pdG5tUThyZzZTZ1FyQjQ0ck9KajBGeElzOVI4TXZDZXczSmhSSnlMU0tIRjlFSWUyR0dGRS10dXRzX1ItaHN2WnZsMmhQT2RuZnExb0psdmxzaG9USHJsN3lkdkNHRTh4MWZ5VFFTcVUzWTU4UlliRFkybXVsWTEwWEtNaFhPSHl2cmsyRTRiQlpVYW4w?oc=5",
+    "source": "Eyewitness News (WEHT/WTVW)",
+    "date": "2026-10-01T22:38:43+00:00"
+   },
+   {
+    "title": "One of Five in the Nation: Southeast High Awarded Prestigious Hydroponics System",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9tN2lHWGtNYUZ3d2dfUU5QN2tHUDNLQzdfT29KSHludkcyMDViRzlRYWNvVmdmLVJaVG16Nnp0anB4RnFKd1hzZGlUcngwSDhDMGN5UUVVWTVONE5fbHNnYjdWSlg5akpqLUE?oc=5",
+    "source": "Manatee County School District",
+    "date": "2026-09-25T08:58:24+00:00"
+   },
+   {
+    "title": "Building Custom Backyard Solar Lights",
+    "link": "https://hackaday.com/2026/08/19/building-custom-backyard-solar-lights/",
+    "source": "Hackaday",
+    "date": "2026-08-19T08:00:27+00:00"
+   },
+   {
+    "title": "Smart Irrigation Month 2026: Beyond the Smart Controller | Smart Water Living: Urban Water Use Efficiency in SoCal",
+    "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPQVJuYUUwVHVfM0ZSd2dFTGlkMmgweW5RY0ZWbjJjMUw4N2tKZkZ5VlVyXzkxRmd3aTRESEZCTUR5YmozWkUtSEZQSk1SRjkybFhSV0pSZXhoVGI2ZDlLM3N5elZ1NUlQSFhaMGZmN0VzdUdxdUlZd2ZCLTZOeko5ZlVaR3ZaME5lX1FfZlFpUDVPaGJWREZhNUs3NG13ZUpSTjNjNW83S2t4eWpmRlJ1QTI1UFJNX3Jv?oc=5",
+    "source": "UC Agriculture and Natural Resources",
+    "date": "2026-06-18T07:00:00+00:00"
+   },
+   {
+    "title": "DIY, Full-Stack Farm Automation",
+    "link": "https://hackaday.com/2026/01/16/diy-full-stack-farm-automation/",
+    "source": "Hackaday",
+    "date": "2026-01-17T06:00:14+00:00"
+   },
+   {
+    "title": "Multi-Use Roof Eliminates Roof",
+    "link": "https://hackaday.com/2025/09/11/multi-use-roof-eliminates-roof/",
+    "source": "Hackaday",
+    "date": "2025-09-11T20:00:44+00:00"
+   },
+   {
+    "title": "Rainwater From the Road to the Garden",
+    "link": "https://hackaday.com/2024/12/15/rainwater-from-the-road-to-the-garden/",
+    "source": "Hackaday",
+    "date": "2024-12-15T21:00:00+00:00"
+   },
+   {
+    "title": "LEAF Mission Seeks to Grow Plants on the Moon",
+    "link": "https://hackaday.com/2024/11/06/leaf-mission-seeks-to-grow-plants-on-the-moon/",
+    "source": "Hackaday",
+    "date": "2024-11-07T03:00:10+00:00"
+   },
+   {
+    "title": "Solar Fountain Aerates Garden Pond",
+    "link": "https://hackaday.com/2024/08/02/solar-fountain-aerates-garden-pond/",
+    "source": "Hackaday",
+    "date": "2024-08-02T15:30:52+00:00"
+   },
+   {
+    "title": "NFC Puts a Stake in the Ground",
+    "link": "https://hackaday.com/2023/08/15/nfc-puts-a-stake-in-the-ground/",
+    "source": "Hackaday",
+    "date": "2023-08-15T18:30:00+00:00"
+   },
+   {
+    "title": "No Need To Buy A Woodchipper – Build One!",
+    "link": "https://hackaday.com/2023/08/08/no-need-to-buy-a-woodchipper-build-one/",
+    "source": "Hackaday",
+    "date": "2023-08-08T20:00:17+00:00"
+   },
+   {
+    "title": "Hackaday Prize 2022: Ultratower Is a Powerful Gardening Vertical",
+    "link": "https://hackaday.com/2022/11/04/hackaday-prize-2022-ultratower-is-a-powerful-gardening-vertical/",
+    "source": "Hackaday",
+    "date": "2022-11-05T02:00:11+00:00"
+   },
+   {
+    "title": "A Single-Watt Hydroponic Lighting System",
+    "link": "https://hackaday.com/2022/10/31/a-single-watt-hydroponic-lighting-system/",
+    "source": "Hackaday",
+    "date": "2022-10-31T11:00:47+00:00"
+   },
+   {
+    "title": "DIY Float Valve for Passive Hydroponics Leverages 3D Printing",
+    "link": "https://hackaday.com/2022/02/19/diy-float-valve-for-passive-hydroponics-leverages-3d-printing/",
+    "source": "Hackaday",
+    "date": "2022-02-19T21:00:00+00:00"
+   },
+   {
+    "title": "Hardware Store Hydroponics",
+    "link": "https://hackaday.com/2020/10/05/hardware-store-hydroponics/",
+    "source": "Hackaday",
+    "date": "2020-10-05T18:31:19+00:00"
+   },
+   {
+    "title": "Germinate Seeds With The Help of 3D Printing",
+    "link": "https://hackaday.com/2018/12/01/germinate-seeds-with-the-help-of-3d-printing/",
+    "source": "Hackaday",
+    "date": "2018-12-01T09:00:00+00:00"
+   },
+   {
+    "title": "Hackaday Prize Entry: Hydroponic Garden Control",
+    "link": "https://hackaday.com/2017/07/21/hackaday-prize-entry-hydroponic-garden-control/",
+    "source": "Hackaday",
+    "date": "2017-07-21T18:30:48+00:00"
    }
   ]
  }
