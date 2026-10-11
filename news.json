@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T21:43:56.712715+00:00",
+ "updated": "2026-10-11T21:51:06.657429+00:00",
  "topics": {
   "ham": [
    {
@@ -367,12 +367,6 @@
     "date": "2026-09-24T07:00:00+00:00"
    },
    {
-    "title": "With the new VENTUNO Q board, Arduino hopes to make robotics development easier",
-    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOZkNYbVhBamhnMGlFVUFHckMzTnFaaXppNTltdHVhMHZ3WlJHZ0VybVRRRW01RWxMWmhFLVl5Q3BKZWJTbTJZNHNtcUU4ZjJyRXdicHlubzFxcloxaHNiUUlSeExzWGRiU1JaNFctQm1PNHFGenhDc24xelJ5RThYcFhLVlRmRE8wbkdOVkdzS1duVE93ZDl3TGx0Yl9weGM?oc=5",
-    "source": "The Robot Report",
-    "date": "2026-09-23T18:21:32+00:00"
-   },
-   {
     "title": "Running Local LLMs on the Arduino® UNO™ Q Board: a Practical Guide",
     "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxORXF1cUpMOUNTRW1vU05lRnQtNl9kNHRKMlIyd1Y5SkZ5d3kyUEIzeUhTNkp2YXdwaDZJdXNBTndLNExrMHpaYWhjMXJ4Ul8tdjJnTjRTT0ZDVU1jcy1lclluZHhNamRmUzhfWDU1R3JabUtiY1ExZFd5SlNQQWhYMXpNNkJ6T0JpbHhYTEFMc2FIUQ?oc=5",
     "source": "EE Times",
@@ -401,6 +395,12 @@
     "link": "https://hackaday.com/2026/07/15/pinch-puts-an-arduino-on-a-usb-c-connector/",
     "source": "Hackaday",
     "date": "2026-07-16T02:00:59+00:00"
+   },
+   {
+    "title": "Anthony Mark Arduino Obituary Dec 23, 2020",
+    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1hNEc0OWw2Mi1fMjdYc1Yyb0dILXhTLXVybTJDZG9UZzVia1h0QURRUk9TaXJSc1l3Nm40OU5VV3ZWazZsTnlMSGZ0a1VTQ2RJNm04dXVnZDB4VllfSFc2N0VzYmVuem0wR1ZN?oc=5",
+    "source": "suessfuneralhome.net",
+    "date": "2026-06-14T06:12:06+00:00"
    },
    {
     "title": "The Uncooperative Mirror Will Not Help You",
@@ -805,12 +805,6 @@
     "date": "2026-10-10T14:00:00+00:00"
    },
    {
-    "title": "What’s Dragging Down A.I. Efficiency? The ‘Verification Tax.’",
-    "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPM2UzSkk1YUFJR0dkcktxMWlmdVh3LUhRV3htQlJUYUlWbmowV2NPZEp4SnBWQllPc09JSTRsSVlFRERXdXRaZ0VDSHJfVHk4SGZzTWhiT2ZrSk1uQVl0TGJBUGtTNnprZFJsdDM3ejNNaW9od1A2X2dLbDZQY05KYkhCT3c0cldYNndYMQ?oc=5",
-    "source": "The New York Times",
-    "date": "2026-10-10T12:00:03+00:00"
-   },
-   {
     "title": "Anthropic’s AI gave Philadelphia police a fake tip about an unsolved homicide",
     "link": "https://www.theverge.com/ai-artificial-intelligence/1009090/anthropic-fake-homicide-information-philadelphia-pd-tip",
     "source": "The Verge",
@@ -845,6 +839,12 @@
     "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWDd5WGx1ZzZpQU5XblFlR1VXUkZIeXQ2NU9qb3VicEZZaDJLakJrVHo3cnFlU21zLVkzaHNHWFpwRVU2cWZiSFlvaFpRNER1OFFsYVlsUWdwM19PUWF5R090cTVYOUItcW5Fa1EtNUFmV0N3Y0pPQXRvMlIwZGNEa2lReUfSAYoBQVVfeXFMTy05SzV2eFh0VEdUMkRBQTdmbkRtSS0wLTdBbDlQUDJ6Y1VtOHpiTlJiM3UtaXM2ZWtrNEFlU0E5bFF5U1B0aUNrclU3cU10UklJVWlJc3RSalBvVDJZYU5HWUZFbkZBOXZMMnpUeVBkbkxTT1VtZ0twQUhGNkY3YUR5b1J5dzl5S0Fn?oc=5",
     "source": "The Hill",
     "date": "2026-10-09T15:44:00+00:00"
+   },
+   {
+    "title": "Trump decrees that anyone who uses the term Artificial Intelligence is now ‘The Enemy!’",
+    "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOa0dLY1dCc3RoUm9BMFNfbFlYZTVOaDRnVzI0X3U3S2t1aGxuQ04xRHFyTUVBVlhqVGNhV0s1TWk4Yk1WQXp2cFN5azd0S0VNQzRLU3oxZ1FrbWxLcnBBWW1CZ2FERWRaS1d6azg1akpQUXR1d295STY1bUYxU3lnNWcyUE1JX1RyS2txbU14VW5TN01TWlJpYUZ0cFdQNGpqY1ptamZfSGwwOVpwSnQ4TW42MzVEUQ?oc=5",
+    "source": "The Independent",
+    "date": "2026-10-09T13:58:00+00:00"
    },
    {
     "title": "Trump says anyone who does not refer to AI as ‘super intelligence’ is ‘THE ENEMY'",
@@ -1323,12 +1323,6 @@
     "date": "2026-10-08T16:00:14+00:00"
    },
    {
-    "title": "I changed one temperature setting and cut my 3D print failures by half",
-    "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQclVRWHpma2VEZVA2b1RtbXIyYWtPb0k2ZnhzOXdNRmFnZzZGZXlHalkzYWczRlJLWkd6ZVBVSGRCaWJqYWItWHZRSGo4RTJNbmxBLVJ1UjhiYXIxcGoxLVZ1Q2ZGR2xUVUNGRFFleHR0YTROMlBHZ1hhN3NFUzhRaE1GeEdDczZT?oc=5",
-    "source": "MakeUseOf",
-    "date": "2026-10-08T14:30:15+00:00"
-   },
-   {
     "title": "Bambu Lab’s 3D printing patent application for a new heatbed design may improve peeling issues — replacement costs could possibly rise as a consequence",
     "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNOTZWc3FUbE9yZ2xyTjREakFMQXFrNTNGRGZjOE1XZ1BzVlFzaDRhME9kUUt1bDB0NGY3a0o1SDFHTzlJbEl5MmZZY1lDYmdwb0tOWmJkZk4xaEk4akwzdTVPaElzS3RNbHpxLUVGZWJic2JXallSU29oMEtVUEtETnpzTGF5THptYXNFdUtZelVkNUFDc2VRMGRCMFNKeHpnQTVJSUx2ZElYSEdMYTdsWmV4TVZBQXEwaDhFV0VCWW41Yks4bUNZTnhVT0JXOEExNnlDMWZhZlA3cjJHMWRZMkotcENhSlM2Z1NyN2wxYUJ1b3RuekpqbHd0UTFoN1FKYVNFQXFIaThKREhGaUZqOFJjN09lelVu?oc=5",
     "source": "Tom's Hardware",
@@ -1381,6 +1375,12 @@
     "link": "https://hackaday.com/2026/09/10/changing-nozzle-internal-geometry-to-increase-fdm-flowrate/",
     "source": "Hackaday",
     "date": "2026-09-11T02:00:46+00:00"
+   },
+   {
+    "title": "Walmart is 3D printing the future of big box stores",
+    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPY0V2NjRGbC1qdW90ajdtWG1OQXRNNVFRSGpqUWV3MDU5UFZabzU3bVM3YnFWRlc2MGhXTGlJV0tRYWNPdlVQOHFiam1ZaUFoS0tPYzRVZFU0a2R6NVRqb29HUEpkb0YzNm9XRlZvalVFQ1Z1eE1fR0RlVGkzcnZ4OA?oc=5",
+    "source": "Fast Company",
+    "date": "2026-08-24T07:00:00+00:00"
    }
   ],
   "bambu": [
@@ -1415,16 +1415,16 @@
     "date": "2026-10-09T17:31:14+00:00"
    },
    {
+    "title": "Prime Day Is Over but These 3D Printer Deals Live On: Save on Bambu Lab, Elegoo and More",
+    "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNVVUzMDU3dGJweGNlbjhpejlYV2wzTGlGNlRqZ1I4RXhweDBkRWZpVy1XV1pDQjh6N0FSSDRRUVExM3NIcGhJYkNLQlNjd1I5Z2J6Nk95MHdheUlaemJ0aHVFcWpIZHA3eDdQR3VWMXl2V21xSHhFV2lsa3paOUY2YkhQWmI?oc=5",
+    "source": "CNET",
+    "date": "2026-10-08T16:50:00+00:00"
+   },
+   {
     "title": "Bambu Lab’s 3D printing patent application for a new heatbed design may improve peeling issues — replacement costs could possibly rise as a consequence",
     "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNOTZWc3FUbE9yZ2xyTjREakFMQXFrNTNGRGZjOE1XZ1BzVlFzaDRhME9kUUt1bDB0NGY3a0o1SDFHTzlJbEl5MmZZY1lDYmdwb0tOWmJkZk4xaEk4akwzdTVPaElzS3RNbHpxLUVGZWJic2JXallSU29oMEtVUEtETnpzTGF5THptYXNFdUtZelVkNUFDc2VRMGRCMFNKeHpnQTVJSUx2ZElYSEdMYTdsWmV4TVZBQXEwaDhFV0VCWW41Yks4bUNZTnhVT0JXOEExNnlDMWZhZlA3cjJHMWRZMkotcENhSlM2Z1NyN2wxYUJ1b3RuekpqbHd0UTFoN1FKYVNFQXFIaThKREhGaUZqOFJjN09lelVu?oc=5",
     "source": "Tom's Hardware",
     "date": "2026-10-08T14:11:49+00:00"
-   },
-   {
-    "title": "Bambu Lab launches Halloween 3D printer sale with up to 30% off — P1S plunges to $399 alongside $250 off the H2D with AMS bundle, plus bulk spool discounts and pumpkin-themed bundles",
-    "link": "https://news.google.com/rss/articles/CBMivgJBVV95cUxOUTJGTXFOQkN0WlRzdHozQ2FJTUN2dEFiRHdoX2I0ejNjclN3SnhqczhYb182V1dSS09hOEo0SWxLaDk3S2JRZWVFRHgzTlIyak5xVndZN2k3bUxLQkVvR0tIMlphbTFWUm9BVERHcEpJeTlRZHE4VnZkWXlJemdtRWljSmZaZ0hneFZ0VmpTVmlaRDE5T0d1S29zSVhWYlBxbHVvUm5GejR0UTQxLUxPMmxrWHQ0NnBQOGtJVFN3anY1VUNxWTZwbUtNaFlsWkFtWVJvZU1GenppeHZpQkd4b05MdnJrQnhhQk5uMVhnR2FXQlJOUzhyWlc0cF91Qmp6cTZfcWRaZ1dNbHZMZEM0eHNLYzBBUjZXbDRuV2RWam5fZFVRRy03V1VmVnBRR2NOTXZKMUE1dEFsX2l5N1E?oc=5",
-    "source": "Tom's Hardware",
-    "date": "2026-10-03T12:50:00+00:00"
    },
    {
     "title": "Texas jury hits Bambu Lab with $27.6M verdict in Stratasys patent fight — X1, P1, and A1 printers found to infringe prime tower and bed-leveling tech",
@@ -1471,6 +1471,12 @@
   ],
   "roadtrips": [
    {
+    "title": "Zion National Park, Springdale in flash flood warning",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQTFNCZmF5NFlwTjZ4UTJhQ0V3UzcwanRPbGI1dXlSaG5XM0UzaDVPWmJyU0VtQnJlVHlJQVdkVG5ObmVBbGhwRDlCODhvQkE2cHZpQ0t3dkxKV0FRLXI0REY0QS1jTE1veXJvSmhMMmdFTzdRSkgybjNtQ2Z1QlVJZmhjLWpBcWZ2UDdoSk0xd2dHZ1Bx0gGaAUFVX3lxTE1ZMzJ1cXZLcm5yTWpFRjNXYjhNM0RsVjM5d0pnemFlVXlHUUV3STFMWU5BUUR0YXhBckFSLTNoMlU4UGZiN0h1QWRZUFBiZzUtUHJCNE1iOGNsWERHSmllaHpvcndGVUlFcjQ1YkpXSDFYNUVkWXRSYVpxTWUzaC1XSERtQWpnakoxYkI0MWQ4clNmRVBpVGh5QWc?oc=5",
+    "source": "ABC4 Utah",
+    "date": "2026-10-11T21:38:31+00:00"
+   },
+   {
     "title": "Bulldogs Pick Up Shutout Win During Nebraska Road Trip",
     "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPS3hQMWpEMUw3RkphNEVBRFdQOS1ZV194Z0pqSVhTRGJ1WndjcnRub0V1enM3UWV3U1ZVSWtkeVRaczZCR1pTV3dwMHVpeDRmM203RFN1bGtBdU9XTFNWd0JKSXBIeFpFcmVRSjlTSVlxRGNCSlpqWXNNRVowWDhqN0ppLTdtVW54bzNOSXpNUFZUTGZhMDUxaVZuVmJNM3JUeUF3TFlBR09zMHh6bVpIUm5kVTVCOTF1aWIzeklkZjltdERRdjdkZ3FZU0hJNy1KWXc?oc=5",
     "source": "adrianbulldogs.com",
@@ -1487,12 +1493,6 @@
     "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1veUd5dk9tQnNoeWRzTWgxbnNLY0FKMjByLVRhTkQ3NUtUVk1tSG5JZVZVTTNEQ0ZPNnVDZW1QdXhodjFtM0NTNmkxbExYY1M3SGZvWkhTc1F2cTU5eFg4b0tteWhJUFFxM0E?oc=5",
     "source": "EarthSky",
     "date": "2026-10-11T17:21:04+00:00"
-   },
-   {
-    "title": "11 national park drives with big views and easy stops for fall",
-    "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNZDZaMWJYQWxwQzRid2NoSXdYejBBSU9KTTh2RVMxZDZfc2FiR3djMHVtaE84b19XVDM2VXJUTGQxYkZ4ZzFQTEJGWGpReU13ZDRpZm9MdUcwWGYxZnFvNWtGeHBrQzh1QWVYMDlKcHBvQlFWWF9YaU9jc1RQQWdManVNUzV5X2lXLU9NMkNvbWtzeU84cllURlNWam1VRF9WZ1Q4eWNuMnFWWjVRRHpweTlyS0VWcG1OVk9UYw?oc=5",
-    "source": "Yahoo Creators",
-    "date": "2026-10-11T14:30:00+00:00"
    },
    {
     "title": "2026 Honda Prelude Road Trip Review: Our Hybrid Coupe Shows Its Sweeter Side",
@@ -1763,6 +1763,496 @@
     "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1JZy1xcGlCNENkVXBSUmk4cWk4NFQtZ0NGeE5VRkJjYWp0VVNsTzhjQnkzTWZxTVJMWHVmaGZvbDR5WlNQckNZQ2pNSGFLRGJra2FaLWlCMU43THRZUGw1QVJ6ZjhnRURJdG91dVBPMXhKVnlsTEZhNUVIQQ?oc=5",
     "source": "Strike Magazines",
     "date": "2026-10-08T16:00:18+00:00"
+   }
+  ],
+  "sd-today": [
+   {
+    "title": "San Diego Climate Week Events",
+    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQVVU2Nzc0d014YkpQODZWOXcyX1J0Slc5cFBiU2RTaDVfNGMxSnNpX0RIa3Y0d3dLc0xaUnZTbzVxdS1mTzZnQ0lBckxhMzdNdkpDLVBVNVZJdHZUNVdvcDdvbDktV0wyWjVBcVNDVy15T0JueHNRbDUxYU5lWmZlQWtpS3Z0UVp2OFB6RFNnSDBENWVUV2V5U1I0dnVaN19SUGhRX3Rnd0FTVGlNcVlkY08tTnZ5dEx3RFdtTXpkYWpVdw?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-10-07T19:31:00+00:00"
+   },
+   {
+    "title": "GM Today Events - San Diego Padres at Milwaukee Brewers (NLDS Game 2, Milwaukee Home Game 2) Parking",
+    "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNeGkzbUFpazlMMnNzVzJiU3dMa0R6cjdaeUtiOG5zZjl2MUN1aVdoS1lNZmxqaE1Wd0hwRTJhM1lCMTZSXzd5aDZGeXFuRTlsN3Q4T0IxZXFRWV9tTmtOMUNYTTFDcHZvQ2R4eVZxZkNBZndpNnNWbk1NMktyWDFUYWU4VUN3ZS02dllRdk4xWVEzWng5SlRmU1hseDg2VVZXYlVwY2xWZWFYSU9NU3Jab2lKRHFtVF9MVVFMa1Q3NG9ZU1pOZ0t5Y2pibG5LMjlpN1dQSnVpdmozSVZWRTMzd01MWjg?oc=5",
+    "source": "Greater Milwaukee Today",
+    "date": "2026-10-04T20:25:04+00:00"
+   },
+   {
+    "title": "San Diego Weekend Guide Oct. 2-4: Cultural convergence kicks off the month",
+    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxORGk0STl0Mm9tclZDS29yMU5jRkJURExOZVhBTmE2T1I3ZFhpUGNuM2xEbE9NUTIxU1FWLW5wQVRYU21sbzdRSmdiQURKTXZaaVlBd0R3czdzQ2JiRHM2YzFHNEdvRDlqQnJkQWg1UnBld3BaTlFJeTlkZElSbzRjNGJIRWpPMV8zeEtmbTBQXzBEU3ItMWJHam9mWE5wbVRmaFNZZUh4cllSeGN1?oc=5",
+    "source": "Times of San Diego",
+    "date": "2026-10-01T20:00:00+00:00"
+   },
+   {
+    "title": "San Diego Climate Week 2026",
+    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNNEpZQTdGd2RWX2ttVXFsQjdQbmlDVmV6cjdVUzBOc0IyYldiY2xpc3lQOENnOGkxaEZ5bjFfem9hYV9lWDFjQXF5Mkgzd0N4dXpqYjJSbWJEVE9UaUFsb1JRMGFNd1hjSThpR3N3UEZ1WXUxRDJadVZvbVJDSVJfbk81c0tsYm01YWc4dDlid3NZRWphOU9nSUZsTQ?oc=5",
+    "source": "SanDiegoCounty.gov",
+    "date": "2026-09-18T21:38:08+00:00"
+   },
+   {
+    "title": "Celebrations planned across San Diego County to honor Mexican Independence Day",
+    "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPay1KeUtSQjFESG1iRWRtaHRYX3ZsVVg2ZDBpRm5xUndXMll2bC1iRzBKNFFhMEtpZW1jMkh4U1B2Qi1Wb1owRVRNdmhGcWs0ZDN2bk41MjFnVXJBV3JrRm5rWGFrWjhWU0cxaDljb0hlZU9lWGRibUVBdjVUUkFRbU4yQXJSWlpzU0IySXNMMzVtZ3lYeUNDODJpZjM0a2Q4NmtIS1V3anc4SGRNaWZVVWNCbnpKRDRiNnFROWpGaGzSAcgBQVVfeXFMTjNaUVQ4clJxam1LekpZaE1xbTBxaExJeE1DeGl6NExENS1Sc0pEZE1hbGtYVUZNYTZ5bzFFNUkxbTVGbVVvZlFGWXp2NEVKTHBqZkRTaWJjcTduTTd6YzZQYWJUNE1vSFdIOWRldlBWSmpocmZ3RllCY1dGZ1dLU1Bnd09HUFdNeEQ4UzZyZDY2UEFza1RXYW1yYTBHU3FRM0ExMV9sRHhzR3FaRGtPbFo4SXo5amNqTDA1eGJiNUZrUy14ZDVTV00?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-09-12T07:00:00+00:00"
+   },
+   {
+    "title": "8 things to do in San Diego this weekend",
+    "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObmI5NDhlelV0WWpGdjlrQ0dZWTdpYXZwWVBWZGhyT05CeFJydmNXQkNKVncybTZjaGtWNzBueDEwdmVrNHZIaWxSOWF3ZWp0dndDZ21EZDZvbkpmMkRFRWJFcHg0OTZkZG1EeUtUMG9GZVJwcFZoMmIydWRzcUkyeUFYaEdFQ0psNUo0VFdB0gGTAUFVX3lxTE8zOHpxMGpQUUxtZWRPOFF6TWtfZTBiSmZ3aHM3LTI1SEFoVW5MWTBWN0ZaZ0V1MUVrdzg1dHdzcy1PZmdpME5UOFZ4c2I5YXZ3UzdLZ2JOT1hUbHp5MmVTeE9rWG9WanZUUk5OZlg4TEJQdUN0MDEydzlaYnF3VlI3Q09pZFFDYldPWmJPZEFjMFk3TQ?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-08-28T07:00:00+00:00"
+   },
+   {
+    "title": "No Comic-Con badge? Here are some standout off-site events in San Diego",
+    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQalRYR3BEbWRtM3A0bE40bFp2RmpELUhnT0pOVUh6bFByZ3M3eUlXbzVfZmpGZ0J5UjFRNkdEbmx2SG56Q2VKX0JzOEJHa0l4N0MydDd6elJ3cVdVcGZYMWdEVFZzNVhzOGtvZmYtZjFWM05rckhNOURhZzN4QTRTSWRUYXVBZld6b3lPQjhpWXZHTW54TXBVaA?oc=5",
+    "source": "KPBS",
+    "date": "2026-07-21T07:00:00+00:00"
+   },
+   {
+    "title": "18 Things to Do in San Diego This Weekend: October 6-11",
+    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNNHZoYk5KNVFNUXZJNWlRLV9UREhSSEt6NUpxRGRjclFlQjRkVzZGaWV0NkJuUEpZSlNhYTRDM2ZiUGtCbzRkRDVYc29qUXVHS1Iwdmk2YXl5T0RIeFZjZ3BrU3l5T3FRSi12eE1wRGwwdElseXNEYkFJbnhJNTZadTJ0dw?oc=5",
+    "source": "San Diego Magazine",
+    "date": "2026-07-08T20:16:45+00:00"
+   }
+  ],
+  "sd-week": [
+   {
+    "title": "Remarkable weather weekend ahead as Tropical Storm Rachel approaches San Diego and early-season trough ends record-breaking autumn heatwave",
+    "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1zR2RWS0poZ05BUVRIS0N3cmZqZmZacnpCZ1ZieS1QT2d5ZUp6YmZQWlNJVEFYVUpBWlctVlRiUWx3aG8zQ2dQcDNYRy0zNGc?oc=5",
+    "source": "Weather West",
+    "date": "2026-10-10T02:41:35+00:00"
+   },
+   {
+    "title": "San Diego Public Library Promotes Literary Accessibility and Freedom During Banned Books Week",
+    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNbE00UGt1VWJPU0RGd0ZaSFBmUEZGaXU3eVIxRWRYZzh5NW5UcW9nTkZLUG1oc2xic0tVaEhrMTBzYVA1d3V5TlJjNXlyLVplemZ4QzVUaUo4OG00YV9HdlZvM2VZYi1jeUFUOXBwSFRnSHVyUEdQVW9OeXpEeGFTU2hCSTlkTFVBaVUtakdhSFJkV3ZHVEpJdFZRZHFETU00Ym1FY1dhR3pkTVBpTXhJQUVIakxtS0NFQnZ0Z0dLa2pWdw?oc=5",
+    "source": "Inside San Diego",
+    "date": "2026-10-08T22:06:08+00:00"
+   },
+   {
+    "title": "Oktoberfest and a haunted train headline San Diego's weekend",
+    "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQV2NieFZ5dE1FU3FITUpteHh6S0RVczVjeDN6OEhIUThUbjNHenlNX2syNGdzVGNQVXcwWmFWRDlsQVFCVXo0Z1R5V0FaU0hxNDE4aXd6a2Iwd3ZMUW9HY3E1R0N3UWh5UjJHdUh0VjlfREZxcmJYb1lWWFI0QXZRalA1ME53Sm1LWjJlNjFmeDNEOTNhSmU4cjFCZVczOXpJTUd1QTVkdDdSQ3dCbGc?oc=5",
+    "source": "Axios",
+    "date": "2026-10-08T21:19:38+00:00"
+   },
+   {
+    "title": "San Diego Weekend Guide Oct. 9-11: Cool things to do as city stops sizzling",
+    "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPREFHQmFZLUF4VVpqTXVMOVFHQW9SUVE2RXJnZi1uVm9pVDRFcmRtTlFYWURGcTVBMmtyVF9XVDYtQmVyY3VLX01UOEhpYTkxUFMzRnBsekVHdmVieGtOekxPS2kxSF9ISU9rY2xQTDRZeWI2Tmg0ZjdlelVVVmU4dUVBNDJMeUhud0FsalpLaDgyMms?oc=5",
+    "source": "Times of San Diego",
+    "date": "2026-10-08T20:00:00+00:00"
+   },
+   {
+    "title": "Top 5 weekend arts events in San Diego: 'Ripcord,' jazz and art at the human scale",
+    "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOcVZiWG9iUWtFSmRONzRPbm45UHByUWVXdmhmU2wtdXBZVDZpUkZHMGtETk5qZ0Vaak9tdmNfMFBXdFpzRGF2cUdQOWcteGlNX0ZVT3FwZ1VqZWUwX2FKY21DLTF1RDVRVzNzRERQbXJ5Vnd2Q1Z3dlJhb2o0Zi05dWc3b1JhdEczYnduWk1YR3RTcUhkZ1hCdXdTZ2NSVW9kU0swUFkyR21wZjRJNVdzZHNTRU9HUWd1cjdYeWZnNGhvNXNRTGdR?oc=5",
+    "source": "KPBS",
+    "date": "2026-10-07T20:13:00+00:00"
+   },
+   {
+    "title": "The best things to do this weekend in San Diego: Oct. 9-11",
+    "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTkJKQnF2WThKaFpsV2VjVHc3Q0ZPaGhNWjhFUklPOGx6V1BTWGhidG9SeElPbUliU2pHaThoaDlJMnZRdnNmUFlycmNNeDhvTVI5UDlHZFI3OHd1NkZUZDJyUU1tSVY0T214R24yZUpmY0JpUjlMZmNTX1pEcDZtUERqcjMxSEw0eUJFd3p2M1p0UUpUaGQ3aktkaWw4RmRpbEZsOG1SdzA?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-10-07T20:00:42+00:00"
+   },
+   {
+    "title": "San Diego Climate Week Events",
+    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQVVU2Nzc0d014YkpQODZWOXcyX1J0Slc5cFBiU2RTaDVfNGMxSnNpX0RIa3Y0d3dLc0xaUnZTbzVxdS1mTzZnQ0lBckxhMzdNdkpDLVBVNVZJdHZUNVdvcDdvbDktV0wyWjVBcVNDVy15T0JueHNRbDUxYU5lWmZlQWtpS3Z0UVp2OFB6RFNnSDBENWVUV2V5U1I0dnVaN19SUGhRX3Rnd0FTVGlNcVlkY08tTnZ5dEx3RFdtTXpkYWpVdw?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-10-07T19:31:00+00:00"
+   },
+   {
+    "title": "The Best Things to Do in San Diego: October 2026",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOUGtTMmE5Y3JlNUpHZFlaS3FDai15RWhod1plYkt5ZlZFSzBmX2paN2RoZ2ZURWtuenQ1d1ZrRnhwTUVMTlJNRUdVRUZsUC1FZDZiT01pUzhXcXFsMjV5OVhRMEM2VnF0cXNETE4tcFdxSkFDc3Y3UFExNkVSVFlsVHcxbnJWZFFTMXlzancxZ2ZxU0Nk?oc=5",
+    "source": "San Diego Magazine",
+    "date": "2026-09-28T20:19:05+00:00"
+   }
+  ],
+  "sd-mtb": [
+   {
+    "title": "Firefighters Called to Tackle Fire at Atherton Bikes Headquarters",
+    "link": "https://www.pinkbike.com/news/firefighters-called-to-tackle-fire-at-atherton-bikes-headquarters.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Photo Epic: 2026 Red Bull Rampage Men's Finals",
+    "link": "https://www.pinkbike.com/news/photo-epic-2026-red-bull-rampage-mens-finals.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Natasha Bradley Shares Injury Update After Canyon Gap Crash at Red Bull Rampage",
+    "link": "https://www.pinkbike.com/news/natasha-bradley-shares-injury-update-after-canyon-gap-crash-at-red-bull-rampage.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Video: 2026 Red Bull Rampage Men's Highlights",
+    "link": "https://www.pinkbike.com/news/video-2026-red-bull-rampage-mens-highlights.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Video: 10 Top Scoring Runs from Red Bull Rampage 2026",
+    "link": "https://www.pinkbike.com/news/video-10-top-scoring-runs-from-red-bull-rampage-2026.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-11T07:00:00+00:00"
+   },
+   {
+    "title": "Results: Red Bull Rampage 2026 Men's Finals Canceled Due to Adverse Weather Conditions",
+    "link": "https://www.pinkbike.com/news/results-red-bull-rampage-2026-mens-finals.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-10T07:00:00+00:00"
+   },
+   {
+    "title": "Pinkbike Poll: Who are the Unofficial Red Bull Rampage Pinkbike's Choice Winners?",
+    "link": "https://www.pinkbike.com/news/pinkbike-poll-who-are-the-unofficial-red-bull-rampage-pinkbikes-choice-winners3.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-10T07:00:00+00:00"
+   },
+   {
+    "title": "Replay: Men's Finals at Red Bull Rampage 2026",
+    "link": "https://www.pinkbike.com/news/replay-mens-finals-at-red-bull-rampage-2026.html?trk=rss",
+    "source": "Pinkbike",
+    "date": "2026-10-10T07:00:00+00:00"
+   },
+   {
+    "title": "IMBA Announces Trail Accelerator Grant Recipients for 2026",
+    "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPSDhJRXF1cDJHVEYxYi1IOXJHaXlDS2NFUk1ISVFaMUtrQ2JGUElGQmF3QmNHRnF2ZVVRRFdyekVoVXhpdHRpVnNtS3ctdGRULXVvSTZPMWF1Tk1qVFlfQjRENTZFb1FZMGVrUDZNT0NwQ3VyWGxvcHJTaGM1d2w0VzNudC05YUtGZ01qZGwzLVVEYjg?oc=5",
+    "source": "International Mountain Bicycling Association | IMBA",
+    "date": "2026-10-08T07:00:00+00:00"
+   },
+   {
+    "title": "San Diego Police investigating deadly hit-and-run crash in Egger Highlands neighborhood",
+    "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPR1lCQjNaUUFZTU1rd2h0T3ljRGxudElKNWtvTUJnNnhFemNMeDk5VWJiZGcyRjBtWUwyUlVXTVEySHFBSkhEbUtSR2MyUEtPRmdTM05POVRyaTZackdzbWtidENEYXdOU3RWdTZsOUQ4cW5wVWw4WS1JYmprM1o5eXRxMmZ3YXFFM0V4VUYxaG1ieWhsdlVXTXNKdkhxOS1KYnItbzNzU1d1cHFMZnFHTG8zSmFTaFdzZkprNTRoRG9HNGhLd2toeUtjYTB4QTF3M3dNbjJqSGVWUlFrVkJUNkhxaThZb1R0VXVkTmoyQ3plQ0J3?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-09-23T07:00:00+00:00"
+   },
+   {
+    "title": "Trail cameras capture mountain lion cubs and moms across San Diego County",
+    "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYTVsekpieXdvb3JqS1F1Ul81aFhfTWdXUVpRaF9iajdMU1pscUM3dVY3c2FrV2VRRlE0U0VYZ2JpUUVJbmxrRlBwM2FrYU9Bc1dIZHhrWVFMSlNmdFlCbTZmX2lnOWxlZlNrM0QxQTJ0U2NPaVYzWGVZZ1p3eVNYMk9lU1RIdk4zaUNYdmJLWWtLTE9FRDBSdEpaY1djLWluR0FvT1VpMmdITmRXX3M0XzF3?oc=5",
+    "source": "10News.com",
+    "date": "2026-08-20T07:00:00+00:00"
+   },
+   {
+    "title": "7 things to know if you see a mountain lion IRL",
+    "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPcEJCb2pJVnJxazcyXzhZNDlWQjMxcHczczhUTF9xdHJKVjUwNUx2RVdiSGczMFlsOWw0NENTdmtTRDBiSlFqZ1JPdU92Q1EwRTFNcHF6WnJKVlQzSUV5c0xNRjlFMTNlRUkweFVGbDFfQ2haTVlEY0JDOFVmbkxrM1U5dTg4dlBY?oc=5",
+    "source": "Daylight San Diego",
+    "date": "2026-08-05T07:00:00+00:00"
+   },
+   {
+    "title": "Pumping the brakes on e-bikes: Escondido, Carlsbad and San Diego all look to limit dangers",
+    "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNZnA0Mzl3T1pNNXp5TEFmT1NUMUdtSVhhX3hiRWtuOWRCT1VvUEkwWnp2WFplSzFmTHNMTzRwM0tYOEEtMnpVaVB6MkxQY096Z2RuZ3ZWX1BEWmlGdG5oSDJ6eDR3aF9QTmhiNWZZQVhfb0UwaUtKMHdXOEQzcV9FdDZDMHlYWGhlUVE?oc=5",
+    "source": "inewsource",
+    "date": "2026-06-25T07:00:00+00:00"
+   },
+   {
+    "title": "Hike of the week: Skip the crowds at Iron Mountain and opt for this nearby Poway loop",
+    "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQcEhZSXlpejRWNUZLTVRPX2JXR2E5d01RT2hxMGVZeDB3X080cWpLYmFDRVA3LWhtNWhoYjVDY0Utd2ZjcHFqdENKZWk1b01oUEQyNHA3MHZ0aWtLbVVLSGUxcWF0M0h0R0I2RndlUzBSNFB2RTFxSzZZU3E5SlZMc3RuSXYydDV1N05RdXhPZG1QRTBkcTVZYmpqR0tkazU4Q05HbUhVRDNEUnpRejdPRVRrWVI4TVBPeXlfTzRQY3ZQYmdUc1puaWdQVmFPdw?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-05-08T07:00:00+00:00"
+   },
+   {
+    "title": "New hiking trail connects Mission Valley and Serra Mesa after decades of delay",
+    "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNUWpKUi1vUkIwMzh5S214LWpsa3Y5aERpWjhNZjNWNDZqcjMzbE9TZHFOeUtLSGNlU1p0dXY4b29xbjh4VXJnZmdpbmZ3cmVhR0JHUWJsZ1JFX2pVbC0yWDJXX2ZUemF4VG9rV3F1c05ob1Zkb00tMURpakpPdkZhalMyTjZXQnpDengydDBqNWhid2RSOWtRMW1XcjNoM0piNjlSNGpEaW5JN05aUHhseWNFTUkxTWPSAb8BQVVfeXFMTjRGcVY1bmxnSW9hbGc5V0x0S0N2cjB4MUNVd3ZBQW9RZjAxQlE0Y1o5VWticFJ0Sy1jeHBuWmxBcUtST1hwOG1wM3lWZmJ3Zkd2ZC1pRjNqbHBpUGtTTXRzWXF3OFBkNXhGSXE2RzZNUGN2OER5M3NrT0dRLVk0YlYxWkRVTWd0bkZWck81dGx3RUh2UDhUaWtPLUpsdkZZRmNKMXVKTy1vLUZLWTlyQ1pvY3pXUlEtaWxxQVZVSDg?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-04-17T07:00:00+00:00"
+   },
+   {
+    "title": "Local mountain biker uses passion to win, help others race",
+    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNOFJBYXdsR0xXVzFyTk85YVR5TFZ5YS1NV0xxSXc2amtES0p1X0NfSHprZERkWmUyN1BaVEF2ZHdnSzl3MzdpV1EwdTIyNTRpeDNVbDhoZlYtcVlIcUxIczIxMXFNdXdyck9JZDVybjI3ZC15MGVBd19xYjNrOHZxTVpQdGIxZ0JKWXdxVGcta2VnOW94ZGtrY2IwLWRhM2Y5d3F6WWxFajV5ZThXYk5USnJyb9IBuAFBVV95cUxOWVdqTG9tYnpBRGJ1bldaQ0p4SHZ2ODZMSllEcWRIY1lZZXBGbXI3V2FQWUVpNzh2SmJzVGpvZVAxZW5Mb2VwVjJYSm9uZG1famQtQ1ZwTXBiOUdaM1J1OXE0T1hqeVlpcTA4NGZKZm1jZFh1TGlYSlNUckphejNWUFF4ZUZGbi04Y2dnUlFsaGxtUDdSdXAxWXJXVW9RcWo5NVI0TFl4LVR6d1BrTHBhUUt5UVNyYWZk?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-03-18T07:00:00+00:00"
+   }
+  ],
+  "sd-hike": [
+   {
+    "title": "Nearly $1M granted to replace wooden steps on Stairway to Heaven",
+    "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQb2xDMGJfM2VxYVZXZXA1OUZiR0ZjcTVjOVZfZDJua1pMSlVmSGxpendrdmtZSUk3Q0M3V29EV1dSUXNQWHFpcUo3ZHU4ZTdyNmdyT3lyWUZiN3NGbHdQd3NWV2lmRnVPeXJ6TlJoYTRqMzFha2pOcUZSMzJiZm5RbXhnbmFodXhEdWxsTHB2WW5DeDA4R2c5QjM5U0pLeXBZbTFNWHpCVThsWllYX19oRl9FWXoxbVJsRUpaSNIBxAFBVV95cUxQRm5XQnlUcE1uenh5MFQxQlVLem1HSFZBbzk4MHh1NmNER0dpaWtxUlBSbzdoQ3luMDBOTzItN2ZOWlNtZVdKSExHMlBKZ3hld2wtaU9MbkZsTkxsLUFFbjVGaU1jVVhzQmc0eUNoUUp3S0ZqOVQxSkg4QVh6WlZfZ3BXcmdndWYyWmJSSXFxamFwYkNwekVfY1Q1eVhuSWpTZXhDX2p1b1BJMVpFbDhYTWRsSE80bHhvOGh1SkRsWjF5aXN3?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-10-09T17:33:34+00:00"
+   },
+   {
+    "title": "Popular San Diego hiking spot begins months-long closure",
+    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNM2c0ZEhQVERQSk5fY3czOXZoTFN4d0JNejdEZzFSMkx4akJBYzJ6T2dhWUdMSksyLUlVYjl6ak85MzQwOVBrb3dXUkNmV3ZKOG51OGQwellWQnhod1B6ejNObFFjT2REaWt1OFgtZXNpY2Z3TW5mRW1DZ09BOUFmXw?oc=5",
+    "source": "Los Angeles Times",
+    "date": "2026-09-21T07:00:00+00:00"
+   },
+   {
+    "title": "Popular San Diego hiking spot shuts down for long-awaited bathroom and infrastructure upgrades",
+    "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQNnJBMkJMRGRFcHltRjZCRXgwZTdEWjlwbTFQek1mUlVwU3pQVWdBcWZyc01Yc3IyeFVPd3QtOEIxT1VmRnRvSEdDSHBjUGJDUWhKMVVid2RjZTRkc1JnWDdxVkZOUHRqSXR1ZTM1SlBNaTcxc1FMNWk0dmxCZHluR0ZPRVVGeGhwaDVvMDByQ0NGRjhiNXl1SGIxXzRlNlcwR3JDSlMtMGp3bnZCNmNlWHRFcUx1SlJtcXVGeks5RWgzNUF6dVExU01RMGtKQXpNLVNHTDBZMFNGdHk3aEN6TXNzcW1pTlN3VDNnM0VPeVF6X0NZdFE?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-09-17T07:00:00+00:00"
+   },
+   {
+    "title": "Hike of the week: 5 of my favorite hikes in San Diego County",
+    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPMm5QNTFmY2w2bFhxd3RfWVNmTFNwNzI4ZjhvdWR4dDRXaVhCNWVHYUpPa2RxclMtWmJ4NXBCRzdUMS1BTWtvVHRtUHQwOW1ESm5Ka3hDcDBTVXRJVEJjcTJ3bjVzZ0djMEp4MTJFOWl4OE5fWkJETFRXTkE1WlVuQUNIWVc3VDF4RWtUaU1UUE9rZUxKMDNjejBpSnl5MTkwRjRHYVlXRkJnNXRa?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-08-20T07:00:00+00:00"
+   },
+   {
+    "title": "Two popular but strenuous hiking areas in county temporarily closed due to excessive heat",
+    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNWG9fb3Z3Y1FSQjBUR1lpWFVXLXhjd1hZWVVQckYteFRaRWRUQmtxNXVjempmd2UxM0REVzVnN3VWM1hDbkVaSmtUVTk3ZWRsZm9wa1BQNDlwTUE5bTVFV2JoY1pQazRkdTd4UHIzMzg5MWhNVGgtQllJdUh4N0hfY3BTNWI5dzRiNHhGdmJNdzFoWGtZU0ZkUjRmZ3R4VkFsUTVoVkZPbmp6Zm1XclRIaFZBX2RpZWloc0pnYlRyV3F5ckVQQjhUVVJ4VVlTSkF6NFE?oc=5",
+    "source": "Times of San Diego",
+    "date": "2026-08-10T07:00:00+00:00"
+   },
+   {
+    "title": "County Closes Three Parks in August to Protect Hikers from Heat",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPa055dVotd0JtWk1aN3JZLWZNVDVJTjBST2lSVWowTW9SWHhxV0w4R3QxTkhKWHNxUHEtVnRzU21BOURiTDZwbWMtQzZremFaekdqY3lXd0xhOXNsSXgtN3l4aW9kN3VyRmtMUHpzaEVxcERFd2x3NzB6aDZ1aGYzZGV1bzU2a0dCM0c4WmlIZjYxNEpmTHRsTE9CRkNYUkpM0gGmAUFVX3lxTE54VTZCQmRkdjNsQkE3Z242RjdpcDd4NE9CNWpqRE1VQW9DTUJ3WGFNRnlCWE56LV9ydDlEeHhQTFJ3M1lIcC12YTdqdVYxT0xuX1JMTHJsT1I2ZnlCY2hZNWh6MEI5aHc4Wm5Oc0NUM1NuLVk1d19rYkhUOEZ3bURKUDE0THYtZUFMS1VoN0k5NW5KQ2NGYnZuUUtLQ2lla0RGNl9SS0E?oc=5",
+    "source": "San Diego County News Center",
+    "date": "2026-07-30T07:00:00+00:00"
+   },
+   {
+    "title": "Heat wave triggers trail closures and rescues in San Diego",
+    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQRjJFOENBMzBjTTkyM05kbTkzcldjUXRTU3JMYk1pdURTTmpoekxZanBaek1ld3BPUC1FaTNsS3RIMWZfRUFpbW1PMkhWX3hQWlphVjVOSks0cVZBWTlIUnpkeXhxLWk1MFFDWjBNX0J6VElLMFRabmE2bzYtdDl5OGpvdkRnLVg3SG1oNldIdXJ4eElmaEVnRzhQOGNEWXNzVFRrU1gyZU1OWEgtWktN0gG0AUFVX3lxTE9yU0FDSGpBX3J0T1NHZmVSOW4zS3JoS2w2RTlzeWZqaVp5T09HUUtOeEh1RG9LamZ5bFhvaE1zQlhkcHVVSkpWY0hhQ1NCbGpucERUNWVzNF84Mmh6dzFUNkQxWU85MUNJRmdCdXc4aXFNOEtMaVJNQnR5NVhXVU1TTU9oVk9pVkw5REhUNVlzVFlqMFpMM0JkOFRydHJIWnN0ZEpXV0E4WkNqQU41ZTZGQ2liNw?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-07-30T07:00:00+00:00"
+   },
+   {
+    "title": "Week Three: Goodbye San Diego, Hello Hiker Hunger",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQMU9jb2FzamY0UkVFeXNxbFZ0bTh1dnlTODFGNE50ZEpSMUF0OE1ENDB5bkw5b3pWeThkR3ZkWHB4dGl3TVl3ZEt2M3ZmUUZva3dRM1ZBNExBVTdEMjNGTWp0WU1BVmdhQUtsSE4zdFBLNE5LLUJ4dGVxWXhfV1lSanYzOXdBd1dWbDZ0SFlGb3o?oc=5",
+    "source": "The Trek",
+    "date": "2026-05-25T07:00:00+00:00"
+   }
+  ],
+  "sd-beer": [
+   {
+    "title": "San Diegans strike gold at the Great American Beer Festival",
+    "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9iSXBCY2pCSWFKbkgtV2ZsM3llbFZfMzkxOTJxd0VXR1NvbWZiUTVxUERTdnkxbndLUkVyQnBvZHFGam0wOVFTTGQ0YVE3M1Bhb0diUk5Mcw?oc=5",
+    "source": "San Diego Beer News",
+    "date": "2026-10-11T20:00:09+00:00"
+   },
+   {
+    "title": "New local beer bars offer more than just ales and lagers",
+    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE14YS15R25Lb00xQm5TOTl3MG54WHY3WHNja3ZyUnRVdk5aR29sOElYZDk5ZFFqV3RsbF9Jc1gtTUVZaHR5eno5aGZRN1MtWjVJbXdyc2RwVTRrZUU3ekNUSGdkN2ctdWFILVVvZzZaZnZ0YXBrdFF2cTZR?oc=5",
+    "source": "San Diego Beer News",
+    "date": "2026-10-06T13:04:16+00:00"
+   },
+   {
+    "title": "Prohibition Brewing in Vista closes its doors after over a decade",
+    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNTXhnVUpsdlc4dEpRS0d1NENWV1dqNVJONDhlYTBaMEYwWTNKeFhGQ1hMbWgtOGR4akxidVB2ZlNYRkdYRGJDaDV6RFh4cGNYZUkzb2E1dldOMXdDbnFYb1FNa1FWbG1NdVVnVGpESzdqdlU0YWJYYmlnT1ZURXVXdjdTUjJmX0VzMWJrRG1kN3AwT1lrcF82cDIzbm9pWVp4bF9nRTlpWlBoMWdGRFpmWEdDOXFDc1g0VW9tcXpEWkRzU0pCOFRhNDRBVQ?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-09-06T07:00:00+00:00"
+   },
+   {
+    "title": "Sapporo USA to wind down Stone Brewing-branded operations in Escondido",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNNU5NM3JiTDlDNkZZTjdUMHJtejF3WVRZQ2QtU25TU1RHQVBjM2VGaDVvaVpGMU95dXd3cERZYTE1N0lCcnM5RS0tRi1lWWxDTThUTXZpYXdDNUxKTUFYamFlWU9PTzU5cVFWeGRkV3hlUC05d1pleUhhS2FfRGdzd0NWZHhwNkc4bEhhV0JMVVI2aU1helNsSFFId2RsRWVEUklWM1JGRENCTm93WF9jMUcxdXJpZHNQWlHSAcIBQVVfeXFMT20wZ0s4YU1UdTI3TV93ZjVKT1BqT3RqVTJoQ3ZMMDVKak9UM05DUGdjX255am9FQXd0bXhjV3NTWUJuYVphSl9WU3RCMWlvSGFfTmw5N3Jubzd4cmpWWXBvT29YNWs3Y3pNYmQ0N2xkNVhqZTBVYm13aEV2NWNyZEY4MHdVdkJzYlRsdmY5aTdfOXpyLUhJb3Q2UDVVVVFVYTNQaExpTXlOU2pTRmFJQmF6bzl0UE1ZYWVrRkxITnJyQVE?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-08-25T07:00:00+00:00"
+   },
+   {
+    "title": "Stone Brewing sold to new owners as hundreds of workers face layoffs",
+    "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNSjBPcWhsSzR0NmdHTGpWVE01MXMtcHBwSHIwNTNzaUdYOTBkTmlncGZzeDY1c2Ewc3haVl9adFk2MlRicmU2YnFFVHcxTlYwRFIyaTgyamswelZidnhvRW1VOUdrdDRWclBoTEJKTUJGQl9JdGF0cEZhTFhBXzdLNWJFMTdUYXJDa3JfUkpjWlJXbzVxWG9Eem1YZUpzQUMzenU0YUZWR1lQY3FOLUhNRDJrMUg1dkxDX2RTOWk5N3pQc0gzWXowcXkwOW5NZVpudk9Z?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-08-24T07:00:00+00:00"
+   },
+   {
+    "title": "The Stormy History of Ballast Point Brewing Continues",
+    "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOYll3TlpJMkhsUU42ZFpZeTNUSF9UNzdKVTlSd3RDZ2V2dHdYUHNZM1FfN2poTlVEa2dzcDl6UXZ5QjBJQXQxODh0dXpVSzl5cmMtaG0waEdPQ2NxdmNqZUU5RUxqNE80M0ZGeTlVLVhIVUItNmJndlpuT0NEMW1oc2hOdnFQMktFSFFzckNCYVd2Zw?oc=5",
+    "source": "American Craft Beer",
+    "date": "2026-07-27T07:00:00+00:00"
+   },
+   {
+    "title": "San Marcos opens San Diego County's first non-alcoholic brewery and tasting room",
+    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPUml1ZmR1V3hZazhvUXpmRncxLTk3WkFoWHlQV0w3MzE5Nlg4TEhTUUctRmdkd29yV0RtLTlZNFZvdnJjRFBlTm9lR2x2Uno1VlNhcXhaOW5UWkN0cUxMZm1Fb2VfeVFJZVBWYm51Rm5jR091emF6S0hrV3hmYng4QTNQUF9NR1VWYXlyTUJkYTRVUTBxZ0k5UG9aM3BLdUNNWl9tVHJjOEQ4akpXcGtVd0lURmdLRW8zU250a1VqNXYtN2RfS1VtVlpDeXlQSTlpN3c?oc=5",
+    "source": "10News.com",
+    "date": "2026-07-18T07:00:00+00:00"
+   },
+   {
+    "title": "Award-Winning Ocean Beach Brewery For Sale",
+    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOSVhVdTFmNk9ieWp1SDNBUk1MNUh5eXlndFpCdVB2TmNNVk44a2hLbWVzLW8xRzlEbFlhMUF4UU4tX0VCYzk2cjhycE53ZHFuUXlscnVFdVhRRjk2ckVLNmhPc09LMnRZRkxaLWU1QS1MaFBzVXhSYllQUHZPZlllT0JvSEFSMHVnbk44WjJpNFF5cUFWOXdTTg?oc=5",
+    "source": "San Diego Magazine",
+    "date": "2026-07-14T07:00:00+00:00"
+   }
+  ],
+  "sd-party": [
+   {
+    "title": "La Jolla Symphony & Chorus and Indian music legend Amjad Ali Khan teaming for two concerts",
+    "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPdDd3djVBWDF4dFlGQk9mUFdHVzJsODRsY1lQTW1tMWx6VGZZR0ZscjNJYXAtNE1neV9xUl9hbTNJM3pEb1pVaW9sUnkwN2loc0R0ajQwNzNNYUlJLXhHTFNBejlfUHFzdkUzSG5JbUYtZVBlTElaODRIaGUyd25LSWV3MTB3aWp3WTBOT0FrRERHZno3QW00bkRVUFI0c0MwTmVib1NITUlEYXFVZUVBM0IyaU40Ml8yd3JVVkdkSFEyUU9KUUhjbllGbU1udjlhdG84?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-10-11T15:00:52+00:00"
+   },
+   {
+    "title": "Red Bull New York Add RBNY II Winger Pedro Castro on Short Term Agreement Ahead of Match Against San Diego FC",
+    "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxON2cyd1ZEUlUweXhpUEVsbnljY2ZSMEZmd3N5TW9ZY3RSbnluNkxhNTd2NjlweUZIQ2lLN0N1REQ2VkZYbUo2ZEVrMkJMd1lzY3NNejU3aU9BNUZwQUx2aExDTy1rbXptY05XbUREQkdud2tCWEJ3ci1KaElIb0VIOUJwRjd6NWdES2t6N04wR3EzTXlFeGlHRnhGelRra1BsaUxYWnRaWjlKUzV2ZkRBb3NyeVVRWGdISUR1SzIyWnFoeXR5aEhOak1NS2ZYdUJVLUR5WTdNVktNdEV6YU9R?oc=5",
+    "source": "Red Bull New York",
+    "date": "2026-10-10T20:08:56+00:00"
+   },
+   {
+    "title": "Iowa fugitive worked as a chef in San Diego under an alias for more than a decade",
+    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVGs3aUl0a1NDTFhjeHpLVjFXQlg0SWxpQ05jWmNOdGVydUNudUhKZ1IzenhMY21IZjlidk9GemFWLTVWeTI2RjBwdDVXWldoQUlkZlJaTl96ajFtVV9yRTMxMnk5R1J0NUNfNkJtQ0VKa20tcWlCdVpMMVVIanNVOUtuMlo5RVRid2I3cFNSRE5kTHExVjFwYzlEVUJqRUVkZExoRkRNRngyS1NlMEh0Q3NCSQ?oc=5",
+    "source": "Los Angeles Times",
+    "date": "2026-10-10T12:00:00+00:00"
+   },
+   {
+    "title": "Chef arrested in San Diego 14 years after allegedly fleeing kidnapping charge",
+    "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQZkZjdjZIVE12TEl2U1EwbW9RYXdTMVhnSjh2RzFzWl9FREZ0Y21Oc2FLcHlOTlFsVHFHMDVwSEZZUGllOUVfOGRjVVRNZHlfSGczeVpFeW82b1ZUMW9PWV8wZWtaNERlYi1oME5uZXNrR0N6RzlnbWF3ZFBFNy05c1ZNR0lZdw?oc=5",
+    "source": "SFGATE",
+    "date": "2026-10-08T23:35:40+00:00"
+   },
+   {
+    "title": "Your October San Diego concert calendar is calling",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbUtQS2RIdkNSUEhkbS1xVUo3QU9EYzdFdnlGMk01b2NmaTRLeGZPV1ZEYXg4TEJlTVR2ZUxYdzFNQmJsZDJsckJud1dWNlpDQnZHZ25hMk8zVXlyZE9yLTVIQ0tOYldKTFlfazhHSXc0RS1CQ0l5cmtKd0NuV2xlWjFjN25jRXVHMHJSZ21vTlFiNWhUTHhINGFiQ3FRLVpQWGNnZnduNGtWa2s?oc=5",
+    "source": "Axios",
+    "date": "2026-10-08T13:25:29+00:00"
+   },
+   {
+    "title": "San Diego chef was fugitive in Iowa kidnapping for 14 years, authorities say",
+    "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQUhvTTYwc1ZOOVBEd0VDUmJsMzJNbV91eGJpM0NmRVdXc1NnM2NkVGFjVDBIb3VpSFRjNWc2WXVwcHdkREFZUGFqblJRR2hxeFFVenpETXJhZ3hMejRPQVhuM2M5bm1reGFCbjVGMWR0ZzlwNjA5ZDhPbmp4akY2UDR6SVgtS0IyaGpjTzFLdDVLZHFBa2RLTUdfcVk2S0ZPQ0pyVjNPeGRSR2dZV1NLdEh30gG6AUFVX3lxTE50RWZoTzN0N3l6ZWtDVGMtV1owLV9xaVY3bk1pZmN5LTl1YzBnN3NoN1Y2bmNRdV95SS1IRlZaWTRFX3plQW5iWWk5NVJMUExLeGNIakxOMy1RVlJxSWFhdWREZFJ4NU0tb1U5a19YZXRSdkhmZEJoc091TnRKOUVyWW0tT2NEQmo4M1kyRk83ajlvWGdzb3g4VEw4MVFnUkNOdTFmdDlHcUItc05IdHkzRWQ2V0RXTU03Zw?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-10-08T00:28:28+00:00"
+   },
+   {
+    "title": "San Diego Wave FC Clinches 2026 NWSL Playoff Berth with 2-1 Win over Orlando Pride",
+    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQVy1rd0lrSFZQeG1KTU04NkdyQWV3TnlCVzBqaVNiU3FrcGFQTU1zLUlRbkhqaDFma1Bua04zb2VzOWRuQ3JZQ1lKYUlPUmlNR1pQNWlZRkpMWndlUzNiMXdIQXp6T3paU0FkQlNIQ2lGSFBLUzItb21qdGdrelFLWDV1MXpZaGJTaEZvN1JPdVNaMl9vdEZmYzZrMk5TYm1GRGlpcmdvQjFydFdjUW44?oc=5",
+    "source": "San Diego Wave Fútbol Club",
+    "date": "2026-10-06T00:09:28+00:00"
+   },
+   {
+    "title": "Match Recap: San Diego FC Falls 2-1 to Club Tijuana in Second Annual Baja Cup at Snapdragon Stadium",
+    "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPSGRNUDhqOGc2MlJQQ2FHZGdrWlQzTnlYLTNJNUtfQWFBa19vaGJmeWxyU0ZHbXN4SEZkazEyR2N1OXFOdFdDS2tpTTNicWlIRS1QckdUMGRUTTdhV0N3UC1tLXRrT043ZGJNWHVBMGVhYV9udEhvMjVWZDFhODhKUF81aFFjNzZIRXg5Z3h0eFFoOTJySkdUTHZmbHg4Wl9rTl9CeUZIT19mNFNCc1hucFozN296MnNwVHBrUXVYdi1nUF80dkFzR19n?oc=5",
+    "source": "sandiegofc.com",
+    "date": "2026-09-17T07:00:00+00:00"
+   }
+  ],
+  "sd-fun": [
+   {
+    "title": "Oktoberfest and a haunted train headline San Diego's weekend",
+    "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQV2NieFZ5dE1FU3FITUpteHh6S0RVczVjeDN6OEhIUThUbjNHenlNX2syNGdzVGNQVXcwWmFWRDlsQVFCVXo0Z1R5V0FaU0hxNDE4aXd6a2Iwd3ZMUW9HY3E1R0N3UWh5UjJHdUh0VjlfREZxcmJYb1lWWFI0QXZRalA1ME53Sm1LWjJlNjFmeDNEOTNhSmU4cjFCZVczOXpJTUd1QTVkdDdSQ3dCbGc?oc=5",
+    "source": "Axios",
+    "date": "2026-10-08T21:19:38+00:00"
+   },
+   {
+    "title": "San Diego Weekend Guide Oct. 9-11: Cool things to do as city stops sizzling",
+    "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPREFHQmFZLUF4VVpqTXVMOVFHQW9SUVE2RXJnZi1uVm9pVDRFcmRtTlFYWURGcTVBMmtyVF9XVDYtQmVyY3VLX01UOEhpYTkxUFMzRnBsekVHdmVieGtOekxPS2kxSF9ISU9rY2xQTDRZeWI2Tmg0ZjdlelVVVmU4dUVBNDJMeUhud0FsalpLaDgyMms?oc=5",
+    "source": "Times of San Diego",
+    "date": "2026-10-08T20:00:00+00:00"
+   },
+   {
+    "title": "Weekend Watch October 9-11 | Things to do in San Diego",
+    "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOQnNhTURRaUt3bWtUdXpfX0ZVRmhoY3Exb2ZuYmVVNnFWYXFBZWdkWVVzYmhDU0Y0ejlNTmR3VDNRWEkyMm0xWDNBR2Q2MkNScks0UkNoUUJUU3plNENSSEJlRUt4SnBXWmVNZ04wVlJ6ZG5HZnhuQkdMSzdQblJLeEtJWnBEanFSQkRkZFVLa21sd2h6Ykxma1djY1hza2FZazVwQVNxRzZzVUlFUUZYMTlaMjRPQ0M1R2ZucmJDZ281dUlTSlRSWmlZV0tHTzZNZzZSc0VxSzVtNUpkcnhEVkRaYw?oc=5",
+    "source": "cbs8.com",
+    "date": "2026-10-08T14:01:00+00:00"
+   },
+   {
+    "title": "👻 A Little Saigon night market, theater treasures and a haunted hike: Things to do in San Diego Oct. 8-14",
+    "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPN2ZoX1M4M3F1UVBtcjI2UWphSXN2bkJEV0hYVlZiLUtvNnRQeUdlRjkzMVlCQ29vbGpkOThKZGNkNHB5dFdqZXNBdkhaMm9vNWIxeHJXcXF1WDJvc2tHRndwTW9hMmhBZ1VNSnpVUmRLQnQ3VDR2eTVhRlJKam0xSWR1RzF2U0RXdU5OSHl6VE5ZVk11emktd2RoRjFXMWJiYlZNQnpOSDVYQndwTDVZZHM4VExUeDNYSWJ4VDh5QWd1YUhod19VWkNCRFFqVWc?oc=5",
+    "source": "Daylight San Diego",
+    "date": "2026-10-07T22:48:08+00:00"
+   },
+   {
+    "title": "The best things to do this weekend in San Diego: Oct. 9-11",
+    "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTkJKQnF2WThKaFpsV2VjVHc3Q0ZPaGhNWjhFUklPOGx6V1BTWGhidG9SeElPbUliU2pHaThoaDlJMnZRdnNmUFlycmNNeDhvTVI5UDlHZFI3OHd1NkZUZDJyUU1tSVY0T214R24yZUpmY0JpUjlMZmNTX1pEcDZtUERqcjMxSEw0eUJFd3p2M1p0UUpUaGQ3aktkaWw4RmRpbEZsOG1SdzA?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-10-07T20:00:42+00:00"
+   },
+   {
+    "title": "Things to do this weekend include Julian harvest fest, Barrio art crawl and more",
+    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPTFhXdkcycnFERXFmaHdEeGp1UHhrY3dRZTl1NnVWQVlFamczaUZsZzluQUZmNTIzT0Ytc21ZRElraXp3WFg1bE1EYU1pcGg2TUlIV2E2OTZpd2hkX3kzaV9Hc2J6TDEzMjhkZ2NtWXVRLVFyNjNsN2pUb2FqQjBPbmp1bTFqZ09mMExfbW4wemp6M3hBS0JBc2lpRnV6aDhxQXc0alEzbGwyNWpWekxHbXo0TW1zaDdOcE1mSGFoQ0xSN2xsTlHSAc4BQVVfeXFMTkxCYk9FU2JPRjVkZFFhYUZYeGthTGFkVWJUdmZqUTVWWjFwYXVTU0FqSG1maTBrQXVDOHBjUEhpRWpuTlBra2pLc1J5U0JNdFYzOE84akRTSEU2SG9EbGZjM21PMzdQRXhNbVBZMnRzdS1aY1lTZEFXTkhXTldObi11MHNDSTB4VFRIZnU0bTNPX2FGdG04RnJ0TEY5bnFQRG9GLWpjR3dNTktXMFItNG9Ea3V5MlNaLXJYckNlY3NMc0hNSm1PUW1UbWdCNVE?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-10-07T19:47:40+00:00"
+   },
+   {
+    "title": "The best things to do this week in San Diego: Oct. 5-9",
+    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZlR2Q1VwZzRSZDhrUVNSVmJOaGw0elZPLVJvb2k2Q0pHci1UN085dzR1NHhoSFVKNDh6SmNtdW1HYTNsUDFQN2lKblYyUFlzckR5Ni0zNGZScElPaWlmYUVGZFNjWXZ0OVpxTVJwOHlRWnRmOHVHeXZkN3lORVBlREl2cHRseGpwWU5OakdkRjhNcU5zY2tNcEtvbmlmTlV2ZzdZ?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-10-06T02:34:27+00:00"
+   },
+   {
+    "title": "The Best Things to Do in San Diego: September 2026",
+    "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPMGRzdEFYUE5HTVo5VEVNVXJNdjRCNDRraS1NUTRwb1RkdjhSNEdyZ2dmaTlxYlNzcUtYemsyUXhWbTNVdHFjRDdUMk00ZkhGZ2h3Y3dLM2U1d2hnVHhmS1hNOS1KOXc3NldESWg0V3JyOFpIZm5Gekt2Wnhza0s5R19HOW5zWlJIU3I1cm5YY2hnMTN5ejhZ?oc=5",
+    "source": "San Diego Magazine",
+    "date": "2026-09-26T07:00:00+00:00"
+   }
+  ],
+  "sd-news": [
+   {
+    "title": "Del Mar to host free pedestrian safety workshop with DMCC, UCSD and CHP",
+    "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPY0FXVWM0Z3Zubi1hLUQzOGFKaW5YQ3Vlem1BdnQ5M0tDMlAydG9idGJaX3dmRDdVQ1Iyd0lKenRIbzhNeTZRY215SzBmWUpmczlLOGNJTDZKRnZLb3VpbmFlaFpXd2VWMW1MSEJZMlBXbWY4Wnl4SkI2NnllOUJXZXVvQ3IxZWZsdDMySUc4VjAzQ0xrOE5ja1dXUDRUUkhjUmJ3TExvSW53MllDenFQWG1qOTA0X25wN1pn?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-10-11T21:29:43+00:00"
+   },
+   {
+    "title": "Tragedia en San Carlos: una comunidad enfrenta el dolor y el duelo tras la muerte de la familia Voight",
+    "link": "https://timesofsandiego.com/crime/2026/10/11/tragedia-familia-voight-san-carlos/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T20:37:18+00:00"
+   },
+   {
+    "title": "Why are out-of-state billionaires funding a California voter ID measure?",
+    "link": "https://timesofsandiego.com/politics/2026/10/11/why-are-out-of-state-billionaires-funding-a-california-voter-id-measure/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T19:00:00+00:00"
+   },
+   {
+    "title": "As Post-Tropical Storm Rachel passes, officials say San Diegans should avoid the beaches",
+    "link": "https://timesofsandiego.com/weather/2026/10/11/as-post-tropical-storm-rachel-passes-officials-say-san-diegans-should-avoid-the-beaches/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T18:47:09+00:00"
+   },
+   {
+    "title": "How much rain did Tropical Storm Rachel bring to the San Diego area?",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE05THJKNG9QVF8zZnhJUGw0WmFOZks2VnFkSjdQaVBGdWptc0FKTzRIeG4zTjJMbTJUUFNVdkRHR2JEVkMzUnBySU5yX0oxTkxscW1qNHpnV0pBOTcxaTJDemlCcXVvZDNSRUpvZnY2VDhmSXZtMlAwcGxsNXJmaEHSAYQBQVVfeXFMTmotM2FxeHExTTUtVFVlUE1MUGpDTVc2OGFONGFiOVB4ZkhQaTAzMnpiVWR1cDRaR3U4amFUVXFfOEl3V3RmQ05oX2Znckl1Y0dZWkI1YXh4cUwyaDFWdS1yNkN4OERZUEt2Vk5KcEUyVF9DQ2Y5YkduRGJ3OUM2WEY5Y2Y4?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-10-11T18:35:38+00:00"
+   },
+   {
+    "title": "Padres All-Star Free Agent Wants to Remain in San Diego for 'Many More' Years",
+    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPWHlObDZ2XzhNSHJ4dHVxT250NHV1MlQwdDFybnRWbXB4bEM5ZkppWXRNcWx0RzdENjlTZEwyQTlBVTBkRHVUeW1KZWFtTjZxNWplUE9iYzYzQW1kdmthbndxWnh0bFlqUExzSEs5UDJPcjdFV1JNWEZxWEhyWTBjSGhQNA?oc=5",
+    "source": "Yahoo Sports",
+    "date": "2026-10-11T17:24:00+00:00"
+   },
+   {
+    "title": "How Marni von Wilpert went from a frustrated first-term councilmember to a favorite in one of the country’s biggest Congressional races",
+    "link": "https://timesofsandiego.com/politics/2026/10/11/von-wilpert-ca-48-congressional-race-desmond/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T17:00:00+00:00"
+   },
+   {
+    "title": "Police make 40 felony arrests, recover guns in College Area joint operation",
+    "link": "https://timesofsandiego.com/crime/2026/10/11/police-make-40-felony-arrests-recover-guns-in-college-area-joint-operation/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T16:00:00+00:00"
+   },
+   {
+    "title": "Becerra hasn’t made education a priority. California education leaders aren’t worried",
+    "link": "https://timesofsandiego.com/education/2026/10/11/becerra-hasnt-made-education-a-priority-california-education-leaders-arent-worried/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T15:00:00+00:00"
+   },
+   {
+    "title": "Oregon State overwhelms San Diego State with 66-14 victory in Corvallis",
+    "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQeEVkOTI4am1aSlZtUmIzZ1hST0JPWjZ3RE1WYjZRZEp1aVZoTkdtZTBqU2FDdXFqY094aEdycThnOXVnLU9KOWoyMVZiZUlmSHV6Rm04UzZzLUFDZzhCUWVmVGJuQ2FCNE1WYkRCWUVjSVAtaTQ2cnpiODAxQUVrRG1zS21odVVjandTTWM2UVhGWXNXY1gyR1Z5QWJJcTVJMFdBdlBxU0x0OXpZUTctLUs1clRpcHVQdjFj?oc=5",
+    "source": "OregonLive.com",
+    "date": "2026-10-11T05:32:00+00:00"
+   },
+   {
+    "title": "Rachel-related rainfall expected to continue overnight, tropical storm watch for San Diego still in effect",
+    "link": "https://timesofsandiego.com/weather/2026/10/10/rachel-related-rainfall-expected-to-continue-overnight-tropical-storm-watch-for-san-diego-still-in-effect/",
+    "source": "Times of San Diego",
+    "date": "2026-10-11T00:01:39+00:00"
+   },
+   {
+    "title": "San Diego man sentenced to 12 years in prison for scheme holding immigrants captive for ransom",
+    "link": "https://timesofsandiego.com/crime/2026/10/10/san-diego-man-sentenced-to-12-years-in-prison-for-scheme-holding-immigrants-captive-for-ransom/",
+    "source": "Times of San Diego",
+    "date": "2026-10-10T23:00:00+00:00"
+   },
+   {
+    "title": "Nick Canepa: Baseball in January? That’s one way to fix what’s wrong with the sport",
+    "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOQWpUOWdQSkhrQTJQdnpfUHJnQ0hHb1VMZEIwRjJQOXBTVFJPa0FaQldZR3U5eWU3Z04ySURSVFBMYkR2LXVfN0FQcXVUWXZjaV8yZlAtamM4bVp6NE9USDVicE9YeE5BNDBtOUo2S0JWV0NXbHM4OTBzQnYxMVVSNXhqMEg0QTh6XzNWbV93TGRlbjdzWFNscmdzNE5wdU4zSUIza1V6U0tGeVdzMmxvdGJEZWxBbmdjOUJDcWxrdUFmZFVPejk4?oc=5",
+    "source": "San Diego Union-Tribune",
+    "date": "2026-10-10T21:28:28+00:00"
+   },
+   {
+    "title": "Suspicious bag triggers HAZMAT, bomb squad response at San Diego airport",
+    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQa2V1N3lOcW1TZGJ5dUc3YlNQLXZOVFZkVXdRTHVsbjBHQlhDNzB5MTdWMGVrV0JubWpQT0hOLUVPOXdPM0VkUlRjVnRHd2xtTmxHbzdmN293TkZaU0pmbG80QmRHX3F1WkJHV3I0am1JZjlQbFc0MHd2aG9STFQ0ZU5iSdIBiAFBVV95cUxQemViQWt3X29qZzJwTEpaZGp1RDBtb0Fia3Y4czJIQVBBaHQxNVVOVXZ5ODBWZHhoakVPNkNSU054UEhtaEktaDhYaXpmYk1EMmxhMkt0ZU9qdjFZTTd5YU9FQ2ktZmhpQUVXNG9EU25OQThBRW1tSk5TbTJDNnQ3WUJ5andLLWZ5?oc=5",
+    "source": "FOX 5 San Diego & KUSI News",
+    "date": "2026-10-10T19:15:46+00:00"
+   },
+   {
+    "title": "Hard questions, tough decisions face Padres after playoff run ends, MLB lockout looms",
+    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOemtOZWl4RGV1XzBucC1yTmlSQlVsVXRlckxZZFlpVkpLTUxTZnE2V0Y5cDZScHJZQ0dDUEswZkk5QkFMbkhjNmxQb0xWNzE1OGRYX2N5Q2poallIaWo3UXVfTzVWcF95UjF4a0dTLXVtRWtqTTBKaG9lN1dwMjd2Wl8zQWhEMFM4MmtUMklhSDBwVjEzVUFKU2xKNlhkN1JTaFhmaHNCLU50YkthYWhWR2dEYno5ZGozQksxaEl6N01mcXliNHBIeWNoY9IB0wFBVV95cUxNYTQ1azBtMUtCZ2ktMmlveU9jckNlTFdDMnpockdPbm5PS0RsUUVGaWE2R1Fxa2JvWkM5SmlwM0Y0MHFqRnQ2M0xyX1k5bHJYX0ttMlUwNkI3aTJfN3pETHVuMlRtc043cVdxMGdjakVPb21laXhZVEUteExCZ0pENVBhTWdmOTZlY0d0S0FTNU16a2NxdTV0aEZlUTNJMWgwaUY5TGlVR1l1bmg5c2FrTzB1ckF1bTVaN1Nqel93R1FZWWdDVE82NUg2Yko2TlRKT2xn?oc=5",
+    "source": "NBC 7 San Diego",
+    "date": "2026-10-09T23:19:35+00:00"
    }
   ]
  }
