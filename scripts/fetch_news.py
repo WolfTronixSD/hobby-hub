@@ -25,6 +25,16 @@ FEEDS = {
         ("Random Nerd Tutorials", "https://randomnerdtutorials.com/feed/"),
         ("Google News", "https://news.google.com/rss/search?q=ESP32&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "arduino": [
+        ("Arduino Blog", "https://blog.arduino.cc/feed/"),
+        ("Hackaday", "https://hackaday.com/category/arduino-hacks/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=Arduino&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "garden": [
+        ("Hackaday", "https://hackaday.com/tag/garden/feed/"),
+        ("Hackaday", "https://hackaday.com/tag/hydroponics/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22smart+garden%22+OR+%22smart+irrigation%22+OR+hydroponics&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 24

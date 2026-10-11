@@ -77,5 +77,82 @@ const HOBBIES = [
       { name: "Hackster: ESP32", url: "https://www.hackster.io/search?q=esp32" },
       { name: "Google News: ESP32", url: "https://news.google.com/search?q=ESP32" }
     ]
+  },
+  {
+    id: "arduino",
+    name: "Arduino",
+    icon: "🤖",
+    accent: "#00c2c7",
+    tagline: "Sketches, shields, sensors and robots",
+    podcasts: [
+      { name: "The Amp Hour", desc: "Chris Gammell and Dave Jones on electronics design and making.", url: "https://theamphour.com/" },
+      { name: "Hackaday Podcast", desc: "Weekly roundup of hacks, many of them Arduino-powered.", url: "https://hackaday.libsyn.com/" },
+      { name: "The Electromaker Show", desc: "Weekly maker news: new boards, Arduino and Pi projects.", url: "https://www.electromaker.io/blog/article/the-electromaker-show-podcast" },
+      { name: "Embedded.fm", desc: "From blinking an LED to shipping firmware for real products.", url: "https://embedded.fm/" },
+      { name: "Ham Radio Workbench: What is Arduino?", desc: "A friendly beginner episode on what Arduino is and why it matters.", url: "https://www.hamradioworkbench.com/podcast/what-is-arduino" },
+      { name: "The Simple Electronics Podcast", desc: "Beginner-friendly electronics, one idea at a time.", url: "https://podcasts.apple.com/us/search?term=Simple%20Electronics%20Podcast" },
+      { name: "The D-Code Podcast", desc: "Hobby electronics and DIY project chat.", url: "https://podcasts.apple.com/us/search?term=D-Code%20Podcast" },
+      { name: "Embedded Insiders", desc: "News and new parts for embedded and IoT builders.", url: "https://embeddedcomputing.com/" },
+      { name: "PCB Chat", desc: "Short interviews about designing and building circuit boards.", url: "https://podcasts.apple.com/us/search?term=PCB%20Chat" },
+      { name: "Inside Electronics", desc: "Conversations about how electronics really get made.", url: "https://podcasts.apple.com/us/search?term=Inside%20Electronics" }
+    ],
+    youtube: [
+      { name: "Paul McWhorter", desc: "Famous step-by-step Arduino lesson series for beginners.", url: "https://www.youtube.com/@paulmcwhorter" },
+      { name: "Arduino (official)", desc: "Tutorials, project ideas and new board launches.", url: "https://www.youtube.com/results?search_query=Arduino+official+channel" },
+      { name: "Jeremy Blum", desc: "Classic Arduino tutorial series from an EE.", url: "https://www.youtube.com/user/sciguy14" },
+      { name: "Ralph S Bacon", desc: "Relaxed Arduino tutorials, modules and PCBs.", url: "https://www.youtube.com/ralphbacon" },
+      { name: "Adafruit", desc: "Sensors, kits and weekly show-and-tell.", url: "https://www.youtube.com/results?search_query=Adafruit+Industries" },
+      { name: "SparkFun Electronics", desc: "Product walkthroughs and practical builds.", url: "https://www.youtube.com/results?search_query=SparkFun+Electronics" },
+      { name: "element14 presents", desc: "Builds and hacks with Arduino and Raspberry Pi.", url: "https://www.youtube.com/results?search_query=element14+presents" },
+      { name: "Programming Electronics Academy", desc: "Arduino programming explained from zero.", url: "https://www.youtube.com/results?search_query=Programming+Electronics+Academy" },
+      { name: "DroneBot Workshop", desc: "Deep, thorough Arduino and motor tutorials.", url: "https://www.youtube.com/@Dronebotworkshop" },
+      { name: "Electronoobs", desc: "Arduino projects, homemade tools and experiments.", url: "https://www.youtube.com/results?search_query=Electronoobs" }
+    ],
+    newsSources: [
+      { name: "Arduino Blog", url: "https://blog.arduino.cc/" },
+      { name: "Hackaday: Arduino Hacks", url: "https://hackaday.com/category/arduino-hacks/" },
+      { name: "Hackster: Arduino", url: "https://www.hackster.io/arduino" },
+      { name: "Instructables: Arduino", url: "https://www.instructables.com/circuits/arduino/projects/" },
+      { name: "Adafruit Blog", url: "https://blog.adafruit.com/" },
+      { name: "Google News: Arduino", url: "https://news.google.com/search?q=Arduino" }
+    ]
+  },
+  {
+    id: "garden",
+    name: "Electronic Gardening",
+    icon: "🌱",
+    accent: "#8bd346",
+    tagline: "Smart watering, sensors, grow lights and hydroponics",
+    podcasts: [
+      { name: "Garden Talk with Mr. Grow It", desc: "Gardeners worldwide, including hydroponics how-tos.", url: "https://www.buzzsprout.com/1691170" },
+      { name: "The Urban Farm", desc: "Greg Peterson on growing food, indoor systems and grow tech.", url: "https://www.urbanfarm.org/" },
+      { name: "The Joe Gardener Show", desc: "Weekly, practical gardening with Joe Lamp'l.", url: "https://joegardener.com/podcast/" },
+      { name: "How to Hydroponic", desc: "Tessa and Ryan make indoor hydroponics easy.", url: "https://podcasts.apple.com/gb/podcast/how-to-hydroponic/id1763105660" },
+      { name: "Hydroponics Daily", desc: "Short daily episodes on soilless growing.", url: "https://podcasts.apple.com/us/podcast/hydroponics-daily/id1788172771" },
+      { name: "Epic Gardening", desc: "Kevin Espiritu on growing more in small spaces.", url: "https://podcasts.apple.com/us/search?term=Epic%20Gardening" },
+      { name: "Growing Joy with Maria", desc: "Upbeat gardening, plus a great hydroponics 101 episode.", url: "https://growingjoywithmaria.com/hydroponics/" },
+      { name: "The Hydro Chronicle", desc: "Long-form talk about the indoor growing world.", url: "https://podcasts.apple.com/us/search?term=The%20Hydro%20Chronicle" },
+      { name: "Home Assistant Podcast", desc: "Smart home automations, including irrigation and sensors.", url: "https://hasspodcast.io/" },
+      { name: "Gardeners' Question Time", desc: "BBC classic: experts answer growing questions.", url: "https://www.bbc.co.uk/programmes/b006qp2f" }
+    ],
+    youtube: [
+      { name: "Giovanni Aggiustatutto", desc: "DIY smart drip irrigation with Arduino and ESP32.", url: "https://www.youtube.com/results?search_query=Giovanni+Aggiustatutto" },
+      { name: "FarmBot", desc: "Open-source CNC robot that plants and waters a garden.", url: "https://www.youtube.com/results?search_query=FarmBot" },
+      { name: "Hoocho", desc: "Rain-gutter and bucket hydroponic builds that work.", url: "https://www.youtube.com/@Hoocho" },
+      { name: "Epic Gardening", desc: "Kevin Espiritu's garden tech, kits and hydroponics.", url: "https://www.youtube.com/results?search_query=Epic+Gardening" },
+      { name: "Becky's Hydroponics", desc: "Indoor hydroponic systems, pumps and nutrients.", url: "https://www.youtube.com/results?search_query=Becky's+Hydroponics" },
+      { name: "The Hook Up", desc: "Home automation deep dives, including smart sprinklers.", url: "https://www.youtube.com/results?search_query=The+Hook+Up" },
+      { name: "MIGRO", desc: "Grow light science: spectrums, PPFD and LED tests.", url: "https://www.youtube.com/results?search_query=MIGRO+grow+lights" },
+      { name: "Programming Electronics Academy", desc: "Build an Arduino IoT hydroponic garden.", url: "https://www.youtube.com/results?search_query=Programming+Electronics+Academy+hydroponic+garden" },
+      { name: "Rob Bob's Aquaponics", desc: "Backyard aquaponics with pumps, timers and fish.", url: "https://www.youtube.com/results?search_query=Rob+Bob's+Aquaponics" },
+      { name: "Andreas Spiess", desc: "Soil sensors, LoRa and low-power ESP32 for the garden.", url: "https://www.youtube.com/@AndreasSpiess" }
+    ],
+    newsSources: [
+      { name: "Hackaday: Garden", url: "https://hackaday.com/tag/garden/" },
+      { name: "Hackaday: Hydroponics", url: "https://hackaday.com/tag/hydroponics/" },
+      { name: "Instructables: Gardening", url: "https://www.instructables.com/search/?q=arduino%20garden" },
+      { name: "FarmBot Blog", url: "https://farm.bot/blogs/news" },
+      { name: "Google News: Smart Garden", url: "https://news.google.com/search?q=%22smart%20garden%22%20OR%20hydroponics" }
+    ]
   }
 ];
