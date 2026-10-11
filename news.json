@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T21:38:24.504723+00:00",
+ "updated": "2026-10-11T21:43:56.712715+00:00",
  "topics": {
   "ham": [
    {
@@ -1323,6 +1323,12 @@
     "date": "2026-10-08T16:00:14+00:00"
    },
    {
+    "title": "I changed one temperature setting and cut my 3D print failures by half",
+    "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQclVRWHpma2VEZVA2b1RtbXIyYWtPb0k2ZnhzOXdNRmFnZzZGZXlHalkzYWczRlJLWkd6ZVBVSGRCaWJqYWItWHZRSGo4RTJNbmxBLVJ1UjhiYXIxcGoxLVZ1Q2ZGR2xUVUNGRFFleHR0YTROMlBHZ1hhN3NFUzhRaE1GeEdDczZT?oc=5",
+    "source": "MakeUseOf",
+    "date": "2026-10-08T14:30:15+00:00"
+   },
+   {
     "title": "Bambu Lab’s 3D printing patent application for a new heatbed design may improve peeling issues — replacement costs could possibly rise as a consequence",
     "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNOTZWc3FUbE9yZ2xyTjREakFMQXFrNTNGRGZjOE1XZ1BzVlFzaDRhME9kUUt1bDB0NGY3a0o1SDFHTzlJbEl5MmZZY1lDYmdwb0tOWmJkZk4xaEk4akwzdTVPaElzS3RNbHpxLUVGZWJic2JXallSU29oMEtVUEtETnpzTGF5THptYXNFdUtZelVkNUFDc2VRMGRCMFNKeHpnQTVJSUx2ZElYSEdMYTdsWmV4TVZBQXEwaDhFV0VCWW41Yks4bUNZTnhVT0JXOEExNnlDMWZhZlA3cjJHMWRZMkotcENhSlM2Z1NyN2wxYUJ1b3RuekpqbHd0UTFoN1FKYVNFQXFIaThKREhGaUZqOFJjN09lelVu?oc=5",
     "source": "Tom's Hardware",
@@ -1375,26 +1381,20 @@
     "link": "https://hackaday.com/2026/09/10/changing-nozzle-internal-geometry-to-increase-fdm-flowrate/",
     "source": "Hackaday",
     "date": "2026-09-11T02:00:46+00:00"
-   },
-   {
-    "title": "Walmart is 3D printing the future of big box stores",
-    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPY0V2NjRGbC1qdW90ajdtWG1OQXRNNVFRSGpqUWV3MDU5UFZabzU3bVM3YnFWRlc2MGhXTGlJV0tRYWNPdlVQOHFiam1ZaUFoS0tPYzRVZFU0a2R6NVRqb29HUEpkb0YzNm9XRlZvalVFQ1Z1eE1fR0RlVGkzcnZ4OA?oc=5",
-    "source": "Fast Company",
-    "date": "2026-08-24T07:00:00+00:00"
    }
   ],
   "bambu": [
-   {
-    "title": "October Prime Day 3D printer deals: Last chance for savings on Bambu Lab, more",
-    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFB1YlVROHE0MUxXTFBRZXM1VTZPR0RyTGVwWXhGczBURlJjZ21hWndxYnlpSHRYQzUtQXUweFVpNGxFYUpoZWZKRnF1cy1BOEJFOU1BZ0I1YkpqMFF1X0dlUmJGT2R5OU1tdnVJZFc3aWw3eTV6UEZfWlVB?oc=5",
-    "source": "Mashable",
-    "date": "2026-10-11T15:50:15+00:00"
-   },
    {
     "title": "After Losing in Court: Bambu Lab Prevails Against Four Stratasys Patents at the U.S. Patent and Trademark Office",
     "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOa3hNT0N0SDdLY3d1SVhEX1h4R1ZVcWxRcXctSFkwdHBwb1dWci1kNERSbzlLQ0ZVeXRSX0Y4LWx0Zm05NkhuREh6ZmlIT1JYc1BiZ3I2UEJDX2l1d0FJcTlNM0VneF9WTXhETVMxUFU0dHBHUXpocmU1NDh1YXBIYmRieHdmTUptSG0tbFZ1U3l2bk1mRUR3OEdxTVcwOUhNTHdMNXRJWWhKbVp5elpzSkNPb3l0ZFZWb2w3ZGxkdHo5WXVidk9lZWw0emQtRkV5aGRVeFEyOU9IV2pkeGpGdHh1LVMwbHF0?oc=5",
     "source": "3Druck.com",
     "date": "2026-10-10T19:17:46+00:00"
+   },
+   {
+    "title": "Bambu Lab R1 review: Powerful, plug-and-play laser cutting",
+    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPVnpjUGRScW1fMjVDV2VRUnMzRWhfWDZkcWM0QzhKeFlaRkpnLU40RWRIN2tmc1BRaENqUUpCRmVkVE9Pd1RXSDlzVTZ2NmwxcWtOYWlrWDdIZUFWS20xdF93S0ZwMW91eDBxay05cGhaQUFQNlo4enNBVWltRWlBbnlOYmJGRFNmdlowSTg5bzBXNnpFSjNETk55OHpCN1ZhZ3dJ?oc=5",
+    "source": "Notebookcheck",
+    "date": "2026-10-10T14:14:00+00:00"
    },
    {
     "title": "3D Printer Brand Bambu Lab Just Released A Dedicated Laser Cutter – Here's What It Can Do",
@@ -1467,6 +1467,302 @@
     "link": "https://hackaday.com/2024/10/25/putting-the-new-cryogrip-build-plate-to-the-test/",
     "source": "Hackaday",
     "date": "2024-10-25T08:00:01+00:00"
+   }
+  ],
+  "roadtrips": [
+   {
+    "title": "Bulldogs Pick Up Shutout Win During Nebraska Road Trip",
+    "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPS3hQMWpEMUw3RkphNEVBRFdQOS1ZV194Z0pqSVhTRGJ1WndjcnRub0V1enM3UWV3U1ZVSWtkeVRaczZCR1pTV3dwMHVpeDRmM203RFN1bGtBdU9XTFNWd0JKSXBIeFpFcmVRSjlTSVlxRGNCSlpqWXNNRVowWDhqN0ppLTdtVW54bzNOSXpNUFZUTGZhMDUxaVZuVmJNM3JUeUF3TFlBR09zMHh6bVpIUm5kVTVCOTF1aWIzeklkZjltdERRdjdkZ3FZU0hJNy1KWXc?oc=5",
+    "source": "adrianbulldogs.com",
+    "date": "2026-10-11T21:16:15+00:00"
+   },
+   {
+    "title": "Terps Edge 'Cats in Road Trip Finale",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNd0FmbVRmVVlJYlJCUnVKRHNaQ1QzYk5aYk5YNlBmeVBIQTJtVk1vYTBtX011WXctOHdLUUgwTl8yMWdqMHpBZ3FtakdNWk93MVVOckdrQ2JSRGU1QzhXemxoWlhGc1dNNmhQalFwUVdIaWRwUzhTUG5kRVBUODFqQjBGbG95anBKakFtZndYZ1k?oc=5",
+    "source": "Northwestern Wildcats",
+    "date": "2026-10-11T18:39:58+00:00"
+   },
+   {
+    "title": "Arizona’s Chiricahua poised to become 64th US National Park",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1veUd5dk9tQnNoeWRzTWgxbnNLY0FKMjByLVRhTkQ3NUtUVk1tSG5JZVZVTTNEQ0ZPNnVDZW1QdXhodjFtM0NTNmkxbExYY1M3SGZvWkhTc1F2cTU5eFg4b0tteWhJUFFxM0E?oc=5",
+    "source": "EarthSky",
+    "date": "2026-10-11T17:21:04+00:00"
+   },
+   {
+    "title": "11 national park drives with big views and easy stops for fall",
+    "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNZDZaMWJYQWxwQzRid2NoSXdYejBBSU9KTTh2RVMxZDZfc2FiR3djMHVtaE84b19XVDM2VXJUTGQxYkZ4ZzFQTEJGWGpReU13ZDRpZm9MdUcwWGYxZnFvNWtGeHBrQzh1QWVYMDlKcHBvQlFWWF9YaU9jc1RQQWdManVNUzV5X2lXLU9NMkNvbWtzeU84cllURlNWam1VRF9WZ1Q4eWNuMnFWWjVRRHpweTlyS0VWcG1OVk9UYw?oc=5",
+    "source": "Yahoo Creators",
+    "date": "2026-10-11T14:30:00+00:00"
+   },
+   {
+    "title": "2026 Honda Prelude Road Trip Review: Our Hybrid Coupe Shows Its Sweeter Side",
+    "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBwRi1kd0I1bkljakdrNGphU2V4ekJ6ZV9QYk1uMTFuVjV5U1FEUTdQbmpOWmZqQklDUk1RZURsMHpYS3FTaS1KZ09LZjNLcHZ1WFJKZDBnc1lZcnpHRHlvN2hCaXN0UW1XSEo4YU9lOWYweU42OFFwTC1fNGI0Zw?oc=5",
+    "source": "Edmunds",
+    "date": "2026-10-11T13:05:06+00:00"
+   },
+   {
+    "title": "The Greek National Park Suffocated by Fish Farming",
+    "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQVnpvTlhOQkxTZ3h4bjNTWTJuT3JjMXdFRER1NkdwWFhVSmlKSm1PUVRaQXhBcThJdUdzeE5wbnRYYVhSTVlvTFNsYmFiclFDa3N1TTF6d2k1Tm00TldoOWRjZnd2VXNlYk5VVlZpZEx3c0hiMjBtazhLUFY3eE1abTdpQm1WUQ?oc=5",
+    "source": "Inside Climate News",
+    "date": "2026-10-11T09:00:00+00:00"
+   },
+   {
+    "title": "Kraken focused on building foundation for success during lengthy road trip",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxORFR1NHc1UVpwdWU1a2hfMTNjYUwxR082dFR6M3Y5cGNaUXRJS182dUpMWGlxY1J5Smw2RlZuWGthNW1HdC1rYXZQdjNSWklrZ1R3SktFQWhTcU5XelExV2lDaEdYU0tSanBoVURiTzFlV0NHVG4tZnBqb3llVHphUFcyRTdQcXNrQklXeDBVUk0?oc=5",
+    "source": "NHL.com",
+    "date": "2026-10-11T04:56:04+00:00"
+   },
+   {
+    "title": "Nanooks Fall in Game Two of Road Trip",
+    "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbFhwN0RtT3BqSG4zZnY2S1ZVUUgwSWxGLUk4TlFtaVY4MFNmcGdtdndIN2hxZEVUMlpDMmRyNkJYSVRqbWgtc1ZUTWF4c2hMbG9zUHpFYTNxTEcxeWNMbk5tSTNWclZULWtiQktKbVFmOWN4M1VyN2ZyUWFTZVpqdDR1a0xGUGpwSzcwUE10QVo3RG9oZUdxelk5VjRkM2o5bHc?oc=5",
+    "source": "University of Alaska Fairbanks Athletics",
+    "date": "2026-10-11T03:34:42+00:00"
+   }
+  ],
+  "europe": [
+   {
+    "title": "Europe's best islands for 2026: Hidden gems outshine famous hotspots",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9yLW9kOEMyZ2p0WEhHRmxXZDFzZ1NzbFVVM0VLMlBPTU9RZmkxLXA0SUNfVmZHdENudjFMOXVwZEVGVWpLdHVFNEhLSXRLRW80c2xJZVVveUg0cDBGRkxB?oc=5",
+    "source": "Ynetnews",
+    "date": "2026-10-11T14:57:55+00:00"
+   },
+   {
+    "title": "$912 For Qatar Airways’ Ultimate Business Experience: My First Europe Redemption Trip From India",
+    "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQQUMySnItb0QweTRyU1pxV0FzdkZpTjVKZWV3SWVnM1JMSENFRmJaT1hCenlsRi1ydmlaTm5YZW5vSWFjS1JZajRkb09KSmUwR21zZE1aWDZtMHBCLVlDM0R3QW5mTnRFMUIyck1fOVpyeHptNU4xZTJXVmpWVjZ6NWhoZTMwN0VCLWVDUTdGYW9ZcmNVRUdnSkxoSlNWNUhTUmE3MmhEZUhPZUF1REYyY3lQY1NvMUVUcDVrY0sxME0?oc=5",
+    "source": "One Mile at a Time",
+    "date": "2026-10-11T13:55:07+00:00"
+   },
+   {
+    "title": "Europe's best Christmas markets to visit in 2026, according to travellers",
+    "link": "https://www.euronews.com/2026/10/11/europes-best-christmas-markets-to-visit-in-2026-according-to-travellers",
+    "source": "Euronews",
+    "date": "2026-10-11T05:00:47+00:00"
+   },
+   {
+    "title": "Russians face EU travel curbs to prevent hybrid attacks",
+    "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQaURvUmRTeVNJQ3dDNUF0bTlja002WXF6ZGt0MUNaQ1pjYmtkTkdEQ3FwSEdlWVJ4NXpxM0thdDBnUklBSGctcmRfUjJjakJjT3ZWaFJNUDRnSkhKTnNMQ1lSZjJMVEJ5akxKcWdnb0NuRlpVWkJtcll3U0xEWWFGcnBNbS1RX2ZBbnNmMGJsNmYwMXBXellQeDRjUFFNTVJUUFVWU182RkRtU1BT?oc=5",
+    "source": "POLITICO.eu",
+    "date": "2026-10-11T03:01:00+00:00"
+   },
+   {
+    "title": "Americans Can Fly Nonstop To Europe's Undiscovered Capital With 2,000 Year Old Fortresses, $17 Dinners, And Zero Fingerprint Checks",
+    "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOdlZVYXhBcWNZTjhJdXptMFFQY3lrZHZ5dU1mQWxIUGlVVnBISlpsSHFGcXdUaTZwUkIwdjRQbG1DR2hweXlfSEpuS3BReGFhenpNOVRwMnYySDRRMWFFdlhBcTZ4UjdNR1FkZWJXY2xid2FFUnpiN3pUd0x1Nm1ueXVEQVJUc1pjLUdzeDRZazVvSllLTWRpdmFmc0d4OHBfLWR0RjVmYXRVSHpvYmhlUk1nbkV2cGdHYjFVbUkxN2hXUG1jdnppdFR3YzRkY25Fd3oyb0cxaFU0OVVPWjhFRVhmcER5Z045b2lPWV9R?oc=5",
+    "source": "Travel Off Path",
+    "date": "2026-10-10T12:43:20+00:00"
+   },
+   {
+    "title": "Which Europeans post the most holiday selfies? Study reveals travellers’ social media habits",
+    "link": "https://www.euronews.com/2026/10/10/which-europeans-post-the-most-holiday-selfies-study-reveals-travellers-social-media-habits",
+    "source": "Euronews",
+    "date": "2026-10-10T05:00:31+00:00"
+   },
+   {
+    "title": "Selfies and inspiration: European travellers’ social habits revealed",
+    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQb0xiYktJXzNnRS1yZEM0T2dMVVZhSk1Bd0hDcHBxQkdSWnlPOFNOT3VHSG55bWNmT01qaTVoaktyS1RHem5xRWN4SDhTYmNEdjRPeFFEXzE5eXE0bTZTQjBQc1VYbU5JVldZVS1icFBiWUdEYkxTdlVPSmplWWV0ZWxaazVYRERhN0dNZ0tfOTRjRE9ubkxTQWxJOXVEcm1qRTJaUDJNTHlRdmJCMTFGbnIwUkJkRUxJZnJJeWoybWRlakZn?oc=5",
+    "source": "Euronews.com",
+    "date": "2026-10-10T05:00:31+00:00"
+   },
+   {
+    "title": "Virgin unveils new train designs and plans for cross-Channel service linking London and Europe from 2030",
+    "link": "https://www.euronews.com/2026/10/09/virgin-unveils-new-train-designs-and-plans-for-its-cross-channel-service-linking-london-an",
+    "source": "Euronews",
+    "date": "2026-10-09T13:03:02+00:00"
+   },
+   {
+    "title": "Passport-free travel, AI agents and longevity: Key takeaways from the WTTC Global Summit",
+    "link": "https://www.euronews.com/2026/10/09/passport-free-travel-ai-agents-and-longevity-key-takeaways-from-the-wttc-global-summit",
+    "source": "Euronews",
+    "date": "2026-10-09T12:06:54+00:00"
+   },
+   {
+    "title": "'Grand odysseys': Why historic travel and legendary journeys are trending for 2027",
+    "link": "https://www.euronews.com/2026/10/09/grand-odysseys-why-historic-travel-and-legendary-journeys-are-trending-for-2027",
+    "source": "Euronews",
+    "date": "2026-10-09T11:40:21+00:00"
+   },
+   {
+    "title": "Narrow body jets will ‘change the shape of travel’, says Dubai Airports CEO",
+    "link": "https://www.euronews.com/2026/10/09/narrow-body-jets-will-change-the-shape-of-travel-says-dubai-airports-ceo",
+    "source": "Euronews",
+    "date": "2026-10-09T10:33:17+00:00"
+   },
+   {
+    "title": "Europe’s best wine region has been crowned for 2027 – and it’s not where you’d expect",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBBaTNnb0lVRjhYQU1fNkpXcEhQX1g4RFlPcUtYRnRkUDZpRVlnY0ZxZmF3ZFZKbnNXZzRzVGNnTWdVdGhpNzFVU2xQdkk0Wkg2RFVsdWhsQnJBNXJFZFZreDZ0WTBaM210ODR2YmdUbHNYRGp1eS03cXdFYnZxOEU?oc=5",
+    "source": "Time Out Worldwide",
+    "date": "2026-10-09T09:36:23+00:00"
+   },
+   {
+    "title": "Greece is the most popular luxury honeymoon destination for 2027 – with Italy and France also in the top 10",
+    "link": "https://www.euronews.com/2026/10/09/greece-is-the-most-popular-luxury-honeymoon-destination-for-2027-with-italy-and-france-als",
+    "source": "Euronews",
+    "date": "2026-10-09T09:23:10+00:00"
+   },
+   {
+    "title": "Santorini: Wine, gastronomy and unique experiences beyond the famous sunsets",
+    "link": "https://www.euronews.com/2026/10/09/santorini-wine-gastronomy-and-unique-experiences-beyond-the-famous-sunsets",
+    "source": "Euronews",
+    "date": "2026-10-09T05:00:00+00:00"
+   },
+   {
+    "title": "Travel and tourism in Europe to grow 3.1% in 2026, despite uncertainty",
+    "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQTlJWThRenluNHBWakhJbkE0R0ZNNWxEd1BJak54MllZcUVMR0RYZjJYLWYxWW5JZjlrRzhQa3FWRVByaFNiVHpLMHJqc1ZkZHhNd2c3YlFjdDNGdHl2X3ZXVWx5Y2ptbWNOS2RyRXRSVXZmQ3ZrU2IyeHhRdkc1VDZKcE9LY0ZsWm1XZUg3Q3FKeHJYbU9CTnljelZPMDl5eF9aZmo2RWpNSG85Umc?oc=5",
+    "source": "Euronews.com",
+    "date": "2026-10-07T13:48:01+00:00"
+   },
+   {
+    "title": "Turning 18? Apply for a free DiscoverEU travel pass",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOTUtPQmc1NVRlQ1plVW5yWHd3Z0JibjRwNl9ldGdqOV9FLWtLSWFwWFhmSDh1Wkh2OXUxaHRySm5tQk9HU0t5YVhQNGFXWGVuVElfTHdBeW03X3BnM2xZY05LQ0ZCcm5MQ01LQk1uQkR3OTQ3RjFxeW5wUHlINWFXY3ZVc2ZlYmE4RE5KdVdpYTJYYkh0bndRR0R3R1RhR3RLbmJaQllkUDhMSms?oc=5",
+    "source": "European Commission",
+    "date": "2026-10-01T07:00:00+00:00"
+   }
+  ],
+  "asia": [
+   {
+    "title": "Tokyo Events This Week: Kawagoe Floats, Beach Fireworks, and Street Jazz",
+    "link": "https://tokyocheapo.com/entertainment/event-posts/tokyo-events-this-week-kawagoe-floats-beach-fireworks-street-jazz/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-11T09:30:32+00:00"
+   },
+   {
+    "title": "Kyrgyzstan Travel Guide: What Central Asia’s most underrated country is really like",
+    "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOMWd5QTVBMXlQWm02cG1vZmNUVWNRajlxTWd5dTFETVBNaF96aVFzcnFmQUhrU1dtYVhUVmlUaU9JS0kybnE3cFVlcnZlMTd6Y0h4MEh4RkpGaFZGcmNreFM3cnNkLWFGaG4yT3ltNzEwVENZQUszejh4bnBqWnd3UjFydGw?oc=5",
+    "source": "Yahoo Lifestyle Singapore",
+    "date": "2026-10-11T04:00:00+00:00"
+   },
+   {
+    "title": "Japan's tourist spending windfall shrinks as Chinese visitors plunge",
+    "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbUNJMm9aQ2xpVTNFMWpOdHdrQ0dseDQxOTV6RFFJRUhFeWc4eFd5VVhyRVZUbWhBeVBNMmdxanNJRG9VX2NDSGlDUnhZSXNBcUkyVWx1MGItUFkzbGxTZE54ZTJWZGxHUFRVdjIxQ29EZElia3c5U3pteU9RLUg2eTVHRkFzTUZvcFpBUGVEb0Q2SDFFQV9rR0d2cDZlS2t2R1gzVUU1RlYzaUthVGxrTHlzejZfek0?oc=5",
+    "source": "Nikkei Asia",
+    "date": "2026-10-08T19:17:00+00:00"
+   },
+   {
+    "title": "Unforgettable Travel Company Launches Advisor-First Asia Specialist Collection",
+    "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQQTJUVERXczNUM3VrSHJoMndzNlUycTc2azVrSERZdk1UVGZyNTdJQ2tNSWh3MzVsamVxN3FSMVNLS2hpUHg4SUlvVk1ONjZBVFE5UmhaYWg4dHY5UF93VkRyVDJKWXR1bklkM3NpMC1pbEpvVVdtbUNGekF1NV9nbmdnYVlISTRlbE50WEVZb0tKN2YzSVNkTlpUSFJuZUlfRm1Ia3BuNENBbU04NmwxTlZzSk04WFVvZksxUjdfbFVUNW1GdGt0eS1EVUtHek9vY2FpcQ?oc=5",
+    "source": "Travel Market Report",
+    "date": "2026-10-08T12:22:34+00:00"
+   },
+   {
+    "title": "Unforgettable Travel Company aims to simplify selling Asia",
+    "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQdnlLMjBJS0kyMGN4eDdtTTlHdmdmeHpid1VlXy10U3hKR3lkTFJjUDQteWI3R0xNU0tPUlNiajE5TW9mTkdIcHdrYTlCYmFQX0Q0dkkzWEJIVEpySG1YZUd0WHVPbjg5MkU0ZG5EdnhGV0VSY1dyYm1MS19LTnpfMEg3azU5Uk5oWE5FU3ctZzJvVkprcGxvVVFrdkdEQ2R6N29sSld1SlRBaVRud29KTXlxRmY?oc=5",
+    "source": "Travel Weekly",
+    "date": "2026-10-07T13:44:09+00:00"
+   },
+   {
+    "title": "After a 226% Demand Surge, Unforgettable Travel Goes Big on Asia",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOalVDTzE5WWpfNFJ4endlUWtGV281QUtGQm1iOURYU2I5b0xwQ1lZUFg1RkExdFNkM0x6Sl9XamQ0S0dHay1rMF82X3JvVFpzazVOWnJEZHVuelQ5a3BvaDJ5WkhVT0gyZUFJRXpOX1JpOTJRZ25HT3RHc2RnSlBPcndDNGFCLU9SbE5WQmp4RTJYdnhieGlLR3V2Y2h0bFk5?oc=5",
+    "source": "Luxury Travel Advisor",
+    "date": "2026-10-07T13:00:00+00:00"
+   },
+   {
+    "title": "Lufthansa named Best European Airline at Travel Weekly Asia Readers’ Choice Awards 2026",
+    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQSF9iX2JxVHV1NFZ3d1dSaExXZmN2T2tvWEZDVHB1ZWRSbzlMblZBR1l1NFNoUG9TSkJPV2FuXzR1MjVSS05zNTcwSW5kNk9tN005Y3h1VnBralZJZEdIQjFQSFlBcGViMmpNT3dBY2JZNGF0dzB3c0ZtUXgxOFBaUEw2UmlLYjd4OHdfbFIxTkdSdnRTc01BOHdmSlM2eFhSN1lKbTRMNklQSFRPOFNXT2syR2tyTzZmRFdVZzAwdXpEa3Uz?oc=5",
+    "source": "Lufthansa Group",
+    "date": "2026-10-07T05:53:18+00:00"
+   },
+   {
+    "title": "Four Seasons Shows Why Autumn Is Becoming the Season to Travel Asia",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE4yOWVIYzZBWDR4T3AwbTVxM0loTEdaU0pCamJmZVk0ZjVRY2tVMnFfOFVtOWV2SjRDQ1BIWVB0NU5xbUtySzdvRVQ3YTA1Z3FadmxuMkdqbTlSSG5VQV9WaHFMaHZjSklnSV9PR3VxSl9HeU5idmc?oc=5",
+    "source": "Four Seasons Press Room",
+    "date": "2026-10-06T21:01:28+00:00"
+   },
+   {
+    "title": "The U.S. ranked the second-best country for travel and tourism in 2026—here’s what stunning Asian destination beat us",
+    "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQRnlxY25Xald0X1M0MWpMUFV4b1A0dTBXS0YzMnhtRFd6RHZrNG9aRVdUbVBUZlFjV3Nyay1sUkRIbDRrNmx1cE93SEVGOUY0Zy1VdWlCQnJJVGVwQUcwSHdDVUNjMkNjb3hJOC1qcVhjb2R6Z25QZmpNNUZmc2t1TkNLOHkyZTcwQ2h0WS1xXy1zczNtdjVjbjU1NXZRbG55NUphWXROeFJvb3E3QzN5STR0RktFQnVrZmhBcGdmX19Vb3JpTWF2Wms0RUFsbzkwVFk5dTR0VnZFUTBVQmR4ZTNJMDZTREh6Z2c?oc=5",
+    "source": "Time Out Worldwide",
+    "date": "2026-10-06T16:05:06+00:00"
+   },
+   {
+    "title": "Our 6 Favorite All-You-Can-Eat Spots in Tokyo",
+    "link": "https://tokyocheapo.com/food-and-drink/all-you-can-eat-tokyo/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-06T02:02:19+00:00"
+   },
+   {
+    "title": "The Ultimate Tokyo to Kawaguchiko Day Trip",
+    "link": "https://tokyocheapo.com/entertainment/tokyo-to-kawaguchiko-day-trip-guide/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-06T02:00:18+00:00"
+   },
+   {
+    "title": "Tokyo’s Mizube Line Water Bus Returns October 17",
+    "link": "https://tokyocheapo.com/travel/transport/tokyo-mizube-line-water-bus/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-06T01:30:00+00:00"
+   },
+   {
+    "title": "Japan Fall Foliage Forecast for 2026 — Updated",
+    "link": "https://tokyocheapo.com/entertainment/outdoors/fall-foliage-forecast/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-05T07:16:00+00:00"
+   },
+   {
+    "title": "Tokyo Events This Week: Ghost Cats, Fireworks, and Free Outdoor Movies",
+    "link": "https://tokyocheapo.com/entertainment/event-posts/tokyo-events-this-week-ghost-cats-fireworks-outdoor-movies/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-04T09:30:34+00:00"
+   },
+   {
+    "title": "Small-Town Sumo: How to Catch a Jungyō Roadshow Near Tokyo",
+    "link": "https://tokyocheapo.com/entertainment/japanese-culture-and-tradition/sumo-jungyo-near-tokyo/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-02T02:58:43+00:00"
+   },
+   {
+    "title": "The Best eSIMs for Visiting Japan — Tested and Compared",
+    "link": "https://tokyocheapo.com/business/internet/esim-japan-travel/",
+    "source": "Tokyo Cheapo",
+    "date": "2026-10-02T02:00:17+00:00"
+   }
+  ],
+  "camping": [
+   {
+    "title": "The best live Prime Day outdoor deals: Anker power stations, Yeti coolers, and LifeStraws are among our top picks",
+    "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBZQ3dsMFpja080aEozTE1MNVhBYkRkU0pQNVZLMTRTYlVxTUlDbGxpTkFYckw4dEloUlRYeFMxQThPNU4wX2hOU1g5bVJORkpXS1RzWG5OcEFGRkdUNXkxNkppZVNiRWhRRXlKRkZtWjN6dk0xLUVOMDc4Zms?oc=5",
+    "source": "Mashable",
+    "date": "2026-10-11T21:21:29+00:00"
+   },
+   {
+    "title": "Visit Mt. Baldy for Hiking, Camping, Scenery",
+    "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBMWkZFN2FvVDlpNDA2NGpsaGJLMURnN3BaLTNDc0JjR2QzVlY0QmZNYVZ6MG9Dc1lxTDFnLWJCQTdIWGdTQ2RUUlVQWWdDbUpoZ2pLbExTWFlGNlY3bXJ1OEExN3V0S0dKZmVWdUtKV21LcklFSFZOSlA4TWk?oc=5",
+    "source": "Santa Clarita Valley Signal",
+    "date": "2026-10-11T16:28:11+00:00"
+   },
+   {
+    "title": "Camping for Hunger in support of Front Royal Warren County C-CAP begins Nov. 16",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYlU2Wmd0cHVZak9kNHVsYmRCQUJDemdSd29TNS11c1RBaFlxV3dEVEhyczRRNXQxUC0wZ0tId1ZiSm9DRF9XejN5N25HZ1lzeXIxaXNLd2o3TUI0cU1SVkxFZF9GenFnd3k2V2xaQjNIWWxyWDZGdjNsak96TUlxYktmcDNWd20zUTBXLWM3NGV3WkNMMFZMcXJxc0VIdXJhWC1fOVRn?oc=5",
+    "source": "The River 95.3",
+    "date": "2026-10-11T11:00:40+00:00"
+   },
+   {
+    "title": "Hipcamp: the private-land bet that turned camping scarcity into a marketplace",
+    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQN1pKVHlLc29Pal9NdEdWS25zTjBoMmRnTEoxUkN5eFNhQkt1cnlPTlFqdlhFVm5SdGZva2Z5Z0xwY2JuVVJaTFJYb205WUNaaHBIOHcwUDlNVk5wZWtpdENiQk0wQTJ3dHlzQVk5Z0J0WFlPbXgtaDRuN3pIcmltU1JRa0VLLXBWdlU3cXlTVVlMXzhhb0JWV1paQnVnUU5naTI4RGN5Mk1GTURkNVh3?oc=5",
+    "source": "Dealroom",
+    "date": "2026-10-11T10:41:17+00:00"
+   },
+   {
+    "title": "MEA Weekend 2026: Fall Colors, Camping and Last-Chance Tours at Minnesota State Parks",
+    "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1DS1F1aWV4MXU3cVg1WExPMmt0WGFmUkgzTWYwcFBhcWtYNU9VLW9sbVpZRHlmZXloU3JIcGh1V21FZ0pab2ZQZmZna0RUY0tVV3c?oc=5",
+    "source": "KNSI",
+    "date": "2026-10-11T10:16:15+00:00"
+   },
+   {
+    "title": "Campground crowding, comments and concerns: The rising cost of camping forces RVers to rethink retirement dreams",
+    "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBJUGN6NG1ldGdPZ2lUTzVpOTVGV3pKQ0ktTGxsT0ZiTUhIV3JhTkJlT21BRVgwR0YtLXhqRHU0d3h4U1phbUpIZDBxR2ZseVhkemFobHNTaWhDVExmcS1v?oc=5",
+    "source": "RVtravel",
+    "date": "2026-10-11T00:16:20+00:00"
+   },
+   {
+    "title": "America’s biggest RV seller closing more stores",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9kMXRRRTZpRUtNaEk2dkl0dzIyamczYW11WndNNWM5d1dFQVdSNVFDN3cwdDZmbUhuN2lZX1F3NHJBQjN6NzI2VWRLZ0lZVUc1YXZvR0tFamdoanIwQThfM0lTcWdqRjdWc1hQeTl3?oc=5",
+    "source": "TheStreet",
+    "date": "2026-10-09T15:10:11+00:00"
+   },
+   {
+    "title": "Camping when you’re not granola",
+    "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1JZy1xcGlCNENkVXBSUmk4cWk4NFQtZ0NGeE5VRkJjYWp0VVNsTzhjQnkzTWZxTVJMWHVmaGZvbDR5WlNQckNZQ2pNSGFLRGJra2FaLWlCMU43THRZUGw1QVJ6ZjhnRURJdG91dVBPMXhKVnlsTEZhNUVIQQ?oc=5",
+    "source": "Strike Magazines",
+    "date": "2026-10-08T16:00:18+00:00"
    }
   ]
  }
