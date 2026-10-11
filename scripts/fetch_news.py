@@ -155,7 +155,7 @@ FEEDS = {
     ],
 }
 PER_FEED = 8
-PER_TOPIC = 24
+PER_TOPIC = 20
 ATOM = "{http://www.w3.org/2005/Atom}"
 
 
@@ -226,7 +226,7 @@ def main():
         topics[topic] = unique[:PER_TOPIC] or previous.get(topic, [])
         print(f"{topic}: {len(topics[topic])} items")
     data = {"updated": datetime.now(timezone.utc).isoformat(), "topics": topics}
-    out_path.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
+    out_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n")
 
 
 if __name__ == "__main__":

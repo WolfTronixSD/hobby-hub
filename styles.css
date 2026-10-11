@@ -60,18 +60,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
   background: var(--panel); border: 1px solid var(--border);
 }
 
-/* Hobby selector: huge buttons */
-.hobbies { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 8px; }
+/* Hobby selector: compact big-tap tiles */
+.hobbies { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 8px; }
 .hobby {
-  display: flex; align-items: center; gap: 16px;
-  min-height: 104px; padding: 18px 22px; text-align: left;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  min-width: 0; min-height: 96px; padding: 12px 8px; text-align: center;
   border-radius: var(--radius); border: 2px solid var(--border);
   background: var(--panel); backdrop-filter: blur(12px);
   transition: transform 0.12s, border-color 0.2s, background 0.2s;
 }
-.hobby .emoji { font-size: 44px; }
-.hobby b { display: block; font-size: 26px; font-weight: 800; }
-.hobby small { color: var(--muted); font-size: 15px; }
+.hobby .emoji { font-size: 36px; line-height: 1; }
+.hobby b { display: block; font-size: 19px; font-weight: 800; line-height: 1.15; }
 .hobby[aria-pressed="true"] {
   border-color: var(--c);
   background: linear-gradient(135deg, color-mix(in srgb, var(--c) 26%, transparent), var(--panel));
@@ -212,18 +211,20 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
 .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 32px; color: var(--muted); font-size: 14px; }
 .foot a { color: var(--muted); }
 
-@media (min-width: 900px) { .hobbies { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) { .hobbies { grid-template-columns: repeat(4, 1fr); } }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.notice, .offline { margin: 8px auto; padding: 12px 16px; border-radius: 16px; border: 1px solid color-mix(in srgb, #ffb020 50%, transparent); background: color-mix(in srgb, #ffb020 14%, transparent); font-size: 16px; }
+.offline { max-width: 1100px; margin-top: 12px; }
+.offline[hidden] { display: none; }
 @media (max-width: 520px) {
   body { font-size: 17px; }
   h1 { font-size: 26px; }
   .grid { grid-template-columns: 1fr; }
   .tabs button { font-size: 17px; flex-direction: column; gap: 2px; }
-  .hobbies { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .hobby { min-height: 96px; flex-direction: column; justify-content: center; text-align: center; gap: 4px; padding: 12px 8px; }
-  .hobby .emoji { font-size: 34px; }
-  .hobby b { font-size: 18px; }
-  .hobby small { display: none; }
-  .hobby:last-child:nth-child(odd) { grid-column: span 2; }
+  .hobbies { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .hobby { min-height: 84px; gap: 4px; padding: 10px 4px; border-radius: 18px; }
+  .hobby .emoji { font-size: 30px; }
+  .hobby b { font-size: 15px; }
   .subs { grid-template-columns: 1fr 1fr; }
   .sub:last-child:nth-child(odd) { grid-column: span 2; }
   .icon-btn { width: 48px; height: 48px; font-size: 22px; border-radius: 14px; }

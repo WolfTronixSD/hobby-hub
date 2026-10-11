@@ -1,6 +1,21 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.9.0";
+const APP_VERSION = "2.0.0";
 const CHANGELOG = [
+  {
+    version: "2.0.0",
+    date: "2026-10-11",
+    title: "Production ready: faster, works offline, cleaner menu",
+    changes: [
+      "Cleaner hobby menu: compact tiles with icon and name, 3 per row on phones, 5 on desktop",
+      "Works offline: the site and your last headlines open even with no signal in the car",
+      "Offline banner, and a warning when headlines are more than 12 hours old",
+      "Proper app icon for Add to Home Screen",
+      "Link previews with a picture when shared in text, WhatsApp or email",
+      "Faster first load: font no longer blocks the page, news file is smaller",
+      "Automatic checks catch broken links or data before they go live",
+      "News updater retries safely so headline refreshes no longer fail on busy days"
+    ]
+  },
   {
     version: "1.9.0",
     date: "2026-10-11",

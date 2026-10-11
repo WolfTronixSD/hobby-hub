@@ -2,6 +2,14 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.0.0 (2026-10-11): Production ready
+- Compact hobby menu (3 per row on phones, 5 on desktop), tagline moved to tooltip
+- Offline support via service worker (sw.js), offline banner, stale-news warning
+- App icons, Open Graph / Twitter link previews (og-image.png)
+- Non-blocking web font, compact news.json (20 items per topic)
+- scripts/check_site.mjs and the Check site workflow validate data, URLs, feeds and version numbers
+- News workflow rebases and retries before pushing
+
 ## 1.9.0 (2026-10-11): Share with friends
 - New Share button: text, WhatsApp, email, copy link
 

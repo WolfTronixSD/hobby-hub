@@ -31,13 +31,18 @@
   // Hobby buttons
   const hobbyNav = $("#hobbyNav");
   hobbyNav.innerHTML = HOBBIES.map((h) => `
-    <button class="hobby" data-id="${h.id}" style="--c:${h.accent}">
-      <span class="emoji">${h.icon}</span>
-      <span><b>${esc(h.name)}</b><small>${esc(h.tagline)}</small></span>
+    <button class="hobby" data-id="${h.id}" style="--c:${h.accent}" title="${esc(h.tagline)}">
+      <span class="emoji">${h.icon}</span><b>${esc(h.name)}</b>
     </button>`).join("");
   hobbyNav.addEventListener("click", (e) => {
     const b = e.target.closest(".hobby");
-    if (b) { hobbyId = b.dataset.id; render(); }
+    if (b) {
+      hobbyId = b.dataset.id;
+      if (tab === "history") tab = "podcasts";
+      render();
+      const target = $("#subNav").hidden ? $("#tabNav") : $("#subNav");
+      if (target.getBoundingClientRect().top > innerHeight * 0.6) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
   $("#subNav").addEventListener("click", (e) => {
     const b = e.target.closest(".sub");
@@ -83,6 +88,7 @@
   };
 
   const newsView = (h) => {
+    const stale = !!(news && news.updated && Date.now() - new Date(news.updated) > 12 * 3600 * 1000);
     const items = news && news.topics && news.topics[h.id] ? news.topics[h.id] : [];
     const list = items.length
       ? `<div class="grid">${items.slice(0, 20).map((n) => `
@@ -96,6 +102,7 @@
       : `<p class="empty">${news === null ? "Loading headlines…" : "Headlines will appear here after the first automatic update. Use the sources below meanwhile."}</p>`;
     return `
       <div class="section-title"><h2>Latest headlines</h2><span>${news && news.updated ? "Updated " + timeAgo(news.updated) : ""}</span></div>
+      ${stale ? `<p class="notice">⚠️ These headlines are more than 12 hours old${navigator.onLine ? "" : " (you are offline)"}. Tap a source below for the latest.</p>` : ""}
       ${list}
       <div class="section-title"><h2>News sources</h2></div>
       <div class="sources">${h.newsSources.map((s) => `<a class="source" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join("")}</div>`;
@@ -127,7 +134,7 @@
     history.replaceState(null, "", `#h=${hobbyId}&t=${tab}` + (parent.subs ? `&s=${subId}` : ""));
 
     root.style.setProperty("--accent", h.accent || parent.accent);
-        document.querySelectorAll(".hobby").forEach((b) => b.setAttribute("aria-pressed", b.dataset.id === hobbyId));
+    document.querySelectorAll(".hobby").forEach((b) => b.setAttribute("aria-pressed", b.dataset.id === hobbyId));
     document.querySelectorAll("#tabNav button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
     const pod = document.querySelector('#tabNav button[data-tab="podcasts"]');
     const guides = !!(h.labels && h.labels.podcasts);
@@ -207,4 +214,13 @@
       if (news.updated) $("#updated").textContent = "Headlines updated " + new Date(news.updated).toLocaleString();
       if (tab === "news") render();
     });
+
+  // Offline support: cache the app so it opens with a weak signal in the car
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+  }
+  const syncOnline = () => { $("#offline").hidden = navigator.onLine; };
+  addEventListener("online", syncOnline);
+  addEventListener("offline", syncOnline);
+  syncOnline();
 })();

@@ -24,9 +24,16 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/fetch_news.py
+        timeout-minutes: 10
       - name: Commit if changed
         run: |
           git config user.name "hobby-hub-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add news.json
-          git diff --cached --quiet || (git commit -m "Update news headlines" && git push)
+          git diff --cached --quiet && exit 0
+          git commit -m "Update news headlines"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
