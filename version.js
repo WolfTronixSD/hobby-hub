@@ -1,6 +1,18 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.3.0";
+const APP_VERSION = "2.4.0";
 const CHANGELOG = [
+  {
+    version: "2.4.0",
+    date: "2026-10-11",
+    title: "Meditation, George Carlin and iPhone fixes",
+    changes: [
+      "New Meditation button: Guided, Sadhguru, Esther Hicks, Jonathan Goldman, Crystal Bowls and Binaural Beats",
+      "Sound sections list Spotify picks plus YouTube sessions",
+      "George Carlin added to World Comedy",
+      "iPhone: Spotify buttons now open the Spotify app on the right search instead of its home screen",
+      "iPhone: wolf icon for Add to Home Screen (remove the old shortcut and add it again)"
+    ]
+  },
   {
     version: "2.3.0",
     date: "2026-10-11",

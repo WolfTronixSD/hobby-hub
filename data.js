@@ -2378,9 +2378,9 @@ const HOBBIES = [
             url: "https://www.youtube.com/results?search_query=Nate+Bargatze"
           },
           {
-            name: "Kill Tony",
-            desc: "Live comedy roast podcast show.",
-            url: "https://www.youtube.com/results?search_query=Kill+Tony"
+            name: "George Carlin",
+            desc: "The legend: classic specials and bits.",
+            url: "https://www.youtube.com/results?search_query=George+Carlin+stand+up"
           }
         ],
         newsSources: [
@@ -2399,6 +2399,762 @@ const HOBBIES = [
           {
             name: "Google News: comedy",
             url: "https://news.google.com/search?q=comedy%20special%20OR%20stand-up%20comedian"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "meditation",
+    name: "Meditation",
+    icon: "🧘",
+    accent: "#9b7bff",
+    tagline: "Teachers, sound healing and binaural beats",
+    subs: [
+      {
+        id: "med-guided",
+        name: "Guided",
+        icon: "🪷",
+        podcasts: [
+          {
+            name: "Tara Brach",
+            desc: "Guided meditations and talks on mindfulness and compassion.",
+            url: "https://podcasts.apple.com/us/search?term=Tara%20Brach"
+          },
+          {
+            name: "Ten Percent Happier with Dan Harris",
+            desc: "Practical meditation for skeptics.",
+            url: "https://podcasts.apple.com/us/search?term=Ten%20Percent%20Happier%20with%20Dan%20Harris"
+          },
+          {
+            name: "Waking Up with Sam Harris",
+            desc: "Meditation, mind and big questions.",
+            url: "https://podcasts.apple.com/us/search?term=Making%20Sense%20Sam%20Harris"
+          },
+          {
+            name: "Meditation Minis",
+            desc: "Short guided meditations by Chel Hamilton.",
+            url: "https://podcasts.apple.com/us/search?term=Meditation%20Minis"
+          },
+          {
+            name: "The Daily Meditation Podcast",
+            desc: "A new guided practice every day.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Daily%20Meditation%20Podcast"
+          },
+          {
+            name: "Headspace Guide to Meditation",
+            desc: "Bite-size sessions from Headspace.",
+            url: "https://podcasts.apple.com/us/search?term=Headspace"
+          },
+          {
+            name: "Calm Sleep Stories",
+            desc: "Wind down with Calm.",
+            url: "https://podcasts.apple.com/us/search?term=Calm"
+          },
+          {
+            name: "Insight Timer Podcast",
+            desc: "Teachers from the free Insight Timer app.",
+            url: "https://podcasts.apple.com/us/search?term=Insight%20Timer"
+          },
+          {
+            name: "Jack Kornfield: Heart Wisdom",
+            desc: "Buddhist teacher on living with an open heart.",
+            url: "https://podcasts.apple.com/us/search?term=Heart%20Wisdom%20Jack%20Kornfield"
+          },
+          {
+            name: "On Being",
+            desc: "Krista Tippett on meaning and inner life.",
+            url: "https://podcasts.apple.com/us/search?term=On%20Being"
+          }
+        ],
+        youtube: [
+          {
+            name: "Great Meditation",
+            desc: "Guided meditations for sleep, calm and focus.",
+            url: "https://www.youtube.com/results?search_query=Great+Meditation"
+          },
+          {
+            name: "The Honest Guys",
+            desc: "Relaxing guided meditations and visualizations.",
+            url: "https://www.youtube.com/results?search_query=The+Honest+Guys"
+          },
+          {
+            name: "Headspace",
+            desc: "Short animated lessons and guided sessions.",
+            url: "https://www.youtube.com/results?search_query=Headspace"
+          },
+          {
+            name: "Tara Brach",
+            desc: "Talks and guided meditations.",
+            url: "https://www.youtube.com/results?search_query=Tara+Brach"
+          },
+          {
+            name: "Jon Kabat-Zinn",
+            desc: "Mindfulness-based stress reduction pioneer.",
+            url: "https://www.youtube.com/results?search_query=Jon+Kabat-Zinn+guided+meditation"
+          },
+          {
+            name: "Michael Sealey",
+            desc: "Hypnotic guided sleep meditations.",
+            url: "https://www.youtube.com/results?search_query=Michael+Sealey"
+          },
+          {
+            name: "Yoga With Adriene",
+            desc: "Gentle yoga and breath for calm.",
+            url: "https://www.youtube.com/results?search_query=Yoga+With+Adriene"
+          },
+          {
+            name: "Eckhart Tolle",
+            desc: "Presence and the power of now.",
+            url: "https://www.youtube.com/results?search_query=Eckhart+Tolle"
+          },
+          {
+            name: "Wim Hof breathing",
+            desc: "Guided breathing sessions.",
+            url: "https://www.youtube.com/results?search_query=Wim+Hof+guided+breathing"
+          },
+          {
+            name: "Box breathing 5 minutes",
+            desc: "Quick reset you can do anywhere (not while driving).",
+            url: "https://www.youtube.com/results?search_query=box+breathing+5+minutes"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Mindful.org",
+            url: "https://www.mindful.org/"
+          },
+          {
+            name: "Tricycle",
+            url: "https://tricycle.org/"
+          },
+          {
+            name: "Insight Timer (free app)",
+            url: "https://insighttimer.com/"
+          },
+          {
+            name: "Google News: meditation",
+            url: "https://news.google.com/search?q=meditation%20study%20OR%20mindfulness"
+          }
+        ]
+      },
+      {
+        id: "med-sadhguru",
+        name: "Sadhguru",
+        icon: "🕉️",
+        labels: {
+          podcasts: "Guides"
+        },
+        podcasts: [
+          {
+            name: "Sadhguru official site",
+            desc: "Talks, articles and programs from Isha.",
+            url: "https://isha.sadhguru.org/"
+          },
+          {
+            name: "Isha Kriya (free)",
+            desc: "Sadhguru's free 12-minute guided meditation.",
+            url: "https://www.google.com/search?q=Isha+Kriya+free+guided+meditation+Sadhguru"
+          },
+          {
+            name: "Miracle of Mind app",
+            desc: "Sadhguru's free meditation app.",
+            url: "https://www.google.com/search?q=Miracle+of+Mind+app+Sadhguru"
+          },
+          {
+            name: "Sadhguru app",
+            desc: "Daily wisdom, videos and meditations.",
+            url: "https://www.google.com/search?q=Sadhguru+app"
+          },
+          {
+            name: "Inner Engineering",
+            desc: "Sadhguru's core online program.",
+            url: "https://www.google.com/search?q=Inner+Engineering+online+Sadhguru"
+          },
+          {
+            name: "Sadhguru podcast",
+            desc: "Talks you can listen to in the car.",
+            url: "https://podcasts.apple.com/us/search?term=Sadhguru"
+          },
+          {
+            name: "Sadhguru on Spotify",
+            desc: "Podcasts and chants.",
+            url: "https://open.spotify.com/search/Sadhguru"
+          },
+          {
+            name: "Book: Inner Engineering",
+            desc: "A yogi's guide to joy.",
+            url: "https://www.google.com/search?q=Inner+Engineering+book+Sadhguru"
+          },
+          {
+            name: "Book: Karma",
+            desc: "A yogi's guide to crafting your destiny.",
+            url: "https://www.google.com/search?q=Karma+book+Sadhguru"
+          },
+          {
+            name: "Isha Yoga Center",
+            desc: "Programs in Tennessee and India.",
+            url: "https://www.google.com/search?q=Isha+Institute+of+Inner+Sciences+Tennessee"
+          }
+        ],
+        youtube: [
+          {
+            name: "Sadhguru",
+            desc: "Official channel: short talks on life and meditation.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru"
+          },
+          {
+            name: "Sadhguru guided meditation",
+            desc: "Follow-along meditations.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru+guided+meditation"
+          },
+          {
+            name: "Isha Kriya",
+            desc: "The free guided practice.",
+            url: "https://www.youtube.com/results?search_query=Isha+Kriya+guided+meditation"
+          },
+          {
+            name: "Sadhguru on sleep",
+            desc: "Sleep better, rest deeper.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru+on+sleep"
+          },
+          {
+            name: "Sadhguru on stress",
+            desc: "Handling pressure and anxiety.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru+stress+anxiety"
+          },
+          {
+            name: "Sadhguru on food",
+            desc: "What and how to eat.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru+on+food+diet"
+          },
+          {
+            name: "Sadhguru on success",
+            desc: "Work, money and ambition.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru+on+success"
+          },
+          {
+            name: "Sadhguru chants",
+            desc: "Brahmananda Swaroopa and other chants.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru+chants"
+          },
+          {
+            name: "Sadhguru conversations",
+            desc: "Talks with celebrities and scientists.",
+            url: "https://www.youtube.com/results?search_query=Sadhguru+in+conversation"
+          },
+          {
+            name: "Isha Foundation",
+            desc: "Programs, events and yoga.",
+            url: "https://www.youtube.com/results?search_query=Isha+Foundation"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Isha Blog",
+            url: "https://isha.sadhguru.org/en/wisdom"
+          },
+          {
+            name: "Google News: Sadhguru",
+            url: "https://news.google.com/search?q=Sadhguru"
+          }
+        ]
+      },
+      {
+        id: "med-hicks",
+        name: "Esther Hicks",
+        icon: "✨",
+        labels: {
+          podcasts: "Guides"
+        },
+        podcasts: [
+          {
+            name: "Abraham-Hicks official site",
+            desc: "Workshops, books and daily quotes.",
+            url: "https://www.abraham-hicks.com/"
+          },
+          {
+            name: "Abraham Hicks podcast",
+            desc: "Law of Attraction workshop recordings.",
+            url: "https://podcasts.apple.com/us/search?term=Abraham%20Hicks"
+          },
+          {
+            name: "Abraham Hicks on Spotify",
+            desc: "Workshops and meditations.",
+            url: "https://open.spotify.com/search/Abraham%20Hicks"
+          },
+          {
+            name: "Getting into the Vortex",
+            desc: "The guided meditations album.",
+            url: "https://www.google.com/search?q=Getting+into+the+Vortex+guided+meditations+Abraham+Hicks"
+          },
+          {
+            name: "Book: Ask and It Is Given",
+            desc: "The core Law of Attraction teachings.",
+            url: "https://www.google.com/search?q=Ask+and+It+Is+Given+Esther+Hicks"
+          },
+          {
+            name: "Book: The Vortex",
+            desc: "Relationships and the Law of Attraction.",
+            url: "https://www.google.com/search?q=The+Vortex+Esther+Jerry+Hicks+book"
+          },
+          {
+            name: "Book: Money and the Law of Attraction",
+            desc: "Wealth, health and happiness.",
+            url: "https://www.google.com/search?q=Money+and+the+Law+of+Attraction+Esther+Hicks"
+          },
+          {
+            name: "Workshop schedule",
+            desc: "Live events and cruises.",
+            url: "https://www.google.com/search?q=Abraham+Hicks+workshop+schedule"
+          },
+          {
+            name: "Daily quote",
+            desc: "A short dose of Abraham every day.",
+            url: "https://www.google.com/search?q=Abraham+Hicks+daily+quote"
+          },
+          {
+            name: "The 22 processes",
+            desc: "Practical exercises from Ask and It Is Given.",
+            url: "https://www.google.com/search?q=Abraham+Hicks+22+processes+list"
+          }
+        ],
+        youtube: [
+          {
+            name: "Abraham Hicks Publications",
+            desc: "The official channel.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+Publications+official"
+          },
+          {
+            name: "Abraham Hicks morning meditation",
+            desc: "Start the day aligned.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+morning+meditation"
+          },
+          {
+            name: "Abraham Hicks 15 minute meditation",
+            desc: "The classic Vortex meditation.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+15+minute+meditation"
+          },
+          {
+            name: "Abraham Hicks for sleep",
+            desc: "Fall asleep feeling good.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+sleep"
+          },
+          {
+            name: "Abraham Hicks on money",
+            desc: "Abundance and allowing.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+money+abundance"
+          },
+          {
+            name: "Abraham Hicks on health",
+            desc: "Wellbeing and the body.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+health+wellbeing"
+          },
+          {
+            name: "Abraham Hicks on relationships",
+            desc: "Love and contrast.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+relationships"
+          },
+          {
+            name: "Abraham Hicks hot seat",
+            desc: "Workshop Q&A highlights.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+hot+seat"
+          },
+          {
+            name: "Abraham Hicks no music",
+            desc: "Talks without background music.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+no+music"
+          },
+          {
+            name: "Abraham Hicks in German",
+            desc: "Abraham auf Deutsch.",
+            url: "https://www.youtube.com/results?search_query=Abraham+Hicks+deutsch"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Abraham-Hicks",
+            url: "https://www.abraham-hicks.com/"
+          },
+          {
+            name: "Google News: Abraham Hicks",
+            url: "https://news.google.com/search?q=Abraham%20Hicks%20OR%20%22law%20of%20attraction%22"
+          }
+        ]
+      },
+      {
+        id: "med-goldman",
+        name: "Jonathan Goldman",
+        icon: "🎶",
+        labels: {
+          podcasts: "Spotify",
+          icon: "🟢",
+          heading: "Spotify picks"
+        },
+        podcasts: [
+          {
+            name: "Jonathan Goldman",
+            desc: "All his music on Spotify.",
+            url: "https://open.spotify.com/search/Jonathan%20Goldman/artists"
+          },
+          {
+            name: "Chakra Chants",
+            desc: "His best-known chakra toning album.",
+            url: "https://open.spotify.com/search/Jonathan%20Goldman%20Chakra%20Chants/albums"
+          },
+          {
+            name: "Holy Harmony",
+            desc: "Solfeggio frequencies for healing.",
+            url: "https://open.spotify.com/search/Jonathan%20Goldman%20Holy%20Harmony/albums"
+          },
+          {
+            name: "The Divine Name",
+            desc: "With Gregg Braden: sacred sound.",
+            url: "https://open.spotify.com/search/Jonathan%20Goldman%20The%20Divine%20Name/albums"
+          },
+          {
+            name: "Ultimate Om",
+            desc: "Deep, steady Om chanting.",
+            url: "https://open.spotify.com/search/Jonathan%20Goldman%20Ultimate%20Om/albums"
+          },
+          {
+            name: "Reiki Chants",
+            desc: "Sounds for energy work.",
+            url: "https://open.spotify.com/search/Jonathan%20Goldman%20Reiki%20Chants/albums"
+          },
+          {
+            name: "Frequencies: Sounds of Healing",
+            desc: "Pure healing tones.",
+            url: "https://open.spotify.com/search/Jonathan%20Goldman%20Frequencies/albums"
+          },
+          {
+            name: "Healing Sounds website",
+            desc: "Books, CDs and workshops.",
+            url: "https://www.healingsounds.com/"
+          },
+          {
+            name: "Book: The 7 Secrets of Sound Healing",
+            desc: "His practical guide.",
+            url: "https://www.google.com/search?q=The+7+Secrets+of+Sound+Healing+Jonathan+Goldman"
+          },
+          {
+            name: "Book: Healing Sounds",
+            desc: "The power of harmonics.",
+            url: "https://www.google.com/search?q=Healing+Sounds+book+Jonathan+Goldman"
+          }
+        ],
+        youtube: [
+          {
+            name: "Jonathan Goldman",
+            desc: "Talks and sound healing sessions.",
+            url: "https://www.youtube.com/results?search_query=Jonathan+Goldman"
+          },
+          {
+            name: "Chakra Chants",
+            desc: "Listen to the album.",
+            url: "https://www.youtube.com/results?search_query=Jonathan+Goldman+Chakra+Chants"
+          },
+          {
+            name: "Holy Harmony",
+            desc: "Solfeggio healing tones.",
+            url: "https://www.youtube.com/results?search_query=Jonathan+Goldman+Holy+Harmony"
+          },
+          {
+            name: "Ultimate Om",
+            desc: "Om chanting for meditation.",
+            url: "https://www.youtube.com/results?search_query=Jonathan+Goldman+Ultimate+Om"
+          },
+          {
+            name: "Vowels as mantras",
+            desc: "His toning technique.",
+            url: "https://www.youtube.com/results?search_query=Jonathan+Goldman+vowel+sounds+chakras"
+          },
+          {
+            name: "Frequency + Intent",
+            desc: "His formula for sound healing.",
+            url: "https://www.youtube.com/results?search_query=Jonathan+Goldman+frequency+intent"
+          },
+          {
+            name: "Sound healing interview",
+            desc: "Jonathan Goldman explains sound healing.",
+            url: "https://www.youtube.com/results?search_query=Jonathan+Goldman+interview+sound+healing"
+          },
+          {
+            name: "Gregg Braden & Goldman",
+            desc: "The Divine Name.",
+            url: "https://www.youtube.com/results?search_query=Gregg+Braden+Jonathan+Goldman+Divine+Name"
+          },
+          {
+            name: "Toning for beginners",
+            desc: "Use your own voice to relax.",
+            url: "https://www.youtube.com/results?search_query=toning+sound+healing+for+beginners"
+          },
+          {
+            name: "Overtone chanting",
+            desc: "Harmonics you can sing.",
+            url: "https://www.youtube.com/results?search_query=overtone+chanting+tutorial"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Healing Sounds",
+            url: "https://www.healingsounds.com/"
+          },
+          {
+            name: "Google News: sound healing",
+            url: "https://news.google.com/search?q=%22sound%20healing%22%20OR%20%22sound%20bath%22"
+          }
+        ]
+      },
+      {
+        id: "med-bowls",
+        name: "Crystal Bowls",
+        icon: "🔔",
+        labels: {
+          podcasts: "Spotify",
+          icon: "🟢",
+          heading: "Spotify picks"
+        },
+        podcasts: [
+          {
+            name: "Crystal Singing Bowls",
+            desc: "Pure crystal bowl tones.",
+            url: "https://open.spotify.com/search/Crystal%20Singing%20Bowls/playlists"
+          },
+          {
+            name: "Sound Bath",
+            desc: "Full sound bath sessions.",
+            url: "https://open.spotify.com/search/Sound%20Bath/playlists"
+          },
+          {
+            name: "Crystal Bowls for Sleep",
+            desc: "Slow, soft bowls to fall asleep.",
+            url: "https://open.spotify.com/search/crystal%20bowls%20sleep/playlists"
+          },
+          {
+            name: "Chakra Crystal Bowls",
+            desc: "One bowl for each chakra.",
+            url: "https://open.spotify.com/search/chakra%20crystal%20bowls/playlists"
+          },
+          {
+            name: "432 Hz Crystal Bowls",
+            desc: "Tuned to 432 Hz.",
+            url: "https://open.spotify.com/search/432%20Hz%20crystal%20bowls/playlists"
+          },
+          {
+            name: "Tibetan Singing Bowls",
+            desc: "Metal bowls, warmer sound.",
+            url: "https://open.spotify.com/search/Tibetan%20singing%20bowls/playlists"
+          },
+          {
+            name: "Gong Bath",
+            desc: "Deep gong waves.",
+            url: "https://open.spotify.com/search/gong%20bath/playlists"
+          },
+          {
+            name: "Crystal Bowls Meditation",
+            desc: "Bowls for sitting practice.",
+            url: "https://open.spotify.com/search/crystal%20bowls%20meditation/playlists"
+          },
+          {
+            name: "Alchemy Crystal Bowls",
+            desc: "Shimmering alchemy bowl tones.",
+            url: "https://open.spotify.com/search/alchemy%20crystal%20singing%20bowls/playlists"
+          },
+          {
+            name: "Bowls and Rain",
+            desc: "Crystal bowls mixed with rain.",
+            url: "https://open.spotify.com/search/singing%20bowls%20rain/playlists"
+          }
+        ],
+        youtube: [
+          {
+            name: "Crystal bowl sound bath 1 hour",
+            desc: "A full session.",
+            url: "https://www.youtube.com/results?search_query=crystal+singing+bowl+sound+bath+1+hour"
+          },
+          {
+            name: "Chakra crystal bowls",
+            desc: "Each chakra in turn.",
+            url: "https://www.youtube.com/results?search_query=chakra+crystal+singing+bowls"
+          },
+          {
+            name: "Crystal bowls for sleep",
+            desc: "Fall asleep in minutes.",
+            url: "https://www.youtube.com/results?search_query=crystal+singing+bowls+sleep"
+          },
+          {
+            name: "432 Hz crystal bowls",
+            desc: "Calming 432 Hz tones.",
+            url: "https://www.youtube.com/results?search_query=432+Hz+crystal+singing+bowls"
+          },
+          {
+            name: "Crystal bowls for anxiety",
+            desc: "Settle your nervous system.",
+            url: "https://www.youtube.com/results?search_query=crystal+bowls+anxiety+relief"
+          },
+          {
+            name: "Alchemy crystal bowls",
+            desc: "Shimmering alchemy bowls.",
+            url: "https://www.youtube.com/results?search_query=alchemy+crystal+bowls+sound+bath"
+          },
+          {
+            name: "Crystal bowls and gong",
+            desc: "Layered sound bath.",
+            url: "https://www.youtube.com/results?search_query=crystal+bowls+gong+sound+bath"
+          },
+          {
+            name: "Tibetan singing bowls",
+            desc: "Classic metal bowls.",
+            url: "https://www.youtube.com/results?search_query=Tibetan+singing+bowls+meditation"
+          },
+          {
+            name: "How to play a crystal bowl",
+            desc: "Start playing your own.",
+            url: "https://www.youtube.com/results?search_query=how+to+play+crystal+singing+bowl"
+          },
+          {
+            name: "Sound bath San Diego",
+            desc: "Find a live sound bath near you.",
+            url: "https://www.youtube.com/results?search_query=sound+bath+San+Diego"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Sound baths in San Diego",
+            url: "https://www.google.com/search?q=sound+bath+San+Diego+this+week"
+          },
+          {
+            name: "Sound baths in Tempe",
+            url: "https://www.google.com/search?q=sound+bath+Tempe+AZ"
+          },
+          {
+            name: "Google News: sound bath",
+            url: "https://news.google.com/search?q=%22sound%20bath%22"
+          }
+        ]
+      },
+      {
+        id: "med-binaural",
+        name: "Binaural Beats",
+        icon: "🎧",
+        labels: {
+          podcasts: "Spotify",
+          icon: "🟢",
+          heading: "Spotify picks"
+        },
+        podcasts: [
+          {
+            name: "Binaural Beats",
+            desc: "Use headphones. Not while driving.",
+            url: "https://open.spotify.com/search/binaural%20beats/playlists"
+          },
+          {
+            name: "Theta Waves",
+            desc: "Deep meditation (4-8 Hz).",
+            url: "https://open.spotify.com/search/theta%20binaural%20beats/playlists"
+          },
+          {
+            name: "Alpha Waves",
+            desc: "Relaxed focus (8-12 Hz).",
+            url: "https://open.spotify.com/search/alpha%20waves%20binaural/playlists"
+          },
+          {
+            name: "Delta Waves Sleep",
+            desc: "Deep sleep (0.5-4 Hz).",
+            url: "https://open.spotify.com/search/delta%20waves%20sleep/playlists"
+          },
+          {
+            name: "Gamma 40 Hz Focus",
+            desc: "Concentration and study.",
+            url: "https://open.spotify.com/search/40%20Hz%20gamma%20binaural/playlists"
+          },
+          {
+            name: "Beta Focus",
+            desc: "Alert work mode (12-30 Hz).",
+            url: "https://open.spotify.com/search/beta%20waves%20focus/playlists"
+          },
+          {
+            name: "Solfeggio 528 Hz",
+            desc: "The so-called love frequency.",
+            url: "https://open.spotify.com/search/528%20Hz/playlists"
+          },
+          {
+            name: "Brain.fm",
+            desc: "Music made for focus and sleep.",
+            url: "https://open.spotify.com/search/brain.fm/playlists"
+          },
+          {
+            name: "Lucid Dreaming",
+            desc: "Theta beats for dreaming.",
+            url: "https://open.spotify.com/search/lucid%20dreaming%20binaural/playlists"
+          },
+          {
+            name: "Monaural Isochronic Tones",
+            desc: "Works without headphones.",
+            url: "https://open.spotify.com/search/isochronic%20tones/playlists"
+          }
+        ],
+        youtube: [
+          {
+            name: "Theta waves meditation",
+            desc: "Deep meditation beats.",
+            url: "https://www.youtube.com/results?search_query=theta+waves+binaural+beats+meditation"
+          },
+          {
+            name: "Alpha waves focus",
+            desc: "Calm focus while working.",
+            url: "https://www.youtube.com/results?search_query=alpha+waves+binaural+beats+focus"
+          },
+          {
+            name: "Delta waves deep sleep",
+            desc: "8-hour sleep tracks.",
+            url: "https://www.youtube.com/results?search_query=delta+waves+deep+sleep+binaural+8+hours"
+          },
+          {
+            name: "40 Hz gamma",
+            desc: "Focus and memory.",
+            url: "https://www.youtube.com/results?search_query=40+Hz+gamma+binaural+beats"
+          },
+          {
+            name: "Isochronic tones",
+            desc: "No headphones needed.",
+            url: "https://www.youtube.com/results?search_query=isochronic+tones+meditation"
+          },
+          {
+            name: "Jason Lewis Mind Amend",
+            desc: "Popular binaural sleep and calm tracks.",
+            url: "https://www.youtube.com/results?search_query=Jason+Lewis+Mind+Amend"
+          },
+          {
+            name: "Greenred Productions",
+            desc: "Relaxing music with binaural layers.",
+            url: "https://www.youtube.com/results?search_query=Greenred+Productions"
+          },
+          {
+            name: "Meditative Mind",
+            desc: "Solfeggio and chakra frequencies.",
+            url: "https://www.youtube.com/results?search_query=Meditative+Mind"
+          },
+          {
+            name: "Binaural beats explained",
+            desc: "What they do and what the science says.",
+            url: "https://www.youtube.com/results?search_query=binaural+beats+explained+science"
+          },
+          {
+            name: "Hemi-Sync Gateway",
+            desc: "The Monroe Institute's classic process.",
+            url: "https://www.youtube.com/results?search_query=Monroe+Institute+Hemi-Sync+Gateway"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Monroe Institute",
+            url: "https://www.monroeinstitute.org/"
+          },
+          {
+            name: "Google News: binaural beats",
+            url: "https://news.google.com/search?q=%22binaural%20beats%22"
           }
         ]
       }

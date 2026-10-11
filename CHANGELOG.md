@@ -2,6 +2,12 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.4.0 (2026-10-11): Meditation, George Carlin and iPhone fixes
+- Meditation hobby with subs med-guided, med-sadhguru, med-hicks, med-goldman, med-bowls, med-binaural
+- George Carlin replaces Kill Tony in World Comedy YouTube picks
+- Phones: open.spotify.com search links open the Spotify app via spotify:search:, falling back to the web
+- apple-touch-icon.png at the site root with sizes and a cache-busting version
+
 ## 2.3.0 (2026-10-11): Comedy and Workout Music
 - Comedy hobby with subs com-de (German content) and com-row (rest of world)
 - Fitness: Workout Music sub (fit-music) with Spotify playlists and YouTube mixes; labels can set icon and heading

@@ -322,6 +322,26 @@
     else $("#shareUrl").select();
   });
 
+  // On phones, open.spotify.com search links open the Spotify app on its home screen and drop the
+  // search. Use the app's own search link instead, and fall back to the web page if the app is missing.
+  const mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="https://open.spotify.com/search/"]');
+    if (!a || !mobile) return;
+    const query = decodeURIComponent(a.pathname.split("/")[2] || "");
+    if (!query) return;
+    e.preventDefault();
+    const web = a.href;
+    let left = false;
+    const onHide = () => { left = true; };
+    document.addEventListener("visibilitychange", onHide, { once: true });
+    location.href = "spotify:search:" + encodeURIComponent(query);
+    setTimeout(() => {
+      document.removeEventListener("visibilitychange", onHide);
+      if (!left && !document.hidden) location.href = web;
+    }, 1800);
+  });
+
   render();
   homeWeather();
 

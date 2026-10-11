@@ -184,6 +184,25 @@ FEEDS = {
         ("The Onion", "https://theonion.com/feed/"),
         ("Google News", "https://news.google.com/rss/search?q=%22stand-up%22+comedian+OR+%22comedy+special%22&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "med-guided": [
+        ("Mindful", "https://www.mindful.org/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=meditation+OR+mindfulness+study&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "med-sadhguru": [
+        ("Google News", "https://news.google.com/rss/search?q=Sadhguru&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "med-hicks": [
+        ("Google News", "https://news.google.com/rss/search?q=%22Abraham+Hicks%22+OR+%22Esther+Hicks%22+OR+%22law+of+attraction%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "med-goldman": [
+        ("Google News", "https://news.google.com/rss/search?q=%22sound+healing%22+OR+%22Jonathan+Goldman%22+sound&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "med-bowls": [
+        ("Google News", "https://news.google.com/rss/search?q=%22sound+bath%22+OR+%22singing+bowls%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "med-binaural": [
+        ("Google News", "https://news.google.com/rss/search?q=%22binaural+beats%22+OR+%22brainwave+entrainment%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20
