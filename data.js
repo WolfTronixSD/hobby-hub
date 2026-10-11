@@ -1878,6 +1878,138 @@ const HOBBIES = [
         ]
       },
       {
+        id: "fit-music",
+        name: "Workout Music",
+        icon: "🎵",
+        labels: {
+          podcasts: "Spotify",
+          icon: "🟢",
+          heading: "Spotify playlists"
+        },
+        podcasts: [
+          {
+            name: "Beast Mode",
+            desc: "Spotify's hard-hitting hip-hop and trap for lifting.",
+            url: "https://open.spotify.com/search/Beast%20Mode/playlists"
+          },
+          {
+            name: "Power Workout",
+            desc: "High-energy pop and dance.",
+            url: "https://open.spotify.com/search/Power%20Workout/playlists"
+          },
+          {
+            name: "Motivation Mix",
+            desc: "Uplifting anthems to push through.",
+            url: "https://open.spotify.com/search/Motivation%20Mix/playlists"
+          },
+          {
+            name: "Cardio",
+            desc: "Upbeat tracks for the treadmill or bike.",
+            url: "https://open.spotify.com/search/Cardio/playlists"
+          },
+          {
+            name: "Workout Twerkout",
+            desc: "Hip-hop and R&B bangers.",
+            url: "https://open.spotify.com/search/Workout%20Twerkout/playlists"
+          },
+          {
+            name: "Rock Hard",
+            desc: "Big guitar riffs for heavy days.",
+            url: "https://open.spotify.com/search/Rock%20workout/playlists"
+          },
+          {
+            name: "Running 170 BPM",
+            desc: "Steady beat for an easy running cadence.",
+            url: "https://open.spotify.com/search/Running%20170%20BPM/playlists"
+          },
+          {
+            name: "Techno Bunker",
+            desc: "Driving techno, straight from Berlin.",
+            url: "https://open.spotify.com/search/Techno%20Bunker/playlists"
+          },
+          {
+            name: "Deutschrap Workout",
+            desc: "German rap for the gym.",
+            url: "https://open.spotify.com/search/Deutschrap%20Workout/playlists"
+          },
+          {
+            name: "80s Workout",
+            desc: "Retro hits for a fun session.",
+            url: "https://open.spotify.com/search/80s%20Workout/playlists"
+          }
+        ],
+        youtube: [
+          {
+            name: "Best Gym Workout Music Mix",
+            desc: "Long mixed gym sessions.",
+            url: "https://www.youtube.com/results?search_query=best+gym+workout+music+mix"
+          },
+          {
+            name: "Hip-Hop Workout Mix",
+            desc: "Rap and hip-hop for lifting.",
+            url: "https://www.youtube.com/results?search_query=hip+hop+workout+music+mix"
+          },
+          {
+            name: "Rock Workout Mix",
+            desc: "Rock and metal for heavy sets.",
+            url: "https://www.youtube.com/results?search_query=rock+workout+music+mix"
+          },
+          {
+            name: "EDM Workout Mix",
+            desc: "Electronic and dance for cardio.",
+            url: "https://www.youtube.com/results?search_query=EDM+workout+music+mix"
+          },
+          {
+            name: "Running Music 170-180 BPM",
+            desc: "Cadence-matched running mixes.",
+            url: "https://www.youtube.com/results?search_query=running+music+180+bpm+mix"
+          },
+          {
+            name: "Techno Running Mix",
+            desc: "Driving techno for long runs.",
+            url: "https://www.youtube.com/results?search_query=techno+running+mix"
+          },
+          {
+            name: "Phonk Gym Music",
+            desc: "Aggressive phonk for PR attempts.",
+            url: "https://www.youtube.com/results?search_query=phonk+gym+music+mix"
+          },
+          {
+            name: "Motivational Speech Workout",
+            desc: "Speeches over workout beats.",
+            url: "https://www.youtube.com/results?search_query=motivational+speech+workout+music"
+          },
+          {
+            name: "80s Workout Music",
+            desc: "Retro hits for the gym.",
+            url: "https://www.youtube.com/results?search_query=80s+workout+music+mix"
+          },
+          {
+            name: "Deutschrap Workout Mix",
+            desc: "German rap gym mixes.",
+            url: "https://www.youtube.com/results?search_query=deutschrap+workout+mix"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Spotify: Workout",
+            url: "https://open.spotify.com/search/workout/playlists"
+          },
+          {
+            name: "YouTube Music",
+            url: "https://music.youtube.com/"
+          },
+          {
+            name: "Billboard",
+            url: "https://www.billboard.com/"
+          },
+          {
+            name: "Google News: workout music",
+            url: "https://news.google.com/search?q=workout%20playlist%20OR%20gym%20music"
+          }
+        ]
+      },
+      {
         id: "fit-plans",
         name: "Plans & Apps",
         icon: "📋",
@@ -2004,6 +2136,269 @@ const HOBBIES = [
           {
             name: "r/Fitness",
             url: "https://www.reddit.com/r/Fitness/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "comedy",
+    name: "Comedy",
+    icon: "😂",
+    accent: "#ffd23f",
+    tagline: "German comedy and the best of the rest of the world",
+    subs: [
+      {
+        id: "com-de",
+        name: "German Comedy",
+        icon: "🇩🇪",
+        podcasts: [
+          {
+            name: "Gemischtes Hack",
+            desc: "Felix Lobrecht und Tommi Schmitt quatschen über alles.",
+            url: "https://podcasts.apple.com/de/search?term=Gemischtes%20Hack"
+          },
+          {
+            name: "Fest & Flauschig",
+            desc: "Jan Böhmermann und Olli Schulz, Kult seit Jahren.",
+            url: "https://podcasts.apple.com/de/search?term=Fest%20%26%20Flauschig"
+          },
+          {
+            name: "Baywatch Berlin",
+            desc: "Klaas Heufer-Umlauf, Thomas Schmitt und Jakob Lundt.",
+            url: "https://podcasts.apple.com/de/search?term=Baywatch%20Berlin"
+          },
+          {
+            name: "Das Podcast UFO",
+            desc: "Florentin Will und Stefan Titze, herrlich absurd.",
+            url: "https://podcasts.apple.com/de/search?term=Das%20Podcast%20UFO"
+          },
+          {
+            name: "Hobbylos",
+            desc: "Rezo und Julien Bam über Gott und die Welt.",
+            url: "https://podcasts.apple.com/de/search?term=Hobbylos"
+          },
+          {
+            name: "Zärtliche Cousinen",
+            desc: "Atze Schröder und Till Hoheneder, Ruhrpott-Humor.",
+            url: "https://podcasts.apple.com/de/search?term=Z%C3%A4rtliche%20Cousinen"
+          },
+          {
+            name: "Talk ohne Gast",
+            desc: "Till Reiners und Moritz Neumeier, satirisch und böse.",
+            url: "https://podcasts.apple.com/de/search?term=Talk%20ohne%20Gast"
+          },
+          {
+            name: "Sträter & Streberg",
+            desc: "Torsten Sträter und Gerry Streberg über Filme, Serien und Games.",
+            url: "https://podcasts.apple.com/de/search?term=Str%C3%A4ter%20%26%20Streberg"
+          },
+          {
+            name: "Apokalypse & Filterkaffee",
+            desc: "Micky Beisenherz: News mit viel Humor.",
+            url: "https://podcasts.apple.com/de/search?term=Apokalypse%20%26%20Filterkaffee"
+          },
+          {
+            name: "Kurt Krömer - Feelings",
+            desc: "Kurt Krömer trifft Gäste, ehrlich und trotzdem witzig.",
+            url: "https://podcasts.apple.com/de/search?term=Kurt%20Kr%C3%B6mer%20-%20Feelings"
+          }
+        ],
+        youtube: [
+          {
+            name: "heute-show",
+            desc: "ZDF-Satire mit Oliver Welke.",
+            url: "https://www.youtube.com/results?search_query=heute-show"
+          },
+          {
+            name: "ZDF Magazin Royale",
+            desc: "Jan Böhmermanns Satire-Show.",
+            url: "https://www.youtube.com/results?search_query=ZDF+Magazin+Royale"
+          },
+          {
+            name: "extra 3",
+            desc: "NDR-Satire, inklusive Realer Irrsinn.",
+            url: "https://www.youtube.com/results?search_query=extra+3"
+          },
+          {
+            name: "Die Anstalt",
+            desc: "Politisches Kabarett vom ZDF.",
+            url: "https://www.youtube.com/results?search_query=Die+Anstalt"
+          },
+          {
+            name: "NightWash",
+            desc: "Stand-up aus Deutschland.",
+            url: "https://www.youtube.com/results?search_query=NightWash"
+          },
+          {
+            name: "Loriot",
+            desc: "Die Klassiker: Sketche für die Ewigkeit.",
+            url: "https://www.youtube.com/results?search_query=Loriot+Sketche"
+          },
+          {
+            name: "Felix Lobrecht",
+            desc: "Stand-up-Programme und Clips.",
+            url: "https://www.youtube.com/results?search_query=Felix+Lobrecht"
+          },
+          {
+            name: "Torsten Sträter",
+            desc: "Geschichten aus dem Ruhrpott.",
+            url: "https://www.youtube.com/results?search_query=Torsten+Str%C3%A4ter+Comedy"
+          },
+          {
+            name: "Hazel Brugger",
+            desc: "Trockener Humor aus der Schweiz.",
+            url: "https://www.youtube.com/results?search_query=Hazel+Brugger"
+          },
+          {
+            name: "Teddy Teclebrhan",
+            desc: "Antoine und viele andere Figuren.",
+            url: "https://www.youtube.com/results?search_query=Teddy+Comedy"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Der Postillon",
+            url: "https://www.der-postillon.com/"
+          },
+          {
+            name: "Titanic Magazin",
+            url: "https://www.titanic-magazin.de/"
+          },
+          {
+            name: "heute-show (ZDF)",
+            url: "https://www.zdf.de/comedy/heute-show"
+          },
+          {
+            name: "Google News: Comedy (DE)",
+            url: "https://news.google.com/search?q=Comedy%20Komiker&hl=de&gl=DE&ceid=DE:de"
+          }
+        ]
+      },
+      {
+        id: "com-row",
+        name: "World Comedy",
+        icon: "🌍",
+        podcasts: [
+          {
+            name: "SmartLess",
+            desc: "Jason Bateman, Sean Hayes and Will Arnett surprise each other with guests.",
+            url: "https://podcasts.apple.com/us/search?term=SmartLess"
+          },
+          {
+            name: "Conan O'Brien Needs a Friend",
+            desc: "Conan, Sona and Matt, endlessly silly.",
+            url: "https://podcasts.apple.com/us/search?term=Conan%20O%27Brien%20Needs%20a%20Friend"
+          },
+          {
+            name: "Comedy Bang! Bang!",
+            desc: "Scott Aukerman's improv classic.",
+            url: "https://podcasts.apple.com/us/search?term=Comedy%20Bang%21%20Bang%21"
+          },
+          {
+            name: "Wait Wait... Don't Tell Me!",
+            desc: "NPR's news quiz, funny and smart.",
+            url: "https://podcasts.apple.com/us/search?term=Wait%20Wait...%20Don%27t%20Tell%20Me%21"
+          },
+          {
+            name: "Off Menu",
+            desc: "Ed Gamble and James Acaster's dream-meal podcast (UK).",
+            url: "https://podcasts.apple.com/us/search?term=Off%20Menu"
+          },
+          {
+            name: "The Adam Buxton Podcast",
+            desc: "Warm, rambling British chats.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Adam%20Buxton%20Podcast"
+          },
+          {
+            name: "My Dad Wrote a Porno",
+            desc: "Reading a dad's very bad novel (UK).",
+            url: "https://podcasts.apple.com/us/search?term=My%20Dad%20Wrote%20a%20Porno"
+          },
+          {
+            name: "2 Bears 1 Cave",
+            desc: "Tom Segura and Bert Kreischer.",
+            url: "https://podcasts.apple.com/us/search?term=2%20Bears%201%20Cave"
+          },
+          {
+            name: "Good Hang with Amy Poehler",
+            desc: "Amy Poehler and funny friends.",
+            url: "https://podcasts.apple.com/us/search?term=Good%20Hang%20with%20Amy%20Poehler"
+          },
+          {
+            name: "Fly on the Wall",
+            desc: "Dana Carvey and David Spade on SNL stories.",
+            url: "https://podcasts.apple.com/us/search?term=Fly%20on%20the%20Wall"
+          }
+        ],
+        youtube: [
+          {
+            name: "Saturday Night Live",
+            desc: "Sketches and Weekend Update.",
+            url: "https://www.youtube.com/results?search_query=Saturday+Night+Live"
+          },
+          {
+            name: "Netflix Is A Joke",
+            desc: "Stand-up clips from Netflix specials.",
+            url: "https://www.youtube.com/results?search_query=Netflix+Is+A+Joke"
+          },
+          {
+            name: "Comedy Central Stand-Up",
+            desc: "Clean cuts from top comics.",
+            url: "https://www.youtube.com/results?search_query=Comedy+Central+Stand-Up"
+          },
+          {
+            name: "Dry Bar Comedy",
+            desc: "Clean stand-up you can play in the car.",
+            url: "https://www.youtube.com/results?search_query=Dry+Bar+Comedy"
+          },
+          {
+            name: "Just For Laughs",
+            desc: "Montreal festival stand-up and gags.",
+            url: "https://www.youtube.com/results?search_query=Just+For+Laughs"
+          },
+          {
+            name: "Key & Peele",
+            desc: "Sketch comedy classics.",
+            url: "https://www.youtube.com/results?search_query=Key+%26+Peele"
+          },
+          {
+            name: "Last Week Tonight",
+            desc: "John Oliver's deep-dive satire.",
+            url: "https://www.youtube.com/results?search_query=Last+Week+Tonight"
+          },
+          {
+            name: "Taskmaster",
+            desc: "British comedians, ridiculous tasks.",
+            url: "https://www.youtube.com/results?search_query=Taskmaster"
+          },
+          {
+            name: "Nate Bargatze",
+            desc: "Clean, deadpan stand-up.",
+            url: "https://www.youtube.com/results?search_query=Nate+Bargatze"
+          },
+          {
+            name: "Kill Tony",
+            desc: "Live comedy roast podcast show.",
+            url: "https://www.youtube.com/results?search_query=Kill+Tony"
+          }
+        ],
+        newsSources: [
+          {
+            name: "The Onion",
+            url: "https://theonion.com/"
+          },
+          {
+            name: "Vulture: Comedy",
+            url: "https://www.vulture.com/comedy/"
+          },
+          {
+            name: "Chortle (UK)",
+            url: "https://www.chortle.co.uk/"
+          },
+          {
+            name: "Google News: comedy",
+            url: "https://news.google.com/search?q=comedy%20special%20OR%20stand-up%20comedian"
           }
         ]
       }

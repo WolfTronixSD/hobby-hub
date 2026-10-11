@@ -2,6 +2,11 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.3.0 (2026-10-11): Comedy and Workout Music
+- Comedy hobby with subs com-de (German content) and com-row (rest of world)
+- Fitness: Workout Music sub (fit-music) with Spotify playlists and YouTube mixes; labels can set icon and heading
+- Hobby grid picks its desktop column count to keep rows even
+
 ## 2.2.0 (2026-10-11): Live weather
 - Home-screen weather bar using IP-based location (geojs.io, ipapi.co fallback) and Open-Meteo, cached for offline
 - Weather subs for San Diego (sd-wx) and Tempe (tp-wx) with live conditions, 5-day forecast and guides

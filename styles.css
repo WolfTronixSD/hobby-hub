@@ -86,7 +86,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .wx-day small { color: var(--muted); font-size: 14px; }
 
 /* Hobby selector: compact big-tap tiles */
-.hobbies { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; margin-top: 8px; }
+.hobbies { display: grid; grid-template-columns: repeat(var(--hcols, 8), 1fr); gap: 12px; margin-top: 8px; }
 .hobby {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
   min-width: 0; min-height: 96px; padding: 12px 8px; text-align: center;
@@ -258,6 +258,7 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .wx-days { gap: 5px; }
   .wx-day { font-size: 14px; padding: 8px 2px; }
   .hobby:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+  .hobby:last-child:nth-child(3n+2) { grid-column: span 2; }
   .subs { grid-template-columns: 1fr 1fr; }
   .sub:last-child:nth-child(odd) { grid-column: span 2; }
   .icon-btn { width: 48px; height: 48px; font-size: 22px; border-radius: 14px; }

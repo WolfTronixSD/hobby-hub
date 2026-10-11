@@ -173,6 +173,17 @@ FEEDS = {
     "tp-wx": [
         ("Google News", "https://news.google.com/rss/search?q=Phoenix+OR+Tempe+weather+OR+monsoon+OR+heat&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "fit-music": [
+        ("Google News", "https://news.google.com/rss/search?q=%22workout+playlist%22+OR+%22gym+music%22+OR+%22running+playlist%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "com-de": [
+        ("Der Postillon", "https://www.der-postillon.com/feeds/posts/default"),
+        ("Google News", "https://news.google.com/rss/search?q=Comedy+OR+Komiker+OR+Kabarett&hl=de&gl=DE&ceid=DE:de"),
+    ],
+    "com-row": [
+        ("The Onion", "https://theonion.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22stand-up%22+comedian+OR+%22comedy+special%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20

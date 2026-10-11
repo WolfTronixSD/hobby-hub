@@ -1,6 +1,18 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.2.0";
+const APP_VERSION = "2.3.0";
 const CHANGELOG = [
+  {
+    version: "2.3.0",
+    date: "2026-10-11",
+    title: "Comedy and Workout Music",
+    changes: [
+      "New Comedy button with German Comedy and World Comedy",
+      "German Comedy: Gemischtes Hack, Fest & Flauschig, heute-show, Loriot, Der Postillon and more, all in German",
+      "World Comedy: SmartLess, Conan, SNL, Netflix Is A Joke, Taskmaster and more",
+      "New Workout Music under Fitness: top 10 Spotify playlists and top 10 YouTube workout mixes",
+      "Menu adjusts its columns so rows stay even as buttons are added"
+    ]
+  },
   {
     version: "2.2.0",
     date: "2026-10-11",

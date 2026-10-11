@@ -34,6 +34,8 @@
     <button class="hobby" data-id="${h.id}" style="--c:${h.accent}" title="${esc(h.tagline)}">
       <span class="emoji">${h.icon}</span><b>${esc(h.name)}</b>
     </button>`).join("");
+  const nh = HOBBIES.length;
+  hobbyNav.style.setProperty("--hcols", [8, 9, 7, 6].reduce((best, c) => ((c - nh % c) % c < (best - nh % best) % best ? c : best)));
   hobbyNav.addEventListener("click", (e) => {
     const b = e.target.closest(".hobby");
     if (b) {
@@ -231,7 +233,7 @@
       store.set("sub", subId);
       subNav.hidden = false;
       const n = parent.subs.length;
-      subNav.style.setProperty("--cols", [4, 5, 3].find((c) => n % c === 0) || 4);
+      subNav.style.setProperty("--cols", [4, 5, 3, 2].find((c) => n % c === 0) || 4);
       subNav.innerHTML = parent.subs.map((x) => `
         <button class="sub" data-id="${x.id}" aria-pressed="${x.id === subId}">
           <span class="emoji">${x.icon}</span><b>${esc(x.name)}</b>
@@ -250,12 +252,12 @@
     document.querySelectorAll("#tabNav button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
     const pod = document.querySelector('#tabNav button[data-tab="podcasts"]');
     const guides = !!(h.labels && h.labels.podcasts);
-    pod.innerHTML = guides ? `<span>📘</span>${esc(h.labels.podcasts)}` : "<span>🎧</span>Podcasts";
+    pod.innerHTML = guides ? `<span>${h.labels.icon || "📘"}</span>${esc(h.labels.podcasts)}` : "<span>🎧</span>Podcasts";
 
     let html;
     if (tab === "podcasts") {
       html = h.labels && h.labels.podcasts
-        ? `<div class="section-title"><h2>${h.icon} Top ${h.podcasts.length} ${esc(h.name)} ${esc(h.labels.podcasts.toLowerCase())}</h2></div>
+        ? `<div class="section-title"><h2>${h.icon} Top ${h.podcasts.length} ${esc(h.name)} ${esc(h.labels.heading || h.labels.podcasts.toLowerCase())}</h2></div>
               <div class="grid">${h.podcasts.map(ytCard).join("").replace(/card yt/g, "card guide")}</div>`
         : `<div class="section-title"><h2>${h.icon} Top ${h.podcasts.length} ${esc(h.name)} podcasts</h2></div>
               <div class="grid">${h.podcasts.map(podcastCard).join("")}</div>`;
