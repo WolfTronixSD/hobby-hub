@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T21:16:59.305308+00:00",
+ "updated": "2026-10-11T21:24:01.666571+00:00",
  "topics": {
   "ham": [
    {
@@ -185,16 +185,16 @@
     "date": "2026-10-08T13:00:15+00:00"
    },
    {
-    "title": "ESP32-CYD Modular Case with GPS/NFC/IR/RF/CC1101/NRF24L01 Bays #3DThursday #3DPrinting",
-    "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOXzc0N01nN1lEYnVUd0QyRjlKRVl0LVg4aVpIQXJQaGhaNW5kOWhXbkE5UEhGc0dlYWYwRnNfZzZNc1JCZUhRdTNMQnRfajlUWlYtTktUV1hXVmFXUzNuR0RVaWxoX0dVaFI0T1BqeVo4NzF4ZUxkOGRXTjNMUHA0cWttS00wd0dEYUtNWjhIaVRZUENyYzRzMkc2R1RWQXFrQW11LWRSQ0FhSUswVVl4LWEyWGRpTl9EOEp4X3V0QQ?oc=5",
-    "source": "Adafruit",
-    "date": "2026-10-08T09:00:55+00:00"
-   },
-   {
     "title": "Q8botOne – A palm-sized open-source quadruped robot with ESP32-C3, DYNAMIXEL smart actuators (Crowdfunding)",
     "link": "https://www.cnx-software.com/2026/10/08/q8botone-a-palm-sized-open-source-quadruped-robot-with-esp32-c3-dynamixel-smart-actuators/",
     "source": "CNX Software",
     "date": "2026-10-08T09:00:08+00:00"
+   },
+   {
+    "title": "Keep That Old Radio Alive With An ESP32",
+    "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBpS2Q3dUk4RnVEYlhUYnFDUUoxbV9hWTgtS1E3aGRkSzNRY3h2bTBEX2xYQy00RGg3Wi1ZaDF4UlI5a1VzQ0N2S2ptRmFRbm9CWmJEaVlNNF9xeXNrZktZM1laTlV1X2NyNHZ2N1U2NVl0aWZJLXZnRUFpbGE?oc=5",
+    "source": "Hackaday",
+    "date": "2026-10-08T02:00:00+00:00"
    },
    {
     "title": "ESP32 As Your Raspberry Pi’s Linux Wireless Co-processor",
@@ -565,6 +565,432 @@
     "link": "https://hackaday.com/2017/07/21/hackaday-prize-entry-hydroponic-garden-control/",
     "source": "Hackaday",
     "date": "2017-07-21T18:30:48+00:00"
+   }
+  ],
+  "computers": [
+   {
+    "title": "3 Linux commands you've overlooked for too long (but can memorize in seconds)",
+    "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNU24xVklMVmlkaEhTMTdzTk04WFo5MW9hYkpIM3VVMDdPN0NBc2tHM0dQdW1kY2FlVW42LU1RYUp2OGpzNDNpc0VndUxFMkFFU3dkYUk5d2UySDM5Y251WW9sLXc5X0wzdndrRng3RENZakd1blhHdk5Bc3NTQ3pxa1VoVzNMeUN3X1RHYVNoM0xSOTJVMUxBZUlrYkxlcWhTREdZ?oc=5",
+    "source": "How-To Geek",
+    "date": "2026-10-11T16:30:13+00:00"
+   },
+   {
+    "title": "Console market craters as Xbox sales crash 33% to the lowest since launch 25 years ago, PS5 sales drop 25%",
+    "link": "https://www.tomshardware.com/video-games/console-gaming/console-market-craters-as-xbox-sales-crash-33-percent-to-the-lowest-since-launch-25-years-ago-ps5-sales-drop-25-percent-steep-price-hikes-push-series-x-to-usd800-and-ps5-pro-to-usd900",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T16:30:00+00:00"
+   },
+   {
+    "title": "Cyberleek threatens full GTA 6 build leak unless Take-Two apologizes and his $30 million crypto memecoin goal is met",
+    "link": "https://www.tomshardware.com/software/linux/cyberleek-threatens-full-gta-6-build-leak-unless-take-two-apologizes-and-his-usd30-million-crypto-memecoin-goal-is-met-leaker-demands-physical-release-while-pumping-solana-memecoin-to-usd30m",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T16:10:00+00:00"
+   },
+   {
+    "title": "Canadian YouTuber builds 'Flock-like' camera to exclusively track police vehicles",
+    "link": "https://www.tomshardware.com/tech-industry/cyber-security/canadian-youtuber-builds-flock-like-camera-to-exclusively-track-police-vehicles-officers-visit-his-home-to-express-privacy-concerns",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T15:11:18+00:00"
+   },
+   {
+    "title": "Modder discovers that putting a GPU in the 'wrong place' can deliver a 19 degree cooler hotspot",
+    "link": "https://www.tomshardware.com/pc-components/gpus/modder-discovers-that-putting-a-gpu-in-the-wrong-place-can-deliver-a-19-degree-cooler-hotspot-breaking-convention-can-produce-great-results-despite-decades-of-pc-diy-evolution",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T14:23:20+00:00"
+   },
+   {
+    "title": "Russia's Yandex bot traffic nearly eliminated overnight after Ukraine drone strikes cripple multiple of 'Russia's Google' data centers",
+    "link": "https://www.tomshardware.com/tech-industry/data-centers/russian-disinformation-bot-traffic-nearly-eliminated-overnight-after-ukraine-drone-strikes-cripple-multiple-of-russias-google-data-centers-ukraine-intensifies-bombing-of-yandex-data-centers-in-response-to-moscows-strikes-on-kyiv-data-centers",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T13:15:09+00:00"
+   },
+   {
+    "title": "Sandisk NAS 800 1.92TB SSD Review: Endurance at a premium",
+    "link": "https://www.tomshardware.com/pc-components/ssds/sandisk-nas-800-1-92tb-ssd-review",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T13:05:59+00:00"
+   },
+   {
+    "title": "Appeals filed against Project Primestone, high-tech GPU testing lab",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPbjA4T05jcnZKekY2aGxQZlZEN0NtNlg5YTJrajNTUEdLVVNwSzduN2dKYWJvdEtqTllaZVJmcWtXYi1lMm41d1lYUEhwbkN6MzItUlNZRTBweGRTVW9vdHpRRVlrek54MEdfU0MwTkl4ZzBxNF9qT2dxZG8tSlgzMHdzSDd2N25RanF6Q19QMlZEU0RyMDBLRWNPcU42cW8?oc=5",
+    "source": "Colorado Springs Gazette",
+    "date": "2026-10-11T13:00:00+00:00"
+   },
+   {
+    "title": "Developer turns classic Windows Minesweeper into hand-holding 'big-budget, Triple-A’ parody",
+    "link": "https://www.tomshardware.com/video-games/developer-turns-classic-windows-minesweeper-into-hand-holding-big-budget-triple-a-parody-browser-reboot-mocks-modern-gaming-with-chatty-npcs-internal-monologues-and-promised-loot-boxes",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T12:50:00+00:00"
+   },
+   {
+    "title": "Why CPU Overclocking Is Mostly Now A Thing Of The Past",
+    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1SUWRYdEhKQ2lveXllTUdzYnJ3QXc2ZVVfTXZoNGNGWmNOWXlaQ2NmZi01YmFZTWdzNTZJOWk3TjYtNGpsbkRfYkFqcTZXdnYxUV90U2RzQ3dLVDZ4SHppSlFTY2tPSjJaRzgzeDVMUm1VWmlBa25qU013?oc=5",
+    "source": "Engadget",
+    "date": "2026-10-11T12:45:00+00:00"
+   },
+   {
+    "title": "Programmer ports Super Mario 64 to Microsoft’s Zune HD media player",
+    "link": "https://www.tomshardware.com/video-games/retro-gaming/programmer-ports-super-mario-64-to-microsofts-zune-hd-media-player-the-2009-ipod-rival-runs-the-game-natively-on-its-nvidia-tegra-chip-with-touchscreen-controls-and-saves",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T12:30:00+00:00"
+   },
+   {
+    "title": "Auto Vectorizing The RISC-V Linux Kernel Shows Promising Results",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBYTW1YTnBNNG1QbGhOZkYySW45eW9QV2cwUlNRYTlVdXBnaGF3V2t2SklmeUVDdFNwdFllMGNuV21tQWllWWVRbXZUQVFjbzVTUk1aVjczY0ZacUhiUldWREdQVFJHeENfeHc?oc=5",
+    "source": "Phoronix",
+    "date": "2026-10-11T10:18:00+00:00"
+   },
+   {
+    "title": "Which AMD CPU Is Best For Gaming In 2026?",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1lUFVQb2tiWHdxX3VWeFRHdVgtdl91WklyZXRpZ3paZHphb1RwWmJHSnhyQXBGM1J0b2h2UkpEOUpqWXNjdXVuTmN2Mk43WDdLWEhjVExLTExiUmtObHBNb1ZqRk5mZHpuTFE?oc=5",
+    "source": "BGR",
+    "date": "2026-10-11T10:17:00+00:00"
+   },
+   {
+    "title": "Ukraine’s drones knock out AI data center belonging to \"Russia’s Google\"",
+    "link": "https://arstechnica.com/gadgets/2026/10/ukraines-drones-knock-out-ai-data-center-belonging-to-russias-google/",
+    "source": "Ars Technica",
+    "date": "2026-10-09T22:04:07+00:00"
+   },
+   {
+    "title": "A Cray-1 supercomputer replica from 30 \"obsolete\" Mac Minis",
+    "link": "https://arstechnica.com/gadgets/2026/10/a-cray-1-supercomputer-replica-from-30-obsolete-mac-minis/",
+    "source": "Ars Technica",
+    "date": "2026-10-09T21:51:12+00:00"
+   },
+   {
+    "title": "PC shipments fall 20.1 percent in “sharpest decline” since Q1 2023",
+    "link": "https://arstechnica.com/information-technology/2026/10/pc-shipments-fall-20-1-percent-in-sharpest-decline-since-q1-2023/",
+    "source": "Ars Technica",
+    "date": "2026-10-09T18:54:52+00:00"
+   },
+   {
+    "title": "Your artwork could be featured in the next Debian release",
+    "link": "https://arstechnica.com/gadgets/2026/10/your-artwork-could-be-featured-in-the-next-debian-release/",
+    "source": "Ars Technica",
+    "date": "2026-10-09T18:33:26+00:00"
+   },
+   {
+    "title": "Impactful scheduling for GPU clusters | Ai2",
+    "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE95RFlwUkJ5UGpNSHNRSFlObDlyN2tuRzhhVFV0ejNySXZ6em9TdnpZSEswX3BXM3B4TFZZMzhPYlI3Z05ZMWN4QlNuQTdndmpxVVZDdE1aS3A?oc=5",
+    "source": "Allen AI",
+    "date": "2026-10-09T17:52:15+00:00"
+   },
+   {
+    "title": "Wall Street is inventing an entirely new financial system around Nvidia's AI chips",
+    "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPMEpqbXIyV2NmNG9fQUpudG13WWZUbUJMdlQxRU51Qy12cTVEUlNYZlp4d3J5dkUweDhhUURFUDVPYlFWLU9pNlJfd0FkOEFkb2JWQ1FOcUJTYWJZeDJFQzJEdHpxVkk0bkNRVDJYdUI4YXRSVlFfNjZyUUxUQm9zRU9uY3dNa2ZkcDBfWHhNQlIxRkZ1Y2JF?oc=5",
+    "source": "Business Insider",
+    "date": "2026-10-09T09:00:00+00:00"
+   },
+   {
+    "title": "Let's Encrypt cuts certificate lifetimes to 64 days starting February 2027",
+    "link": "https://arstechnica.com/gadgets/2026/10/lets-encrypt-cuts-certificate-lifetimes-to-64-days-starting-february-2027/",
+    "source": "Ars Technica",
+    "date": "2026-10-08T19:57:17+00:00"
+   },
+   {
+    "title": "Amazon's new Alexa Tablets drop the Fire branding but are more Android than ever",
+    "link": "https://arstechnica.com/gadgets/2026/10/amazons-new-alexa-tablets-drop-the-fire-branding-but-are-more-android-than-ever/",
+    "source": "Ars Technica",
+    "date": "2026-10-08T16:32:46+00:00"
+   },
+   {
+    "title": "Microsoft event debuts new AI-friendly hardware and Windows changes",
+    "link": "https://arstechnica.com/gadgets/2026/10/microsoft-event-debuts-new-ai-friendly-hardware-and-windows-changes/",
+    "source": "Ars Technica",
+    "date": "2026-10-08T00:00:24+00:00"
+   },
+   {
+    "title": "Drones sink ships near NATO countries in “unacceptable” attacks, EU says",
+    "link": "https://arstechnica.com/gadgets/2026/10/drone-strikes-likely-russian-sink-ships-in-nato-countries-economic-zones/",
+    "source": "Ars Technica",
+    "date": "2026-10-06T21:31:10+00:00"
+   }
+  ],
+  "ai": [
+   {
+    "title": "Amazon in talks to buy AI startup Decart for around $7 billion, WSJ reports",
+    "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOSTR0SUxydGYzRDJmaGtaWkRTYkkybS1GWlRkZFFnMjVXRFlZX0hHMUtVdFdIN0ZyQk0wMk1LNFhaUml3Y3FlRUV6SWFxVk9UUFg3MTUzelJtZU8tdjVpREpVS0owdkt2aVJhMUVObjg1TlRTREtZQzBINHJTTFloWDNBQTFCVl9yOE9HNXhBazJWMElncnlIZWNPdG5IY25ObFg0SGswNks5MkF0ODM4bEVRWkhjS3ZqcXVuWlVnamU0dw?oc=5",
+    "source": "Reuters",
+    "date": "2026-10-11T21:17:43+00:00"
+   },
+   {
+    "title": "Will the HomeView be Apple’s first smart home success?",
+    "link": "https://techcrunch.com/2026/10/11/will-the-homeview-be-apples-first-smart-home-success/",
+    "source": "TechCrunch",
+    "date": "2026-10-11T21:14:40+00:00"
+   },
+   {
+    "title": "Amazon Is in Talks to Buy AI Startup Decart, WSJ Reports",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOQlp0dEhQeUJEblZQcDdEQmMyOGVkSFFlbzRVaXhuT0xFUFpNc21laThfRWNnVmpRMHdiVG1BbzJiTjliOFNCR0xDWEl3X0hES3FXWlZ5LUNjZnFFRkdwWTRoVC11VHllTkM3bS1sVi04cG1EVjlBbGw5R2tNRUxmWlp2QlFrZk1uemJBMUt1QjlLRnFtdDhyVWY1UTVHZE1HTmR4NjRmSDlvQQ?oc=5",
+    "source": "Bloomberg.com",
+    "date": "2026-10-11T20:46:52+00:00"
+   },
+   {
+    "title": "48 hours to TechCrunch Disrupt 2026 — hear directly from the people building what’s next",
+    "link": "https://techcrunch.com/2026/10/11/48-hours-to-techcrunch-disrupt-2026-hear-directly-from-the-people-building-whats-next/",
+    "source": "TechCrunch",
+    "date": "2026-10-11T19:00:00+00:00"
+   },
+   {
+    "title": "Silicon Valley is falling in line with Trump’s attempt to rename AI",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1009406/silicon-valley-is-falling-in-line-with-trumps-attempt-to-rename-ai",
+    "source": "The Verge",
+    "date": "2026-10-11T18:33:56+00:00"
+   },
+   {
+    "title": "Can the AI industry persuade data center opponents by getting rid of NDAs?",
+    "link": "https://techcrunch.com/2026/10/11/can-the-ai-industry-persuade-data-center-opponents-by-getting-rid-of-ndas/",
+    "source": "TechCrunch",
+    "date": "2026-10-11T16:52:33+00:00"
+   },
+   {
+    "title": "These execs think voice AI hasn’t reached its ChatGPT moment yet",
+    "link": "https://techcrunch.com/2026/10/11/these-execs-think-voice-ai-hasnt-reached-its-chatgpt-moment-yet/",
+    "source": "TechCrunch",
+    "date": "2026-10-11T14:00:00+00:00"
+   },
+   {
+    "title": "Learning to use local AI is exciting, overwhelming, and frustrating",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1008484/learning-local-ai-hermes-qwen-model-mac-studio-testing-diary-progress",
+    "source": "The Verge",
+    "date": "2026-10-11T04:53:46+00:00"
+   },
+   {
+    "title": "Anthropic Is Banishing Its Model Evals From the Internet",
+    "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPNW1PNnNxaUY1ZHEzS21SMk9HZDE5ajZnTEhSZUNyNUZtVnVzRk93ak1IUS1nQWRJYndEOV9FQUc1dENmSEFPSm40dDJFMGItdW4wQjhkSmpZd1Y3aWpHbkx6NTR2TlRMS0YzaF9SU0xWYms2VzhZajI0OUVhMl9QMi1ITnJ6ZlNWRldsc1lCeHk?oc=5",
+    "source": "Gizmodo",
+    "date": "2026-10-10T22:52:14+00:00"
+   },
+   {
+    "title": "Satya Nadella says we should assume all AI models are ‘compromised’",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1009337/satya-nadella-says-we-should-assume-all-ai-models-are-compromised",
+    "source": "The Verge",
+    "date": "2026-10-10T22:10:17+00:00"
+   },
+   {
+    "title": "Microsoft’s Satya Nadella says AI models need an ‘emergency brake’",
+    "link": "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake/",
+    "source": "TechCrunch",
+    "date": "2026-10-10T21:47:51+00:00"
+   },
+   {
+    "title": "DistroKid has been quietly taking down songs in response to UMG lawsuit",
+    "link": "https://www.theverge.com/entertainment/1009309/distrokid-take-down-songs-umg-lawsuit",
+    "source": "The Verge",
+    "date": "2026-10-10T21:23:38+00:00"
+   },
+   {
+    "title": "Apple discloses deal to hire team and license tech from personalized podcast startup Huxe",
+    "link": "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/",
+    "source": "TechCrunch",
+    "date": "2026-10-10T19:50:00+00:00"
+   },
+   {
+    "title": "3 days to TechCrunch Disrupt 2026: Meet the startups before they hit mainstream",
+    "link": "https://techcrunch.com/2026/10/10/3-days-to-disrupt-2026-meet-the-startups-before-they-hit-mainstream/",
+    "source": "TechCrunch",
+    "date": "2026-10-10T15:00:00+00:00"
+   },
+   {
+    "title": "Anthropic is cutting off its internal evaluations from the internet",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1009286/anthropic-is-cutting-off-its-internal-evaluations-from-the-internet",
+    "source": "The Verge",
+    "date": "2026-10-10T14:41:16+00:00"
+   },
+   {
+    "title": "Here are the top AI agents that can live in your text messages",
+    "link": "https://techcrunch.com/2026/10/10/all-the-ai-agents-that-can-live-in-your-text-messages/",
+    "source": "TechCrunch",
+    "date": "2026-10-10T14:00:00+00:00"
+   },
+   {
+    "title": "What’s Dragging Down A.I. Efficiency? The ‘Verification Tax.’",
+    "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPM2UzSkk1YUFJR0dkcktxMWlmdVh3LUhRV3htQlJUYUlWbmowV2NPZEp4SnBWQllPc09JSTRsSVlFRERXdXRaZ0VDSHJfVHk4SGZzTWhiT2ZrSk1uQVl0TGJBUGtTNnprZFJsdDM3ejNNaW9od1A2X2dLbDZQY05KYkhCT3c0cldYNndYMQ?oc=5",
+    "source": "The New York Times",
+    "date": "2026-10-10T12:00:03+00:00"
+   },
+   {
+    "title": "Anthropic’s AI gave Philadelphia police a fake tip about an unsolved homicide",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1009090/anthropic-fake-homicide-information-philadelphia-pd-tip",
+    "source": "The Verge",
+    "date": "2026-10-09T23:45:03+00:00"
+   },
+   {
+    "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
+    "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNSW45eVowQUtrRDU1czZqQ25KNW1UU0VLc201dkpjOEpJR2NFYUNmTnhITG94WnB6WlNsVkFfRzV5ZU1MeUJpY0NqX19lNVcyN3NLdXpSYk1xb0twRl85Z1RLRVllUVpNQTFPal9FaWp1SnNoNk8tbnN1a1ZpN1MxNVhR?oc=5",
+    "source": "The New York Times",
+    "date": "2026-10-09T23:15:12+00:00"
+   },
+   {
+    "title": "AI agent makers are promising privacy — will they deliver?",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1009051/privacy-ai-agent-promises-openai-meta-muse-dots",
+    "source": "The Verge",
+    "date": "2026-10-09T21:26:33+00:00"
+   },
+   {
+    "title": "‘Pure insanity’: Mathematicians will need years to make sense of OpenAI’s latest drop",
+    "link": "https://www.theverge.com/ai-artificial-intelligence/1008726/openai-mathematics-solutions-chaos",
+    "source": "The Verge",
+    "date": "2026-10-09T19:11:12+00:00"
+   },
+   {
+    "title": "Using AI for just 10 minutes erodes your ability to persist at hard things",
+    "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQS095NGg1SGdvMzZKSjktTWo5ZkFWMkJmdGsxRHJuRHJ6bUYzcV80V3RnUkpIYmp2OHlhNDZxZjVuaWJVQUl4WUhSX1JQZDM4eXlYMGVGRmh2ZUZ1bDljYVZSSDRocGR5LUUtYU56QVh1d1RoUVhFcDZZWGxXWGw1SFpSSVcyVEtWZVh1b2kwUlhfQURUOXhPOWVLOXNtTWNzem9PRGdfMFNoaXFvbGx2MVln?oc=5",
+    "source": "University of California, Berkeley",
+    "date": "2026-10-09T17:40:46+00:00"
+   },
+   {
+    "title": "Philadelphia police receive false homicide tip from Anthropic AI model",
+    "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWDd5WGx1ZzZpQU5XblFlR1VXUkZIeXQ2NU9qb3VicEZZaDJLakJrVHo3cnFlU21zLVkzaHNHWFpwRVU2cWZiSFlvaFpRNER1OFFsYVlsUWdwM19PUWF5R090cTVYOUItcW5Fa1EtNUFmV0N3Y0pPQXRvMlIwZGNEa2lReUfSAYoBQVVfeXFMTy05SzV2eFh0VEdUMkRBQTdmbkRtSS0wLTdBbDlQUDJ6Y1VtOHpiTlJiM3UtaXM2ZWtrNEFlU0E5bFF5U1B0aUNrclU3cU10UklJVWlJc3RSalBvVDJZYU5HWUZFbkZBOXZMMnpUeVBkbkxTT1VtZ0twQUhGNkY3YUR5b1J5dzl5S0Fn?oc=5",
+    "source": "The Hill",
+    "date": "2026-10-09T15:44:00+00:00"
+   },
+   {
+    "title": "Trump says anyone who does not refer to AI as ‘super intelligence’ is ‘THE ENEMY'",
+    "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNaTV1aTVjdklWRlVSRk44SVpZck9ENF9lWFAxSWVBMmNZQmktWDVZUC04Tmd1aUwwM01WLVJ3Sl93XzRaRTY3S3hvNm5UMFV0MXZiQk1VU0RIR3l4aVJLZHhlSjJ0ZWdHR3Y5YndyMmI2WG9CNnNibU02QS0tWEZhd2NDeG9YYWZqenV1MVpHNA?oc=5",
+    "source": "Politico",
+    "date": "2026-10-08T20:18:00+00:00"
+   }
+  ],
+  "drones": [
+   {
+    "title": "Police drones near airports can now get faster FAA clearance",
+    "link": "https://dronedj.com/2026/10/10/versaterm-aloft-dronesense-laanc-faa/",
+    "source": "DroneDJ",
+    "date": "2026-10-10T07:53:38+00:00"
+   },
+   {
+    "title": "DJI’s best Mini drone deal includes more than you think",
+    "link": "https://dronedj.com/2026/10/09/best-dji-drone-deal-mini/",
+    "source": "DroneDJ",
+    "date": "2026-10-10T06:31:33+00:00"
+   },
+   {
+    "title": "Beam Global makes a $24 million bet on US drones",
+    "link": "https://dronedj.com/2026/10/09/beam-global-makes-a-24-million-bet-on-us-drones/",
+    "source": "DroneDJ",
+    "date": "2026-10-10T06:02:16+00:00"
+   },
+   {
+    "title": "Why Flying an FPV Drone Over Colorado’s Red Cliff Bridge Was My Most Stressful Shot Yet",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5tUjNjWjJRMVh0eHcyTS1VNWVPbXFwYjRHbUg0M3NPTFdxTFJ4eHJOVUNtN2tyYmE1WXJUT3FYeHVyVFF1bUJZcEgyWmtHUVlaSnhhWmxISmF1bTdMdXlNRmNUdGJTNHcxWFpFVkpzenNvR1U0NkE?oc=5",
+    "source": "Yahoo Lifestyle Singapore",
+    "date": "2026-10-09T22:18:49+00:00"
+   },
+   {
+    "title": "Russian FPV Drone Units Select Munitions for Every Target",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOdDZvOFFIT05nT1hpZzlnMDNobTZOUDVHSVZCVDFKQU1JajJtZVJvM2tmU1JFYU1XaHlzcWNyZ1dPckhuajZGdGsxc1F3TTIxczhZQlZrQTVOU3JnZHkwQ3JFWWtfYlNjUEhVdUZUTFBoTTNpWXYyeUFPYWhHNW1EMnlfekxNMU5yU2FvVmhGUHhqUFgzNzJ2a2hMd1VWeXM?oc=5",
+    "source": "Военное дело",
+    "date": "2026-10-09T08:00:39+00:00"
+   },
+   {
+    "title": "This robotic arm could change how drones launch in combat",
+    "link": "https://dronedj.com/2026/10/08/drone-nanogrid-nonstop-operations-army/",
+    "source": "DroneDJ",
+    "date": "2026-10-09T06:11:00+00:00"
+   },
+   {
+    "title": "FAA puts $12 million behind 19 drone research projects",
+    "link": "https://dronedj.com/2026/10/08/faa-drone-research-funding-projects/",
+    "source": "DroneDJ",
+    "date": "2026-10-09T06:02:00+00:00"
+   },
+   {
+    "title": "RFS for Gauntlet 3 Introduces New Twists and Inducements to FPV Drone Mass Production",
+    "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWVFMMnM2dUlYQ2Y4bXBVaklYRFlkM3RlajY3NVNfc3duSDNGenJvR0ZZZnYtOUxwLUF6d1c0eHBoNUdXRWJNUVA3TDFVS0dpOXVqMUd2anVTdm9nenJzUmJ6cGZBUS0zZVptWTNfT0VlUUxRdlNHVjhCd2hwc01BbzhLbUxCWFgwRTlraTVCd3JrUmVaZGwzWmNhZklvT2hETmFLNmRBV0RHbnZWWnJHOGNVc0gxUTdmM3cyaA?oc=5",
+    "source": "Inside Unmanned Systems",
+    "date": "2026-10-08T21:04:14+00:00"
+   },
+   {
+    "title": "Proton receives Emmy Award for FPV Drone Camera Systems",
+    "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOLU4xNm4xUnQ5M05OMlllc045Qjk5NEY3WjBiMkFlSGp6aXllUkVrWi1VNEpGclVNTzlXSTlQV0xzVmRLVktUallWYlZyWEVqZGNkNk9FMEdDN3Y3MlVxdGw5R2hDWmp5elpsVVBBczlwem9TRHlQWFdXbjRPZDI5ZVlPNGtudkoxd2JsMHA2VTczVXM?oc=5",
+    "source": "Cinematography World",
+    "date": "2026-10-08T12:24:36+00:00"
+   },
+   {
+    "title": "Bali launches drone delivery trials over populated areas",
+    "link": "https://dronedj.com/2026/10/07/food-delivery-drone-bali-indonesia/",
+    "source": "DroneDJ",
+    "date": "2026-10-08T06:22:00+00:00"
+   },
+   {
+    "title": "Want a DJI drone? This $139 Neo deal is tempting",
+    "link": "https://dronedj.com/2026/10/07/dji-drone-prime-day-deal/",
+    "source": "DroneDJ",
+    "date": "2026-10-08T06:04:00+00:00"
+   },
+   {
+    "title": "Airwise and LiveU want to fix fragmented public safety drone workflows",
+    "link": "https://dronedj.com/2026/10/07/public-safety-drone-software-airwise/",
+    "source": "DroneDJ",
+    "date": "2026-10-08T06:02:00+00:00"
+   },
+   {
+    "title": "Ukraine's drone pilot calls it his proudest strike: cheap FPV drone detonating over two tons of explosives packed inside Russian mine-clearer",
+    "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNSkdtQXhaazRFX1ZLYkhFTkI0a0VTcnZDWDVBNDJWMmZSekg0aHo3amJRMDdZUmt5TzRNSGhBQ1BEMi0xdVVxMlY5cWNOckJVMUFsTkNhREtFWE1mX0dBd01mWHJfUGJVTVhHZS1ScEpDeU5tTVZHTVc2Si1sMTVQLVRGT2c1b2I5ak1DY1NIODZjcmJzMTNkRXNRdjVTUVdTalJOLTYxaXBSd2lTVlVnaUNTWlZ2TDlmTFlWOHI4ZHBNdGV5eE51OUc0bndYRkMxQTZJNzFhc2RMSnNleWRIQ0RpV3NUN1kyWGFtTXJwVzl5V0diaGhUSUFFZzFfU05RVmgxdHktbnZLSWs?oc=5",
+    "source": "Euromaidan Press",
+    "date": "2026-10-07T22:29:36+00:00"
+   },
+   {
+    "title": "Russian fibre-optic FPV drone strikes near shopping centre in Sumy: one killed, two injured",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5fRjR5MWRRem1HaUZMM0w0OW5XdEJscENUZ0hiVDFlNVlJWlllQTRxczBXZTBNVjVOR01WNFctaDdNb3UyMVRmMzN5ejRTSUNRMXNkRDFTQU0xZ29COC10ejY4cjnSAXBBVV95cUxNeWtrLVpDTGRLcWpyeG96Vmc3QjVXeVp5TWdod1hDQWsySWh2SE9EaWl6N3R5TklKUHdzbHBWS1NyUmRJX0pzWi1hajczd2Z1QnJJemlSM29KQmlSSnVpeVFYUjY0U2NhZTdRcVdLYkVX?oc=5",
+    "source": "Українська правда",
+    "date": "2026-10-06T20:40:00+00:00"
+   },
+   {
+    "title": "FPV drone strikes patrol car in Kramatorsk, killing one person",
+    "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQZlRKYVBIRkdTNi1QZ3I0M1hnOS1vU0NuQWVObXlhMDRrUXBfM1dEMXJzY0tPOUVVbk5OYl9WMU5tc1lwR1lDSWRIdFg3SHMxazZqRnZKZmJsZkh1cHhmNzM4WFQwWlYwMjhXc3pKUk9JYXJ2RUp1Ukx1SUdUS0Z0cTJ5TTVRZWxuYlYwSF9EaE1XMEU5OU5xY214emlEYUE2bkR3ekVUQjNzLUJFTDgzcUYwTDBRd9IBuwFBVV95cUxQdmd1bUlzZy1GRDBpcEIwQS00SE02VXpkNnhPVnZHNDdZUlVFaG02YkM0MzNleVNBOGoxWG1QRk55ZU1hZXZzSnpoM1RSeVV5b1dpel80MlNmSUlLTkNfaUZuZkUwMm00UHpkRHNteTlsLVlRY2E3ckMxOGJxb3B2cF9xWTJRaHFiUXlFLWdLdWg2UXg3dUxid29UNDktaVZweWpxWkhnT0ZWODg5TWllWmNYMzdwUm5pU3Zz?oc=5",
+    "source": "Ukrinform",
+    "date": "2026-10-06T14:58:00+00:00"
+   },
+   {
+    "title": "Ambition, Thy Name is a 3D Printed Transonic R/C Jet",
+    "link": "https://hackaday.com/2026/10/05/ambition-thy-name-is-a-3d-printed-transonic-r-c-jet/",
+    "source": "Hackaday",
+    "date": "2026-10-05T23:00:10+00:00"
+   },
+   {
+    "title": "Ukraine Develops “Mangal” Modular FPV Drone Interceptor System",
+    "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaG4yNUJqNUwxOXJfYkUwUkZSSEd5ZU5XM2VQNktQemNsUEVqY1Rmb2RnLXpJU0N4OHJZVnEzNGNwVVI0eWJ0eVBvd1RkWFF6MWlSTTNoWW9UTDVpLXp3MUNsUXBIYTJpZlp4bG1lSlRna0NKdW1aOUtXVm5jZV8wdUZnYm5ZejAzTmg2ZllRbkFPYUY4bEVR?oc=5",
+    "source": "Мілітарний",
+    "date": "2026-09-30T14:03:39+00:00"
+   },
+   {
+    "title": "Pitting a CFD-Optimized Toroidal Propeller Against a Conventional One",
+    "link": "https://hackaday.com/2026/09/28/pitting-a-cfd-optimized-toroidal-propeller-against-a-conventional-one/",
+    "source": "Hackaday",
+    "date": "2026-09-29T05:00:43+00:00"
+   },
+   {
+    "title": "Trying a New Radial Impeller Design for Quadcopters",
+    "link": "https://hackaday.com/2026/09/21/trying-a-new-radial-impeller-design-for-quadcopters/",
+    "source": "Hackaday",
+    "date": "2026-09-21T20:00:03+00:00"
+   },
+   {
+    "title": "Open Source Acoustic Drone Detection",
+    "link": "https://hackaday.com/2026/09/10/open-source-acoustic-drone-detection/",
+    "source": "Hackaday",
+    "date": "2026-09-10T11:00:38+00:00"
+   },
+   {
+    "title": "Making a Pole Balance Itself With Propellers",
+    "link": "https://hackaday.com/2026/09/04/making-a-pole-balance-itself-with-propellers/",
+    "source": "Hackaday",
+    "date": "2026-09-04T20:00:14+00:00"
+   },
+   {
+    "title": "Simulating UAVs In Unreal Engine",
+    "link": "https://hackaday.com/2026/08/31/simulating-uavs-in-unreal-engine/",
+    "source": "Hackaday",
+    "date": "2026-08-31T18:30:12+00:00"
+   },
+   {
+    "title": "Submersible drone analyzes ice",
+    "link": "https://hackaday.com/2026/08/14/submersible-drone-analyzes-ice/",
+    "source": "Hackaday",
+    "date": "2026-08-14T23:00:21+00:00"
    }
   ]
  }
