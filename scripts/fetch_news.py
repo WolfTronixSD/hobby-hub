@@ -35,6 +35,22 @@ FEEDS = {
         ("Hackaday", "https://hackaday.com/tag/hydroponics/feed/"),
         ("Google News", "https://news.google.com/rss/search?q=%22smart+garden%22+OR+%22smart+irrigation%22+OR+hydroponics&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "computers": [
+        ("Ars Technica", "https://feeds.arstechnica.com/arstechnica/gadgets"),
+        ("Tom's Hardware", "https://www.tomshardware.com/feeds/all"),
+        ("Google News", "https://news.google.com/rss/search?q=%22PC+hardware%22+OR+CPU+OR+GPU+OR+Linux&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "ai": [
+        ("The Verge", "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"),
+        ("TechCrunch", "https://techcrunch.com/category/artificial-intelligence/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22artificial+intelligence%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "drones": [
+        ("Oscar Liang", "https://oscarliang.com/feed/"),
+        ("DroneDJ", "https://dronedj.com/feed/"),
+        ("Hackaday", "https://hackaday.com/category/drone-hacks/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22FPV+drone%22+OR+%22DIY+drone%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 24

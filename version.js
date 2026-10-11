@@ -1,6 +1,17 @@
 // Bump APP_VERSION and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.2.0";
+const APP_VERSION = "1.3.0";
 const CHANGELOG = [
+  {
+    version: "1.3.0",
+    date: "2026-10-11",
+    title: "Computers, AI and DIY Drones",
+    changes: [
+      "New Computers hobby: PC hardware, Linux and security",
+      "New AI hobby: machine learning, chatbots and AI news",
+      "New DIY Drones hobby: FPV quads, builds and autopilots",
+      "Hobby buttons in a 4-column grid on big screens"
+    ]
+  },
   {
     version: "1.2.0",
     date: "2026-10-11",

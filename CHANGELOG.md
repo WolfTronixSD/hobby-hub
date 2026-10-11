@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 1.3.0 (2026-10-11): Computers, AI and DIY Drones
+- New Computers, AI and DIY Drones hobbies with podcasts, YouTube and news
+- Hobby buttons in a 4-column grid on big screens
+
 ## 1.2.0 (2026-10-11): Version history
 - Version number shown in the header
 - New "What's new" page with the full history

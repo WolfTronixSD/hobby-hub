@@ -154,5 +154,122 @@ const HOBBIES = [
       { name: "FarmBot Blog", url: "https://farm.bot/blogs/news" },
       { name: "Google News: Smart Garden", url: "https://news.google.com/search?q=%22smart%20garden%22%20OR%20hydroponics" }
     ]
+  },
+  {
+    id: "computers",
+    name: "Computers",
+    icon: "💻",
+    accent: "#5b9dff",
+    tagline: "PC builds, hardware, Linux and security",
+    podcasts: [
+      { name: "This Week in Tech", desc: "Leo Laporte's weekly roundtable on the tech news.", url: "https://twit.tv/shows/this-week-in-tech" },
+      { name: "Security Now", desc: "Steve Gibson explains security and how computers really work.", url: "https://twit.tv/shows/security-now" },
+      { name: "Windows Weekly", desc: "Everything Windows, PCs and Microsoft.", url: "https://twit.tv/shows/windows-weekly" },
+      { name: "The Vergecast", desc: "The Verge's flagship show on gadgets and tech.", url: "https://www.theverge.com/the-vergecast" },
+      { name: "Accidental Tech Podcast", desc: "Three developers on Apple, programming and tech.", url: "https://atp.fm/" },
+      { name: "Linux Unplugged", desc: "Weekly Linux talk for desktop and homelab users.", url: "https://linuxunplugged.com/" },
+      { name: "Darknet Diaries", desc: "True stories from the dark side of the internet.", url: "https://darknetdiaries.com/" },
+      { name: "The Full Nerd", desc: "PCWorld on PC hardware, GPUs, CPUs and builds.", url: "https://podcasts.apple.com/us/search?term=The%20Full%20Nerd%20PCWorld" },
+      { name: "Hanselminutes", desc: "Scott Hanselman talks tech with makers and engineers.", url: "https://hanselminutes.com/" },
+      { name: "Clockwise", desc: "Four people, four tech topics, thirty minutes.", url: "https://www.relay.fm/clockwise" }
+    ],
+    youtube: [
+      { name: "Linus Tech Tips", desc: "PC builds, gadgets and big tech projects.", url: "https://www.youtube.com/@LinusTechTips" },
+      { name: "Gamers Nexus", desc: "Deep, data-driven hardware testing.", url: "https://www.youtube.com/@GamersNexus" },
+      { name: "Hardware Unboxed", desc: "CPU, GPU and monitor benchmarks.", url: "https://www.youtube.com/@Hardwareunboxed" },
+      { name: "JayzTwoCents", desc: "PC building, cooling and hardware news.", url: "https://www.youtube.com/@Jayztwocents" },
+      { name: "Level1Techs", desc: "Servers, Linux, workstations and homelabs.", url: "https://www.youtube.com/@Level1Techs" },
+      { name: "ExplainingComputers", desc: "Calm, clear guides to computers and SBCs.", url: "https://www.youtube.com/@ExplainingComputers" },
+      { name: "Jeff Geerling", desc: "Raspberry Pi clusters, homelab and open source.", url: "https://www.youtube.com/@JeffGeerling" },
+      { name: "Ben Eater", desc: "Build a computer from scratch on breadboards.", url: "https://www.youtube.com/@BenEater" },
+      { name: "Computerphile", desc: "Computer science explained by university experts.", url: "https://www.youtube.com/@Computerphile" },
+      { name: "Techquickie", desc: "Short, simple answers to tech questions.", url: "https://www.youtube.com/@Techquickie" }
+    ],
+    newsSources: [
+      { name: "Ars Technica", url: "https://arstechnica.com/" },
+      { name: "Tom's Hardware", url: "https://www.tomshardware.com/" },
+      { name: "The Verge: Tech", url: "https://www.theverge.com/tech" },
+      { name: "Hackaday", url: "https://hackaday.com/" },
+      { name: "Phoronix (Linux)", url: "https://www.phoronix.com/" },
+      { name: "Google News: Computers", url: "https://news.google.com/search?q=PC%20hardware%20OR%20computers" }
+    ]
+  },
+  {
+    id: "ai",
+    name: "AI",
+    icon: "🧠",
+    accent: "#c084fc",
+    tagline: "Machine learning, chatbots, robots and the future",
+    podcasts: [
+      { name: "Hard Fork", desc: "Kevin Roose and Casey Newton on AI and the tech future.", url: "https://www.nytimes.com/column/hard-fork" },
+      { name: "Lex Fridman Podcast", desc: "Long conversations with AI researchers and builders.", url: "https://lexfridman.com/podcast/" },
+      { name: "Latent Space", desc: "The AI engineer's podcast: models, tools and agents.", url: "https://www.latent.space/podcast" },
+      { name: "The TWIML AI Podcast", desc: "This Week in Machine Learning and AI interviews.", url: "https://twimlai.com/" },
+      { name: "Practical AI", desc: "Making AI practical, productive and accessible.", url: "https://practicalai.fm/" },
+      { name: "Last Week in AI", desc: "Weekly summary of what happened in AI.", url: "https://lastweekin.ai/" },
+      { name: "The AI Daily Brief", desc: "Daily AI news and analysis, great for the commute.", url: "https://podcasts.apple.com/us/search?term=The%20AI%20Daily%20Brief" },
+      { name: "Dwarkesh Podcast", desc: "In-depth interviews with leading AI thinkers.", url: "https://www.dwarkesh.com/podcast" },
+      { name: "Eye on AI", desc: "Craig Smith interviews people shaping AI.", url: "https://www.eye-on.ai/" },
+      { name: "The Cognitive Revolution", desc: "Builders and researchers on the AI transformation.", url: "https://podcasts.apple.com/us/search?term=The%20Cognitive%20Revolution" }
+    ],
+    youtube: [
+      { name: "Two Minute Papers", desc: "New AI research papers, explained with excitement.", url: "https://www.youtube.com/@TwoMinutePapers" },
+      { name: "3Blue1Brown", desc: "Beautiful visual explanations of neural networks.", url: "https://www.youtube.com/@3blue1brown" },
+      { name: "Andrej Karpathy", desc: "Build GPT from scratch with a top AI researcher.", url: "https://www.youtube.com/@AndrejKarpathy" },
+      { name: "AI Explained", desc: "Careful breakdowns of new models and benchmarks.", url: "https://www.youtube.com/@aiexplained-official" },
+      { name: "Yannic Kilcher", desc: "ML paper reviews and AI news.", url: "https://www.youtube.com/@YannicKilcher" },
+      { name: "Matt Wolfe", desc: "Hands-on with the newest AI tools.", url: "https://www.youtube.com/@mreflow" },
+      { name: "StatQuest", desc: "Machine learning concepts, clearly explained.", url: "https://www.youtube.com/@statquest" },
+      { name: "sentdex", desc: "Python, machine learning and AI projects.", url: "https://www.youtube.com/@sentdex" },
+      { name: "Fireship", desc: "Fast, funny takes on AI and coding.", url: "https://www.youtube.com/@Fireship" },
+      { name: "Wes Roth", desc: "Daily AI news and model releases.", url: "https://www.youtube.com/@WesRoth" }
+    ],
+    newsSources: [
+      { name: "The Verge: AI", url: "https://www.theverge.com/ai-artificial-intelligence" },
+      { name: "TechCrunch: AI", url: "https://techcrunch.com/category/artificial-intelligence/" },
+      { name: "Ars Technica: AI", url: "https://arstechnica.com/ai/" },
+      { name: "Hacker News", url: "https://news.ycombinator.com/" },
+      { name: "Hugging Face Blog", url: "https://huggingface.co/blog" },
+      { name: "Google News: AI", url: "https://news.google.com/search?q=%22artificial%20intelligence%22" }
+    ]
+  },
+  {
+    id: "drones",
+    name: "DIY Drones",
+    icon: "🚁",
+    accent: "#ff6b6b",
+    tagline: "FPV quads, builds, flight controllers and autopilots",
+    podcasts: [
+      { name: "Team Failsafe", desc: "Insider FPV news and long chats with top pilots.", url: "https://podcasts.apple.com/us/search?term=Team%20Failsafe" },
+      { name: "Kwadverse", desc: "Monthly micro FPV show: Tiny Whoops to toothpicks.", url: "https://podcasts.apple.com/us/search?term=Kwadverse" },
+      { name: "Ask Drone U", desc: "Daily show answering one listener drone question.", url: "https://podcasts.apple.com/us/search?term=Ask%20Drone%20U" },
+      { name: "Drone Radio Show", desc: "Randy Goers interviews leaders in the drone world.", url: "https://www.droneradioshow.com/" },
+      { name: "Drone Trainer Podcast", desc: "Flying tips, regulations and pilot stories.", url: "https://podcasts.apple.com/us/search?term=Drone%20Trainer%20Podcast" },
+      { name: "Commercial Drones FM", desc: "Drone tech, autonomy and the industry behind it.", url: "https://commercialdrones.fm/" },
+      { name: "UAV Digest", desc: "Drone news and interviews, deep archive.", url: "https://podcasts.apple.com/us/search?term=UAV%20Digest" },
+      { name: "Hackaday Podcast", desc: "Weekly hacks, often including homebuilt drones.", url: "https://hackaday.libsyn.com/" },
+      { name: "The Amp Hour", desc: "Electronics design talk for building your own flight hardware.", url: "https://theamphour.com/" },
+      { name: "Ham Radio Crash Course", desc: "Ham licensing and radio know-how that helps FPV pilots.", url: "https://www.hamradiocrashcourse.com/" }
+    ],
+    youtube: [
+      { name: "Joshua Bardwell", desc: "The FPV encyclopedia: builds, Betaflight, weekly news.", url: "https://www.youtube.com/@JoshuaBardwell" },
+      { name: "Chris Rosser", desc: "Engineering-minded FPV: frames, props and tuning.", url: "https://www.youtube.com/@ChrisRosser" },
+      { name: "UAVfutures", desc: "FPV builds, races and gear reviews.", url: "https://www.youtube.com/c/UAVfutures" },
+      { name: "Painless360", desc: "Patient step-by-step guides: radios, INAV, ArduPilot.", url: "https://www.youtube.com/results?search_query=Painless360" },
+      { name: "Mads Tech", desc: "In-depth FPV gear reviews and setup guides.", url: "https://www.youtube.com/results?search_query=Mads+Tech+FPV" },
+      { name: "Oscar Liang", desc: "Builds and reviews from the top FPV blogger.", url: "https://www.youtube.com/results?search_query=Oscar+Liang+FPV" },
+      { name: "Botgrinder", desc: "Freestyle, builds and FPV community talk.", url: "https://www.youtube.com/results?search_query=Botgrinder" },
+      { name: "Le Drib", desc: "Freestyle FPV flying and tutorials.", url: "https://www.youtube.com/results?search_query=Le+Drib+FPV" },
+      { name: "Rotor Riot", desc: "FPV freestyle, racing and how-tos.", url: "https://www.youtube.com/results?search_query=Rotor+Riot" },
+      { name: "ArduPilot", desc: "Open-source autopilot for DIY drones, planes and rovers.", url: "https://www.youtube.com/results?search_query=ArduPilot" }
+    ],
+    newsSources: [
+      { name: "Oscar Liang", url: "https://oscarliang.com/" },
+      { name: "DroneDJ", url: "https://dronedj.com/" },
+      { name: "DroneXL", url: "https://dronexl.co/" },
+      { name: "Hackaday: Drones", url: "https://hackaday.com/category/drone-hacks/" },
+      { name: "r/Multicopter", url: "https://www.reddit.com/r/Multicopter/" },
+      { name: "Google News: FPV Drones", url: "https://news.google.com/search?q=%22FPV%20drone%22%20OR%20%22DIY%20drone%22" }
+    ]
   }
 ];
