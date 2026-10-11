@@ -108,6 +108,118 @@
       <div class="sources">${h.newsSources.map((s) => `<a class="source" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join("")}</div>`;
   };
 
+  // Weather: Open-Meteo (free, no key) plus an approximate location from the IP address
+  const WX = {
+    0: ["☀️", "Clear"], 1: ["🌤️", "Mostly clear"], 2: ["⛅", "Partly cloudy"], 3: ["☁️", "Cloudy"],
+    45: ["🌫️", "Fog"], 48: ["🌫️", "Fog"], 51: ["🌦️", "Drizzle"], 53: ["🌦️", "Drizzle"], 55: ["🌦️", "Drizzle"],
+    56: ["🌧️", "Freezing drizzle"], 57: ["🌧️", "Freezing drizzle"], 61: ["🌧️", "Light rain"], 63: ["🌧️", "Rain"],
+    65: ["🌧️", "Heavy rain"], 66: ["🌧️", "Freezing rain"], 67: ["🌧️", "Freezing rain"], 71: ["🌨️", "Light snow"],
+    73: ["🌨️", "Snow"], 75: ["❄️", "Heavy snow"], 77: ["🌨️", "Snow"], 80: ["🌦️", "Showers"], 81: ["🌧️", "Showers"],
+    82: ["⛈️", "Heavy showers"], 85: ["🌨️", "Snow showers"], 86: ["🌨️", "Snow showers"], 95: ["⛈️", "Thunderstorm"],
+    96: ["⛈️", "Thunderstorm, hail"], 99: ["⛈️", "Thunderstorm, hail"]
+  };
+  const wxIcon = (code, isDay = 1) => {
+    const w = WX[code] || ["🌡️", ""];
+    return code <= 1 && !isDay ? ["🌙", code === 0 ? "Clear night" : w[1]] : w;
+  };
+  const deg = (v) => (v == null ? "–" : Math.round(v) + "°");
+  const cacheGet = (k, maxAge) => {
+    try { const v = JSON.parse(store.get(k)); if (v && (maxAge == null || Date.now() - v.t < maxAge)) return v.d; } catch {}
+    return null;
+  };
+  const cacheSet = (k, d) => store.set(k, JSON.stringify({ t: Date.now(), d }));
+  const getJSON = (url, ms = 6000) => {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), ms);
+    return fetch(url, { signal: ctl.signal })
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .finally(() => clearTimeout(timer));
+  };
+
+  async function ipLocation() {
+    const hit = cacheGet("ipLoc", 6 * 3600e3);
+    if (hit) return hit;
+    const tries = [
+      ["https://get.geojs.io/v1/ip/geo.json", (j) => ({ name: j.city || j.region, lat: +j.latitude, lon: +j.longitude })],
+      ["https://ipapi.co/json/", (j) => ({ name: j.city || j.region, lat: +j.latitude, lon: +j.longitude })]
+    ];
+    for (const [url, pick] of tries) {
+      try {
+        const loc = pick(await getJSON(url));
+        if (isFinite(loc.lat) && isFinite(loc.lon) && (loc.lat || loc.lon)) {
+          loc.name = loc.name || "Your area";
+          cacheSet("ipLoc", loc);
+          return loc;
+        }
+      } catch {}
+    }
+    return cacheGet("ipLoc");
+  }
+
+  async function getWeather(lat, lon) {
+    const key = `wx:${lat.toFixed(2)},${lon.toFixed(2)}`;
+    const hit = cacheGet(key, 20 * 60e3);
+    if (hit) return hit;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+      "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day" +
+      "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max" +
+      "&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto&forecast_days=5";
+    try {
+      const d = await getJSON(url);
+      if (!d.current || !d.daily) throw new Error("bad data");
+      cacheSet(key, d);
+      return d;
+    } catch (e) {
+      const old = cacheGet(key);
+      if (old) return { ...old, stale: true };
+      throw e;
+    }
+  }
+
+  const forecastUrl = (w) => `https://forecast.weather.gov/MapClick.php?lat=${w.lat}&lon=${w.lon}`;
+
+  async function homeWeather() {
+    const bar = $("#wxBar");
+    const loc = (await ipLocation()) || { name: "San Diego", lat: 32.7157, lon: -117.1611 };
+    try {
+      const d = await getWeather(loc.lat, loc.lon);
+      const c = d.current, dy = d.daily;
+      const [ic, txt] = wxIcon(c.weather_code, c.is_day);
+      bar.href = forecastUrl(loc);
+      bar.innerHTML = `<span class="wx-ic">${ic}</span><b class="wx-t">${deg(c.temperature_2m)}F</b>
+        <span class="wx-txt"><b>${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small></span>
+        <span class="go">›</span>`;
+      bar.setAttribute("aria-label", `Weather in ${loc.name}: ${Math.round(c.temperature_2m)} degrees, ${txt}. Open forecast`);
+      bar.hidden = false;
+    } catch {}
+  }
+
+  async function fillWxPanel(w) {
+    const panel = () => { const el = $("#wxPanel"); return el && el.dataset.loc === w.name ? el : null; };
+    try {
+      const d = await getWeather(w.lat, w.lon);
+      const el = panel();
+      if (!el) return;
+      const c = d.current, dy = d.daily;
+      const [ic, txt] = wxIcon(c.weather_code, c.is_day);
+      const uv = dy.uv_index_max && dy.uv_index_max[0] != null ? ` · UV ${Math.round(dy.uv_index_max[0])}` : "";
+      const days = dy.time.map((t, i) => {
+        const rain = dy.precipitation_probability_max ? dy.precipitation_probability_max[i] : 0;
+        const name = i === 0 ? "Today" : new Date(t + "T12:00").toLocaleDateString(undefined, { weekday: "short" });
+        return `<div class="wx-day"><span>${name}</span><span class="wx-dic">${wxIcon(dy.weather_code[i])[0]}</span>
+          <b>${deg(dy.temperature_2m_max[i])}</b><small>${deg(dy.temperature_2m_min[i])}</small>${rain ? `<small>💧${rain}%</small>` : ""}</div>`;
+      }).join("");
+      el.innerHTML = `<a class="wx-now" href="${forecastUrl(w)}" target="_blank" rel="noopener">
+          <span class="wx-big">${ic}</span>
+          <div><div class="wx-temp">${deg(c.temperature_2m)}F <span>${esc(w.name)} · ${esc(txt)}</span></div>
+          <small>Feels ${deg(c.apparent_temperature)} · 💧 ${c.relative_humidity_2m}% · 💨 ${Math.round(c.wind_speed_10m)} mph${uv}${d.stale ? " · saved copy" : ""}</small></div>
+        </a><div class="wx-days">${days}</div>`;
+    } catch {
+      const el = panel();
+      if (el) el.innerHTML = `<p class="empty">Live weather isn't available right now. Use the forecast links below.</p>`;
+    }
+  }
+
   function render() {
     const parent = HOBBIES.find((x) => x.id === hobbyId) || HOBBIES[0];
     hobbyId = parent.id;
@@ -119,7 +231,7 @@
       store.set("sub", subId);
       subNav.hidden = false;
       const n = parent.subs.length;
-      subNav.style.setProperty("--cols", n % 4 === 0 ? 4 : n % 3 === 0 ? 3 : 4);
+      subNav.style.setProperty("--cols", [4, 5, 3].find((c) => n % c === 0) || 4);
       subNav.innerHTML = parent.subs.map((x) => `
         <button class="sub" data-id="${x.id}" aria-pressed="${x.id === subId}">
           <span class="emoji">${x.icon}</span><b>${esc(x.name)}</b>
@@ -155,7 +267,11 @@
     } else {
       html = newsView(h);
     }
+    if (h.weather && tab === "podcasts") {
+      html = `<div class="wx-panel" id="wxPanel" data-loc="${esc(h.weather.name)}"><p class="empty">Loading live weather…</p></div>` + html;
+    }
     $("#content").innerHTML = html;
+    if (h.weather && tab === "podcasts") fillWxPanel(h.weather);
   }
 
   function historyView() {
@@ -205,6 +321,7 @@
   });
 
   render();
+  homeWeather();
 
   fetch("news.json", { cache: "no-cache" })
     .then((r) => (r.ok ? r.json() : {}))

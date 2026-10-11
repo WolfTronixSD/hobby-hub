@@ -61,6 +61,30 @@ button { font: inherit; color: inherit; cursor: pointer; }
   background: var(--panel); border: 1px solid var(--border);
 }
 
+/* Weather */
+.wx-bar {
+  max-width: 1100px; margin: 4px auto 12px; display: flex; align-items: center; gap: 14px;
+  min-height: 72px; padding: 10px 18px; border-radius: var(--radius); border: 2px solid var(--border);
+  background: var(--panel); color: var(--text); text-decoration: none;
+}
+.wx-bar[hidden] { display: none; }
+.wx-bar .wx-ic { font-size: 38px; line-height: 1; }
+.wx-bar .wx-t { font-size: 30px; font-weight: 800; }
+.wx-bar .wx-txt { flex: 1; min-width: 0; font-size: 17px; }
+.wx-bar .wx-txt small { display: block; color: var(--muted); font-size: 15px; }
+.wx-bar .go { font-size: 30px; color: var(--muted); }
+.wx-panel { margin: 4px 0 18px; padding: 16px; border-radius: var(--radius); border: 2px solid var(--border); background: var(--panel); }
+.wx-now { display: flex; align-items: center; gap: 16px; color: var(--text); text-decoration: none; }
+.wx-big { font-size: 64px; line-height: 1; }
+.wx-temp { font-size: 40px; font-weight: 800; line-height: 1.1; }
+.wx-temp span { font-size: 20px; font-weight: 600; }
+.wx-now small { color: var(--muted); font-size: 16px; }
+.wx-days { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 14px; }
+.wx-day { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 4px; border-radius: 16px; background: var(--panel-hi); font-size: 16px; }
+.wx-day .wx-dic { font-size: 28px; }
+.wx-day b { font-size: 20px; }
+.wx-day small { color: var(--muted); font-size: 14px; }
+
 /* Hobby selector: compact big-tap tiles */
 .hobbies { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; margin-top: 8px; }
 .hobby {
@@ -226,6 +250,13 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .hobby { min-height: 84px; gap: 4px; padding: 10px 4px; border-radius: 18px; }
   .hobby .emoji { font-size: 30px; }
   .hobby b { font-size: 15px; }
+  .wx-bar { min-height: 64px; padding: 8px 14px; gap: 10px; }
+  .wx-bar .wx-t { font-size: 26px; }
+  .wx-big { font-size: 52px; }
+  .wx-temp { font-size: 34px; }
+  .wx-temp span { display: block; font-size: 17px; }
+  .wx-days { gap: 5px; }
+  .wx-day { font-size: 14px; padding: 8px 2px; }
   .hobby:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
   .subs { grid-template-columns: 1fr 1fr; }
   .sub:last-child:nth-child(odd) { grid-column: span 2; }

@@ -1,6 +1,18 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.1.0";
+const APP_VERSION = "2.2.0";
 const CHANGELOG = [
+  {
+    version: "2.2.0",
+    date: "2026-10-11",
+    title: "Live weather",
+    changes: [
+      "Home screen shows current weather where you are (approximate location from your internet connection); tap it for the full forecast",
+      "New Weather button under San Diego and Tempe with live conditions and a 5-day forecast",
+      "Weather guides: NWS forecasts, radar, wind, surf, air quality, plus mountain and desert forecasts for day trips",
+      "Tempe weather adds heat safety, monsoon tracking and road conditions",
+      "Weather is saved so it still shows when you lose signal"
+    ]
+  },
   {
     version: "2.1.0",
     date: "2026-10-11",

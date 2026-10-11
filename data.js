@@ -658,6 +658,141 @@ const HOBBIES = [
         ]
       },
       {
+        id: "sd-wx",
+        name: "Weather",
+        icon: "🌤️",
+        labels: {
+          podcasts: "Guides"
+        },
+        weather: {
+          name: "San Diego",
+          lat: 32.7157,
+          lon: -117.1611
+        },
+        podcasts: [
+          {
+            name: "NWS San Diego forecast",
+            desc: "Official 7-day forecast for downtown San Diego.",
+            url: "https://forecast.weather.gov/MapClick.php?lat=32.7157&lon=-117.1611"
+          },
+          {
+            name: "NWS San Diego office",
+            desc: "Forecast discussion, warnings and Santa Ana wind alerts.",
+            url: "https://www.weather.gov/sgx/"
+          },
+          {
+            name: "Live radar",
+            desc: "National Weather Service radar loop.",
+            url: "https://radar.weather.gov/"
+          },
+          {
+            name: "Windy: San Diego",
+            desc: "Animated wind, rain and swell maps.",
+            url: "https://www.windy.com/32.716/-117.161"
+          },
+          {
+            name: "Surf and swell",
+            desc: "Surf forecasts and beach cams for SD spots.",
+            url: "https://www.surfline.com/"
+          },
+          {
+            name: "Ocean water temps",
+            desc: "NOAA coastal water temperatures for Southern California.",
+            url: "https://www.google.com/search?q=NOAA+San+Diego+water+temperature"
+          },
+          {
+            name: "Air quality",
+            desc: "AirNow AQI for San Diego.",
+            url: "https://www.airnow.gov/?city=San%20Diego&state=CA&country=USA"
+          },
+          {
+            name: "Inland vs coast",
+            desc: "Forecast for East County (El Cajon).",
+            url: "https://forecast.weather.gov/MapClick.php?lat=32.7948&lon=-116.9625"
+          },
+          {
+            name: "Mountains (Julian)",
+            desc: "Forecast for the mountains, snow in winter.",
+            url: "https://forecast.weather.gov/MapClick.php?lat=33.0787&lon=-116.602"
+          },
+          {
+            name: "Desert (Borrego)",
+            desc: "Forecast for Anza-Borrego desert trips.",
+            url: "https://forecast.weather.gov/MapClick.php?lat=33.2559&lon=-116.375"
+          }
+        ],
+        youtube: [
+          {
+            name: "NWS San Diego",
+            desc: "Briefings from the San Diego weather office.",
+            url: "https://www.youtube.com/results?search_query=NWS+San+Diego+weather+briefing"
+          },
+          {
+            name: "NBC 7 San Diego weather",
+            desc: "Local TV forecasts.",
+            url: "https://www.youtube.com/results?search_query=NBC+7+San+Diego+weather+forecast"
+          },
+          {
+            name: "FOX 5 San Diego weather",
+            desc: "Local TV forecasts.",
+            url: "https://www.youtube.com/results?search_query=FOX+5+San+Diego+weather"
+          },
+          {
+            name: "10News San Diego weather",
+            desc: "Local TV forecasts.",
+            url: "https://www.youtube.com/results?search_query=10News+San+Diego+weather+forecast"
+          },
+          {
+            name: "Santa Ana winds explained",
+            desc: "Why SD gets hot, dry offshore winds.",
+            url: "https://www.youtube.com/results?search_query=Santa+Ana+winds+explained"
+          },
+          {
+            name: "May Gray and June Gloom",
+            desc: "Why the coast stays cloudy in early summer.",
+            url: "https://www.youtube.com/results?search_query=May+Gray+June+Gloom+explained"
+          },
+          {
+            name: "Marine layer explained",
+            desc: "The fog machine behind SD weather.",
+            url: "https://www.youtube.com/results?search_query=marine+layer+explained+San+Diego"
+          },
+          {
+            name: "Ryan Hall, Y'all",
+            desc: "Big-picture US weather and storms.",
+            url: "https://www.youtube.com/results?search_query=Ryan+Hall+Yall"
+          },
+          {
+            name: "Max Velocity",
+            desc: "Severe weather and storm breakdowns.",
+            url: "https://www.youtube.com/results?search_query=Max+Velocity+weather"
+          },
+          {
+            name: "Atmospheric rivers explained",
+            desc: "SoCal's big winter rain storms.",
+            url: "https://www.youtube.com/results?search_query=atmospheric+river+California+explained"
+          }
+        ],
+        newsSources: [
+          {
+            name: "NWS San Diego",
+            url: "https://www.weather.gov/sgx/"
+          },
+          {
+            name: "Google News: SD weather",
+            url: "https://news.google.com/search?q=San%20Diego%20weather"
+          },
+          {
+            name: "San Diego Union-Tribune",
+            url: "https://www.sandiegouniontribune.com/"
+          },
+          {
+            name: "NBC 7 San Diego",
+            url: "https://www.nbcsandiego.com/weather/"
+          }
+        ]
+      },
+      {
         id: "sd-mtb",
         name: "Mountain Biking",
         icon: "🚵",
@@ -939,6 +1074,141 @@ const HOBBIES = [
           { name: "Eventbrite: this week", url: "https://www.eventbrite.com/d/az--tempe/events--this-week/" },
           { name: "Meetup", url: "https://www.meetup.com/find/?location=us--az--Tempe" },
           { name: "Google News: Tempe this week", url: "https://news.google.com/search?q=Tempe%20Phoenix%20events%20this%20weekend" }
+        ]
+      },
+      {
+        id: "tp-wx",
+        name: "Weather",
+        icon: "🌤️",
+        labels: {
+          podcasts: "Guides"
+        },
+        weather: {
+          name: "Tempe",
+          lat: 33.4255,
+          lon: -111.94
+        },
+        podcasts: [
+          {
+            name: "NWS Tempe forecast",
+            desc: "Official 7-day forecast for Tempe.",
+            url: "https://forecast.weather.gov/MapClick.php?lat=33.4255&lon=-111.94"
+          },
+          {
+            name: "NWS Phoenix office",
+            desc: "Excessive heat, monsoon and dust storm warnings.",
+            url: "https://www.weather.gov/psr/"
+          },
+          {
+            name: "Live radar",
+            desc: "National Weather Service radar loop.",
+            url: "https://radar.weather.gov/"
+          },
+          {
+            name: "Windy: Tempe",
+            desc: "Animated wind, rain and storm maps.",
+            url: "https://www.windy.com/33.426/-111.940"
+          },
+          {
+            name: "Heat safety",
+            desc: "Heat risk and cooling centers in Maricopa County.",
+            url: "https://www.google.com/search?q=Maricopa+County+heat+relief+cooling+centers"
+          },
+          {
+            name: "Monsoon tracker",
+            desc: "Storm season updates for the Valley.",
+            url: "https://www.google.com/search?q=Arizona+monsoon+tracker+Phoenix"
+          },
+          {
+            name: "Air quality",
+            desc: "AirNow AQI for Phoenix and Tempe.",
+            url: "https://www.airnow.gov/?city=Tempe&state=AZ&country=USA"
+          },
+          {
+            name: "Flagstaff forecast",
+            desc: "Escape the heat: forecast up north.",
+            url: "https://forecast.weather.gov/MapClick.php?lat=35.1983&lon=-111.6513"
+          },
+          {
+            name: "Payson forecast",
+            desc: "Rim country forecast for day trips.",
+            url: "https://forecast.weather.gov/MapClick.php?lat=34.2309&lon=-111.3251"
+          },
+          {
+            name: "ADOT road conditions",
+            desc: "Highway closures from storms and dust.",
+            url: "https://az511.gov/"
+          }
+        ],
+        youtube: [
+          {
+            name: "NWS Phoenix",
+            desc: "Briefings from the Phoenix weather office.",
+            url: "https://www.youtube.com/results?search_query=NWS+Phoenix+weather+briefing"
+          },
+          {
+            name: "ABC15 Arizona weather",
+            desc: "Local TV forecasts.",
+            url: "https://www.youtube.com/results?search_query=ABC15+Arizona+weather+forecast"
+          },
+          {
+            name: "12News weather",
+            desc: "Local TV forecasts.",
+            url: "https://www.youtube.com/results?search_query=12News+Phoenix+weather"
+          },
+          {
+            name: "FOX 10 Phoenix weather",
+            desc: "Local TV forecasts.",
+            url: "https://www.youtube.com/results?search_query=FOX+10+Phoenix+weather"
+          },
+          {
+            name: "Monsoon storms Arizona",
+            desc: "Lightning, haboobs and flash floods.",
+            url: "https://www.youtube.com/results?search_query=Arizona+monsoon+storm"
+          },
+          {
+            name: "Haboob explained",
+            desc: "How giant dust storms form.",
+            url: "https://www.youtube.com/results?search_query=haboob+explained+Phoenix"
+          },
+          {
+            name: "Heat safety tips",
+            desc: "Staying safe in triple-digit heat.",
+            url: "https://www.youtube.com/results?search_query=Phoenix+extreme+heat+safety+tips"
+          },
+          {
+            name: "Ryan Hall, Y'all",
+            desc: "Big-picture US weather and storms.",
+            url: "https://www.youtube.com/results?search_query=Ryan+Hall+Yall"
+          },
+          {
+            name: "Max Velocity",
+            desc: "Severe weather and storm breakdowns.",
+            url: "https://www.youtube.com/results?search_query=Max+Velocity+weather"
+          },
+          {
+            name: "Pecos Hank",
+            desc: "Storm chasing, including Arizona monsoon.",
+            url: "https://www.youtube.com/results?search_query=Pecos+Hank"
+          }
+        ],
+        newsSources: [
+          {
+            name: "NWS Phoenix",
+            url: "https://www.weather.gov/psr/"
+          },
+          {
+            name: "Google News: Phoenix weather",
+            url: "https://news.google.com/search?q=Phoenix%20OR%20Tempe%20weather"
+          },
+          {
+            name: "azcentral weather",
+            url: "https://www.azcentral.com/weather/"
+          },
+          {
+            name: "ABC15 weather",
+            url: "https://www.abc15.com/weather"
+          }
         ]
       },
       {

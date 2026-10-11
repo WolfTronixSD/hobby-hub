@@ -2,6 +2,11 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.2.0 (2026-10-11): Live weather
+- Home-screen weather bar using IP-based location (geojs.io, ipapi.co fallback) and Open-Meteo, cached for offline
+- Weather subs for San Diego (sd-wx) and Tempe (tp-wx) with live conditions, 5-day forecast and guides
+- Sub-category rows pick 4, 5 or 3 columns to avoid a lonely last row
+
 ## 2.1.0 (2026-10-11): Wolfie's Hobby Hub and Fitness
 - Renamed to Wolfie's Hobby Hub with a wolf logo (logo.svg), new app icons and link preview image
 - Fitness hobby with subs: 24 Hour Fitness, Running SD, Weight Lifting, Plans & Apps (with news feeds)

@@ -167,6 +167,12 @@ FEEDS = {
     "fit-plans": [
         ("Google News", "https://news.google.com/rss/search?q=%22workout+plan%22+OR+%22fitness+app%22+OR+%22strength+training%22+study&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "sd-wx": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+weather+OR+forecast+OR+rain+OR+heat&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-wx": [
+        ("Google News", "https://news.google.com/rss/search?q=Phoenix+OR+Tempe+weather+OR+monsoon+OR+heat&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20
