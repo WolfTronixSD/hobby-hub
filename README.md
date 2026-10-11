@@ -2,7 +2,7 @@
 Wolf Hobby Hub
 
 
-A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube channels and live news for **Ham Radio**, **ESP32**, **Arduino**, **Electronic Gardening**, **Computers**, **AI** and **DIY Drones**.
+A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube channels and live news for **Ham Radio**, **ESP32**, **Arduino**, **Electronic Gardening**, **Computers**, **AI**, **DIY Drones**, **Food** and **Longevity Hacks**.
 
 - Static site served by GitHub Pages (no backend).
 - `data.js` holds the podcast and YouTube lists. Add a hobby by adding another entry.

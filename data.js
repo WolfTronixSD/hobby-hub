@@ -271,5 +271,83 @@ const HOBBIES = [
       { name: "r/Multicopter", url: "https://www.reddit.com/r/Multicopter/" },
       { name: "Google News: FPV Drones", url: "https://news.google.com/search?q=%22FPV%20drone%22%20OR%20%22DIY%20drone%22" }
     ]
+  },
+  {
+    id: "food",
+    name: "Food",
+    icon: "🍳",
+    accent: "#ffb84d",
+    tagline: "Cooking, recipes, food science and great eats",
+    podcasts: [
+      { name: "The Splendid Table", desc: "Public radio's long-running show for curious cooks.", url: "https://www.splendidtable.org/" },
+      { name: "Milk Street Radio", desc: "Christopher Kimball on how to cook and eat better.", url: "https://www.177milkstreet.com/radio" },
+      { name: "Gastropod", desc: "The science and history behind what we eat.", url: "https://gastropod.com/" },
+      { name: "The Sporkful", desc: "Dan Pashman's show for eaters, not foodies.", url: "https://www.sporkful.com/" },
+      { name: "Good Food (KCRW)", desc: "Evan Kleiman on food, cooks and restaurants.", url: "https://www.kcrw.com/culture/shows/good-food" },
+      { name: "Home Cooking", desc: "Samin Nosrat and Hrishikesh Hirway answer cooking questions.", url: "https://podcasts.apple.com/us/search?term=Home%20Cooking%20Samin%20Nosrat" },
+      { name: "Dinner SOS", desc: "America's Test Kitchen fixes your weeknight dinner problems.", url: "https://podcasts.apple.com/us/search?term=Dinner%20SOS" },
+      { name: "Proof", desc: "America's Test Kitchen's stories behind the food.", url: "https://podcasts.apple.com/us/search?term=Proof%20America's%20Test%20Kitchen" },
+      { name: "The Food Programme", desc: "BBC Radio 4's classic food documentary series.", url: "https://www.bbc.co.uk/programmes/b006qnx3" },
+      { name: "Bon Appétit Foodcast", desc: "Recipes, techniques and tips from the BA kitchen.", url: "https://podcasts.apple.com/us/search?term=Bon%20Appetit%20Foodcast" }
+    ],
+    youtube: [
+      { name: "J. Kenji López-Alt", desc: "POV cooking with the food-science legend.", url: "https://www.youtube.com/@JKenjiLopezAlt" },
+      { name: "Joshua Weissman", desc: "Make it better than store-bought, from scratch.", url: "https://www.youtube.com/@JoshuaWeissman" },
+      { name: "Babish Culinary Universe", desc: "Movie and TV foods plus cooking basics.", url: "https://www.youtube.com/@babishculinaryuniverse" },
+      { name: "Adam Ragusea", desc: "Home cooking and the why behind it.", url: "https://www.youtube.com/@aragusea" },
+      { name: "Ethan Chlebowski", desc: "Smarter home cooking and flavor building.", url: "https://www.youtube.com/@EthanChlebowski" },
+      { name: "Food Wishes (Chef John)", desc: "Thousands of clear, friendly recipe videos.", url: "https://www.youtube.com/@foodwishes" },
+      { name: "America's Test Kitchen", desc: "Tested recipes, equipment and taste tests.", url: "https://www.youtube.com/@americastestkitchen" },
+      { name: "Internet Shaquille", desc: "Short, funny, practical cooking advice.", url: "https://www.youtube.com/@internetshaquille" },
+      { name: "Gordon Ramsay", desc: "Quick recipes and restaurant technique.", url: "https://www.youtube.com/@gordonramsay" },
+      { name: "Bon Appétit", desc: "Test kitchen recipes and food series.", url: "https://www.youtube.com/@bonappetit" }
+    ],
+    newsSources: [
+      { name: "Serious Eats", url: "https://www.seriouseats.com/" },
+      { name: "Eater", url: "https://www.eater.com/" },
+      { name: "The Kitchn", url: "https://www.thekitchn.com/" },
+      { name: "NYT Cooking", url: "https://cooking.nytimes.com/" },
+      { name: "Budget Bytes", url: "https://www.budgetbytes.com/" },
+      { name: "Google News: Food", url: "https://news.google.com/search?q=recipes%20OR%20cooking%20OR%20%22food%20science%22" }
+    ]
+  },
+  {
+    id: "longevity",
+    name: "Longevity Hacks",
+    icon: "🧬",
+    accent: "#38e0c2",
+    tagline: "Healthspan, sleep, exercise and the science of aging. Not medical advice.",
+    podcasts: [
+      { name: "The Drive (Peter Attia)", desc: "Deep dives on the science of living longer and better.", url: "https://peterattiamd.com/podcast/" },
+      { name: "Huberman Lab", desc: "Neuroscience tools for sleep, focus and health.", url: "https://www.hubermanlab.com/podcast" },
+      { name: "FoundMyFitness", desc: "Rhonda Patrick on aging, nutrition and healthspan.", url: "https://www.foundmyfitness.com/episodes" },
+      { name: "STEM-Talk", desc: "Scientists on health, performance and aging research.", url: "https://www.ihmc.us/stemtalk/" },
+      { name: "The Proof with Simon Hill", desc: "Evidence-based nutrition and longevity interviews.", url: "https://podcasts.apple.com/us/search?term=The%20Proof%20with%20Simon%20Hill" },
+      { name: "ZOE Science & Nutrition", desc: "Gut health and nutrition research made practical.", url: "https://podcasts.apple.com/us/search?term=ZOE%20Science%20and%20Nutrition" },
+      { name: "Lifespan with Dr. David Sinclair", desc: "The biology of aging, episode by episode.", url: "https://podcasts.apple.com/us/search?term=Lifespan%20with%20Dr%20David%20Sinclair" },
+      { name: "Don't Die (Bryan Johnson)", desc: "Extreme-protocol experiments and guests.", url: "https://podcasts.apple.com/us/search?term=Bryan%20Johnson%20Don't%20Die" },
+      { name: "The Doctor's Farmacy", desc: "Mark Hyman on food as medicine.", url: "https://podcasts.apple.com/us/search?term=The%20Doctor's%20Farmacy" },
+      { name: "Ben Greenfield Life", desc: "Biohacking, fitness and longevity tactics.", url: "https://podcasts.apple.com/us/search?term=Ben%20Greenfield%20Life" }
+    ],
+    youtube: [
+      { name: "Peter Attia MD", desc: "Clips on exercise, metabolic health and longevity.", url: "https://www.youtube.com/results?search_query=Peter+Attia+MD" },
+      { name: "Andrew Huberman", desc: "Huberman Lab episodes and practical protocols.", url: "https://www.youtube.com/@hubermanlab" },
+      { name: "FoundMyFitness", desc: "Rhonda Patrick's interviews and research summaries.", url: "https://www.youtube.com/results?search_query=FoundMyFitness+Rhonda+Patrick" },
+      { name: "Dr. Brad Stanfield", desc: "A GP's evidence-based take on longevity.", url: "https://www.youtube.com/results?search_query=Dr+Brad+Stanfield" },
+      { name: "Nutrition Made Simple!", desc: "Gil Carvalho breaks down nutrition studies.", url: "https://www.youtube.com/results?search_query=Nutrition+Made+Simple+Gil+Carvalho" },
+      { name: "Physionic", desc: "Animated deep dives on metabolism and nutrition.", url: "https://www.youtube.com/results?search_query=Physionic" },
+      { name: "Bryan Johnson", desc: "Blueprint protocol updates and measurements.", url: "https://www.youtube.com/results?search_query=Bryan+Johnson+Blueprint" },
+      { name: "David Sinclair", desc: "Talks and Q&As on the biology of aging.", url: "https://www.youtube.com/results?search_query=David+Sinclair+aging" },
+      { name: "ZOE", desc: "Gut health and nutrition science, short and clear.", url: "https://www.youtube.com/results?search_query=ZOE+science+nutrition" },
+      { name: "The Proof (Simon Hill)", desc: "Nutrition science interviews on video.", url: "https://www.youtube.com/results?search_query=The+Proof+Simon+Hill" }
+    ],
+    newsSources: [
+      { name: "Fight Aging!", url: "https://www.fightaging.org/" },
+      { name: "Lifespan.io News", url: "https://www.lifespan.io/news/" },
+      { name: "ScienceDaily: Healthy Aging", url: "https://www.sciencedaily.com/news/health_medicine/healthy_aging/" },
+      { name: "Peter Attia Articles", url: "https://peterattiamd.com/articles/" },
+      { name: "Examine", url: "https://examine.com/" },
+      { name: "Google News: Longevity", url: "https://news.google.com/search?q=longevity%20OR%20healthspan%20OR%20%22aging%20research%22" }
+    ]
   }
 ];

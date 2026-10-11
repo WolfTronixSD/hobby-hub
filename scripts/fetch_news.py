@@ -51,6 +51,17 @@ FEEDS = {
         ("Hackaday", "https://hackaday.com/category/drone-hacks/feed/"),
         ("Google News", "https://news.google.com/rss/search?q=%22FPV+drone%22+OR+%22DIY+drone%22&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "food": [
+        ("Serious Eats", "https://www.seriouseats.com/feeds/all"),
+        ("Eater", "https://www.eater.com/rss/index.xml"),
+        ("Google News", "https://news.google.com/rss/search?q=recipes+OR+%22food+science%22+OR+cooking&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "longevity": [
+        ("Fight Aging!", "https://www.fightaging.org/feed/"),
+        ("Lifespan.io", "https://www.lifespan.io/feed/"),
+        ("ScienceDaily", "https://www.sciencedaily.com/rss/health_medicine/healthy_aging.xml"),
+        ("Google News", "https://news.google.com/rss/search?q=longevity+OR+healthspan+OR+%22aging+research%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 24
