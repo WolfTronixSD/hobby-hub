@@ -1,1 +1,297 @@
-{"updated": null, "topics": {}}
+{
+ "updated": "2026-10-11T20:51:40.996635+00:00",
+ "topics": {
+  "ham": [
+   {
+    "title": "Local schools take STEM education to space through amateur radio projects",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQRWVCd3B1X1J6YnpFa3J6TC1nQzJtTkllLWVqQk9DVUM4bDhFbFB0MUo4ZFRKalJwZzQ2WVFYTy1ZVVZUdGFtYWtnZG9zVnRIY2F2bTZ5ZUNRVjBWdkFrbXRhYVlUOE5na3ltdDFTWW5IRG00QWowR1RueFRmVXZjR0V3cDYtSXJ1VFRJcFFyWXZqZm5BTmNWZlZXR3M2SUR3ejNJbXRB?oc=5",
+    "source": "Alachua Chronicle",
+    "date": "2026-10-10T22:54:43+00:00"
+   },
+   {
+    "title": "ARRL Headquarters Closing Early on Friday, October 9, 2026",
+    "link": "http://www.arrl.org/news/view/arrl-headquarters-closing-early-on-friday-october-9-2026",
+    "source": "ARRL",
+    "date": "2026-10-09T13:00:00+00:00"
+   },
+   {
+    "title": "Baton Rouge Amateur Radio Club (stand alone)",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc1BhYldxb21OYURhQncydV8weFotbkRIZzZGU0lSWHJsVVJ2N2VBZllDWkQwRktkUGZHY09zNVdlTzlBMm85b3MzOFRzQ1ZZS3FJYTRQNVI0MVp2ejBKd3RoOEp4T19jV3Myai0zT2kzN2RSbjY1RGhGS0ZOTENTRVgtd29jLWkyWk5NQjlhQVBoTFFEQTNQdGJNUUZSTDEya0UtdjA3TC13Y2M5RTd6cElPUi0zYzcxMEE?oc=5",
+    "source": "The Advocate",
+    "date": "2026-10-09T10:30:00+00:00"
+   },
+   {
+    "title": "FliteGrid: A Crowdsourced Drone Detection Network That Pays Feeders US$50 A Month",
+    "link": "https://www.rtl-sdr.com/flitegrid-a-crowdsourced-drone-detection-network-that-pays-feeders-us50-a-month/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-08T05:12:34+00:00"
+   },
+   {
+    "title": "OnAir: A Digital TV and DAB Decoder for SDRs",
+    "link": "https://www.rtl-sdr.com/onair-a-digital-tv-and-dab-decoder-for-sdrs/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-08T04:07:34+00:00"
+   },
+   {
+    "title": "Keep That Old Radio Alive With An ESP32",
+    "link": "https://hackaday.com/2026/10/07/keep-that-old-radio-alive-with-an-esp32/",
+    "source": "Hackaday",
+    "date": "2026-10-08T02:00:32+00:00"
+   },
+   {
+    "title": "Radio Amateurs Prepare for Hurricane Isaias",
+    "link": "http://www.arrl.org/news/view/radio-amateurs-prepare-for-hurricane-isaias",
+    "source": "ARRL",
+    "date": "2026-10-07T19:55:00+00:00"
+   },
+   {
+    "title": "ESP32-SDR: Turbo Mode Throughput Improvement + Real I/Q Output",
+    "link": "https://www.rtl-sdr.com/esp32-sdr-turbo-mode-throughput-improvement-real-i-q-output/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-07T01:23:26+00:00"
+   },
+   {
+    "title": "esp32-sdr-trx: Use an ESP32-S3 as a Receiver for SDR++ and as an FM/SSB Voice Transmitter on 13cm",
+    "link": "https://www.rtl-sdr.com/esp32-sdr-trx-use-an-esp32-s3-as-a-receiver-for-sdr-and-as-an-fm-ssb-voice-transmitter-on-13cm/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-07T00:29:19+00:00"
+   },
+   {
+    "title": "Watching the Gulf",
+    "link": "http://www.arrl.org/news/view/watching-the-gulf",
+    "source": "ARRL",
+    "date": "2026-10-06T16:52:00+00:00"
+   },
+   {
+    "title": "Nettleton Students Speak with International Space Station Astronaut through Amateur Radio",
+    "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQbllkM3gwdzFVdmlXbzBPSHBzZVhxMjl6Y19oMEZXLWtzQnE4c3ZoWEx6MTRGVGJzTlQ2UlYxT3V0emFwaEdabmhEQ2hKN2hyWEUzLTdQcmRQekIzWUV1STdmWmg0TnVGUURLaWRKSXRGVk4yX0RpQ2tEWGJ3R0Z4Z2RHNlJqNnNxejhMZmp0cWhKUWkySXdrV2ZGbGpWZVF0bGh1bTZrTEo3WlotaWZ4TlExVGoyb1RGalRfZS16eVNILVBEZ3BZVVVUYkg?oc=5",
+    "source": "Jonesboro Right Now",
+    "date": "2026-10-06T16:19:12+00:00"
+   },
+   {
+    "title": "ESPsoup: Turn an ESP32-C5 into a 2.4 & 5 GHz Pocket Scanner with a Connected Phone or PC",
+    "link": "https://www.rtl-sdr.com/espsoup-turn-an-esp32-c5-into-a-2-4-5-ghz-pocket-scanner-with-a-connected-phone-or-pc/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-06T00:45:53+00:00"
+   },
+   {
+    "title": "ChronAlert: Live Dashboard for Radio, Weather, Alerts with RTL-SDR Integration for APRS, ADS-B and AIS",
+    "link": "https://www.rtl-sdr.com/chronalert-live-dashboard-for-radio-weather-alerts-with-rtl-sdr-integration-for-aprs-ads-b-and-ais/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-06T00:16:47+00:00"
+   },
+   {
+    "title": "HamRadioWeb FT8 WSJTx JTDX Remote Control Android App",
+    "link": "https://www.rtl-sdr.com/hamradioweb-ft8-wsjtx-jtdx-remote-control-android-app/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-05T03:22:25+00:00"
+   },
+   {
+    "title": "OFFgrid-SDR: A Fully Offline RTL-SDR Receiver Program in a Single Index.html File",
+    "link": "https://www.rtl-sdr.com/offgrid-sdr-a-fully-offline-rtl-sdr-receiver-program-in-a-single-index-html-file/",
+    "source": "RTL-SDR Blog",
+    "date": "2026-10-05T03:03:55+00:00"
+   },
+   {
+    "title": "Ham Fest brings amateur radio enthusiasts together in Lima",
+    "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQSlRoYTRPYks3T2FfNUZyWG9ScHRrY2kzMVM4eDFUNEpsWHFqWDU1YzZCc0dfZlRkbkFYdi1tWXhCZlVpejZmWXppbFd3T25jMEZBd0pJb2duMlRBMmhzNW5QclFhaGFPY01yRjlBQ0ktcXdrcUdTaVNCOEQ0eFczTC1MYVdQR1Z2bV9CUVFtcmxHMGNxc3c2RkxlWEF1TDVvSWfSAbYBQVVfeXFMTnJpTDltR2tIa0FLUTRIZkMxZGI1anAxc1dSeGxJLWRneUcxNzhQY181VVprTDhxTU90dW1nSTVsSW1VYzBGU3VScWl2SGQ3cUt0T2JFaVVOZUtHVDc0UU1wUnJkWEVLd0lYS3N4TTJYa0xFb3UwMjRWTzUza2FmczVXY2h1NmFZM0JPR3Q2V0lqcDVyVndqZ3pvMXVIT2JsMjE5Znh4RHZkNDE2LXBJcy1LMC1TeWc?oc=5",
+    "source": "WLIO",
+    "date": "2026-10-03T22:09:00+00:00"
+   },
+   {
+    "title": "The ESP32, An SDR In Itself",
+    "link": "https://hackaday.com/2026/10/03/the-esp32-an-sdr-in-itself/",
+    "source": "Hackaday",
+    "date": "2026-10-03T17:00:31+00:00"
+   },
+   {
+    "title": "2026 Collegiate QSO Party is October 3 – 4",
+    "link": "http://www.arrl.org/news/view/2026-collegiate-qso-party-is-october-3-4",
+    "source": "ARRL",
+    "date": "2026-10-02T17:18:00+00:00"
+   },
+   {
+    "title": "SDR– Lets You Patch Together Your Setup",
+    "link": "https://hackaday.com/2026/10/01/sdr-lets-you-patch-together-your-setup/",
+    "source": "Hackaday",
+    "date": "2026-10-01T08:00:59+00:00"
+   },
+   {
+    "title": "Local nine-year-old earns her Ham Radio license",
+    "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNS0dRclNzVWFKeXlUUjNGc01VVnZ3MnFjUEFFaXVDMmpYeWpBZjl3QmxUbFljRUREYUhBZFYyVVJaV3hoTGRnT1VwWXlCSWxoOS11VDl4QXFTVEZadlVpN0FtNGgyR084TmJ5eGc5a3RWcG12dWNvSnJVbko4a0RjZmNHWmFDNloyejRjV2NCaXFyOVJ3MzRkeHJHN2g?oc=5",
+    "source": "Cleveland.com",
+    "date": "2026-10-01T07:00:00+00:00"
+   },
+   {
+    "title": "Synthetic Aperture Radar Drone Gets Interferometric Imaging",
+    "link": "https://hackaday.com/2026/09/28/synthetic-aperture-radar-drone-gets-interferometric-imaging/",
+    "source": "Hackaday",
+    "date": "2026-09-28T20:00:17+00:00"
+   },
+   {
+    "title": "Amateur Radio Daily will Attend Zero Retries Digital Conference and Pacificon",
+    "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNQlJZbEtoYzhaSnduZXd1Sjdjd0cxdUdMVVFIVEpWYUE2Y2tOMGp5LUtxLVZrX2tzVGNCYXpzUXlMUjF4bkdLQUgyS1NyLS1ETEpLR3NpRTRsRW52M3o3dk5YQUhub3MzS0xFaTBfLXRhVjl4eGRjTktXcTBlb1VremtEeXNMd09rMTJBNmlDa2xiX3JSQVB6ZUc1MVR3cl9kU0Z5ODJ6WQ?oc=5",
+    "source": "Amateur Radio Daily",
+    "date": "2026-09-28T07:00:00+00:00"
+   },
+   {
+    "title": "Remembering Four Silent Keys",
+    "link": "http://www.arrl.org/news/view/remembering-four-silent-keys",
+    "source": "ARRL",
+    "date": "2026-09-27T15:00:00+00:00"
+   },
+   {
+    "title": "Video/Podcast with ARRL CEO David Minster, NA2AA",
+    "link": "http://www.arrl.org/news/view/video-podcast-with-arrl-ceo-david-minster-na2aa",
+    "source": "ARRL",
+    "date": "2026-09-26T15:00:00+00:00"
+   }
+  ],
+  "esp32": [
+   {
+    "title": "Wireless-Tag WT32P4C5-43S – A fully integrated 4.3-inch ESP32-P4 and ESP32-C5 touch display devkit",
+    "link": "https://www.cnx-software.com/2026/10/11/wireless-tag-wt32p4c5-43s-a-fully-integrated-4-3-inch-esp32-p4-and-esp32-c5-touch-display-devkit/",
+    "source": "CNX Software",
+    "date": "2026-10-11T11:36:22+00:00"
+   },
+   {
+    "title": "M5Stack ToughC5 weatherproof ESP32-C5 IoT controller offers dual-band Wi-Fi 6, BLE 5, and Zigbee/Thread",
+    "link": "https://www.cnx-software.com/2026/10/10/m5stack-toughc5-weatherproof-esp32-c5-iot-controller-offers-dual-band-wi-fi-6-ble-5-and-zigbee-thread/",
+    "source": "CNX Software",
+    "date": "2026-10-10T07:00:45+00:00"
+   },
+   {
+    "title": "Open-source ESP32-C3 DNS ad blocker supports up to over 500,000 domains without PSRAM",
+    "link": "https://www.cnx-software.com/2026/10/09/open-source-esp32-c3-dns-ad-blocker-supports-up-to-over-500000-domains-without-psram/",
+    "source": "CNX Software",
+    "date": "2026-10-09T12:00:44+00:00"
+   },
+   {
+    "title": "ESP32-SDR: turbo mode throughput improvement + real I/Q output",
+    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVlNubXY4MGlhSjNkSDRFRmFQUWZHTi0zNmIwNVVuVmZjcmVQcG1wX2d6bm5FLVNzWWpUOUgzMXVidmZHelRmeWZJVnpxd2dMR3p3MEdXaHlud2M0OWZJY21zMWNqdXYxaDQxc3IxVmRJS2JzMThaZDZkUktPY1VzYUIyajYzM2k3Ti00M1ZnUWZJczlMM2FsaFFyaC1udw?oc=5",
+    "source": "Adafruit",
+    "date": "2026-10-08T15:55:12+00:00"
+   },
+   {
+    "title": "ESP32 Matter: Control On/Off Light (Arduino) – Works with Alexa, Apple Home, Google, etc…",
+    "link": "https://randomnerdtutorials.com/esp32-matter-on-off-light/",
+    "source": "Random Nerd Tutorials",
+    "date": "2026-10-08T13:10:16+00:00"
+   },
+   {
+    "title": "These 5 ESP32 and Raspberry Pi smart home projects take a weekend and cost less than $50",
+    "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNaUVfNFVqd2YzN2k2V3NOcWtZc1dUUkd6ZEJHaEFic3Y1UXlQcHpDeEdUbDI0ZG5CZ0NfYVRxYkJyVEFxamVsVnVQWWtveTl3X1lCOTh2T2JEY0ZpaU9Gc1Z5cWVFYktJV3M3UE9QZHV3ejdqRzBGekRQWXc5VE8tQlZIRFVJTmM?oc=5",
+    "source": "MakeUseOf",
+    "date": "2026-10-08T13:00:15+00:00"
+   },
+   {
+    "title": "ESP32-CYD Modular Case with GPS/NFC/IR/RF/CC1101/NRF24L01 Bays #3DThursday #3DPrinting",
+    "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOXzc0N01nN1lEYnVUd0QyRjlKRVl0LVg4aVpIQXJQaGhaNW5kOWhXbkE5UEhGc0dlYWYwRnNfZzZNc1JCZUhRdTNMQnRfajlUWlYtTktUV1hXVmFXUzNuR0RVaWxoX0dVaFI0T1BqeVo4NzF4ZUxkOGRXTjNMUHA0cWttS00wd0dEYUtNWjhIaVRZUENyYzRzMkc2R1RWQXFrQW11LWRSQ0FhSUswVVl4LWEyWGRpTl9EOEp4X3V0QQ?oc=5",
+    "source": "Adafruit",
+    "date": "2026-10-08T09:00:55+00:00"
+   },
+   {
+    "title": "Q8botOne – A palm-sized open-source quadruped robot with ESP32-C3, DYNAMIXEL smart actuators (Crowdfunding)",
+    "link": "https://www.cnx-software.com/2026/10/08/q8botone-a-palm-sized-open-source-quadruped-robot-with-esp32-c3-dynamixel-smart-actuators/",
+    "source": "CNX Software",
+    "date": "2026-10-08T09:00:08+00:00"
+   },
+   {
+    "title": "ESP32 As Your Raspberry Pi’s Linux Wireless Co-processor",
+    "link": "https://hackaday.com/2026/10/07/esp32-as-your-raspberry-pis-linux-wireless-co-processor/",
+    "source": "Hackaday",
+    "date": "2026-10-07T14:00:06+00:00"
+   },
+   {
+    "title": "Two Microcontrollers Talking, All It Needs is an LED",
+    "link": "https://hackaday.com/2026/10/05/two-microcontrollers-talking-all-it-needs-is-an-led/",
+    "source": "Hackaday",
+    "date": "2026-10-06T05:00:26+00:00"
+   },
+   {
+    "title": "ESP-SDR firmware turns ESP32 into a 2.4/5 GHz Software-Defined Radio (SDR)",
+    "link": "https://www.cnx-software.com/2026/10/04/esp-sdr-firmware-turns-esp32-into-a-2-4-5-ghz-software-defined-radio-sdr/",
+    "source": "CNX Software",
+    "date": "2026-10-04T03:00:42+00:00"
+   },
+   {
+    "title": "The ESP32, An SDR In Itself",
+    "link": "https://hackaday.com/2026/10/03/the-esp32-an-sdr-in-itself/",
+    "source": "Hackaday",
+    "date": "2026-10-03T17:00:31+00:00"
+   },
+   {
+    "title": "UUNA TEK iAuto review – A professional handwriting and drawing machine",
+    "link": "https://www.cnx-software.com/2026/10/03/uuna-tek-iauto-review-a-professional-handwriting-and-drawing-machine/",
+    "source": "CNX Software",
+    "date": "2026-10-03T03:00:36+00:00"
+   },
+   {
+    "title": "Elgato Key Lights Get Matter Upgrade",
+    "link": "https://hackaday.com/2026/10/01/elgato-key-lights-get-matter-upgrade/",
+    "source": "Hackaday",
+    "date": "2026-10-01T23:00:07+00:00"
+   },
+   {
+    "title": "ESP-IDF: Read and Set ESP32 MAC Address",
+    "link": "https://randomnerdtutorials.com/esp-idf-esp32-mac-address/",
+    "source": "Random Nerd Tutorials",
+    "date": "2026-10-01T13:57:49+00:00"
+   },
+   {
+    "title": "The Whole Computer Is Vim",
+    "link": "https://hackaday.com/2026/10/01/the-whole-computer-is-vim/",
+    "source": "Hackaday",
+    "date": "2026-10-01T11:00:37+00:00"
+   },
+   {
+    "title": "LakeShark firmware turns LilyGO T-Display P4 into a handheld ESP32-P4 SDR scanner",
+    "link": "https://www.cnx-software.com/2026/10/01/lakeshark-firmware-turns-lilygo-t-display-p4-into-a-handheld-esp32-p4-sdr-scanner/",
+    "source": "CNX Software",
+    "date": "2026-10-01T09:00:28+00:00"
+   },
+   {
+    "title": "ESP32-C5 devkit features 3.5-inch touch LCD, optional camera and battery",
+    "link": "https://www.cnx-software.com/2026/09/30/esp32-c5-devkit-features-3-5-inch-touch-lcd-optional-camera-and-battery/",
+    "source": "CNX Software",
+    "date": "2026-09-30T00:00:38+00:00"
+   },
+   {
+    "title": "An IR Blaster Project, in a Nutshell",
+    "link": "https://hackaday.com/2026/09/28/an-ir-blaster-project-in-a-nutshell/",
+    "source": "Hackaday",
+    "date": "2026-09-28T08:00:00+00:00"
+   },
+   {
+    "title": "Cheap Yellow Display Dreams of PDA",
+    "link": "https://hackaday.com/2026/09/26/cheap-yellow-display-dreams-of-pda/",
+    "source": "Hackaday",
+    "date": "2026-09-26T23:00:00+00:00"
+   },
+   {
+    "title": "ESP32 with INMP441 I2S Omnidirectional Microphone Module (Arduino IDE)",
+    "link": "https://randomnerdtutorials.com/esp32-inmp441-i2s-microphone-arduino/",
+    "source": "Random Nerd Tutorials",
+    "date": "2026-09-24T13:11:58+00:00"
+   },
+   {
+    "title": "ESP32 with MAX30102: Pulse Oximeter and Heart Rate Sensor (Arduino IDE)",
+    "link": "https://randomnerdtutorials.com/esp32-max30102-oximeter-heart-rate-sensor/",
+    "source": "Random Nerd Tutorials",
+    "date": "2026-09-17T13:12:40+00:00"
+   },
+   {
+    "title": "ESP32: WS2812B 8×8 Matrix Shape Editor Web Server (Arduino IDE)",
+    "link": "https://randomnerdtutorials.com/esp32-8x8-matrix-shape-editor-web-server/",
+    "source": "Random Nerd Tutorials",
+    "date": "2026-09-10T13:27:58+00:00"
+   },
+   {
+    "title": "ESP-IDF: ESP32 Web Server Access Point (AP) Mode",
+    "link": "https://randomnerdtutorials.com/esp-idf-esp32-web-server-access-point/",
+    "source": "Random Nerd Tutorials",
+    "date": "2026-08-31T10:17:05+00:00"
+   }
+  ]
+ }
+}
