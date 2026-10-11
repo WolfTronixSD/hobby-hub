@@ -2,7 +2,7 @@
 Wolf Hobby Hub
 
 
-A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube channels and live news for **Ham Radio**, **ESP32**, **Arduino**, **Electronic Gardening**, **Computers**, **AI**, **DIY Drones**, **Food**, **Longevity Hacks**, **3D Printing**, **Bambu Lab** and **Traveling** (Road Trips USA, Europe, Asia, Camping) and **San Diego** (Today, This Week, MTB, Hiking, Breweries, Party, Fun, News). A hobby can have `subs` for sub-categories.
+A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube channels and live news for **Ham Radio**, **ESP32**, **Arduino**, **Electronic Gardening**, **Computers**, **AI**, **DIY Drones**, **Food**, **Longevity Hacks**, **3D Printing**, **Bambu Lab** and **Traveling** (Road Trips USA, Europe, Asia, Camping) **San Diego** (Today, This Week, MTB, Hiking, Snorkeling, Breweries, Party, Fun, News), **Tempe, AZ** (same categories) and **Flying** (KMYF, Weather, ATIS). A hobby can have `subs` for sub-categories.
 
 - Static site served by GitHub Pages (no backend).
 - `data.js` holds the podcast and YouTube lists. Add a hobby by adding another entry.

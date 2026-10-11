@@ -111,6 +111,8 @@
       subId = h.id;
       store.set("sub", subId);
       subNav.hidden = false;
+      const n = parent.subs.length;
+      subNav.style.setProperty("--cols", n % 4 === 0 ? 4 : n % 3 === 0 ? 3 : 4);
       subNav.innerHTML = parent.subs.map((x) => `
         <button class="sub" data-id="${x.id}" aria-pressed="${x.id === subId}">
           <span class="emoji">${x.icon}</span><b>${esc(x.name)}</b>

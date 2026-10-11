@@ -114,6 +114,45 @@ FEEDS = {
         ("KPBS", "https://www.kpbs.org/news.rss"),
         ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "sd-snorkel": [
+        ("Google News", "https://news.google.com/rss/search?q=La+Jolla+snorkel+OR+%22beach+closure%22+OR+%22water+quality%22+San+Diego&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-today": [
+        ("Google News", "https://news.google.com/rss/search?q=Tempe+events+today&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-week": [
+        ("Google News", "https://news.google.com/rss/search?q=Tempe+OR+Phoenix+events+this+weekend&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-mtb": [
+        ("Pinkbike", "https://www.pinkbike.com/pinkbike_xml_feed.php"),
+        ("Google News", "https://news.google.com/rss/search?q=Arizona+mountain+bike+Phoenix+trail&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-hike": [
+        ("Google News", "https://news.google.com/rss/search?q=Phoenix+hiking+OR+hiker+OR+trail&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-beer": [
+        ("Google News", "https://news.google.com/rss/search?q=Tempe+OR+Phoenix+brewery+OR+%22craft+beer%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-party": [
+        ("Google News", "https://news.google.com/rss/search?q=Tempe+OR+Phoenix+nightlife+OR+concert&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-fun": [
+        ("Google News", "https://news.google.com/rss/search?q=Tempe+%22things+to+do%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-news": [
+        ("KJZZ", "https://kjzz.org/rss.xml"),
+        ("Google News", "https://news.google.com/rss/search?q=Tempe+Arizona&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "fly-kmyf": [
+        ("AVweb", "https://www.avweb.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22Montgomery-Gibbs%22+OR+%22Montgomery+Field%22+San+Diego&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "fly-wx": [
+        ("Google News", "https://news.google.com/rss/search?q=San+Diego+weather+forecast&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "fly-atis": [
+        ("Google News", "https://news.google.com/rss/search?q=KMYF+OR+%22Montgomery+Field%22+airport&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 24

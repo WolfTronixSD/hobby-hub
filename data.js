@@ -721,6 +721,36 @@ const HOBBIES = [
         ]
       },
       {
+        id: "sd-snorkel",
+        name: "Snorkeling",
+        icon: "🤿",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Scripps Pier underwater cam", desc: "Live camera under Scripps Pier. Two pilings visible on the left means about 30 ft visibility.", url: "https://coollab.ucsd.edu/pierviz/" },
+          { name: "Scripps Pier cam (HDOnTap)", desc: "The same underwater live stream on HDOnTap.", url: "https://hdontap.com/stream/018408/scripps-pier-underwater-live-cam/about" },
+          { name: "Beach water quality", desc: "County beach closures and advisories.", url: "https://www.sdbeachinfo.com/" },
+          { name: "La Jolla tides", desc: "NOAA tide predictions for La Jolla.", url: "https://tidesandcurrents.noaa.gov/stationhome.html?id=9410230" },
+          { name: "Surf report La Jolla", desc: "Waves and swell before you go in.", url: "https://www.google.com/search?q=Surfline+La+Jolla+Shores+surf+report" },
+          { name: "Water temperature", desc: "Today's ocean temperature in La Jolla.", url: "https://www.google.com/search?q=La+Jolla+water+temperature+today" },
+          { name: "La Jolla Cove snorkeling", desc: "Garibaldi, sea lions and kelp.", url: "https://www.google.com/search?q=La+Jolla+Cove+snorkeling+guide" },
+          { name: "Leopard shark season", desc: "When and where at La Jolla Shores.", url: "https://www.google.com/search?q=La+Jolla+Shores+leopard+sharks+season" },
+          { name: "Snorkel rentals", desc: "Gear rentals at La Jolla Shores.", url: "https://www.google.com/search?q=La+Jolla+Shores+snorkel+rental" },
+          { name: "Other SD snorkel spots", desc: "Casa Cove, Windansea and more.", url: "https://www.google.com/search?q=best+snorkeling+spots+San+Diego" }
+        ],
+        youtube: [
+          { name: "La Jolla snorkeling", desc: "Underwater videos from La Jolla.", url: "https://www.youtube.com/results?search_query=La+Jolla+snorkeling" },
+          { name: "Leopard sharks", desc: "Snorkeling with leopard sharks.", url: "https://www.youtube.com/results?search_query=La+Jolla+Shores+leopard+sharks+snorkel" },
+          { name: "La Jolla Cove", desc: "Cove snorkel and sea lions.", url: "https://www.youtube.com/results?search_query=La+Jolla+Cove+snorkel+sea+lions" },
+          { name: "Kelp forest", desc: "San Diego kelp forest dives.", url: "https://www.youtube.com/results?search_query=San+Diego+kelp+forest" },
+          { name: "Scripps Pier underwater", desc: "Under the pier.", url: "https://www.youtube.com/results?search_query=Scripps+Pier+underwater" }
+        ],
+        newsSources: [
+          { name: "Scripps Pier cam", url: "https://coollab.ucsd.edu/pierviz/" },
+          { name: "Beach water quality", url: "https://www.sdbeachinfo.com/" },
+          { name: "Google News: La Jolla ocean", url: "https://news.google.com/search?q=La%20Jolla%20snorkel%20OR%20%22beach%20closure%22%20OR%20%22water%20quality%22%20San%20Diego" }
+        ]
+      },
+      {
         id: "sd-beer",
         name: "Breweries",
         icon: "🍺",
@@ -838,6 +868,347 @@ const HOBBIES = [
           { name: "ABC 10News", url: "https://www.10news.com/" },
           { name: "FOX 5 San Diego", url: "https://fox5sandiego.com/" },
           { name: "CBS 8", url: "https://www.cbs8.com/" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "tempe",
+    name: "Tempe, AZ",
+    icon: "🌵",
+    accent: "#ff7043",
+    tagline: "Today, this week, desert trails, breweries, nightlife and local news",
+    subs: [
+      {
+        id: "tp-today",
+        name: "Today",
+        icon: "📅",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Eventbrite: today", desc: "Events happening in Tempe today.", url: "https://www.eventbrite.com/d/az--tempe/events--today/" },
+          { name: "Tempe Tourism", desc: "Official guide to events and things to do.", url: "https://www.tempetourism.com/" },
+          { name: "Downtown Tempe", desc: "Mill Avenue events, shops and dining.", url: "https://www.downtowntempe.com/" },
+          { name: "ASU Events", desc: "Lectures, games and shows on campus.", url: "https://asuevents.asu.edu/" },
+          { name: "Weather today", desc: "National Weather Service forecast for Tempe.", url: "https://forecast.weather.gov/MapClick.php?CityName=Tempe&state=AZ" },
+          { name: "Heat warnings", desc: "NWS Phoenix alerts and heat safety.", url: "https://www.weather.gov/psr/" },
+          { name: "Tempe Town Lake today", desc: "Paddleboards, walks and events.", url: "https://www.google.com/search?q=Tempe+Town+Lake+events+today" },
+          { name: "Farmers markets today", desc: "Find a market open today.", url: "https://www.google.com/search?q=Tempe+farmers+market+today" },
+          { name: "Happy hours today", desc: "Deals near you right now.", url: "https://www.google.com/search?q=Tempe+happy+hour+today" },
+          { name: "Free things to do today", desc: "No-cost ideas around Tempe.", url: "https://www.google.com/search?q=free+things+to+do+in+Tempe+today" }
+        ],
+        youtube: [
+          { name: "Things to do in Tempe", desc: "Video guides to the city.", url: "https://www.youtube.com/results?search_query=things+to+do+in+Tempe+Arizona" },
+          { name: "Mill Avenue guide", desc: "Downtown Tempe highlights.", url: "https://www.youtube.com/results?search_query=Mill+Avenue+Tempe+guide" },
+          { name: "Phoenix area hidden gems", desc: "Spots locals love.", url: "https://www.youtube.com/results?search_query=Phoenix+hidden+gems" },
+          { name: "Tempe food spots", desc: "Where to eat in Tempe.", url: "https://www.youtube.com/results?search_query=best+food+Tempe+Arizona" },
+          { name: "Beat the heat", desc: "Indoor fun in the Valley.", url: "https://www.youtube.com/results?search_query=indoor+things+to+do+Phoenix+summer" },
+          { name: "Sunset spots", desc: "Desert sunsets near Tempe.", url: "https://www.youtube.com/results?search_query=best+sunset+spots+Phoenix+Tempe" }
+        ],
+        newsSources: [
+          { name: "Eventbrite: today", url: "https://www.eventbrite.com/d/az--tempe/events--today/" },
+          { name: "Tempe Tourism", url: "https://www.tempetourism.com/" },
+          { name: "Google News: Tempe events", url: "https://news.google.com/search?q=Tempe%20events%20today" }
+        ]
+      },
+      {
+        id: "tp-week",
+        name: "This Week",
+        icon: "🗓️",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Eventbrite: this week", desc: "Everything on in Tempe this week.", url: "https://www.eventbrite.com/d/az--tempe/events--this-week/" },
+          { name: "Eventbrite: this weekend", desc: "Plans for Saturday and Sunday.", url: "https://www.eventbrite.com/d/az--tempe/events--this-weekend/" },
+          { name: "Meetup: Tempe", desc: "Groups for biking, hiking, tech and more.", url: "https://www.meetup.com/find/?location=us--az--Tempe" },
+          { name: "ASU Gammage", desc: "Broadway shows and concerts.", url: "https://www.asugammage.com/" },
+          { name: "Sun Devil Athletics", desc: "ASU home games this week.", url: "https://thesundevils.com/" },
+          { name: "Diamondbacks schedule", desc: "D-backs games at Chase Field.", url: "https://www.mlb.com/dbacks/schedule" },
+          { name: "Concerts this week", desc: "Live music around the Valley.", url: "https://www.google.com/search?q=Tempe+Phoenix+concerts+this+week" },
+          { name: "Comedy this week", desc: "Stand-up shows in the Valley.", url: "https://www.google.com/search?q=Tempe+comedy+shows+this+week" },
+          { name: "Phoenix events calendar", desc: "KTAR's weekly events roundup.", url: "https://www.google.com/search?q=KTAR+Phoenix+events+calendar+this+weekend" },
+          { name: "7-day forecast", desc: "Plan around the heat.", url: "https://forecast.weather.gov/MapClick.php?CityName=Tempe&state=AZ" }
+        ],
+        youtube: [
+          { name: "Phoenix weekend ideas", desc: "What to do this weekend.", url: "https://www.youtube.com/results?search_query=Phoenix+weekend+things+to+do" },
+          { name: "Sedona day trip", desc: "Red rocks two hours north.", url: "https://www.youtube.com/results?search_query=Sedona+day+trip+from+Phoenix" },
+          { name: "Jerome and Cottonwood", desc: "Historic towns and wineries.", url: "https://www.youtube.com/results?search_query=Jerome+Arizona+day+trip" },
+          { name: "Tucson day trip", desc: "Food and Saguaro National Park.", url: "https://www.youtube.com/results?search_query=Tucson+day+trip" },
+          { name: "Lake Saguaro", desc: "Boating close to Phoenix.", url: "https://www.youtube.com/results?search_query=Saguaro+Lake+day+trip" },
+          { name: "Scottsdale guide", desc: "Old Town and more.", url: "https://www.youtube.com/results?search_query=Scottsdale+things+to+do" }
+        ],
+        newsSources: [
+          { name: "Eventbrite: this week", url: "https://www.eventbrite.com/d/az--tempe/events--this-week/" },
+          { name: "Meetup", url: "https://www.meetup.com/find/?location=us--az--Tempe" },
+          { name: "Google News: Tempe this week", url: "https://news.google.com/search?q=Tempe%20Phoenix%20events%20this%20weekend" }
+        ]
+      },
+      {
+        id: "tp-mtb",
+        name: "Mountain Biking",
+        icon: "🚵",
+        podcasts: [
+          { name: "The Pinkbike Podcast", desc: "Bikes, gear and racing talk from Pinkbike.", url: "https://podcasts.apple.com/us/search?term=The%20Pinkbike%20Podcast" },
+          { name: "Downtime Podcast", desc: "Interviews with mountain bike riders and racers.", url: "https://podcasts.apple.com/us/search?term=Downtime%20Podcast%20mountain%20bike" },
+          { name: "Blister Podcast", desc: "Gear reviews and conversations about riding.", url: "https://podcasts.apple.com/us/search?term=Blister%20Podcast" },
+          { name: "Singletracks Podcast", desc: "Trails, bikes and the MTB community.", url: "https://podcasts.apple.com/us/search?term=Singletracks%20Podcast" },
+          { name: "The Loam Wolf Podcast", desc: "Long-form bike reviews and tech.", url: "https://podcasts.apple.com/us/search?term=The%20Loam%20Wolf%20Podcast" }
+        ],
+        youtube: [
+          { name: "South Mountain National Trail", desc: "The Valley's classic technical ride.", url: "https://www.youtube.com/results?search_query=South+Mountain+National+Trail+mountain+bike" },
+          { name: "Hawes Trails", desc: "Mesa's flowy favorite.", url: "https://www.youtube.com/results?search_query=Hawes+Trail+system+mountain+bike+Mesa" },
+          { name: "McDowell Competitive Track", desc: "Fast desert loops.", url: "https://www.youtube.com/results?search_query=McDowell+Mountain+Competitive+Track+mountain+bike" },
+          { name: "Papago Park", desc: "Easy rides right next to Tempe.", url: "https://www.youtube.com/results?search_query=Papago+Park+mountain+bike" },
+          { name: "Desert Classic", desc: "South Mountain's popular route.", url: "https://www.youtube.com/results?search_query=Desert+Classic+trail+mountain+bike" },
+          { name: "Brown's Ranch", desc: "Scottsdale trail network.", url: "https://www.youtube.com/results?search_query=Browns+Ranch+mountain+bike" },
+          { name: "Phoenix MTB trail guide", desc: "Best trails in the Valley.", url: "https://www.youtube.com/results?search_query=best+mountain+bike+trails+Phoenix" },
+          { name: "GMBN", desc: "Global Mountain Bike Network.", url: "https://www.youtube.com/results?search_query=GMBN+Global+Mountain+Bike+Network" },
+          { name: "Berm Peak", desc: "Seth's builds and adventures.", url: "https://www.youtube.com/results?search_query=Berm+Peak" },
+          { name: "Skills with Phil", desc: "Learn to ride better.", url: "https://www.youtube.com/results?search_query=Skills+with+Phil" }
+        ],
+        newsSources: [
+          { name: "MBAA (Mountain Bike Association of AZ)", url: "https://mbaa.net/" },
+          { name: "Trailforks: Phoenix", url: "https://www.google.com/search?q=Trailforks+Phoenix" },
+          { name: "MTB Project", url: "https://www.mtbproject.com/" },
+          { name: "Pinkbike", url: "https://www.pinkbike.com/" },
+          { name: "Google News: AZ MTB", url: "https://news.google.com/search?q=Arizona%20mountain%20bike%20Phoenix%20trail" }
+        ]
+      },
+      {
+        id: "tp-hike",
+        name: "Hiking",
+        icon: "🥾",
+        podcasts: [
+          { name: "Backpacker Radio", desc: "Hiking and backpacking talk from The Trek.", url: "https://podcasts.apple.com/us/search?term=Backpacker%20Radio%20The%20Trek" },
+          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/search?term=The%20Dirtbag%20Diaries" },
+          { name: "She Explores", desc: "Women outdoors and on the trail.", url: "https://podcasts.apple.com/us/search?term=She%20Explores" },
+          { name: "Wild Ideas Worth Living", desc: "REI's adventurer interviews.", url: "https://podcasts.apple.com/us/search?term=Wild%20Ideas%20Worth%20Living" },
+          { name: "National Park After Dark", desc: "Trail stories for the drive to the trailhead.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" }
+        ],
+        youtube: [
+          { name: "Hayden Butte (A Mountain)", desc: "Quick climb with a Tempe view.", url: "https://www.youtube.com/results?search_query=Hayden+Butte+A+Mountain+Tempe+hike" },
+          { name: "Camelback Echo Canyon", desc: "Phoenix's iconic hard hike.", url: "https://www.youtube.com/results?search_query=Camelback+Mountain+Echo+Canyon+hike" },
+          { name: "Piestewa Peak", desc: "Steep summit in the city.", url: "https://www.youtube.com/results?search_query=Piestewa+Peak+hike" },
+          { name: "Hole in the Rock", desc: "Easy Papago Park classic.", url: "https://www.youtube.com/results?search_query=Hole+in+the+Rock+Papago+Park" },
+          { name: "South Mountain hikes", desc: "Largest city park in the US.", url: "https://www.youtube.com/results?search_query=South+Mountain+Phoenix+hike" },
+          { name: "Flatiron", desc: "Superstition Mountains challenge.", url: "https://www.youtube.com/results?search_query=Flatiron+Superstition+hike" },
+          { name: "Wind Cave Trail", desc: "Usery Mountain views.", url: "https://www.youtube.com/results?search_query=Wind+Cave+Trail+Usery+hike" },
+          { name: "Pinnacle Peak", desc: "Scottsdale's scenic trail.", url: "https://www.youtube.com/results?search_query=Pinnacle+Peak+hike" },
+          { name: "Summer hiking safety", desc: "Stay safe in the heat.", url: "https://www.youtube.com/results?search_query=Arizona+summer+hiking+safety" },
+          { name: "Kraig Adams", desc: "Calm solo hiking videos.", url: "https://www.youtube.com/results?search_query=Kraig+Adams+hiking" }
+        ],
+        newsSources: [
+          { name: "AllTrails: Tempe", url: "https://www.alltrails.com/us/arizona/tempe" },
+          { name: "Phoenix Trails", url: "https://www.phoenix.gov/parks/trails" },
+          { name: "Maricopa County Parks", url: "https://www.maricopacountyparks.net/" },
+          { name: "NWS Phoenix heat alerts", url: "https://www.weather.gov/psr/" },
+          { name: "Google News: AZ hiking", url: "https://news.google.com/search?q=Phoenix%20hiking%20trail" }
+        ]
+      },
+      {
+        id: "tp-beer",
+        name: "Breweries",
+        icon: "🍺",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Four Peaks Brewing", desc: "Tempe's famous brewery, home of Kilt Lifter.", url: "https://www.fourpeaks.com/" },
+          { name: "Huss Brewing", desc: "Tempe-born brewery with a big taproom.", url: "https://hussbrewing.com/" },
+          { name: "Pedal Haus", desc: "Brewery and beer garden on Mill Avenue.", url: "https://pedalhausbrewery.com/" },
+          { name: "OHSO Brewery", desc: "Dog-friendly brewpubs around the Valley.", url: "https://ohsobrewery.com/" },
+          { name: "Arizona Wilderness", desc: "Award-winning local brewery.", url: "https://azwbeer.com/" },
+          { name: "Arizona Craft Brewers Guild", desc: "Brewery map and beer events.", url: "https://azbeer.org/" },
+          { name: "Tempe brewery crawl", desc: "Breweries close to Mill Avenue.", url: "https://www.google.com/search?q=Tempe+brewery+crawl" },
+          { name: "Mesa and Gilbert breweries", desc: "More taprooms nearby.", url: "https://www.google.com/search?q=Gilbert+Mesa+breweries" },
+          { name: "Phoenix brewery guide", desc: "Best breweries in the Valley.", url: "https://www.google.com/search?q=best+breweries+Phoenix" },
+          { name: "Beer festivals", desc: "Upcoming Arizona beer festivals.", url: "https://www.google.com/search?q=Arizona+beer+festival" }
+        ],
+        youtube: [
+          { name: "Four Peaks tour", desc: "Tempe's iconic brewery.", url: "https://www.youtube.com/results?search_query=Four+Peaks+Brewing+Tempe" },
+          { name: "Phoenix brewery tour", desc: "Videos touring Valley breweries.", url: "https://www.youtube.com/results?search_query=Phoenix+brewery+tour" },
+          { name: "Best Phoenix breweries", desc: "Ranked lists and reviews.", url: "https://www.youtube.com/results?search_query=best+breweries+Phoenix+Arizona" },
+          { name: "Arizona Strong Beer Festival", desc: "The state's big beer fest.", url: "https://www.youtube.com/results?search_query=Arizona+Strong+Beer+Festival" },
+          { name: "Craft Beer & Brewing", desc: "Brewing tips and beer culture.", url: "https://www.youtube.com/results?search_query=Craft+Beer+and+Brewing+Magazine" }
+        ],
+        newsSources: [
+          { name: "Arizona Craft Brewers Guild", url: "https://azbeer.org/" },
+          { name: "Google News: AZ beer", url: "https://news.google.com/search?q=Tempe%20Phoenix%20brewery" }
+        ]
+      },
+      {
+        id: "tp-party",
+        name: "Party",
+        icon: "🎉",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Downtown Tempe / Mill Ave", desc: "Bars, clubs and patios.", url: "https://www.downtowntempe.com/" },
+          { name: "Marquee Theatre", desc: "Big concerts in Tempe.", url: "https://www.marqueetheatreaz.com/" },
+          { name: "Crescent Ballroom", desc: "Phoenix's favorite music venue.", url: "https://www.crescentphx.com/" },
+          { name: "Resident Advisor: Phoenix", desc: "Club nights and DJ events.", url: "https://ra.co/events/us/phoenix" },
+          { name: "Eventbrite: parties", desc: "Parties this week in Tempe.", url: "https://www.eventbrite.com/d/az--tempe/parties/" },
+          { name: "Mill Avenue bars", desc: "Where to go out downtown.", url: "https://www.google.com/search?q=Mill+Avenue+Tempe+bars" },
+          { name: "Old Town Scottsdale", desc: "The Valley's biggest nightlife district.", url: "https://www.google.com/search?q=Old+Town+Scottsdale+nightlife" },
+          { name: "Rooftop bars", desc: "Best views with a drink.", url: "https://www.google.com/search?q=best+rooftop+bars+Tempe+Phoenix" },
+          { name: "Live music this week", desc: "Shows around the Valley.", url: "https://www.google.com/search?q=Phoenix+live+music+this+week" }
+        ],
+        youtube: [
+          { name: "Tempe nightlife", desc: "Mill Ave bars and clubs.", url: "https://www.youtube.com/results?search_query=Tempe+nightlife+Mill+Avenue" },
+          { name: "Scottsdale nightlife", desc: "Old Town bar scene.", url: "https://www.youtube.com/results?search_query=Old+Town+Scottsdale+nightlife" },
+          { name: "Phoenix rooftop bars", desc: "Best rooftops.", url: "https://www.youtube.com/results?search_query=Phoenix+rooftop+bars" },
+          { name: "Phoenix live music", desc: "Venues and shows.", url: "https://www.youtube.com/results?search_query=Phoenix+live+music+venues" }
+        ],
+        newsSources: [
+          { name: "Resident Advisor", url: "https://ra.co/events/us/phoenix" },
+          { name: "Google News: AZ nightlife", url: "https://news.google.com/search?q=Tempe%20Phoenix%20nightlife%20concert" }
+        ]
+      },
+      {
+        id: "tp-fun",
+        name: "Fun",
+        icon: "🎢",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Tempe Town Lake", desc: "Kayaks, boats and lakeside paths.", url: "https://www.google.com/search?q=Tempe+Town+Lake+rentals" },
+          { name: "Papago Park", desc: "Red rocks, trails and Hole in the Rock.", url: "https://www.google.com/search?q=Papago+Park+Tempe" },
+          { name: "Phoenix Zoo", desc: "Big zoo next to Papago Park.", url: "https://phoenixzoo.org/" },
+          { name: "Desert Botanical Garden", desc: "Cactus gardens and night lights.", url: "https://dbg.org/" },
+          { name: "Musical Instrument Museum", desc: "World-class music museum.", url: "https://mim.org/" },
+          { name: "Salt River Tubing", desc: "Float the Salt River in summer.", url: "https://saltrivertubing.com/" },
+          { name: "Tempe Marketplace", desc: "Shops, food and events.", url: "https://tempemarketplace.com/" },
+          { name: "ASU Gammage", desc: "Broadway and concerts.", url: "https://www.asugammage.com/" },
+          { name: "Kiwanis Park", desc: "Lake, rec center and paddleboats.", url: "https://www.google.com/search?q=Kiwanis+Park+Tempe" },
+          { name: "Odysea Aquarium", desc: "Aquarium in Scottsdale.", url: "https://www.google.com/search?q=OdySea+Aquarium+Scottsdale" }
+        ],
+        youtube: [
+          { name: "Tempe Town Lake", desc: "Lake activities.", url: "https://www.youtube.com/results?search_query=Tempe+Town+Lake" },
+          { name: "Desert Botanical Garden", desc: "Garden tour.", url: "https://www.youtube.com/results?search_query=Desert+Botanical+Garden+tour" },
+          { name: "Salt River tubing", desc: "What to expect.", url: "https://www.youtube.com/results?search_query=Salt+River+tubing+guide" },
+          { name: "Phoenix Zoo", desc: "Zoo tour and tips.", url: "https://www.youtube.com/results?search_query=Phoenix+Zoo+tour" },
+          { name: "Musical Instrument Museum", desc: "Museum tour.", url: "https://www.youtube.com/results?search_query=Musical+Instrument+Museum+Phoenix+tour" },
+          { name: "Wild horses of the Salt River", desc: "Watch the wild horses.", url: "https://www.youtube.com/results?search_query=Salt+River+wild+horses" }
+        ],
+        newsSources: [
+          { name: "Tempe Tourism", url: "https://www.tempetourism.com/" },
+          { name: "Google News: Tempe things to do", url: "https://news.google.com/search?q=Tempe%20things%20to%20do" }
+        ]
+      },
+      {
+        id: "tp-news",
+        name: "News",
+        icon: "📰",
+        podcasts: [
+          { name: "KJZZ The Show", desc: "Phoenix public radio's local stories.", url: "https://podcasts.apple.com/us/search?term=KJZZ%20The%20Show" },
+          { name: "KJZZ news podcasts", desc: "Local news from KJZZ 91.5.", url: "https://podcasts.apple.com/us/search?term=KJZZ" },
+          { name: "Arizona Republic podcasts", desc: "Local news and politics.", url: "https://podcasts.apple.com/us/search?term=Arizona%20Republic%20podcast" }
+        ],
+        youtube: [
+          { name: "12News", desc: "Phoenix local news.", url: "https://www.youtube.com/results?search_query=12News+Phoenix" },
+          { name: "ABC15 Arizona", desc: "Phoenix local news.", url: "https://www.youtube.com/results?search_query=ABC15+Arizona+news" },
+          { name: "FOX 10 Phoenix", desc: "Phoenix local news.", url: "https://www.youtube.com/results?search_query=FOX+10+Phoenix+news" },
+          { name: "AZFamily", desc: "Phoenix local news.", url: "https://www.youtube.com/results?search_query=AZFamily+news" }
+        ],
+        newsSources: [
+          { name: "City of Tempe news", url: "https://www.tempe.gov/" },
+          { name: "azcentral", url: "https://www.azcentral.com/" },
+          { name: "KJZZ", url: "https://kjzz.org/" },
+          { name: "Phoenix New Times", url: "https://www.phoenixnewtimes.com/" },
+          { name: "ASU State Press", url: "https://www.statepress.com/" },
+          { name: "12News", url: "https://www.12news.com/" },
+          { name: "ABC15", url: "https://www.abc15.com/" },
+          { name: "KTAR", url: "https://ktar.com/" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "flying",
+    name: "Flying",
+    icon: "✈️",
+    accent: "#7aa2ff",
+    tagline: "KMYF, aviation weather and ATIS",
+    subs: [
+      {
+        id: "fly-kmyf",
+        name: "KMYF",
+        icon: "🛩️",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "AirNav: KMYF", desc: "Runways, FBOs, fuel prices and phone numbers.", url: "https://www.airnav.com/airport/KMYF" },
+          { name: "SkyVector: MYF", desc: "Sectional chart, frequencies and procedures.", url: "https://skyvector.com/airport/MYF/Montgomery-Gibbs-Exec-Airport" },
+          { name: "FltPlan: MYF", desc: "Airport and FBO info, frequencies.", url: "https://www.fltplan.com/AirportInformation/MYF.htm" },
+          { name: "FAA NOTAM search", desc: "Check NOTAMs for KMYF before you fly.", url: "https://notams.aim.faa.gov/notamSearch/" },
+          { name: "FlightAware: KMYF", desc: "Live arrivals and departures.", url: "https://www.flightaware.com/live/airport/KMYF" },
+          { name: "LiveATC: KMYF", desc: "Listen to Montgomery tower if a feed is up.", url: "https://www.liveatc.net/search/?icao=KMYF" },
+          { name: "Airport diagram", desc: "FAA airport diagram for MYF.", url: "https://www.google.com/search?q=KMYF+airport+diagram+FAA" },
+          { name: "Montgomery-Gibbs (City of SD)", desc: "Official airport page.", url: "https://www.google.com/search?q=Montgomery-Gibbs+Executive+Airport+City+of+San+Diego" },
+          { name: "San Diego Class B", desc: "Chart and transition tips.", url: "https://www.google.com/search?q=San+Diego+Class+B+VFR+transition" },
+          { name: "Flight schools at MYF", desc: "Training and rentals at Montgomery.", url: "https://www.google.com/search?q=flight+school+Montgomery+Field+San+Diego" }
+        ],
+        youtube: [
+          { name: "Landing at Montgomery Field", desc: "Pilot videos into KMYF.", url: "https://www.youtube.com/results?search_query=KMYF+landing+Montgomery+Field" },
+          { name: "San Diego VFR flights", desc: "Coastal and city flying.", url: "https://www.youtube.com/results?search_query=San+Diego+VFR+flight+Cessna" },
+          { name: "Class B transition", desc: "Flying through San Diego's Class B.", url: "https://www.youtube.com/results?search_query=San+Diego+Class+B+transition+VFR" },
+          { name: "Fly8MA", desc: "Flight training lessons.", url: "https://www.youtube.com/results?search_query=Fly8MA" },
+          { name: "Pilot Debrief", desc: "Flight training and radio tips.", url: "https://www.youtube.com/results?search_query=Pilot+Debrief" },
+          { name: "FlyWire", desc: "Aviation tips and flying vlogs.", url: "https://www.youtube.com/results?search_query=FlyWire+aviation" },
+          { name: "Steveo1kinevo", desc: "Real flights with ATC audio.", url: "https://www.youtube.com/results?search_query=Steveo1kinevo" },
+          { name: "Air Safety Institute", desc: "AOPA safety lessons.", url: "https://www.youtube.com/results?search_query=AOPA+Air+Safety+Institute" }
+        ],
+        newsSources: [
+          { name: "AirNav: KMYF", url: "https://www.airnav.com/airport/KMYF" },
+          { name: "AOPA News", url: "https://www.aopa.org/news-and-media" },
+          { name: "AVweb", url: "https://www.avweb.com/" },
+          { name: "Google News: Montgomery Field", url: "https://news.google.com/search?q=%22Montgomery-Gibbs%22%20OR%20%22Montgomery%20Field%22%20San%20Diego" }
+        ]
+      },
+      {
+        id: "fly-wx",
+        name: "Weather",
+        icon: "🌦️",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "METAR and TAF: KMYF", desc: "Current conditions and forecast, decoded.", url: "https://aviationweather.gov/data/metar/?id=KMYF&hours=0&decoded=yes&include_taf=yes" },
+          { name: "Graphical Forecasts (GFA)", desc: "Clouds, visibility and weather for VFR.", url: "https://aviationweather.gov/gfa/" },
+          { name: "1800wxbrief", desc: "Official FAA weather briefing.", url: "https://www.1800wxbrief.com/" },
+          { name: "NWS San Diego discussion", desc: "Forecasters explain the marine layer.", url: "https://forecast.weather.gov/product.php?site=SGX&issuedby=SGX&product=AFD" },
+          { name: "GOES satellite (SoCal)", desc: "Watch the marine layer move.", url: "https://www.star.nesdis.noaa.gov/GOES/sector.php?sat=G18&sector=psw" },
+          { name: "Windy", desc: "Wind, clouds and radar map.", url: "https://www.windy.com/?32.816,-117.139,10" },
+          { name: "Winds aloft", desc: "Forecast winds and temps at altitude.", url: "https://aviationweather.gov/" },
+          { name: "PIREPs", desc: "Pilot reports near San Diego.", url: "https://www.google.com/search?q=aviationweather.gov+PIREPs+San+Diego" },
+          { name: "Density altitude", desc: "Calculator for hot days.", url: "https://www.google.com/search?q=density+altitude+calculator" },
+          { name: "NWS forecast KMYF area", desc: "Hour-by-hour forecast.", url: "https://forecast.weather.gov/MapClick.php?lat=32.8157&lon=-117.1396" }
+        ],
+        youtube: [
+          { name: "Marine layer flying", desc: "Understanding San Diego's June gloom.", url: "https://www.youtube.com/results?search_query=marine+layer+flying+San+Diego" },
+          { name: "Reading METARs and TAFs", desc: "Quick refresher.", url: "https://www.youtube.com/results?search_query=how+to+read+METAR+TAF" },
+          { name: "Weather briefing tips", desc: "How to brief like a pro.", url: "https://www.youtube.com/results?search_query=pilot+weather+briefing+tips" },
+          { name: "Santa Ana winds", desc: "Flying in Santa Ana conditions.", url: "https://www.youtube.com/results?search_query=Santa+Ana+winds+flying" },
+          { name: "Air Safety Institute weather", desc: "AOPA weather lessons.", url: "https://www.youtube.com/results?search_query=AOPA+Air+Safety+Institute+weather" }
+        ],
+        newsSources: [
+          { name: "Aviation Weather Center", url: "https://aviationweather.gov/" },
+          { name: "NWS San Diego", url: "https://www.weather.gov/sgx/" },
+          { name: "Google News: SD weather", url: "https://news.google.com/search?q=San%20Diego%20weather%20forecast" }
+        ]
+      },
+      {
+        id: "fly-atis",
+        name: "ATIS KMYF",
+        icon: "📻",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "ATIS 126.9 MHz", desc: "Montgomery-Gibbs ATIS frequency (tower 119.2, ground 118.225, clearance 123.725).", url: "https://skyvector.com/airport/MYF/Montgomery-Gibbs-Exec-Airport" },
+          { name: "METAR: KMYF", desc: "The same weather the ATIS reads, decoded.", url: "https://aviationweather.gov/data/metar/?id=KMYF&hours=0&decoded=yes&include_taf=yes" },
+          { name: "ATIS and ASOS phone", desc: "Phone numbers are listed on AirNav and SkyVector.", url: "https://www.airnav.com/airport/KMYF" },
+          { name: "LiveATC: KMYF", desc: "Listen live if a feed is available.", url: "https://www.liveatc.net/search/?icao=KMYF" },
+          { name: "Frequencies list", desc: "All MYF frequencies.", url: "https://www.fltplan.com/AirportInformation/MYF.htm" },
+          { name: "NOTAMs", desc: "Check before you call ground.", url: "https://notams.aim.faa.gov/notamSearch/" }
+        ],
+        youtube: [
+          { name: "ATIS explained", desc: "What every part of an ATIS means.", url: "https://www.youtube.com/results?search_query=ATIS+explained+pilot" },
+          { name: "Radio calls at a towered airport", desc: "Practice calls.", url: "https://www.youtube.com/results?search_query=towered+airport+radio+calls+VFR" },
+          { name: "KMYF ATC audio", desc: "Real Montgomery tower audio.", url: "https://www.youtube.com/results?search_query=Montgomery+Field+ATC+audio" }
+        ],
+        newsSources: [
+          { name: "Aviation Weather Center", url: "https://aviationweather.gov/" },
+          { name: "Google News: KMYF", url: "https://news.google.com/search?q=KMYF%20OR%20%22Montgomery%20Field%22" }
         ]
       }
     ]

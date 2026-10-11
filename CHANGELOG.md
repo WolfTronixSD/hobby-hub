@@ -2,6 +2,11 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 1.8.0 (2026-10-11): Tempe, Flying and Snorkeling
+- New Tempe, AZ button with the same categories as San Diego
+- New Flying button: KMYF, Weather, ATIS KMYF
+- New San Diego Snorkeling button with the Scripps Pier underwater cam
+
 ## 1.7.0 (2026-10-11): San Diego
 - New San Diego button with Today, This Week, Mountain Biking, Hiking, Breweries, Party, Fun and News
 

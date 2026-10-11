@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.7.0";
+const APP_VERSION = "1.8.0";
 const CHANGELOG = [
+  {
+    version: "1.8.0",
+    date: "2026-10-11",
+    title: "Tempe, Flying and Snorkeling",
+    changes: [
+      "New Tempe, AZ button with the same 8 categories as San Diego",
+      "New Flying button: KMYF, aviation Weather and ATIS KMYF (126.9 MHz)",
+      "New Snorkeling button under San Diego with the Scripps Pier underwater camera for visibility"
+    ]
+  },
   {
     version: "1.7.0",
     date: "2026-10-11",
