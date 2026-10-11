@@ -72,6 +72,21 @@ FEEDS = {
         ("Hackaday", "https://hackaday.com/tag/bambu-lab/feed/"),
         ("Google News", "https://news.google.com/rss/search?q=%22Bambu+Lab%22&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "roadtrips": [
+        ("National Parks Traveler", "https://www.nationalparkstraveler.org/rss.xml"),
+        ("Google News", "https://news.google.com/rss/search?q=%22road+trip%22+OR+%22national+park%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "europe": [
+        ("Euronews", "https://www.euronews.com/rss?level=vertical&name=travel"),
+        ("Google News", "https://news.google.com/rss/search?q=Europe+travel&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "asia": [
+        ("Tokyo Cheapo", "https://tokyocheapo.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=Asia+travel+OR+Japan+travel&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "camping": [
+        ("Google News", "https://news.google.com/rss/search?q=camping+OR+campground+OR+backpacking&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 24

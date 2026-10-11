@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 1.6.0 (2026-10-11): Traveling
+- New Traveling hobby with sub-categories Road Trips USA, Europe, Asia and Camping
+
 ## 1.5.0 (2026-10-11): 3D Printing and Bambu Lab
 - New 3D Printing hobby and Bambu Lab section with guides, YouTube and news
 

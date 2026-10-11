@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.5.0";
+const APP_VERSION = "1.6.0";
 const CHANGELOG = [
+  {
+    version: "1.6.0",
+    date: "2026-10-11",
+    title: "Traveling",
+    changes: [
+      "New Traveling hobby with four big sub-buttons: Road Trips USA, Europe, Asia and Camping",
+      "Each sub-category has its own podcasts, YouTube and news"
+    ]
+  },
   {
     version: "1.5.0",
     date: "2026-10-11",

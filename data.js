@@ -428,5 +428,162 @@ const HOBBIES = [
       { name: "r/BambuLab", url: "https://www.reddit.com/r/BambuLab/" },
       { name: "Google News: Bambu Lab", url: "https://news.google.com/search?q=%22Bambu%20Lab%22" }
     ]
+  },
+  {
+    id: "travel",
+    name: "Traveling",
+    icon: "🧳",
+    accent: "#4dd0e1",
+    tagline: "Road trips USA, Europe, Asia and camping",
+    subs: [
+      {
+        id: "roadtrips",
+        name: "Road Trips USA",
+        icon: "🛣️",
+        podcasts: [
+          { name: "The RV Atlas", desc: "Jeremy and Stephanie Puglisi on RV trips and campgrounds.", url: "https://podcasts.apple.com/us/search?term=The%20RV%20Atlas" },
+          { name: "RV Miles", desc: "Weekly RV travel stories, routes and tips.", url: "https://podcasts.apple.com/us/search?term=RV%20Miles%20Podcast" },
+          { name: "National Parks Traveler", desc: "News and stories from America's national parks.", url: "https://podcasts.apple.com/us/search?term=National%20Parks%20Traveler" },
+          { name: "Amateur Traveler", desc: "Chris Christensen's destination episodes, many US road trips.", url: "https://amateurtraveler.com/" },
+          { name: "Zero To Travel", desc: "Practical travel inspiration and road-trip know-how.", url: "https://podcasts.apple.com/us/search?term=Zero%20To%20Travel" },
+          { name: "Atlas Obscura Podcast", desc: "Short daily stories about strange and wonderful places.", url: "https://podcasts.apple.com/us/search?term=Atlas%20Obscura%20Podcast" },
+          { name: "Overland Journal Podcast", desc: "Vehicle-based travel, gear and routes.", url: "https://podcasts.apple.com/us/search?term=Overland%20Journal%20Podcast" },
+          { name: "Extra Pack of Peanuts", desc: "Travel hacking and trip planning.", url: "https://podcasts.apple.com/us/search?term=Extra%20Pack%20of%20Peanuts" },
+          { name: "National Park After Dark", desc: "True stories from the parks, great for long drives.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" },
+          { name: "Route 66 stories", desc: "Episodes about the Mother Road and classic drives.", url: "https://podcasts.apple.com/us/search?term=Route%2066" }
+        ],
+        youtube: [
+          { name: "Kara and Nate", desc: "Couple traveling every US state and the world.", url: "https://www.youtube.com/results?search_query=Kara+and+Nate" },
+          { name: "Eamon & Bec", desc: "Van life across America.", url: "https://www.youtube.com/results?search_query=Eamon+and+Bec+van+life" },
+          { name: "Nomadic Fanatic", desc: "Solo RV life on the road across the US.", url: "https://www.youtube.com/results?search_query=Nomadic+Fanatic" },
+          { name: "Long Long Honeymoon", desc: "Airstream travel tips and destinations.", url: "https://www.youtube.com/results?search_query=Long+Long+Honeymoon" },
+          { name: "Weekend Wanderer", desc: "Hidden gems and national park itineraries.", url: "https://www.youtube.com/results?search_query=national+park+road+trip+itinerary" },
+          { name: "Route 66 drives", desc: "Full road-trip guides for Route 66.", url: "https://www.youtube.com/results?search_query=Route+66+road+trip+guide" },
+          { name: "Pacific Coast Highway", desc: "Drive guides for Highway 1 in California.", url: "https://www.youtube.com/results?search_query=Pacific+Coast+Highway+road+trip+guide" },
+          { name: "Utah Mighty 5", desc: "Road-trip plans for Zion, Bryce, Arches and more.", url: "https://www.youtube.com/results?search_query=Utah+Mighty+5+road+trip" },
+          { name: "Blue Ridge Parkway", desc: "Fall drives and stops on the parkway.", url: "https://www.youtube.com/results?search_query=Blue+Ridge+Parkway+road+trip" },
+          { name: "Alaska road trips", desc: "Driving the Alaska Highway and beyond.", url: "https://www.youtube.com/results?search_query=Alaska+road+trip" }
+        ],
+        newsSources: [
+          { name: "NPS Alerts & News", url: "https://www.nps.gov/aboutus/news/index.htm" },
+          { name: "Roadtrippers Blog", url: "https://roadtrippers.com/magazine/" },
+          { name: "National Parks Traveler", url: "https://www.nationalparkstraveler.org/" },
+          { name: "Atlas Obscura: USA", url: "https://www.atlasobscura.com/things-to-do/united-states" },
+          { name: "Gas prices (GasBuddy)", url: "https://www.gasbuddy.com/" },
+          { name: "Google News: Road Trips", url: "https://news.google.com/search?q=%22road%20trip%22%20USA%20OR%20%22national%20parks%22" }
+        ]
+      },
+      {
+        id: "europe",
+        name: "Europe",
+        icon: "🏰",
+        podcasts: [
+          { name: "Travel with Rick Steves", desc: "The classic weekly show on European travel.", url: "https://podcasts.apple.com/us/search?term=Travel%20with%20Rick%20Steves" },
+          { name: "Amateur Traveler", desc: "Detailed episodes on European destinations.", url: "https://amateurtraveler.com/" },
+          { name: "Women Who Travel", desc: "Condé Nast Traveler's stories and tips.", url: "https://podcasts.apple.com/us/search?term=Women%20Who%20Travel%20Conde%20Nast" },
+          { name: "The Travel Diaries", desc: "Holly Rubenstein's guests share favorite trips.", url: "https://podcasts.apple.com/us/search?term=The%20Travel%20Diaries%20Holly%20Rubenstein" },
+          { name: "Europe Uncovered", desc: "Episodes on traveling Europe beyond the big cities.", url: "https://podcasts.apple.com/us/search?term=Europe%20travel%20podcast" },
+          { name: "Monocle: The Urbanist", desc: "Cities and urban life around the world.", url: "https://podcasts.apple.com/us/search?term=Monocle%20The%20Urbanist" },
+          { name: "Zero To Travel", desc: "Practical long-term travel advice.", url: "https://podcasts.apple.com/us/search?term=Zero%20To%20Travel" },
+          { name: "Extra Pack of Peanuts", desc: "Travel hacking for Europe trips.", url: "https://podcasts.apple.com/us/search?term=Extra%20Pack%20of%20Peanuts" },
+          { name: "Join Us in France", desc: "All about France, region by region.", url: "https://podcasts.apple.com/us/search?term=Join%20Us%20in%20France" },
+          { name: "Italy Unpacked", desc: "Stories and tips about Italy.", url: "https://podcasts.apple.com/us/search?term=Italy%20travel%20podcast" }
+        ],
+        youtube: [
+          { name: "Rick Steves' Europe", desc: "Full TV episodes on Europe's best places.", url: "https://www.youtube.com/results?search_query=Rick+Steves+Europe" },
+          { name: "Wolters World", desc: "Honest do's and don'ts for every country.", url: "https://www.youtube.com/results?search_query=Wolters+World+Europe" },
+          { name: "Kara and Nate in Europe", desc: "Budget and highlight trips across Europe.", url: "https://www.youtube.com/results?search_query=Kara+and+Nate+Europe" },
+          { name: "Hey Nadine", desc: "Practical European travel guides.", url: "https://www.youtube.com/results?search_query=Hey+Nadine+Europe" },
+          { name: "Rick Steves' Travel Talks", desc: "Hour-long talks on planning trips.", url: "https://www.youtube.com/results?search_query=Rick+Steves+travel+talks" },
+          { name: "Europe by train", desc: "Rail passes, routes and night trains.", url: "https://www.youtube.com/results?search_query=Europe+by+train+guide" },
+          { name: "Germany travel guides", desc: "Cities, castles and the Autobahn.", url: "https://www.youtube.com/results?search_query=Germany+travel+guide" },
+          { name: "Italy travel guides", desc: "Rome, Tuscany, Amalfi and more.", url: "https://www.youtube.com/results?search_query=Italy+travel+guide" },
+          { name: "Driving in Europe", desc: "Rules, tolls and rental tips.", url: "https://www.youtube.com/results?search_query=driving+in+Europe+tips" },
+          { name: "Alps road trips", desc: "Mountain passes and scenic drives.", url: "https://www.youtube.com/results?search_query=Alps+road+trip" }
+        ],
+        newsSources: [
+          { name: "Rick Steves Travel News", url: "https://www.ricksteves.com/watch-read-listen/read/articles" },
+          { name: "The Local Europe", url: "https://www.thelocal.com/" },
+          { name: "Euronews Travel", url: "https://www.euronews.com/travel" },
+          { name: "Seat 61 (train travel)", url: "https://www.seat61.com/" },
+          { name: "EU Travel Rules (ETIAS)", url: "https://travel-europe.europa.eu/etias_en" },
+          { name: "Google News: Europe Travel", url: "https://news.google.com/search?q=Europe%20travel" }
+        ]
+      },
+      {
+        id: "asia",
+        name: "Asia",
+        icon: "🏯",
+        podcasts: [
+          { name: "Amateur Traveler", desc: "Destination episodes across Asia.", url: "https://amateurtraveler.com/" },
+          { name: "Japan Station", desc: "All things Japan travel and culture.", url: "https://podcasts.apple.com/us/search?term=Japan%20Station" },
+          { name: "Tokyo Cheapo", desc: "Budget tips for traveling Japan.", url: "https://podcasts.apple.com/us/search?term=Tokyo%20Cheapo" },
+          { name: "Women Who Travel", desc: "Stories and tips, often from Asia.", url: "https://podcasts.apple.com/us/search?term=Women%20Who%20Travel%20Conde%20Nast" },
+          { name: "Zero To Travel", desc: "Long-term travel and Southeast Asia know-how.", url: "https://podcasts.apple.com/us/search?term=Zero%20To%20Travel" },
+          { name: "Extra Pack of Peanuts", desc: "Flights, points and Asia itineraries.", url: "https://podcasts.apple.com/us/search?term=Extra%20Pack%20of%20Peanuts" },
+          { name: "Travel with Rick Steves", desc: "Occasional episodes on Asia too.", url: "https://podcasts.apple.com/us/search?term=Travel%20with%20Rick%20Steves" },
+          { name: "The Thailand Podcast", desc: "Living in and traveling Thailand.", url: "https://podcasts.apple.com/us/search?term=Thailand%20travel%20podcast" },
+          { name: "Korea travel episodes", desc: "Seoul, Busan and beyond.", url: "https://podcasts.apple.com/us/search?term=Korea%20travel%20podcast" },
+          { name: "Vietnam travel episodes", desc: "Hanoi to Ho Chi Minh City.", url: "https://podcasts.apple.com/us/search?term=Vietnam%20travel%20podcast" }
+        ],
+        youtube: [
+          { name: "Abroad in Japan", desc: "Chris Broad explores Japan with humor.", url: "https://www.youtube.com/results?search_query=Abroad+in+Japan" },
+          { name: "Paolo fromTOKYO", desc: "Japanese life, food and travel.", url: "https://www.youtube.com/results?search_query=Paolo+fromTOKYO" },
+          { name: "Mark Wiens", desc: "Street food across Asia.", url: "https://www.youtube.com/results?search_query=Mark+Wiens" },
+          { name: "Best Ever Food Review Show", desc: "Wild food adventures, especially Asia.", url: "https://www.youtube.com/results?search_query=Best+Ever+Food+Review+Show" },
+          { name: "Drew Binsky", desc: "Visiting every country, many in Asia.", url: "https://www.youtube.com/results?search_query=Drew+Binsky+Asia" },
+          { name: "Lost LeBlanc", desc: "Cinematic travel guides to Southeast Asia.", url: "https://www.youtube.com/results?search_query=Lost+LeBlanc" },
+          { name: "Japan travel guides", desc: "First-timer guides for Tokyo, Kyoto and Osaka.", url: "https://www.youtube.com/results?search_query=Japan+travel+guide+first+time" },
+          { name: "Thailand travel guides", desc: "Bangkok, Chiang Mai and the islands.", url: "https://www.youtube.com/results?search_query=Thailand+travel+guide" },
+          { name: "Vietnam travel guides", desc: "Itineraries and costs for Vietnam.", url: "https://www.youtube.com/results?search_query=Vietnam+travel+guide" },
+          { name: "South Korea travel guides", desc: "Seoul and beyond.", url: "https://www.youtube.com/results?search_query=South+Korea+travel+guide" }
+        ],
+        newsSources: [
+          { name: "Japan Guide", url: "https://www.japan-guide.com/" },
+          { name: "Tokyo Cheapo", url: "https://tokyocheapo.com/" },
+          { name: "Travel Off Path: Asia", url: "https://www.traveloffpath.com/category/asia/" },
+          { name: "South China Morning Post: Travel", url: "https://www.scmp.com/lifestyle/travel-leisure" },
+          { name: "Nikkei Asia", url: "https://asia.nikkei.com/" },
+          { name: "Google News: Asia Travel", url: "https://news.google.com/search?q=Asia%20travel%20OR%20Japan%20travel" }
+        ]
+      },
+      {
+        id: "camping",
+        name: "Camping",
+        icon: "🏕️",
+        podcasts: [
+          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/search?term=The%20Dirtbag%20Diaries" },
+          { name: "Backpacker Radio", desc: "The Trek's show on hiking and backpacking.", url: "https://podcasts.apple.com/us/search?term=Backpacker%20Radio%20The%20Trek" },
+          { name: "She Explores", desc: "Women in the outdoors and on the road.", url: "https://podcasts.apple.com/us/search?term=She%20Explores" },
+          { name: "The RV Atlas", desc: "Campgrounds and family camping trips.", url: "https://podcasts.apple.com/us/search?term=The%20RV%20Atlas" },
+          { name: "Outside Podcast", desc: "Survival stories and outdoor science.", url: "https://podcasts.apple.com/us/search?term=Outside%20Podcast" },
+          { name: "Wild Ideas Worth Living", desc: "REI's interviews with adventurers.", url: "https://podcasts.apple.com/us/search?term=Wild%20Ideas%20Worth%20Living" },
+          { name: "National Park After Dark", desc: "Campfire stories from the parks.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" },
+          { name: "RV Miles", desc: "RV camping destinations and tips.", url: "https://podcasts.apple.com/us/search?term=RV%20Miles%20Podcast" },
+          { name: "Overland Journal Podcast", desc: "Overlanding, rooftop tents and gear.", url: "https://podcasts.apple.com/us/search?term=Overland%20Journal%20Podcast" },
+          { name: "The MeatEater Podcast", desc: "Steven Rinella on hunting, fishing and the wild.", url: "https://podcasts.apple.com/us/search?term=The%20MeatEater%20Podcast" }
+        ],
+        youtube: [
+          { name: "Outdoor Boys", desc: "Extreme camping, shelters and cooking.", url: "https://www.youtube.com/results?search_query=Outdoor+Boys" },
+          { name: "My Self Reliance", desc: "Cabin building and quiet camping.", url: "https://www.youtube.com/results?search_query=My+Self+Reliance" },
+          { name: "TA Outdoors", desc: "Bushcraft and solo camping in all weather.", url: "https://www.youtube.com/results?search_query=TA+Outdoors" },
+          { name: "Darwin onthetrail", desc: "Thru-hiking and backpacking advice.", url: "https://www.youtube.com/results?search_query=Darwin+onthetrail" },
+          { name: "Kraig Adams", desc: "Calm solo hikes and camping trips.", url: "https://www.youtube.com/results?search_query=Kraig+Adams+hiking" },
+          { name: "Steve Wallis", desc: "Fun, low-budget stealth camping.", url: "https://www.youtube.com/results?search_query=Steve+Wallis+camping" },
+          { name: "Car camping setups", desc: "Sleep in your car comfortably.", url: "https://www.youtube.com/results?search_query=car+camping+setup+guide" },
+          { name: "Camping gear reviews", desc: "Tents, stoves and sleep systems tested.", url: "https://www.youtube.com/results?search_query=best+camping+gear+review" },
+          { name: "Camp cooking", desc: "Easy campfire and stove recipes.", url: "https://www.youtube.com/results?search_query=camp+cooking+recipes" },
+          { name: "Off-grid power for camping", desc: "Solar generators and 12V setups.", url: "https://www.youtube.com/results?search_query=camping+solar+power+setup" }
+        ],
+        newsSources: [
+          { name: "Recreation.gov", url: "https://www.recreation.gov/" },
+          { name: "NPS Camping", url: "https://www.nps.gov/subjects/camping/index.htm" },
+          { name: "The Dyrt", url: "https://thedyrt.com/" },
+          { name: "Hipcamp", url: "https://www.hipcamp.com/" },
+          { name: "REI Expert Advice", url: "https://www.rei.com/learn/expert-advice" },
+          { name: "Google News: Camping", url: "https://news.google.com/search?q=camping%20OR%20campground" }
+        ]
+      }
+    ]
   }
 ];

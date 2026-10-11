@@ -10,6 +10,7 @@
   const params = new URLSearchParams(location.hash.slice(1));
   let hobbyId = params.get("h") || store.get("hobby") || HOBBIES[0].id;
   let tab = params.get("t") || store.get("tab") || "podcasts";
+  let subId = params.get("s") || store.get("sub") || "";
   let news = null;
 
   // Theme
@@ -37,6 +38,10 @@
   hobbyNav.addEventListener("click", (e) => {
     const b = e.target.closest(".hobby");
     if (b) { hobbyId = b.dataset.id; render(); }
+  });
+  $("#subNav").addEventListener("click", (e) => {
+    const b = e.target.closest(".sub");
+    if (b) { subId = b.dataset.id; if (tab === "history") tab = "podcasts"; render(); }
   });
   $("#tabNav").addEventListener("click", (e) => {
     const b = e.target.closest("button[data-tab]");
@@ -97,14 +102,29 @@
   };
 
   function render() {
-    const h = HOBBIES.find((x) => x.id === hobbyId) || HOBBIES[0];
-    hobbyId = h.id;
+    const parent = HOBBIES.find((x) => x.id === hobbyId) || HOBBIES[0];
+    hobbyId = parent.id;
+    let h = parent;
+    const subNav = $("#subNav");
+    if (parent.subs) {
+      h = parent.subs.find((x) => x.id === subId) || parent.subs[0];
+      subId = h.id;
+      store.set("sub", subId);
+      subNav.hidden = false;
+      subNav.innerHTML = parent.subs.map((x) => `
+        <button class="sub" data-id="${x.id}" aria-pressed="${x.id === subId}">
+          <span class="emoji">${x.icon}</span><b>${esc(x.name)}</b>
+        </button>`).join("");
+    } else {
+      subNav.hidden = true;
+      subNav.innerHTML = "";
+    }
     if (!["podcasts", "youtube", "news", "history"].includes(tab)) tab = "podcasts";
     store.set("hobby", hobbyId);
     store.set("tab", tab);
-    history.replaceState(null, "", `#h=${hobbyId}&t=${tab}`);
+    history.replaceState(null, "", `#h=${hobbyId}&t=${tab}` + (parent.subs ? `&s=${subId}` : ""));
 
-    root.style.setProperty("--accent", h.accent);
+    root.style.setProperty("--accent", h.accent || parent.accent);
         document.querySelectorAll(".hobby").forEach((b) => b.setAttribute("aria-pressed", b.dataset.id === hobbyId));
     document.querySelectorAll("#tabNav button").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
     const pod = document.querySelector('#tabNav button[data-tab="podcasts"]');
