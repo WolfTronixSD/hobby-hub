@@ -8,3 +8,4 @@ A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube
 - `data.js` holds the podcast and YouTube lists. Add a hobby by adding another entry.
 - `scripts/fetch_news.py` pulls RSS feeds into `news.json`; the `Update news` workflow runs it every 3 hours.
 - Tip: open the site on your phone and choose "Add to Home Screen" to use it like an app.
+- Version: `version.js` holds the version number and history shown on the site; `CHANGELOG.md` mirrors it.

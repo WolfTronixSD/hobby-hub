@@ -99,7 +99,7 @@
   function render() {
     const h = HOBBIES.find((x) => x.id === hobbyId) || HOBBIES[0];
     hobbyId = h.id;
-    if (!["podcasts", "youtube", "news"].includes(tab)) tab = "podcasts";
+    if (!["podcasts", "youtube", "news", "history"].includes(tab)) tab = "podcasts";
     store.set("hobby", hobbyId);
     store.set("tab", tab);
     history.replaceState(null, "", `#h=${hobbyId}&t=${tab}`);
@@ -115,11 +115,31 @@
     } else if (tab === "youtube") {
       html = `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} YouTube channels</h2></div>
               <div class="grid">${h.youtube.map(ytCard).join("")}</div>`;
+    } else if (tab === "history") {
+      html = historyView();
     } else {
       html = newsView(h);
     }
     $("#content").innerHTML = html;
   }
+
+  function historyView() {
+    return `<div class="section-title"><h2>🕘 What's new</h2><span>You're on v${esc(APP_VERSION)}</span></div>
+      <div class="history">${CHANGELOG.map((r, i) => `
+        <article class="release${i === 0 ? " current" : ""}">
+          <div class="release-head">
+            <span class="vtag">v${esc(r.version)}</span>
+            <h3>${esc(r.title)}</h3>
+            <time>${esc(r.date)}</time>
+          </div>
+          <ul>${r.changes.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
+        </article>`).join("")}</div>`;
+  }
+
+  const showHistory = () => { tab = "history"; render(); $("#content").scrollIntoView({ behavior: "smooth" }); };
+  $("#versionBtn").textContent = "v" + APP_VERSION;
+  $("#versionBtn").addEventListener("click", showHistory);
+  $("#historyLink").addEventListener("click", showHistory);
 
   render();
 
