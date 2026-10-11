@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "1.6.0";
+const APP_VERSION = "1.7.0";
 const CHANGELOG = [
+  {
+    version: "1.7.0",
+    date: "2026-10-11",
+    title: "San Diego",
+    changes: [
+      "New San Diego button with 8 sub-buttons: Today, This Week, Mountain Biking, Hiking, Breweries, Party, Fun and News",
+      "Local event calendars, trails, breweries, venues and San Diego news feeds",
+      "Lists can now be shorter or longer than 10"
+    ]
+  },
   {
     version: "1.6.0",
     date: "2026-10-11",

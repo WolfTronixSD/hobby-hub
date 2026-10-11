@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 1.7.0 (2026-10-11): San Diego
+- New San Diego button with Today, This Week, Mountain Biking, Hiking, Breweries, Party, Fun and News
+
 ## 1.6.0 (2026-10-11): Traveling
 - New Traveling hobby with sub-categories Road Trips USA, Europe, Asia and Camping
 

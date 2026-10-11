@@ -87,6 +87,33 @@ FEEDS = {
     "camping": [
         ("Google News", "https://news.google.com/rss/search?q=camping+OR+campground+OR+backpacking&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "sd-today": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+events+today&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sd-week": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+events+this+week+OR+weekend&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sd-mtb": [
+        ("Pinkbike", "https://www.pinkbike.com/pinkbike_xml_feed.php"),
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+mountain+bike+OR+trail&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sd-hike": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+hiking+OR+trail+OR+hikers&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sd-beer": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+brewery+OR+%22craft+beer%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sd-party": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+nightlife+OR+concert+OR+club&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sd-fun": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+%22things+to+do%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sd-news": [
+        ("Times of San Diego", "https://timesofsandiego.com/feed/"),
+        ("KPBS", "https://www.kpbs.org/news.rss"),
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 24

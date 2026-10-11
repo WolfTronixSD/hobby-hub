@@ -134,12 +134,12 @@
     let html;
     if (tab === "podcasts") {
       html = h.labels && h.labels.podcasts
-        ? `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} ${esc(h.labels.podcasts.toLowerCase())}</h2></div>
+        ? `<div class="section-title"><h2>${h.icon} Top ${h.podcasts.length} ${esc(h.name)} ${esc(h.labels.podcasts.toLowerCase())}</h2></div>
               <div class="grid">${h.podcasts.map(ytCard).join("").replace(/card yt/g, "card guide")}</div>`
-        : `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} podcasts</h2></div>
+        : `<div class="section-title"><h2>${h.icon} Top ${h.podcasts.length} ${esc(h.name)} podcasts</h2></div>
               <div class="grid">${h.podcasts.map(podcastCard).join("")}</div>`;
     } else if (tab === "youtube") {
-      html = `<div class="section-title"><h2>${h.icon} Top 10 ${esc(h.name)} YouTube channels</h2></div>
+      html = `<div class="section-title"><h2>${h.icon} Top ${h.youtube.length} ${esc(h.name)} YouTube picks</h2></div>
               <div class="grid">${h.youtube.map(ytCard).join("")}</div>`;
     } else if (tab === "history") {
       html = historyView();

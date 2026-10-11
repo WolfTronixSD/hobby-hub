@@ -585,5 +585,261 @@ const HOBBIES = [
         ]
       }
     ]
+  },
+  {
+    id: "sandiego",
+    name: "San Diego",
+    icon: "🌴",
+    accent: "#ffcc4d",
+    tagline: "Today, this week, trails, breweries, nightlife and local news",
+    subs: [
+      {
+        id: "sd-today",
+        name: "Today",
+        icon: "📅",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Eventbrite: today", desc: "Events happening in San Diego today.", url: "https://www.eventbrite.com/d/ca--san-diego/events--today/" },
+          { name: "Do619", desc: "San Diego's local event and concert calendar.", url: "https://do619.com/" },
+          { name: "San Diego Reader events", desc: "Shows, markets and things to do.", url: "https://www.sandiegoreader.com/events/" },
+          { name: "Balboa Park events", desc: "Museums, concerts and festivals in the park.", url: "https://www.balboapark.org/events" },
+          { name: "Padres schedule", desc: "Is there a game at Petco Park today?", url: "https://www.mlb.com/padres/schedule" },
+          { name: "Weather today", desc: "National Weather Service forecast for San Diego.", url: "https://forecast.weather.gov/MapClick.php?CityName=San+Diego&state=CA" },
+          { name: "Surf report", desc: "Waves and conditions at San Diego beaches.", url: "https://www.google.com/search?q=Surfline+San+Diego+surf+report" },
+          { name: "Farmers markets today", desc: "Find a market open today.", url: "https://www.google.com/search?q=San+Diego+farmers+market+today" },
+          { name: "Happy hours today", desc: "Deals near you right now.", url: "https://www.google.com/search?q=San+Diego+happy+hour+today" },
+          { name: "Free things to do today", desc: "No-cost ideas around the county.", url: "https://www.google.com/search?q=free+things+to+do+in+San+Diego+today" }
+        ],
+        youtube: [
+          { name: "Things to do in San Diego", desc: "Video guides to the city's highlights.", url: "https://www.youtube.com/results?search_query=things+to+do+in+San+Diego" },
+          { name: "San Diego hidden gems", desc: "Lesser-known spots locals love.", url: "https://www.youtube.com/results?search_query=San+Diego+hidden+gems" },
+          { name: "San Diego beaches guide", desc: "Which beach to pick today.", url: "https://www.youtube.com/results?search_query=San+Diego+best+beaches+guide" },
+          { name: "San Diego food spots", desc: "Tacos, fish and more.", url: "https://www.youtube.com/results?search_query=best+food+San+Diego" },
+          { name: "San Diego sunset spots", desc: "Where to watch the sunset.", url: "https://www.youtube.com/results?search_query=best+sunset+spots+San+Diego" },
+          { name: "Rainy day in San Diego", desc: "Indoor ideas for gray days.", url: "https://www.youtube.com/results?search_query=rainy+day+things+to+do+San+Diego" }
+        ],
+        newsSources: [
+          { name: "Eventbrite: today", url: "https://www.eventbrite.com/d/ca--san-diego/events--today/" },
+          { name: "Do619", url: "https://do619.com/" },
+          { name: "San Diego Reader", url: "https://www.sandiegoreader.com/events/" },
+          { name: "Google News: SD events", url: "https://news.google.com/search?q=San%20Diego%20events%20today" }
+        ]
+      },
+      {
+        id: "sd-week",
+        name: "This Week",
+        icon: "🗓️",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Eventbrite: this week", desc: "Everything on in San Diego this week.", url: "https://www.eventbrite.com/d/ca--san-diego/events--this-week/" },
+          { name: "Eventbrite: this weekend", desc: "Plans for Saturday and Sunday.", url: "https://www.eventbrite.com/d/ca--san-diego/events--this-weekend/" },
+          { name: "Do619", desc: "Concerts, comedy and parties by day.", url: "https://do619.com/" },
+          { name: "San Diego Reader events", desc: "The full local events calendar.", url: "https://www.sandiegoreader.com/events/" },
+          { name: "Meetup: San Diego", desc: "Groups for biking, hiking, tech and more.", url: "https://www.meetup.com/find/?location=us--ca--San%20Diego" },
+          { name: "Concerts this week", desc: "Live music around the county.", url: "https://www.google.com/search?q=San+Diego+concerts+this+week" },
+          { name: "Comedy this week", desc: "Stand-up shows and open mics.", url: "https://www.google.com/search?q=San+Diego+comedy+shows+this+week" },
+          { name: "Theater this week", desc: "Old Globe, La Jolla Playhouse and more.", url: "https://www.google.com/search?q=San+Diego+theater+this+week" },
+          { name: "Padres schedule", desc: "Home games this week.", url: "https://www.mlb.com/padres/schedule" },
+          { name: "7-day forecast", desc: "Plan around the weather.", url: "https://forecast.weather.gov/MapClick.php?CityName=San+Diego&state=CA" }
+        ],
+        youtube: [
+          { name: "San Diego weekend ideas", desc: "Video ideas for the weekend.", url: "https://www.youtube.com/results?search_query=San+Diego+weekend+things+to+do" },
+          { name: "San Diego day trips", desc: "Julian, Temecula, Borrego and more.", url: "https://www.youtube.com/results?search_query=San+Diego+day+trips" },
+          { name: "Julian day trip", desc: "Apple pie and mountain town fun.", url: "https://www.youtube.com/results?search_query=Julian+California+day+trip" },
+          { name: "Temecula wine country", desc: "Wineries an hour north.", url: "https://www.youtube.com/results?search_query=Temecula+wine+country+guide" },
+          { name: "Anza-Borrego trip", desc: "Desert art and wildflowers.", url: "https://www.youtube.com/results?search_query=Anza+Borrego+day+trip" },
+          { name: "La Jolla guide", desc: "Seals, caves and kayaking.", url: "https://www.youtube.com/results?search_query=La+Jolla+things+to+do" }
+        ],
+        newsSources: [
+          { name: "Eventbrite: this week", url: "https://www.eventbrite.com/d/ca--san-diego/events--this-week/" },
+          { name: "Meetup", url: "https://www.meetup.com/find/?location=us--ca--San%20Diego" },
+          { name: "Do619", url: "https://do619.com/" },
+          { name: "Google News: SD this week", url: "https://news.google.com/search?q=San%20Diego%20this%20week%20events" }
+        ]
+      },
+      {
+        id: "sd-mtb",
+        name: "Mountain Biking",
+        icon: "🚵",
+        podcasts: [
+          { name: "The Pinkbike Podcast", desc: "Bikes, gear and racing talk from Pinkbike.", url: "https://podcasts.apple.com/us/search?term=The%20Pinkbike%20Podcast" },
+          { name: "Downtime Podcast", desc: "Interviews with mountain bike riders and racers.", url: "https://podcasts.apple.com/us/search?term=Downtime%20Podcast%20mountain%20bike" },
+          { name: "Blister Podcast", desc: "Gear reviews and conversations about riding.", url: "https://podcasts.apple.com/us/search?term=Blister%20Podcast" },
+          { name: "Singletracks Podcast", desc: "Trails, bikes and the MTB community.", url: "https://podcasts.apple.com/us/search?term=Singletracks%20Podcast" },
+          { name: "The Loam Wolf Podcast", desc: "Long-form bike reviews and tech.", url: "https://podcasts.apple.com/us/search?term=The%20Loam%20Wolf%20Podcast" }
+        ],
+        youtube: [
+          { name: "GMBN", desc: "Global Mountain Bike Network: skills and tech.", url: "https://www.youtube.com/results?search_query=GMBN+Global+Mountain+Bike+Network" },
+          { name: "Berm Peak", desc: "Seth's bike builds and trail adventures.", url: "https://www.youtube.com/results?search_query=Berm+Peak" },
+          { name: "Skills with Phil", desc: "Learn to ride better, step by step.", url: "https://www.youtube.com/results?search_query=Skills+with+Phil" },
+          { name: "Noble Canyon", desc: "San Diego's classic epic trail.", url: "https://www.youtube.com/results?search_query=Noble+Canyon+mountain+bike" },
+          { name: "Daley Ranch", desc: "Escondido trail network rides.", url: "https://www.youtube.com/results?search_query=Daley+Ranch+mountain+bike" },
+          { name: "Black Mountain", desc: "Rides at Black Mountain Open Space Park.", url: "https://www.youtube.com/results?search_query=Black+Mountain+San+Diego+mountain+bike" },
+          { name: "Mission Trails", desc: "Riding Mission Trails Regional Park.", url: "https://www.youtube.com/results?search_query=Mission+Trails+mountain+bike" },
+          { name: "Lake Hodges", desc: "Flowy trails around Lake Hodges.", url: "https://www.youtube.com/results?search_query=Lake+Hodges+mountain+bike" },
+          { name: "Sycamore Canyon", desc: "Goodan Ranch and Sycamore Canyon rides.", url: "https://www.youtube.com/results?search_query=Sycamore+Canyon+Goodan+Ranch+mountain+bike" },
+          { name: "Laguna Mountains", desc: "Big Laguna Trail and mountain riding.", url: "https://www.youtube.com/results?search_query=Big+Laguna+Trail+mountain+bike" }
+        ],
+        newsSources: [
+          { name: "SDMBA (San Diego MTB Association)", url: "https://www.sdmba.com/" },
+          { name: "Trailforks: San Diego", url: "https://www.trailforks.com/region/san-diego/" },
+          { name: "MTB Project", url: "https://www.mtbproject.com/" },
+          { name: "Pinkbike", url: "https://www.pinkbike.com/" },
+          { name: "Google News: SD MTB", url: "https://news.google.com/search?q=San%20Diego%20mountain%20bike" }
+        ]
+      },
+      {
+        id: "sd-hike",
+        name: "Hiking",
+        icon: "🥾",
+        podcasts: [
+          { name: "Backpacker Radio", desc: "Hiking and backpacking talk from The Trek.", url: "https://podcasts.apple.com/us/search?term=Backpacker%20Radio%20The%20Trek" },
+          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/search?term=The%20Dirtbag%20Diaries" },
+          { name: "She Explores", desc: "Women outdoors and on the trail.", url: "https://podcasts.apple.com/us/search?term=She%20Explores" },
+          { name: "Wild Ideas Worth Living", desc: "REI's adventurer interviews.", url: "https://podcasts.apple.com/us/search?term=Wild%20Ideas%20Worth%20Living" },
+          { name: "National Park After Dark", desc: "Trail stories for the drive to the trailhead.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" }
+        ],
+        youtube: [
+          { name: "Potato Chip Rock", desc: "Mt. Woodson's famous photo spot.", url: "https://www.youtube.com/results?search_query=Potato+Chip+Rock+hike" },
+          { name: "Cowles Mountain", desc: "Highest point in San Diego city.", url: "https://www.youtube.com/results?search_query=Cowles+Mountain+hike" },
+          { name: "Torrey Pines", desc: "Coastal trails and ocean views.", url: "https://www.youtube.com/results?search_query=Torrey+Pines+hike" },
+          { name: "Iron Mountain", desc: "Popular Poway summit hike.", url: "https://www.youtube.com/results?search_query=Iron+Mountain+Poway+hike" },
+          { name: "Three Sisters Falls", desc: "Waterfall hike in the backcountry.", url: "https://www.youtube.com/results?search_query=Three+Sisters+Falls+hike" },
+          { name: "Cedar Creek Falls", desc: "Devil's Punchbowl swimming hole.", url: "https://www.youtube.com/results?search_query=Cedar+Creek+Falls+hike" },
+          { name: "El Cajon Mountain", desc: "One of the county's toughest hikes.", url: "https://www.youtube.com/results?search_query=El+Cajon+Mountain+hike" },
+          { name: "Anza-Borrego hikes", desc: "Palm Canyon and slot canyons.", url: "https://www.youtube.com/results?search_query=Anza+Borrego+hikes" },
+          { name: "Cuyamaca Peak", desc: "Second-highest peak in the county.", url: "https://www.youtube.com/results?search_query=Cuyamaca+Peak+hike" },
+          { name: "Kraig Adams", desc: "Calm solo hiking videos.", url: "https://www.youtube.com/results?search_query=Kraig+Adams+hiking" }
+        ],
+        newsSources: [
+          { name: "AllTrails: San Diego", url: "https://www.alltrails.com/us/california/san-diego" },
+          { name: "Mission Trails Regional Park", url: "https://mtrp.org/" },
+          { name: "Torrey Pines Reserve", url: "https://torreypine.org/" },
+          { name: "Cleveland National Forest alerts", url: "https://www.fs.usda.gov/cleveland" },
+          { name: "Anza-Borrego State Park", url: "https://www.parks.ca.gov/?page_id=638" },
+          { name: "Google News: SD hiking", url: "https://news.google.com/search?q=San%20Diego%20hiking%20trail" }
+        ]
+      },
+      {
+        id: "sd-beer",
+        name: "Breweries",
+        icon: "🍺",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "San Diego Brewers Guild", desc: "Brewery map, events and San Diego Beer Week.", url: "https://sdbeer.com/" },
+          { name: "West Coaster", desc: "San Diego's craft beer news and guide.", url: "https://www.westcoastersd.com/" },
+          { name: "Stone Brewing", desc: "World Bistro & Gardens in Escondido and Liberty Station.", url: "https://www.stonebrewing.com/" },
+          { name: "AleSmith", desc: "Speedway Stout and a big Miramar tasting room.", url: "https://alesmith.com/" },
+          { name: "Pizza Port", desc: "Award-winning beer and pizza by the beach.", url: "https://www.pizzaport.com/" },
+          { name: "Karl Strauss", desc: "San Diego's original craft brewery since 1989.", url: "https://www.karlstrauss.com/" },
+          { name: "Ballast Point", desc: "Sculpin IPA and the Little Italy brewery.", url: "https://www.ballastpoint.com/" },
+          { name: "Belching Beaver", desc: "Vista brewery with tavern and grill.", url: "https://belchingbeaver.com/" },
+          { name: "North Park brewery crawl", desc: "The densest beer walk in town.", url: "https://www.google.com/search?q=North+Park+San+Diego+brewery+crawl" },
+          { name: "Beer Miramar", desc: "Miramar's 'Beeramar' tasting rooms.", url: "https://www.google.com/search?q=Miramar+San+Diego+breweries+Beeramar" }
+        ],
+        youtube: [
+          { name: "San Diego brewery tour", desc: "Videos touring the best breweries.", url: "https://www.youtube.com/results?search_query=San+Diego+brewery+tour" },
+          { name: "Best San Diego breweries", desc: "Ranked lists and reviews.", url: "https://www.youtube.com/results?search_query=best+San+Diego+breweries" },
+          { name: "Stone Brewing Escondido", desc: "Tour of the Stone gardens.", url: "https://www.youtube.com/results?search_query=Stone+Brewing+Escondido+tour" },
+          { name: "Vista brewery trail", desc: "Vista's many tasting rooms.", url: "https://www.youtube.com/results?search_query=Vista+California+breweries" },
+          { name: "San Diego Beer Week", desc: "The city's big beer festival.", url: "https://www.youtube.com/results?search_query=San+Diego+Beer+Week" },
+          { name: "Craft Beer & Brewing", desc: "Brewing tips and beer culture.", url: "https://www.youtube.com/results?search_query=Craft+Beer+and+Brewing+Magazine" }
+        ],
+        newsSources: [
+          { name: "West Coaster", url: "https://www.westcoastersd.com/" },
+          { name: "San Diego Brewers Guild", url: "https://sdbeer.com/" },
+          { name: "Google News: SD beer", url: "https://news.google.com/search?q=San%20Diego%20brewery" }
+        ]
+      },
+      {
+        id: "sd-party",
+        name: "Party",
+        icon: "🎉",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "Gaslamp Quarter", desc: "Bars, clubs and rooftops downtown.", url: "https://www.gaslamp.org/" },
+          { name: "Resident Advisor: San Diego", desc: "Club nights and DJ events.", url: "https://ra.co/events/us/sandiego" },
+          { name: "Do619 nightlife", desc: "Parties and shows by night.", url: "https://do619.com/" },
+          { name: "House of Blues San Diego", desc: "Concerts downtown.", url: "https://www.houseofblues.com/sandiego" },
+          { name: "Belly Up Tavern", desc: "Legendary Solana Beach music venue.", url: "https://bellyup.com/" },
+          { name: "The Observatory North Park", desc: "Concert hall in North Park.", url: "https://www.observatorysd.com/" },
+          { name: "Pacific Beach bars", desc: "Beach bars and late nights in PB.", url: "https://www.google.com/search?q=Pacific+Beach+bars+nightlife" },
+          { name: "North Park nightlife", desc: "Cocktail bars and dive bars.", url: "https://www.google.com/search?q=North+Park+San+Diego+nightlife" },
+          { name: "Rooftop bars", desc: "Best views with a drink.", url: "https://www.google.com/search?q=best+rooftop+bars+San+Diego" },
+          { name: "Eventbrite: parties", desc: "Parties this week in San Diego.", url: "https://www.eventbrite.com/d/ca--san-diego/parties/" }
+        ],
+        youtube: [
+          { name: "San Diego nightlife guide", desc: "Where to go out.", url: "https://www.youtube.com/results?search_query=San+Diego+nightlife+guide" },
+          { name: "Gaslamp nightlife", desc: "Downtown bars and clubs.", url: "https://www.youtube.com/results?search_query=Gaslamp+Quarter+nightlife" },
+          { name: "Pacific Beach bars", desc: "PB bar crawl videos.", url: "https://www.youtube.com/results?search_query=Pacific+Beach+bar+crawl" },
+          { name: "Rooftop bars", desc: "Best rooftops in San Diego.", url: "https://www.youtube.com/results?search_query=San+Diego+rooftop+bars" },
+          { name: "Live music San Diego", desc: "Venues and shows.", url: "https://www.youtube.com/results?search_query=San+Diego+live+music+venues" }
+        ],
+        newsSources: [
+          { name: "Resident Advisor", url: "https://ra.co/events/us/sandiego" },
+          { name: "Do619", url: "https://do619.com/" },
+          { name: "Google News: SD nightlife", url: "https://news.google.com/search?q=San%20Diego%20nightlife" }
+        ]
+      },
+      {
+        id: "sd-fun",
+        name: "Fun",
+        icon: "🎢",
+        labels: { podcasts: "Guides" },
+        podcasts: [
+          { name: "San Diego Zoo", desc: "World-famous zoo in Balboa Park.", url: "https://zoo.sandiegozoo.org/" },
+          { name: "Safari Park", desc: "Escondido's open-range wildlife park.", url: "https://sdzsafaripark.org/" },
+          { name: "USS Midway Museum", desc: "Aircraft carrier museum on the bay.", url: "https://www.midway.org/" },
+          { name: "Balboa Park", desc: "Museums, gardens and the Spanish Village.", url: "https://www.balboapark.org/" },
+          { name: "SeaWorld San Diego", desc: "Rides, shows and marine life.", url: "https://seaworld.com/san-diego/" },
+          { name: "LEGOLAND California", desc: "Carlsbad theme park for families.", url: "https://www.legoland.com/california/" },
+          { name: "Belmont Park", desc: "Mission Beach roller coaster and arcade.", url: "https://www.belmontpark.com/" },
+          { name: "Birch Aquarium", desc: "Scripps aquarium in La Jolla.", url: "https://aquarium.ucsd.edu/" },
+          { name: "La Jolla Cove kayaking", desc: "Sea caves and sea lions.", url: "https://www.google.com/search?q=La+Jolla+sea+caves+kayak+tour" },
+          { name: "Old Town San Diego", desc: "History, Mexican food and shops.", url: "https://www.google.com/search?q=Old+Town+San+Diego+State+Historic+Park" }
+        ],
+        youtube: [
+          { name: "San Diego Zoo tour", desc: "Highlights and tips.", url: "https://www.youtube.com/results?search_query=San+Diego+Zoo+tour+tips" },
+          { name: "USS Midway tour", desc: "Walkthrough of the carrier.", url: "https://www.youtube.com/results?search_query=USS+Midway+Museum+tour" },
+          { name: "La Jolla sea caves", desc: "Kayak and snorkel videos.", url: "https://www.youtube.com/results?search_query=La+Jolla+sea+caves+kayak" },
+          { name: "Balboa Park guide", desc: "Museums and gardens.", url: "https://www.youtube.com/results?search_query=Balboa+Park+guide" },
+          { name: "Coronado guide", desc: "Hotel del and the beach.", url: "https://www.youtube.com/results?search_query=Coronado+things+to+do" },
+          { name: "Whale watching", desc: "Gray whale season off San Diego.", url: "https://www.youtube.com/results?search_query=San+Diego+whale+watching" }
+        ],
+        newsSources: [
+          { name: "San Diego Tourism", url: "https://www.sandiego.org/" },
+          { name: "Balboa Park", url: "https://www.balboapark.org/" },
+          { name: "Google News: SD things to do", url: "https://news.google.com/search?q=San%20Diego%20things%20to%20do" }
+        ]
+      },
+      {
+        id: "sd-news",
+        name: "News",
+        icon: "📰",
+        podcasts: [
+          { name: "San Diego News Matters (KPBS)", desc: "Daily local news podcast from KPBS.", url: "https://podcasts.apple.com/us/search?term=San%20Diego%20News%20Matters%20KPBS" },
+          { name: "KPBS Midday Edition", desc: "Conversations on San Diego issues.", url: "https://podcasts.apple.com/us/search?term=KPBS%20Midday%20Edition" },
+          { name: "Voice of San Diego Podcast", desc: "Local politics and policy explained.", url: "https://podcasts.apple.com/us/search?term=Voice%20of%20San%20Diego%20Podcast" },
+          { name: "Good Food (KCRW)", desc: "SoCal food news and restaurants.", url: "https://www.kcrw.com/culture/shows/good-food" }
+        ],
+        youtube: [
+          { name: "NBC 7 San Diego", desc: "Local TV news.", url: "https://www.youtube.com/results?search_query=NBC+7+San+Diego" },
+          { name: "FOX 5 San Diego", desc: "Local TV news.", url: "https://www.youtube.com/results?search_query=FOX+5+San+Diego+news" },
+          { name: "ABC 10News San Diego", desc: "Local TV news.", url: "https://www.youtube.com/results?search_query=10News+San+Diego" },
+          { name: "CBS 8 San Diego", desc: "Local TV news.", url: "https://www.youtube.com/results?search_query=CBS+8+San+Diego" },
+          { name: "KPBS", desc: "Public media for San Diego.", url: "https://www.youtube.com/results?search_query=KPBS+San+Diego" }
+        ],
+        newsSources: [
+          { name: "KPBS", url: "https://www.kpbs.org/" },
+          { name: "San Diego Union-Tribune", url: "https://www.sandiegouniontribune.com/" },
+          { name: "Voice of San Diego", url: "https://voiceofsandiego.org/" },
+          { name: "Times of San Diego", url: "https://timesofsandiego.com/" },
+          { name: "NBC 7 San Diego", url: "https://www.nbcsandiego.com/" },
+          { name: "ABC 10News", url: "https://www.10news.com/" },
+          { name: "FOX 5 San Diego", url: "https://fox5sandiego.com/" },
+          { name: "CBS 8", url: "https://www.cbs8.com/" }
+        ]
+      }
+    ]
   }
 ];
