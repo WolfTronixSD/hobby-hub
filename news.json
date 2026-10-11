@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T21:36:59.201652+00:00",
+ "updated": "2026-10-11T21:38:24.504723+00:00",
  "topics": {
   "ham": [
    {
@@ -367,6 +367,12 @@
     "date": "2026-09-24T07:00:00+00:00"
    },
    {
+    "title": "With the new VENTUNO Q board, Arduino hopes to make robotics development easier",
+    "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOZkNYbVhBamhnMGlFVUFHckMzTnFaaXppNTltdHVhMHZ3WlJHZ0VybVRRRW01RWxMWmhFLVl5Q3BKZWJTbTJZNHNtcUU4ZjJyRXdicHlubzFxcloxaHNiUUlSeExzWGRiU1JaNFctQm1PNHFGenhDc24xelJ5RThYcFhLVlRmRE8wbkdOVkdzS1duVE93ZDl3TGx0Yl9weGM?oc=5",
+    "source": "The Robot Report",
+    "date": "2026-09-23T18:21:32+00:00"
+   },
+   {
     "title": "Running Local LLMs on the Arduino® UNO™ Q Board: a Practical Guide",
     "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxORXF1cUpMOUNTRW1vU05lRnQtNl9kNHRKMlIyd1Y5SkZ5d3kyUEIzeUhTNkp2YXdwaDZJdXNBTndLNExrMHpaYWhjMXJ4Ul8tdjJnTjRTT0ZDVU1jcy1lclluZHhNamRmUzhfWDU1R3JabUtiY1ExZFd5SlNQQWhYMXpNNkJ6T0JpbHhYTEFMc2FIUQ?oc=5",
     "source": "EE Times",
@@ -395,12 +401,6 @@
     "link": "https://hackaday.com/2026/07/15/pinch-puts-an-arduino-on-a-usb-c-connector/",
     "source": "Hackaday",
     "date": "2026-07-16T02:00:59+00:00"
-   },
-   {
-    "title": "Anthony Mark Arduino Obituary Dec 23, 2020",
-    "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1hNEc0OWw2Mi1fMjdYc1Yyb0dILXhTLXVybTJDZG9UZzVia1h0QURRUk9TaXJSc1l3Nm40OU5VV3ZWazZsTnlMSGZ0a1VTQ2RJNm04dXVnZDB4VllfSFc2N0VzYmVuem0wR1ZN?oc=5",
-    "source": "suessfuneralhome.net",
-    "date": "2026-06-14T06:12:06+00:00"
    },
    {
     "title": "The Uncooperative Mirror Will Not Help You",
@@ -1241,6 +1241,232 @@
     "link": "https://www.sciencedaily.com/releases/2026/09/260930225459.htm",
     "source": "ScienceDaily",
     "date": "2026-10-03T12:13:21+00:00"
+   }
+  ],
+  "printing": [
+   {
+    "title": "The Science Lab You Can 3D Print",
+    "link": "https://3dprint.com/334367/the-science-lab-you-can-3d-print/",
+    "source": "3DPrint.com",
+    "date": "2026-10-11T12:00:05+00:00"
+   },
+   {
+    "title": "State of California sues 3D printer filament company Polymaker for promoting ghost guns by marketing to 3D-printed gun community — state alleges company turns harmless PLA filament into a regulated 'firearm precursor part'",
+    "link": "https://news.google.com/rss/articles/CBMi9gJBVV95cUxNLXRiS3hCblY0ZUZqMnMtX1VGTFZ2ZlotSThkWnMwOFFnc2ZOZ0dVb3h6VVRFVGZfTW1GeHA5ZENEempFT29GeHZNenpoREJPQ1lablpKYWFkRkZpN3dOdDNZTXI4WEtZd3ZkLXRsTVdyVjl3eTNLSUk5aHFzNmFzVW9UV3B0dVE2ZFU0ajVfMDJNakNUTUhBTXdvV2IzQ05rcWxUcnBrV2ttVUFieHlOX3NKRDJ3aGdrZUhCTy1sUjVDR3JlakNpSHU1cXFNdnBkdWczQlNsSm1mTzEwU2Y0bGdpUnFyc0FyTHhjZGZFa0tXLXZtcUY0WG1CUHpOWm1aT2lLRzRLY3ozbVlyQll5RWc1Q2N0TWI0N0ZMQUVCRFB3WE5IWG4tUGpaN25YRTZRSFpuRHlkWl94OXBTYWQ2bmR5bTZpNEh0MnZNcUZEcWd5NURyWkZOZjJHVDI1cE5NTFprWjRsTGU5TXljTVdxY0ZsRTlEZw?oc=5",
+    "source": "Tom's Hardware",
+    "date": "2026-10-11T11:15:00+00:00"
+   },
+   {
+    "title": "3D Printing News Briefs, October 10, 2026: Drones, WAAM, Ceramics, & More",
+    "link": "https://3dprint.com/334456/3d-printing-news-briefs-10-10-2026/",
+    "source": "3DPrint.com",
+    "date": "2026-10-10T12:30:04+00:00"
+   },
+   {
+    "title": "New California ghost gun lawsuit takes aim at company that sells 3-D printer filament",
+    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQUUdCV083TUpoSWhlNzFTWlBMUWEydEkxU09QX2UtQjdGVlgxS09za216UHdLQllHU0ZTd2pCUnVwTnl1Z1RncXRzQ1loaHlRcXZDSEx1UGhpNGhXeHJ3UDhBYVVWZmF2QkJXdDFoX2lhOXdmbXBwS2pnOUdMWGhWcFZYbjg1M2otRDJuQ1FvN3hPTW9yMXF2T0lfanAzcUQwSkQ0aU5JaFVDZS1ENGlF?oc=5",
+    "source": "Los Angeles Times",
+    "date": "2026-10-10T10:00:00+00:00"
+   },
+   {
+    "title": "World’s first 3D-printed remote control aircraft with a jet turbine takes flight, aims for Mach 0.8 to beat world record for fastest model aircraft — mostly printed using standard PETG materials",
+    "link": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxPQjVJS2Y1WUNnTjZfeFFnTlVSMXN1TTJRRnVfUlNzYW94SjVMTnpQa2JPeXlvc2piZzNPa0MwdllFbjJJZWJhUWJTamZoVk5qbVJmdFdEeHUwaG92Z0JSVVhfOE0tdEdCQy1XQ3F5cUVRZnk2cGczSkp1TDkwck9XTlVvVzZCQXN0YzI5X3Z0RnF2ZzMzYVpsbUdicWJpZVBTbXNvc0trWHF3VWZpdUtyZGxjLUd4M1poSVpXYmZVLVR3ZlFCNXlPSmxJM3l0ZW1PVHEtdXg4UUpMb1ZuYU9fRDZWVWZWT0RlNDRUSUtncXNsSTBaTHF2Z244WXF5VENmbVNrbEdodVoxLTgyZF96dU8weTdsOFdxWFZXaXlUOFhLVUhqRnJ2LW5tRHNOZXZ3VU01bVppSjgxaHViVVVnTXFGa2VXZW5iTlNUVmxXT1I?oc=5",
+    "source": "Tom's Hardware",
+    "date": "2026-10-10T10:00:00+00:00"
+   },
+   {
+    "title": "Embedded 3D Printing with Liquids on a Bricked Prusa FDM Printer",
+    "link": "https://hackaday.com/2026/10/09/embedded-3d-printing-with-liquids-on-a-bricked-prusa-fdm-printer/",
+    "source": "Hackaday",
+    "date": "2026-10-09T23:00:03+00:00"
+   },
+   {
+    "title": "Wait, the best multicolour 3D printer for beginners is now even cheaper than it was in Amazon's Prime Day sale earlier this week!",
+    "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOWDVQWjVOS0dyYm9GWGtjSTZaOGdtaXlHN2tZTDY3RTFWdzlWeTNLNVM5djBCYkVVbjhzVnlsRXNiNUNqeVZ4RERCdGliOXljUTJSX2M1cE5ONlhuNDRYSHVEckswZjFmWkpuTnQzWkZYSHpDREl6VFE2Mlo0bDV4WlZkN2tHaldXOU9nZ3RsaTItVDh5SHNydjFuVE9sb3FpNUlTTnJqRWNoTzJidzV6M0pnS3ZMNF9xZ290UGNOT1lpTHY1REE1VFY1eVpyOFZnaU94YmszWE5zT3FKRk5EWUhCZktWMUwzQ0JJVGVMUENJaG8?oc=5",
+    "source": "Creative Bloq",
+    "date": "2026-10-09T15:00:00+00:00"
+   },
+   {
+    "title": "10 Years of Multi Jet Fusion: Onsite at HP’s Vancouver, Washington Facility",
+    "link": "https://3dprint.com/333886/10-years-of-mjf-onsite-at-hps-vancouver-washington-facility/",
+    "source": "3DPrint.com",
+    "date": "2026-10-09T14:00:55+00:00"
+   },
+   {
+    "title": "PharmaTher Plans U.S. Network to 3D Print Medicines on Demand",
+    "link": "https://3dprint.com/334520/pharmather-plans-u-s-network-to-3d-print-medicines-on-demand/",
+    "source": "3DPrint.com",
+    "date": "2026-10-09T12:30:22+00:00"
+   },
+   {
+    "title": "Mosquito Dreams Part 2: Monocoque and the Battle of Britain",
+    "link": "https://3dprint.com/332004/mosquito-dreams-part-2-monocoque-and-the-battle-of-britain/",
+    "source": "3DPrint.com",
+    "date": "2026-10-09T12:00:04+00:00"
+   },
+   {
+    "title": "Solid Rocket Motors: the First Big Scaling Test for AM in the US Defense Sector",
+    "link": "https://3dprint.com/334446/solid-rocket-motors-the-first-big-scaling-test-for-am-in-the-us-defense-sector/",
+    "source": "3DPrint.com",
+    "date": "2026-10-09T07:00:23+00:00"
+   },
+   {
+    "title": "66 Times People Used a 3D Printer and Reached Absolute Peak Human Ingenuity",
+    "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1xU0ZpSVdQYkd1UjBVUU5tSXZTeVhRZlVwUnp5ME9VbWNLdG0xSlV6ZkhpOWYtNHQyLUdxbWpOc0M4S21fWFd0WXBBRmZGZ2ZwYXNxU3FqcXlKdEZtWXc?oc=5",
+    "source": "Bored Panda",
+    "date": "2026-10-09T03:01:03+00:00"
+   },
+   {
+    "title": "These 3D-printed Halloween models are too good to miss and, yes, you need to start today",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOQVM1bEhPR1pGc1E5S1pIbE9oUjRDcG4xQnQ3cklZOEx5cFRfLUVaYXZ2VDRTOGQ3bXp2dkgtVUU4OGh1eF9SUERwLW1NMjlQZm9XLWNjb3o0MXRRYWt5b0xkbUNjTUdWa2x6SXdLeWdUSXJ3YXgyam9WMXczeTFBYWw1S1diMVVQMFdTdm1ZaUpGMkdDTWxZMF9kUWR0RDdT?oc=5",
+    "source": "How-To Geek",
+    "date": "2026-10-08T16:00:14+00:00"
+   },
+   {
+    "title": "Bambu Lab’s 3D printing patent application for a new heatbed design may improve peeling issues — replacement costs could possibly rise as a consequence",
+    "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNOTZWc3FUbE9yZ2xyTjREakFMQXFrNTNGRGZjOE1XZ1BzVlFzaDRhME9kUUt1bDB0NGY3a0o1SDFHTzlJbEl5MmZZY1lDYmdwb0tOWmJkZk4xaEk4akwzdTVPaElzS3RNbHpxLUVGZWJic2JXallSU29oMEtVUEtETnpzTGF5THptYXNFdUtZelVkNUFDc2VRMGRCMFNKeHpnQTVJSUx2ZElYSEdMYTdsWmV4TVZBQXEwaDhFV0VCWW41Yks4bUNZTnhVT0JXOEExNnlDMWZhZlA3cjJHMWRZMkotcENhSlM2Z1NyN2wxYUJ1b3RuekpqbHd0UTFoN1FKYVNFQXFIaThKREhGaUZqOFJjN09lelVu?oc=5",
+    "source": "Tom's Hardware",
+    "date": "2026-10-08T14:11:49+00:00"
+   },
+   {
+    "title": "The “Apple Effect”: Are 3D Printers Becoming Lifestyle Products?",
+    "link": "https://3dprint.com/334369/the-apple-effect-are-3d-printers-becoming-lifestyle-products/",
+    "source": "3DPrint.com",
+    "date": "2026-10-08T13:00:23+00:00"
+   },
+   {
+    "title": "The Manufacturing Race Behind the Drone Revolution",
+    "link": "https://3dprint.com/334076/the-manufacturing-race-behind-the-drone-revolution/",
+    "source": "3DPrint.com",
+    "date": "2026-10-08T12:30:26+00:00"
+   },
+   {
+    "title": "A Headset Fit For A Hackaday Writer",
+    "link": "https://hackaday.com/2026/10/06/a-headset-fit-for-a-hackaday-writer/",
+    "source": "Hackaday",
+    "date": "2026-10-06T17:00:15+00:00"
+   },
+   {
+    "title": "3D-Printed Filter Removes Most Microplastics From Water",
+    "link": "https://hackaday.com/2026/10/05/3d-printed-filter-removes-most-microplastics-from-water/",
+    "source": "Hackaday",
+    "date": "2026-10-06T02:00:57+00:00"
+   },
+   {
+    "title": "Designing a Fully 3D-Printed Mechanical Calculator",
+    "link": "https://hackaday.com/2026/09/29/designing-a-fully-3d-printed-mechanical-calculator/",
+    "source": "Hackaday",
+    "date": "2026-09-29T20:00:01+00:00"
+   },
+   {
+    "title": "Forget Trees, add Fins to your 3D Prints Instead",
+    "link": "https://hackaday.com/2026/09/23/forget-trees-add-fins-to-your-3d-prints-instead/",
+    "source": "Hackaday",
+    "date": "2026-09-23T17:00:20+00:00"
+   },
+   {
+    "title": "Full-Color Looks Great on 3D Printed Sliding Puzzles",
+    "link": "https://hackaday.com/2026/09/16/full-color-looks-great-on-3d-printed-sliding-puzzles/",
+    "source": "Hackaday",
+    "date": "2026-09-16T11:00:15+00:00"
+   },
+   {
+    "title": "Changing Nozzle Internal Geometry to Increase FDM Flowrate",
+    "link": "https://hackaday.com/2026/09/10/changing-nozzle-internal-geometry-to-increase-fdm-flowrate/",
+    "source": "Hackaday",
+    "date": "2026-09-11T02:00:46+00:00"
+   },
+   {
+    "title": "Walmart is 3D printing the future of big box stores",
+    "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPY0V2NjRGbC1qdW90ajdtWG1OQXRNNVFRSGpqUWV3MDU5UFZabzU3bVM3YnFWRlc2MGhXTGlJV0tRYWNPdlVQOHFiam1ZaUFoS0tPYzRVZFU0a2R6NVRqb29HUEpkb0YzNm9XRlZvalVFQ1Z1eE1fR0RlVGkzcnZ4OA?oc=5",
+    "source": "Fast Company",
+    "date": "2026-08-24T07:00:00+00:00"
+   }
+  ],
+  "bambu": [
+   {
+    "title": "October Prime Day 3D printer deals: Last chance for savings on Bambu Lab, more",
+    "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFB1YlVROHE0MUxXTFBRZXM1VTZPR0RyTGVwWXhGczBURlJjZ21hWndxYnlpSHRYQzUtQXUweFVpNGxFYUpoZWZKRnF1cy1BOEJFOU1BZ0I1YkpqMFF1X0dlUmJGT2R5OU1tdnVJZFc3aWw3eTV6UEZfWlVB?oc=5",
+    "source": "Mashable",
+    "date": "2026-10-11T15:50:15+00:00"
+   },
+   {
+    "title": "After Losing in Court: Bambu Lab Prevails Against Four Stratasys Patents at the U.S. Patent and Trademark Office",
+    "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOa3hNT0N0SDdLY3d1SVhEX1h4R1ZVcWxRcXctSFkwdHBwb1dWci1kNERSbzlLQ0ZVeXRSX0Y4LWx0Zm05NkhuREh6ZmlIT1JYc1BiZ3I2UEJDX2l1d0FJcTlNM0VneF9WTXhETVMxUFU0dHBHUXpocmU1NDh1YXBIYmRieHdmTUptSG0tbFZ1U3l2bk1mRUR3OEdxTVcwOUhNTHdMNXRJWWhKbVp5elpzSkNPb3l0ZFZWb2w3ZGxkdHo5WXVidk9lZWw0emQtRkV5aGRVeFEyOU9IV2pkeGpGdHh1LVMwbHF0?oc=5",
+    "source": "3Druck.com",
+    "date": "2026-10-10T19:17:46+00:00"
+   },
+   {
+    "title": "3D Printer Brand Bambu Lab Just Released A Dedicated Laser Cutter – Here's What It Can Do",
+    "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQeG1lb3VlSjctQUZOejQwUFFuOFlPU1dZTTVoTmk4QUtqVGVGU1NEaWwyUmdwREdBRlRucldjQzNIQWxiSEVGMzFHSmxWVGhmSDg5WGYxLU5RUm9uUUNoVGFVdE8xUnJBckZDMzFoUWVONkZTY3BRMGo5OUZnRjhwWGxhZmRsWEhkQzN3aEdqMA?oc=5",
+    "source": "SlashGear",
+    "date": "2026-10-10T11:45:00+00:00"
+   },
+   {
+    "title": "Bambu Lab A2L review: your first 3D printer with plenty of room to grow",
+    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVVhEdlJkbDVrQ2QwalRGcERra2g3ZGNIYTJIVzFKUzhJeFpnZFJjMzY4X1ZMZ0F4OXk2R1NDclpuNjBIUjd0cjdPdG5SWGNaWUdsUnl3SVZYUzJBRnFIdzFWeXh5ZVNBd3lscU0za25iLVY4eTFjbFNMdGRRTElERkZmYm1xSUsxZG9TSFdPbmxNU0NYdElER1oyY1ZfUEFudWRtbGItbTNtWGk4SU1DZEx6VQ?oc=5",
+    "source": "AppleInsider",
+    "date": "2026-10-09T18:52:45+00:00"
+   },
+   {
+    "title": "This firmware update will make your 3D printer less capable than the day you bought it",
+    "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9qVnEwQjlyMVY4em1uY1VuU29rbWFjbDl3ZVlHNDR2cGM0SElDQ0lReFh6cVhKQ0Y0Z09JY1NwcG1VNDhKTy1MRzBWY1h2NnlpeU0xV1FZM0hQZjRPNDFocjk0ZXE0OWtheUN6dEZxTnpwX3dSRjAxYzVrWQ?oc=5",
+    "source": "MakeUseOf",
+    "date": "2026-10-09T17:31:14+00:00"
+   },
+   {
+    "title": "Bambu Lab’s 3D printing patent application for a new heatbed design may improve peeling issues — replacement costs could possibly rise as a consequence",
+    "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxNOTZWc3FUbE9yZ2xyTjREakFMQXFrNTNGRGZjOE1XZ1BzVlFzaDRhME9kUUt1bDB0NGY3a0o1SDFHTzlJbEl5MmZZY1lDYmdwb0tOWmJkZk4xaEk4akwzdTVPaElzS3RNbHpxLUVGZWJic2JXallSU29oMEtVUEtETnpzTGF5THptYXNFdUtZelVkNUFDc2VRMGRCMFNKeHpnQTVJSUx2ZElYSEdMYTdsWmV4TVZBQXEwaDhFV0VCWW41Yks4bUNZTnhVT0JXOEExNnlDMWZhZlA3cjJHMWRZMkotcENhSlM2Z1NyN2wxYUJ1b3RuekpqbHd0UTFoN1FKYVNFQXFIaThKREhGaUZqOFJjN09lelVu?oc=5",
+    "source": "Tom's Hardware",
+    "date": "2026-10-08T14:11:49+00:00"
+   },
+   {
+    "title": "Bambu Lab launches Halloween 3D printer sale with up to 30% off — P1S plunges to $399 alongside $250 off the H2D with AMS bundle, plus bulk spool discounts and pumpkin-themed bundles",
+    "link": "https://news.google.com/rss/articles/CBMivgJBVV95cUxOUTJGTXFOQkN0WlRzdHozQ2FJTUN2dEFiRHdoX2I0ejNjclN3SnhqczhYb182V1dSS09hOEo0SWxLaDk3S2JRZWVFRHgzTlIyak5xVndZN2k3bUxLQkVvR0tIMlphbTFWUm9BVERHcEpJeTlRZHE4VnZkWXlJemdtRWljSmZaZ0hneFZ0VmpTVmlaRDE5T0d1S29zSVhWYlBxbHVvUm5GejR0UTQxLUxPMmxrWHQ0NnBQOGtJVFN3anY1VUNxWTZwbUtNaFlsWkFtWVJvZU1GenppeHZpQkd4b05MdnJrQnhhQk5uMVhnR2FXQlJOUzhyWlc0cF91Qmp6cTZfcWRaZ1dNbHZMZEM0eHNLYzBBUjZXbDRuV2RWam5fZFVRRy03V1VmVnBRR2NOTXZKMUE1dEFsX2l5N1E?oc=5",
+    "source": "Tom's Hardware",
+    "date": "2026-10-03T12:50:00+00:00"
+   },
+   {
+    "title": "Texas jury hits Bambu Lab with $27.6M verdict in Stratasys patent fight — X1, P1, and A1 printers found to infringe prime tower and bed-leveling tech",
+    "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxNT3RGdWhOaWM4ekllVEJNQVdfRVRoUVdxblljY2R1SkIxUzF3eS1Tbk12LVROeUVkXzRsenVUcVNLbTQ3VlJzVUpSWEVWYVVFN1E3aWp5VlBybkkyaEwzVU1DRkVvQ2swY000UUwzOHgtVDQ3WFBjNEdDRUp3U1BFYWRYV1FNVF8tNEVDSmt0VFg0NENJS0RjTGVGUkY3U2l3czNTWi1SR0pCNWJwcXBWbVhNVDdvUk1VaVNIYVpiWU5qWlU1eHhWWHVPOTFwTVZjQXdFUHMyMWhlM1FVbFE5WjBFTkxOWjVYQ0g5SUdKYjREaDBmV1BXSUtUdEtIam96T2lxdFJrOWtDWkJnejRtUFBVZ2xrYzA?oc=5",
+    "source": "Tom's Hardware",
+    "date": "2026-09-21T07:00:00+00:00"
+   },
+   {
+    "title": "The Saga of Hacking a Bambu X1 Carbon",
+    "link": "https://hackaday.com/2025/09/07/the-saga-of-hacking-a-bambu-x1-carbon/",
+    "source": "Hackaday",
+    "date": "2025-09-08T02:00:28+00:00"
+   },
+   {
+    "title": "Improved and Open Source: Non-Planar Infill for FDM",
+    "link": "https://hackaday.com/2025/04/23/improved-and-open-source-non-planar-infill-for-fdm/",
+    "source": "Hackaday",
+    "date": "2025-04-24T02:00:52+00:00"
+   },
+   {
+    "title": "Bambu Lab Tries to Clarify Its New “Beta” Authentication Scheme",
+    "link": "https://hackaday.com/2025/01/20/bambu-lab-tries-to-clarify-its-new-beta-authentication-scheme/",
+    "source": "Hackaday",
+    "date": "2025-01-21T03:00:27+00:00"
+   },
+   {
+    "title": "Bambu Connect’s Authentication X.509 Certificate and Private Key Extracted",
+    "link": "https://hackaday.com/2025/01/19/bambu-connects-authentication-x-509-certificate-and-private-key-extracted/",
+    "source": "Hackaday",
+    "date": "2025-01-19T18:00:52+00:00"
+   },
+   {
+    "title": "New Bambu Lab Firmware Update Adds Mandatory Authorization Control System",
+    "link": "https://hackaday.com/2025/01/17/new-bambu-lab-firmware-update-adds-mandatory-authorization-control-system/",
+    "source": "Hackaday",
+    "date": "2025-01-17T18:00:00+00:00"
+   },
+   {
+    "title": "Putting the New CryoGrip Build Plate to the Test",
+    "link": "https://hackaday.com/2024/10/25/putting-the-new-cryogrip-build-plate-to-the-test/",
+    "source": "Hackaday",
+    "date": "2024-10-25T08:00:01+00:00"
    }
   ]
  }
