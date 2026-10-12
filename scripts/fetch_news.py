@@ -209,6 +209,28 @@ FEEDS = {
     "com-live": [
         ("Google News", "https://news.google.com/rss/search?q=comedy+show+%22San+Diego%22+OR+Tempe+OR+Phoenix&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "fly-events": [
+        ("Google News", "https://news.google.com/rss/search?q=%22air+show%22+OR+airshow+OR+%22fly-in%22+%22San+Diego%22+OR+Miramar+OR+%22El+Centro%22+OR+California&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "save-groceries": [
+        ("Google News", "https://news.google.com/rss/search?q=grocery+prices+OR+%22save+money+on+groceries%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "save-gas": [
+        ("Google News", "https://news.google.com/rss/search?q=%22gas+prices%22+California+OR+Arizona&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "save-travel": [
+        ("Google News", "https://news.google.com/rss/search?q=%22travel+deals%22+OR+%22cheap+flights%22+OR+airfare&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "save-bills": [
+        ("Google News", "https://news.google.com/rss/search?q=%22SDG%26E%22+OR+%22SRP%22+rates+OR+%22subscription+price%22+OR+%22phone+plan%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "save-shopping": [
+        ("Slickdeals", "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"),
+        ("Google News", "https://news.google.com/rss/search?q=%22best+deals%22+OR+%22price+drop%22+shopping&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "save-budget": [
+        ("Google News", "https://news.google.com/rss/search?q=%22personal+finance%22+OR+%22save+money%22+tips&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20

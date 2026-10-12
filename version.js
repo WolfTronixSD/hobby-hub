@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.5.0";
+const APP_VERSION = "2.6.0";
 const CHANGELOG = [
+  {
+    version: "2.6.0",
+    date: "2026-10-12",
+    title: "Aviation events and Money Saver",
+    changes: [
+      "Flying: new Events section with upcoming air shows and fly-ins, focused on San Diego (SD Air & Space Museum, El Centro Blue Angels, March ARB, plus Oshkosh and SUN 'n FUN)",
+      "Flying Events links: Miramar Air Show, FAA safety seminars, EAA Chapter 14, CAF at Gillespie Field and more",
+      "New Money Saver button: Groceries, Gas & Car, Travel Deals, Bills & Subscriptions, Shopping & Cash Back, Budget & Invest",
+      "Each Money Saver section has 10 tips, 10 YouTube picks and its own news"
+    ]
+  },
   {
     version: "2.5.0",
     date: "2026-10-11",

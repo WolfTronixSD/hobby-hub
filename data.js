@@ -1675,6 +1675,181 @@ const HOBBIES = [
           { name: "Aviation Weather Center", url: "https://aviationweather.gov/" },
           { name: "Google News: KMYF", url: "https://news.google.com/search?q=KMYF%20OR%20%22Montgomery%20Field%22" }
         ]
+      },
+      {
+        id: "fly-events",
+        name: "Events",
+        icon: "🛩️",
+        labels: {
+          podcasts: "Events",
+          icon: "📅",
+          heading: "links"
+        },
+        events: [
+          {
+            name: "California International Airshow",
+            date: "2026-11-07",
+            end: "2026-11-08",
+            place: "Salinas, CA",
+            desc: "Thunderbirds headline. A day trip up the coast.",
+            url: "https://www.seemonterey.com/event/california-international-airshow-salinas/"
+          },
+          {
+            name: "SD Air & Space Museum Hall of Fame",
+            date: "2026-11-21",
+            place: "Balboa Park, San Diego",
+            desc: "The museum's annual International Air & Space Hall of Fame evening.",
+            url: "https://sandiegoairandspace.org/calendar"
+          },
+          {
+            name: "NAF El Centro Festival of Flight",
+            date: "2027-03-13",
+            place: "NAF El Centro, CA (2 hrs east of SD)",
+            desc: "Blue Angels at their winter home. The 2026 show was canceled; confirm before you go.",
+            url: "https://www.elcentroairshow.com/"
+          },
+          {
+            name: "Southern California Air Show",
+            date: "2027-03-27",
+            place: "March Air Reserve Base, Riverside, CA",
+            desc: "Military and civilian demos. Date from airshow listings; confirm closer to the show.",
+            url: "https://www.airshowcenter.com/airshows/28/southern-california-air-show"
+          },
+          {
+            name: "SUN 'n FUN Aerospace Expo",
+            date: "2027-04-06",
+            end: "2027-04-11",
+            place: "Lakeland, FL",
+            desc: "The big spring fly-in and expo.",
+            url: "https://www.flysnf.org/"
+          },
+          {
+            name: "EAA AirVenture Oshkosh",
+            date: "2027-07-26",
+            end: "2027-08-01",
+            place: "Oshkosh, WI",
+            desc: "The world's greatest aviation celebration. Tickets go on sale in early December.",
+            url: "https://www.eaa.org/airventure"
+          }
+        ],
+        podcasts: [
+          {
+            name: "Miramar Air Show",
+            desc: "San Diego's big one, usually late September. Free admission.",
+            url: "https://miramarairshow.com/"
+          },
+          {
+            name: "SD Air & Space Museum calendar",
+            desc: "Talks, Hall of Fame and family events in Balboa Park.",
+            url: "https://sandiegoairandspace.org/calendar"
+          },
+          {
+            name: "NAF El Centro air show",
+            desc: "Blue Angels winter home, usually March.",
+            url: "https://www.elcentroairshow.com/"
+          },
+          {
+            name: "Planes of Fame Air Show",
+            desc: "Warbirds in Chino, usually early May.",
+            url: "https://planesoffame.org/"
+          },
+          {
+            name: "FAA Safety Team seminars",
+            desc: "WINGS safety seminars around San Diego, free.",
+            url: "https://www.faasafety.gov/"
+          },
+          {
+            name: "EAA Chapter 14 (San Diego)",
+            desc: "Local EAA chapter: Young Eagles, meetings, fly-ins.",
+            url: "https://www.google.com/search?q=EAA+Chapter+14+San+Diego"
+          },
+          {
+            name: "CAF Air Group One",
+            desc: "Commemorative Air Force warbirds at Gillespie Field.",
+            url: "https://www.google.com/search?q=Commemorative+Air+Force+Air+Group+One+Gillespie+Field"
+          },
+          {
+            name: "Copperstate Fly-In (AZ)",
+            desc: "Arizona's fly-in, usually October near Mesa.",
+            url: "https://www.google.com/search?q=Copperstate+Fly-In"
+          },
+          {
+            name: "Air show schedule",
+            desc: "Every US air show, searchable.",
+            url: "https://www.airshownetwork.com/schedule"
+          },
+          {
+            name: "AOPA events",
+            desc: "AOPA fly-ins and Rusty Pilots seminars.",
+            url: "https://www.google.com/search?q=AOPA+fly-in+events+Rusty+Pilots"
+          }
+        ],
+        youtube: [
+          {
+            name: "Miramar Air Show",
+            desc: "Highlights from San Diego's show.",
+            url: "https://www.youtube.com/results?search_query=Miramar+Air+Show+highlights"
+          },
+          {
+            name: "Blue Angels",
+            desc: "Demos and cockpit video.",
+            url: "https://www.youtube.com/results?search_query=Blue+Angels+cockpit"
+          },
+          {
+            name: "EAA AirVenture Oshkosh",
+            desc: "Oshkosh arrivals and tours.",
+            url: "https://www.youtube.com/results?search_query=Oshkosh+AirVenture+arrival"
+          },
+          {
+            name: "Fly-in arrivals",
+            desc: "Flying into a big fly-in, from the cockpit.",
+            url: "https://www.youtube.com/results?search_query=fly-in+arrival+cockpit+Oshkosh+Fisk"
+          },
+          {
+            name: "Planes of Fame Air Show",
+            desc: "Warbirds over Chino.",
+            url: "https://www.youtube.com/results?search_query=Planes+of+Fame+Air+Show+Chino"
+          },
+          {
+            name: "SUN 'n FUN",
+            desc: "Highlights from Lakeland.",
+            url: "https://www.youtube.com/results?search_query=Sun+n+Fun+fly-in"
+          },
+          {
+            name: "San Diego Air & Space Museum",
+            desc: "Tours and talks.",
+            url: "https://www.youtube.com/results?search_query=San+Diego+Air+and+Space+Museum+tour"
+          },
+          {
+            name: "Gillespie Field warbirds",
+            desc: "CAF and vintage aircraft at KSEE.",
+            url: "https://www.youtube.com/results?search_query=Gillespie+Field+warbirds"
+          },
+          {
+            name: "Steveo1kinevo",
+            desc: "Real pilot vlogs from big fly-ins.",
+            url: "https://www.youtube.com/results?search_query=Steveo1kinevo"
+          },
+          {
+            name: "Airshow photography tips",
+            desc: "Get great shots at the show.",
+            url: "https://www.youtube.com/results?search_query=airshow+photography+tips"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Google News: SD air shows",
+            url: "https://news.google.com/search?q=San%20Diego%20air%20show%20OR%20fly-in%20OR%20aviation%20event"
+          },
+          {
+            name: "General Aviation News: events",
+            url: "https://generalaviationnews.com/"
+          },
+          {
+            name: "EAA news",
+            url: "https://www.eaa.org/eaa/news-and-publications"
+          }
+        ]
       }
     ]
   },
@@ -3478,6 +3653,762 @@ const HOBBIES = [
           {
             name: "Google News: binaural beats",
             url: "https://news.google.com/search?q=%22binaural%20beats%22"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "money",
+    name: "Money Saver",
+    icon: "💰",
+    accent: "#3ddc84",
+    tagline: "Tips and tricks to save on groceries, gas, travel and bills",
+    subs: [
+      {
+        id: "save-groceries",
+        name: "Groceries",
+        icon: "🛒",
+        labels: {
+          podcasts: "Tips",
+          icon: "💡",
+          heading: "money-saving tips"
+        },
+        podcasts: [
+          {
+            name: "Flipp",
+            desc: "All weekly grocery ads in one app, plus price matching.",
+            url: "https://flipp.com/"
+          },
+          {
+            name: "Store apps: digital coupons",
+            desc: "Vons, Ralphs, Albertsons, Fry's: clip coupons before you shop.",
+            url: "https://www.google.com/search?q=Vons+for+U+digital+coupons+Ralphs+digital+coupons"
+          },
+          {
+            name: "Costco",
+            desc: "Bulk staples, cheap gas, rotisserie chicken. Check the Executive rebate.",
+            url: "https://www.costco.com/"
+          },
+          {
+            name: "Aldi",
+            desc: "Low prices on everyday groceries.",
+            url: "https://www.aldi.us/"
+          },
+          {
+            name: "Grocery Outlet",
+            desc: "Bargain brand-name groceries.",
+            url: "https://groceryoutlet.com/"
+          },
+          {
+            name: "Ibotta",
+            desc: "Cash back on groceries you already buy.",
+            url: "https://home.ibotta.com/"
+          },
+          {
+            name: "Fetch",
+            desc: "Scan any receipt for points.",
+            url: "https://fetch.com/"
+          },
+          {
+            name: "Too Good To Go",
+            desc: "Surprise bags of unsold food at big discounts.",
+            url: "https://www.toogoodtogo.com/"
+          },
+          {
+            name: "Meal planning",
+            desc: "Plan around sales to cut waste.",
+            url: "https://www.google.com/search?q=meal+plan+around+grocery+sales+tips"
+          },
+          {
+            name: "Unit price trick",
+            desc: "Compare price per ounce, not per package.",
+            url: "https://www.google.com/search?q=how+to+compare+unit+prices+grocery"
+          }
+        ],
+        youtube: [
+          {
+            name: "Grocery haul on a budget",
+            desc: "Real budget hauls and tips.",
+            url: "https://www.youtube.com/results?search_query=budget+grocery+haul+tips"
+          },
+          {
+            name: "Aldi vs Costco",
+            desc: "Where to buy what.",
+            url: "https://www.youtube.com/results?search_query=Aldi+vs+Costco+prices"
+          },
+          {
+            name: "Cheap healthy meals",
+            desc: "Eat well for less.",
+            url: "https://www.youtube.com/results?search_query=cheap+healthy+meal+prep"
+          },
+          {
+            name: "Budget Bytes",
+            desc: "Recipes with cost per serving.",
+            url: "https://www.youtube.com/results?search_query=Budget+Bytes"
+          },
+          {
+            name: "Clark Howard grocery tips",
+            desc: "Consumer champion's tips.",
+            url: "https://www.youtube.com/results?search_query=Clark+Howard+grocery+saving"
+          },
+          {
+            name: "Costco best buys",
+            desc: "What's worth it at Costco.",
+            url: "https://www.youtube.com/results?search_query=Costco+best+buys"
+          },
+          {
+            name: "Meal prep for the week",
+            desc: "Save time and money.",
+            url: "https://www.youtube.com/results?search_query=meal+prep+for+the+week+budget"
+          },
+          {
+            name: "Stop food waste",
+            desc: "Store food so it lasts.",
+            url: "https://www.youtube.com/results?search_query=how+to+reduce+food+waste+at+home"
+          },
+          {
+            name: "Couponing basics",
+            desc: "Coupons without the craziness.",
+            url: "https://www.youtube.com/results?search_query=couponing+for+beginners"
+          },
+          {
+            name: "Frugal cooking",
+            desc: "Simple, cheap staples.",
+            url: "https://www.youtube.com/results?search_query=frugal+cooking"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Google News: grocery prices",
+            url: "https://news.google.com/search?q=grocery%20prices"
+          },
+          {
+            name: "Clark.com",
+            url: "https://clark.com/"
+          }
+        ]
+      },
+      {
+        id: "save-gas",
+        name: "Gas & Car",
+        icon: "⛽",
+        labels: {
+          podcasts: "Tips",
+          icon: "💡",
+          heading: "money-saving tips"
+        },
+        podcasts: [
+          {
+            name: "GasBuddy",
+            desc: "Cheapest gas near you, live prices.",
+            url: "https://www.gasbuddy.com/"
+          },
+          {
+            name: "Costco gas",
+            desc: "Usually among the cheapest in SD and Tempe.",
+            url: "https://www.google.com/search?q=Costco+gas+prices+near+me"
+          },
+          {
+            name: "Upside",
+            desc: "Cash back at gas stations.",
+            url: "https://www.upside.com/"
+          },
+          {
+            name: "Shell Fuel Rewards",
+            desc: "Free program for cents off per gallon.",
+            url: "https://www.fuelrewards.com/"
+          },
+          {
+            name: "Insurance check-up",
+            desc: "Compare quotes every year; raise your deductible.",
+            url: "https://www.google.com/search?q=how+to+lower+car+insurance+tips+compare+quotes"
+          },
+          {
+            name: "Tire pressure",
+            desc: "Correct pressure saves gas and tires.",
+            url: "https://www.google.com/search?q=tire+pressure+fuel+economy"
+          },
+          {
+            name: "DIY oil and filters",
+            desc: "Easy jobs you can do yourself.",
+            url: "https://www.youtube.com/results?search_query=ChrisFix+oil+change"
+          },
+          {
+            name: "RockAuto parts",
+            desc: "Cheap car parts shipped to you.",
+            url: "https://www.rockauto.com/"
+          },
+          {
+            name: "Smog check coupons (SD)",
+            desc: "Find smog check deals in San Diego.",
+            url: "https://www.google.com/search?q=smog+check+coupon+San+Diego"
+          },
+          {
+            name: "Fuel-saving driving",
+            desc: "Smooth driving can save 10-20%.",
+            url: "https://www.google.com/search?q=driving+habits+to+save+gas"
+          }
+        ],
+        youtube: [
+          {
+            name: "ChrisFix",
+            desc: "DIY car repair made easy.",
+            url: "https://www.youtube.com/results?search_query=ChrisFix"
+          },
+          {
+            name: "Scotty Kilmer",
+            desc: "Car advice from a veteran mechanic.",
+            url: "https://www.youtube.com/results?search_query=Scotty+Kilmer"
+          },
+          {
+            name: "Engineering Explained",
+            desc: "How to get better mileage, explained.",
+            url: "https://www.youtube.com/results?search_query=Engineering+Explained"
+          },
+          {
+            name: "Save gas tips",
+            desc: "What actually works.",
+            url: "https://www.youtube.com/results?search_query=how+to+save+gas+tips+that+work"
+          },
+          {
+            name: "Car insurance tips",
+            desc: "Pay less for the same coverage.",
+            url: "https://www.youtube.com/results?search_query=how+to+lower+car+insurance"
+          },
+          {
+            name: "Buying a used car",
+            desc: "Avoid overpaying.",
+            url: "https://www.youtube.com/results?search_query=how+to+buy+a+used+car+tips"
+          },
+          {
+            name: "Negotiating a car",
+            desc: "Scripts from car buyers.",
+            url: "https://www.youtube.com/results?search_query=how+to+negotiate+car+price"
+          },
+          {
+            name: "Brake pads DIY",
+            desc: "Save on brake jobs.",
+            url: "https://www.youtube.com/results?search_query=how+to+replace+brake+pads"
+          },
+          {
+            name: "Cabin air filter DIY",
+            desc: "A 5-minute job.",
+            url: "https://www.youtube.com/results?search_query=cabin+air+filter+replace"
+          },
+          {
+            name: "Car maintenance schedule",
+            desc: "What to do and when.",
+            url: "https://www.youtube.com/results?search_query=car+maintenance+schedule"
+          }
+        ],
+        newsSources: [
+          {
+            name: "GasBuddy news",
+            url: "https://www.gasbuddy.com/"
+          },
+          {
+            name: "Google News: gas prices CA",
+            url: "https://news.google.com/search?q=gas%20prices%20California%20OR%20Arizona"
+          }
+        ]
+      },
+      {
+        id: "save-travel",
+        name: "Travel Deals",
+        icon: "✈️",
+        labels: {
+          podcasts: "Tips",
+          icon: "💡",
+          heading: "money-saving tips"
+        },
+        podcasts: [
+          {
+            name: "Google Flights",
+            desc: "Price graph and tracking for the cheapest days.",
+            url: "https://www.google.com/travel/flights"
+          },
+          {
+            name: "Going",
+            desc: "Flight deal alerts from your airport.",
+            url: "https://www.going.com/"
+          },
+          {
+            name: "Southwest low-fare calendar",
+            desc: "Cheapest days at a glance; free changes.",
+            url: "https://www.southwest.com/"
+          },
+          {
+            name: "Kayak",
+            desc: "Compare flights, hotels and rental cars.",
+            url: "https://www.kayak.com/"
+          },
+          {
+            name: "Costco Travel",
+            desc: "Packages and rental cars with member pricing.",
+            url: "https://www.costcotravel.com/"
+          },
+          {
+            name: "The Points Guy",
+            desc: "Get more from points and miles.",
+            url: "https://thepointsguy.com/"
+          },
+          {
+            name: "Hotel price drops",
+            desc: "Book refundable, then rebook if the price falls.",
+            url: "https://www.google.com/search?q=rebook+hotel+price+drop+tip"
+          },
+          {
+            name: "Rental car tricks",
+            desc: "Track prices and use off-airport pickup.",
+            url: "https://www.google.com/search?q=rental+car+price+tracking+AutoSlash"
+          },
+          {
+            name: "Shoulder season",
+            desc: "Travel just before or after peak for big savings.",
+            url: "https://www.google.com/search?q=shoulder+season+travel+savings"
+          },
+          {
+            name: "Credit card perks",
+            desc: "Free bags, lounges and travel insurance.",
+            url: "https://www.google.com/search?q=best+travel+credit+card+perks"
+          }
+        ],
+        youtube: [
+          {
+            name: "Kara and Nate",
+            desc: "Budget travel around the world.",
+            url: "https://www.youtube.com/results?search_query=Kara+and+Nate"
+          },
+          {
+            name: "The Points Guy",
+            desc: "Points and miles strategy.",
+            url: "https://www.youtube.com/results?search_query=The+Points+Guy"
+          },
+          {
+            name: "Google Flights tricks",
+            desc: "Find cheaper flights.",
+            url: "https://www.youtube.com/results?search_query=Google+Flights+tricks+cheap+flights"
+          },
+          {
+            name: "Packing light",
+            desc: "Skip bag fees.",
+            url: "https://www.youtube.com/results?search_query=packing+light+carry+on+only"
+          },
+          {
+            name: "Cheap road trips",
+            desc: "Save on long drives.",
+            url: "https://www.youtube.com/results?search_query=road+trip+on+a+budget+tips"
+          },
+          {
+            name: "Hotel hacks",
+            desc: "Pay less for rooms.",
+            url: "https://www.youtube.com/results?search_query=hotel+booking+hacks"
+          },
+          {
+            name: "Travel credit cards",
+            desc: "Pick the right card.",
+            url: "https://www.youtube.com/results?search_query=best+travel+credit+card+beginner"
+          },
+          {
+            name: "Rental car hacks",
+            desc: "Avoid surprise fees.",
+            url: "https://www.youtube.com/results?search_query=rental+car+tips+save+money"
+          },
+          {
+            name: "Europe on a budget",
+            desc: "Trains, hostels and food.",
+            url: "https://www.youtube.com/results?search_query=Europe+on+a+budget+tips"
+          },
+          {
+            name: "Camping on a budget",
+            desc: "Cheap campsites and gear.",
+            url: "https://www.youtube.com/results?search_query=camping+on+a+budget"
+          }
+        ],
+        newsSources: [
+          {
+            name: "The Points Guy",
+            url: "https://thepointsguy.com/"
+          },
+          {
+            name: "Google News: travel deals",
+            url: "https://news.google.com/search?q=travel%20deals%20OR%20cheap%20flights"
+          }
+        ]
+      },
+      {
+        id: "save-bills",
+        name: "Bills & Subscriptions",
+        icon: "📱",
+        labels: {
+          podcasts: "Tips",
+          icon: "💡",
+          heading: "money-saving tips"
+        },
+        podcasts: [
+          {
+            name: "Rocket Money",
+            desc: "Find and cancel forgotten subscriptions.",
+            url: "https://www.rocketmoney.com/"
+          },
+          {
+            name: "Mint Mobile",
+            desc: "Cheap phone plans on T-Mobile's network.",
+            url: "https://www.mintmobile.com/"
+          },
+          {
+            name: "Visible",
+            desc: "Low-cost unlimited plan on Verizon's network.",
+            url: "https://www.visible.com/"
+          },
+          {
+            name: "Rotate streaming",
+            desc: "Keep one service at a time; switch monthly.",
+            url: "https://www.google.com/search?q=rotate+streaming+subscriptions+save+money"
+          },
+          {
+            name: "Libby: free audiobooks",
+            desc: "Free audiobooks for the car with your library card.",
+            url: "https://libbyapp.com/"
+          },
+          {
+            name: "SDG&E rate plans",
+            desc: "Pick the right time-of-use plan in San Diego.",
+            url: "https://www.sdge.com/"
+          },
+          {
+            name: "SRP price plans (Tempe)",
+            desc: "Compare Arizona electric plans.",
+            url: "https://www.srpnet.com/"
+          },
+          {
+            name: "Negotiate internet",
+            desc: "Call and ask for the retention deal.",
+            url: "https://www.google.com/search?q=how+to+negotiate+internet+bill+script"
+          },
+          {
+            name: "Insurance bundle check",
+            desc: "Bundle home and auto; review yearly.",
+            url: "https://www.google.com/search?q=bundle+home+auto+insurance+savings"
+          },
+          {
+            name: "Cancel gym or apps",
+            desc: "Cancel the ones you don't use.",
+            url: "https://www.google.com/search?q=how+to+cancel+subscriptions+iPhone"
+          }
+        ],
+        youtube: [
+          {
+            name: "Cancel subscriptions iPhone",
+            desc: "Find every subscription in Settings.",
+            url: "https://www.youtube.com/results?search_query=how+to+cancel+subscriptions+iPhone+settings"
+          },
+          {
+            name: "Lower your bills",
+            desc: "A checklist that works.",
+            url: "https://www.youtube.com/results?search_query=how+to+lower+monthly+bills"
+          },
+          {
+            name: "Cheap phone plans",
+            desc: "MVNO plans explained.",
+            url: "https://www.youtube.com/results?search_query=best+cheap+phone+plans"
+          },
+          {
+            name: "Negotiate bills",
+            desc: "Phone scripts that work.",
+            url: "https://www.youtube.com/results?search_query=how+to+negotiate+bills"
+          },
+          {
+            name: "Save on electricity",
+            desc: "Simple home energy tips.",
+            url: "https://www.youtube.com/results?search_query=save+money+on+electricity+bill"
+          },
+          {
+            name: "Cut the cord",
+            desc: "Streaming instead of cable.",
+            url: "https://www.youtube.com/results?search_query=cut+the+cord+save+money+streaming"
+          },
+          {
+            name: "Libby app",
+            desc: "Free library audiobooks.",
+            url: "https://www.youtube.com/results?search_query=Libby+app+how+to+use"
+          },
+          {
+            name: "Smart thermostat savings",
+            desc: "Do they pay off?",
+            url: "https://www.youtube.com/results?search_query=smart+thermostat+savings"
+          },
+          {
+            name: "Solar in San Diego",
+            desc: "Is it worth it under NEM 3?",
+            url: "https://www.youtube.com/results?search_query=solar+San+Diego+NEM+3+worth+it"
+          },
+          {
+            name: "Insurance savings",
+            desc: "Lower premiums without less coverage.",
+            url: "https://www.youtube.com/results?search_query=lower+home+insurance+premium+tips"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Google News: utility rates SD",
+            url: "https://news.google.com/search?q=SDG%26E%20rates"
+          },
+          {
+            name: "Google News: subscription prices",
+            url: "https://news.google.com/search?q=subscription%20price%20increase%20streaming"
+          }
+        ]
+      },
+      {
+        id: "save-shopping",
+        name: "Shopping & Cash Back",
+        icon: "🏷️",
+        labels: {
+          podcasts: "Tips",
+          icon: "💡",
+          heading: "money-saving tips"
+        },
+        podcasts: [
+          {
+            name: "Slickdeals",
+            desc: "Community-voted best deals.",
+            url: "https://slickdeals.net/"
+          },
+          {
+            name: "CamelCamelCamel",
+            desc: "Amazon price history and drop alerts.",
+            url: "https://camelcamelcamel.com/"
+          },
+          {
+            name: "Rakuten",
+            desc: "Cash back at hundreds of stores.",
+            url: "https://www.rakuten.com/"
+          },
+          {
+            name: "Honey",
+            desc: "Auto-applies coupon codes at checkout.",
+            url: "https://www.joinhoney.com/"
+          },
+          {
+            name: "Amazon Resale",
+            desc: "Open-box and used items, discounted.",
+            url: "https://www.google.com/search?q=Amazon+Resale+warehouse+deals"
+          },
+          {
+            name: "Facebook Marketplace",
+            desc: "Used gear, tools and electronics locally.",
+            url: "https://www.facebook.com/marketplace/"
+          },
+          {
+            name: "Buy Nothing groups",
+            desc: "Free stuff from neighbors.",
+            url: "https://www.google.com/search?q=Buy+Nothing+group+near+me"
+          },
+          {
+            name: "Refurbished electronics",
+            desc: "Apple and Dell refurbished with warranty.",
+            url: "https://www.google.com/search?q=Apple+certified+refurbished"
+          },
+          {
+            name: "30-day rule",
+            desc: "Wait 30 days before a big non-essential buy.",
+            url: "https://www.google.com/search?q=30+day+rule+impulse+buying"
+          },
+          {
+            name: "Price adjustment policies",
+            desc: "Get refunded when prices drop.",
+            url: "https://www.google.com/search?q=store+price+adjustment+policy+list"
+          }
+        ],
+        youtube: [
+          {
+            name: "Slickdeals tips",
+            desc: "How deal hunters shop.",
+            url: "https://www.youtube.com/results?search_query=how+to+find+deals+online+Slickdeals"
+          },
+          {
+            name: "Amazon price tricks",
+            desc: "Never overpay on Amazon.",
+            url: "https://www.youtube.com/results?search_query=Amazon+price+tracking+tips"
+          },
+          {
+            name: "Costco hacks",
+            desc: "Price codes and markdowns.",
+            url: "https://www.youtube.com/results?search_query=Costco+price+codes+hack"
+          },
+          {
+            name: "Thrift flipping",
+            desc: "Find value at thrift stores.",
+            url: "https://www.youtube.com/results?search_query=thrift+store+finds+tips"
+          },
+          {
+            name: "Cash back stacking",
+            desc: "Card plus portal plus coupon.",
+            url: "https://www.youtube.com/results?search_query=cash+back+stacking"
+          },
+          {
+            name: "Minimalism and money",
+            desc: "Buy less, save more.",
+            url: "https://www.youtube.com/results?search_query=minimalism+save+money"
+          },
+          {
+            name: "Black Friday tips",
+            desc: "Real deals vs hype.",
+            url: "https://www.youtube.com/results?search_query=Black+Friday+tips+real+deals"
+          },
+          {
+            name: "Refurbished vs new",
+            desc: "Is refurbished worth it?",
+            url: "https://www.youtube.com/results?search_query=refurbished+vs+new+electronics"
+          },
+          {
+            name: "Garage sale tips",
+            desc: "Score cheap tools and gear.",
+            url: "https://www.youtube.com/results?search_query=garage+sale+tips"
+          },
+          {
+            name: "No-spend challenge",
+            desc: "Reset your habits.",
+            url: "https://www.youtube.com/results?search_query=no+spend+challenge"
+          }
+        ],
+        newsSources: [
+          {
+            name: "Slickdeals front page",
+            url: "https://slickdeals.net/"
+          },
+          {
+            name: "Google News: deals",
+            url: "https://news.google.com/search?q=best%20deals%20this%20week"
+          }
+        ]
+      },
+      {
+        id: "save-budget",
+        name: "Budget & Invest",
+        icon: "📈",
+        podcasts: [
+          {
+            name: "The Money Guy Show",
+            desc: "Financial order of operations and wealth building.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Money%20Guy%20Show"
+          },
+          {
+            name: "ChooseFI",
+            desc: "Financial independence through saving and investing.",
+            url: "https://podcasts.apple.com/us/search?term=ChooseFI"
+          },
+          {
+            name: "The Clark Howard Podcast",
+            desc: "Consumer tips to save more and spend less.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Clark%20Howard%20Podcast"
+          },
+          {
+            name: "Afford Anything",
+            desc: "Paula Pant on choices, money and FIRE.",
+            url: "https://podcasts.apple.com/us/search?term=Afford%20Anything"
+          },
+          {
+            name: "BiggerPockets Money",
+            desc: "Real people, real money stories.",
+            url: "https://podcasts.apple.com/us/search?term=BiggerPockets%20Money"
+          },
+          {
+            name: "How to Money",
+            desc: "Friendly, practical personal finance.",
+            url: "https://podcasts.apple.com/us/search?term=How%20to%20Money"
+          },
+          {
+            name: "Stacking Benjamins",
+            desc: "Money talk that's actually fun.",
+            url: "https://podcasts.apple.com/us/search?term=Stacking%20Benjamins"
+          },
+          {
+            name: "The Ramsey Show",
+            desc: "Debt-free living, call-in style.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Ramsey%20Show"
+          },
+          {
+            name: "Frugal Friends",
+            desc: "Practical frugality without deprivation.",
+            url: "https://podcasts.apple.com/us/search?term=Frugal%20Friends"
+          },
+          {
+            name: "Planet Money",
+            desc: "NPR on how money works.",
+            url: "https://podcasts.apple.com/us/search?term=Planet%20Money"
+          }
+        ],
+        youtube: [
+          {
+            name: "The Money Guy Show",
+            desc: "Step-by-step money roadmap.",
+            url: "https://www.youtube.com/results?search_query=The+Money+Guy+Show"
+          },
+          {
+            name: "Graham Stephan",
+            desc: "Saving, investing and real estate.",
+            url: "https://www.youtube.com/results?search_query=Graham+Stephan"
+          },
+          {
+            name: "Humphrey Yang",
+            desc: "Short, clear money explainers.",
+            url: "https://www.youtube.com/results?search_query=Humphrey+Yang"
+          },
+          {
+            name: "Two Cents",
+            desc: "PBS personal finance.",
+            url: "https://www.youtube.com/results?search_query=Two+Cents"
+          },
+          {
+            name: "Ben Felix",
+            desc: "Evidence-based investing.",
+            url: "https://www.youtube.com/results?search_query=Ben+Felix"
+          },
+          {
+            name: "Andrei Jikh",
+            desc: "Investing and saving made visual.",
+            url: "https://www.youtube.com/results?search_query=Andrei+Jikh"
+          },
+          {
+            name: "Clark Howard",
+            desc: "Consumer advice, every day.",
+            url: "https://www.youtube.com/results?search_query=Clark+Howard"
+          },
+          {
+            name: "Our Rich Journey",
+            desc: "Early retirement on a plan.",
+            url: "https://www.youtube.com/results?search_query=Our+Rich+Journey"
+          },
+          {
+            name: "Dave Ramsey",
+            desc: "Debt payoff and budgeting.",
+            url: "https://www.youtube.com/results?search_query=The+Ramsey+Show+highlights"
+          },
+          {
+            name: "Budgeting for beginners",
+            desc: "Start a budget in 10 minutes.",
+            url: "https://www.youtube.com/results?search_query=how+to+budget+for+beginners"
+          }
+        ],
+        newsSources: [
+          {
+            name: "NerdWallet",
+            url: "https://www.nerdwallet.com/"
+          },
+          {
+            name: "Kiplinger",
+            url: "https://www.kiplinger.com/"
+          },
+          {
+            name: "Clark.com",
+            url: "https://clark.com/"
+          },
+          {
+            name: "Google News: personal finance",
+            url: "https://news.google.com/search?q=personal%20finance%20tips"
           }
         ]
       }
