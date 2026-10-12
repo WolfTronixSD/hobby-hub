@@ -435,14 +435,27 @@
   render();
   homeWeather();
 
-  fetch("news.json", { cache: "no-cache" })
-    .then((r) => (r.ok ? r.json() : {}))
-    .catch(() => ({}))
-    .then((data) => {
-      news = data || {};
-      if (news.updated) $("#updated").textContent = "Headlines updated " + new Date(news.updated).toLocaleString();
-      if (tab === "news") render();
-    });
+  // Headlines: load now, then re-check every 15 minutes while the page is open
+  // and whenever the app comes back to the foreground.
+  let newsLoadedAt = 0;
+  function loadNews() {
+    newsLoadedAt = Date.now();
+    return fetch("news.json", { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null)
+      .then((data) => {
+        if (!data && news) return; // keep what we have when offline
+        const changed = !news || !data || data.updated !== news.updated;
+        news = data || {};
+        if (news.updated) $("#updated").textContent = "Headlines updated " + new Date(news.updated).toLocaleString();
+        if (changed && tab === "news") render();
+      });
+  }
+  loadNews();
+  setInterval(() => { if (!document.hidden) loadNews(); }, 15 * 60e3);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && Date.now() - newsLoadedAt > 5 * 60e3) loadNews();
+  });
 
   // Offline support: cache the app so it opens with a weak signal in the car
   if ("serviceWorker" in navigator && location.protocol === "https:") {

@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.9.1 (2026-10-12): More reliable news updates
+- news.yml cron changed from every 3 hours to hourly; only 1 of about 4 expected scheduled runs had fired
+- app.js re-fetches news.json every 15 minutes while visible and on returning to the page
+
 ## 2.9.0 (2026-10-12): Sports
 - sports hobby (defaultTab: news) with subs sp-usa, sp-eu, sp-de
 

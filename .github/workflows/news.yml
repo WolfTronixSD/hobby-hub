@@ -2,7 +2,9 @@ name: Update news
 
 on:
   schedule:
-    - cron: "17 */3 * * *"
+    # GitHub runs scheduled jobs on a best-effort basis and often skips them,
+    # so ask every hour; nothing is committed when the headlines haven't changed.
+    - cron: "23 * * * *"
   workflow_dispatch:
   push:
     branches: [main]

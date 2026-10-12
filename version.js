@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.9.0";
+const APP_VERSION = "2.9.1";
 const CHANGELOG = [
+  {
+    version: "2.9.1",
+    date: "2026-10-12",
+    title: "More reliable news updates",
+    changes: [
+      "Headlines are now fetched every hour instead of every 3 hours, because GitHub was skipping most scheduled updates",
+      "An open page checks for new headlines every 15 minutes and when you come back to it, no reload needed"
+    ]
+  },
   {
     version: "2.9.0",
     date: "2026-10-12",

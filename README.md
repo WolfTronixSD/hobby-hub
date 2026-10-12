@@ -6,7 +6,7 @@ A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube
 
 - Static site served by GitHub Pages (no backend).
 - `data.js` holds the podcast and YouTube lists. Add a hobby by adding another entry.
-- `scripts/fetch_news.py` pulls RSS feeds into `news.json`; the `Update news` workflow runs it every 3 hours.
+- `scripts/fetch_news.py` pulls RSS feeds into `news.json`; the `Update news` workflow runs it hourly (GitHub may skip some scheduled runs). Open pages re-check `news.json` every 15 minutes.
 - Tip: open the site on your phone and choose "Add to Home Screen" to use it like an app.
 - Live weather: Open-Meteo (no key) with approximate location from the IP address (geojs.io, then ipapi.co). A hobby sub with `weather: {name, lat, lon}` shows a live forecast panel.
 - Events: a sub can have `events: [{name, date, end, place, desc, url}]` (or `recur: "last-saturday"`); past ones hide automatically.
