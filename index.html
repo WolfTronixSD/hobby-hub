@@ -14,18 +14,18 @@
 <meta property="og:title" content="Wolfie&#39;s Hobby Hub">
 <meta property="og:description" content="Podcasts, YouTube and news for my hobbies, with big buttons for the road.">
 <meta property="og:url" content="https://wolftronixsd.github.io/hobby-hub/">
-<meta property="og:image" content="https://wolftronixsd.github.io/hobby-hub/og-image.png?v=2.9.2">
+<meta property="og:image" content="https://wolftronixsd.github.io/hobby-hub/og-image.png?v=2.10.0">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2.9.2">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2.10.0">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="styles.css?v=2.9.2">
+<link rel="stylesheet" href="styles.css?v=2.10.0">
 </head>
 <body>
   <div class="bg-glow" aria-hidden="true"></div>
@@ -86,6 +86,9 @@
     </div>
   </div>
 
+  <button class="mic-btn" id="micBtn" aria-label="Voice control: say a section">🎤</button>
+  <div class="voice-panel" id="voicePanel" role="status" aria-live="polite" hidden></div>
+
   <p class="offline" id="offline" hidden>📴 You're offline. Showing saved lists; links need a signal.</p>
 
   <main id="content" tabindex="-1"></main>
@@ -97,8 +100,8 @@
   </footer>
 
   <noscript><p class="notice">Wolfie's Hobby Hub needs JavaScript turned on.</p></noscript>
-  <script src="version.js?v=2.9.2"></script>
-  <script src="data.js?v=2.9.2"></script>
-  <script src="app.js?v=2.9.2"></script>
+  <script src="version.js?v=2.10.0"></script>
+  <script src="data.js?v=2.10.0"></script>
+  <script src="app.js?v=2.10.0"></script>
 </body>
 </html>

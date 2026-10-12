@@ -60,6 +60,9 @@
 
   const podcastCard = (p, i) => {
     const q = encodeURIComponent(p.name);
+    // A direct Apple show page lists the newest episodes first; a search lists old ones.
+    const applePage = /^https:\/\/podcasts\.apple\.com\/[a-z]{2}\/podcast\//.test(p.url);
+    const apple = applePage ? p.url : `https://podcasts.apple.com/us/search?term=${q}`;
     return `
     <div class="card podcast">
       <div class="rank">${i + 1}</div>
@@ -67,9 +70,9 @@
         <h3>${esc(p.name)}</h3>
         <p>${esc(p.desc)}</p>
         <div class="listen">
-          <a href="https://podcasts.apple.com/us/search?term=${q}" target="_blank" rel="noopener">🎵 Apple</a>
+          <a href="${esc(apple)}" target="_blank" rel="noopener">🎵 Apple</a>
           <a href="https://open.spotify.com/search/${q}/podcasts" target="_blank" rel="noopener">🟢 Spotify</a>
-          <a href="${esc(p.url)}" target="_blank" rel="noopener">🌐 Website</a>
+          ${applePage ? "" : `<a href="${esc(p.url)}" target="_blank" rel="noopener">🌐 Website</a>`}
         </div>
       </div>
     </div>`;
@@ -431,6 +434,131 @@
       if (!left && !document.hidden) location.href = web;
     }, 1800);
   });
+
+  // Voice control: tap the mic and say a section, e.g. "ham radio", "San Diego weather" or "comedy YouTube".
+  const ALIASES = {
+    ham: ["ham", "amateur radio"], esp32: ["esp 32", "esp32", "esp"], garden: ["garden", "gardening"],
+    computers: ["computer"], ai: ["artificial intelligence", "a i"], drones: ["drone", "drones"],
+    food: ["cooking", "recipes"], printing: ["3d", "3 d", "three d", "printing"], bambu: ["bambu", "bamboo"],
+    travel: ["travel", "trips", "trip"], sandiego: ["san diego"], tempe: ["tempe", "arizona"],
+    flying: ["flying", "aviation", "airport", "pilot"], fitness: ["fitness", "gym"],
+    comedy: ["comedy", "funny", "jokes"], meditation: ["meditation", "meditate", "relax"],
+    money: ["money", "save money", "saving", "savings", "wallet"], worldnews: ["world news", "nachrichten"],
+    sports: ["sport", "sports"],
+    "ham-events": ["hamfest", "hamfests", "convention", "conventions"], "fit-music": ["workout music", "music"],
+    "fit-24h": ["24 hour", "twenty four hour"], "fit-run": ["running", "run"], "fit-lift": ["lifting", "weights"],
+    "com-live": ["live comedy", "comedy shows"], "med-bowls": ["singing bowls", "bowls"], "med-binaural": ["binaural"],
+    "fly-atis": ["atis"], "fly-events": ["air show", "airshow", "air shows", "airshows", "flying events"], "sd-snorkel": ["snorkel", "snorkeling"],
+    "sd-beer": ["beer", "brewery"], "tp-beer": ["beer", "brewery"], "sd-mtb": ["mtb", "mountain bike"], "tp-mtb": ["mtb", "mountain bike"],
+    "wn-de": ["germany", "german"], "sp-de": ["bundesliga", "germany", "german"]
+  };
+  const TABS = { podcasts: ["podcast", "podcasts", "guides", "playlists"], youtube: ["youtube", "video", "videos"], news: ["news", "headlines"] };
+  const norm = (t) => " " + String(t).toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9äöüß]+/g, " ").trim() + " ";
+  const has = (text, phrase) => text.includes(norm(phrase));
+  const best = (text, items) => {
+    let top = null;
+    for (const it of items) for (const ph of it.phrases) {
+      if (has(text, ph) && (!top || ph.length > top.len)) top = { it, len: ph.length };
+    }
+    return top && top.it;
+  };
+  const phrasesOf = (x) => [x.name, ...(ALIASES[x.id] || [])];
+
+  function voiceCommand(said) {
+    const text = norm(said);
+    if (has(text, "dark mode") || has(text, "light mode")) {
+      root.dataset.theme = has(text, "dark mode") ? "dark" : "light";
+      store.set("theme", root.dataset.theme); syncThemeBtn();
+      return "Switched to " + root.dataset.theme + " mode";
+    }
+    const tabWord = Object.keys(TABS).find((k) => TABS[k].some((w) => has(text, w)));
+    const hob = best(text, HOBBIES.map((h) => ({ h, phrases: phrasesOf(h) })));
+    let parent = hob && hob.h;
+    let sub = null;
+    const subsOf = (h) => (h.subs || []).map((x) => ({ h, x, phrases: phrasesOf(x) }));
+    if (parent) {
+      sub = best(text, subsOf(parent));
+    } else {
+      // No section named: try the open section's categories, then every category.
+      const cur = HOBBIES.find((x) => x.id === hobbyId);
+      sub = best(text, subsOf(cur)) || best(text, HOBBIES.flatMap(subsOf));
+      if (sub) parent = sub.h;
+    }
+    // "news" alone means the News tab, not a category called News
+    if (sub && !hob && tabWord === "news" && norm(sub.x.name) === " news ") sub = null, parent = null;
+    if (!parent && !tabWord) return null;
+    if (parent) {
+      if (parent.id !== hobbyId && parent.defaultTab) tab = parent.defaultTab;
+      else if (parent.id !== hobbyId || tab === "history") tab = "podcasts";
+      hobbyId = parent.id;
+      if (sub) subId = sub.x.id;
+      else if (parent.subs && !parent.subs.some((x) => x.id === subId)) subId = parent.subs[0].id;
+    }
+    if (tabWord) tab = tabWord;
+    render();
+    $("#content").scrollIntoView({ behavior: "smooth", block: "start" });
+    const p = HOBBIES.find((x) => x.id === hobbyId);
+    const sx = p.subs && p.subs.find((x) => x.id === subId);
+    const tabName = tabWord || tab !== "podcasts" ? { podcasts: (sx || p).labels ? (sx || p).labels.podcasts : "podcasts", youtube: "YouTube", news: "news" }[tab] : "";
+    const parts = [p.name, sx && sx.name, tabName].filter(Boolean);
+    return parts.filter((x, i) => !parts.slice(0, i).some((y) => y.toLowerCase() === x.toLowerCase())).join(", ");
+  }
+
+  const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const micBtn = $("#micBtn");
+  const voicePanel = $("#voicePanel");
+  let rec = null, hideTimer = 0;
+  const showVoice = (html, ms) => {
+    clearTimeout(hideTimer);
+    voicePanel.innerHTML = html;
+    voicePanel.hidden = false;
+    if (ms) hideTimer = setTimeout(() => { voicePanel.hidden = true; }, ms);
+  };
+  const say = (t) => {
+    try { if ("speechSynthesis" in window) { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(t); u.lang = "en-US"; speechSynthesis.speak(u); } } catch {}
+  };
+  const HINT = `<small>Try “Ham Radio”, “San Diego weather”, “Comedy YouTube”, “World News Germany” or “dark mode”.</small>`;
+  micBtn.addEventListener("click", () => {
+    if (rec) { rec.abort(); return; }
+    if (!Rec) {
+      showVoice(`<b>Voice control isn't available in this browser.</b><small>It works in Safari on iPhone and in Chrome. Firefox doesn't support it yet.</small>`, 7000);
+      return;
+    }
+    rec = new Rec();
+    rec.lang = "en-US";
+    rec.interimResults = true;
+    rec.maxAlternatives = 3;
+    let heard = false;
+    micBtn.classList.add("on");
+    showVoice(`<b>Listening…</b>${HINT}`);
+    rec.onresult = (e) => {
+      const r = e.results[e.results.length - 1];
+      if (!r.isFinal) { showVoice(`<b>“${esc(r[0].transcript)}”</b>${HINT}`); return; }
+      heard = true;
+      let done = null, said = r[0].transcript;
+      for (let i = 0; i < r.length && !done; i++) { done = voiceCommand(r[i].transcript); if (done) said = r[i].transcript; }
+      if (done) { showVoice(`<b>✅ ${esc(done)}</b><small>Heard “${esc(said)}”</small>`, 3500); say(done); }
+      else { showVoice(`<b>Sorry, I didn't catch a section in “${esc(said)}”.</b>${HINT}`, 6000); say("Sorry, try again"); }
+    };
+    rec.onerror = (e) => {
+      heard = true;
+      const msg = {
+        "not-allowed": "Microphone access is blocked. Allow the microphone for this site in Settings, or open the page in Safari.",
+        "service-not-allowed": "Speech recognition is off. On iPhone, turn on Siri or Dictation in Settings, or open the page in Safari instead of the home-screen app.",
+        "no-speech": "I didn't hear anything. Tap the mic and try again.",
+        "network": "Voice control needs an internet connection."
+      }[e.error];
+      if (e.error === "aborted") voicePanel.hidden = true;
+      else showVoice(`<b>${esc(msg || "Voice control stopped (" + e.error + ").")}</b>`, 7000);
+    };
+    rec.onend = () => {
+      micBtn.classList.remove("on");
+      rec = null;
+      if (!heard) showVoice(`<b>I didn't hear anything. Tap the mic and try again.</b>`, 4000);
+    };
+    try { rec.start(); } catch { micBtn.classList.remove("on"); rec = null; }
+  });
+  voicePanel.addEventListener("click", () => { voicePanel.hidden = true; });
 
   render();
   homeWeather();

@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.9.2";
+const APP_VERSION = "2.10.0";
 const CHANGELOG = [
+  {
+    version: "2.10.0",
+    date: "2026-10-12",
+    title: "Voice control",
+    changes: [
+      "New big 🎤 button: tap it and say a section, like “Ham Radio”, “San Diego weather”, “Comedy YouTube” or “World News Germany”",
+      "It reads back where it went, so you can keep your eyes on the road",
+      "The 🎵 Apple button on San Diego and Tempe podcasts now opens the show itself, newest episodes first"
+    ]
+  },
   {
     version: "2.9.2",
     date: "2026-10-12",

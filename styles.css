@@ -267,6 +267,26 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
 .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 32px; color: var(--muted); font-size: 14px; }
 .foot a { color: var(--muted); }
 
+/* Voice control */
+.mic-btn {
+  position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 40; width: 84px; height: 84px; border-radius: 50%; font-size: 38px;
+  border: 3px solid color-mix(in srgb, var(--accent) 70%, transparent);
+  background: color-mix(in srgb, var(--accent) 30%, var(--bg));
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+}
+.mic-btn.on { background: #e5484d; border-color: #ff8f92; animation: micPulse 1.2s ease-in-out infinite; }
+@keyframes micPulse { 50% { box-shadow: 0 0 0 16px rgb(229 72 77 / 0.25), 0 10px 30px rgb(0 0 0 / 0.35); } }
+.voice-panel {
+  position: fixed; left: 16px; right: 116px; bottom: max(18px, env(safe-area-inset-bottom)); z-index: 40;
+  max-width: 560px; padding: 14px 18px; border-radius: var(--radius); border: 2px solid var(--accent);
+  background: linear-gradient(var(--panel), var(--panel)), var(--bg); color: var(--text); box-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+}
+.voice-panel[hidden] { display: none; }
+.voice-panel b { display: block; font-size: 20px; }
+.voice-panel small { display: block; margin-top: 4px; color: var(--muted); font-size: 15px; }
+.foot { padding-bottom: 110px; }
+
 @media (max-width: 1000px) { .hobbies { grid-template-columns: repeat(4, 1fr); } }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .notice, .offline { margin: 8px auto; padding: 12px 16px; border-radius: 16px; border: 1px solid color-mix(in srgb, #ffb020 50%, transparent); background: color-mix(in srgb, #ffb020 14%, transparent); font-size: 16px; }
@@ -308,4 +328,4 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .share-opt { font-size: 17px; gap: 6px; }
   .sub { font-size: 16px; flex-direction: column; gap: 2px; }
 }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .mic-btn.on { animation: none; } }

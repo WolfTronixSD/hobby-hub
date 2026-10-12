@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.10.0 (2026-10-12): Voice control
+- Floating #micBtn uses the Web Speech API (SpeechRecognition / webkitSpeechRecognition, en-US) to match hobby and category names plus ALIASES and tab words; speaks the result with speechSynthesis; explains unsupported browsers and permission errors in #voicePanel
+- podcastCard: the Apple button uses p.url when it is a podcasts.apple.com show page (2.9.2 had only changed the Website link)
+
 ## 2.9.2 (2026-10-12): Direct podcast show links for San Diego and Tempe
 - Apple Podcasts search URLs in sandiego/tempe subs (news, MTB, hiking) replaced with /podcast/<slug>/id<N> show pages; search results listed old episodes first
 - Renamed San Diego News Matters to San Diego News Now; KJZZ search -> KJZZ's Sun Up; Arizona Republic search -> The Gaggle; Loam Wolf (no podcast feed) -> GMBN Presents

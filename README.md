@@ -10,6 +10,7 @@ A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube
 - Tip: open the site on your phone and choose "Add to Home Screen" to use it like an app.
 - Live weather: Open-Meteo (no key) with approximate location from the IP address (geojs.io, then ipapi.co). A hobby sub with `weather: {name, lat, lon}` shows a live forecast panel.
 - Events: a sub can have `events: [{name, date, end, place, desc, url}]` (or `recur: "last-saturday"`); past ones hide automatically.
+- Voice control: the 🎤 button (Web Speech API) opens a section by name; add extra spoken words to `ALIASES` in `app.js`.
 - Works offline (`sw.js`). Run `node scripts/check_site.mjs` before pushing; CI runs it too.
 - Release: bump `APP_VERSION` + CHANGELOG in `version.js`, `CHANGELOG.md`, the `?v=` params in `index.html` and the `CACHE` name in `sw.js`.
 - Version: `version.js` holds the version number and history shown on the site; `CHANGELOG.md` mirrors it.
