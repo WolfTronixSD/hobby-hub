@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.9.0 (2026-10-12): Sports
+- sports hobby (defaultTab: news) with subs sp-usa, sp-eu, sp-de
+
 ## 2.8.0 (2026-10-12): World News
 - worldnews hobby (defaultTab: news) with subs wn-usa, wn-world, wn-eu, wn-de, wn-politics, wn-business, wn-tech, wn-science, wn-health, wn-sports
 - A hobby can set `defaultTab`; picking it switches to that tab

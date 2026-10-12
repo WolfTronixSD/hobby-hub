@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.8.0";
+const APP_VERSION = "2.9.0";
 const CHANGELOG = [
+  {
+    version: "2.9.0",
+    date: "2026-10-12",
+    title: "Sports",
+    changes: [
+      "New Sports button that opens straight to the headlines",
+      "USA: NFL, NBA, MLB, NHL, plus Padres, San Diego FC and Arizona teams",
+      "Europe: Champions League, Premier League, Formula 1, cycling and tennis",
+      "Deutschland: Bundesliga, DFB and Formel 1, in German (kicker, Sportschau)"
+    ]
+  },
   {
     version: "2.8.0",
     date: "2026-10-12",

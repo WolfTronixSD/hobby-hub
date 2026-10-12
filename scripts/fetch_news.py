@@ -280,6 +280,21 @@ FEEDS = {
         ("ESPN", "https://www.espn.com/espn/rss/news"),
         ("Google News", "https://news.google.com/rss/search?q=NFL+OR+NBA+OR+MLB+OR+soccer&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "sp-usa": [
+        ("ESPN", "https://www.espn.com/espn/rss/news"),
+        ("CBS Sports", "https://www.cbssports.com/rss/headlines/"),
+        ("Google News", "https://news.google.com/rss/search?q=NFL+OR+NBA+OR+MLB+OR+NHL+OR+Padres+OR+%22San+Diego+FC%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sp-eu": [
+        ("BBC Sport", "https://feeds.bbci.co.uk/sport/rss.xml"),
+        ("The Guardian Football", "https://www.theguardian.com/football/rss"),
+        ("Google News", "https://news.google.com/rss/search?q=%22Champions+League%22+OR+%22Premier+League%22+OR+%22Formula+1%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "sp-de": [
+        ("kicker", "https://newsfeed.kicker.de/news/aktuell"),
+        ("Sportschau", "https://www.sportschau.de/index~rss2.xml"),
+        ("Google News", "https://news.google.com/rss/search?q=Bundesliga+OR+Fu%C3%9Fball+OR+Formel+1&hl=de&gl=DE&ceid=DE:de"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20

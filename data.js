@@ -5373,5 +5373,400 @@ const HOBBIES = [
         ]
       }
     ]
+  },
+  {
+    id: "sports",
+    name: "Sports",
+    icon: "🏆",
+    accent: "#ff6b3d",
+    tagline: "US leagues, European football and F1, Bundesliga",
+    defaultTab: "news",
+    subs: [
+      {
+        id: "sp-usa",
+        name: "USA",
+        icon: "🇺🇸",
+        podcasts: [
+          {
+            name: "The Bill Simmons Podcast",
+            desc: "Sports and pop culture from The Ringer.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Bill%20Simmons%20Podcast"
+          },
+          {
+            name: "Pardon My Take",
+            desc: "Barstool's comedy sports show.",
+            url: "https://podcasts.apple.com/us/search?term=Pardon%20My%20Take"
+          },
+          {
+            name: "The Herd with Colin Cowherd",
+            desc: "Daily hot takes across every league.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Herd%20with%20Colin%20Cowherd"
+          },
+          {
+            name: "The Athletic Football Show",
+            desc: "NFL film and analysis.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Athletic%20Football%20Show"
+          },
+          {
+            name: "The Lowe Post",
+            desc: "NBA with Zach Lowe.",
+            url: "https://podcasts.apple.com/us/search?term=Zach%20Lowe%20NBA%20podcast"
+          },
+          {
+            name: "Baseball Tonight with Buster Olney",
+            desc: "ESPN's MLB podcast.",
+            url: "https://podcasts.apple.com/us/search?term=Baseball%20Tonight%20with%20Buster%20Olney"
+          },
+          {
+            name: "Spittin' Chiclets",
+            desc: "Hockey talk, NHL.",
+            url: "https://podcasts.apple.com/us/search?term=Spittin%20Chiclets"
+          },
+          {
+            name: "The Mina Kimes Show",
+            desc: "Smart, fun NFL talk.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Mina%20Kimes%20Show"
+          },
+          {
+            name: "Padres podcast",
+            desc: "San Diego Padres talk.",
+            url: "https://podcasts.apple.com/us/search?term=San%20Diego%20Padres%20podcast"
+          },
+          {
+            name: "Locked On Cardinals",
+            desc: "Arizona Cardinals daily.",
+            url: "https://podcasts.apple.com/us/search?term=Locked%20On%20Cardinals"
+          }
+        ],
+        youtube: [
+          {
+            name: "ESPN",
+            desc: "Highlights and analysis.",
+            url: "https://www.youtube.com/results?search_query=ESPN"
+          },
+          {
+            name: "NFL",
+            desc: "Official NFL highlights.",
+            url: "https://www.youtube.com/results?search_query=NFL"
+          },
+          {
+            name: "NBA",
+            desc: "Official NBA highlights.",
+            url: "https://www.youtube.com/results?search_query=NBA"
+          },
+          {
+            name: "MLB",
+            desc: "Official MLB highlights.",
+            url: "https://www.youtube.com/results?search_query=MLB"
+          },
+          {
+            name: "NHL",
+            desc: "Official NHL highlights.",
+            url: "https://www.youtube.com/results?search_query=NHL"
+          },
+          {
+            name: "Good Good Golf",
+            desc: "Fun golf content.",
+            url: "https://www.youtube.com/results?search_query=Good+Good+Golf"
+          },
+          {
+            name: "Dude Perfect",
+            desc: "Trick shots and sports fun.",
+            url: "https://www.youtube.com/results?search_query=Dude+Perfect"
+          },
+          {
+            name: "Padres",
+            desc: "San Diego Padres highlights.",
+            url: "https://www.youtube.com/results?search_query=San+Diego+Padres+highlights"
+          },
+          {
+            name: "San Diego FC",
+            desc: "MLS highlights from SD.",
+            url: "https://www.youtube.com/results?search_query=San+Diego+FC+highlights"
+          },
+          {
+            name: "Phoenix Suns",
+            desc: "Suns highlights.",
+            url: "https://www.youtube.com/results?search_query=Phoenix+Suns+highlights"
+          }
+        ],
+        newsSources: [
+          {
+            name: "ESPN",
+            url: "https://www.espn.com/"
+          },
+          {
+            name: "CBS Sports",
+            url: "https://www.cbssports.com/"
+          },
+          {
+            name: "The Athletic",
+            url: "https://www.nytimes.com/athletic/"
+          },
+          {
+            name: "Google News: SD sports",
+            url: "https://news.google.com/search?q=Padres%20OR%20%22San%20Diego%20FC%22%20OR%20%22San%20Diego%20State%22"
+          },
+          {
+            name: "Google News: Arizona sports",
+            url: "https://news.google.com/search?q=Cardinals%20OR%20Suns%20OR%20Diamondbacks%20OR%20%22Arizona%20State%22"
+          }
+        ]
+      },
+      {
+        id: "sp-eu",
+        name: "Europe",
+        icon: "🇪🇺",
+        podcasts: [
+          {
+            name: "The Rest Is Football",
+            desc: "Gary Lineker, Alan Shearer and Micah Richards.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Rest%20Is%20Football"
+          },
+          {
+            name: "Football Weekly",
+            desc: "The Guardian's football podcast.",
+            url: "https://podcasts.apple.com/us/search?term=Football%20Weekly"
+          },
+          {
+            name: "The Athletic FC Podcast",
+            desc: "European football analysis.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Athletic%20FC%20Podcast"
+          },
+          {
+            name: "Men in Blazers",
+            desc: "Soccer, American style.",
+            url: "https://podcasts.apple.com/us/search?term=Men%20in%20Blazers"
+          },
+          {
+            name: "Total Soccer Show",
+            desc: "Premier League and Champions League.",
+            url: "https://podcasts.apple.com/us/search?term=Total%20Soccer%20Show"
+          },
+          {
+            name: "The Race F1 Podcast",
+            desc: "Formula 1 news and analysis.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Race%20F1%20Podcast"
+          },
+          {
+            name: "F1 Nation",
+            desc: "The official Formula 1 podcast.",
+            url: "https://podcasts.apple.com/us/search?term=F1%20Nation"
+          },
+          {
+            name: "Beyond the Grid",
+            desc: "Long F1 interviews.",
+            url: "https://podcasts.apple.com/us/search?term=Beyond%20the%20Grid"
+          },
+          {
+            name: "The Cycling Podcast",
+            desc: "Tour de France and pro cycling.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Cycling%20Podcast"
+          },
+          {
+            name: "The Tennis Podcast",
+            desc: "Grand slams and the tours.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Tennis%20Podcast"
+          }
+        ],
+        youtube: [
+          {
+            name: "UEFA Champions League",
+            desc: "Official highlights.",
+            url: "https://www.youtube.com/results?search_query=Champions+League+highlights"
+          },
+          {
+            name: "Premier League",
+            desc: "Official highlights.",
+            url: "https://www.youtube.com/results?search_query=Premier+League"
+          },
+          {
+            name: "LaLiga",
+            desc: "Spanish football highlights.",
+            url: "https://www.youtube.com/results?search_query=LaLiga"
+          },
+          {
+            name: "Formula 1",
+            desc: "Official F1 highlights.",
+            url: "https://www.youtube.com/results?search_query=Formula+1"
+          },
+          {
+            name: "The Race",
+            desc: "F1 news and analysis.",
+            url: "https://www.youtube.com/results?search_query=The+Race+F1"
+          },
+          {
+            name: "Tifo Football",
+            desc: "Tactics explained.",
+            url: "https://www.youtube.com/results?search_query=Tifo+Football"
+          },
+          {
+            name: "GCN",
+            desc: "Global Cycling Network.",
+            url: "https://www.youtube.com/results?search_query=GCN"
+          },
+          {
+            name: "Eurosport",
+            desc: "Winter sports, tennis and cycling.",
+            url: "https://www.youtube.com/results?search_query=Eurosport"
+          },
+          {
+            name: "UEFA",
+            desc: "Euros and Nations League.",
+            url: "https://www.youtube.com/results?search_query=UEFA"
+          },
+          {
+            name: "Sky Sports Football",
+            desc: "Premier League news and pundits.",
+            url: "https://www.youtube.com/results?search_query=Sky+Sports+Football"
+          }
+        ],
+        newsSources: [
+          {
+            name: "BBC Sport",
+            url: "https://www.bbc.com/sport"
+          },
+          {
+            name: "ESPN FC",
+            url: "https://www.espn.com/soccer/"
+          },
+          {
+            name: "Formula1.com",
+            url: "https://www.formula1.com/"
+          },
+          {
+            name: "Google News: European football",
+            url: "https://news.google.com/search?q=Champions%20League%20OR%20Premier%20League%20OR%20LaLiga"
+          }
+        ]
+      },
+      {
+        id: "sp-de",
+        name: "Deutschland",
+        icon: "🇩🇪",
+        podcasts: [
+          {
+            name: "Phrasenmäher",
+            desc: "Bild-Fußballpodcast mit Spaß und Insiderwissen.",
+            url: "https://podcasts.apple.com/de/search?term=Phrasenm%C3%A4her"
+          },
+          {
+            name: "kicker meets DAZN",
+            desc: "Der Bundesliga-Podcast von kicker und DAZN.",
+            url: "https://podcasts.apple.com/de/search?term=kicker%20meets%20DAZN"
+          },
+          {
+            name: "Einfach mal Luppen",
+            desc: "Toni und Felix Kroos über Fußball.",
+            url: "https://podcasts.apple.com/de/search?term=Einfach%20mal%20Luppen"
+          },
+          {
+            name: "Rasenfunk",
+            desc: "Taktik und Analyse der Bundesliga.",
+            url: "https://podcasts.apple.com/de/search?term=Rasenfunk"
+          },
+          {
+            name: "Copa TS",
+            desc: "Tommi Schmitt und Gäste über Fußball.",
+            url: "https://podcasts.apple.com/de/search?term=Copa%20TS"
+          },
+          {
+            name: "Bayern Insider",
+            desc: "Alles über den FC Bayern.",
+            url: "https://podcasts.apple.com/de/search?term=FC%20Bayern%20Podcast"
+          },
+          {
+            name: "Bundesliga Inside",
+            desc: "Hintergründe zur Liga.",
+            url: "https://podcasts.apple.com/de/search?term=Bundesliga%20Podcast"
+          },
+          {
+            name: "Formel 1 Podcast",
+            desc: "F1 auf Deutsch.",
+            url: "https://podcasts.apple.com/de/search?term=Formel%201%20Podcast"
+          },
+          {
+            name: "Sportschau Podcast",
+            desc: "Fußball und mehr von der ARD.",
+            url: "https://podcasts.apple.com/de/search?term=Sportschau"
+          },
+          {
+            name: "Basketball Bundesliga",
+            desc: "BBL-Podcasts.",
+            url: "https://podcasts.apple.com/de/search?term=Basketball%20Bundesliga%20Podcast"
+          }
+        ],
+        youtube: [
+          {
+            name: "Bundesliga",
+            desc: "Offizielle Highlights.",
+            url: "https://www.youtube.com/results?search_query=Bundesliga"
+          },
+          {
+            name: "Sportschau",
+            desc: "ARD-Sport.",
+            url: "https://www.youtube.com/results?search_query=Sportschau"
+          },
+          {
+            name: "DAZN Bundesliga",
+            desc: "Highlights und Analysen.",
+            url: "https://www.youtube.com/results?search_query=DAZN+Bundesliga"
+          },
+          {
+            name: "kicker",
+            desc: "Fußball-News.",
+            url: "https://www.youtube.com/results?search_query=kicker"
+          },
+          {
+            name: "ZDF Sport",
+            desc: "Sport im ZDF.",
+            url: "https://www.youtube.com/results?search_query=ZDFsport"
+          },
+          {
+            name: "FC Bayern",
+            desc: "Offizieller Kanal des FC Bayern.",
+            url: "https://www.youtube.com/results?search_query=FC+Bayern+M%C3%BCnchen"
+          },
+          {
+            name: "Borussia Dortmund",
+            desc: "Offizieller BVB-Kanal.",
+            url: "https://www.youtube.com/results?search_query=Borussia+Dortmund"
+          },
+          {
+            name: "DFB",
+            desc: "Nationalmannschaft.",
+            url: "https://www.youtube.com/results?search_query=DFB+Nationalmannschaft"
+          },
+          {
+            name: "Sky Sport",
+            desc: "Bundesliga und Formel 1.",
+            url: "https://www.youtube.com/results?search_query=Sky+Sport+Deutschland"
+          },
+          {
+            name: "Eurosport Deutschland",
+            desc: "Wintersport, Radsport, Tennis.",
+            url: "https://www.youtube.com/results?search_query=Eurosport+Deutschland"
+          }
+        ],
+        newsSources: [
+          {
+            name: "kicker",
+            url: "https://www.kicker.de/"
+          },
+          {
+            name: "Sportschau",
+            url: "https://www.sportschau.de/"
+          },
+          {
+            name: "SPORT1",
+            url: "https://www.sport1.de/"
+          },
+          {
+            name: "Google News: Sport (DE)",
+            url: "https://news.google.com/search?q=Bundesliga%20OR%20Fu%C3%9Fball%20OR%20Formel%201&hl=de&gl=DE&ceid=DE:de"
+          }
+        ]
+      }
+    ]
   }
 ];
