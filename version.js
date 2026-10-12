@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.9.1";
+const APP_VERSION = "2.9.2";
 const CHANGELOG = [
+  {
+    version: "2.9.2",
+    date: "2026-10-12",
+    title: "San Diego and Tempe podcasts open the actual show",
+    changes: [
+      "San Diego and Tempe podcast buttons now open the show page in Apple Podcasts, newest episodes first, instead of a search full of old episodes",
+      "KPBS San Diego News Now, KJZZ's Sun Up and The Gaggle replace outdated or vague news picks"
+    ]
+  },
   {
     version: "2.9.1",
     date: "2026-10-12",

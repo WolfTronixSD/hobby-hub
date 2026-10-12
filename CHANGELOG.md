@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.9.2 (2026-10-12): Direct podcast show links for San Diego and Tempe
+- Apple Podcasts search URLs in sandiego/tempe subs (news, MTB, hiking) replaced with /podcast/<slug>/id<N> show pages; search results listed old episodes first
+- Renamed San Diego News Matters to San Diego News Now; KJZZ search -> KJZZ's Sun Up; Arizona Republic search -> The Gaggle; Loam Wolf (no podcast feed) -> GMBN Presents
+
 ## 2.9.1 (2026-10-12): More reliable news updates
 - news.yml cron changed from every 3 hours to hourly; only 1 of about 4 expected scheduled runs had fired
 - app.js re-fetches news.json every 15 minutes while visible and on returning to the page

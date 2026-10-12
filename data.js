@@ -644,7 +644,7 @@ const HOBBIES = [
           { name: "Atlas Obscura Podcast", desc: "Short daily stories about strange and wonderful places.", url: "https://podcasts.apple.com/us/search?term=Atlas%20Obscura%20Podcast" },
           { name: "Overland Journal Podcast", desc: "Vehicle-based travel, gear and routes.", url: "https://podcasts.apple.com/us/search?term=Overland%20Journal%20Podcast" },
           { name: "Extra Pack of Peanuts", desc: "Travel hacking and trip planning.", url: "https://podcasts.apple.com/us/search?term=Extra%20Pack%20of%20Peanuts" },
-          { name: "National Park After Dark", desc: "True stories from the parks, great for long drives.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" },
+          { name: "National Park After Dark", desc: "True stories from the parks, great for long drives.", url: "https://podcasts.apple.com/us/podcast/national-park-after-dark/id1549433407" },
           { name: "Route 66 stories", desc: "Episodes about the Mother Road and classic drives.", url: "https://podcasts.apple.com/us/search?term=Route%2066" }
         ],
         youtube: [
@@ -747,13 +747,13 @@ const HOBBIES = [
         name: "Camping",
         icon: "🏕️",
         podcasts: [
-          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/search?term=The%20Dirtbag%20Diaries" },
-          { name: "Backpacker Radio", desc: "The Trek's show on hiking and backpacking.", url: "https://podcasts.apple.com/us/search?term=Backpacker%20Radio%20The%20Trek" },
-          { name: "She Explores", desc: "Women in the outdoors and on the road.", url: "https://podcasts.apple.com/us/search?term=She%20Explores" },
+          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/podcast/the-dirtbag-diaries/id218290471" },
+          { name: "Backpacker Radio", desc: "The Trek's show on hiking and backpacking.", url: "https://podcasts.apple.com/us/podcast/backpacker-radio/id1339028551" },
+          { name: "She Explores", desc: "Women outdoors (ended 2023, great archive).", url: "https://podcasts.apple.com/us/podcast/she-explores/id1124566025" },
           { name: "The RV Atlas", desc: "Campgrounds and family camping trips.", url: "https://podcasts.apple.com/us/search?term=The%20RV%20Atlas" },
           { name: "Outside Podcast", desc: "Survival stories and outdoor science.", url: "https://podcasts.apple.com/us/search?term=Outside%20Podcast" },
-          { name: "Wild Ideas Worth Living", desc: "REI's interviews with adventurers.", url: "https://podcasts.apple.com/us/search?term=Wild%20Ideas%20Worth%20Living" },
-          { name: "National Park After Dark", desc: "Campfire stories from the parks.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" },
+          { name: "Wild Ideas Worth Living", desc: "REI's interviews with adventurers.", url: "https://podcasts.apple.com/us/podcast/wild-ideas-worth-living/id1183017174" },
+          { name: "National Park After Dark", desc: "Campfire stories from the parks.", url: "https://podcasts.apple.com/us/podcast/national-park-after-dark/id1549433407" },
           { name: "RV Miles", desc: "RV camping destinations and tips.", url: "https://podcasts.apple.com/us/search?term=RV%20Miles%20Podcast" },
           { name: "Overland Journal Podcast", desc: "Overlanding, rooftop tents and gear.", url: "https://podcasts.apple.com/us/search?term=Overland%20Journal%20Podcast" },
           { name: "The MeatEater Podcast", desc: "Steven Rinella on hunting, fishing and the wild.", url: "https://podcasts.apple.com/us/search?term=The%20MeatEater%20Podcast" }
@@ -992,11 +992,11 @@ const HOBBIES = [
         name: "Mountain Biking",
         icon: "🚵",
         podcasts: [
-          { name: "The Pinkbike Podcast", desc: "Bikes, gear and racing talk from Pinkbike.", url: "https://podcasts.apple.com/us/search?term=The%20Pinkbike%20Podcast" },
-          { name: "Downtime Podcast", desc: "Interviews with mountain bike riders and racers.", url: "https://podcasts.apple.com/us/search?term=Downtime%20Podcast%20mountain%20bike" },
-          { name: "Blister Podcast", desc: "Gear reviews and conversations about riding.", url: "https://podcasts.apple.com/us/search?term=Blister%20Podcast" },
-          { name: "Singletracks Podcast", desc: "Trails, bikes and the MTB community.", url: "https://podcasts.apple.com/us/search?term=Singletracks%20Podcast" },
-          { name: "The Loam Wolf Podcast", desc: "Long-form bike reviews and tech.", url: "https://podcasts.apple.com/us/search?term=The%20Loam%20Wolf%20Podcast" }
+          { name: "The Pinkbike Podcast", desc: "Bikes, gear and racing talk from Pinkbike.", url: "https://podcasts.apple.com/us/podcast/the-pinkbike-podcast/id1505577005" },
+          { name: "Downtime Podcast", desc: "Interviews with mountain bike riders and racers.", url: "https://podcasts.apple.com/us/podcast/downtime-the-mountain-bike-podcast/id1202593158" },
+          { name: "Blister Podcast", desc: "Gear reviews and conversations about riding.", url: "https://podcasts.apple.com/us/podcast/blister-podcast/id1066375775" },
+          { name: "Singletracks Podcast", desc: "Trails, bikes and the MTB community.", url: "https://podcasts.apple.com/us/podcast/singletracks-mountain-bike-podcast/id1046094700" },
+          { name: "GMBN Presents The Mountain Bike Podcast", desc: "Global Mountain Bike Network chats and news.", url: "https://podcasts.apple.com/us/podcast/gmbn-presents-the-mountain-bike-podcast/id1461786022" }
         ],
         youtube: [
           { name: "GMBN", desc: "Global Mountain Bike Network: skills and tech.", url: "https://www.youtube.com/results?search_query=GMBN+Global+Mountain+Bike+Network" },
@@ -1023,11 +1023,11 @@ const HOBBIES = [
         name: "Hiking",
         icon: "🥾",
         podcasts: [
-          { name: "Backpacker Radio", desc: "Hiking and backpacking talk from The Trek.", url: "https://podcasts.apple.com/us/search?term=Backpacker%20Radio%20The%20Trek" },
-          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/search?term=The%20Dirtbag%20Diaries" },
-          { name: "She Explores", desc: "Women outdoors and on the trail.", url: "https://podcasts.apple.com/us/search?term=She%20Explores" },
-          { name: "Wild Ideas Worth Living", desc: "REI's adventurer interviews.", url: "https://podcasts.apple.com/us/search?term=Wild%20Ideas%20Worth%20Living" },
-          { name: "National Park After Dark", desc: "Trail stories for the drive to the trailhead.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" }
+          { name: "Backpacker Radio", desc: "Hiking and backpacking talk from The Trek.", url: "https://podcasts.apple.com/us/podcast/backpacker-radio/id1339028551" },
+          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/podcast/the-dirtbag-diaries/id218290471" },
+          { name: "She Explores", desc: "Women outdoors (ended 2023, great archive).", url: "https://podcasts.apple.com/us/podcast/she-explores/id1124566025" },
+          { name: "Wild Ideas Worth Living", desc: "REI's adventurer interviews.", url: "https://podcasts.apple.com/us/podcast/wild-ideas-worth-living/id1183017174" },
+          { name: "National Park After Dark", desc: "Trail stories for the drive to the trailhead.", url: "https://podcasts.apple.com/us/podcast/national-park-after-dark/id1549433407" }
         ],
         youtube: [
           { name: "Potato Chip Rock", desc: "Mt. Woodson's famous photo spot.", url: "https://www.youtube.com/results?search_query=Potato+Chip+Rock+hike" },
@@ -1177,9 +1177,9 @@ const HOBBIES = [
         name: "News",
         icon: "📰",
         podcasts: [
-          { name: "San Diego News Matters (KPBS)", desc: "Daily local news podcast from KPBS.", url: "https://podcasts.apple.com/us/search?term=San%20Diego%20News%20Matters%20KPBS" },
-          { name: "KPBS Midday Edition", desc: "Conversations on San Diego issues.", url: "https://podcasts.apple.com/us/search?term=KPBS%20Midday%20Edition" },
-          { name: "Voice of San Diego Podcast", desc: "Local politics and policy explained.", url: "https://podcasts.apple.com/us/search?term=Voice%20of%20San%20Diego%20Podcast" },
+          { name: "San Diego News Now (KPBS)", desc: "Daily local news podcast from KPBS.", url: "https://podcasts.apple.com/us/podcast/san-diego-news-now/id1118579458" },
+          { name: "KPBS Midday Edition", desc: "Conversations on San Diego issues.", url: "https://podcasts.apple.com/us/podcast/kpbs-midday-edition/id73329598" },
+          { name: "Voice of San Diego Podcast", desc: "Local politics and policy explained.", url: "https://podcasts.apple.com/us/podcast/voice-of-san-diego-podcast/id430101991" },
           { name: "Good Food (KCRW)", desc: "SoCal food news and restaurants.", url: "https://www.kcrw.com/culture/shows/good-food" }
         ],
         youtube: [
@@ -1411,11 +1411,11 @@ const HOBBIES = [
         name: "Mountain Biking",
         icon: "🚵",
         podcasts: [
-          { name: "The Pinkbike Podcast", desc: "Bikes, gear and racing talk from Pinkbike.", url: "https://podcasts.apple.com/us/search?term=The%20Pinkbike%20Podcast" },
-          { name: "Downtime Podcast", desc: "Interviews with mountain bike riders and racers.", url: "https://podcasts.apple.com/us/search?term=Downtime%20Podcast%20mountain%20bike" },
-          { name: "Blister Podcast", desc: "Gear reviews and conversations about riding.", url: "https://podcasts.apple.com/us/search?term=Blister%20Podcast" },
-          { name: "Singletracks Podcast", desc: "Trails, bikes and the MTB community.", url: "https://podcasts.apple.com/us/search?term=Singletracks%20Podcast" },
-          { name: "The Loam Wolf Podcast", desc: "Long-form bike reviews and tech.", url: "https://podcasts.apple.com/us/search?term=The%20Loam%20Wolf%20Podcast" }
+          { name: "The Pinkbike Podcast", desc: "Bikes, gear and racing talk from Pinkbike.", url: "https://podcasts.apple.com/us/podcast/the-pinkbike-podcast/id1505577005" },
+          { name: "Downtime Podcast", desc: "Interviews with mountain bike riders and racers.", url: "https://podcasts.apple.com/us/podcast/downtime-the-mountain-bike-podcast/id1202593158" },
+          { name: "Blister Podcast", desc: "Gear reviews and conversations about riding.", url: "https://podcasts.apple.com/us/podcast/blister-podcast/id1066375775" },
+          { name: "Singletracks Podcast", desc: "Trails, bikes and the MTB community.", url: "https://podcasts.apple.com/us/podcast/singletracks-mountain-bike-podcast/id1046094700" },
+          { name: "GMBN Presents The Mountain Bike Podcast", desc: "Global Mountain Bike Network chats and news.", url: "https://podcasts.apple.com/us/podcast/gmbn-presents-the-mountain-bike-podcast/id1461786022" }
         ],
         youtube: [
           { name: "South Mountain National Trail", desc: "The Valley's classic technical ride.", url: "https://www.youtube.com/results?search_query=South+Mountain+National+Trail+mountain+bike" },
@@ -1442,11 +1442,11 @@ const HOBBIES = [
         name: "Hiking",
         icon: "🥾",
         podcasts: [
-          { name: "Backpacker Radio", desc: "Hiking and backpacking talk from The Trek.", url: "https://podcasts.apple.com/us/search?term=Backpacker%20Radio%20The%20Trek" },
-          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/search?term=The%20Dirtbag%20Diaries" },
-          { name: "She Explores", desc: "Women outdoors and on the trail.", url: "https://podcasts.apple.com/us/search?term=She%20Explores" },
-          { name: "Wild Ideas Worth Living", desc: "REI's adventurer interviews.", url: "https://podcasts.apple.com/us/search?term=Wild%20Ideas%20Worth%20Living" },
-          { name: "National Park After Dark", desc: "Trail stories for the drive to the trailhead.", url: "https://podcasts.apple.com/us/search?term=National%20Park%20After%20Dark" }
+          { name: "Backpacker Radio", desc: "Hiking and backpacking talk from The Trek.", url: "https://podcasts.apple.com/us/podcast/backpacker-radio/id1339028551" },
+          { name: "The Dirtbag Diaries", desc: "Stories from people who love the outdoors.", url: "https://podcasts.apple.com/us/podcast/the-dirtbag-diaries/id218290471" },
+          { name: "She Explores", desc: "Women outdoors (ended 2023, great archive).", url: "https://podcasts.apple.com/us/podcast/she-explores/id1124566025" },
+          { name: "Wild Ideas Worth Living", desc: "REI's adventurer interviews.", url: "https://podcasts.apple.com/us/podcast/wild-ideas-worth-living/id1183017174" },
+          { name: "National Park After Dark", desc: "Trail stories for the drive to the trailhead.", url: "https://podcasts.apple.com/us/podcast/national-park-after-dark/id1549433407" }
         ],
         youtube: [
           { name: "Hayden Butte (A Mountain)", desc: "Quick climb with a Tempe view.", url: "https://www.youtube.com/results?search_query=Hayden+Butte+A+Mountain+Tempe+hike" },
@@ -1559,9 +1559,9 @@ const HOBBIES = [
         name: "News",
         icon: "📰",
         podcasts: [
-          { name: "KJZZ The Show", desc: "Phoenix public radio's local stories.", url: "https://podcasts.apple.com/us/search?term=KJZZ%20The%20Show" },
-          { name: "KJZZ news podcasts", desc: "Local news from KJZZ 91.5.", url: "https://podcasts.apple.com/us/search?term=KJZZ" },
-          { name: "Arizona Republic podcasts", desc: "Local news and politics.", url: "https://podcasts.apple.com/us/search?term=Arizona%20Republic%20podcast" }
+          { name: "KJZZ The Show", desc: "Phoenix public radio's local stories.", url: "https://podcasts.apple.com/us/podcast/kjzzs-the-show/id1362716867" },
+          { name: "KJZZ's Sun Up", desc: "Daily morning news from KJZZ 91.5.", url: "https://podcasts.apple.com/us/podcast/kjzzs-sun-up/id1505598185" },
+          { name: "The Gaggle (Arizona Republic)", desc: "Weekly Arizona politics podcast.", url: "https://podcasts.apple.com/us/podcast/the-gaggle-an-arizona-politics-podcast/id1233487637" }
         ],
         youtube: [
           { name: "12News", desc: "Phoenix local news.", url: "https://www.youtube.com/results?search_query=12News+Phoenix" },
