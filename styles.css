@@ -67,7 +67,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
   min-height: 72px; padding: 10px 18px; border-radius: var(--radius); border: 2px solid var(--border);
   background: var(--panel); color: var(--text); text-decoration: none;
 }
-.wx-bar[hidden] { display: none; }
+.wx-row { max-width: 1100px; margin: 4px auto 12px; display: flex; gap: 10px; }
+.wx-row[hidden] { display: none; }
+.wx-row .wx-bar { flex: 1; min-width: 0; margin: 0; }
+.wx-loc {
+  flex: none; width: 72px; border-radius: var(--radius); border: 2px solid var(--border);
+  background: var(--panel); font-size: 28px;
+}
+.wx-loc.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 20%, var(--panel)); }
 .wx-bar .wx-ic { font-size: 38px; line-height: 1; }
 .wx-bar .wx-t { font-size: 30px; font-weight: 800; }
 .wx-bar .wx-txt { flex: 1; min-width: 0; font-size: 17px; }
@@ -278,6 +285,10 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .app-btn { min-height: 64px; padding: 8px 10px; gap: 8px; }
   .app-btn b { font-size: 17px; }
   .app-btn .go { display: none; }
+  .wx-loc { width: 52px; font-size: 22px; }
+  .wx-bar .go { display: none; }
+  .wx-bar .wx-ic { font-size: 30px; }
+  .wx-row { gap: 8px; }
   .wx-bar { min-height: 64px; padding: 8px 14px; gap: 10px; }
   .wx-bar .wx-t { font-size: 26px; }
   .wx-big { font-size: 52px; }

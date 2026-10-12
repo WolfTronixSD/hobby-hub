@@ -180,19 +180,62 @@
 
   const forecastUrl = (w) => `https://forecast.weather.gov/MapClick.php?lat=${w.lat}&lon=${w.lon}`;
 
+  // Location for the home weather: GPS if the user turned it on with 📍, otherwise a guess from the IP address
+  const gpsLoc = () => cacheGet("gpsLoc");
+  async function placeName(lat, lon) {
+    try {
+      const j = await getJSON(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+      return j.city || j.locality || j.principalSubdivision || "My location";
+    } catch { return "My location"; }
+  }
+  function useGps() {
+    const btn = $("#wxLoc");
+    if (gpsLoc()) {
+      // Already on: tapping again switches back to the IP-based guess
+      store.set("gpsLoc", "");
+      btn.classList.remove("on");
+      homeWeather();
+      return;
+    }
+    if (!navigator.geolocation) return;
+    btn.textContent = "⏳";
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      const lat = +pos.coords.latitude.toFixed(3), lon = +pos.coords.longitude.toFixed(3);
+      cacheSet("gpsLoc", { name: await placeName(lat, lon), lat, lon, gps: true });
+      btn.textContent = "📍";
+      homeWeather();
+    }, () => {
+      btn.textContent = "📍";
+      alert("Location is off for this site. On iPhone: Settings > Privacy & Security > Location Services > Safari Websites > While Using.");
+    }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 30 * 60e3 });
+  }
+  $("#wxLoc").addEventListener("click", useGps);
+
   async function homeWeather() {
-    const bar = $("#wxBar");
-    const loc = (await ipLocation()) || { name: "San Diego", lat: 32.7157, lon: -117.1611 };
+    const row = $("#wxRow"), bar = $("#wxBar"), btn = $("#wxLoc");
+    let loc = gpsLoc();
+    if (loc && navigator.geolocation) {
+      // Refresh the GPS fix quietly when the app opens (no prompt once allowed)
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const lat = +pos.coords.latitude.toFixed(3), lon = +pos.coords.longitude.toFixed(3);
+        if (Math.abs(lat - loc.lat) + Math.abs(lon - loc.lon) > 0.05) {
+          placeName(lat, lon).then((name) => { cacheSet("gpsLoc", { name, lat, lon, gps: true }); homeWeather(); });
+        }
+      }, () => {}, { timeout: 10000, maximumAge: 30 * 60e3 });
+    }
+    loc = loc || (await ipLocation()) || { name: "San Diego", lat: 32.7157, lon: -117.1611 };
+    btn.classList.toggle("on", !!loc.gps);
+    btn.title = loc.gps ? "Using your GPS location. Tap to switch back to automatic." : "Location is a guess from your internet connection. Tap to use GPS.";
     try {
       const d = await getWeather(loc.lat, loc.lon);
       const c = d.current, dy = d.daily;
       const [ic, txt] = wxIcon(c.weather_code, c.is_day);
       bar.href = forecastUrl(loc);
       bar.innerHTML = `<span class="wx-ic">${ic}</span><b class="wx-t">${deg(c.temperature_2m)}F</b>
-        <span class="wx-txt"><b>${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small></span>
+        <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small></span>
         <span class="go">›</span>`;
       bar.setAttribute("aria-label", `Weather in ${loc.name}: ${Math.round(c.temperature_2m)} degrees, ${txt}. Open forecast`);
-      bar.hidden = false;
+      row.hidden = false;
     } catch {}
   }
 

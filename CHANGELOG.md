@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.7.1 (2026-10-12): Exact weather location
+- 📍 button uses browser geolocation (city name via BigDataCloud reverse geocode), saved per device; IP lookup stays the default
+
 ## 2.7.0 (2026-10-12): Shortcuts to GoldRabbit and WRadio
 - Top-of-page buttons linking to GoldRabbit (wolftronixsd.github.io/tickerdeck) and WRadio (wolftronixsd.github.io/Wradio)
 

@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.7.0";
+const APP_VERSION = "2.7.1";
 const CHANGELOG = [
+  {
+    version: "2.7.1",
+    date: "2026-10-12",
+    title: "Exact weather location",
+    changes: [
+      "New 📍 button next to the home weather: tap once to use your phone's GPS instead of the internet-connection guess (which can say Oceanside when you're in Escondido)",
+      "The site remembers your choice and updates when you move; tap 📍 again to switch back",
+      "The city shows ≈ when it's a guess and 📍 when it's GPS"
+    ]
+  },
   {
     version: "2.7.0",
     date: "2026-10-12",
