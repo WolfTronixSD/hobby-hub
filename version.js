@@ -1,6 +1,14 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.6.0";
+const APP_VERSION = "2.7.0";
 const CHANGELOG = [
+  {
+    version: "2.7.0",
+    date: "2026-10-12",
+    title: "Shortcuts to GoldRabbit and WRadio",
+    changes: [
+      "Two big buttons at the top open your other apps: GoldRabbit (live stocks) and WRadio (internet radio)"
+    ]
+  },
   {
     version: "2.6.0",
     date: "2026-10-12",

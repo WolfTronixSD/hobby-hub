@@ -94,6 +94,21 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .event .ev-date b { font-size: 14px; text-transform: uppercase; color: var(--accent); }
 .event .ev-date span { font-size: 26px; font-weight: 800; line-height: 1; }
 
+/* My other apps */
+.apps { max-width: 1100px; margin: 0 auto 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.app-btn {
+  display: flex; align-items: center; gap: 12px; min-height: 72px; padding: 10px 16px;
+  border-radius: var(--radius); border: 2px solid color-mix(in srgb, var(--c) 55%, var(--border));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c) 18%, transparent), var(--panel));
+  color: var(--text); text-decoration: none;
+}
+.app-btn img { width: 44px; height: 44px; border-radius: 12px; flex: none; }
+.app-btn .app-ic { font-size: 36px; line-height: 1; flex: none; }
+.app-btn > span:nth-last-child(2) { flex: 1; min-width: 0; }
+.app-btn b { display: block; font-size: 20px; }
+.app-btn small { color: var(--muted); font-size: 14px; }
+.app-btn .go { font-size: 28px; color: var(--muted); }
+
 /* Hobby selector: compact big-tap tiles */
 .hobbies { display: grid; grid-template-columns: repeat(var(--hcols, 8), 1fr); gap: 12px; margin-top: 8px; }
 .hobby {
@@ -259,6 +274,10 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .hobby { min-height: 84px; gap: 4px; padding: 10px 4px; border-radius: 18px; }
   .hobby .emoji { font-size: 30px; }
   .hobby b { font-size: 15px; }
+  .apps { gap: 8px; }
+  .app-btn { min-height: 64px; padding: 8px 10px; gap: 8px; }
+  .app-btn b { font-size: 17px; }
+  .app-btn .go { display: none; }
   .wx-bar { min-height: 64px; padding: 8px 14px; gap: 10px; }
   .wx-bar .wx-t { font-size: 26px; }
   .wx-big { font-size: 52px; }

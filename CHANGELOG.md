@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.7.0 (2026-10-12): Shortcuts to GoldRabbit and WRadio
+- Top-of-page buttons linking to GoldRabbit (wolftronixsd.github.io/tickerdeck) and WRadio (wolftronixsd.github.io/Wradio)
+
 ## 2.6.0 (2026-10-12): Aviation events and Money Saver
 - Flying: fly-events sub with dated events (San Diego focus) and event links
 - Money Saver hobby with subs save-groceries, save-gas, save-travel, save-bills, save-shopping, save-budget
