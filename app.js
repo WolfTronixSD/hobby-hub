@@ -39,8 +39,11 @@
   hobbyNav.addEventListener("click", (e) => {
     const b = e.target.closest(".hobby");
     if (b) {
+      const changed = hobbyId !== b.dataset.id;
       hobbyId = b.dataset.id;
-      if (tab === "history") tab = "podcasts";
+      const picked = HOBBIES.find((x) => x.id === hobbyId);
+      if (changed && picked && picked.defaultTab) tab = picked.defaultTab;
+      else if (tab === "history") tab = "podcasts";
       render();
       const target = $("#subNav").hidden ? $("#tabNav") : $("#subNav");
       if (target.getBoundingClientRect().top > innerHeight * 0.6) target.scrollIntoView({ behavior: "smooth", block: "start" });

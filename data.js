@@ -4413,5 +4413,965 @@ const HOBBIES = [
         ]
       }
     ]
+  },
+  {
+    id: "worldnews",
+    name: "World News",
+    icon: "🗞️",
+    accent: "#5b9cff",
+    tagline: "USA, world, EU and Germany, plus politics, business, tech and more",
+    defaultTab: "news",
+    subs: [
+      {
+        id: "wn-usa",
+        name: "USA",
+        icon: "🇺🇸",
+        podcasts: [
+          {
+            name: "The Daily",
+            desc: "The New York Times' 20-minute daily story.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Daily"
+          },
+          {
+            name: "Up First",
+            desc: "NPR's morning news in 15 minutes.",
+            url: "https://podcasts.apple.com/us/search?term=Up%20First"
+          },
+          {
+            name: "Consider This",
+            desc: "NPR's afternoon deep dive.",
+            url: "https://podcasts.apple.com/us/search?term=Consider%20This"
+          },
+          {
+            name: "The Journal",
+            desc: "WSJ on money, business and power.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Journal"
+          },
+          {
+            name: "Today, Explained",
+            desc: "Vox explains one big story a day.",
+            url: "https://podcasts.apple.com/us/search?term=Today%2C%20Explained"
+          },
+          {
+            name: "Start Here",
+            desc: "ABC News daily briefing.",
+            url: "https://podcasts.apple.com/us/search?term=Start%20Here"
+          },
+          {
+            name: "Post Reports",
+            desc: "The Washington Post's daily podcast.",
+            url: "https://podcasts.apple.com/us/search?term=Post%20Reports"
+          },
+          {
+            name: "WSJ What's News",
+            desc: "Quick business and world headlines.",
+            url: "https://podcasts.apple.com/us/search?term=What%27s%20News%20WSJ"
+          },
+          {
+            name: "The NPR Politics Podcast",
+            desc: "Washington, explained.",
+            url: "https://podcasts.apple.com/us/search?term=The%20NPR%20Politics%20Podcast"
+          },
+          {
+            name: "The Dispatch Podcast",
+            desc: "Center-right takes on the news.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Dispatch%20Podcast"
+          }
+        ],
+        youtube: [
+          {
+            name: "PBS NewsHour",
+            desc: "Calm, in-depth evening news.",
+            url: "https://www.youtube.com/results?search_query=PBS+NewsHour"
+          },
+          {
+            name: "Associated Press",
+            desc: "Raw news video from AP.",
+            url: "https://www.youtube.com/results?search_query=Associated+Press"
+          },
+          {
+            name: "Reuters",
+            desc: "Straight news from Reuters.",
+            url: "https://www.youtube.com/results?search_query=Reuters"
+          },
+          {
+            name: "NBC News",
+            desc: "NBC Nightly News and more.",
+            url: "https://www.youtube.com/results?search_query=NBC+News"
+          },
+          {
+            name: "ABC News",
+            desc: "World News Tonight and more.",
+            url: "https://www.youtube.com/results?search_query=ABC+News"
+          },
+          {
+            name: "CBS News",
+            desc: "CBS Evening News and more.",
+            url: "https://www.youtube.com/results?search_query=CBS+News"
+          },
+          {
+            name: "CNN",
+            desc: "Breaking news and analysis.",
+            url: "https://www.youtube.com/results?search_query=CNN"
+          },
+          {
+            name: "Fox News",
+            desc: "News and opinion.",
+            url: "https://www.youtube.com/results?search_query=Fox+News"
+          },
+          {
+            name: "Wall Street Journal",
+            desc: "WSJ explainers and video.",
+            url: "https://www.youtube.com/results?search_query=Wall+Street+Journal"
+          },
+          {
+            name: "C-SPAN",
+            desc: "Congress and politics, unfiltered.",
+            url: "https://www.youtube.com/results?search_query=C-SPAN"
+          }
+        ],
+        newsSources: [
+          {
+            name: "AP News",
+            url: "https://apnews.com/"
+          },
+          {
+            name: "Reuters",
+            url: "https://www.reuters.com/"
+          },
+          {
+            name: "NPR",
+            url: "https://www.npr.org/"
+          },
+          {
+            name: "Google News: US",
+            url: "https://news.google.com/?hl=en-US&gl=US&ceid=US:en"
+          }
+        ]
+      },
+      {
+        id: "wn-world",
+        name: "World",
+        icon: "🌍",
+        podcasts: [
+          {
+            name: "Global News Podcast",
+            desc: "BBC World Service, twice a day.",
+            url: "https://podcasts.apple.com/us/search?term=Global%20News%20Podcast"
+          },
+          {
+            name: "The Intelligence",
+            desc: "The Economist's daily news podcast.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Intelligence"
+          },
+          {
+            name: "Today in Focus",
+            desc: "The Guardian's daily deep dive.",
+            url: "https://podcasts.apple.com/us/search?term=Today%20in%20Focus"
+          },
+          {
+            name: "The Take",
+            desc: "Al Jazeera on one global story.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Take"
+          },
+          {
+            name: "The World",
+            desc: "PRX and GBH global news hour.",
+            url: "https://podcasts.apple.com/us/search?term=The%20World"
+          },
+          {
+            name: "FT News Briefing",
+            desc: "Financial Times morning headlines.",
+            url: "https://podcasts.apple.com/us/search?term=FT%20News%20Briefing"
+          },
+          {
+            name: "Reuters World News",
+            desc: "Five-minute world roundup.",
+            url: "https://podcasts.apple.com/us/search?term=Reuters%20World%20News"
+          },
+          {
+            name: "The Rest Is Politics",
+            desc: "Alastair Campbell and Rory Stewart.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Rest%20Is%20Politics"
+          },
+          {
+            name: "Front Burner",
+            desc: "CBC's daily news podcast.",
+            url: "https://podcasts.apple.com/us/search?term=Front%20Burner"
+          },
+          {
+            name: "The Globalist",
+            desc: "Monocle's morning world news.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Globalist"
+          }
+        ],
+        youtube: [
+          {
+            name: "BBC News",
+            desc: "World news from the BBC.",
+            url: "https://www.youtube.com/results?search_query=BBC+News"
+          },
+          {
+            name: "Al Jazeera English",
+            desc: "Global news, live.",
+            url: "https://www.youtube.com/results?search_query=Al+Jazeera+English"
+          },
+          {
+            name: "DW News",
+            desc: "Germany's international broadcaster, in English.",
+            url: "https://www.youtube.com/results?search_query=DW+News"
+          },
+          {
+            name: "FRANCE 24 English",
+            desc: "French international news.",
+            url: "https://www.youtube.com/results?search_query=FRANCE+24+English"
+          },
+          {
+            name: "Sky News",
+            desc: "UK and world news.",
+            url: "https://www.youtube.com/results?search_query=Sky+News"
+          },
+          {
+            name: "CNA",
+            desc: "Asia-focused news from Singapore.",
+            url: "https://www.youtube.com/results?search_query=CNA"
+          },
+          {
+            name: "NHK WORLD-JAPAN",
+            desc: "Japan and Asia news.",
+            url: "https://www.youtube.com/results?search_query=NHK+WORLD-JAPAN"
+          },
+          {
+            name: "ABC News (Australia)",
+            desc: "Australian and world news.",
+            url: "https://www.youtube.com/results?search_query=ABC+News+In-depth+Australia"
+          },
+          {
+            name: "CBC News",
+            desc: "Canadian and world news.",
+            url: "https://www.youtube.com/results?search_query=CBC+News"
+          },
+          {
+            name: "WION",
+            desc: "World news from India.",
+            url: "https://www.youtube.com/results?search_query=WION"
+          }
+        ],
+        newsSources: [
+          {
+            name: "BBC World",
+            url: "https://www.bbc.com/news/world"
+          },
+          {
+            name: "Al Jazeera",
+            url: "https://www.aljazeera.com/"
+          },
+          {
+            name: "The Guardian: World",
+            url: "https://www.theguardian.com/world"
+          },
+          {
+            name: "Google News: World",
+            url: "https://news.google.com/search?q=world%20news"
+          }
+        ]
+      },
+      {
+        id: "wn-eu",
+        name: "EU",
+        icon: "🇪🇺",
+        podcasts: [
+          {
+            name: "EU Confidential",
+            desc: "POLITICO Europe's weekly on Brussels.",
+            url: "https://podcasts.apple.com/us/search?term=EU%20Confidential"
+          },
+          {
+            name: "Talking Europe",
+            desc: "France 24 on European politics.",
+            url: "https://podcasts.apple.com/us/search?term=Talking%20Europe"
+          },
+          {
+            name: "DW News",
+            desc: "Deutsche Welle news in English.",
+            url: "https://podcasts.apple.com/us/search?term=DW%20News%20podcast"
+          },
+          {
+            name: "Euronews",
+            desc: "European news and features.",
+            url: "https://podcasts.apple.com/us/search?term=Euronews%20podcast"
+          },
+          {
+            name: "The Economist: Charlemagne",
+            desc: "The Economist on Europe.",
+            url: "https://podcasts.apple.com/us/search?term=Economist%20Europe"
+          },
+          {
+            name: "Brussels Sprouts",
+            desc: "Transatlantic security talk from CEPA.",
+            url: "https://podcasts.apple.com/us/search?term=Brussels%20Sprouts%20CEPA"
+          }
+        ],
+        youtube: [
+          {
+            name: "euronews",
+            desc: "News from across Europe.",
+            url: "https://www.youtube.com/results?search_query=euronews"
+          },
+          {
+            name: "DW News",
+            desc: "European and world news in English.",
+            url: "https://www.youtube.com/results?search_query=DW+News"
+          },
+          {
+            name: "FRANCE 24 English",
+            desc: "France and Europe.",
+            url: "https://www.youtube.com/results?search_query=FRANCE+24+English"
+          },
+          {
+            name: "European Parliament",
+            desc: "Debates and plenary sessions.",
+            url: "https://www.youtube.com/results?search_query=European+Parliament"
+          },
+          {
+            name: "TLDR News EU",
+            desc: "EU politics explained simply.",
+            url: "https://www.youtube.com/results?search_query=TLDR+News+EU"
+          },
+          {
+            name: "POLITICO Europe",
+            desc: "Brussels insiders and interviews.",
+            url: "https://www.youtube.com/results?search_query=POLITICO+Europe"
+          },
+          {
+            name: "Sky News",
+            desc: "UK and Europe.",
+            url: "https://www.youtube.com/results?search_query=Sky+News"
+          },
+          {
+            name: "BBC News",
+            desc: "Europe coverage.",
+            url: "https://www.youtube.com/results?search_query=BBC+News"
+          },
+          {
+            name: "Caspian Report",
+            desc: "Geopolitics explained.",
+            url: "https://www.youtube.com/results?search_query=Caspian+Report"
+          },
+          {
+            name: "Perun",
+            desc: "Defense and Ukraine analysis.",
+            url: "https://www.youtube.com/results?search_query=Perun"
+          }
+        ],
+        newsSources: [
+          {
+            name: "POLITICO Europe",
+            url: "https://www.politico.eu/"
+          },
+          {
+            name: "Euronews",
+            url: "https://www.euronews.com/"
+          },
+          {
+            name: "DW (English)",
+            url: "https://www.dw.com/en/"
+          },
+          {
+            name: "Google News: EU",
+            url: "https://news.google.com/search?q=European%20Union"
+          }
+        ]
+      },
+      {
+        id: "wn-de",
+        name: "Deutschland",
+        icon: "🇩🇪",
+        podcasts: [
+          {
+            name: "tagesschau in 100 Sekunden",
+            desc: "Die Nachrichten in 100 Sekunden.",
+            url: "https://podcasts.apple.com/de/search?term=tagesschau%20in%20100%20Sekunden"
+          },
+          {
+            name: "Was jetzt?",
+            desc: "Der tägliche Nachrichten-Podcast der ZEIT.",
+            url: "https://podcasts.apple.com/de/search?term=Was%20jetzt%3F"
+          },
+          {
+            name: "Lage der Nation",
+            desc: "Politik-Podcast mit Philip Banse und Ulf Buermeyer.",
+            url: "https://podcasts.apple.com/de/search?term=Lage%20der%20Nation"
+          },
+          {
+            name: "Apokalypse & Filterkaffee",
+            desc: "Micky Beisenherz und Gäste zu den News.",
+            url: "https://podcasts.apple.com/de/search?term=Apokalypse%20%26%20Filterkaffee"
+          },
+          {
+            name: "Auf den Punkt",
+            desc: "Der Nachrichten-Podcast der Süddeutschen Zeitung.",
+            url: "https://podcasts.apple.com/de/search?term=SZ%20Auf%20den%20Punkt"
+          },
+          {
+            name: "Shortcut",
+            desc: "Der Nachrichten-Podcast des SPIEGEL.",
+            url: "https://podcasts.apple.com/de/search?term=SPIEGEL%20Shortcut"
+          },
+          {
+            name: "FAZ Podcast für Deutschland",
+            desc: "Die FAZ zum Thema des Tages.",
+            url: "https://podcasts.apple.com/de/search?term=FAZ%20Podcast%20f%C3%BCr%20Deutschland"
+          },
+          {
+            name: "Das Politikteil",
+            desc: "ZEIT-Politik im Gespräch.",
+            url: "https://podcasts.apple.com/de/search?term=Das%20Politikteil"
+          },
+          {
+            name: "The Pioneer Briefing",
+            desc: "Gabor Steingarts Morning Briefing.",
+            url: "https://podcasts.apple.com/de/search?term=The%20Pioneer%20Briefing"
+          },
+          {
+            name: "Table.Today",
+            desc: "Hintergründe aus Berlin, Brüssel und der Welt.",
+            url: "https://podcasts.apple.com/de/search?term=Table.Today"
+          }
+        ],
+        youtube: [
+          {
+            name: "tagesschau",
+            desc: "Die Nachrichten der ARD.",
+            url: "https://www.youtube.com/results?search_query=tagesschau"
+          },
+          {
+            name: "ZDFheute Nachrichten",
+            desc: "Nachrichten vom ZDF.",
+            url: "https://www.youtube.com/results?search_query=ZDFheute+Nachrichten"
+          },
+          {
+            name: "DER SPIEGEL",
+            desc: "Videos und Reportagen.",
+            url: "https://www.youtube.com/results?search_query=DER+SPIEGEL"
+          },
+          {
+            name: "WELT Nachrichtensender",
+            desc: "Live und Reportagen.",
+            url: "https://www.youtube.com/results?search_query=WELT+Nachrichtensender"
+          },
+          {
+            name: "ntv Nachrichten",
+            desc: "Nachrichten rund um die Uhr.",
+            url: "https://www.youtube.com/results?search_query=ntv+Nachrichten"
+          },
+          {
+            name: "phoenix",
+            desc: "Politik live, Debatten aus dem Bundestag.",
+            url: "https://www.youtube.com/results?search_query=phoenix"
+          },
+          {
+            name: "BR24",
+            desc: "Nachrichten aus Bayern und der Welt.",
+            url: "https://www.youtube.com/results?search_query=BR24"
+          },
+          {
+            name: "DW Deutsch",
+            desc: "Deutsche Welle auf Deutsch.",
+            url: "https://www.youtube.com/results?search_query=DW+Deutsch"
+          },
+          {
+            name: "Jung & Naiv",
+            desc: "Tilo Jung im langen Interview.",
+            url: "https://www.youtube.com/results?search_query=Jung+%26+Naiv"
+          },
+          {
+            name: "maiLab",
+            desc: "Wissenschaft und Gesellschaft mit Mai Thi Nguyen-Kim.",
+            url: "https://www.youtube.com/results?search_query=maiLab"
+          }
+        ],
+        newsSources: [
+          {
+            name: "tagesschau.de",
+            url: "https://www.tagesschau.de/"
+          },
+          {
+            name: "SPIEGEL",
+            url: "https://www.spiegel.de/"
+          },
+          {
+            name: "ZEIT ONLINE",
+            url: "https://www.zeit.de/"
+          },
+          {
+            name: "Google News Deutschland",
+            url: "https://news.google.com/?hl=de&gl=DE&ceid=DE:de"
+          }
+        ]
+      },
+      {
+        id: "wn-politics",
+        name: "Politics",
+        icon: "🏛️",
+        podcasts: [
+          {
+            name: "The NPR Politics Podcast",
+            desc: "Daily Washington coverage.",
+            url: "https://podcasts.apple.com/us/search?term=The%20NPR%20Politics%20Podcast"
+          },
+          {
+            name: "Pod Save America",
+            desc: "Left-leaning politics talk.",
+            url: "https://podcasts.apple.com/us/search?term=Pod%20Save%20America"
+          },
+          {
+            name: "The Ben Shapiro Show",
+            desc: "Right-leaning politics talk.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Ben%20Shapiro%20Show"
+          },
+          {
+            name: "Slate Political Gabfest",
+            desc: "Weekly roundtable on politics.",
+            url: "https://podcasts.apple.com/us/search?term=Slate%20Political%20Gabfest"
+          },
+          {
+            name: "Left, Right & Center",
+            desc: "KCRW's balanced debate.",
+            url: "https://podcasts.apple.com/us/search?term=Left%2C%20Right%20%26%20Center"
+          }
+        ],
+        youtube: [
+          {
+            name: "C-SPAN",
+            desc: "Unfiltered politics.",
+            url: "https://www.youtube.com/results?search_query=C-SPAN"
+          },
+          {
+            name: "PBS NewsHour",
+            desc: "Politics Monday and more.",
+            url: "https://www.youtube.com/results?search_query=PBS+NewsHour"
+          },
+          {
+            name: "Face the Nation",
+            desc: "CBS Sunday politics.",
+            url: "https://www.youtube.com/results?search_query=Face+the+Nation"
+          },
+          {
+            name: "Meet the Press",
+            desc: "NBC Sunday politics.",
+            url: "https://www.youtube.com/results?search_query=Meet+the+Press"
+          },
+          {
+            name: "Some More News",
+            desc: "Satirical politics explainer.",
+            url: "https://www.youtube.com/results?search_query=Some+More+News"
+          }
+        ],
+        newsSources: [
+          {
+            name: "POLITICO",
+            url: "https://www.politico.com/"
+          },
+          {
+            name: "The Hill",
+            url: "https://thehill.com/"
+          },
+          {
+            name: "AllSides (balanced)",
+            url: "https://www.allsides.com/"
+          },
+          {
+            name: "Google News: politics",
+            url: "https://news.google.com/search?q=politics"
+          }
+        ]
+      },
+      {
+        id: "wn-business",
+        name: "Business",
+        icon: "💼",
+        podcasts: [
+          {
+            name: "The Journal",
+            desc: "WSJ's business stories.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Journal"
+          },
+          {
+            name: "Planet Money",
+            desc: "NPR on how the economy works.",
+            url: "https://podcasts.apple.com/us/search?term=Planet%20Money"
+          },
+          {
+            name: "Marketplace",
+            desc: "Daily business news.",
+            url: "https://podcasts.apple.com/us/search?term=Marketplace"
+          },
+          {
+            name: "Odd Lots",
+            desc: "Bloomberg on markets and economics.",
+            url: "https://podcasts.apple.com/us/search?term=Odd%20Lots"
+          },
+          {
+            name: "FT News Briefing",
+            desc: "Financial Times headlines.",
+            url: "https://podcasts.apple.com/us/search?term=FT%20News%20Briefing"
+          }
+        ],
+        youtube: [
+          {
+            name: "CNBC Television",
+            desc: "Markets and business TV.",
+            url: "https://www.youtube.com/results?search_query=CNBC+Television"
+          },
+          {
+            name: "Bloomberg Television",
+            desc: "Markets and economics.",
+            url: "https://www.youtube.com/results?search_query=Bloomberg+Television"
+          },
+          {
+            name: "Yahoo Finance",
+            desc: "Live market coverage.",
+            url: "https://www.youtube.com/results?search_query=Yahoo+Finance"
+          },
+          {
+            name: "Wall Street Journal",
+            desc: "Business explainers.",
+            url: "https://www.youtube.com/results?search_query=Wall+Street+Journal"
+          },
+          {
+            name: "Patrick Boyle",
+            desc: "Dry-humored finance analysis.",
+            url: "https://www.youtube.com/results?search_query=Patrick+Boyle"
+          }
+        ],
+        newsSources: [
+          {
+            name: "CNBC",
+            url: "https://www.cnbc.com/"
+          },
+          {
+            name: "MarketWatch",
+            url: "https://www.marketwatch.com/"
+          },
+          {
+            name: "Bloomberg",
+            url: "https://www.bloomberg.com/"
+          },
+          {
+            name: "Google News: business",
+            url: "https://news.google.com/search?q=business%20economy"
+          }
+        ]
+      },
+      {
+        id: "wn-tech",
+        name: "Tech",
+        icon: "💻",
+        podcasts: [
+          {
+            name: "Hard Fork",
+            desc: "NYT on tech's wild frontier.",
+            url: "https://podcasts.apple.com/us/search?term=Hard%20Fork"
+          },
+          {
+            name: "Decoder with Nilay Patel",
+            desc: "The Verge's interview show.",
+            url: "https://podcasts.apple.com/us/search?term=Decoder%20with%20Nilay%20Patel"
+          },
+          {
+            name: "Pivot",
+            desc: "Kara Swisher and Scott Galloway.",
+            url: "https://podcasts.apple.com/us/search?term=Pivot"
+          },
+          {
+            name: "The Vergecast",
+            desc: "Gadgets and tech news.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Vergecast"
+          },
+          {
+            name: "Lex Fridman Podcast",
+            desc: "Long talks on AI and science.",
+            url: "https://podcasts.apple.com/us/search?term=Lex%20Fridman%20Podcast"
+          }
+        ],
+        youtube: [
+          {
+            name: "The Verge",
+            desc: "Tech news and reviews.",
+            url: "https://www.youtube.com/results?search_query=The+Verge"
+          },
+          {
+            name: "Marques Brownlee",
+            desc: "Tech reviews.",
+            url: "https://www.youtube.com/results?search_query=Marques+Brownlee"
+          },
+          {
+            name: "Linus Tech Tips",
+            desc: "PC and tech.",
+            url: "https://www.youtube.com/results?search_query=Linus+Tech+Tips"
+          },
+          {
+            name: "CNET",
+            desc: "Gadgets and news.",
+            url: "https://www.youtube.com/results?search_query=CNET"
+          },
+          {
+            name: "Bloomberg Technology",
+            desc: "Tech business news.",
+            url: "https://www.youtube.com/results?search_query=Bloomberg+Technology"
+          }
+        ],
+        newsSources: [
+          {
+            name: "The Verge",
+            url: "https://www.theverge.com/"
+          },
+          {
+            name: "Ars Technica",
+            url: "https://arstechnica.com/"
+          },
+          {
+            name: "TechCrunch",
+            url: "https://techcrunch.com/"
+          },
+          {
+            name: "Google News: tech",
+            url: "https://news.google.com/search?q=technology"
+          }
+        ]
+      },
+      {
+        id: "wn-science",
+        name: "Science",
+        icon: "🔬",
+        podcasts: [
+          {
+            name: "Science Friday",
+            desc: "WNYC's science hour.",
+            url: "https://podcasts.apple.com/us/search?term=Science%20Friday"
+          },
+          {
+            name: "Short Wave",
+            desc: "NPR's 10-minute science.",
+            url: "https://podcasts.apple.com/us/search?term=Short%20Wave"
+          },
+          {
+            name: "Radiolab",
+            desc: "Curiosity-driven storytelling.",
+            url: "https://podcasts.apple.com/us/search?term=Radiolab"
+          },
+          {
+            name: "Nature Podcast",
+            desc: "From the journal Nature.",
+            url: "https://podcasts.apple.com/us/search?term=Nature%20Podcast"
+          },
+          {
+            name: "StarTalk",
+            desc: "Neil deGrasse Tyson on space and science.",
+            url: "https://podcasts.apple.com/us/search?term=StarTalk"
+          }
+        ],
+        youtube: [
+          {
+            name: "Veritasium",
+            desc: "Science and engineering stories.",
+            url: "https://www.youtube.com/results?search_query=Veritasium"
+          },
+          {
+            name: "Kurzgesagt",
+            desc: "Animated science explainers.",
+            url: "https://www.youtube.com/results?search_query=Kurzgesagt+In+a+Nutshell"
+          },
+          {
+            name: "SciShow",
+            desc: "Quick science news.",
+            url: "https://www.youtube.com/results?search_query=SciShow"
+          },
+          {
+            name: "NASA",
+            desc: "Missions and launches.",
+            url: "https://www.youtube.com/results?search_query=NASA"
+          },
+          {
+            name: "Scott Manley",
+            desc: "Space and rockets explained.",
+            url: "https://www.youtube.com/results?search_query=Scott+Manley"
+          }
+        ],
+        newsSources: [
+          {
+            name: "ScienceDaily",
+            url: "https://www.sciencedaily.com/"
+          },
+          {
+            name: "NASA",
+            url: "https://www.nasa.gov/news/"
+          },
+          {
+            name: "New Scientist",
+            url: "https://www.newscientist.com/"
+          },
+          {
+            name: "Google News: science",
+            url: "https://news.google.com/search?q=science"
+          }
+        ]
+      },
+      {
+        id: "wn-health",
+        name: "Health",
+        icon: "🩺",
+        podcasts: [
+          {
+            name: "Huberman Lab",
+            desc: "Science-based health tools.",
+            url: "https://podcasts.apple.com/us/search?term=Huberman%20Lab"
+          },
+          {
+            name: "The Drive",
+            desc: "Peter Attia on longevity and health.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Drive"
+          },
+          {
+            name: "Life Kit",
+            desc: "NPR's practical health tips.",
+            url: "https://podcasts.apple.com/us/search?term=Life%20Kit"
+          },
+          {
+            name: "ZOE Science & Nutrition",
+            desc: "Food and health research.",
+            url: "https://podcasts.apple.com/us/search?term=ZOE%20Science%20%26%20Nutrition"
+          },
+          {
+            name: "Health Check",
+            desc: "BBC World Service health news.",
+            url: "https://podcasts.apple.com/us/search?term=Health%20Check"
+          }
+        ],
+        youtube: [
+          {
+            name: "Doctor Mike",
+            desc: "A doctor explains health news.",
+            url: "https://www.youtube.com/results?search_query=Doctor+Mike"
+          },
+          {
+            name: "Mayo Clinic",
+            desc: "Trusted health explainers.",
+            url: "https://www.youtube.com/results?search_query=Mayo+Clinic"
+          },
+          {
+            name: "Cleveland Clinic",
+            desc: "Health tips and news.",
+            url: "https://www.youtube.com/results?search_query=Cleveland+Clinic"
+          },
+          {
+            name: "Medlife Crisis",
+            desc: "Cardiologist on health headlines.",
+            url: "https://www.youtube.com/results?search_query=Medlife+Crisis"
+          },
+          {
+            name: "ZOE",
+            desc: "Nutrition science.",
+            url: "https://www.youtube.com/results?search_query=ZOE"
+          }
+        ],
+        newsSources: [
+          {
+            name: "STAT News",
+            url: "https://www.statnews.com/"
+          },
+          {
+            name: "NPR Health",
+            url: "https://www.npr.org/sections/health/"
+          },
+          {
+            name: "CDC newsroom",
+            url: "https://www.cdc.gov/media/"
+          },
+          {
+            name: "Google News: health",
+            url: "https://news.google.com/search?q=health"
+          }
+        ]
+      },
+      {
+        id: "wn-sports",
+        name: "Sports",
+        icon: "🏈",
+        podcasts: [
+          {
+            name: "The Bill Simmons Podcast",
+            desc: "Sports and pop culture.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Bill%20Simmons%20Podcast"
+          },
+          {
+            name: "Pardon My Take",
+            desc: "Barstool's comedy sports show.",
+            url: "https://podcasts.apple.com/us/search?term=Pardon%20My%20Take"
+          },
+          {
+            name: "The Lowe Post",
+            desc: "NBA with Zach Lowe.",
+            url: "https://podcasts.apple.com/us/search?term=Zach%20Lowe%20NBA%20podcast"
+          },
+          {
+            name: "Men in Blazers",
+            desc: "Soccer, American style.",
+            url: "https://podcasts.apple.com/us/search?term=Men%20in%20Blazers"
+          },
+          {
+            name: "The Athletic Football Show",
+            desc: "NFL breakdowns.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Athletic%20Football%20Show"
+          }
+        ],
+        youtube: [
+          {
+            name: "ESPN",
+            desc: "Highlights and analysis.",
+            url: "https://www.youtube.com/results?search_query=ESPN"
+          },
+          {
+            name: "NFL",
+            desc: "Official NFL highlights.",
+            url: "https://www.youtube.com/results?search_query=NFL"
+          },
+          {
+            name: "NBA",
+            desc: "Official NBA highlights.",
+            url: "https://www.youtube.com/results?search_query=NBA"
+          },
+          {
+            name: "MLB",
+            desc: "Official MLB highlights.",
+            url: "https://www.youtube.com/results?search_query=MLB"
+          },
+          {
+            name: "Bundesliga",
+            desc: "German football highlights.",
+            url: "https://www.youtube.com/results?search_query=Bundesliga"
+          }
+        ],
+        newsSources: [
+          {
+            name: "ESPN",
+            url: "https://www.espn.com/"
+          },
+          {
+            name: "The Athletic",
+            url: "https://www.nytimes.com/athletic/"
+          },
+          {
+            name: "kicker (DE)",
+            url: "https://www.kicker.de/"
+          },
+          {
+            name: "Google News: sports",
+            url: "https://news.google.com/search?q=sports"
+          }
+        ]
+      }
+    ]
   }
 ];

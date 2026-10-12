@@ -231,6 +231,55 @@ FEEDS = {
     "save-budget": [
         ("Google News", "https://news.google.com/rss/search?q=%22personal+finance%22+OR+%22save+money%22+tips&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "wn-usa": [
+        ("NPR", "https://feeds.npr.org/1001/rss.xml"),
+        ("CBS News", "https://www.cbsnews.com/latest/rss/main"),
+        ("Google News", "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "wn-world": [
+        ("BBC World", "https://feeds.bbci.co.uk/news/world/rss.xml"),
+        ("Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"),
+        ("The Guardian", "https://www.theguardian.com/world/rss"),
+    ],
+    "wn-eu": [
+        ("POLITICO Europe", "https://www.politico.eu/feed/"),
+        ("DW", "https://rss.dw.com/rdf/rss-en-eu"),
+        ("Google News", "https://news.google.com/rss/search?q=%22European+Union%22+OR+EU+Brussels&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "wn-de": [
+        ("tagesschau", "https://www.tagesschau.de/xml/rss2/"),
+        ("SPIEGEL", "https://www.spiegel.de/schlagzeilen/index.rss"),
+        ("ZEIT", "https://newsfeed.zeit.de/index"),
+        ("Google News", "https://news.google.com/rss?hl=de&gl=DE&ceid=DE:de"),
+    ],
+    "wn-politics": [
+        ("NPR Politics", "https://feeds.npr.org/1014/rss.xml"),
+        ("POLITICO", "https://rss.politico.com/politics-news.xml"),
+        ("Google News", "https://news.google.com/rss/search?q=politics+Congress+OR+White+House&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "wn-business": [
+        ("CNBC", "https://www.cnbc.com/id/100003114/device/rss/rss.html"),
+        ("MarketWatch", "https://feeds.content.dowjones.io/public/rss/mw_topstories"),
+        ("Google News", "https://news.google.com/rss/search?q=economy+OR+markets+OR+business&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "wn-tech": [
+        ("The Verge", "https://www.theverge.com/rss/index.xml"),
+        ("Ars Technica", "https://feeds.arstechnica.com/arstechnica/index"),
+        ("Google News", "https://news.google.com/rss/search?q=technology&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "wn-science": [
+        ("ScienceDaily", "https://www.sciencedaily.com/rss/top/science.xml"),
+        ("NASA", "https://www.nasa.gov/news-release/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=science+discovery+OR+study&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "wn-health": [
+        ("NPR Health", "https://feeds.npr.org/1128/rss.xml"),
+        ("Google News", "https://news.google.com/rss/search?q=health+study+OR+medicine&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "wn-sports": [
+        ("ESPN", "https://www.espn.com/espn/rss/news"),
+        ("Google News", "https://news.google.com/rss/search?q=NFL+OR+NBA+OR+MLB+OR+soccer&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20

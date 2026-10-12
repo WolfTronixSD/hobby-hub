@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.7.1";
+const APP_VERSION = "2.8.0";
 const CHANGELOG = [
+  {
+    version: "2.8.0",
+    date: "2026-10-12",
+    title: "World News",
+    changes: [
+      "New World News button that opens straight to the headlines",
+      "Regions: USA, World, EU and Deutschland (German sources: tagesschau, SPIEGEL, ZEIT)",
+      "Topics: Politics, Business, Tech, Science, Health and Sports",
+      "Each section also lists top news podcasts and YouTube channels"
+    ]
+  },
   {
     version: "2.7.1",
     date: "2026-10-12",
