@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.14.0";
+const APP_VERSION = "2.15.0";
 const CHANGELOG = [
+  {
+    version: "2.15.0",
+    date: "2026-10-13",
+    title: "RF HW Design and Retirement",
+    changes: [
+      "New 📶 RF HW Design button: RF podcasts, top 10 YouTube (The Signal Path, W2AEW, Phil's Lab, Robert Feranec and more) and RF news",
+      "New 🏖️ Retirement button with Early Retirement, FIRE, Social Security & Medicare, Retirement Investing and Where to Retire",
+      "Calculators and sites like cFIREsim, FI Calc, Open Social Security, my Social Security and Medicare.gov",
+      "Voice control understands “RF design”, “retirement”, “FIRE”, “early retirement” and “Social Security”"
+    ]
+  },
   {
     version: "2.14.0",
     date: "2026-10-13",

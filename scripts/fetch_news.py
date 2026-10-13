@@ -295,6 +295,32 @@ FEEDS = {
         ("Sportschau", "https://www.sportschau.de/index~rss2.xml"),
         ("Google News", "https://news.google.com/rss/search?q=Bundesliga+OR+Fu%C3%9Fball+OR+Formel+1&hl=de&gl=DE&ceid=DE:de"),
     ],
+    "rf": [
+        ("Hackaday Radio", "https://hackaday.com/category/radio-hacks/feed/"),
+        ("EDN", "https://www.edn.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22RF+design%22+OR+%22RF+front-end%22+OR+mmWave+OR+%22antenna+design%22+OR+%22RF+PCB%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "ret-early": [
+        ("Early Retirement Now", "https://earlyretirementnow.com/feed/"),
+        ("Can I Retire Yet?", "https://www.caniretireyet.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22early+retirement%22+OR+%22retire+early%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "ret-fire": [
+        ("Mr. Money Mustache", "https://www.mrmoneymustache.com/feed/"),
+        ("Mad Fientist", "https://www.madfientist.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22financial+independence%22+OR+%22FIRE+movement%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "ret-ss": [
+        ("SSA Blog", "https://blog.ssa.gov/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=%22Social+Security%22+OR+Medicare+OR+COLA&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "ret-invest": [
+        ("Kitces", "https://www.kitces.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=401(k)+OR+IRA+OR+%22retirement+savings%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "ret-where": [
+        ("Google News", "https://news.google.com/rss/search?q=%22best+places+to+retire%22+OR+%22retire+abroad%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
     "save-tax": [
         ("Tax Foundation", "https://taxfoundation.org/feed/"),
         ("Google News", "https://news.google.com/rss/search?q=IRS+OR+%22tax+refund%22+OR+%22tax+deduction%22+OR+%22tax+credit%22+OR+%22tax+bracket%22&hl=en-US&gl=US&ceid=US:en"),

@@ -274,6 +274,46 @@ const HOBBIES = [
     ]
   },
   {
+    id: "rf",
+    name: "RF HW Design",
+    icon: "📶",
+    accent: "#ff6b9d",
+    tagline: "RF and microwave hardware: PCBs, antennas, filters and test gear",
+    podcasts: [
+      { name: "SolderSmoke", desc: "Homebrew RF: receivers, transmitters and the joy of building.", url: "https://soldersmoke.blogspot.com/" },
+      { name: "The Amp Hour", desc: "Electronics design talk, often deep into analog and RF.", url: "https://theamphour.com/" },
+      { name: "OnTrack (Altium)", desc: "PCB design, signal integrity, EMC and RF layout.", url: "https://resources.altium.com/podcasts" },
+      { name: "QSO Today", desc: "Long interviews with RF engineers and radio builders.", url: "https://www.qsotoday.com/" },
+      { name: "Ham Radio Workbench", desc: "Builds, test gear and RF projects from the bench.", url: "https://www.hamradioworkbench.com/" },
+      { name: "Hackaday Podcast", desc: "Weekly hacks, with plenty of SDR and radio builds.", url: "https://hackaday.com/category/podcasts/" },
+      { name: "Embedded.fm", desc: "Embedded hardware and firmware, including wireless.", url: "https://embedded.fm/" },
+      { name: "The Engineering Commons", desc: "Engineers talk design, careers and tools.", url: "https://podcasts.apple.com/us/search?term=The%20Engineering%20Commons" },
+      { name: "Circuit Break (archive)", desc: "MacroFab's hardware show, 500+ episodes on board design.", url: "https://www.macrofab.com/podcasts" },
+      { name: "Ham Radio Crash Course", desc: "Antennas, propagation and RF basics made easy.", url: "https://podcasts.apple.com/us/search?term=Ham%20Radio%20Crash%20Course" }
+    ],
+    youtube: [
+      { name: "The Signal Path", desc: "Shahriar's RF and mmWave teardowns and measurements.", url: "https://www.youtube.com/results?search_query=The+Signal+Path+Shahriar" },
+      { name: "W2AEW", desc: "Alan Wolke: scopes, Smith charts and RF fundamentals.", url: "https://www.youtube.com/@w2aew" },
+      { name: "Phil's Lab", desc: "PCB design with Altium and KiCad, mixed-signal and RF.", url: "https://www.youtube.com/@PhilsLab" },
+      { name: "Robert Feranec", desc: "High-speed PCB layout and stack-up interviews.", url: "https://www.youtube.com/@RobertFeranec" },
+      { name: "Rick Hartley on grounding", desc: "The classic talks on return paths and EMI.", url: "https://www.youtube.com/results?search_query=Rick+Hartley+PCB+grounding" },
+      { name: "Rohde & Schwarz", desc: "Spectrum analysis, VNA and RF test explained.", url: "https://www.youtube.com/results?search_query=Rohde+Schwarz+RF+measurement+basics" },
+      { name: "Keysight", desc: "VNA, S-parameters and signal analysis how-tos.", url: "https://www.youtube.com/results?search_query=Keysight+VNA+S-parameters+tutorial" },
+      { name: "EEVblog", desc: "Dave Jones on electronics design and test gear.", url: "https://www.youtube.com/@EEVblog" },
+      { name: "Zach Peterson", desc: "Altium's RF and signal-integrity design tips.", url: "https://www.youtube.com/results?search_query=Zachariah+Peterson+RF+PCB+design" },
+      { name: "Impedance matching", desc: "Smith chart and matching networks, step by step.", url: "https://www.youtube.com/results?search_query=impedance+matching+smith+chart+tutorial" }
+    ],
+    newsSources: [
+      { name: "Microwaves & RF", url: "https://www.mwrf.com/" },
+      { name: "everything RF", url: "https://www.everythingrf.com/" },
+      { name: "Signal Integrity Journal", url: "https://www.signalintegrityjournal.com/" },
+      { name: "Analog Dialogue (ADI)", url: "https://www.analog.com/en/resources/analog-dialogue.html" },
+      { name: "EDN", url: "https://www.edn.com/" },
+      { name: "Hackaday: Radio", url: "https://hackaday.com/category/radio-hacks/" },
+      { name: "Google News: RF design", url: "https://news.google.com/search?q=%22RF%20design%22%20OR%20%22RF%20front-end%22%20OR%20mmWave%20OR%20%22antenna%20design%22" }
+    ]
+  },
+  {
     id: "arduino",
     name: "Arduino",
     icon: "🤖",
@@ -4697,6 +4737,171 @@ const HOBBIES = [
             name: "Google News: personal finance",
             url: "https://news.google.com/search?q=personal%20finance%20tips"
           }
+        ]
+      }
+    ]
+  },
+  {
+    id: "retire",
+    name: "Retirement",
+    icon: "🏖️",
+    accent: "#f6c453",
+    tagline: "Early retirement, FIRE, Social Security and retiring smart",
+    subs: [
+      {
+        id: "ret-early",
+        name: "Early Retirement",
+        icon: "🌅",
+        podcasts: [
+          { name: "Financial Independence (Mad Fientist)", desc: "Brandon on retiring early with tax-smart strategies.", url: "https://podcasts.apple.com/us/search?term=Financial%20Independence%20Podcast%20Mad%20Fientist" },
+          { name: "ChooseFI", desc: "Stories and tactics for reaching financial independence.", url: "https://podcasts.apple.com/us/search?term=ChooseFI" },
+          { name: "BiggerPockets Money", desc: "Real people's paths to early retirement.", url: "https://podcasts.apple.com/us/search?term=BiggerPockets%20Money" },
+          { name: "Afford Anything", desc: "Paula Pant on choices, money and freedom.", url: "https://podcasts.apple.com/us/search?term=Afford%20Anything" },
+          { name: "Earn & Invest", desc: "Doc G on retiring early and investing.", url: "https://podcasts.apple.com/us/search?term=Earn%20%26%20Invest" },
+          { name: "Catching Up to FI", desc: "Starting late and still retiring early.", url: "https://podcasts.apple.com/us/search?term=Catching%20Up%20to%20FI" },
+          { name: "Retirement Answer Man", desc: "Roger Whitney on planning a retirement you'll enjoy.", url: "https://podcasts.apple.com/us/search?term=Retirement%20Answer%20Man" },
+          { name: "Stacking Benjamins", desc: "Fun, practical money talk for getting ahead.", url: "https://podcasts.apple.com/us/search?term=Stacking%20Benjamins" }
+        ],
+        youtube: [
+          { name: "Rob Berger", desc: "Retirement planning and early retirement math.", url: "https://www.youtube.com/results?search_query=Rob+Berger+retirement" },
+          { name: "Mad Fientist", desc: "Tax-smart early retirement explained.", url: "https://www.youtube.com/results?search_query=Mad+Fientist" },
+          { name: "Our Rich Journey", desc: "A family that retired early at 39.", url: "https://www.youtube.com/results?search_query=Our+Rich+Journey" },
+          { name: "Rule of 55", desc: "Take 401(k) money early without penalty.", url: "https://www.youtube.com/results?search_query=rule+of+55+401k+explained" },
+          { name: "Roth conversion ladder", desc: "Reach retirement money before 59½.", url: "https://www.youtube.com/results?search_query=Roth+conversion+ladder+explained" },
+          { name: "72(t) SEPP", desc: "Penalty-free early IRA withdrawals.", url: "https://www.youtube.com/results?search_query=72t+SEPP+explained" },
+          { name: "Health insurance before 65", desc: "ACA plans and bridging to Medicare.", url: "https://www.youtube.com/results?search_query=health+insurance+early+retirement+ACA" },
+          { name: "How much to retire early", desc: "Run the numbers for your plan.", url: "https://www.youtube.com/results?search_query=how+much+money+do+I+need+to+retire+early" }
+        ],
+        newsSources: [
+          { name: "Early Retirement Now", url: "https://earlyretirementnow.com/" },
+          { name: "Mad Fientist", url: "https://www.madfientist.com/" },
+          { name: "Can I Retire Yet?", url: "https://www.caniretireyet.com/" },
+          { name: "Mr. Money Mustache", url: "https://www.mrmoneymustache.com/" },
+          { name: "r/financialindependence", url: "https://www.reddit.com/r/financialindependence/" },
+          { name: "Google News: early retirement", url: "https://news.google.com/search?q=%22early%20retirement%22%20OR%20%22retire%20early%22" }
+        ]
+      },
+      {
+        id: "ret-fire",
+        name: "FIRE",
+        icon: "🔥",
+        podcasts: [
+          { name: "ChooseFI", desc: "The biggest FIRE community show.", url: "https://podcasts.apple.com/us/search?term=ChooseFI" },
+          { name: "BiggerPockets Money", desc: "FIRE journeys, real estate and side income.", url: "https://podcasts.apple.com/us/search?term=BiggerPockets%20Money" },
+          { name: "Financial Independence (Mad Fientist)", desc: "Deep dives with FIRE experts.", url: "https://podcasts.apple.com/us/search?term=Financial%20Independence%20Podcast%20Mad%20Fientist" },
+          { name: "Afford Anything", desc: "Saving, investing and FIRE choices.", url: "https://podcasts.apple.com/us/search?term=Afford%20Anything" },
+          { name: "Frugal Friends", desc: "Frugal living without feeling deprived.", url: "https://podcasts.apple.com/us/search?term=Frugal%20Friends%20Podcast" },
+          { name: "Bogleheads On Investing", desc: "Simple index investing, the FIRE engine.", url: "https://podcasts.apple.com/us/search?term=Bogleheads%20On%20Investing" },
+          { name: "Catching Up to FI", desc: "FIRE for people starting later.", url: "https://podcasts.apple.com/us/search?term=Catching%20Up%20to%20FI" },
+          { name: "Earn & Invest", desc: "Investing and early retirement talk.", url: "https://podcasts.apple.com/us/search?term=Earn%20%26%20Invest" }
+        ],
+        youtube: [
+          { name: "FIRE explained", desc: "What financial independence, retire early means.", url: "https://www.youtube.com/results?search_query=FIRE+movement+explained" },
+          { name: "The 4% rule", desc: "How much you can safely spend each year.", url: "https://www.youtube.com/results?search_query=4%25+rule+explained+retirement" },
+          { name: "Coast FI", desc: "Save early, then let it grow.", url: "https://www.youtube.com/results?search_query=Coast+FI+explained" },
+          { name: "Barista FIRE", desc: "Part-time work plus investments.", url: "https://www.youtube.com/results?search_query=Barista+FIRE+explained" },
+          { name: "Lean vs Fat FIRE", desc: "Pick your FIRE style.", url: "https://www.youtube.com/results?search_query=lean+FIRE+vs+fat+FIRE" },
+          { name: "The Money Guy Show", desc: "Financial order of operations.", url: "https://www.youtube.com/results?search_query=The+Money+Guy+Show" },
+          { name: "Mr. Money Mustache", desc: "The original FIRE blogger.", url: "https://www.youtube.com/results?search_query=Mr+Money+Mustache" },
+          { name: "FIRE calculators", desc: "How to use cFIREsim and FIcalc.", url: "https://www.youtube.com/results?search_query=FIRE+calculator+cFIREsim+FIcalc" }
+        ],
+        newsSources: [
+          { name: "Mr. Money Mustache", url: "https://www.mrmoneymustache.com/" },
+          { name: "ChooseFI", url: "https://www.choosefi.com/" },
+          { name: "cFIREsim calculator", url: "https://cfiresim.com/" },
+          { name: "FI Calc", url: "https://ficalc.app/" },
+          { name: "Bogleheads wiki", url: "https://www.bogleheads.org/wiki/Main_Page" },
+          { name: "r/financialindependence", url: "https://www.reddit.com/r/financialindependence/" },
+          { name: "Google News: FIRE", url: "https://news.google.com/search?q=%22financial%20independence%22%20OR%20%22FIRE%20movement%22" }
+        ]
+      },
+      {
+        id: "ret-ss",
+        name: "Social Security & Medicare",
+        icon: "🏛️",
+        podcasts: [
+          { name: "The Retirement and IRA Show", desc: "IRAs, Social Security timing and taxes.", url: "https://podcasts.apple.com/us/search?term=The%20Retirement%20and%20IRA%20Show" },
+          { name: "Retirement Starts Today", desc: "Benjamin Brandt on retirement income.", url: "https://podcasts.apple.com/us/search?term=Retirement%20Starts%20Today" },
+          { name: "Your Money, Your Wealth", desc: "Retirement and Social Security Q&A.", url: "https://podcasts.apple.com/us/search?term=Your%20Money%2C%20Your%20Wealth" },
+          { name: "Stay Wealthy Retirement Podcast", desc: "Taylor Schulte on claiming and income plans.", url: "https://podcasts.apple.com/us/search?term=Stay%20Wealthy%20Retirement%20Podcast" },
+          { name: "Retirement Answer Man", desc: "Practical retirement planning.", url: "https://podcasts.apple.com/us/search?term=Retirement%20Answer%20Man" },
+          { name: "The Clark Howard Podcast", desc: "Consumer tips, Medicare and benefits.", url: "https://podcasts.apple.com/us/search?term=The%20Clark%20Howard%20Podcast" }
+        ],
+        youtube: [
+          { name: "Devin Carroll", desc: "Social Security rules, clearly explained.", url: "https://www.youtube.com/results?search_query=Devin+Carroll+Social+Security" },
+          { name: "When to claim Social Security", desc: "62, full age or 70?", url: "https://www.youtube.com/results?search_query=when+to+claim+social+security" },
+          { name: "Spousal benefits", desc: "Get the most for both of you.", url: "https://www.youtube.com/results?search_query=social+security+spousal+benefits+explained" },
+          { name: "Medicare explained", desc: "Parts A, B, D and when to sign up.", url: "https://www.youtube.com/results?search_query=Medicare+explained+parts+A+B+D" },
+          { name: "Medicare vs Medicare Advantage", desc: "Which one fits you.", url: "https://www.youtube.com/results?search_query=Medicare+vs+Medicare+Advantage" },
+          { name: "IRMAA", desc: "Avoid higher Medicare premiums.", url: "https://www.youtube.com/results?search_query=IRMAA+explained" },
+          { name: "Social Security and working", desc: "Earnings limit before full age.", url: "https://www.youtube.com/results?search_query=social+security+earnings+test" },
+          { name: "Living abroad on Social Security", desc: "Benefits outside the US.", url: "https://www.youtube.com/results?search_query=social+security+benefits+living+abroad" }
+        ],
+        newsSources: [
+          { name: "my Social Security (SSA)", url: "https://www.ssa.gov/myaccount/" },
+          { name: "Medicare.gov", url: "https://www.medicare.gov/" },
+          { name: "Open Social Security", url: "https://opensocialsecurity.com/" },
+          { name: "SSA benefit calculators", url: "https://www.ssa.gov/benefits/calculators/" },
+          { name: "Google News: Social Security", url: "https://news.google.com/search?q=%22Social%20Security%22%20OR%20Medicare%20OR%20COLA" }
+        ]
+      },
+      {
+        id: "ret-invest",
+        name: "Retirement Investing",
+        icon: "📊",
+        podcasts: [
+          { name: "Bogleheads On Investing", desc: "Low-cost index investing for retirement.", url: "https://podcasts.apple.com/us/search?term=Bogleheads%20On%20Investing" },
+          { name: "Rational Reminder", desc: "Evidence-based investing and planning.", url: "https://podcasts.apple.com/us/search?term=Rational%20Reminder" },
+          { name: "The Money Guy Show", desc: "Wealth building and retirement order of operations.", url: "https://podcasts.apple.com/us/search?term=The%20Money%20Guy%20Show" },
+          { name: "Your Money, Your Wealth", desc: "Retirement income, Roths and taxes.", url: "https://podcasts.apple.com/us/search?term=Your%20Money%2C%20Your%20Wealth" },
+          { name: "Stay Wealthy Retirement Podcast", desc: "Withdrawal plans and tax-smart income.", url: "https://podcasts.apple.com/us/search?term=Stay%20Wealthy%20Retirement%20Podcast" },
+          { name: "The Retirement and IRA Show", desc: "401(k), IRA and Roth strategies.", url: "https://podcasts.apple.com/us/search?term=The%20Retirement%20and%20IRA%20Show" }
+        ],
+        youtube: [
+          { name: "Ben Felix", desc: "Evidence-based investing, clearly argued.", url: "https://www.youtube.com/results?search_query=Ben+Felix" },
+          { name: "Rob Berger", desc: "Index funds and retirement tools.", url: "https://www.youtube.com/results?search_query=Rob+Berger+index+funds" },
+          { name: "401(k) explained", desc: "Matches, limits and fund choices.", url: "https://www.youtube.com/results?search_query=401k+explained" },
+          { name: "Roth IRA explained", desc: "Why tax-free growth matters.", url: "https://www.youtube.com/results?search_query=Roth+IRA+explained" },
+          { name: "Safe withdrawal rate", desc: "Make the money last.", url: "https://www.youtube.com/results?search_query=safe+withdrawal+rate+retirement" },
+          { name: "Bucket strategy", desc: "Cash, bonds and stocks for retirement income.", url: "https://www.youtube.com/results?search_query=retirement+bucket+strategy" },
+          { name: "Sequence of returns risk", desc: "Why the first years matter.", url: "https://www.youtube.com/results?search_query=sequence+of+returns+risk+explained" },
+          { name: "Annuities pros and cons", desc: "When they make sense.", url: "https://www.youtube.com/results?search_query=annuities+pros+and+cons+retirement" }
+        ],
+        newsSources: [
+          { name: "Bogleheads", url: "https://www.bogleheads.org/" },
+          { name: "Morningstar", url: "https://www.morningstar.com/" },
+          { name: "Kitces.com", url: "https://www.kitces.com/" },
+          { name: "Vanguard: Retirement", url: "https://investor.vanguard.com/investor-resources-education/retirement" },
+          { name: "Fidelity: Retirement", url: "https://www.fidelity.com/retirement-ira/overview" },
+          { name: "Google News: retirement investing", url: "https://news.google.com/search?q=401%28k%29%20OR%20IRA%20OR%20%22retirement%20savings%22" }
+        ]
+      },
+      {
+        id: "ret-where",
+        name: "Where to Retire",
+        icon: "🌍",
+        podcasts: [
+          { name: "International Living", desc: "Retiring and living well overseas.", url: "https://podcasts.apple.com/us/search?term=International%20Living" },
+          { name: "Expat Money Show", desc: "Moving money and life abroad.", url: "https://podcasts.apple.com/us/search?term=Expat%20Money%20Show" },
+          { name: "Retire Overseas", desc: "Real stories of retiring abroad.", url: "https://podcasts.apple.com/us/search?term=Retire%20Overseas" },
+          { name: "Retirement Starts Today", desc: "Where and how to enjoy retirement.", url: "https://podcasts.apple.com/us/search?term=Retirement%20Starts%20Today" },
+          { name: "Afford Anything", desc: "Geo-arbitrage and lifestyle choices.", url: "https://podcasts.apple.com/us/search?term=Afford%20Anything" }
+        ],
+        youtube: [
+          { name: "Expats Everywhere", desc: "Retiring in Mexico, Portugal and beyond.", url: "https://www.youtube.com/results?search_query=Expats+Everywhere" },
+          { name: "Cheapest places to retire", desc: "Best value countries right now.", url: "https://www.youtube.com/results?search_query=cheapest+countries+to+retire" },
+          { name: "Retire in Portugal", desc: "Visas, costs and healthcare.", url: "https://www.youtube.com/results?search_query=retire+in+Portugal" },
+          { name: "Retire in Mexico", desc: "Costs and best towns.", url: "https://www.youtube.com/results?search_query=retire+in+Mexico" },
+          { name: "Retire in Germany", desc: "Rente, healthcare and living costs.", url: "https://www.youtube.com/results?search_query=retire+in+Germany+expat" },
+          { name: "Best US states to retire", desc: "Taxes, weather and costs.", url: "https://www.youtube.com/results?search_query=best+states+to+retire" },
+          { name: "Retiring in Arizona", desc: "Phoenix, Tempe and Tucson for retirees.", url: "https://www.youtube.com/results?search_query=retiring+in+Arizona+pros+cons" }
+        ],
+        newsSources: [
+          { name: "International Living", url: "https://internationalliving.com/" },
+          { name: "Live and Invest Overseas", url: "https://www.liveandinvestoverseas.com/" },
+          { name: "Numbeo cost of living", url: "https://www.numbeo.com/cost-of-living/" },
+          { name: "Kiplinger: where to retire", url: "https://www.kiplinger.com/retirement/places-to-retire" },
+          { name: "Google News: where to retire", url: "https://news.google.com/search?q=%22best%20places%20to%20retire%22%20OR%20%22retire%20abroad%22" }
         ]
       }
     ]
