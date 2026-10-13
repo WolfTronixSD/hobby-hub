@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.10.1";
+const APP_VERSION = "2.11.0";
 const CHANGELOG = [
+  {
+    version: "2.11.0",
+    date: "2026-10-13",
+    title: "Sunrise, sunset and moon phase",
+    changes: [
+      "The home weather bar shows today's sunrise, sunset and moon phase",
+      "San Diego and Tempe weather pages show them as big tiles, with how much of the moon is lit"
+    ]
+  },
   {
     version: "2.10.1",
     date: "2026-10-13",

@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.11.0 (2026-10-13): Sunrise, sunset and moon phase
+- Open-Meteo daily sunrise/sunset (cache key now wx2:); moon phase computed locally from the mean synodic month; .wx-sky chips on forecast panels
+
 ## 2.10.1 (2026-10-13): Weather in °F and °C
 - app.js degC/degFC helpers; home bar, forecast panel, feels-like and 5-day tiles show both units; phone CSS stacks °C under °F
 

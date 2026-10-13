@@ -270,6 +270,13 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
 .wx-c { font-size: 0.6em; font-weight: 600; color: var(--muted); }
 .wx-day b .wx-c { font-size: 0.8em; }
 
+.wx-sky { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+.wx-chip { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px; border-radius: 16px; background: var(--panel-hi); text-align: center; }
+.wx-chip span { font-size: 28px; }
+.wx-chip b { font-size: 18px; }
+.wx-chip small { color: var(--muted); font-size: 13px; }
+.wx-bar .wx-txt small + small { margin-top: 2px; }
+
 /* Voice control */
 .mic-btn {
   position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom));
@@ -320,6 +327,9 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .wx-temp span { display: block; font-size: 17px; }
   .wx-days { gap: 5px; }
   .wx-day { font-size: 14px; padding: 8px 2px; }
+  .wx-sky { gap: 5px; }
+  .wx-chip b { font-size: 15px; }
+  .wx-chip span { font-size: 24px; }
   .wx-day b { font-size: 16px; }
   .wx-day small { font-size: 12px; }
   .hobby:last-child:nth-child(3n+1) { grid-column: 1 / -1; }

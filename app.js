@@ -167,12 +167,12 @@
   }
 
   async function getWeather(lat, lon) {
-    const key = `wx:${lat.toFixed(2)},${lon.toFixed(2)}`;
+    const key = `wx2:${lat.toFixed(2)},${lon.toFixed(2)}`;
     const hit = cacheGet(key, 20 * 60e3);
     if (hit) return hit;
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day" +
-      "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max" +
+      "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,sunrise,sunset" +
       "&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto&forecast_days=5";
     try {
       const d = await getJSON(url);
@@ -185,6 +185,31 @@
       throw e;
     }
   }
+
+  // Sunrise/sunset come as local clock times ("2026-10-13T06:52"); show them as 6:52 AM without time zone shifts.
+  const clock = (iso) => {
+    const m = /T(\d\d):(\d\d)/.exec(iso || "");
+    if (!m) return "–";
+    const h = +m[1];
+    return `${h % 12 || 12}:${m[2]} ${h < 12 ? "AM" : "PM"}`;
+  };
+  // Moon phase from the mean synodic month, counted from the new moon of 6 Jan 2000 18:14 UTC
+  const moon = (when = Date.now()) => {
+    const len = 29.530588853;
+    const age = ((((when - Date.UTC(2000, 0, 6, 18, 14)) / 864e5) % len) + len) % len;
+    const lit = Math.round((1 - Math.cos((2 * Math.PI * age) / len)) / 2 * 100);
+    // new, first quarter, full and last quarter get about a day either side; the in-between phases fill the rest
+    const q = (age / len) * 4, near = Math.abs(q - Math.round(q)) * len / 4 < 1;
+    const [icon, name] = near
+      ? [["🌑", "New moon"], ["🌓", "First quarter"], ["🌕", "Full moon"], ["🌗", "Last quarter"], ["🌑", "New moon"]][Math.round(q)]
+      : [["🌒", "Waxing crescent"], ["🌔", "Waxing gibbous"], ["🌖", "Waning gibbous"], ["🌘", "Waning crescent"]][Math.floor(q)];
+    return { icon, name, lit };
+  };
+  const sunMoonLine = (dy) => {
+    const mo = moon();
+    const sun = dy.sunrise ? `🌅 ${clock(dy.sunrise[0])} · 🌇 ${clock(dy.sunset[0])} · ` : "";
+    return `${sun}${mo.icon} ${mo.name}`;
+  };
 
   const forecastUrl = (w) => `https://forecast.weather.gov/MapClick.php?lat=${w.lat}&lon=${w.lon}`;
 
@@ -240,7 +265,7 @@
       const [ic, txt] = wxIcon(c.weather_code, c.is_day);
       bar.href = forecastUrl(loc);
       bar.innerHTML = `<span class="wx-ic">${ic}</span><b class="wx-t">${deg(c.temperature_2m)}F <small class="wx-c">${degC(c.temperature_2m)}C</small></b>
-        <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])}/${degC(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])}/${degC(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small></span>
+        <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])}/${degC(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])}/${degC(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small><small>${sunMoonLine(dy)}</small></span>
         <span class="go">›</span>`;
       bar.setAttribute("aria-label", `Weather in ${loc.name}: ${Math.round(c.temperature_2m)} degrees, ${txt}. Open forecast`);
       row.hidden = false;
@@ -266,7 +291,12 @@
           <span class="wx-big">${ic}</span>
           <div><div class="wx-temp">${deg(c.temperature_2m)}F <small class="wx-c">${degC(c.temperature_2m)}C</small> <span>${esc(w.name)} · ${esc(txt)}</span></div>
           <small>Feels ${degFC(c.apparent_temperature)} · 💧 ${c.relative_humidity_2m}% · 💨 ${Math.round(c.wind_speed_10m)} mph${uv}${d.stale ? " · saved copy" : ""}</small></div>
-        </a><div class="wx-days">${days}</div>`;
+        </a>${(() => {
+          const mo = moon();
+          const sun = dy.sunrise ? `<div class="wx-chip"><span>🌅</span><b>${clock(dy.sunrise[0])}</b><small>Sunrise</small></div>
+            <div class="wx-chip"><span>🌇</span><b>${clock(dy.sunset[0])}</b><small>Sunset</small></div>` : "";
+          return `<div class="wx-sky">${sun}<div class="wx-chip"><span>${mo.icon}</span><b>${mo.name}</b><small>${mo.lit}% lit</small></div></div>`;
+        })()}<div class="wx-days">${days}</div>`;
     } catch {
       const el = panel();
       if (el) el.innerHTML = `<p class="empty">Live weather isn't available right now. Use the forecast links below.</p>`;
