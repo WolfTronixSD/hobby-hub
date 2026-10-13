@@ -295,6 +295,10 @@ FEEDS = {
         ("Sportschau", "https://www.sportschau.de/index~rss2.xml"),
         ("Google News", "https://news.google.com/rss/search?q=Bundesliga+OR+Fu%C3%9Fball+OR+Formel+1&hl=de&gl=DE&ceid=DE:de"),
     ],
+    "save-sites": [
+        ("Doctor of Credit", "https://www.doctorofcredit.com/feed/"),
+        ("Google News", "https://news.google.com/rss/search?q=NerdWallet+OR+WalletHub+OR+Bankrate+OR+%22savings+rates%22+OR+%22bank+bonus%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
 }
 PER_FEED = 8
 PER_TOPIC = 20

@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.11.0";
+const APP_VERSION = "2.12.0";
 const CHANGELOG = [
+  {
+    version: "2.12.0",
+    date: "2026-10-13",
+    title: "Money Sites",
+    changes: [
+      "New 🧠 Money Sites button under Money Saver: NerdWallet, WalletHub, Bankrate, Credit Karma, Doctor of Credit, The Points Guy and more",
+      "YouTube picks for savings rates, bank bonuses, credit scores and cash back cards, plus rate and deal headlines",
+      "Voice control understands “NerdWallet”, “WalletHub” and “Money Sites”"
+    ]
+  },
   {
     version: "2.11.0",
     date: "2026-10-13",

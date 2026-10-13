@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.12.0 (2026-10-13): Money Sites
+- money hobby: new save-sites sub (labels Sites) with NerdWallet, WalletHub and similar; save-sites feeds in fetch_news.py; voice ALIASES for it
+
 ## 2.11.0 (2026-10-13): Sunrise, sunset and moon phase
 - Open-Meteo daily sunrise/sunset (cache key now wx2:); moon phase computed locally from the mean synodic month; .wx-sky chips on forecast panels
 

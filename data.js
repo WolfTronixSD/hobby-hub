@@ -4286,6 +4286,142 @@ const HOBBIES = [
         ]
       },
       {
+        id: "save-sites",
+        name: "Money Sites",
+        icon: "🧠",
+        labels: {
+          podcasts: "Sites",
+          icon: "🌐",
+          heading: "to bookmark"
+        },
+        podcasts: [
+          {
+            name: "NerdWallet",
+            desc: "Compare credit cards, bank rates, insurance and loans, plus clear money guides.",
+            url: "https://www.nerdwallet.com/"
+          },
+          {
+            name: "WalletHub",
+            desc: "Card and loan comparisons, free credit score and city money rankings.",
+            url: "https://wallethub.com/"
+          },
+          {
+            name: "Bankrate",
+            desc: "Best savings, CD and mortgage rates, updated daily.",
+            url: "https://www.bankrate.com/"
+          },
+          {
+            name: "Credit Karma",
+            desc: "Free credit scores and alerts from TransUnion and Equifax.",
+            url: "https://www.creditkarma.com/"
+          },
+          {
+            name: "Doctor of Credit",
+            desc: "Bank bonuses and credit card deals, posted daily.",
+            url: "https://www.doctorofcredit.com/"
+          },
+          {
+            name: "The Points Guy",
+            desc: "Points, miles and travel card perks.",
+            url: "https://thepointsguy.com/"
+          },
+          {
+            name: "Clark.com",
+            desc: "Clark Howard's no-nonsense saving tips.",
+            url: "https://clark.com/"
+          },
+          {
+            name: "Investopedia",
+            desc: "Plain-English explanations of any money term.",
+            url: "https://www.investopedia.com/"
+          },
+          {
+            name: "Kiplinger",
+            desc: "Personal finance, taxes and retirement planning.",
+            url: "https://www.kiplinger.com/"
+          },
+          {
+            name: "AnnualCreditReport.com",
+            desc: "Your free official credit reports, every week.",
+            url: "https://www.annualcreditreport.com/"
+          }
+        ],
+        youtube: [
+          {
+            name: "NerdWallet",
+            desc: "Money tips and card reviews from NerdWallet.",
+            url: "https://www.youtube.com/results?search_query=NerdWallet"
+          },
+          {
+            name: "WalletHub",
+            desc: "Money tips from WalletHub.",
+            url: "https://www.youtube.com/results?search_query=WalletHub"
+          },
+          {
+            name: "Bankrate",
+            desc: "Rates and money explainers.",
+            url: "https://www.youtube.com/results?search_query=Bankrate"
+          },
+          {
+            name: "Clark Howard",
+            desc: "Saving tips and scam warnings.",
+            url: "https://www.youtube.com/results?search_query=Clark+Howard"
+          },
+          {
+            name: "The Points Guy",
+            desc: "Points and travel card tips.",
+            url: "https://www.youtube.com/results?search_query=The+Points+Guy"
+          },
+          {
+            name: "Best high-yield savings",
+            desc: "Where to park cash right now.",
+            url: "https://www.youtube.com/results?search_query=best+high+yield+savings+account"
+          },
+          {
+            name: "Bank bonus hunting",
+            desc: "Earn bank sign-up bonuses.",
+            url: "https://www.youtube.com/results?search_query=bank+account+bonus+how+to"
+          },
+          {
+            name: "Raise your credit score",
+            desc: "Fast, legit ways to improve it.",
+            url: "https://www.youtube.com/results?search_query=how+to+raise+credit+score+fast"
+          },
+          {
+            name: "Best cash back cards",
+            desc: "Which card earns the most.",
+            url: "https://www.youtube.com/results?search_query=best+cash+back+credit+card"
+          },
+          {
+            name: "Freeze your credit",
+            desc: "Protect yourself from identity theft.",
+            url: "https://www.youtube.com/results?search_query=how+to+freeze+your+credit"
+          }
+        ],
+        newsSources: [
+          {
+            name: "NerdWallet",
+            url: "https://www.nerdwallet.com/"
+          },
+          {
+            name: "WalletHub",
+            url: "https://wallethub.com/"
+          },
+          {
+            name: "Bankrate",
+            url: "https://www.bankrate.com/"
+          },
+          {
+            name: "Doctor of Credit",
+            url: "https://www.doctorofcredit.com/"
+          },
+          {
+            name: "Google News: rates and deals",
+            url: "https://news.google.com/search?q=savings%20rates%20OR%20bank%20bonus%20OR%20credit%20card%20deals"
+          }
+        ]
+      },
+      {
         id: "save-budget",
         name: "Budget & Invest",
         icon: "📈",
