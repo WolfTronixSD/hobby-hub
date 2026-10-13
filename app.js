@@ -495,7 +495,7 @@
     "ret-ss": ["social security", "medicare"], "ret-invest": ["401k", "ira", "roth", "retirement investing"], "ret-where": ["where to retire", "retire abroad"],
     "ham-events": ["hamfest", "hamfests", "convention", "conventions"], "fit-music": ["workout music", "music"],
     "fit-24h": ["24 hour", "twenty four hour"], "fit-run": ["running", "run"], "fit-lift": ["lifting", "weights"],
-    "com-live": ["live comedy", "comedy shows"], "med-bowls": ["singing bowls", "bowls"], "med-binaural": ["binaural"],
+    "com-live": ["live comedy", "comedy shows"], "med-bowls": ["singing bowls", "bowls"], "med-binaural": ["binaural"], "med-hay": ["louise hay", "louis hay", "hay house", "affirmations"],
     "fly-atis": ["atis"], "fly-events": ["air show", "airshow", "air shows", "airshows", "flying events"], "sd-snorkel": ["snorkel", "snorkeling"],
     "sd-beer": ["beer", "brewery"], "tp-beer": ["beer", "brewery"], "sd-mtb": ["mtb", "mountain bike"], "tp-mtb": ["mtb", "mountain bike"],
     "save-tax": ["tax", "taxes", "tax savings", "tax saving", "irs", "tax refund"], "save-sites": ["nerdwallet", "nerd wallet", "wallet nerd", "wallethub", "wallet hub", "money sites", "bankrate"], "wn-de": ["germany", "german"], "sp-de": ["bundesliga", "germany", "german"]

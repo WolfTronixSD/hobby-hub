@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.15.0";
+const APP_VERSION = "2.16.0";
 const CHANGELOG = [
+  {
+    version: "2.16.0",
+    date: "2026-10-13",
+    title: "Louise Hay",
+    changes: [
+      "New 💖 Louise Hay button under Meditation: her site, Hay House podcast, books like You Can Heal Your Life, and the 2007 film",
+      "Top 10 YouTube: morning, sleep, self-love and healing affirmations, guided meditations, mirror work, and German affirmations",
+      "Voice control understands “Louise Hay” and “affirmations”"
+    ]
+  },
   {
     version: "2.15.0",
     date: "2026-10-13",

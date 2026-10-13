@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.16.0 (2026-10-13): Louise Hay
+- meditation: new med-hay sub (Guides, YouTube, news); feed in fetch_news.py; voice ALIASES
+
 ## 2.15.0 (2026-10-13): RF HW Design and Retirement
 - new hobby rf (flat) and retire (subs ret-early, ret-fire, ret-ss, ret-invest, ret-where); feeds in fetch_news.py; voice ALIASES
 

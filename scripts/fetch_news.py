@@ -194,6 +194,9 @@ FEEDS = {
     "med-hicks": [
         ("Google News", "https://news.google.com/rss/search?q=%22Abraham+Hicks%22+OR+%22Esther+Hicks%22+OR+%22law+of+attraction%22&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "med-hay": [
+        ("Google News", "https://news.google.com/rss/search?q=%22Louise+Hay%22+OR+%22Hay+House%22+OR+affirmations&hl=en-US&gl=US&ceid=US:en"),
+    ],
     "med-goldman": [
         ("Google News", "https://news.google.com/rss/search?q=%22sound+healing%22+OR+%22Jonathan+Goldman%22+sound&hl=en-US&gl=US&ceid=US:en"),
     ],

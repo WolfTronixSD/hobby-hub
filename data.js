@@ -3321,6 +3321,132 @@ const HOBBIES = [
         ]
       },
       {
+        id: "med-hay",
+        name: "Louise Hay",
+        icon: "💖",
+        labels: {
+          podcasts: "Guides"
+        },
+        podcasts: [
+          {
+            name: "Louise Hay official site",
+            desc: "Affirmations, books and her life story.",
+            url: "https://www.louisehay.com/"
+          },
+          {
+            name: "Hay House Podcast",
+            desc: "Talks from Hay House authors and teachers.",
+            url: "https://podcasts.apple.com/us/search?term=Hay%20House%20Podcast"
+          },
+          {
+            name: "Louise Hay on Spotify",
+            desc: "Affirmations and guided meditations.",
+            url: "https://open.spotify.com/search/Louise%20Hay"
+          },
+          {
+            name: "Hay House Radio",
+            desc: "Hay House's inspirational radio and app.",
+            url: "https://www.google.com/search?q=Hay+House+Radio"
+          },
+          {
+            name: "Book: You Can Heal Your Life",
+            desc: "Her classic on thoughts, healing and self-love.",
+            url: "https://www.google.com/search?q=You+Can+Heal+Your+Life+Louise+Hay"
+          },
+          {
+            name: "Book: Heal Your Body",
+            desc: "The famous list of thought patterns behind illness.",
+            url: "https://www.google.com/search?q=Heal+Your+Body+Louise+Hay+book"
+          },
+          {
+            name: "Book: The Power Is Within You",
+            desc: "Loving yourself and letting go of the past.",
+            url: "https://www.google.com/search?q=The+Power+Is+Within+You+Louise+Hay"
+          },
+          {
+            name: "Book: Mirror Work",
+            desc: "21 days to heal your life with mirror affirmations.",
+            url: "https://www.google.com/search?q=Mirror+Work+21+Days+Louise+Hay"
+          },
+          {
+            name: "Daily affirmations",
+            desc: "\"I love and approve of myself\" and more.",
+            url: "https://www.google.com/search?q=Louise+Hay+daily+affirmations+list"
+          },
+          {
+            name: "Movie: You Can Heal Your Life",
+            desc: "The 2007 film about her life and teachings.",
+            url: "https://www.google.com/search?q=You+Can+Heal+Your+Life+movie+2007+Louise+Hay"
+          }
+        ],
+        youtube: [
+          {
+            name: "Hay House",
+            desc: "Official channel with Louise Hay talks.",
+            url: "https://www.youtube.com/results?search_query=Hay+House+Louise+Hay"
+          },
+          {
+            name: "Morning affirmations",
+            desc: "Start the day with Louise Hay.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+morning+affirmations"
+          },
+          {
+            name: "Sleep affirmations",
+            desc: "Positive affirmations while you fall asleep.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+sleep+affirmations"
+          },
+          {
+            name: "Guided meditation",
+            desc: "Louise Hay guided meditations.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+guided+meditation"
+          },
+          {
+            name: "Self-love affirmations",
+            desc: "I love and approve of myself.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+self+love+affirmations"
+          },
+          {
+            name: "Healing affirmations",
+            desc: "For health and well-being.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+healing+affirmations"
+          },
+          {
+            name: "Mirror work",
+            desc: "How to do her mirror exercise.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+mirror+work"
+          },
+          {
+            name: "Abundance affirmations",
+            desc: "For money and prosperity.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+prosperity+affirmations"
+          },
+          {
+            name: "You Can Heal Your Life (film)",
+            desc: "The full movie and clips.",
+            url: "https://www.youtube.com/results?search_query=You+Can+Heal+Your+Life+movie+Louise+Hay"
+          },
+          {
+            name: "Louise Hay auf Deutsch",
+            desc: "Affirmationen und Meditationen.",
+            url: "https://www.youtube.com/results?search_query=Louise+Hay+deutsch+Affirmationen"
+          }
+        ],
+        newsSources: [
+          {
+            name: "LouiseHay.com",
+            url: "https://www.louisehay.com/"
+          },
+          {
+            name: "Hay House",
+            url: "https://www.hayhouse.com/"
+          },
+          {
+            name: "Google News: Louise Hay",
+            url: "https://news.google.com/search?q=%22Louise%20Hay%22%20OR%20%22Hay%20House%22%20OR%20affirmations"
+          }
+        ]
+      },
+      {
         id: "med-goldman",
         name: "Jonathan Goldman",
         icon: "🎶",
