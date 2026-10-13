@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.13.0 (2026-10-13): Local time and UTC
+- .clock-row with LOCAL and UTC tiles above the weather bar; tickClocks() in app.js updates every second
+
 ## 2.12.0 (2026-10-13): Money Sites
 - money hobby: new save-sites sub (labels Sites) with NerdWallet, WalletHub and similar; save-sites feeds in fetch_news.py; voice ALIASES for it
 

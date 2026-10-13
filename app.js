@@ -244,6 +244,20 @@
   }
   $("#wxLoc").addEventListener("click", useGps);
 
+  // Local time and UTC, updated every second
+  function tickClocks() {
+    const now = new Date();
+    const two = (n) => String(n).padStart(2, "0");
+    const h = now.getHours();
+    $("#clkLocal").textContent = `${h % 12 || 12}:${two(now.getMinutes())}:${two(now.getSeconds())} ${h < 12 ? "AM" : "PM"}`;
+    const zone = (now.toLocaleTimeString("en-US", { timeZoneName: "short" }).split(" ").pop()) || "";
+    $("#clkLocalSub").textContent = now.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" }) + " · " + zone;
+    $("#clkUtc").textContent = `${two(now.getUTCHours())}:${two(now.getUTCMinutes())}:${two(now.getUTCSeconds())}Z`;
+    $("#clkUtcSub").textContent = now.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" }) + " · Zulu";
+  }
+  tickClocks();
+  setInterval(tickClocks, 1000);
+
   async function homeWeather() {
     const row = $("#wxRow"), bar = $("#wxBar"), btn = $("#wxLoc");
     let loc = gpsLoc();
