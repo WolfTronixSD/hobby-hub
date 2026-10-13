@@ -1,6 +1,14 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.10.0";
+const APP_VERSION = "2.10.1";
 const CHANGELOG = [
+  {
+    version: "2.10.1",
+    date: "2026-10-13",
+    title: "Weather in °F and °C",
+    changes: [
+      "Weather now shows Fahrenheit and Celsius together: on the home bar, the San Diego, Tempe and Flying forecast panels and the 5-day tiles"
+    ]
+  },
   {
     version: "2.10.0",
     date: "2026-10-12",

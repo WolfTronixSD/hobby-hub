@@ -1,7 +1,7 @@
 // Wolfie's Hobby Hub service worker: keeps the site usable with a weak signal.
 // Pages and news.json: network first, fall back to the saved copy.
 // Versioned files (?v=) and icons: saved copy first.
-const CACHE = "hobby-hub-2.10.0";
+const CACHE = "hobby-hub-2.10.1";
 const PRECACHE = ["./", "manifest.webmanifest", "logo.svg", "icons/icon-192.png"];
 
 self.addEventListener("install", (e) => {

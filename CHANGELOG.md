@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.10.1 (2026-10-13): Weather in °F and °C
+- app.js degC/degFC helpers; home bar, forecast panel, feels-like and 5-day tiles show both units; phone CSS stacks °C under °F
+
 ## 2.10.0 (2026-10-12): Voice control
 - Floating #micBtn uses the Web Speech API (SpeechRecognition / webkitSpeechRecognition, en-US) to match hobby and category names plus ALIASES and tab words; speaks the result with speechSynthesis; explains unsupported browsers and permission errors in #voicePanel
 - podcastCard: the Apple button uses p.url when it is a podcasts.apple.com show page (2.9.2 had only changed the Website link)

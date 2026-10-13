@@ -86,7 +86,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .wx-temp { font-size: 40px; font-weight: 800; line-height: 1.1; }
 .wx-temp span { font-size: 20px; font-weight: 600; }
 .wx-now small { color: var(--muted); font-size: 16px; }
-.wx-days { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 14px; }
+.wx-days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
 .wx-day { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 4px; border-radius: 16px; background: var(--panel-hi); font-size: 16px; }
 .wx-day .wx-dic { font-size: 28px; }
 .wx-day b { font-size: 20px; }
@@ -267,6 +267,9 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
 .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 32px; color: var(--muted); font-size: 14px; }
 .foot a { color: var(--muted); }
 
+.wx-c { font-size: 0.6em; font-weight: 600; color: var(--muted); }
+.wx-day b .wx-c { font-size: 0.8em; }
+
 /* Voice control */
 .mic-btn {
   position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom));
@@ -311,11 +314,14 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .wx-row { gap: 8px; }
   .wx-bar { min-height: 64px; padding: 8px 14px; gap: 10px; }
   .wx-bar .wx-t { font-size: 26px; }
+  .wx-bar .wx-c { display: block; font-size: 16px; line-height: 1.1; }
   .wx-big { font-size: 52px; }
   .wx-temp { font-size: 34px; }
   .wx-temp span { display: block; font-size: 17px; }
   .wx-days { gap: 5px; }
   .wx-day { font-size: 14px; padding: 8px 2px; }
+  .wx-day b { font-size: 16px; }
+  .wx-day small { font-size: 12px; }
   .hobby:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
   .hobby:last-child:nth-child(3n+2) { grid-column: span 2; }
   .subs { grid-template-columns: 1fr 1fr; }

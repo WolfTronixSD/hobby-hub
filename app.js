@@ -131,6 +131,8 @@
     return code <= 1 && !isDay ? ["🌙", code === 0 ? "Clear night" : w[1]] : w;
   };
   const deg = (v) => (v == null ? "–" : Math.round(v) + "°");
+  const degC = (f) => (f == null ? "–" : Math.round((f - 32) * 5 / 9) + "°");
+  const degFC = (f) => `${deg(f)}F / ${degC(f)}C`;
   const cacheGet = (k, maxAge) => {
     try { const v = JSON.parse(store.get(k)); if (v && (maxAge == null || Date.now() - v.t < maxAge)) return v.d; } catch {}
     return null;
@@ -237,8 +239,8 @@
       const c = d.current, dy = d.daily;
       const [ic, txt] = wxIcon(c.weather_code, c.is_day);
       bar.href = forecastUrl(loc);
-      bar.innerHTML = `<span class="wx-ic">${ic}</span><b class="wx-t">${deg(c.temperature_2m)}F</b>
-        <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small></span>
+      bar.innerHTML = `<span class="wx-ic">${ic}</span><b class="wx-t">${deg(c.temperature_2m)}F <small class="wx-c">${degC(c.temperature_2m)}C</small></b>
+        <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])}/${degC(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])}/${degC(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small></span>
         <span class="go">›</span>`;
       bar.setAttribute("aria-label", `Weather in ${loc.name}: ${Math.round(c.temperature_2m)} degrees, ${txt}. Open forecast`);
       row.hidden = false;
@@ -258,12 +260,12 @@
         const rain = dy.precipitation_probability_max ? dy.precipitation_probability_max[i] : 0;
         const name = i === 0 ? "Today" : new Date(t + "T12:00").toLocaleDateString(undefined, { weekday: "short" });
         return `<div class="wx-day"><span>${name}</span><span class="wx-dic">${wxIcon(dy.weather_code[i])[0]}</span>
-          <b>${deg(dy.temperature_2m_max[i])}</b><small>${deg(dy.temperature_2m_min[i])}</small>${rain ? `<small>💧${rain}%</small>` : ""}</div>`;
+          <b>${deg(dy.temperature_2m_max[i])}<span class="wx-c">/${degC(dy.temperature_2m_max[i])}</span></b><small>${deg(dy.temperature_2m_min[i])}/${degC(dy.temperature_2m_min[i])}</small>${rain ? `<small>💧${rain}%</small>` : ""}</div>`;
       }).join("");
       el.innerHTML = `<a class="wx-now" href="${forecastUrl(w)}" target="_blank" rel="noopener">
           <span class="wx-big">${ic}</span>
-          <div><div class="wx-temp">${deg(c.temperature_2m)}F <span>${esc(w.name)} · ${esc(txt)}</span></div>
-          <small>Feels ${deg(c.apparent_temperature)} · 💧 ${c.relative_humidity_2m}% · 💨 ${Math.round(c.wind_speed_10m)} mph${uv}${d.stale ? " · saved copy" : ""}</small></div>
+          <div><div class="wx-temp">${deg(c.temperature_2m)}F <small class="wx-c">${degC(c.temperature_2m)}C</small> <span>${esc(w.name)} · ${esc(txt)}</span></div>
+          <small>Feels ${degFC(c.apparent_temperature)} · 💧 ${c.relative_humidity_2m}% · 💨 ${Math.round(c.wind_speed_10m)} mph${uv}${d.stale ? " · saved copy" : ""}</small></div>
         </a><div class="wx-days">${days}</div>`;
     } catch {
       const el = panel();
