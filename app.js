@@ -496,7 +496,7 @@
     "com-live": ["live comedy", "comedy shows"], "med-bowls": ["singing bowls", "bowls"], "med-binaural": ["binaural"],
     "fly-atis": ["atis"], "fly-events": ["air show", "airshow", "air shows", "airshows", "flying events"], "sd-snorkel": ["snorkel", "snorkeling"],
     "sd-beer": ["beer", "brewery"], "tp-beer": ["beer", "brewery"], "sd-mtb": ["mtb", "mountain bike"], "tp-mtb": ["mtb", "mountain bike"],
-    "save-sites": ["nerdwallet", "nerd wallet", "wallet nerd", "wallethub", "wallet hub", "money sites", "bankrate"], "wn-de": ["germany", "german"], "sp-de": ["bundesliga", "germany", "german"]
+    "save-tax": ["tax", "taxes", "tax savings", "tax saving", "irs", "tax refund"], "save-sites": ["nerdwallet", "nerd wallet", "wallet nerd", "wallethub", "wallet hub", "money sites", "bankrate"], "wn-de": ["germany", "german"], "sp-de": ["bundesliga", "germany", "german"]
   };
   const TABS = { podcasts: ["podcast", "podcasts", "guides", "playlists"], youtube: ["youtube", "video", "videos"], news: ["news", "headlines"] };
   const norm = (t) => " " + String(t).toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9äöüß]+/g, " ").trim() + " ";

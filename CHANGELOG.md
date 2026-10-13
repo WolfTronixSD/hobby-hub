@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.14.0 (2026-10-13): Tax Savings
+- money hobby: new save-tax sub (podcasts, YouTube, tax sites as newsSources); save-tax feeds in fetch_news.py; voice ALIASES
+
 ## 2.13.0 (2026-10-13): Local time and UTC
 - .clock-row with LOCAL and UTC tiles above the weather bar; tickClocks() in app.js updates every second
 

@@ -4422,6 +4422,157 @@ const HOBBIES = [
         ]
       },
       {
+        id: "save-tax",
+        name: "Tax Savings",
+        icon: "🧾",
+        podcasts: [
+          {
+            name: "Tax Notes Talk",
+            desc: "Tax news and policy explained by Tax Notes editors.",
+            url: "https://podcasts.apple.com/us/search?term=Tax%20Notes%20Talk"
+          },
+          {
+            name: "Main Street Business",
+            desc: "Tax attorney Mark J. Kohler on deductions, LLCs and retirement accounts.",
+            url: "https://podcasts.apple.com/us/search?term=Main%20Street%20Business"
+          },
+          {
+            name: "Tax Smart Real Estate Investors",
+            desc: "CPAs Amanda Han and Matt MacFarland on real estate tax breaks.",
+            url: "https://podcasts.apple.com/us/search?term=Tax%20Smart%20Real%20Estate%20Investors"
+          },
+          {
+            name: "The WealthAbility Show",
+            desc: "Tom Wheelwright on using the tax code to keep more.",
+            url: "https://podcasts.apple.com/us/search?term=The%20WealthAbility%20Show"
+          },
+          {
+            name: "The Retirement and IRA Show",
+            desc: "IRAs, Roth conversions and required withdrawals.",
+            url: "https://podcasts.apple.com/us/search?term=The%20Retirement%20and%20IRA%20Show"
+          },
+          {
+            name: "Stay Wealthy Retirement Podcast",
+            desc: "Tax-smart retirement planning with Taylor Schulte.",
+            url: "https://podcasts.apple.com/us/search?term=Stay%20Wealthy%20Retirement%20Podcast"
+          },
+          {
+            name: "Your Money's Worth",
+            desc: "Kiplinger's podcast on money and taxes.",
+            url: "https://podcasts.apple.com/us/search?term=Your%20Money%27s%20Worth"
+          },
+          {
+            name: "Retirement Answer Man",
+            desc: "Roger Whitney on retirement income and taxes.",
+            url: "https://podcasts.apple.com/us/search?term=Retirement%20Answer%20Man"
+          },
+          {
+            name: "Bogleheads On Investing",
+            desc: "Low-cost, tax-efficient investing.",
+            url: "https://podcasts.apple.com/us/search?term=Bogleheads%20On%20Investing"
+          },
+          {
+            name: "The White Coat Investor Podcast",
+            desc: "Taxes, retirement accounts and investing for high earners.",
+            url: "https://podcasts.apple.com/us/search?term=The%20White%20Coat%20Investor%20Podcast"
+          }
+        ],
+        youtube: [
+          {
+            name: "Mark J. Kohler",
+            desc: "Tax and legal tips for small business and families.",
+            url: "https://www.youtube.com/results?search_query=Mark+J+Kohler+taxes"
+          },
+          {
+            name: "Tom Wheelwright",
+            desc: "Legal ways to cut your tax bill.",
+            url: "https://www.youtube.com/results?search_query=Tom+Wheelwright+tax"
+          },
+          {
+            name: "Ed Slott",
+            desc: "IRA and Roth rules from the IRA expert.",
+            url: "https://www.youtube.com/results?search_query=Ed+Slott+IRA"
+          },
+          {
+            name: "Tax deductions people miss",
+            desc: "Common write-offs you may be skipping.",
+            url: "https://www.youtube.com/results?search_query=tax+deductions+people+miss"
+          },
+          {
+            name: "How to lower your taxes legally",
+            desc: "Strategies for W-2 and self-employed.",
+            url: "https://www.youtube.com/results?search_query=how+to+lower+taxes+legally"
+          },
+          {
+            name: "Roth conversion explained",
+            desc: "When converting saves tax.",
+            url: "https://www.youtube.com/results?search_query=Roth+conversion+explained"
+          },
+          {
+            name: "HSA triple tax break",
+            desc: "Use a health savings account to save tax.",
+            url: "https://www.youtube.com/results?search_query=HSA+triple+tax+advantage"
+          },
+          {
+            name: "IRS Free File walkthrough",
+            desc: "File for free on IRS.gov.",
+            url: "https://www.youtube.com/results?search_query=IRS+Free+File+how+to"
+          },
+          {
+            name: "Tax-loss harvesting",
+            desc: "Use investment losses to cut taxes.",
+            url: "https://www.youtube.com/results?search_query=tax+loss+harvesting+explained"
+          },
+          {
+            name: "California tax tips",
+            desc: "State tax tips for Californians.",
+            url: "https://www.youtube.com/results?search_query=California+state+tax+tips"
+          }
+        ],
+        newsSources: [
+          {
+            name: "IRS.gov",
+            url: "https://www.irs.gov/"
+          },
+          {
+            name: "IRS Free File",
+            url: "https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free"
+          },
+          {
+            name: "Where's My Refund?",
+            url: "https://www.irs.gov/wheres-my-refund"
+          },
+          {
+            name: "California FTB",
+            url: "https://www.ftb.ca.gov/"
+          },
+          {
+            name: "Tax Foundation",
+            url: "https://taxfoundation.org/"
+          },
+          {
+            name: "Kiplinger Taxes",
+            url: "https://www.kiplinger.com/taxes"
+          },
+          {
+            name: "NerdWallet Taxes",
+            url: "https://www.nerdwallet.com/h/category/taxes"
+          },
+          {
+            name: "TurboTax Tax Tips",
+            url: "https://turbotax.intuit.com/tax-tips/"
+          },
+          {
+            name: "H&R Block Tax Tips",
+            url: "https://www.hrblock.com/tax-center/"
+          },
+          {
+            name: "Google News: taxes",
+            url: "https://news.google.com/search?q=IRS%20OR%20%22tax%20refund%22%20OR%20%22tax%20deduction%22%20OR%20%22tax%20credit%22"
+          }
+        ]
+      },
+      {
         id: "save-budget",
         name: "Budget & Invest",
         icon: "📈",

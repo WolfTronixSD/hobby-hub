@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.13.0";
+const APP_VERSION = "2.14.0";
 const CHANGELOG = [
+  {
+    version: "2.14.0",
+    date: "2026-10-13",
+    title: "Tax Savings",
+    changes: [
+      "New 🧾 Tax Savings button under Money Saver: top 10 tax podcasts and top 10 YouTube picks",
+      "Tax websites to bookmark (IRS, Free File, Where's My Refund, California FTB, Tax Foundation, Kiplinger and more) and tax news headlines",
+      "Voice control understands “tax”, “taxes” and “IRS”"
+    ]
+  },
   {
     version: "2.13.0",
     date: "2026-10-13",
