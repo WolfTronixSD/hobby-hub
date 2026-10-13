@@ -6,7 +6,7 @@ const CHANGELOG = [
     date: "2026-10-13",
     title: "Weather in °F and °C",
     changes: [
-      "Weather now shows Fahrenheit and Celsius together: on the home bar, the San Diego, Tempe and Flying forecast panels and the 5-day tiles"
+      "Weather now shows Fahrenheit and Celsius together: on the home bar, the San Diego and Tempe forecast panels and the 5-day tiles"
     ]
   },
   {
