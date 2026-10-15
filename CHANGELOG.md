@@ -2,6 +2,9 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.17.0 (2026-10-15): Wolf Ironman shortcut
+- index.html: third app button to Wolf Ironman (https://darling-kheer-93b7f4.netlify.app/); apps grid 3 columns, on phones the third button spans the row
+
 ## 2.16.0 (2026-10-13): Louise Hay
 - meditation: new med-hay sub (Guides, YouTube, news); feed in fetch_news.py; voice ALIASES
 

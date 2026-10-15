@@ -1,6 +1,14 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.16.0";
+const APP_VERSION = "2.17.0";
 const CHANGELOG = [
+  {
+    version: "2.17.0",
+    date: "2026-10-15",
+    title: "Wolf Ironman shortcut",
+    changes: [
+      "New big 💪 Wolf Ironman button next to GoldRabbit and WRadio opens your daily workout tracker"
+    ]
+  },
   {
     version: "2.16.0",
     date: "2026-10-13",

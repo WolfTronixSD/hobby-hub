@@ -111,7 +111,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .event .ev-date span { font-size: 26px; font-weight: 800; line-height: 1; }
 
 /* My other apps */
-.apps { max-width: 1100px; margin: 0 auto 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.apps { max-width: 1100px; margin: 0 auto 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .app-btn {
   display: flex; align-items: center; gap: 12px; min-height: 72px; padding: 10px 16px;
   border-radius: var(--radius); border: 2px solid color-mix(in srgb, var(--c) 55%, var(--border));
@@ -320,7 +320,8 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .hobby { min-height: 84px; gap: 4px; padding: 10px 4px; border-radius: 18px; }
   .hobby .emoji { font-size: 30px; }
   .hobby b { font-size: 15px; }
-  .apps { gap: 8px; }
+  .apps { gap: 8px; grid-template-columns: 1fr 1fr; }
+  .apps .app-btn:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .app-btn { min-height: 64px; padding: 8px 10px; gap: 8px; }
   .app-btn b { font-size: 17px; }
   .app-btn .go { display: none; }
