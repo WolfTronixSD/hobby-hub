@@ -14,4 +14,4 @@ A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube
 - Works offline (`sw.js`). Run `node scripts/check_site.mjs` before pushing; CI runs it too.
 - Release: bump `APP_VERSION` + CHANGELOG in `version.js`, `CHANGELOG.md`, the `?v=` params in `index.html` and the `CACHE` name in `sw.js`.
 - Version: `version.js` holds the version number and history shown on the site; `CHANGELOG.md` mirrors it.
-- `morse/` is Dit Dah Dojo, a separate Morse code trainer app (groups of 5, QSOs, games, straight key) at `/hobby-hub/morse/`.
+- `morse/` redirects to Dit Dah Dojo, the Morse trainer, which now lives at https://wolftronixsd.github.io/morse-trainer/ (repo `morse-trainer`).
