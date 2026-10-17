@@ -1,6 +1,19 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.18.0";
+const APP_VERSION = "2.19.0";
 const CHANGELOG = [
+  {
+    version: "2.19.0",
+    date: "2026-10-17",
+    title: "Super Checkup 2: iPhone and AirPods",
+    changes: [
+      "Eye chart: real letter chart plus tumbling E, voice answers, and the instructions read out loud",
+      "iPhone calibration sizes itself automatically, or match a card held upright",
+      "Color vision: richer dot plates, colorblind goggles, and a D-15 crayon sorting test",
+      "Whisper test accepts just the first letter, any capitalization, and small typos",
+      "AirPods check: left/right, a 20 Hz to 20 kHz sweep and your own frequency response curve",
+      "New Eye Toy Box (astigmatism dial, contrast, blind spot, boss eye), a fake blood pressure cuff, Say Aaah, and 20 badges"
+    ]
+  },
   {
     version: "2.18.0",
     date: "2026-10-17",

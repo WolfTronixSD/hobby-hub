@@ -2,6 +2,12 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.19.0 (2026-10-17): Super Checkup 2
+- checkup/: Sloan letter chart + tumbling E with SpeechRecognition answers and spoken cues; iPhone ppi table for auto calibration, upright-card manual calibration shared by eye chart and near card
+- checkup/: denser grid-packed dot plates (HSL palettes, blue-yellow and two-digit plates), feColorMatrix colorblind simulation, D-15 cap test
+- checkup/: whisper test accepts first letters, any case, Levenshtein typos; iOS silent-switch audio unlock
+- checkup/: AirPods check (L/R, phase trick, log sweep, loudness-match curve), Eye Toy Box station, BP cuff gag, mic "Aaah" meter, badges
+
 ## 2.18.0 (2026-10-17): Super Checkup
 - new checkup/ page (single self-contained index.html): vitals, tumbling-E acuity with card calibration, near card, pseudo-Ishihara plates, peripheral flashes + Amsler, beep/whisper/mosquito hearing, reaction time, eye gym, certificate
 - index.html: fourth app button to checkup/; apps grid 4 columns (2x2 on phones)
