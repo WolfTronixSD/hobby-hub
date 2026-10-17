@@ -2,6 +2,11 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.18.0 (2026-10-17): Super Checkup
+- new checkup/ page (single self-contained index.html): vitals, tumbling-E acuity with card calibration, near card, pseudo-Ishihara plates, peripheral flashes + Amsler, beep/whisper/mosquito hearing, reaction time, eye gym, certificate
+- index.html: fourth app button to checkup/; apps grid 4 columns (2x2 on phones)
+- sw.js: skips /checkup/ so it never overwrites the hub's offline copy
+
 ## 2.17.0 (2026-10-15): Wolf Ironman shortcut
 - index.html: third app button to Wolf Ironman (https://darling-kheer-93b7f4.netlify.app/); apps grid 3 columns, on phones the third button spans the row
 

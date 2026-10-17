@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.17.0";
+const APP_VERSION = "2.18.0";
 const CHANGELOG = [
+  {
+    version: "2.18.0",
+    date: "2026-10-17",
+    title: "Super Checkup",
+    changes: [
+      "New 🩺 Super Checkup button opens Dr. Kent's goofy doctor's office: eye chart, near vision, color plates, peripheral vision, hearing, reaction time and a printable certificate",
+      "Eye Gym with Bates palming, figure eights, near-far focus and the 20-20-20 rule (for fun and comfort, keep your glasses!)"
+    ]
+  },
   {
     version: "2.17.0",
     date: "2026-10-15",

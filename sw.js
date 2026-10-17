@@ -1,7 +1,7 @@
 // Wolfie's Hobby Hub service worker: keeps the site usable with a weak signal.
 // Pages and news.json: network first, fall back to the saved copy.
 // Versioned files (?v=) and icons: saved copy first.
-const CACHE = "hobby-hub-2.17.0";
+const CACHE = "hobby-hub-2.18.0";
 const PRECACHE = ["./", "manifest.webmanifest", "logo.svg", "icons/icon-192.png"];
 
 self.addEventListener("install", (e) => {
@@ -41,6 +41,8 @@ self.addEventListener("fetch", (e) => {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
+  // Super Checkup is its own page; leave it to the network so it never replaces the hub's saved copy
+  if (url.pathname.includes("/checkup/")) return;
   if (req.mode === "navigate") e.respondWith(networkFirst(req, "./"));
   else if (url.pathname.endsWith("/news.json")) e.respondWith(networkFirst(req));
   else e.respondWith(cacheFirst(req));

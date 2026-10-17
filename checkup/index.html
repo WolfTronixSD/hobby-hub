@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Super Checkup</title>
+<meta name="description" content="Dr. Kent's goofy doctor's office: eye chart, color plates, peripheral vision, hearing, reaction time, eye gym and a printable certificate. For fun, not a medical exam.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<style>
+:root{
+  --blue:#1f4fd1; --blue2:#163aa0; --red:#e53935; --yellow:#ffd60a; --green:#18a058;
+  --bg:#eef3fb; --card:#ffffff; --ink:#14213d; --muted:#5b6785; --line:#d6deef;
+  --shadow:0 6px 20px rgba(20,33,61,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#0d1427; --card:#16213d; --ink:#eef2ff; --muted:#a3b0d0; --line:#2a3963; --shadow:0 6px 20px rgba(0,0,0,.35); }
+}
+:root[data-theme="dark"]{ --bg:#0d1427; --card:#16213d; --ink:#eef2ff; --muted:#a3b0d0; --line:#2a3963; --shadow:0 6px 20px rgba(0,0,0,.35); }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:10px 16px;background:var(--blue);color:#fff;font-weight:700;transition:transform .08s,filter .15s}
+button:hover{filter:brightness(1.1)} button:active{transform:scale(.96)}
+button.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+button.red{background:var(--red)} button.yellow{background:var(--yellow);color:#14213d} button.green{background:var(--green)}
+button.big{font-size:1.25rem;padding:16px 26px}
+button:disabled{opacity:.5;cursor:not-allowed}
+input,select{font:inherit;padding:9px 12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+a{color:var(--blue)}
+header.top{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,var(--blue2),var(--blue));color:#fff;display:flex;align-items:center;gap:12px;padding:10px 16px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+header.top .logo{font-weight:900;font-size:1.2rem;letter-spacing:.3px;display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none}
+header.top .logo .s{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--yellow);color:var(--red);border-radius:8px 8px 50% 50%;font-weight:900;transform:rotate(-4deg)}
+header.top .sp{flex:1}
+header.top button{background:rgba(255,255,255,.15);padding:8px 12px}
+.wrap{max-width:1040px;margin:0 auto;padding:16px}
+.disclaimer{background:#fff6cc;color:#5a4500;border:2px dashed #e6c200;border-radius:14px;padding:10px 14px;font-size:.92rem;margin:12px 0}
+.hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;background:var(--card);border-radius:20px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero h1{margin:0 0 4px;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.1}
+.hero p{margin:4px 0;color:var(--muted)}
+.doc{font-size:72px;cursor:pointer;user-select:none;animation:bob 2.4s ease-in-out infinite;position:relative}
+.bubble{position:absolute;right:100px;top:10px;background:var(--yellow);color:#14213d;padding:8px 12px;border-radius:14px 14px 2px 14px;font-weight:700;max-width:260px;font-size:.9rem;box-shadow:var(--shadow);opacity:0;transform:translateY(6px);transition:.3s;pointer-events:none}
+.bubble.on{opacity:1;transform:none}
+@keyframes bob{50%{transform:translateY(-8px) rotate(3deg)}}
+.waiting{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.pill{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-top:16px}
+.card{background:var(--card);border-radius:18px;padding:16px;box-shadow:var(--shadow);border:2px solid transparent;cursor:pointer;position:relative;transition:transform .15s,border-color .15s;text-align:left;color:var(--ink);font-weight:400}
+.card:hover{transform:translateY(-3px) rotate(-.5deg);border-color:var(--blue)}
+.card .em{font-size:2.2rem}
+.card h3{margin:6px 0 2px;font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.88rem}
+.card .num{position:absolute;top:10px;right:12px;font-weight:900;color:var(--line);font-size:1.4rem}
+.card .done{position:absolute;top:10px;right:12px;background:var(--green);color:#fff;border-radius:999px;padding:2px 9px;font-size:.78rem;font-weight:800}
+.station{display:none}
+.station.on{display:block;animation:pop .25s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}}
+.panel{background:var(--card);border-radius:20px;padding:18px;box-shadow:var(--shadow);margin-top:14px}
+.panel h2{margin:0 0 6px}
+.muted{color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.back{margin-bottom:6px}
+.chartbox{background:#fff;color:#000;border-radius:16px;min-height:280px;display:grid;place-items:center;position:relative;border:6px solid #ddd;overflow:hidden}
+.chartbox .lab{position:absolute;top:8px;left:12px;font:700 .85rem system-ui;color:#555}
+.chartbox .lab2{position:absolute;top:8px;right:12px;font:700 .85rem system-ui;color:#555}
+.arrows{display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,64px);gap:6px;justify-content:center;margin-top:12px}
+.arrows button{font-size:1.6rem;padding:0}
+.cal-card{height:auto;aspect-ratio:85.6/53.98;border:3px solid var(--blue);border-radius:10px;background:repeating-linear-gradient(45deg,rgba(31,79,209,.08) 0 10px,transparent 10px 20px);display:grid;place-items:center;font-weight:800;color:var(--blue);margin:10px 0}
+.result{background:var(--bg);border-radius:14px;padding:12px 14px;margin-top:12px;border-left:6px solid var(--blue)}
+.result.good{border-left-color:var(--green)} .result.bad{border-left-color:var(--red)}
+.big-num{font-size:2.6rem;font-weight:900;line-height:1}
+canvas.plate{width:min(320px,80vw);height:auto;aspect-ratio:1;border-radius:50%;background:#f3ecdc;display:block;margin:10px auto;box-shadow:inset 0 0 0 4px #e3d9c3}
+.keypad{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;max-width:340px;margin:8px auto}
+.keypad button{padding:12px 0}
+.field{background:#0a0f1c;border-radius:16px;height:min(70vh,560px);position:relative;touch-action:manipulation;user-select:none;overflow:hidden}
+.field .fix{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--yellow);font:900 28px system-ui}
+.field .msg{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:#c9d4f2;font-size:.95rem}
+.react{height:280px;border-radius:20px;display:grid;place-items:center;font:900 clamp(1.4rem,5vw,2.4rem) system-ui;color:#fff;user-select:none;touch-action:manipulation;background:#334;cursor:pointer;text-align:center;padding:10px}
+.react.wait{background:var(--red)} .react.go{background:var(--green)} .react.early{background:#f59f00}
+table{border-collapse:collapse;width:100%}
+td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs button{background:var(--bg);color:var(--ink);border:2px solid var(--line)}
+.tabs button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.reading{background:#fff;color:#111;border-radius:14px;padding:16px;font-family:Georgia,"Times New Roman",serif}
+.reading .ln{padding:6px 8px;border-radius:8px;cursor:pointer;display:flex;gap:10px;align-items:baseline}
+.reading .ln:hover{background:#eef3fb}
+.reading .ln b{font:700 11px system-ui;color:#888;min-width:44px}
+.stage{background:#0a0f1c;border-radius:16px;height:340px;position:relative;overflow:hidden;color:#fff}
+.stage .dot{position:absolute;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,var(--yellow) 40%,#f08c00);box-shadow:0 0 18px var(--yellow);transform:translate(-50%,-50%)}
+.stage .say{position:absolute;left:0;right:0;top:14px;text-align:center;font:800 1.3rem system-ui;padding:0 12px}
+.stage .timer{position:absolute;right:14px;bottom:10px;font:800 1.1rem system-ui;color:var(--yellow)}
+.ex{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:10px}
+.ex .card{cursor:default}
+.ex .card button{margin-top:8px}
+.heart{font-size:64px;display:inline-block}
+.heart.beat{animation:beat var(--hb,1s) infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.15)}}
+.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:14px;font-weight:700;z-index:50;transition:.35s;max-width:calc(100vw - 32px);text-align:center}
+.toast.on{transform:translateX(-50%)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
+.cert{background:#fffdf3;color:#1b1b1b;border:12px double #c9a227;border-radius:10px;padding:24px;text-align:center;position:relative;font-family:Georgia,serif}
+.cert h2{font-size:clamp(1.3rem,4vw,2rem);margin:0;color:var(--blue2);letter-spacing:1px}
+.cert .cls{font:900 clamp(1.3rem,5vw,2.2rem) system-ui;margin:10px 0;color:var(--red)}
+.cert table td{border-bottom:1px dotted #bbb;font-family:system-ui}
+.seal{position:absolute;right:18px;bottom:18px;width:110px;height:110px;transform:rotate(-14deg);opacity:0}
+.seal.stamp{animation:stamp .5s cubic-bezier(.2,2,.4,1) forwards}
+@keyframes stamp{from{opacity:0;transform:scale(2.5) rotate(-30deg)}to{opacity:.95;transform:scale(1) rotate(-14deg)}}
+.sig{font-family:"Brush Script MT","Segoe Script",cursive;font-size:1.6rem;margin-top:16px}
+footer{color:var(--muted);text-align:center;font-size:.85rem;padding:24px 16px 40px}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@media (max-width:600px){
+  .hero{grid-template-columns:1fr}
+  .doc{position:absolute;right:10px;top:6px;font-size:48px}
+  .bubble{right:10px;top:64px}
+  .wrap{padding:12px 16px}
+}
+@media print{
+  header.top,.no-print,footer,.back,.disclaimer{display:none!important}
+  body{background:#fff}
+  .station{display:none!important}
+  #st-cert{display:block!important}
+  .panel{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="toast" id="toast"></div>
+
+<header class="top">
+  <a class="logo" href="#"><span class="s">S</span> Super Checkup</a>
+  <span class="sp"></span>
+  <button id="muteBtn" title="Sound effects on/off">🔊</button>
+  <button id="themeBtn" title="Light/dark">🌓</button>
+</header>
+
+<div class="wrap">
+
+<!-- ================= HOME / WAITING ROOM ================= -->
+<section class="station on" id="st-home">
+  <div class="hero">
+    <div>
+      <h1>Dr. Kent's Office of<br>Totally Real Medicine™</h1>
+      <p>Your super-powered checkup, modeled on a doctor's office visit and the FAA <b>3rd class medical</b> exam. Visit every station, then grab your official-looking certificate.</p>
+      <div class="waiting">
+        <label>Patient name: <input id="pname" placeholder="Clark K." maxlength="40" style="width:160px"></label>
+        <span class="pill">⏳ Estimated wait: <b id="wait">47</b> min</span>
+        <button class="yellow" id="skipLine">🦸 Use cape to skip line</button>
+      </div>
+    </div>
+    <div class="doc" id="doc" title="Poke the doctor">👨‍⚕️</div>
+    <div class="bubble" id="bubble"></div>
+  </div>
+  <div class="disclaimer">⚠️ <b>Just for fun!</b> This is a toy, not a medical exam. Screens and speakers aren't calibrated. For a real FAA medical see an Aviation Medical Examiner (AME); for real eyes and ears see a real doctor.</div>
+  <div class="grid" id="cards"></div>
+  <div class="row" style="margin-top:16px;justify-content:center">
+    <button class="ghost" id="resetAll">🗑️ Shred my chart (reset)</button>
+  </div>
+</section>
+
+<!-- ================= VITALS ================= -->
+<section class="station" id="st-vitals">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>🩺 Station 1: Check-in & Vitals</h2>
+    <p class="muted">The nurse would normally do this while asking about your diet. We'll skip the diet part.</p>
+    <div class="tabs" data-tabs="vit"><button data-t="pulse" class="on">❤️ Pulse tapper</button><button data-t="breath">🫁 Breath hold</button><button data-t="balance">🦩 Flamingo balance</button></div>
+    <div data-pane="vit-pulse">
+      <p>Find your pulse (wrist or neck) and tap the heart <b>once per beat</b>. 10 taps is plenty.</p>
+      <div style="text-align:center">
+        <button class="ghost" id="pulseTap" style="border:0;background:none;padding:0"><span class="heart" id="heart">❤️</span></button>
+        <div class="big-num" id="bpm">--</div><div class="muted">beats per minute</div>
+        <div class="row" style="justify-content:center;margin-top:8px"><button class="ghost" id="pulseReset">Start over</button></div>
+      </div>
+      <div id="pulseRes"></div>
+    </div>
+    <div data-pane="vit-breath" hidden>
+      <p>Take a normal breath (no hyperventilating, please, we're out of paper bags) and hold. Stop when you need air.</p>
+      <div style="text-align:center"><div class="big-num" id="breathT">0.0 s</div>
+        <div class="row" style="justify-content:center;margin-top:10px"><button class="big" id="breathBtn">Start holding</button></div>
+        <p id="breathMsg" class="muted"></p></div>
+    </div>
+    <div data-pane="vit-balance" hidden>
+      <p>Stand on one foot, arms crossed. For extra credit, close your eyes. You'll hear a beep every 10 seconds; 30 seconds is a pass. Tap anywhere on the big button the moment your foot touches down.</p>
+      <div class="react" id="balBox">Tap to start (3 s countdown)</div>
+      <div id="balRes"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACUITY ================= -->
+<section class="station" id="st-acuity">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>👁️ Station 2: The Big Eye Chart</h2>
+    <p class="muted">A tumbling-E chart, like the one the AME uses. 3rd class needs <b>20/40 or better in each eye</b>, glasses allowed.</p>
+    <details id="calBox" open>
+      <summary><b>Step 1: Calibrate your screen</b> (so the letters are the right size)</summary>
+      <p>Hold a credit card (or driver's license) against the screen and drag the slider until the box matches its width.</p>
+      <input type="range" id="calSlider" min="150" max="700" value="324" style="width:100%">
+      <div class="cal-card" id="calCard">💳 card size</div>
+      <label>Step 2: How far away will you stand? <select id="dist">
+        <option value="1524">5 ft (1.5 m), small screen</option>
+        <option value="3048" selected>10 ft (3 m)</option>
+        <option value="4572">15 ft (4.5 m)</option>
+        <option value="6096">20 ft (6 m), the real thing</option>
+      </select></label>
+      <p class="muted">Step back to that distance. Answer with the arrow keys (a wireless keyboard is great), the arrow buttons, or swipe in the direction the E's legs point. A friend can tap for you, as long as they don't help.</p>
+    </details>
+    <div class="row" style="margin:10px 0"><button class="big" id="acuStart">Start eye chart</button></div>
+    <div class="chartbox" id="acuBox"><span class="lab" id="acuLab">Ready when you are</span><span class="lab2" id="acuLine"></span><div id="acuE" class="muted" style="color:#999">👁️ Cover one eye when asked</div></div>
+    <div class="arrows">
+      <span></span><button data-dir="3">⬆️</button><span></span>
+      <button data-dir="2">⬅️</button><button class="ghost" data-dir="-1" title="Can't tell">🤷</button><button data-dir="0">➡️</button>
+      <span></span><button data-dir="1">⬇️</button><span></span>
+    </div>
+    <div id="acuRes"></div>
+  </div>
+</section>
+
+<!-- ================= NEAR ================= -->
+<section class="station" id="st-near">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>📖 Station 3: Near Vision Card</h2>
+    <p class="muted">Hold the screen at reading distance, <b>16 inches (40 cm)</b>, about the length of your forearm plus hand. 3rd class needs 20/40 up close. Readers allowed. Uses your calibration from the Eye Chart station.</p>
+    <div class="reading" id="readCard"></div>
+    <p class="muted">Tap the <b>smallest</b> line you can read without squinting.</p>
+    <div id="nearRes"></div>
+  </div>
+</section>
+
+<!-- ================= COLOR ================= -->
+<section class="station" id="st-color">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>🌈 Station 4: Color Vision Plates</h2>
+    <p class="muted">Pseudo-Ishihara dot plates, freshly baked with random numbers each time. Type the number you see. The AME checks this because runway lights and light-gun signals are red, green and white.</p>
+    <div style="text-align:center">
+      <div class="muted" id="plateLab">Plate 1 of 6</div>
+      <canvas class="plate" id="plate" width="640" height="640"></canvas>
+      <div class="big-num" id="plateIn" style="min-height:2.6rem;letter-spacing:6px">&nbsp;</div>
+      <div class="keypad" id="keypad"></div>
+      <div class="row" style="justify-content:center"><button class="ghost" id="plateNone">I see nothing</button><button class="green" id="plateOk">Submit</button></div>
+    </div>
+    <div id="colorRes"></div>
+  </div>
+</section>
+
+<!-- ================= FIELD ================= -->
+<section class="station" id="st-field">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>🎯 Station 5: Peripheral Vision</h2>
+    <p class="muted">The AME wiggles fingers at the edge of your vision. We flash dots. Sit close (about 12 in / 30 cm), cover one eye or not, and <b>stare at the yellow +</b>. Hit <b>space</b> or tap the black area whenever you spot a flash. No peeking!</p>
+    <div class="tabs" data-tabs="fld"><button data-t="flash" class="on">✨ Flash test</button><button data-t="amsler">🔲 Amsler grid</button></div>
+    <div data-pane="fld-flash">
+      <div class="field" id="field"><div class="fix">+</div><div class="msg" id="fieldMsg">Tap here to begin</div></div>
+      <div id="fieldRes"></div>
+    </div>
+    <div data-pane="fld-amsler" hidden>
+      <p>Eye doctors use this grid to spot trouble in your central vision. Hold it at reading distance, cover one eye, and look at the center dot. Do all lines look straight, with no missing or blurry patches? If something looks wavy or missing, that's worth a real eye exam.</p>
+      <div style="background:#fff;border-radius:14px;padding:12px;max-width:420px;margin:auto"><svg id="amsler" viewBox="0 0 200 200" style="width:100%;display:block"></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HEARING ================= -->
+<section class="station" id="st-hearing">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>👂 Station 6: Hearing Booth</h2>
+    <p class="muted">Headphones work best. Start with your volume at about half. The AME's version is a whisper test: you face away and repeat what they say from 6 feet.</p>
+    <div class="tabs" data-tabs="hear"><button data-t="tones" class="on">🎵 Beep test</button><button data-t="whisper">🤫 Whisper test</button><button data-t="mosq">🦟 Mosquito test</button></div>
+    <div data-pane="hear-tones">
+      <p>Pips start very quiet and get louder. Press the big button (or space) <b>as soon as you hear them</b>. We check each ear at 6 pitches.</p>
+      <div class="row"><button class="big" id="toneStart">Start beep test</button><span class="pill" id="toneLab">Not started</span></div>
+      <div style="text-align:center;margin-top:12px"><button class="big yellow" id="heardBtn" style="font-size:1.6rem;padding:22px 40px" disabled>🙋 I HEAR IT!</button></div>
+      <div id="toneRes"></div>
+    </div>
+    <div data-pane="hear-whisper" hidden>
+      <p>Turn your back to the screen, like at the AME. The computer will whisper two aviation words, getting quieter each round. Type what you heard.</p>
+      <div class="row"><button class="big" id="whStart">Whisper round 1</button><button class="ghost" id="whAgain" disabled>🔁 Say it again</button></div>
+      <div class="row" style="margin-top:10px"><input id="whIn" placeholder="e.g. alpha tango" autocomplete="off" style="flex:1;min-width:180px"><button class="green" id="whOk" disabled>Check</button></div>
+      <div id="whRes"></div>
+    </div>
+    <div data-pane="hear-mosq" hidden>
+      <p>A tone sweeps higher and higher. Press the button the moment it <b>disappears</b>. Your ears' upper limit drops with age, so we'll guess your "ear age". Keep the volume moderate.</p>
+      <div class="row"><button class="big" id="mqStart">Start sweep</button><button class="big red" id="mqStop" disabled>🙉 It's gone!</button></div>
+      <div class="big-num" id="mqHz" style="margin-top:12px">-- Hz</div>
+      <div id="mqRes"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REACTION ================= -->
+<section class="station" id="st-react">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>⚡ Station 7: Reaction Time</h2>
+    <p class="muted">Wait for green (or the beep), then tap as fast as you can. 5 tries. Tap early and you'll be publicly shamed.</p>
+    <div class="tabs" data-tabs="rx"><button data-t="see" class="on">👀 See it</button><button data-t="hear">🔔 Hear it</button></div>
+    <div class="react" id="rxBox">Tap to start</div>
+    <div id="rxRes"></div>
+  </div>
+</section>
+
+<!-- ================= EYE GYM ================= -->
+<section class="station" id="st-gym">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <h2>🏋️ Station 8: Eye Gym (Bates method & friends)</h2>
+    <div class="disclaimer">🤓 <b>Real talk from Dr. Kent:</b> The Bates method is from 1920, and studies have not shown that it fixes nearsightedness, farsightedness or astigmatism. These exercises can feel relaxing and help with screen strain (the 20-20-20 rule is legit), but please keep your glasses for driving and flying. We skip Bates' "sunning", because staring at the sun damages your eyes.</div>
+    <div class="stage" id="stage"><div class="say" id="say">Pick an exercise, or run the whole routine</div><div class="dot" id="gdot" style="left:50%;top:55%"></div><div class="timer" id="gtimer"></div></div>
+    <div class="row" style="margin-top:10px"><button class="big" id="routine">▶️ Full routine (~6 min)</button><button class="ghost" id="gymStop">⏹ Stop</button><label class="row" style="gap:6px"><input type="checkbox" id="voice" checked> Voice coach</label></div>
+    <div class="ex" id="exList"></div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATE ================= -->
+<section class="station" id="st-cert">
+  <button class="ghost back">← Waiting room</button>
+  <div class="panel">
+    <div class="cert" id="cert"></div>
+    <div class="row no-print" style="justify-content:center;margin-top:14px">
+      <button id="printCert">🖨️ Print / save PDF</button>
+      <button class="yellow" id="restamp">🔨 Stamp it again</button>
+    </div>
+  </div>
+</section>
+
+</div>
+<footer>Made for fun by Dr. Kent (Aviation Medical <i>Entertainer</i>). No capes were harmed. · <a href="../">Wolfie's Hobby Hub</a></footer>
+
+<script>
+"use strict";
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const rnd = (a, b) => a + Math.random() * (b - a);
+const pick = (a) => a[Math.floor(Math.random() * a.length)];
+
+// ---------- saved state ----------
+let R = {};
+try { R = JSON.parse(localStorage.getItem("superCheckup") || "{}") || {}; } catch { R = {}; }
+const save = () => { try { localStorage.setItem("superCheckup", JSON.stringify(R)); } catch {} };
+
+// ---------- sound ----------
+let AC = null, muted = false;
+try { muted = localStorage.getItem("scMuted") === "1"; } catch {}
+const ac = () => {
+  if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)();
+  if (AC.state === "suspended") AC.resume();
+  return AC;
+};
+// force: test sounds play even when effects are muted
+function tone({ f = 440, d = 0.15, v = 0.2, type = "sine", pan = 0, at = 0, to = null, force = false } = {}) {
+  if (muted && !force) return;
+  const c = ac(), t = c.currentTime + at;
+  const o = c.createOscillator(), g = c.createGain(), p = c.createStereoPanner ? c.createStereoPanner() : null;
+  o.type = type; o.frequency.setValueAtTime(f, t);
+  if (to) o.frequency.exponentialRampToValueAtTime(to, t + d);
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(v, t + 0.012);
+  g.gain.setValueAtTime(v, t + Math.max(0.013, d - 0.03));
+  g.gain.linearRampToValueAtTime(0, t + d);
+  o.connect(g);
+  if (p) { p.pan.value = pan; g.connect(p).connect(c.destination); } else g.connect(c.destination);
+  o.start(t); o.stop(t + d + 0.02);
+}
+const sfx = {
+  ding: () => { tone({ f: 988, d: 0.12, v: 0.15 }); tone({ f: 1319, d: 0.25, v: 0.15, at: 0.1 }); },
+  buzz: () => tone({ f: 110, d: 0.35, v: 0.15, type: "sawtooth" }),
+  boing: () => tone({ f: 180, to: 720, d: 0.3, v: 0.2, type: "triangle" }),
+  click: () => tone({ f: 1500, d: 0.03, v: 0.08, type: "square" }),
+  fanfare: () => [523, 659, 784, 1047, 784, 1047].forEach((f, i) => tone({ f, d: i === 5 ? 0.6 : 0.16, v: 0.16, type: "triangle", at: i * 0.15 })),
+  sad: () => [392, 370, 349, 330].forEach((f, i) => tone({ f, d: i === 3 ? 0.7 : 0.3, v: 0.15, type: "triangle", at: i * 0.3 })),
+  bell: () => { tone({ f: 660, d: 1.4, v: 0.15 }); tone({ f: 1320, d: 1.0, v: 0.05 }); },
+  drum: () => { for (let i = 0; i < 14; i++) tone({ f: 90 + Math.random() * 30, d: 0.05, v: 0.12, type: "square", at: i * 0.06 }); },
+};
+const muteBtn = $("#muteBtn");
+const paintMute = () => (muteBtn.textContent = muted ? "🔇" : "🔊");
+paintMute();
+muteBtn.onclick = () => { muted = !muted; try { localStorage.setItem("scMuted", muted ? "1" : "0"); } catch {} paintMute(); sfx.click(); };
+$("#themeBtn").onclick = () => {
+  const dark = matchMedia("(prefers-color-scheme: dark)").matches;
+  const cur = document.documentElement.dataset.theme || (dark ? "dark" : "light");
+  document.documentElement.dataset.theme = cur === "dark" ? "light" : "dark";
+};
+
+// ---------- confetti & toast ----------
+const cv = $("#confetti"), cx = cv.getContext("2d");
+let parts = [], confettiOn = false;
+function confetti(n = 160) {
+  cv.width = innerWidth; cv.height = innerHeight;
+  const cols = ["#1f4fd1", "#e53935", "#ffd60a", "#18a058", "#ff8ad8"];
+  for (let i = 0; i < n; i++) parts.push({ x: innerWidth / 2 + rnd(-80, 80), y: innerHeight * 0.35, vx: rnd(-9, 9), vy: rnd(-14, -4), r: rnd(0, 6), vr: rnd(-0.3, 0.3), c: pick(cols), w: rnd(6, 12), life: 0 });
+  if (!confettiOn) { confettiOn = true; requestAnimationFrame(tickConfetti); }
+}
+function tickConfetti() {
+  cx.clearRect(0, 0, cv.width, cv.height);
+  parts = parts.filter((p) => p.life < 220 && p.y < cv.height + 20);
+  for (const p of parts) {
+    p.life++; p.vy += 0.32; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+    cx.save(); cx.translate(p.x, p.y); cx.rotate(p.r); cx.fillStyle = p.c; cx.fillRect(-p.w / 2, -p.w / 4, p.w, p.w / 2); cx.restore();
+  }
+  if (parts.length) requestAnimationFrame(tickConfetti); else { confettiOn = false; cx.clearRect(0, 0, cv.width, cv.height); }
+}
+let toastT;
+function toast(msg, ms = 2600) {
+  const t = $("#toast"); t.textContent = msg; t.classList.add("on");
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("on"), ms);
+}
+
+// ---------- doctor & waiting room ----------
+const QUIPS = [
+  "Say 'aaah'. No, louder. Now with feeling.",
+  "I went to medical school for 8 years. This website took 8 minutes.",
+  "Your chart says you're 'mostly human'. Interesting.",
+  "Please ignore the kryptonite in the supply closet.",
+  "Did you fill out the 47-page clipboard? Just kidding, there's no clipboard.",
+  "The eye chart is not a word search. Stop trying to spell things.",
+  "Cold stethoscope incoming! 🧊",
+  "Pilots: yes, I can see you holding your breath during the blood pressure check.",
+  "If your reaction time beats mine, lunch is on me.",
+  "Fun fact: Superman's X-ray vision would fail the Amsler grid.",
+  "My handwriting is illegible on purpose. It's tradition.",
+  "This won't hurt a bit. (It's a website.)",
+];
+let bubbleT;
+function say(msg) {
+  const b = $("#bubble"); b.textContent = msg; b.classList.add("on");
+  clearTimeout(bubbleT); bubbleT = setTimeout(() => b.classList.remove("on"), 4200);
+}
+$("#doc").onclick = () => { sfx.boing(); say(pick(QUIPS)); };
+const pname = $("#pname");
+pname.value = R.name || "";
+pname.oninput = () => { R.name = pname.value.trim(); save(); };
+let waitMin = 47;
+setInterval(() => {
+  if (!$("#st-home").classList.contains("on")) return;
+  waitMin = Math.max(1, waitMin + pick([-3, -1, 0, 1, 2, 5, 12]));
+  $("#wait").textContent = waitMin;
+}, 2500);
+$("#skipLine").onclick = () => { sfx.boing(); waitMin = 0; $("#wait").textContent = "0"; say("Ooh, a cape! Right this way, VIP. Start with Station 1."); confetti(40); };
+
+// ---------- stations & routing ----------
+const STATIONS = [
+  { id: "vitals", em: "🩺", t: "Check-in & Vitals", d: "Pulse, breath hold and flamingo balance", done: () => R.pulse || R.breath || R.balance },
+  { id: "acuity", em: "👁️", t: "Big Eye Chart", d: "Tumbling E, each eye. Need 20/40", done: () => R.acuity },
+  { id: "near", em: "📖", t: "Near Vision", d: "Reading card at 16 inches", done: () => R.near },
+  { id: "color", em: "🌈", t: "Color Plates", d: "Spot the numbers in the dots", done: () => R.color },
+  { id: "field", em: "🎯", t: "Peripheral Vision", d: "Catch the flashes, plus Amsler grid", done: () => R.field },
+  { id: "hearing", em: "👂", t: "Hearing Booth", d: "Beeps, whispers and a mosquito", done: () => R.tones || R.whisper || R.mosq },
+  { id: "react", em: "⚡", t: "Reaction Time", d: "Faster than a speeding bullet?", done: () => R.react || R.reactAudio },
+  { id: "gym", em: "🏋️", t: "Eye Gym", d: "Bates palming, figure 8s, near-far and more", done: () => R.gym },
+  { id: "cert", em: "📜", t: "Your Certificate", d: "Find out your medical class", done: () => false },
+];
+function renderCards() {
+  $("#cards").innerHTML = STATIONS.map((s, i) => `<button class="card" data-go="${s.id}">
+    ${s.done() ? '<span class="done">✓ done</span>' : `<span class="num">${i + 1}</span>`}
+    <div class="em">${s.em}</div><h3>${s.t}</h3><p>${s.d}</p></button>`).join("");
+  $$("#cards [data-go]").forEach((b) => (b.onclick = () => { sfx.click(); location.hash = b.dataset.go; }));
+}
+const stoppers = [];
+const onLeave = (fn) => stoppers.push(fn);
+const ENTER = {};
+function route() {
+  stoppers.forEach((f) => { try { f(); } catch {} });
+  const id = location.hash.slice(1) || "home";
+  const st = $("#st-" + id) ? id : "home";
+  $$(".station").forEach((s) => s.classList.toggle("on", s.id === "st-" + st));
+  if (st === "home") renderCards();
+  if (ENTER[st]) ENTER[st]();
+  scrollTo(0, 0);
+  if (st !== "home" && st !== "cert") toast(pick(QUIPS));
+}
+addEventListener("hashchange", route);
+$$(".back").forEach((b) => (b.onclick = () => { location.hash = ""; }));
+$$("[data-tabs]").forEach((bar) => {
+  const k = bar.dataset.tabs;
+  $$("button", bar).forEach((b) => (b.onclick = () => {
+    stoppers.forEach((f) => { try { f(); } catch {} });
+    $$("button", bar).forEach((x) => x.classList.toggle("on", x === b));
+    $$(`[data-pane^="${k}-"]`).forEach((p) => (p.hidden = p.dataset.pane !== `${k}-${b.dataset.t}`));
+    bar.dispatchEvent(new CustomEvent("tab", { detail: b.dataset.t }));
+  }));
+});
+$("#resetAll").onclick = () => {
+  if (!confirm("Shred your whole chart and start over?")) return;
+  const name = R.name; R = { name, cal: R.cal }; save(); renderCards(); sfx.drum(); toast("🗑️ Chart shredded. Fresh start!");
+};
+function result(el, html, kind = "") { el.innerHTML = `<div class="result ${kind}">${html}</div>`; }
+
+// ---------- 1. vitals ----------
+let taps = [];
+$("#pulseTap").onclick = () => {
+  const now = performance.now();
+  if (taps.length && now - taps[taps.length - 1] > 2500) taps = [];
+  taps.push(now); taps = taps.slice(-11);
+  tone({ f: 70, d: 0.09, v: 0.3, type: "sine" });
+  const h = $("#heart"); h.classList.remove("beat"); h.style.transform = "scale(1.3)"; setTimeout(() => (h.style.transform = ""), 120);
+  if (taps.length < 4) { $("#bpm").textContent = `${taps.length}…`; return; }
+  const gaps = taps.slice(1).map((t, i) => t - taps[i]);
+  const bpm = Math.round(60000 / (gaps.reduce((a, b) => a + b, 0) / gaps.length));
+  $("#bpm").textContent = bpm;
+  if (taps.length >= 10) {
+    R.pulse = bpm; save();
+    h.style.setProperty("--hb", (60 / bpm).toFixed(2) + "s"); h.classList.add("beat");
+    const msg = bpm < 50 ? "Very chill. Are you a marathoner, a sloth, or asleep?" : bpm <= 100 ? "Right in the normal 50-100 range. Textbook!" : "Over 100. Did the waiting room magazines excite you? Rest and try again.";
+    result($("#pulseRes"), `<b>${bpm} bpm.</b> ${msg}`, bpm >= 50 && bpm <= 100 ? "good" : "");
+    sfx.ding();
+  }
+};
+$("#pulseReset").onclick = () => { taps = []; $("#bpm").textContent = "--"; $("#heart").classList.remove("beat"); $("#pulseRes").innerHTML = ""; };
+
+let breathStart = 0, breathRaf = 0;
+$("#breathBtn").onclick = () => {
+  const b = $("#breathBtn");
+  if (!breathStart) {
+    breathStart = performance.now(); b.textContent = "I need air!"; b.classList.add("red"); sfx.click();
+    let last = 0;
+    const tick = () => {
+      const s = (performance.now() - breathStart) / 1000;
+      $("#breathT").textContent = s.toFixed(1) + " s";
+      const m = Math.floor(s / 15);
+      if (m > last) { last = m; tone({ f: 600 + m * 80, d: 0.1, v: 0.1 }); }
+      breathRaf = requestAnimationFrame(tick);
+    };
+    tick();
+  } else {
+    cancelAnimationFrame(breathRaf);
+    const s = (performance.now() - breathStart) / 1000; breathStart = 0;
+    b.textContent = "Try again"; b.classList.remove("red");
+    R.breath = Math.round(s); save();
+    $("#breathMsg").textContent = s < 20 ? "Hmm, short. Were you laughing?" : s < 45 ? "Solid human lungs." : s < 90 ? "Impressive! Aquaman wants your number." : "Whoa. Are you secretly a dolphin? 🐬";
+    s >= 45 ? (sfx.fanfare(), confetti(80)) : sfx.ding();
+  }
+};
+onLeave(() => { if (breathStart) { cancelAnimationFrame(breathRaf); breathStart = 0; $("#breathBtn").textContent = "Start holding"; $("#breathBtn").classList.remove("red"); } });
+
+let bal = { state: "idle", t0: 0, raf: 0, timers: [] };
+const balBox = $("#balBox");
+function balStop() { bal.timers.forEach(clearTimeout); bal.timers = []; cancelAnimationFrame(bal.raf); }
+balBox.onclick = () => {
+  if (bal.state === "idle") {
+    bal.state = "count"; balBox.className = "react wait";
+    [3, 2, 1].forEach((n, i) => bal.timers.push(setTimeout(() => { balBox.textContent = n; tone({ f: 500, d: 0.15, v: 0.2, force: true }); }, i * 1000)));
+    bal.timers.push(setTimeout(() => {
+      bal.state = "run"; balBox.className = "react go"; bal.t0 = performance.now();
+      tone({ f: 1000, d: 0.3, v: 0.25, force: true });
+      let lastBeep = 0;
+      const tick = () => {
+        const s = (performance.now() - bal.t0) / 1000;
+        balBox.textContent = `${s.toFixed(1)} s 🦩 tap when you wobble`;
+        const k = Math.floor(s / 10);
+        if (k > lastBeep) { lastBeep = k; tone({ f: k >= 3 ? 1320 : 800, d: 0.2, v: 0.25, force: true }); }
+        bal.raf = requestAnimationFrame(tick);
+      };
+      tick();
+    }, 3000));
+  } else if (bal.state === "run") {
+    balStop();
+    const s = (performance.now() - bal.t0) / 1000;
+    bal.state = "idle"; balBox.className = "react"; balBox.textContent = "Tap to try again";
+    R.balance = Math.round(s); save();
+    result($("#balRes"), `<b>${s.toFixed(1)} seconds.</b> ${s >= 30 ? "Pass! A flamingo would be proud. 🦩" : s >= 15 ? "Not bad. Wobbly, but airworthy." : "Timber! 🌲 Maybe try with eyes open first."}`, s >= 30 ? "good" : "");
+    s >= 30 ? (sfx.fanfare(), confetti(80)) : sfx.boing();
+  }
+};
+onLeave(() => { balStop(); bal.state = "idle"; balBox.className = "react"; balBox.textContent = "Tap to start (3 s countdown)"; });
+
+// ---------- calibration ----------
+const calSlider = $("#calSlider"), calCard = $("#calCard");
+if (R.cal) calSlider.value = R.cal;
+const paintCal = () => { calCard.style.width = calSlider.value + "px"; };
+calSlider.oninput = () => { paintCal(); R.cal = +calSlider.value; save(); };
+paintCal();
+const pxPerMm = () => (R.cal || +calSlider.value) / 85.6;
+// Snellen 20/n letter is 5 arc minutes tall at 20/20, scaled by n/20
+const letterPx = (distMm, n) => distMm * Math.tan((5 / 60) * (Math.PI / 180)) * (n / 20) * pxPerMm();
+
+// ---------- 2. acuity ----------
+const LINES = [200, 100, 70, 50, 40, 30, 25, 20, 15, 10];
+const DIRS = ["right", "down", "left", "up"];
+const eSvg = (dir, px) => `<svg width="${px}" height="${px}" viewBox="0 0 5 5" style="transform:rotate(${dir * 90}deg);display:block"><path d="M0 0H5V1H1V2H5V3H1V4H5V5H0Z" fill="#000"/></svg>`;
+let acu = null;
+const EYES = [
+  { k: "right", t: "RIGHT eye: cover your LEFT eye 🫣" },
+  { k: "left", t: "LEFT eye: cover your RIGHT eye 🫣" },
+  { k: "both", t: "BOTH eyes open 😎" },
+];
+$("#acuStart").onclick = () => {
+  $("#calBox").open = false;
+  acu = { eye: 0, line: 0, n: 0, ok: 0, best: {}, dir: 0, busy: false };
+  $("#acuRes").innerHTML = "";
+  acuEyeIntro();
+};
+function acuEyeIntro() {
+  const e = EYES[acu.eye];
+  acu.busy = true;
+  $("#acuLab").textContent = e.t; $("#acuLine").textContent = "";
+  $("#acuE").innerHTML = `<div style="font:800 1.4rem system-ui;color:#333;text-align:center;padding:20px">${e.t}<br><small style="font-weight:400">Starting in 3…</small></div>`;
+  tone({ f: 660, d: 0.15, v: 0.15 });
+  setTimeout(() => { if (acu) { acu.busy = false; acuShow(); } }, 2500);
+}
+function acuShow() {
+  const n = LINES[acu.line];
+  const px = Math.max(3, Math.round(letterPx(+$("#dist").value, n)));
+  acu.dir = Math.floor(Math.random() * 4);
+  $("#acuLine").textContent = `Line 20/${n} · ${acu.n + 1} of 4`;
+  $("#acuE").innerHTML = px > 260 ? `<div style="transform:scale(${260 / px})">${eSvg(acu.dir, px)}</div>` : eSvg(acu.dir, px);
+}
+function acuAnswer(d) {
+  if (!acu || acu.busy) return;
+  const right = d === acu.dir;
+  right ? tone({ f: 880, d: 0.06, v: 0.1 }) : tone({ f: 220, d: 0.08, v: 0.1, type: "square" });
+  acu.n++; if (right) acu.ok++;
+  const wrong = acu.n - acu.ok;
+  if (acu.ok >= 3 || wrong >= 2) {
+    const passed = acu.ok >= 3;
+    const k = EYES[acu.eye].k;
+    if (passed) acu.best[k] = LINES[acu.line];
+    acu.n = 0; acu.ok = 0;
+    if (passed && acu.line < LINES.length - 1) { acu.line++; acuShow(); return; }
+    // eye finished
+    if (!passed && acu.line === 0) acu.best[k] = 400;
+    acu.eye++; acu.line = 0;
+    if (acu.eye < EYES.length) { acuEyeIntro(); return; }
+    acuDone(); return;
+  }
+  acuShow();
+}
+function acuDone() {
+  const b = acu.best; acu = null;
+  R.acuity = b; save();
+  const fmt = (n) => (n >= 400 ? "worse than 20/200" : `20/${n}`);
+  const ok = b.right <= 40 && b.left <= 40;
+  $("#acuLab").textContent = "All done!"; $("#acuLine").textContent = "";
+  $("#acuE").innerHTML = `<div style="font:900 3rem system-ui">${ok ? "🦅" : "🦇"}</div>`;
+  result($("#acuRes"), `<table><tr><th>Eye</th><th>Best line</th></tr>
+    <tr><td>Right</td><td>${fmt(b.right)}</td></tr><tr><td>Left</td><td>${fmt(b.left)}</td></tr><tr><td>Both</td><td>${fmt(b.both)}</td></tr></table>
+    <p>${ok ? (b.both <= 15 ? "Eagle eyes! Superman is checking if you're related. ✅ Meets the 3rd class 20/40 standard." : "✅ Meets the 3rd class 20/40 standard in each eye.") : "❌ Below 20/40 in at least one eye. Did you recalibrate and stand at the right distance? Glasses are allowed, and an eye doctor can sort this out."}</p>`, ok ? "good" : "bad");
+  ok ? (sfx.fanfare(), confetti()) : sfx.sad();
+}
+$$(".arrows [data-dir]").forEach((b) => (b.onclick = () => acuAnswer(+b.dataset.dir)));
+addEventListener("keydown", (e) => {
+  if (!$("#st-acuity").classList.contains("on") || !acu) return;
+  const m = { ArrowRight: 0, ArrowDown: 1, ArrowLeft: 2, ArrowUp: 3, d: 0, s: 1, a: 2, w: 3 }[e.key];
+  if (m !== undefined) { e.preventDefault(); acuAnswer(m); }
+});
+let sw = null;
+const acuBox = $("#acuBox");
+acuBox.addEventListener("touchstart", (e) => { sw = [e.touches[0].clientX, e.touches[0].clientY]; }, { passive: true });
+acuBox.addEventListener("touchend", (e) => {
+  if (!sw) return;
+  const dx = e.changedTouches[0].clientX - sw[0], dy = e.changedTouches[0].clientY - sw[1]; sw = null;
+  if (Math.max(Math.abs(dx), Math.abs(dy)) < 30) return;
+  acuAnswer(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 0 : 2) : (dy > 0 ? 1 : 3));
+});
+onLeave(() => { acu = null; $("#acuLab").textContent = "Ready when you are"; $("#acuLine").textContent = ""; $("#acuE").innerHTML = "👁️ Cover one eye when asked"; });
+
+// ---------- 3. near ----------
+const NEAR = [
+  [100, "DR. KENT"],
+  [70, "SAYS HELLO"],
+  [50, "Please do not lick the eye chart."],
+  [40, "Pilots read checklists, not tea leaves."],
+  [30, "If you can read this, you are sitting too close to my lunch."],
+  [25, "Superman can read this from orbit. Show-off. He also never needs reading glasses."],
+  [20, "The fine print: by reading this line you agree to laugh at all of Dr. Kent's jokes, including the bad ones."],
+];
+ENTER.near = () => {
+  $("#readCard").innerHTML = NEAR.map(([n, txt]) => `<div class="ln" data-n="${n}"><b>20/${n}</b><span style="font-size:${(letterPx(406, n) / 0.7).toFixed(1)}px;line-height:1.2">${txt}</span></div>`).join("");
+  $$("#readCard .ln").forEach((l) => (l.onclick = () => {
+    const n = +l.dataset.n; R.near = n; save();
+    const ok = n <= 40;
+    result($("#nearRes"), `<b>Near vision: 20/${n}.</b> ${ok ? "✅ Meets the 3rd class near standard. Checklists, here you come." : "❌ That's below 20/40 up close. Readers count, so grab yours and try again!"}`, ok ? "good" : "bad");
+    ok ? sfx.ding() : sfx.boing();
+  }));
+};
+
+// ---------- 4. color ----------
+const PAL = {
+  ctrlFig: ["#2c6db8", "#3a7cc8", "#25609f"], ctrlBg: ["#f0a64a", "#e8953a", "#f4b762", "#e3a24f"],
+  fig: ["#d9714e", "#e0815a", "#cf6a4a", "#de8a5f", "#c9664c"], bg: ["#9ea65a", "#aab063", "#909c52", "#b5b46c", "#a0a35e"],
+};
+let plates = [], plateI = 0, plateAns = "", plateScore = 0;
+function drawPlate(text, figPal, bgPal) {
+  const c = $("#plate"), g = c.getContext("2d"), W = c.width, R0 = W / 2 - 8;
+  const m = document.createElement("canvas"); m.width = m.height = W;
+  const mg = m.getContext("2d");
+  mg.fillStyle = "#000"; mg.font = `900 ${W * (text.length > 1 ? 0.52 : 0.62)}px Arial, sans-serif`;
+  mg.textAlign = "center"; mg.textBaseline = "middle"; mg.fillText(text, W / 2, W / 2 + W * 0.03);
+  mg.lineWidth = W * 0.035; mg.strokeStyle = "#000"; mg.strokeText(text, W / 2, W / 2 + W * 0.03);
+  const mask = mg.getImageData(0, 0, W, W).data;
+  g.clearRect(0, 0, W, W);
+  g.fillStyle = "#f3ecdc"; g.beginPath(); g.arc(W / 2, W / 2, W / 2, 0, 7); g.fill();
+  const dots = [];
+  for (let tries = 0; tries < 9000 && dots.length < 1100; tries++) {
+    const r = rnd(5, 17), a = rnd(0, Math.PI * 2), d = Math.sqrt(Math.random()) * (R0 - r);
+    const x = W / 2 + Math.cos(a) * d, y = W / 2 + Math.sin(a) * d;
+    if (dots.some((o) => (o.x - x) ** 2 + (o.y - y) ** 2 < (o.r + r + 2) ** 2)) continue;
+    dots.push({ x, y, r });
+  }
+  for (const o of dots) {
+    const inFig = mask[(Math.round(o.y) * W + Math.round(o.x)) * 4 + 3] > 128;
+    g.fillStyle = pick(inFig ? figPal : bgPal);
+    g.beginPath(); g.arc(o.x, o.y, o.r, 0, 7); g.fill();
+  }
+}
+function newPlates() {
+  const num = () => String(pick([2, 3, 5, 6, 7, 8, 9])) + (Math.random() < 0.6 ? String(Math.floor(Math.random() * 10)) : "");
+  plates = [{ n: "12", ctrl: true }];
+  for (let i = 0; i < 5; i++) plates.push({ n: num() });
+  plateI = 0; plateScore = 0; plateAns = "";
+  $("#colorRes").innerHTML = "";
+  showPlate();
+}
+function showPlate() {
+  const p = plates[plateI];
+  $("#plateLab").textContent = `Plate ${plateI + 1} of ${plates.length}${p.ctrl ? " (warm-up, everyone sees this one)" : ""}`;
+  plateAns = ""; $("#plateIn").innerHTML = "&nbsp;";
+  drawPlate(p.n, p.ctrl ? PAL.ctrlFig : PAL.fig, p.ctrl ? PAL.ctrlBg : PAL.bg);
+}
+function submitPlate(ans) {
+  if (plateI >= plates.length) return;
+  const p = plates[plateI];
+  const right = ans === p.n;
+  if (!p.ctrl && right) plateScore++;
+  right ? sfx.ding() : sfx.buzz();
+  toast(right ? "✅ Correct!" : `It was ${p.n}`, 1200);
+  plateI++;
+  if (plateI < plates.length) { showPlate(); return; }
+  R.color = { score: plateScore, of: 5 }; save();
+  const ok = plateScore >= 4;
+  result($("#colorRes"), `<b>${plateScore} of 5</b> confusion plates correct. ${ok ? "✅ Your red/green vision looks great. Runway lights approve. 🟢🔴" : "🤔 You missed a few. Screens vary a lot in color, so this is just a hint. A real AME uses calibrated plates, and there are alternate tests (like a signal light gun test) if you don't pass."}
+    <div class="row" style="margin-top:8px"><button id="plateAgain">🎲 New plates</button></div>`, ok ? "good" : "bad");
+  $("#plateAgain").onclick = newPlates;
+  ok ? (sfx.fanfare(), confetti(90)) : null;
+}
+$("#keypad").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((n) => `<button class="ghost" data-k="${n}">${n}</button>`).join("");
+$$("#keypad [data-k]").forEach((b) => (b.onclick = () => { if (plateAns.length < 2) { plateAns += b.dataset.k; $("#plateIn").textContent = plateAns; sfx.click(); } }));
+$("#plateOk").onclick = () => plateAns ? submitPlate(plateAns) : toast("Type a number first (or tap 'I see nothing')");
+$("#plateNone").onclick = () => submitPlate("");
+addEventListener("keydown", (e) => {
+  if (!$("#st-color").classList.contains("on")) return;
+  if (/^\d$/.test(e.key) && plateAns.length < 2) { plateAns += e.key; $("#plateIn").textContent = plateAns; }
+  else if (e.key === "Backspace") { plateAns = plateAns.slice(0, -1); $("#plateIn").innerHTML = plateAns || "&nbsp;"; }
+  else if (e.key === "Enter") $("#plateOk").click();
+});
+ENTER.color = newPlates;
+
+// ---------- 5. peripheral field ----------
+const field = $("#field");
+let fld = null;
+const ANG = ["right", "upper right", "top", "upper left", "left", "lower left", "bottom", "lower right"];
+function fieldStart() {
+  const trials = [];
+  for (let a = 0; a < 8; a++) for (const rad of [0.55, 0.92]) trials.push({ a, rad });
+  trials.sort(() => Math.random() - 0.5);
+  fld = { trials, i: 0, hits: Array(8).fill(0), tot: Array(8).fill(0), fa: 0, open: false, timer: 0, dot: null };
+  $("#fieldRes").innerHTML = "";
+  $("#fieldMsg").textContent = "Stare at the +. Press space or tap when you see a flash.";
+  fld.timer = setTimeout(fieldNext, 1500);
+}
+function fieldNext() {
+  if (!fld) return;
+  if (fld.i >= fld.trials.length) return fieldDone();
+  const t = fld.trials[fld.i++];
+  const w = field.clientWidth, h = field.clientHeight;
+  const ang = (t.a * Math.PI) / 4, rx = (w / 2 - 14) * t.rad, ry = (h / 2 - 14) * t.rad;
+  const d = document.createElement("div");
+  d.style.cssText = `position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;left:${w / 2 + Math.cos(ang) * rx - 6}px;top:${h / 2 - Math.sin(ang) * ry - 6}px`;
+  field.appendChild(d);
+  fld.tot[t.a]++; fld.open = t; fld.dot = d;
+  setTimeout(() => d.remove(), 220);
+  fld.timer = setTimeout(() => { if (fld) { fld.open = false; fld.timer = setTimeout(fieldNext, rnd(400, 1600)); } }, 1100);
+}
+function fieldPress() {
+  if (!fld) { fieldStart(); return; }
+  if (fld.open) { fld.hits[fld.open.a]++; fld.open = false; tone({ f: 1200, d: 0.05, v: 0.08 }); }
+  else { fld.fa++; tone({ f: 200, d: 0.08, v: 0.08, type: "square" }); field.classList.add("shake"); setTimeout(() => field.classList.remove("shake"), 400); }
+}
+function fieldDone() {
+  const f = fld; fld = null;
+  const hit = f.hits.reduce((a, b) => a + b, 0), tot = f.tot.reduce((a, b) => a + b, 0);
+  const pct = Math.round((hit / tot) * 100);
+  R.field = { pct, fa: f.fa }; save();
+  $("#fieldMsg").textContent = "Done! Tap to go again.";
+  const comp = ANG.map((n, i) => `<td>${f.hits[i] === f.tot[i] ? "🟢" : f.hits[i] ? "🟡" : "🔴"} ${n}</td>`);
+  result($("#fieldRes"), `<b>Caught ${hit} of ${tot} flashes (${pct}%)</b>, with ${f.fa} false alarm${f.fa === 1 ? "" : "s"}.
+    <table style="margin-top:6px"><tr>${comp.slice(3, 4).concat(comp.slice(2, 3), comp.slice(1, 2)).join("")}</tr><tr>${comp[4]}<td style="text-align:center">👁️</td>${comp[0]}</tr><tr>${comp[5]}${comp[6]}${comp[7]}</tr></table>
+    <p>${pct >= 90 ? "Hawk-level awareness. Nothing sneaks up on you. 🦅" : pct >= 70 ? "Pretty good! A few flashes slipped by, which is normal for tiny dots on a screen." : "Lots of misses. Were you peeking at the edges? Try again sitting closer, and if it keeps happening, mention it to an eye doctor."}${f.fa > 3 ? " Also: that many false alarms means you're button-mashing. We see you. 👀" : ""}</p>`, pct >= 70 ? "good" : "bad");
+  pct >= 90 ? (sfx.fanfare(), confetti(80)) : sfx.ding();
+}
+field.addEventListener("pointerdown", (e) => { e.preventDefault(); fieldPress(); });
+addEventListener("keydown", (e) => {
+  if (e.code !== "Space" || !$("#st-field").classList.contains("on") || $('[data-pane="fld-flash"]').hidden) return;
+  e.preventDefault(); fieldPress();
+});
+onLeave(() => { if (fld) { clearTimeout(fld.timer); fld = null; $("#fieldMsg").textContent = "Tap here to begin"; } });
+(() => {
+  let s = `<rect width="200" height="200" fill="#fff"/>`;
+  for (let i = 0; i <= 20; i++) s += `<line x1="${i * 10}" y1="0" x2="${i * 10}" y2="200" stroke="#000" stroke-width="${i % 10 ? 0.6 : 1.2}"/><line x1="0" y1="${i * 10}" x2="200" y2="${i * 10}" stroke="#000" stroke-width="${i % 10 ? 0.6 : 1.2}"/>`;
+  $("#amsler").innerHTML = s + `<circle cx="100" cy="100" r="3" fill="#e53935"/>`;
+})();
+
+// ---------- 6. hearing ----------
+const FREQS = [500, 1000, 2000, 3000, 4000, 8000];
+let tn = null;
+$("#toneStart").onclick = async () => {
+  if (tn) return;
+  ac();
+  tn = { heard: false, alive: true, res: { right: {}, left: {} } };
+  const me = tn;
+  $("#toneStart").disabled = true; $("#heardBtn").disabled = false; $("#toneRes").innerHTML = "";
+  for (const [ear, pan] of [["right", 1], ["left", -1]]) {
+    $("#toneLab").textContent = `${ear.toUpperCase()} ear coming up…`;
+    await sleep(1500);
+    for (const f of FREQS) {
+      if (!me.alive) return;
+      me.heard = false;
+      let level = -75, got = null;
+      while (level <= -12 && me.alive) {
+        $("#toneLab").textContent = `${ear.toUpperCase()} ear · ${f} Hz`;
+        const g = Math.pow(10, level / 20);
+        for (let i = 0; i < 3; i++) tone({ f, d: 0.22, v: g, pan, at: i * 0.32, force: true });
+        await sleep(1300 + rnd(0, 500));
+        if (me.heard) { got = level; break; }
+        level += 5;
+      }
+      if (!me.alive) return;
+      me.res[ear][f] = got;
+      await sleep(rnd(500, 1100));
+    }
+  }
+  if (!me.alive) return;
+  tn = null;
+  $("#toneStart").disabled = false; $("#heardBtn").disabled = true; $("#toneLab").textContent = "Finished";
+  R.tones = me.res; save();
+  toneResult(me.res);
+};
+function toneResult(res) {
+  const vals = [...Object.values(res.right), ...Object.values(res.left)];
+  const heard = vals.filter((v) => v !== null);
+  const avg = heard.length ? heard.reduce((a, b) => a + b, 0) / heard.length : 0;
+  const missed = vals.length - heard.length;
+  const W = 320, H = 180, x = (i) => 40 + i * ((W - 60) / (FREQS.length - 1)), y = (v) => 20 + ((v === null ? -10 : v) + 75) * ((H - 40) / 65);
+  const line = (ear, col) => `<polyline fill="none" stroke="${col}" stroke-width="3" points="${FREQS.map((f, i) => `${x(i)},${y(res[ear][f])}`).join(" ")}"/>` +
+    FREQS.map((f, i) => `<text x="${x(i)}" y="${y(res[ear][f]) + 5}" text-anchor="middle" font-size="14" font-weight="900" fill="${col}">${ear === "right" ? "o" : "x"}</text>`).join("");
+  const svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:440px;background:#fff;border-radius:12px">
+    ${FREQS.map((f, i) => `<line x1="${x(i)}" y1="20" x2="${x(i)}" y2="${H - 20}" stroke="#ddd"/><text x="${x(i)}" y="${H - 5}" font-size="10" text-anchor="middle" fill="#666">${f >= 1000 ? f / 1000 + "k" : f}</text>`).join("")}
+    <text x="4" y="24" font-size="9" fill="#666">quiet</text><text x="4" y="${H - 22}" font-size="9" fill="#666">loud</text>
+    ${line("right", "#e53935")}${line("left", "#1f4fd1")}</svg>`;
+  const verdict = missed > 2 ? "You missed some pitches entirely. Check your volume and headphones, and if you really can't hear them, a real hearing test is worth it." : avg < -55 ? "Bat ears! 🦇 You caught very quiet sounds." : avg < -40 ? "Nice, normal-looking hearing for an uncalibrated website. 👍" : "You needed it fairly loud. Was your volume low, or the room noisy?";
+  result($("#toneRes"), `<b>Your homemade audiogram</b> (<span style="color:#e53935">o right</span>, <span style="color:#1f4fd1">x left</span>; higher means you heard quieter sounds)<br>${svg}<p>${verdict}</p><p class="muted">Levels are relative to your device volume, not real dB HL.</p>`, missed > 2 ? "bad" : "good");
+  missed > 2 ? sfx.boing() : (sfx.fanfare(), confetti(70));
+}
+const heard = () => { if (tn) { tn.heard = true; sfx.click(); const b = $("#heardBtn"); b.style.transform = "scale(.9)"; setTimeout(() => (b.style.transform = ""), 120); } };
+$("#heardBtn").onclick = heard;
+addEventListener("keydown", (e) => { if (e.code === "Space" && tn && $("#st-hearing").classList.contains("on")) { e.preventDefault(); heard(); } });
+onLeave(() => { if (tn) { tn.alive = false; tn = null; $("#toneStart").disabled = false; $("#heardBtn").disabled = true; $("#toneLab").textContent = "Stopped"; } });
+
+const PHON = ["alpha", "bravo", "charlie", "delta", "echo", "foxtrot", "golf", "hotel", "india", "juliet", "kilo", "lima", "mike", "november", "oscar", "papa", "quebec", "romeo", "sierra", "tango", "uniform", "victor", "whiskey", "x-ray", "yankee", "zulu"];
+let wh = { round: 0, words: [], score: 0 };
+const WH_VOL = [0.6, 0.3, 0.12];
+function whSpeak() {
+  if (!("speechSynthesis" in window)) { toast("Your browser can't talk. Try Chrome, Edge or Safari."); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(wh.words.join(" ... "));
+  u.volume = WH_VOL[wh.round]; u.rate = 0.85; u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
+$("#whStart").onclick = () => {
+  if (wh.round >= 3) { wh = { round: 0, words: [], score: 0 }; $("#whRes").innerHTML = ""; }
+  const a = pick(PHON); let b = pick(PHON); while (b === a) b = pick(PHON);
+  wh.words = [a, b];
+  $("#whIn").value = ""; $("#whOk").disabled = false; $("#whAgain").disabled = false; $("#whStart").disabled = true;
+  whSpeak(); setTimeout(() => $("#whIn").focus(), 300);
+};
+$("#whAgain").onclick = whSpeak;
+const whCheck = () => {
+  if ($("#whOk").disabled) return;
+  const said = $("#whIn").value.toLowerCase().replace(/[^a-z ]/g, " ").split(/\s+/);
+  const got = wh.words.filter((w) => said.includes(w.replace("-", "")) || said.includes(w.split("-")[0])).length;
+  wh.score += got; wh.round++;
+  $("#whOk").disabled = true; $("#whAgain").disabled = true; $("#whStart").disabled = false;
+  got === 2 ? sfx.ding() : sfx.buzz();
+  if (wh.round < 3) {
+    $("#whStart").textContent = `Whisper round ${wh.round + 1} (quieter)`;
+    result($("#whRes"), `Round ${wh.round}: it was <b>${wh.words.join(" ")}</b>. You got ${got} of 2.`, got === 2 ? "good" : "");
+  } else {
+    R.whisper = { score: wh.score, of: 6 }; save();
+    $("#whStart").textContent = "Start over";
+    const ok = wh.score >= 4;
+    result($("#whRes"), `Last one was <b>${wh.words.join(" ")}</b>. <b>Total: ${wh.score} of 6.</b> ${ok ? "✅ You'd pass the AME's conversational voice test. Tower, do you read? Loud and clear!" : "🤔 Some words got lost. Turn up the volume a little and try again; if whispers are often hard, a real hearing check is a good idea."}`, ok ? "good" : "bad");
+    ok ? (sfx.fanfare(), confetti(60)) : sfx.sad();
+  }
+};
+$("#whOk").onclick = whCheck;
+$("#whIn").addEventListener("keydown", (e) => { if (e.key === "Enter") whCheck(); });
+onLeave(() => { try { speechSynthesis.cancel(); } catch {} });
+
+let mq = null;
+const MQ_T = 24, MQ_F0 = 8000, MQ_F1 = 20000;
+$("#mqStart").onclick = () => {
+  const c = ac(), o = c.createOscillator(), g = c.createGain(), t = c.currentTime;
+  o.frequency.setValueAtTime(MQ_F0, t); o.frequency.linearRampToValueAtTime(MQ_F1, t + MQ_T);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.3);
+  o.connect(g).connect(c.destination); o.start(t); o.stop(t + MQ_T + 0.1);
+  mq = { o, g, t };
+  $("#mqStart").disabled = true; $("#mqStop").disabled = false; $("#mqRes").innerHTML = "";
+  const tick = () => {
+    if (!mq) return;
+    const e = Math.min(MQ_T, c.currentTime - mq.t);
+    $("#mqHz").textContent = Math.round(MQ_F0 + (e / MQ_T) * (MQ_F1 - MQ_F0)).toLocaleString() + " Hz";
+    if (e >= MQ_T) return mqStop();
+    mq.raf = requestAnimationFrame(tick);
+  };
+  tick();
+};
+function mqStop() {
+  if (!mq) return;
+  const c = ac(), e = Math.min(MQ_T, c.currentTime - mq.t);
+  try { mq.g.gain.cancelScheduledValues(c.currentTime); mq.g.gain.setValueAtTime(0, c.currentTime); mq.o.stop(); } catch {}
+  cancelAnimationFrame(mq.raf); mq = null;
+  const f = Math.round(MQ_F0 + (e / MQ_T) * (MQ_F1 - MQ_F0));
+  $("#mqHz").textContent = f.toLocaleString() + " Hz";
+  $("#mqStart").disabled = false; $("#mqStop").disabled = true;
+  const age = f >= 17500 ? "under 25 🍼" : f >= 16000 ? "about 25-30" : f >= 15000 ? "about 30-40" : f >= 14000 ? "about 40-50" : f >= 12000 ? "about 50-60" : "60+ (or your speakers gave up first 🔈)";
+  R.mosq = { hz: f, age }; save();
+  result($("#mqRes"), `Your top note: <b>${f.toLocaleString()} Hz</b>. Estimated ear age: <b>${age}</b>.<p class="muted">Many laptop and phone speakers can't play above ~15-16 kHz, so headphones give a fairer result.</p>`, "good");
+  sfx.ding();
+}
+$("#mqStop").onclick = mqStop;
+onLeave(mqStop);
+
+// ---------- 7. reaction ----------
+const rxBox = $("#rxBox");
+let rx = { mode: "see", state: "idle", times: [], t0: 0, timer: 0 };
+$('[data-tabs="rx"]').addEventListener("tab", (e) => { rx.mode = e.detail; rxReset(); });
+function rxReset() { clearTimeout(rx.timer); rx.state = "idle"; rx.times = []; rxBox.className = "react"; rxBox.textContent = "Tap to start"; }
+function rxArm() {
+  rx.state = "wait";
+  rxBox.className = "react wait";
+  rxBox.textContent = rx.mode === "see" ? "Wait for green…" : "Wait for the beep… 👂";
+  rx.timer = setTimeout(() => {
+    rx.state = "go"; rx.t0 = performance.now();
+    if (rx.mode === "see") { rxBox.className = "react go"; rxBox.textContent = "TAP!"; }
+    else tone({ f: 1000, d: 0.15, v: 0.3, force: true });
+  }, rnd(1500, 4500));
+}
+function rxPress() {
+  if (rx.state === "idle" || rx.state === "result") { rx.times = rx.state === "result" ? [] : rx.times; $("#rxRes").innerHTML = ""; rxArm(); return; }
+  if (rx.state === "wait") {
+    clearTimeout(rx.timer); rx.state = "early"; rxBox.className = "react early";
+    rxBox.textContent = pick(["Jumped the gun! 🔫", "Too soon! Are you psychic? 🔮", "Easy, Flash. Wait for it! ⚡"]) + " Tap to retry";
+    sfx.buzz(); return;
+  }
+  if (rx.state === "early") { rxArm(); return; }
+  if (rx.state === "go") {
+    const ms = Math.round(performance.now() - rx.t0);
+    rx.times.push(ms); sfx.click();
+    if (rx.times.length < 5) { rx.state = "between"; rxBox.className = "react"; rxBox.textContent = `${ms} ms · try ${rx.times.length + 1} of 5 (tap)`; return; }
+    rx.state = "result";
+    const avg = Math.round(rx.times.reduce((a, b) => a + b, 0) / 5), best = Math.min(...rx.times);
+    rxBox.className = "react go"; rxBox.textContent = `Average ${avg} ms`;
+    if (rx.mode === "see") R.react = avg; else R.reactAudio = avg;
+    save();
+    const rank = avg < 180 ? "⚡ The Flash called. He wants his reflexes back." : avg < 230 ? "🏎️ Race-car-driver territory. Excellent!" : avg < 290 ? "✈️ Solid pilot reflexes. Typical healthy adult." : avg < 400 ? "🐢 A bit leisurely. Coffee, then try again?" : "🦥 Sloth mode. Were you checking your phone?";
+    result($("#rxRes"), `<b>Average ${avg} ms</b>, best ${best} ms. ${rank}
+      <table style="margin-top:8px"><tr><td>🦸 Superman</td><td>0 ms (he's already there)</td></tr><tr><td>🏎️ F1 driver</td><td>~200 ms</td></tr><tr><td>🙂 Typical adult (${rx.mode === "see" ? "visual" : "sound"})</td><td>${rx.mode === "see" ? "~250" : "~170-220"} ms</td></tr><tr><td>🦥 Sloth</td><td>Still deciding</td></tr><tr><td><b>You</b></td><td><b>${avg} ms</b></td></tr></table>
+      <p class="muted">Fun fact: most people react faster to sound than to light. Try both tabs!</p>`, avg < 290 ? "good" : "");
+    avg < 290 ? (sfx.fanfare(), confetti(80)) : sfx.boing();
+    return;
+  }
+  if (rx.state === "between") rxArm();
+}
+rxBox.addEventListener("pointerdown", (e) => { e.preventDefault(); rxPress(); });
+addEventListener("keydown", (e) => { if (e.code === "Space" && $("#st-react").classList.contains("on")) { e.preventDefault(); if (!e.repeat) rxPress(); } });
+onLeave(rxReset);
+
+// ---------- 8. eye gym ----------
+const stage = $("#stage"), gdot = $("#gdot"), sayEl = $("#say"), gtimer = $("#gtimer");
+let gym = { run: 0, raf: 0, noise: null };
+const coach = (txt) => {
+  sayEl.textContent = txt;
+  if ($("#voice").checked && "speechSynthesis" in window) { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(txt.replace(/[^\w\s,.'!?-]/g, "")); u.rate = 0.95; speechSynthesis.speak(u); }
+};
+const dotAt = (x, y, scale = 1, show = true) => { gdot.style.left = x * 100 + "%"; gdot.style.top = y * 100 + "%"; gdot.style.transform = `translate(-50%,-50%) scale(${scale})`; gdot.style.opacity = show ? 1 : 0; };
+function startNoise() {
+  const c = ac(), len = c.sampleRate * 2, buf = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0);
+  let last = 0;
+  for (let i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last * 3.5; }
+  const src = c.createBufferSource(); src.buffer = buf; src.loop = true;
+  const g = c.createGain(); g.gain.value = 0.25;
+  const lfo = c.createOscillator(), lg = c.createGain(); lfo.frequency.value = 0.12; lg.gain.value = 0.18;
+  lfo.connect(lg).connect(g.gain);
+  src.connect(g).connect(c.destination); src.start(); lfo.start();
+  gym.noise = { src, lfo };
+}
+function stopNoise() { if (gym.noise) { try { gym.noise.src.stop(); gym.noise.lfo.stop(); } catch {} gym.noise = null; } }
+// each exercise: seconds and a frame(t, s, total) painter; cues fire at given seconds
+const EX = [
+  { id: "palm", em: "🙌", t: "Palming (Bates)", s: 60, d: "Rub your hands warm, cup them over closed eyes (no pressure) and breathe. Ocean sounds included.",
+    start: () => { coach("Palming. Rub your hands warm, then cup them over your closed eyes. Relax and breathe slowly."); startNoise(); stage.style.background = "radial-gradient(circle,#13254d,#000)"; },
+    frame: (t) => dotAt(0.5, 0.55, 1 + 0.25 * Math.sin(t * 0.8), true), stop: () => { stopNoise(); stage.style.background = ""; } },
+  { id: "swing", em: "🌊", t: "The Long Swing (Bates)", s: 45, d: "Stand with feet apart and gently sway your whole body left and right, letting your eyes ride along.",
+    start: () => coach("The long swing. Stand up, feet apart, and sway gently side to side. Let your eyes follow the dot."),
+    frame: (t) => dotAt(0.5 + 0.38 * Math.sin(t * 1.1), 0.55) },
+  { id: "fig8", em: "♾️", t: "Figure Eights", s: 45, d: "Trace a sideways 8 with your eyes. Head still, eyes do the work.",
+    start: () => coach("Figure eights. Keep your head still and trace the infinity sign with your eyes."),
+    frame: (t) => { const a = t * 1.3; dotAt(0.5 + 0.36 * Math.sin(a), 0.55 + 0.25 * Math.sin(a) * Math.cos(a)); } },
+  { id: "clock", em: "🕐", t: "Clock Hops", s: 40, d: "Jump your gaze to each hour on a clock, clockwise, then back.",
+    start: () => coach("Clock hops. Jump your eyes to each number on the clock. Then we reverse."),
+    frame: (t, s) => { const h = Math.floor(t * 1.2) % 12, dir = s > 20 ? -1 : 1, a = (Math.PI / 2) - dir * h * (Math.PI / 6); dotAt(0.5 + 0.36 * Math.cos(a), 0.55 - 0.32 * Math.sin(a)); } },
+  { id: "nearfar", em: "🔭", t: "Near & Far Focus", s: 50, d: "Hold up a thumb. Switch focus between your thumb and something far away every few seconds.",
+    start: () => coach("Near and far. Hold up your thumb about ten inches away."),
+    cues: { 5: "Now look far away", 10: "Back to your thumb", 15: "Far away", 20: "Thumb", 25: "Far", 30: "Thumb", 35: "Far", 40: "Thumb", 45: "Far, and relax" },
+    frame: (t) => { const near = Math.floor(t / 5) % 2 === 0; dotAt(0.5, 0.58, near ? 2.6 : 0.4); } },
+  { id: "push", em: "✏️", t: "Pencil Push-ups", s: 40, d: "Follow a pencil tip from arm's length slowly toward your nose until it doubles, then back out. Eye doctors actually prescribe this one.",
+    start: () => coach("Pencil push ups. Follow the dot as it comes toward your nose, and stop if it turns double."),
+    frame: (t) => dotAt(0.5, 0.58, 0.6 + 2.6 * (0.5 - 0.5 * Math.cos(t * 0.9))) },
+  { id: "blink", em: "😉", t: "Blink Burst", s: 25, d: "Screens make us forget to blink. Blink softly every time the dot flashes.",
+    start: () => coach("Blink burst. Blink softly every time the dot flashes."),
+    frame: (t) => { const on = (t % 1.2) < 0.25; dotAt(0.5, 0.55, on ? 1.8 : 0.8, true); if (on && !gym.lastBlink) tone({ f: 900, d: 0.04, v: 0.06 }); gym.lastBlink = on; } },
+  { id: "2020", em: "⏱️", t: "20-20-20 Break", s: 20, d: "Every 20 minutes, look at something 20 feet away for 20 seconds. The legit one.",
+    start: () => coach("Twenty twenty twenty. Look at something at least twenty feet away for twenty seconds."),
+    frame: () => dotAt(0.5, 0.55, 0.3) },
+];
+function gymStop() {
+  gym.run++; cancelAnimationFrame(gym.raf);
+  if (gym.cur && gym.cur.stop) gym.cur.stop();
+  gym.cur = null; stopNoise(); gtimer.textContent = "";
+  try { speechSynthesis.cancel(); } catch {}
+}
+function runEx(ex, id) {
+  return new Promise((done) => {
+    gym.cur = ex; ac();
+    ex.start();
+    const t0 = performance.now(); const fired = {};
+    const step = () => {
+      if (gym.run !== id) return done(false);
+      const s = (performance.now() - t0) / 1000;
+      if (s >= ex.s) { if (ex.stop) ex.stop(); gym.cur = null; sfx.bell(); return done(true); }
+      const k = Math.floor(s);
+      if (ex.cues && ex.cues[k] && !fired[k]) { fired[k] = 1; coach(ex.cues[k]); }
+      ex.frame(s, s, ex.s);
+      gtimer.textContent = `${ex.em} ${Math.ceil(ex.s - s)}s`;
+      gym.raf = requestAnimationFrame(step);
+    };
+    step();
+  });
+}
+function gymDone(name) {
+  R.gym = (R.gym || 0) + 1; save();
+  coach(name === "all" ? "Routine complete! Your eyes feel fancy now." : "Nice work!");
+  dotAt(0.5, 0.55);
+  if (name === "all") { sfx.fanfare(); confetti(); }
+}
+$("#exList").innerHTML = EX.map((e) => `<div class="card"><div class="em">${e.em}</div><h3>${e.t}</h3><p>${e.d}</p><button data-ex="${e.id}">▶ ${e.s}s</button></div>`).join("");
+$$("#exList [data-ex]").forEach((b) => (b.onclick = async () => {
+  gymStop(); const id = gym.run; stage.scrollIntoView({ behavior: "smooth", block: "center" });
+  if (await runEx(EX.find((e) => e.id === b.dataset.ex), id)) gymDone(b.dataset.ex);
+}));
+$("#routine").onclick = async () => {
+  gymStop(); const id = gym.run; stage.scrollIntoView({ behavior: "smooth", block: "center" });
+  for (const ex of EX) {
+    if (!(await runEx(ex, id))) return;
+    if (ex !== EX[EX.length - 1]) { coach("Rest a moment."); await sleep(3000); if (gym.run !== id) return; }
+  }
+  gymDone("all");
+};
+$("#gymStop").onclick = () => { gymStop(); sayEl.textContent = "Stopped. Pick an exercise, or run the whole routine"; dotAt(0.5, 0.55); };
+onLeave(gymStop);
+
+// ---------- 9. certificate ----------
+function grade() {
+  const a = R.acuity, n = R.near, c = R.color, w = R.whisper, t = R.tones;
+  const hearingOk = (w && w.score >= 4) || (t && [...Object.values(t.right), ...Object.values(t.left)].filter((v) => v === null).length <= 2);
+  const missing = [];
+  if (!a) missing.push("Eye Chart"); if (!n) missing.push("Near Vision"); if (!c) missing.push("Color Plates"); if (!w && !t) missing.push("Hearing");
+  if (missing.length) return { cls: "INCOMPLETE 📋", note: `The doctor can't sign until you finish: ${missing.join(", ")}.`, ok: false };
+  const meets = a.right <= 40 && a.left <= 40 && n <= 40 && c.score >= 4 && hearingOk;
+  const super_ = meets && a.both <= 15 && (R.react || 999) < 250 && c.score === 5 && (!R.field || R.field.pct >= 90);
+  if (super_) return { cls: "★ KRYPTONIAN CLASS ★", note: "Off-the-charts results. Please report to the Fortress of Solitude for your cape fitting.", ok: true };
+  if (meets) return { cls: "3RD CLASS: CLEARED FOR TAKEOFF ✈️", note: "You meet the vision, color and hearing basics of an FAA 3rd class medical. (Pretend version. A real AME still has to see you.)", ok: true };
+  return { cls: "GROUNDED (FOR NOW) 🛑", note: "One or more results fell short. Could be the screen, the speakers, or the eyes. A real AME or eye doctor can tell you for sure.", ok: false };
+}
+ENTER.cert = () => {
+  const g = grade(), a = R.acuity || {}, fmt = (v) => (v == null ? "—" : v >= 400 ? "<20/200" : `20/${v}`);
+  const rows = [
+    ["Pulse", R.pulse ? `${R.pulse} bpm` : "—"], ["Breath hold", R.breath ? `${R.breath} s` : "—"], ["Flamingo balance", R.balance ? `${R.balance} s` : "—"],
+    ["Distant vision (R / L / both)", `${fmt(a.right)} / ${fmt(a.left)} / ${fmt(a.both)}`], ["Near vision", fmt(R.near)],
+    ["Color plates", R.color ? `${R.color.score} / 5` : "—"], ["Peripheral flashes", R.field ? `${R.field.pct}%` : "—"],
+    ["Whisper test", R.whisper ? `${R.whisper.score} / 6` : "—"], ["Beep test", R.tones ? "done" : "—"], ["Ear age", R.mosq ? `${R.mosq.age} (${R.mosq.hz.toLocaleString()} Hz)` : "—"],
+    ["Reaction (see / hear)", `${R.react ? R.react + " ms" : "—"} / ${R.reactAudio ? R.reactAudio + " ms" : "—"}`], ["Eye gym sessions", R.gym || "—"],
+  ];
+  const today = new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+  $("#cert").innerHTML = `<div style="font-size:2.4rem">🦸‍♂️🩺</div>
+    <h2>CERTIFICATE OF SUPER HEALTH</h2>
+    <div class="muted" style="color:#666">Dr. Kent's Office of Totally Real Medicine™ · Metropolis Branch</div>
+    <p style="margin:14px 0 0">This certifies that</p>
+    <div style="font:700 1.8rem Georgia,serif;border-bottom:2px solid #333;display:inline-block;padding:0 20px">${(R.name || "Mysterious Patient").replace(/[<>&]/g, "")}</div>
+    <p style="margin:8px 0 0">has been examined on ${today} and is hereby classified as</p>
+    <div class="cls">${g.cls}</div>
+    <p>${g.note}</p>
+    <table style="max-width:520px;margin:10px auto;text-align:left">${rows.map((r) => `<tr><td>${r[0]}</td><td><b>${r[1]}</b></td></tr>`).join("")}</table>
+    <div class="sig">C. Kent</div><div style="font-size:.85rem;color:#666">Dr. C. Kent, AME (Aviation Medical <i>Entertainer</i>)</div>
+    <p style="font-size:.75rem;color:#888;margin-top:12px">Not valid for flying, driving, insurance, or impressing the FAA. Valid for bragging.</p>
+    <svg class="seal" id="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="${g.ok ? "#18a058" : "#e53935"}" stroke-width="5"/><circle cx="50" cy="50" r="38" fill="none" stroke="${g.ok ? "#18a058" : "#e53935"}" stroke-width="2" stroke-dasharray="4 3"/><text x="50" y="45" text-anchor="middle" font-size="13" font-weight="900" fill="${g.ok ? "#18a058" : "#e53935"}" font-family="system-ui">${g.ok ? "APPROVED" : "NOPE"}</text><text x="50" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="${g.ok ? "#18a058" : "#e53935"}" font-family="system-ui">DR. KENT</text></svg>`;
+  stampIt(g);
+};
+function stampIt(g) {
+  sfx.drum();
+  const s = $("#seal"); s.classList.remove("stamp");
+  setTimeout(() => {
+    s.classList.add("stamp"); tone({ f: 80, d: 0.15, v: 0.3, type: "square" });
+    if (g.ok) { sfx.fanfare(); confetti(200); } else if (g.cls.startsWith("GROUNDED")) sfx.sad();
+  }, 900);
+}
+$("#printCert").onclick = () => print();
+$("#restamp").onclick = () => stampIt(grade());
+
+route();
+</script>
+</body>
+</html>
