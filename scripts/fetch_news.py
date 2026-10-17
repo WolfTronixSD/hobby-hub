@@ -335,6 +335,7 @@ FEEDS = {
 }
 PER_FEED = 8
 PER_TOPIC = 20
+SUMMARY = 300
 ATOM = "{http://www.w3.org/2005/Atom}"
 
 
@@ -364,13 +365,14 @@ def fetch(source, url):
         root = ET.fromstring(resp.read())
     items = []
     for it in root.iter("item"):
-        items.append((it.findtext("title"), it.findtext("link"), it.findtext("pubDate")))
+        items.append((it.findtext("title"), it.findtext("link"), it.findtext("pubDate"), it.findtext("description")))
     for it in root.iter(ATOM + "entry"):
         link = it.find(ATOM + "link")
         items.append((it.findtext(ATOM + "title"), link.get("href") if link is not None else None,
-                      it.findtext(ATOM + "updated") or it.findtext(ATOM + "published")))
+                      it.findtext(ATOM + "updated") or it.findtext(ATOM + "published"),
+                      it.findtext(ATOM + "summary") or it.findtext(ATOM + "content")))
     out = []
-    for title, link, date in items[:PER_FEED]:
+    for title, link, date, desc in items[:PER_FEED]:
         title, link = clean(title), (link or "").strip()
         if not title or not link.startswith("http"):
             continue
@@ -379,7 +381,12 @@ def fetch(source, url):
         # Google News titles end with " - Publisher"
         if source == "Google News" and " - " in title:
             title, name = title.rsplit(" - ", 1)
-        out.append({"title": title, "link": link, "source": name, "date": d.isoformat() if d else None})
+        item = {"title": title, "link": link, "source": name, "date": d.isoformat() if d else None}
+        # A short teaser for the app's quiet reader (Google News descriptions only repeat the title)
+        summary = clean(desc)
+        if source != "Google News" and len(summary) > 40:
+            item["summary"] = summary if len(summary) <= SUMMARY else summary[:SUMMARY].rsplit(" ", 1)[0] + "…"
+        out.append(item)
     return out
 
 

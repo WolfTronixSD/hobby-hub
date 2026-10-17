@@ -99,22 +99,105 @@
     const stale = !!(news && news.updated && Date.now() - new Date(news.updated) > 12 * 3600 * 1000);
     const items = news && news.topics && news.topics[h.id] ? news.topics[h.id] : [];
     const list = items.length
-      ? `<div class="grid">${items.slice(0, 20).map((n) => `
-          <a class="card news-item" href="${esc(n.link)}" target="_blank" rel="noopener">
+      ? `<div class="grid">${items.slice(0, 20).map((n, i) => `
+          <a class="card news-item" href="${esc(n.link)}" target="_blank" rel="noopener" data-topic="${esc(h.id)}" data-i="${i}">
             <div class="body">
               <div class="src">${esc(n.source)}${n.date ? " · " + timeAgo(n.date) : ""}</div>
               <h3>${esc(n.title)}</h3>
             </div>
-            <span class="go">›</span>
+            <span class="go">${quietOn() ? "📖" : "›"}</span>
           </a>`).join("")}</div>`
       : `<p class="empty">${news === null ? "Loading headlines…" : "Headlines will appear here after the first automatic update. Use the sources below meanwhile."}</p>`;
     return `
       <div class="section-title"><h2>Latest headlines</h2><span>${news && news.updated ? "Updated " + timeAgo(news.updated) : ""}</span></div>
+      <button class="quiet-toggle" id="quietToggle" aria-pressed="${quietOn()}">${quietOn()
+        ? "🛡️ Quiet reader ON: text only, no ads, popups or sound"
+        : "🌐 Quiet reader OFF: headlines open the full website"}</button>
       ${stale ? `<p class="notice">⚠️ These headlines are more than 12 hours old${navigator.onLine ? "" : " (you are offline)"}. Tap a source below for the latest.</p>` : ""}
       ${list}
       <div class="section-title"><h2>News sources</h2></div>
       <div class="sources">${h.newsSources.map((s) => `<a class="source" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join("")}</div>`;
   };
+
+  // Quiet reader: shows a headline's article as plain text inside the app, so the news site's
+  // ads, popups and autoplay videos never load. Text comes from the free Jina Reader (r.jina.ai).
+  const quietOn = () => store.get("quiet") !== "off";
+  const READER = "https://r.jina.ai/";
+  const mdToHtml = (md) => {
+    const keep = [];
+    const lines = md
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, "")              // images
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")           // links -> their text
+      .replace(/\*\*|__/g, "")
+      .split("\n");
+    let para = [];
+    const flush = () => {
+      const t = para.join(" ").replace(/\s+/g, " ").trim();
+      para = [];
+      if (!t) return;
+      const head = t.match(/^#{1,6}\s+(.*)/);
+      if (head) keep.push(`<h3>${esc(head[1])}</h3>`);
+      else if (t.length >= 60 || /[.!?…"”]$/.test(t)) keep.push(`<p>${esc(t.replace(/^[*+-]\s+/, ""))}</p>`);
+    };
+    lines.forEach((l) => {
+      if (/^\s*([=\-*_]\s*){3,}$/.test(l)) {         // rules and setext underlines
+        if (/^=+$/.test(l.trim()) && para.length) para[0] = "## " + para[0];
+        return flush();
+      }
+      if (!l.trim() || /^\s*([*+-]|\d+\.)\s/.test(l) || /^#/.test(l)) flush();
+      if (l.trim()) para.push(l.trim());
+      if (/^#/.test(l)) flush();
+    });
+    flush();
+    return keep.join("");
+  };
+  const readerBackdrop = $("#readerBackdrop");
+  let readerReq = 0;
+  const closeReader = () => { readerBackdrop.hidden = true; readerReq++; document.body.classList.remove("no-scroll"); };
+  const openReader = (n) => {
+    const id = ++readerReq;
+    $("#readerSrc").textContent = n.source + (n.date ? " · " + timeAgo(n.date) : "");
+    $("#readerTitle").textContent = n.title;
+    $("#readerSite").href = n.link;
+    const body = $("#readerBody");
+    const teaser = n.summary ? `<p class="reader-teaser">${esc(n.summary)}</p>` : "";
+    body.innerHTML = teaser + `<p class="empty">Loading the article text…</p>`;
+    readerBackdrop.hidden = false;
+    readerBackdrop.scrollTop = 0;
+    document.body.classList.add("no-scroll");
+    const ctl = "AbortController" in window ? new AbortController() : null;
+    const timer = setTimeout(() => ctl && ctl.abort(), 25000);
+    fetch(READER + n.link, ctl ? { signal: ctl.signal } : {})
+      .then((r) => (r.ok ? r.text() : Promise.reject(new Error(r.status))))
+      .then((txt) => {
+        if (id !== readerReq) return;
+        const md = txt.includes("Markdown Content:") ? txt.split("Markdown Content:").slice(1).join("Markdown Content:") : txt;
+        const html = mdToHtml(md);
+        if (html.replace(/<[^>]+>/g, "").length < 280) throw new Error("too short");
+        body.innerHTML = html;
+      })
+      .catch(() => {
+        if (id !== readerReq) return;
+        body.innerHTML = teaser + `<p class="notice">The text version of this story isn't available (some sites block it or need a subscription). Tap <b>Open site</b> to read it on the website.</p>`;
+      })
+      .finally(() => clearTimeout(timer));
+  };
+  $("#content").addEventListener("click", (e) => {
+    if (e.target.closest("#quietToggle")) {
+      store.set("quiet", quietOn() ? "off" : "on");
+      return render();
+    }
+    const a = e.target.closest("a.news-item");
+    if (!a || !quietOn()) return;
+    const n = news && news.topics && (news.topics[a.dataset.topic] || [])[+a.dataset.i];
+    if (!n) return;
+    e.preventDefault();
+    openReader(n);
+  });
+  $("#readerClose").addEventListener("click", closeReader);
+  $("#readerClose2").addEventListener("click", closeReader);
+  $("#readerSite").addEventListener("click", () => setTimeout(closeReader, 300));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !readerBackdrop.hidden) closeReader(); });
 
   // Weather: Open-Meteo (free, no key) plus an approximate location from the IP address
   const WX = {

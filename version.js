@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.19.0";
+const APP_VERSION = "2.20.0";
 const CHANGELOG = [
+  {
+    version: "2.20.0",
+    date: "2026-10-17",
+    title: "Quiet news reader",
+    changes: [
+      "Tap a headline and the story opens as plain text inside the hub: no ads, no popups, no autoplay videos or sound",
+      "Big 🌐 Open site button when you want the full website, and a ✕ Close button to get back to the headlines",
+      "Turn the quiet reader off or on with the big 🛡️ button at the top of any News tab"
+    ]
+  },
   {
     version: "2.19.0",
     date: "2026-10-17",

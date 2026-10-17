@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.20.0 (2026-10-17): Quiet news reader
+- app.js: headline taps open #readerBackdrop with article text from the Jina Reader (r.jina.ai) rendered by mdToHtml (images and link targets dropped); RSS teaser plus Open site fallback when it fails; 🛡️ toggle (localStorage "quiet", default on)
+- fetch_news.py: items carry an optional summary (RSS description / Atom summary, max 300 chars, not for Google News)
+
 ## 2.19.0 (2026-10-17): Super Checkup 2
 - checkup/: Sloan letter chart + tumbling E with SpeechRecognition answers and spoken cues; iPhone ppi table for auto calibration, upright-card manual calibration shared by eye chart and near card
 - checkup/: denser grid-packed dot plates (HSL palettes, blue-yellow and two-digit plates), feColorMatrix colorblind simulation, D-15 cap test
