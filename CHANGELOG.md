@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.21.0 (2026-10-18): Release times
+
+- What's new now shows the time of each release (24-hour, your time zone) next to the date. The first few versions show the date only.
+
 ## 2.20.0 (2026-10-17): Quiet news reader
 - app.js: headline taps open #readerBackdrop with article text from the Jina Reader (r.jina.ai) rendered by mdToHtml (images and link targets dropped); RSS teaser plus Open site fallback when it fails; 🛡️ toggle (localStorage "quiet", default on)
 - fetch_news.py: items carry an optional summary (RSS description / Atom summary, max 300 chars, not for Google News)

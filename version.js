@@ -1,9 +1,19 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.20.0";
+const APP_VERSION = "2.21.0";
 const CHANGELOG = [
+  {
+    version: "2.21.0",
+    date: "2026-10-18",
+    at: "2026-10-18T21:23:39Z",
+    title: "Release times",
+    changes: [
+      "What's new now shows the time of each release (24-hour, your time zone) next to the date. The first few versions show the date only"
+    ]
+  },
   {
     version: "2.20.0",
     date: "2026-10-17",
+    at: "2026-10-17T21:26:28Z",
     title: "Quiet news reader",
     changes: [
       "Tap a headline and the story opens as plain text inside the hub: no ads, no popups, no autoplay videos or sound",
@@ -14,6 +24,7 @@ const CHANGELOG = [
   {
     version: "2.19.0",
     date: "2026-10-17",
+    at: "2026-10-17T07:28:04Z",
     title: "Super Checkup 2: iPhone and AirPods",
     changes: [
       "Eye chart: real letter chart plus tumbling E, voice answers, and the instructions read out loud",
@@ -27,6 +38,7 @@ const CHANGELOG = [
   {
     version: "2.18.0",
     date: "2026-10-17",
+    at: "2026-10-17T05:19:48Z",
     title: "Super Checkup",
     changes: [
       "New 🩺 Super Checkup button opens Dr. Kent's goofy doctor's office: eye chart, near vision, color plates, peripheral vision, hearing, reaction time and a printable certificate",
@@ -36,6 +48,7 @@ const CHANGELOG = [
   {
     version: "2.17.0",
     date: "2026-10-15",
+    at: "2026-10-15T18:41:49Z",
     title: "Wolf Ironman shortcut",
     changes: [
       "New big 💪 Wolf Ironman button next to GoldRabbit and WRadio opens your daily workout tracker"
@@ -44,6 +57,7 @@ const CHANGELOG = [
   {
     version: "2.16.0",
     date: "2026-10-13",
+    at: "2026-10-13T14:25:56Z",
     title: "Louise Hay",
     changes: [
       "New 💖 Louise Hay button under Meditation: her site, Hay House podcast, books like You Can Heal Your Life, and the 2007 film",
@@ -54,6 +68,7 @@ const CHANGELOG = [
   {
     version: "2.15.0",
     date: "2026-10-13",
+    at: "2026-10-13T14:09:57Z",
     title: "RF HW Design and Retirement",
     changes: [
       "New 📶 RF HW Design button: RF podcasts, top 10 YouTube (The Signal Path, W2AEW, Phil's Lab, Robert Feranec and more) and RF news",
@@ -65,6 +80,7 @@ const CHANGELOG = [
   {
     version: "2.14.0",
     date: "2026-10-13",
+    at: "2026-10-13T13:59:21Z",
     title: "Tax Savings",
     changes: [
       "New 🧾 Tax Savings button under Money Saver: top 10 tax podcasts and top 10 YouTube picks",
@@ -75,6 +91,7 @@ const CHANGELOG = [
   {
     version: "2.13.0",
     date: "2026-10-13",
+    at: "2026-10-13T04:22:24Z",
     title: "Local time and UTC",
     changes: [
       "Two big clocks at the top: your local time (with date and time zone) and UTC/Zulu time"
@@ -83,6 +100,7 @@ const CHANGELOG = [
   {
     version: "2.12.0",
     date: "2026-10-13",
+    at: "2026-10-13T00:45:05Z",
     title: "Money Sites",
     changes: [
       "New 🧠 Money Sites button under Money Saver: NerdWallet, WalletHub, Bankrate, Credit Karma, Doctor of Credit, The Points Guy and more",
@@ -93,6 +111,7 @@ const CHANGELOG = [
   {
     version: "2.11.0",
     date: "2026-10-13",
+    at: "2026-10-13T00:43:12Z",
     title: "Sunrise, sunset and moon phase",
     changes: [
       "The home weather bar shows today's sunrise, sunset and moon phase",
@@ -102,6 +121,7 @@ const CHANGELOG = [
   {
     version: "2.10.1",
     date: "2026-10-13",
+    at: "2026-10-13T00:37:13Z",
     title: "Weather in °F and °C",
     changes: [
       "Weather now shows Fahrenheit and Celsius together: on the home bar, the San Diego and Tempe forecast panels and the 5-day tiles"
@@ -110,6 +130,7 @@ const CHANGELOG = [
   {
     version: "2.10.0",
     date: "2026-10-12",
+    at: "2026-10-12T18:33:40Z",
     title: "Voice control",
     changes: [
       "New big 🎤 button: tap it and say a section, like “Ham Radio”, “San Diego weather”, “Comedy YouTube” or “World News Germany”",
@@ -120,6 +141,7 @@ const CHANGELOG = [
   {
     version: "2.9.2",
     date: "2026-10-12",
+    at: "2026-10-12T08:49:14Z",
     title: "San Diego and Tempe podcasts open the actual show",
     changes: [
       "San Diego and Tempe podcast buttons now open the show page in Apple Podcasts, newest episodes first, instead of a search full of old episodes",
@@ -129,6 +151,7 @@ const CHANGELOG = [
   {
     version: "2.9.1",
     date: "2026-10-12",
+    at: "2026-10-12T08:09:11Z",
     title: "More reliable news updates",
     changes: [
       "Headlines are now fetched every hour instead of every 3 hours, because GitHub was skipping most scheduled updates",
@@ -138,6 +161,7 @@ const CHANGELOG = [
   {
     version: "2.9.0",
     date: "2026-10-12",
+    at: "2026-10-12T00:40:40Z",
     title: "Sports",
     changes: [
       "New Sports button that opens straight to the headlines",
@@ -149,6 +173,7 @@ const CHANGELOG = [
   {
     version: "2.8.0",
     date: "2026-10-12",
+    at: "2026-10-12T00:36:06Z",
     title: "World News",
     changes: [
       "New World News button that opens straight to the headlines",
@@ -160,6 +185,7 @@ const CHANGELOG = [
   {
     version: "2.7.1",
     date: "2026-10-12",
+    at: "2026-10-12T00:26:21Z",
     title: "Exact weather location",
     changes: [
       "New 📍 button next to the home weather: tap once to use your phone's GPS instead of the internet-connection guess (which can say Oceanside when you're in Escondido)",
@@ -170,6 +196,7 @@ const CHANGELOG = [
   {
     version: "2.7.0",
     date: "2026-10-12",
+    at: "2026-10-12T00:23:27Z",
     title: "Shortcuts to GoldRabbit and WRadio",
     changes: [
       "Two big buttons at the top open your other apps: GoldRabbit (live stocks) and WRadio (internet radio)"
@@ -178,6 +205,7 @@ const CHANGELOG = [
   {
     version: "2.6.0",
     date: "2026-10-12",
+    at: "2026-10-12T00:03:26Z",
     title: "Aviation events and Money Saver",
     changes: [
       "Flying: new Events section with upcoming air shows and fly-ins, focused on San Diego (SD Air & Space Museum, El Centro Blue Angels, March ARB, plus Oshkosh and SUN 'n FUN)",
@@ -189,6 +217,7 @@ const CHANGELOG = [
   {
     version: "2.5.0",
     date: "2026-10-11",
+    at: "2026-10-11T23:53:43Z",
     title: "Hamfests and live comedy",
     changes: [
       "Ham Radio now has two sections: Shows & News and Hamfests",
@@ -200,6 +229,7 @@ const CHANGELOG = [
   {
     version: "2.4.0",
     date: "2026-10-11",
+    at: "2026-10-11T23:41:00Z",
     title: "Meditation, George Carlin and iPhone fixes",
     changes: [
       "New Meditation button: Guided, Sadhguru, Esther Hicks, Jonathan Goldman, Crystal Bowls and Binaural Beats",
@@ -212,6 +242,7 @@ const CHANGELOG = [
   {
     version: "2.3.0",
     date: "2026-10-11",
+    at: "2026-10-11T23:27:59Z",
     title: "Comedy and Workout Music",
     changes: [
       "New Comedy button with German Comedy and World Comedy",
@@ -224,6 +255,7 @@ const CHANGELOG = [
   {
     version: "2.2.0",
     date: "2026-10-11",
+    at: "2026-10-11T22:56:30Z",
     title: "Live weather",
     changes: [
       "Home screen shows current weather where you are (approximate location from your internet connection); tap it for the full forecast",
@@ -236,6 +268,7 @@ const CHANGELOG = [
   {
     version: "2.1.0",
     date: "2026-10-11",
+    at: "2026-10-11T22:38:30Z",
     title: "Wolfie's Hobby Hub and Fitness",
     changes: [
       "New name: Wolfie's Hobby Hub, with a wolf logo and matching app icon",
@@ -250,6 +283,7 @@ const CHANGELOG = [
   {
     version: "2.0.0",
     date: "2026-10-11",
+    at: "2026-10-11T22:32:57Z",
     title: "Production ready: faster, works offline, cleaner menu",
     changes: [
       "Cleaner hobby menu: compact tiles with icon and name, 3 per row on phones, 5 on desktop",
@@ -265,6 +299,7 @@ const CHANGELOG = [
   {
     version: "1.9.0",
     date: "2026-10-11",
+    at: "2026-10-11T22:27:30Z",
     title: "Share with friends",
     changes: [
       "New 📤 Share button: send the site by text, WhatsApp, email or copy the link",
@@ -275,6 +310,7 @@ const CHANGELOG = [
   {
     version: "1.8.0",
     date: "2026-10-11",
+    at: "2026-10-11T22:02:19Z",
     title: "Tempe, Flying and Snorkeling",
     changes: [
       "New Tempe, AZ button with the same 8 categories as San Diego",
@@ -285,6 +321,7 @@ const CHANGELOG = [
   {
     version: "1.7.0",
     date: "2026-10-11",
+    at: "2026-10-11T21:50:36Z",
     title: "San Diego",
     changes: [
       "New San Diego button with 8 sub-buttons: Today, This Week, Mountain Biking, Hiking, Breweries, Party, Fun and News",
@@ -295,6 +332,7 @@ const CHANGELOG = [
   {
     version: "1.6.0",
     date: "2026-10-11",
+    at: "2026-10-11T21:43:33Z",
     title: "Traveling",
     changes: [
       "New Traveling hobby with four big sub-buttons: Road Trips USA, Europe, Asia and Camping",
@@ -304,6 +342,7 @@ const CHANGELOG = [
   {
     version: "1.5.0",
     date: "2026-10-11",
+    at: "2026-10-11T21:37:59Z",
     title: "3D Printing and Bambu Lab",
     changes: [
       "New 3D Printing hobby: podcasts, YouTube and news",
@@ -313,6 +352,7 @@ const CHANGELOG = [
   {
     version: "1.4.0",
     date: "2026-10-11",
+    at: "2026-10-11T21:36:39Z",
     title: "Food and Longevity Hacks",
     changes: [
       "New Food hobby: cooking, recipes and food science",
@@ -323,6 +363,7 @@ const CHANGELOG = [
   {
     version: "1.3.1",
     date: "2026-10-11",
+    at: "2026-10-11T21:30:07Z",
     title: "Always load the newest version",
     changes: [
       "Fixed phones and browsers showing an old cached copy after an update"
@@ -331,6 +372,7 @@ const CHANGELOG = [
   {
     version: "1.3.0",
     date: "2026-10-11",
+    at: "2026-10-11T21:23:42Z",
     title: "Computers, AI and DIY Drones",
     changes: [
       "New Computers hobby: PC hardware, Linux and security",
@@ -342,6 +384,7 @@ const CHANGELOG = [
   {
     version: "1.2.0",
     date: "2026-10-11",
+    at: "2026-10-11T21:18:59Z",
     title: "Version history",
     changes: [
       "Version number shown in the header",

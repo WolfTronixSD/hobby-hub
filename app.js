@@ -498,6 +498,13 @@
     if (h.weather && tab === "podcasts") fillWxPanel(h.weather);
   }
 
+  // Release date, plus the time (24-hour, this device's time zone) for releases that recorded one.
+  function releaseWhen(r) {
+    if (!r.at) return r.date;
+    const d = new Date(r.at);
+    return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) + " · " + d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+  }
+
   function historyView() {
     return `<div class="section-title"><h2>🕘 What's new</h2><span>You're on v${esc(APP_VERSION)}</span></div>
       <div class="history">${CHANGELOG.map((r, i) => `
@@ -505,7 +512,7 @@
           <div class="release-head">
             <span class="vtag">v${esc(r.version)}</span>
             <h3>${esc(r.title)}</h3>
-            <time>${esc(r.date)}</time>
+            <time>${esc(releaseWhen(r))}</time>
           </div>
           <ul>${r.changes.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
         </article>`).join("")}</div>`;
