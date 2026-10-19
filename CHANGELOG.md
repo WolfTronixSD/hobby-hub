@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.26.0 (2026-10-19): Water visibility
+
+- No free source publishes underwater visibility as a number (pierviz has fixed piling distances only), so: 🤿 link to https://coollab.ucsd.edu/pierviz/ beside 📍 (hidden when no sea data, e.g. Tempe) and as a tile on coastal weather panels. Marine call now also gets `wave_height` (length_unit=imperial, cache key sst2) shown as a clarity clue.
+
 ## 2.25.0 (2026-10-19): Water temperature and visibility
 
 - app.js: `visibility` added to the Open-Meteo current block (cache key wx3), shown in statute miles ("10+ mi" when wide open). Water temp from the Open-Meteo Marine API (`sea_surface_temperature`), one multi-point call stepping up to 0.45° west so inland spots use the nearest coast; cached 1 h (key sst1); hidden when no sea point (Tempe).

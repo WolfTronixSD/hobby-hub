@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.25.0";
+const APP_VERSION = "2.26.0";
 const CHANGELOG = [
+  {
+    version: "2.26.0",
+    date: "2026-10-19",
+    at: "2026-10-19T22:40:00Z",
+    title: "Water visibility",
+    changes: [
+      "New 🤿 Vis button next to the home weather opens the live Scripps Pier underwater cam, the best way to see how clear the water is (two pilings on the left ≈ 30 ft visibility)",
+      "Wave height now shows next to the water temperature: small waves usually mean clearer water",
+      "San Diego weather has a 🤿 Live cam tile with the waves and a calm / moderate / rough hint"
+    ]
+  },
   {
     version: "2.25.0",
     date: "2026-10-19",

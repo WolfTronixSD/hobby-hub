@@ -83,6 +83,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   flex: none; width: 72px; border-radius: var(--radius); border: 2px solid var(--border);
   background: var(--panel); font-size: 28px;
 }
+.wx-side { flex: none; display: flex; flex-direction: column; gap: 8px; }
+.wx-side .wx-loc { flex: 1; min-height: 44px; }
+.wx-dive { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: inherit; line-height: 1; }
+.wx-dive[hidden] { display: none; }
+.wx-dive small { font-size: 12px; color: var(--muted); margin-top: 3px; }
 .wx-loc.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 20%, var(--panel)); }
 .wx-bar .wx-ic { font-size: 38px; line-height: 1; }
 .wx-bar .wx-t { font-size: 30px; font-weight: 800; }
@@ -358,6 +363,7 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
 .wx-chip b { font-size: 18px; }
 .wx-chip small { color: var(--muted); font-size: 13px; }
 .wx-chip:last-child:nth-child(3n+2) { grid-column: span 2; }
+.wx-chip-link { text-decoration: none; color: inherit; border: 2px solid var(--accent); }
 .wx-bar .wx-txt small + small { margin-top: 2px; }
 
 /* Voice control */

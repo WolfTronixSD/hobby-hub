@@ -381,25 +381,30 @@
   // Water temperature: Open-Meteo Marine (sea surface). Inland spots have no sea data, so also try a few points
   // to the west and use the first one that has water, but only within ~30 miles of the coast. Inland (Tempe) shows nothing.
   async function getWater(lat, lon) {
-    const key = `sst1:${lat.toFixed(2)},${lon.toFixed(2)}`;
+    const key = `sst2:${lat.toFixed(2)},${lon.toFixed(2)}`;
     const hit = cacheGet(key, 60 * 60e3);
-    if (hit) return hit.f;
+    if (hit) return hit;
     const offs = [0, 0.1, 0.2, 0.3, 0.45];
     const url = "https://marine-api.open-meteo.com/v1/marine?latitude=" + offs.map(() => lat.toFixed(3)).join(",") +
       "&longitude=" + offs.map((o) => (lon - o).toFixed(3)).join(",") +
-      "&current=sea_surface_temperature&temperature_unit=fahrenheit&timezone=auto";
+      "&current=sea_surface_temperature,wave_height&temperature_unit=fahrenheit&length_unit=imperial&timezone=auto";
     try {
       let j = await getJSON(url);
       if (!Array.isArray(j)) j = [j];
       const hitPt = j.find((x) => x && x.current && x.current.sea_surface_temperature != null);
-      const f = hitPt ? hitPt.current.sea_surface_temperature : null;
-      cacheSet(key, { f });
-      return f;
+      const w = { f: hitPt ? hitPt.current.sea_surface_temperature : null, wave: hitPt ? hitPt.current.wave_height : null };
+      cacheSet(key, w);
+      return w;
     } catch {
-      const old = cacheGet(key);
-      return old ? old.f : null;
+      return cacheGet(key) || { f: null, wave: null };
     }
   }
+
+  // Underwater visibility has no live numbers anywhere; the Scripps Pier cam shows it (pilings at known distances).
+  // Wave height is a rough clue: small surf usually means clearer water.
+  const PIER_CAM = "https://coollab.ucsd.edu/pierviz/";
+  const waveTxt = (ft) => (ft == null ? "" : (ft < 1 ? "<1" : Math.round(ft)) + " ft");
+  const clarityHint = (ft) => (ft == null ? "" : ft < 2 ? "calm, often clearer" : ft < 4 ? "moderate" : "rough, often murky");
 
   // Sunrise/sunset come as local clock times ("2026-10-13T06:52"); show them as 6:52 AM without time zone shifts.
   const clock = (iso) => {
@@ -489,11 +494,13 @@
     btn.classList.toggle("on", !!loc.gps);
     btn.title = loc.gps ? "Using your GPS location. Tap to switch back to automatic." : "Location is a guess from your internet connection. Tap to use GPS.";
     try {
-      const [d, water] = await Promise.all([getWeather(loc.lat, loc.lon), getWater(loc.lat, loc.lon)]);
+      const [d, sea] = await Promise.all([getWeather(loc.lat, loc.lon), getWater(loc.lat, loc.lon)]);
+      const water = sea.f;
       const c = d.current, dy = d.daily;
       const [ic, txt] = wxIcon(c.weather_code, c.is_day);
       const vis = visMi(d);
-      const extra = [water != null ? `🌊 Water ${deg(water)}F/${degC(water)}C` : "", vis ? `👁️ Vis ${vis}` : ""].filter(Boolean).join(" · ");
+      const extra = [water != null ? `🌊 Water ${deg(water)}F/${degC(water)}C` : "", sea.wave != null ? `Waves ${waveTxt(sea.wave)}` : "", vis ? `👁️ Air vis ${vis}` : ""].filter(Boolean).join(" · ");
+      $("#wxDive").hidden = water == null;
       bar.href = forecastUrl(loc);
       bar.innerHTML = `<span class="wx-ic">${ic}</span><b class="wx-t">${deg(c.temperature_2m)}F <small class="wx-c">${degC(c.temperature_2m)}C</small></b>
         <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])}/${degC(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])}/${degC(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small>${extra ? `<small>${extra}</small>` : ""}<small>${sunMoonLine(dy)}</small></span>
@@ -506,7 +513,8 @@
   async function fillWxPanel(w) {
     const panel = () => { const el = $("#wxPanel"); return el && el.dataset.loc === w.name ? el : null; };
     try {
-      const [d, water] = await Promise.all([getWeather(w.lat, w.lon), getWater(w.lat, w.lon)]);
+      const [d, sea] = await Promise.all([getWeather(w.lat, w.lon), getWater(w.lat, w.lon)]);
+      const water = sea.f;
       const el = panel();
       if (!el) return;
       const c = d.current, dy = d.daily;
@@ -528,8 +536,9 @@
             <div class="wx-chip"><span>🌇</span><b>${clock(dy.sunset[0])}</b><small>Sunset</small></div>` : "";
           const vis = visMi(d);
           const wat = water != null ? `<div class="wx-chip"><span>🌊</span><b>${deg(water)}F <small class="wx-c">${degC(water)}C</small></b><small>Water</small></div>` : "";
-          const vz = vis ? `<div class="wx-chip"><span>👁️</span><b>${vis}</b><small>Visibility</small></div>` : "";
-          return `<div class="wx-sky">${sun}${wat}${vz}<div class="wx-chip"><span>${mo.icon}</span><b>${mo.name}</b><small>${mo.lit}% lit</small></div></div>`;
+          const vz = vis ? `<div class="wx-chip"><span>👁️</span><b>${vis}</b><small>Air visibility</small></div>` : "";
+          const dive = water != null ? `<a class="wx-chip wx-chip-link" href="${PIER_CAM}" target="hub-pierviz" rel="noopener"><span>🤿</span><b>Live cam ›</b><small>Water vis${sea.wave != null ? ` · waves ${waveTxt(sea.wave)}, ${clarityHint(sea.wave)}` : ""}</small></a>` : "";
+          return `<div class="wx-sky">${sun}${wat}${dive}${vz}<div class="wx-chip"><span>${mo.icon}</span><b>${mo.name}</b><small>${mo.lit}% lit</small></div></div>`;
         })()}<div class="wx-days">${days}</div>`;
     } catch {
       const el = panel();
