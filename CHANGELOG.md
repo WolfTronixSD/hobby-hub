@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.25.0 (2026-10-19): Water temperature and visibility
+
+- app.js: `visibility` added to the Open-Meteo current block (cache key wx3), shown in statute miles ("10+ mi" when wide open). Water temp from the Open-Meteo Marine API (`sea_surface_temperature`), one multi-point call stepping up to 0.45° west so inland spots use the nearest coast; cached 1 h (key sst1); hidden when no sea point (Tempe).
+
 ## 2.24.0 (2026-10-19): Settings, and apps in real Safari tabs
 
 - index.html/app.js: ⚙️ settings sheet (reuses share-panel styles); 🎤 hidden unless localStorage "voice" = "1".

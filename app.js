@@ -350,11 +350,11 @@
   }
 
   async function getWeather(lat, lon) {
-    const key = `wx2:${lat.toFixed(2)},${lon.toFixed(2)}`;
+    const key = `wx3:${lat.toFixed(2)},${lon.toFixed(2)}`;
     const hit = cacheGet(key, 20 * 60e3);
     if (hit) return hit;
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-      "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day" +
+      "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,visibility,is_day" +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,sunrise,sunset" +
       "&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto&forecast_days=5";
     try {
@@ -366,6 +366,38 @@
       const old = cacheGet(key);
       if (old) return { ...old, stale: true };
       throw e;
+    }
+  }
+
+  // Visibility comes in meters (or feet); show statute miles like an aviation report, "10+ mi" when it's wide open
+  const visMi = (d) => {
+    const v = d.current && d.current.visibility;
+    if (v == null) return null;
+    const unit = (d.current_units && d.current_units.visibility) || "m";
+    const mi = unit === "ft" ? v / 5280 : v / 1609.34;
+    return mi >= 10 ? "10+ mi" : mi >= 3 ? Math.round(mi) + " mi" : (Math.round(mi * 10) / 10) + " mi";
+  };
+
+  // Water temperature: Open-Meteo Marine (sea surface). Inland spots have no sea data, so also try a few points
+  // to the west and use the first one that has water, but only within ~30 miles of the coast. Inland (Tempe) shows nothing.
+  async function getWater(lat, lon) {
+    const key = `sst1:${lat.toFixed(2)},${lon.toFixed(2)}`;
+    const hit = cacheGet(key, 60 * 60e3);
+    if (hit) return hit.f;
+    const offs = [0, 0.1, 0.2, 0.3, 0.45];
+    const url = "https://marine-api.open-meteo.com/v1/marine?latitude=" + offs.map(() => lat.toFixed(3)).join(",") +
+      "&longitude=" + offs.map((o) => (lon - o).toFixed(3)).join(",") +
+      "&current=sea_surface_temperature&temperature_unit=fahrenheit&timezone=auto";
+    try {
+      let j = await getJSON(url);
+      if (!Array.isArray(j)) j = [j];
+      const hitPt = j.find((x) => x && x.current && x.current.sea_surface_temperature != null);
+      const f = hitPt ? hitPt.current.sea_surface_temperature : null;
+      cacheSet(key, { f });
+      return f;
+    } catch {
+      const old = cacheGet(key);
+      return old ? old.f : null;
     }
   }
 
@@ -457,12 +489,14 @@
     btn.classList.toggle("on", !!loc.gps);
     btn.title = loc.gps ? "Using your GPS location. Tap to switch back to automatic." : "Location is a guess from your internet connection. Tap to use GPS.";
     try {
-      const d = await getWeather(loc.lat, loc.lon);
+      const [d, water] = await Promise.all([getWeather(loc.lat, loc.lon), getWater(loc.lat, loc.lon)]);
       const c = d.current, dy = d.daily;
       const [ic, txt] = wxIcon(c.weather_code, c.is_day);
+      const vis = visMi(d);
+      const extra = [water != null ? `🌊 Water ${deg(water)}F/${degC(water)}C` : "", vis ? `👁️ Vis ${vis}` : ""].filter(Boolean).join(" · ");
       bar.href = forecastUrl(loc);
       bar.innerHTML = `<span class="wx-ic">${ic}</span><b class="wx-t">${deg(c.temperature_2m)}F <small class="wx-c">${degC(c.temperature_2m)}C</small></b>
-        <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])}/${degC(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])}/${degC(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small><small>${sunMoonLine(dy)}</small></span>
+        <span class="wx-txt"><b>${loc.gps ? "📍 " : "≈ "}${esc(loc.name)}</b> · ${esc(txt)}<small>H ${deg(dy.temperature_2m_max[0])}/${degC(dy.temperature_2m_max[0])} L ${deg(dy.temperature_2m_min[0])}/${degC(dy.temperature_2m_min[0])} · 💨 ${Math.round(c.wind_speed_10m)} mph${d.stale ? " · saved" : ""}</small>${extra ? `<small>${extra}</small>` : ""}<small>${sunMoonLine(dy)}</small></span>
         <span class="go">›</span>`;
       bar.setAttribute("aria-label", `Weather in ${loc.name}: ${Math.round(c.temperature_2m)} degrees, ${txt}. Open forecast`);
       row.hidden = false;
@@ -472,7 +506,7 @@
   async function fillWxPanel(w) {
     const panel = () => { const el = $("#wxPanel"); return el && el.dataset.loc === w.name ? el : null; };
     try {
-      const d = await getWeather(w.lat, w.lon);
+      const [d, water] = await Promise.all([getWeather(w.lat, w.lon), getWater(w.lat, w.lon)]);
       const el = panel();
       if (!el) return;
       const c = d.current, dy = d.daily;
@@ -492,7 +526,10 @@
           const mo = moon();
           const sun = dy.sunrise ? `<div class="wx-chip"><span>🌅</span><b>${clock(dy.sunrise[0])}</b><small>Sunrise</small></div>
             <div class="wx-chip"><span>🌇</span><b>${clock(dy.sunset[0])}</b><small>Sunset</small></div>` : "";
-          return `<div class="wx-sky">${sun}<div class="wx-chip"><span>${mo.icon}</span><b>${mo.name}</b><small>${mo.lit}% lit</small></div></div>`;
+          const vis = visMi(d);
+          const wat = water != null ? `<div class="wx-chip"><span>🌊</span><b>${deg(water)}F <small class="wx-c">${degC(water)}C</small></b><small>Water</small></div>` : "";
+          const vz = vis ? `<div class="wx-chip"><span>👁️</span><b>${vis}</b><small>Visibility</small></div>` : "";
+          return `<div class="wx-sky">${sun}${wat}${vz}<div class="wx-chip"><span>${mo.icon}</span><b>${mo.name}</b><small>${mo.lit}% lit</small></div></div>`;
         })()}<div class="wx-days">${days}</div>`;
     } catch {
       const el = panel();

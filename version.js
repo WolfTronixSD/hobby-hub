@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.24.0";
+const APP_VERSION = "2.25.0";
 const CHANGELOG = [
+  {
+    version: "2.25.0",
+    date: "2026-10-19",
+    at: "2026-10-19T22:30:00Z",
+    title: "Water temperature and visibility",
+    changes: [
+      "The home weather bar now shows the ocean water temperature 🌊 (°F and °C) and visibility 👁️ in miles",
+      "San Diego weather shows them as big Water and Visibility tiles; Tempe shows visibility (no ocean there)",
+      "Inland, like Escondido, the water temperature comes from the nearest coast"
+    ]
+  },
   {
     version: "2.24.0",
     date: "2026-10-19",
