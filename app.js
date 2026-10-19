@@ -640,7 +640,40 @@
   $("#shareHere").addEventListener("change", updateShare);
   $("#shareClose").addEventListener("click", () => { shareBackdrop.hidden = true; });
   shareBackdrop.addEventListener("click", (e) => { if (e.target === shareBackdrop) shareBackdrop.hidden = true; });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") shareBackdrop.hidden = true; });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { shareBackdrop.hidden = true; settingsBackdrop.hidden = true; } });
+
+  // ⚙️ Settings
+  const settingsBackdrop = $("#settingsBackdrop");
+  const fromHomeScreenApp = navigator.standalone || matchMedia("(display-mode: standalone)").matches;
+  const fillSettings = () => {
+    const on = store.get("voice") === "1";
+    $("#setVoice").checked = on;
+    $("#setVoiceNote").textContent = (window.SpeechRecognition || window.webkitSpeechRecognition)
+      ? "Tap 🎤 and say a section, like \"ham radio\" or \"San Diego weather\"."
+      : "This browser can't do voice control.";
+    $("#setTabsNote").innerHTML = fromHomeScreenApp
+      ? "⚠️ The hub is open as a full-screen web app, so apps you open from it close when the hub closes (WRadio stops). " +
+        "Fix: delete the hub icon, open the hub in Safari, tap Share → <b>Add to Home Screen</b> and switch <b>Open as Web App</b> off. " +
+        "Then every app opens in its own Safari tab and keeps running."
+      : "✅ Each app opens in its own Safari tab and keeps running when you switch back here. " +
+        "Note: iPhone plays sound from one page at a time, so a Morse tone will pause WRadio.";
+  };
+  $("#settingsBtn").addEventListener("click", () => { fillSettings(); settingsBackdrop.hidden = false; });
+  $("#settingsClose").addEventListener("click", () => { settingsBackdrop.hidden = true; });
+  settingsBackdrop.addEventListener("click", (e) => { if (e.target === settingsBackdrop) settingsBackdrop.hidden = true; });
+  $("#setVoice").addEventListener("change", (e) => {
+    store.set("voice", e.target.checked ? "1" : "0");
+    $("#micBtn").hidden = !e.target.checked;
+  });
+  // Opened from an old full-screen home-screen icon: point to the fix (shown up to 3 times)
+  if (fromHomeScreenApp) {
+    const n = +(store.get("tabsHint") || 0);
+    if (n < 3) {
+      store.set("tabsHint", String(n + 1));
+      setTimeout(() => appsToastMsg('⚠️ Apps close when the hub closes. <button class="apps-undo apps-open" id="tabsHintBtn">How to fix</button>'), 800);
+    }
+  }
+  document.addEventListener("click", (e) => { if (e.target.id === "tabsHintBtn") { fillSettings(); settingsBackdrop.hidden = false; } });
   $("#shareNative").addEventListener("click", () => {
     navigator.share({ title: "Wolfie's Hobby Hub", text: "Podcasts, YouTube and news for my hobbies", url: shareLink() }).catch(() => {});
   });
@@ -756,6 +789,9 @@
     try { if ("speechSynthesis" in window) { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(t); u.lang = "en-US"; speechSynthesis.speak(u); } } catch {}
   };
   const HINT = `<small>Try “Ham Radio”, “San Diego weather”, “Comedy YouTube”, “World News Germany” or “dark mode”.</small>`;
+  // The mic button is off unless turned on in ⚙️ Settings
+  const voiceOn = () => store.get("voice") === "1";
+  micBtn.hidden = !voiceOn();
   micBtn.addEventListener("click", () => {
     if (rec) { rec.abort(); return; }
     if (!Rec) {

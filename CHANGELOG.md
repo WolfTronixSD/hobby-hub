@@ -2,6 +2,11 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.24.0 (2026-10-19): Settings, and apps in real Safari tabs
+
+- index.html/app.js: ⚙️ settings sheet (reuses share-panel styles); 🎤 hidden unless localStorage "voice" = "1".
+- manifest display "browser" and no apple-mobile-web-app-capable, so the home-screen icon opens the hub in Safari and app links (target="hub-<id>") become real tabs. Full-screen installs get a hint (max 3 times) and instructions in Settings.
+
 ## 2.23.0 (2026-10-18): Apps keep running when the hub closes
 
 - app.js: when the hub runs standalone on iPhone (navigator.standalone), external app buttons open via the `x-safari-https://` scheme so they live in Safari, not in the hub's in-app browser sheet that iOS closes with the hub. Fallback toast after 1.5 s offers the normal link.

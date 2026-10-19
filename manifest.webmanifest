@@ -2,7 +2,7 @@
   "name": "Wolfie's Hobby Hub",
   "short_name": "Wolfie's Hub",
   "start_url": "./",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#0b0f17",
   "theme_color": "#0b0f17",
   "icons": [

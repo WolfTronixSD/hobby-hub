@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.23.0";
+const APP_VERSION = "2.24.0";
 const CHANGELOG = [
+  {
+    version: "2.24.0",
+    date: "2026-10-19",
+    at: "2026-10-19T14:20:00Z",
+    title: "Settings, and apps in real Safari tabs",
+    changes: [
+      "New ⚙️ Settings. The 🎤 voice button is now off by default; turn it on there",
+      "The home-screen icon now opens the hub in Safari, so every app opens in its own Safari tab and keeps running (WRadio no longer stops when you go back to the hub)",
+      "Re-add the hub to your home screen with Open as Web App switched off; Settings explains how"
+    ]
+  },
   {
     version: "2.23.0",
     date: "2026-10-18",
