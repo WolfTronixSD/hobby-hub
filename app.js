@@ -82,7 +82,21 @@
       return;
     }
     // While editing, taps on a button don't open the app
-    if (editingApps && e.target.closest(".app-btn")) e.preventDefault();
+    const link = e.target.closest(".app-btn");
+    if (!link) return;
+    if (editingApps) { e.preventDefault(); return; }
+    // Hub installed on the iPhone home screen: links would open in a browser sheet inside the hub,
+    // which iOS closes (and silences WRadio) when the hub closes. Hand them to real Safari instead,
+    // where each app keeps running in its own tab.
+    if (navigator.standalone && /^https:\/\//.test(link.href) && new URL(link.href).origin !== location.origin) {
+      e.preventDefault();
+      const app = APPS.find((a) => a.id === link.dataset.id);
+      location.href = "x-safari-" + link.href;
+      setTimeout(() => {
+        if (document.visibilityState !== "visible") return;
+        appsToastMsg(`Safari didn't open. <a class="apps-undo apps-open" href="${esc(link.href)}" target="${esc(link.target)}">Open ${esc(app?.name || "app")} here</a>`);
+      }, 1500);
+    }
   });
   // Long press on a button also starts edit mode, like the iPhone home screen
   let pressTimer = 0;
@@ -109,7 +123,7 @@
   appsToast.addEventListener("click", (e) => {
     const b = e.target.closest(".apps-undo");
     if (!b) return;
-    restoreApp(b.dataset.id);
+    if (!b.classList.contains("apps-open")) restoreApp(b.dataset.id);
     appsToast.hidden = true;
   });
   renderApps();

@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.22.0";
+const APP_VERSION = "2.23.0";
 const CHANGELOG = [
+  {
+    version: "2.23.0",
+    date: "2026-10-18",
+    at: "2026-10-19T06:50:00Z",
+    title: "Apps keep running when the hub closes",
+    changes: [
+      "With the hub on your home screen, app buttons now open in real Safari, so WRadio keeps playing after you close the hub",
+      "If Safari doesn't open, a button lets you open the app inside the hub instead"
+    ]
+  },
   {
     version: "2.22.0",
     date: "2026-10-18",

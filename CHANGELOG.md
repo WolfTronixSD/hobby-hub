@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.23.0 (2026-10-18): Apps keep running when the hub closes
+
+- app.js: when the hub runs standalone on iPhone (navigator.standalone), external app buttons open via the `x-safari-https://` scheme so they live in Safari, not in the hub's in-app browser sheet that iOS closes with the hub. Fallback toast after 1.5 s offers the normal link.
+
 ## 2.22.0 (2026-10-18): All my apps, side by side
 
 - apps.js: new APPS list (id, name, sub, color, emoji, url, optional img) rendered into #appNav by app.js; added Dit Dah Dojo, NAV → KMYF and SeasonHouse.
