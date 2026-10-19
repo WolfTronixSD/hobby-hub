@@ -1,6 +1,18 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.21.0";
+const APP_VERSION = "2.22.0";
 const CHANGELOG = [
+  {
+    version: "2.22.0",
+    date: "2026-10-18",
+    at: "2026-10-19T05:45:00Z",
+    title: "All my apps, side by side",
+    changes: [
+      "My apps now has every project: GoldRabbit, WRadio, Wolf Ironman, Dit Dah Dojo (Morse), NAV → KMYF, Super Checkup and SeasonHouse",
+      "Each app opens in its own tab, so WRadio keeps playing while Morse or another app is open. Tap a button again to jump back to it",
+      "✏️ Edit (or a long press) makes the buttons jiggle: tap ✕ to remove one, Undo right after, or bring removed ones back any time",
+      "New funny home screen icons for Wolf Ironman and WRadio"
+    ]
+  },
   {
     version: "2.21.0",
     date: "2026-10-18",

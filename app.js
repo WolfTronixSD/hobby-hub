@@ -28,6 +28,92 @@
   });
   syncThemeBtn();
 
+  // My apps: each opens in its own named tab so several run side by side; ✏️ Edit lets you remove or bring back buttons
+  const appNav = $("#appNav");
+  const appsEditBtn = $("#appsEdit");
+  const appsHidden = $("#appsHidden");
+  const appsToast = $("#appsToast");
+  let hiddenApps = [];
+  try { hiddenApps = JSON.parse(store.get("hiddenApps") || "[]"); } catch {}
+  if (!Array.isArray(hiddenApps)) hiddenApps = [];
+  let editingApps = false;
+  let toastTimer = 0;
+  const saveHidden = () => store.set("hiddenApps", JSON.stringify(hiddenApps));
+  const appIcon = (a) => a.img
+    ? `<img src="${esc(a.img)}" alt="" width="44" height="44" data-emoji="${esc(a.emoji)}">`
+    : `<span class="app-ic">${a.emoji}</span>`;
+  const renderApps = () => {
+    const shown = APPS.filter((a) => !hiddenApps.includes(a.id));
+    appNav.classList.toggle("editing", editingApps);
+    appNav.innerHTML = shown.map((a) => `
+      <div class="app-wrap">
+        <a class="app-btn" href="${esc(a.url)}" target="hub-${a.id}" data-id="${a.id}" style="--c:${a.color}">
+          ${appIcon(a)}
+          <span><b>${esc(a.name)}</b><small>${esc(a.sub)}</small></span><span class="go">↗</span>
+        </a>
+        <button class="app-x" data-id="${a.id}" aria-label="Remove ${esc(a.name)}">✕</button>
+      </div>`).join("") || `<p class="apps-empty">All buttons removed. Tap ✏️ Edit to bring them back.</p>`;
+    appNav.querySelectorAll("img[data-emoji]").forEach((img) => img.addEventListener("error", () => {
+      img.replaceWith(Object.assign(document.createElement("span"), { className: "app-ic", textContent: img.dataset.emoji }));
+    }, { once: true }));
+    const gone = APPS.filter((a) => hiddenApps.includes(a.id));
+    appsHidden.hidden = !editingApps || !gone.length;
+    appsHidden.innerHTML = `<small>Removed, tap to bring back:</small>` + gone.map((a) =>
+      `<button class="app-restore" data-id="${a.id}" style="--c:${a.color}">${a.emoji} ${esc(a.name)} ↩</button>`).join("");
+    appsEditBtn.textContent = editingApps ? "✅ Done" : "✏️ Edit";
+    appsEditBtn.setAttribute("aria-pressed", String(editingApps));
+  };
+  const appsToastMsg = (html) => {
+    appsToast.innerHTML = html;
+    appsToast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { appsToast.hidden = true; }, 6000);
+  };
+  appsEditBtn.addEventListener("click", () => { editingApps = !editingApps; renderApps(); });
+  appNav.addEventListener("click", (e) => {
+    const x = e.target.closest(".app-x");
+    if (x) {
+      const app = APPS.find((a) => a.id === x.dataset.id);
+      if (!app || hiddenApps.includes(app.id)) return;
+      hiddenApps.push(app.id);
+      saveHidden();
+      renderApps();
+      appsToastMsg(`🗑️ ${esc(app.name)} removed <button class="apps-undo" data-id="${app.id}">Undo</button>`);
+      return;
+    }
+    // While editing, taps on a button don't open the app
+    if (editingApps && e.target.closest(".app-btn")) e.preventDefault();
+  });
+  // Long press on a button also starts edit mode, like the iPhone home screen
+  let pressTimer = 0;
+  appNav.addEventListener("pointerdown", (e) => {
+    if (editingApps || !e.target.closest(".app-btn")) return;
+    pressTimer = setTimeout(() => {
+      pressTimer = 0;
+      editingApps = true;
+      renderApps();
+      try { navigator.vibrate?.(15); } catch {}
+    }, 650);
+  });
+  ["pointerup", "pointerleave", "pointercancel"].forEach((t) => appNav.addEventListener(t, () => clearTimeout(pressTimer)));
+  appNav.addEventListener("contextmenu", (e) => { if (e.target.closest(".app-btn")) e.preventDefault(); });
+  const restoreApp = (id) => {
+    hiddenApps = hiddenApps.filter((x) => x !== id);
+    saveHidden();
+    renderApps();
+  };
+  appsHidden.addEventListener("click", (e) => {
+    const b = e.target.closest(".app-restore");
+    if (b) restoreApp(b.dataset.id);
+  });
+  appsToast.addEventListener("click", (e) => {
+    const b = e.target.closest(".apps-undo");
+    if (!b) return;
+    restoreApp(b.dataset.id);
+    appsToast.hidden = true;
+  });
+  renderApps();
+
   // Hobby buttons
   const hobbyNav = $("#hobbyNav");
   hobbyNav.innerHTML = HOBBIES.map((h) => `

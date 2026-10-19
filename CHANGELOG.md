@@ -2,6 +2,12 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.22.0 (2026-10-18): All my apps, side by side
+
+- apps.js: new APPS list (id, name, sub, color, emoji, url, optional img) rendered into #appNav by app.js; added Dit Dah Dojo, NAV → KMYF and SeasonHouse.
+- Every app link uses target="hub-<id>" so each app gets its own tab/window and they run in parallel; Super Checkup no longer replaces the hub.
+- ✏️ Edit / long press: jiggle mode with ✕ to hide a button (localStorage "hiddenApps"), Undo toast, and restore chips for hidden apps.
+
 ## 2.21.0 (2026-10-18): Release times
 
 - What's new now shows the time of each release (24-hour, your time zone) next to the date. The first few versions show the date only.

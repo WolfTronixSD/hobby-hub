@@ -14,5 +14,6 @@ A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube
 - Works offline (`sw.js`). Run `node scripts/check_site.mjs` before pushing; CI runs it too.
 - Release: bump `APP_VERSION` + CHANGELOG in `version.js`, `CHANGELOG.md`, the `?v=` params in `index.html` and the `CACHE` name in `sw.js`.
 - Version: `version.js` holds the version number and history shown on the site; `CHANGELOG.md` mirrors it.
+- `apps.js` lists my own apps (the big buttons under the clocks). Each opens in its own tab (`target="hub-<id>"`) so they can run side by side. ✏️ Edit (or long press) hides buttons per phone (localStorage `hiddenApps`); removed ones can be brought back.
 - `checkup/` is Super Checkup, a self-contained goofy doctor's-office page (eyes, ears, reaction time, eye gym). `sw.js` skips it.
 - `morse/` redirects to Dit Dah Dojo, the Morse trainer, which now lives at https://wolftronixsd.github.io/morse-trainer/ (repo `morse-trainer`).

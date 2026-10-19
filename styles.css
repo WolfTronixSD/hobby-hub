@@ -111,7 +111,43 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .event .ev-date span { font-size: 26px; font-weight: 800; line-height: 1; }
 
 /* My other apps */
-.apps { max-width: 1100px; margin: 0 auto 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.apps-box { max-width: 1100px; margin: 0 auto 12px; position: relative; }
+.apps-head { display: flex; align-items: center; justify-content: space-between; margin: 0 2px 8px; }
+.apps-head h2 { margin: 0; font-size: 16px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.apps-edit {
+  min-height: 44px; padding: 6px 16px; border-radius: 999px; font: inherit; font-size: 16px; font-weight: 700;
+  border: 2px solid var(--border); background: var(--panel); color: var(--text); cursor: pointer;
+}
+.apps-edit[aria-pressed="true"] { border-color: #22c55e; background: color-mix(in srgb, #22c55e 20%, var(--panel)); }
+.apps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.app-wrap { position: relative; min-width: 0; }
+.app-wrap .app-btn { height: 100%; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.app-x {
+  display: none; position: absolute; top: -10px; left: -10px; z-index: 2; width: 36px; height: 36px; border-radius: 50%;
+  border: 2px solid var(--bg, #0b0f17); background: #ef4444; color: #fff; font-size: 18px; font-weight: 800; line-height: 1; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.apps.editing .app-x { display: grid; place-items: center; }
+.apps.editing .app-btn { animation: jiggle 0.32s ease-in-out infinite alternate; opacity: 0.9; cursor: default; }
+.apps.editing .app-wrap:nth-child(even) .app-btn { animation-delay: -0.16s; }
+@keyframes jiggle { from { transform: rotate(-0.8deg); } to { transform: rotate(0.8deg); } }
+@media (prefers-reduced-motion: reduce) { .apps.editing .app-btn { animation: none; } }
+.apps-empty { grid-column: 1 / -1; margin: 4px 0; color: var(--muted); font-size: 16px; }
+.apps-hidden { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.apps-hidden small { width: 100%; color: var(--muted); font-size: 14px; }
+.app-restore {
+  min-height: 44px; padding: 6px 14px; border-radius: 999px; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer;
+  border: 2px dashed color-mix(in srgb, var(--c) 60%, var(--border)); background: var(--panel); color: var(--text);
+}
+.apps-toast {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px;
+  padding: 10px 14px; border-radius: var(--radius); background: var(--panel); border: 2px solid var(--border); font-size: 16px;
+}
+.apps-toast[hidden], .apps-hidden[hidden] { display: none; }
+.apps-undo {
+  min-height: 40px; padding: 4px 16px; border-radius: 999px; border: none; font: inherit; font-weight: 800;
+  background: #4fd1c5; color: #0b0f17; cursor: pointer;
+}
 .app-btn {
   display: flex; align-items: center; gap: 12px; min-height: 72px; padding: 10px 16px;
   border-radius: var(--radius); border: 2px solid color-mix(in srgb, var(--c) 55%, var(--border));
@@ -358,7 +394,7 @@ main { margin-top: 8px; outline: none; scroll-margin-top: 120px; }
   .hobby .emoji { font-size: 30px; }
   .hobby b { font-size: 15px; }
   .apps { gap: 8px; grid-template-columns: 1fr 1fr; }
-  .apps .app-btn:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .apps .app-wrap:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .app-btn { min-height: 64px; padding: 8px 10px; gap: 8px; }
   .app-btn b { font-size: 17px; }
   .app-btn .go { display: none; }
