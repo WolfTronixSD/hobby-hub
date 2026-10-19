@@ -29,6 +29,8 @@
   syncThemeBtn();
 
   // My apps: each opens in its own named tab so several run side by side; ✏️ Edit lets you remove or bring back buttons
+  const HUB_BASE = new URL(".", location.href).href.replace(/[?#].*$/, "");
+  const fromHomeApp = navigator.standalone || matchMedia("(display-mode: standalone)").matches;
   const appNav = $("#appNav");
   const appsEditBtn = $("#appsEdit");
   const appsHidden = $("#appsHidden");
@@ -88,7 +90,9 @@
     // Hub installed on the iPhone home screen: links would open in a browser sheet inside the hub,
     // which iOS closes (and silences WRadio) when the hub closes. Hand them to real Safari instead,
     // where each app keeps running in its own tab.
-    if (navigator.standalone && /^https:\/\//.test(link.href) && new URL(link.href).origin !== location.origin) {
+    // Note: WRadio, GoldRabbit, Morse and NAV live on the same github.io site as the hub, so test the hub's own
+    // folder, not the origin; anything outside /hobby-hub/ goes to Safari.
+    if (fromHomeApp && /^https:\/\//.test(link.href) && !link.href.startsWith(HUB_BASE)) {
       e.preventDefault();
       const app = APPS.find((a) => a.id === link.dataset.id);
       location.href = "x-safari-" + link.href;
@@ -698,9 +702,8 @@
       ? "Tap 🎤 and say a section, like \"ham radio\" or \"San Diego weather\"."
       : "This browser can't do voice control.";
     $("#setTabsNote").innerHTML = fromHomeScreenApp
-      ? "⚠️ The hub is open as a full-screen web app, so apps you open from it close when the hub closes (WRadio stops). " +
-        "Fix: delete the hub icon, open the hub in Safari, tap Share → <b>Add to Home Screen</b> and switch <b>Open as Web App</b> off. " +
-        "Then every app opens in its own Safari tab and keeps running."
+      ? "✅ The hub is a full-screen web app, so app buttons open in real Safari. WRadio keeps playing when you close the hub. " +
+        "If an app ever opens in a small panel with a ✕ inside the hub instead, tap the compass button in its corner to move it to Safari."
       : "✅ Each app opens in its own Safari tab and keeps running when you switch back here. " +
         "Note: iPhone plays sound from one page at a time, so a Morse tone will pause WRadio.";
   };
@@ -711,14 +714,6 @@
     store.set("voice", e.target.checked ? "1" : "0");
     $("#micBtn").hidden = !e.target.checked;
   });
-  // Opened from an old full-screen home-screen icon: point to the fix (shown up to 3 times)
-  if (fromHomeScreenApp) {
-    const n = +(store.get("tabsHint") || 0);
-    if (n < 3) {
-      store.set("tabsHint", String(n + 1));
-      setTimeout(() => appsToastMsg('⚠️ Apps close when the hub closes. <button class="apps-undo apps-open" id="tabsHintBtn">How to fix</button>'), 800);
-    }
-  }
   document.addEventListener("click", (e) => { if (e.target.id === "tabsHintBtn") { fillSettings(); settingsBackdrop.hidden = false; } });
   $("#shareNative").addEventListener("click", () => {
     navigator.share({ title: "Wolfie's Hobby Hub", text: "Podcasts, YouTube and news for my hobbies", url: shareLink() }).catch(() => {});

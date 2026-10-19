@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.26.1 (2026-10-19): Same-site apps go to Safari
+
+- app.js: the standalone x-safari hand-off tested `origin !== location.origin`, which skipped every app on wolftronixsd.github.io (WRadio, GoldRabbit, Morse, NAV), so they opened in the hub's in-app browser sheet and died with it. Now anything outside the hub folder (HUB_BASE) goes to Safari; also checks display-mode standalone. Dropped the 2.24 re-add hint toast.
+
 ## 2.26.0 (2026-10-19): Water visibility
 
 - No free source publishes underwater visibility as a number (pierviz has fixed piling distances only), so: 🤿 link to https://coollab.ucsd.edu/pierviz/ beside 📍 (hidden when no sea data, e.g. Tempe) and as a tile on coastal weather panels. Marine call now also gets `wave_height` (length_unit=imperial, cache key sst2) shown as a clarity clue.

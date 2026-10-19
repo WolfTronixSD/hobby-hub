@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.26.0";
+const APP_VERSION = "2.26.1";
 const CHANGELOG = [
+  {
+    version: "2.26.1",
+    date: "2026-10-19",
+    at: "2026-10-19T22:35:00Z",
+    title: "WRadio keeps playing when the hub closes",
+    changes: [
+      "Fixed: with the hub on your home screen, WRadio, GoldRabbit, Dit Dah Dojo and NAV opened inside the hub (same website), so closing the hub stopped WRadio. They now open in real Safari like the other apps",
+      "Removed the \"re-add the hub\" reminder; the full-screen hub icon works again"
+    ]
+  },
   {
     version: "2.26.0",
     date: "2026-10-19",
