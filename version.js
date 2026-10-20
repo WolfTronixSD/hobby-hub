@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.27.0";
+const APP_VERSION = "2.28.0";
 const CHANGELOG = [
+  {
+    version: "2.28.0",
+    date: "2026-10-20",
+    at: "2026-10-20T06:45:00Z",
+    title: "Karaoke Wolf and Claude buttons",
+    changes: [
+      "🎤 New Karaoke Wolf button: sing along to songs and get scored on your pitch",
+      "✳️ New Claude button opens a fresh Claude.ai chat for a fast start"
+    ]
+  },
   {
     version: "2.27.0",
     date: "2026-10-19",
