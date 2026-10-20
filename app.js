@@ -90,6 +90,19 @@
     const link = e.target.closest(".app-btn");
     if (!link) return;
     if (editingApps) { e.preventDefault(); return; }
+    // Apps with a native iPhone/Android app (Claude): open the app, where you stay logged in.
+    // If it isn't installed the page stays visible, so offer the website instead.
+    const native = APPS.find((a) => a.id === link.dataset.id)?.appLink;
+    if (native && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      location.href = native;
+      setTimeout(() => {
+        if (document.visibilityState !== "visible") return;
+        const web = fromHomeApp ? "x-safari-" + link.href : link.href;
+        appsToastMsg(`App didn't open. <a class="apps-undo apps-open" href="${esc(web)}" target="${esc(link.target)}">Open the website</a>`);
+      }, 1500);
+      return;
+    }
     // Hub installed on the iPhone home screen: links would open in a browser sheet inside the hub,
     // which iOS closes (and silences WRadio) when the hub closes. Hand them to real Safari instead,
     // where each app keeps running in its own tab.

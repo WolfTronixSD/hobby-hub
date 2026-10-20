@@ -2,6 +2,7 @@
 // Each one opens in its own tab/window (target "hub-<id>"), so several can run side by side,
 // e.g. WRadio keeps playing while Dit Dah Dojo is open. Tapping a button again jumps back to its tab.
 // Removing a button in the hub only hides it on that phone (localStorage "hiddenApps").
+// Optional "appLink": on a phone the button opens that native app first and offers the website if it isn't installed.
 const APPS = [
   { id: "goldrabbit", name: "GoldRabbit", sub: "Live stocks", color: "#f5b301", emoji: "🐇",
     url: "https://wolftronixsd.github.io/tickerdeck/", img: "https://wolftronixsd.github.io/tickerdeck/icon-180.png" },
@@ -20,5 +21,5 @@ const APPS = [
   { id: "karaoke", name: "Karaoke Wolf", sub: "Sing & score", color: "#ec4899", emoji: "🎤",
     url: "https://wolftronixsd.github.io/karaoke-wolf/" },
   { id: "claude", name: "Claude", sub: "AI quick start", color: "#d97757", emoji: "✳️",
-    url: "https://claude.ai/new" }
+    url: "https://claude.ai/new", appLink: "claude://" }
 ];

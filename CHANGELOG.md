@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.28.1 (2026-10-20): Claude button opens the Claude app
+
+- apps.js: optional `appLink` per app; Claude uses `claude://`. app.js: on iPhone/Android a tap goes to `appLink` first; if the page is still visible after 1.5 s, a toast offers the website (via x-safari when the hub runs from the home screen). claude.ai/new itself isn't a universal link, so the plain https link never opened the app.
+
 ## 2.28.0 (2026-10-20): Karaoke Wolf and Claude buttons
 
 - apps.js: added Karaoke Wolf (https://wolftronixsd.github.io/karaoke-wolf/) and Claude (https://claude.ai/new) to APPS. Emoji icons only, since neither has a hosted icon image.
