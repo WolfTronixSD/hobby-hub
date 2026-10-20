@@ -16,5 +16,9 @@ const APPS = [
   { id: "checkup", name: "Super Checkup", sub: "Eyes & ears", color: "#1f4fd1", emoji: "🩺",
     url: "checkup/" },
   { id: "seasonhouse", name: "SeasonHouse", sub: "Haunted props", color: "#f97316", emoji: "🎃",
-    url: "https://github.com/WolfTronixSD/SeasonHouse" }
+    url: "https://github.com/WolfTronixSD/SeasonHouse" },
+  { id: "karaoke", name: "Karaoke Wolf", sub: "Sing & score", color: "#ec4899", emoji: "🎤",
+    url: "https://wolftronixsd.github.io/karaoke-wolf/" },
+  { id: "claude", name: "Claude", sub: "AI quick start", color: "#d97757", emoji: "✳️",
+    url: "https://claude.ai/new" }
 ];

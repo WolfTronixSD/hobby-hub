@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.28.0 (2026-10-20): Karaoke Wolf and Claude buttons
+
+- apps.js: added Karaoke Wolf (https://wolftronixsd.github.io/karaoke-wolf/) and Claude (https://claude.ai/new) to APPS. Emoji icons only, since neither has a hosted icon image.
+
 ## 2.27.0 (2026-10-19): Wolf Ironman always synced
 
 - Settings: sync code box (localStorage "ironSync"); the Ironman button opens `…#sync=CODE&auto=1`, which Ironman v1.2.0 joins without asking. iPhone gives Safari, the home-screen app and in-app browser sheets separate storage, so the code travels with the link.
