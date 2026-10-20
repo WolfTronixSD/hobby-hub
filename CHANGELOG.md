@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.27.0 (2026-10-19): Wolf Ironman always synced
+
+- Settings: sync code box (localStorage "ironSync"); the Ironman button opens `…#sync=CODE&auto=1`, which Ironman v1.2.0 joins without asking. iPhone gives Safari, the home-screen app and in-app browser sheets separate storage, so the code travels with the link.
+
 ## 2.26.1 (2026-10-19): Same-site apps go to Safari
 
 - app.js: the standalone x-safari hand-off tested `origin !== location.origin`, which skipped every app on wolftronixsd.github.io (WRadio, GoldRabbit, Morse, NAV), so they opened in the hub's in-app browser sheet and died with it. Now anything outside the hub folder (HUB_BASE) goes to Safari; also checks display-mode standalone. Dropped the 2.24 re-add hint toast.

@@ -41,6 +41,9 @@
   let editingApps = false;
   let toastTimer = 0;
   const saveHidden = () => store.set("hiddenApps", JSON.stringify(hiddenApps));
+  // Wolf Ironman: open with the saved sync code, so every way of opening it shows the synced workouts
+  const ironCode = () => (store.get("ironSync") || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const appUrl = (a) => (a.id === "ironman" && /^[A-Z2-9]{16}$/.test(ironCode()) ? `${a.url}#sync=${ironCode()}&auto=1` : a.url);
   const appIcon = (a) => a.img
     ? `<img src="${esc(a.img)}" alt="" width="44" height="44" data-emoji="${esc(a.emoji)}">`
     : `<span class="app-ic">${a.emoji}</span>`;
@@ -49,7 +52,7 @@
     appNav.classList.toggle("editing", editingApps);
     appNav.innerHTML = shown.map((a) => `
       <div class="app-wrap">
-        <a class="app-btn" href="${esc(a.url)}" target="hub-${a.id}" data-id="${a.id}" style="--c:${a.color}">
+        <a class="app-btn" href="${esc(appUrl(a))}" target="hub-${a.id}" data-id="${a.id}" style="--c:${a.color}">
           ${appIcon(a)}
           <span><b>${esc(a.name)}</b><small>${esc(a.sub)}</small></span><span class="go">↗</span>
         </a>
@@ -707,7 +710,12 @@
       : "✅ Each app opens in its own Safari tab and keeps running when you switch back here. " +
         "Note: iPhone plays sound from one page at a time, so a Morse tone will pause WRadio.";
   };
-  $("#settingsBtn").addEventListener("click", () => { fillSettings(); settingsBackdrop.hidden = false; });
+  const ironNote = () => {
+    const c = ironCode();
+    $("#setIronNote").textContent = !c ? "" : /^[A-Z2-9]{16}$/.test(c) ? "✅ Saved. Tap 💪 Wolf Ironman to open your synced workouts." : "That doesn't look like a sync code (16 letters and numbers).";
+  };
+  $("#settingsBtn").addEventListener("click", () => { fillSettings(); const c = ironCode(); $("#setIronSync").value = c ? c.match(/.{1,4}/g).join("-") : ""; ironNote(); settingsBackdrop.hidden = false; });
+  $("#setIronSync").addEventListener("input", (e) => { store.set("ironSync", e.target.value.trim()); ironNote(); renderApps(); });
   $("#settingsClose").addEventListener("click", () => { settingsBackdrop.hidden = true; });
   settingsBackdrop.addEventListener("click", (e) => { if (e.target === settingsBackdrop) settingsBackdrop.hidden = true; });
   $("#setVoice").addEventListener("change", (e) => {
