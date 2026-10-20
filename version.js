@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.28.0";
+const APP_VERSION = "2.28.1";
 const CHANGELOG = [
+  {
+    version: "2.28.1",
+    date: "2026-10-20",
+    at: "2026-10-20T07:05:00Z",
+    title: "Claude button opens the Claude app",
+    changes: [
+      "✳️ On your phone the Claude button now opens the Claude app, where you stay logged in",
+      "No Claude app installed? After a moment the hub offers the website instead"
+    ]
+  },
   {
     version: "2.28.0",
     date: "2026-10-20",
