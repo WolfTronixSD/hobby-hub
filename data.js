@@ -1152,6 +1152,36 @@ const HOBBIES = [
         ]
       },
       {
+        id: "sd-hh",
+        name: "Happy Hour",
+        icon: "🍻",
+        labels: { podcasts: "Deals" },
+        podcasts: [
+          { name: "SDHH app", desc: "200+ San Diego happy hours, filter by day, food or drinks, map.", url: "https://sdhh.app/" },
+          { name: "SD Reader: today's happy hours", desc: "100+ specials happening today, filter by neighborhood.", url: "https://www.sandiegoreader.com/specials/" },
+          { name: "happyhopper: San Diego", desc: "Search by food (tacos, burgers, wings) and time, lunch too.", url: "https://happyhopper.app/metro/san-diego" },
+          { name: "HappyHourMaps", desc: "Happy hour map, pick San Diego in the city list.", url: "https://happyhourmaps.com/" },
+          { name: "FindMeCheapFood", desc: "$5-$12 food deals and daily lunch specials in SD.", url: "https://www.findmecheapfood.com/deals/us/san-diego-ca" },
+          { name: "SD Magazine happy hours", desc: "The best happy hour specials around town.", url: "https://sandiegomagazine.com/food-drink/best-san-diego-happy-hour-specials/" },
+          { name: "Taco Tuesday guide", desc: "SD Entertainer's taco deals by day.", url: "https://sdentertainer.com/dining/guide-to-taco-tuesday-deals-in-san-diego" },
+          { name: "Lunch specials near me", desc: "Weekday lunch deals on Google Maps.", url: "https://www.google.com/maps/search/lunch+specials+San+Diego" },
+          { name: "Happy hour near me", desc: "Open now on Google Maps.", url: "https://www.google.com/maps/search/happy+hour+San+Diego" },
+          { name: "PB and OB beach bar lunch", desc: "710 Beach Club, PB Alehouse, The Tavern: daily specials.", url: "https://www.google.com/search?q=Pacific+Beach+Ocean+Beach+lunch+specials+710+Beach+Club+PB+Alehouse" }
+        ],
+        youtube: [
+          { name: "Best SD happy hours", desc: "Tours of the best deals.", url: "https://www.youtube.com/results?search_query=best+happy+hour+San+Diego" },
+          { name: "Cheap eats San Diego", desc: "Great food for little money.", url: "https://www.youtube.com/results?search_query=San+Diego+cheap+eats" },
+          { name: "Taco Tuesday San Diego", desc: "Taco deal hunting.", url: "https://www.youtube.com/results?search_query=Taco+Tuesday+San+Diego" },
+          { name: "Pacific Beach happy hour", desc: "Beach bar deals in PB.", url: "https://www.youtube.com/results?search_query=Pacific+Beach+happy+hour" },
+          { name: "Gaslamp happy hour", desc: "Downtown deals.", url: "https://www.youtube.com/results?search_query=Gaslamp+happy+hour+San+Diego" }
+        ],
+        newsSources: [
+          { name: "SD Reader specials", url: "https://www.sandiegoreader.com/specials/" },
+          { name: "SD Entertainer: happy hour", url: "https://sdentertainer.com/tag/happy-hour/" },
+          { name: "Google News: SD happy hour", url: "https://news.google.com/search?q=San%20Diego%20%22happy%20hour%22%20OR%20%22lunch%20special%22" }
+        ]
+      },
+      {
         id: "sd-party",
         name: "Party",
         icon: "🎉",
@@ -1535,6 +1565,34 @@ const HOBBIES = [
         newsSources: [
           { name: "Arizona Craft Brewers Guild", url: "https://azbeer.org/" },
           { name: "Google News: AZ beer", url: "https://news.google.com/search?q=Tempe%20Phoenix%20brewery" }
+        ]
+      },
+      {
+        id: "tp-hh",
+        name: "Happy Hour",
+        icon: "🍻",
+        labels: { podcasts: "Deals" },
+        podcasts: [
+          { name: "Tempe Tourism happy hours", desc: "40+ Tempe spots with times and deals.", url: "https://www.tempetourism.com/blog/get-happy-at-happy-hour-in-tempe-2" },
+          { name: "happyhopper: Phoenix + Tempe", desc: "Search by food and time, covers Tempe, Scottsdale, Mesa.", url: "https://happyhopper.app/metro/phoenix" },
+          { name: "FindMeCheapFood Tempe", desc: "60 cheap food deals and lunch specials in Tempe.", url: "https://www.findmecheapfood.com/deals/us/tempe-az" },
+          { name: "FindMeCheapFood Phoenix", desc: "More Valley food deals.", url: "https://www.findmecheapfood.com/deals/us/phoenix-az" },
+          { name: "HappyHourMaps", desc: "Happy hour map, pick Phoenix in the city list.", url: "https://happyhourmaps.com/" },
+          { name: "AZ Happy Hour app", desc: "iPhone app for Valley happy hours.", url: "https://apps.apple.com/us/app/az-happy-hour/id1571834838" },
+          { name: "Visit Phoenix happy hours", desc: "The best happy hours in the Valley.", url: "https://www.visitphoenix.com/stories/post/the-best-happy-hour-in-phoenix/" },
+          { name: "Lunch specials near me", desc: "Weekday lunch deals on Google Maps.", url: "https://www.google.com/maps/search/lunch+specials+Tempe+AZ" },
+          { name: "Happy hour near me", desc: "Open now on Google Maps.", url: "https://www.google.com/maps/search/happy+hour+Tempe+AZ" },
+          { name: "Mill Avenue happy hours", desc: "Downtown Tempe and the ASU area.", url: "https://www.google.com/search?q=Mill+Avenue+Tempe+happy+hour+specials" }
+        ],
+        youtube: [
+          { name: "Best Phoenix happy hours", desc: "Tours of the best deals.", url: "https://www.youtube.com/results?search_query=best+happy+hour+Phoenix+Arizona" },
+          { name: "Tempe happy hour", desc: "Mill Ave and ASU deals.", url: "https://www.youtube.com/results?search_query=Tempe+happy+hour" },
+          { name: "Cheap eats Phoenix", desc: "Great food for little money.", url: "https://www.youtube.com/results?search_query=Phoenix+cheap+eats" },
+          { name: "Postino bruschetta board", desc: "The famous $25 Mon/Tue board.", url: "https://www.youtube.com/results?search_query=Postino+bruschetta+board" }
+        ],
+        newsSources: [
+          { name: "Phoenix New Times: bars", url: "https://www.phoenixnewtimes.com/category/food-drink/bars-breweries/" },
+          { name: "Google News: Valley happy hour", url: "https://news.google.com/search?q=Tempe%20OR%20Phoenix%20%22happy%20hour%22" }
         ]
       },
       {

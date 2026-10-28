@@ -103,6 +103,9 @@ FEEDS = {
     "sd-beer": [
         ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+brewery+OR+%22craft+beer%22&hl=en-US&gl=US&ceid=US:en"),
     ],
+    "sd-hh": [
+        ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+%22happy+hour%22+OR+%22lunch+special%22+OR+%22taco+tuesday%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
     "sd-party": [
         ("Google News", "https://news.google.com/rss/search?q=%22San+Diego%22+nightlife+OR+concert+OR+club&hl=en-US&gl=US&ceid=US:en"),
     ],
@@ -132,6 +135,9 @@ FEEDS = {
     ],
     "tp-beer": [
         ("Google News", "https://news.google.com/rss/search?q=Tempe+OR+Phoenix+brewery+OR+%22craft+beer%22&hl=en-US&gl=US&ceid=US:en"),
+    ],
+    "tp-hh": [
+        ("Google News", "https://news.google.com/rss/search?q=Tempe+OR+Phoenix+%22happy+hour%22+OR+%22lunch+special%22&hl=en-US&gl=US&ceid=US:en"),
     ],
     "tp-party": [
         ("Google News", "https://news.google.com/rss/search?q=Tempe+OR+Phoenix+nightlife+OR+concert&hl=en-US&gl=US&ceid=US:en"),

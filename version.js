@@ -1,6 +1,18 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.28.1";
+const APP_VERSION = "2.29.0";
 const CHANGELOG = [
+  {
+    version: "2.29.0",
+    date: "2026-10-28",
+    at: "2026-10-28T20:15:00Z",
+    title: "Happy Hour in San Diego and Tempe",
+    changes: [
+      "🍻 New Happy Hour sub in San Diego and Tempe AZ: happy hour and lunch deal sites and apps",
+      "San Diego: SDHH app, SD Reader today's happy hours, happyhopper, HappyHourMaps, FindMeCheapFood, Taco Tuesday guide",
+      "Tempe: Tempe Tourism's 40+ happy hours, happyhopper Phoenix, FindMeCheapFood Tempe, AZ Happy Hour app, Visit Phoenix",
+      "Say \"happy hour\" to the 🎤 to jump there"
+    ]
+  },
   {
     version: "2.28.1",
     date: "2026-10-20",
