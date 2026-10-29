@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.29.0";
+const APP_VERSION = "2.30.0";
 const CHANGELOG = [
+  {
+    version: "2.30.0",
+    date: "2026-10-29",
+    at: "2026-10-29T17:30:00Z",
+    title: "Lab Rodeo button",
+    changes: [
+      "🤠 New Lab Rodeo button: cowboy flash cards and quiz for blood and urine lab markers, vitamins, hormones and supplements",
+      "Includes hands-free auto-play, memory tricks and a US vs Europe comparison"
+    ]
+  },
   {
     version: "2.29.0",
     date: "2026-10-28",
