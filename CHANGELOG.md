@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.30.0 (2026-10-29): Lab Rodeo button
+
+- apps.js: added Lab Rodeo (https://wolftronixsd.github.io/lab-rodeo/, repo `lab-rodeo`) to APPS, after Super Checkup. Emoji icon only.
+
 ## 2.29.0 (2026-10-28): Happy Hour in San Diego and Tempe
 
 - data.js: new subs `sd-hh` and `tp-hh` ("Happy Hour", 🍻, labels "Deals"), placed before Party. Links checked 2026-10-28: sdhh.app, sandiegoreader.com/specials (today's happy hours), happyhopper.app/metro/san-diego and /metro/phoenix, happyhourmaps.com (city picker, no city URLs), findmecheapfood.com/deals/us/{san-diego-ca,tempe-az,phoenix-az}, tempetourism.com happy hour blog, visitphoenix.com. app.js: voice aliases "happy hour", "deals", "lunch specials".

@@ -16,6 +16,8 @@ const APPS = [
     url: "https://wolftronixsd.github.io/Wradio/kmyf-nav.html" },
   { id: "checkup", name: "Super Checkup", sub: "Eyes & ears", color: "#1f4fd1", emoji: "🩺",
     url: "checkup/" },
+  { id: "labrodeo", name: "Lab Rodeo", sub: "Lab flash cards", color: "#a87418", emoji: "🤠",
+    url: "https://wolftronixsd.github.io/lab-rodeo/" },
   { id: "seasonhouse", name: "SeasonHouse", sub: "Haunted props", color: "#f97316", emoji: "🎃",
     url: "https://github.com/WolfTronixSD/SeasonHouse" },
   { id: "karaoke", name: "Karaoke Wolf", sub: "Sing & score", color: "#ec4899", emoji: "🎤",
