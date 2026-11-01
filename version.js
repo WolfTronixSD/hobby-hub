@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.30.0";
+const APP_VERSION = "2.31.0";
 const CHANGELOG = [
+  {
+    version: "2.31.0",
+    date: "2026-11-01",
+    at: "2026-11-01T18:00:00Z",
+    title: "Skyhawk School button",
+    changes: [
+      "🛩️ New Skyhawk School button: Jean-Jacques' C172 flight sim based at KMYF, with lessons, ATC radio practice, quizzes and a mock checkride",
+      "Opens on claude.ai, so sign in to Claude to fly"
+    ]
+  },
   {
     version: "2.30.0",
     date: "2026-10-29",
