@@ -14,6 +14,8 @@ const APPS = [
     url: "https://wolftronixsd.github.io/morse-trainer/", img: "https://wolftronixsd.github.io/morse-trainer/icons/logo-96.png" },
   { id: "kmyfnav", name: "NAV → KMYF", sub: "Compass & ATC", color: "#22c55e", emoji: "🧭",
     url: "https://wolftronixsd.github.io/Wradio/kmyf-nav.html" },
+  { id: "skyhawk", name: "Skyhawk School", sub: "C172 flight sim", color: "#38bdf8", emoji: "🛩️",
+    url: "https://claude.ai/artifact/AZn6qTWHiQgFb2wbS4fYqD" },
   { id: "checkup", name: "Super Checkup", sub: "Eyes & ears", color: "#1f4fd1", emoji: "🩺",
     url: "checkup/" },
   { id: "labrodeo", name: "Lab Rodeo", sub: "Lab flash cards", color: "#a87418", emoji: "🤠",

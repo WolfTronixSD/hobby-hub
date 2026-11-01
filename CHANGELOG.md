@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.31.0 (2026-11-01): Skyhawk School button
+
+- apps.js: added Skyhawk School (Jean-Jacques' Skyhawk School, the C172 sim at https://claude.ai/artifact/AZn6qTWHiQgFb2wbS4fYqD) to APPS, after NAV → KMYF. Emoji icon only. It's a private Claude artifact, so it needs a signed-in claude.ai session.
+
 ## 2.30.0 (2026-10-29): Lab Rodeo button
 
 - apps.js: added Lab Rodeo (https://wolftronixsd.github.io/lab-rodeo/, repo `lab-rodeo`) to APPS, after Super Checkup. Emoji icon only.
