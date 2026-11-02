@@ -9,6 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
+<meta name="version" content="1.8.1">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -274,6 +275,19 @@ let BIDS=[];
 const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},{type:'suit',trump:0},{type:'grand'}];
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
+/* ---------- version ---------- */
+const SKAT_VERSION='1.8.1';
+const SKAT_CHANGES=[
+ ['1.8.1','2026-11-02','Versionsnummer und „Was ist neu“ im Menü'],
+ ['1.8.0','2026-11-02','⏩ Schenken / Aufgeben, Rest zu mir, Automatisch spielen, Zug zurücknehmen · lustige Themen-Geräusche (Pferde, Schüsse, Laser, Spielautomaten)'],
+ ['1.7.0','2026-11-02','Kontra & Re'],
+ ['1.6.0','2026-11-02','Themen Wilder Westen, Weltraum, Las Vegas · echtere Stimmen mit Skat-Sprüchen'],
+ ['1.5.0','2026-11-01','Größere Karten, gedrückte Karten stehen weiter raus, Ton-Knopf'],
+ ['1.4.0','2026-11-01','Spitze zählt automatisch, angesagt +2 · Musik, bessere Bilder, ruhigeres Layout'],
+ ['1.3.0','2026-11-01','Kartenbild wie das Französische Bild (Ecken überall)'],
+ ['1.2.0','2026-11-01','Spitze, Sächsische Spitze, echtes 32er-Blatt, Spielstärken Leicht/Gut/Schwer, Strand-Sound und Stimmen'],
+ ['1.1.0','2026-11-01','Ergebnis-Bildschirm, Spielliste, Aktuelles Spiel und Coach'],
+ ['1.0.0','2026-11-01','Erste Version: Skat nach offiziellen Regeln am Strand']];
 /* ---------- persistent state ---------- */
 const KEY='skat-strand-v1';
 let P={scores:[0,0,0],history:[],gameNo:0,dealer:2,date:null,names:['wolfi','Andy','Melli'],won:[0,0,0],lost:[0,0,0],cfg:{}};
@@ -1119,21 +1133,22 @@ function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{da
 
 /* ---------- menus ---------- */
 function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' sel':''}" data-k="${k}">${l}</button>`;
- openOverlay(`<div class="panel"><h2>Skat am Strand</h2>
+ openOverlay(`<div class="panel"><h2>Skat am Strand <small style="font:500 14px system-ui;opacity:.7">v${SKAT_VERSION}</small></h2>
  <div class="row"><button class="pill sm" id="mGo">Weiterspielen</button></div>
  <p class="mh">Thema</p><div class="row">${THEMES.map(([k,l])=>`<button class="chip${curTheme()===k?' sel':''}" data-th="${k}">${l}</button>`).join('')}</div>
  <p class="mh">Spielstärke</p><div class="row">${['Leicht','Gut','Schwer'].map((l,i)=>`<button class="chip${c.level===i?' sel':''}" data-l="${i}">${['🐣','😎','🧠'][i]} ${l}</button>`).join('')}</div>
  <p class="mh">Sonderregeln</p><div class="row">${ch('spitze','Spitze')}${ch('saxon','Sächsische Spitze')}${ch('kontra','Kontra & Re')}</div>
  <p class="mh">Ton</p><div class="row">${ch('sfx','Kartengeräusche')}${ch('music','Musik')}${ch('amb','Meer & Möwen')}${ch('voice','Stimmen')}</div>
  <p class="mh">Ansicht</p><div class="row">${ch('four','Vierfarbenblatt')}${ch('fast','Schnelles Tempo')}</div>
- <div class="row"><button class="pill sm tan" id="mRules">Regeln</button><button class="pill sm tan" id="mList">Spielliste</button></div>
+ <div class="row"><button class="pill sm tan" id="mRules">Regeln</button><button class="pill sm tan" id="mList">Spielliste</button><button class="pill sm tan" id="mNew">Was ist neu</button></div>
  <p style="text-align:center;opacity:.7;font-size:13px;margin-top:12px">Tipp: In Safari „Zum Home-Bildschirm“ für Vollbild.<br>Regeländerungen gelten ab dem nächsten Spiel.</p></div>`);
- $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mList').onclick=()=>openSheet('list');
+ $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mList').onclick=()=>openSheet('list');
  ov.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{c.theme=b.dataset.th;save();applyTheme();openMenu()});
  ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{c.level=+b.dataset.l;save();openMenu()});
  ov.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;c[k]=!c[k];save();
   if(k==='four')restyle();if(k==='fast')$('#bFast').classList.toggle('on',c.fast);if(k==='amb'){if(c.amb){ac();startAmbient()}else stopAmbient()}if(k==='music'){if(c.music){ac();startMusic()}else stopMusic()}if(k==='voice'&&!c.voice)try{speechSynthesis.cancel()}catch(e){}
   openMenu()})}
+function openNews(){openOverlay(`<div class="panel rule"><h2>Was ist neu · v${SKAT_VERSION}</h2>${SKAT_CHANGES.map(([v,d,t])=>`<h3>v${v} <small style="font:400 13px system-ui;opacity:.7">${new Date(d).toLocaleDateString('de-DE')}</small></h3><p>${t}</p>`).join('')}<div class="row"><button class="pill sm" id="nOk">OK</button></div></div>`);$('#nOk').onclick=openMenu}
 function restyle(){for(const[id,el]of handEls){const c=DECK.find(x=>x.id===id);el.style.color=suitColor(c.s);el.innerHTML=cardSvg(c)}trickEls.forEach(t=>{const c=DECK.find(x=>x.id===t.el.dataset.id);if(c){t.el.style.color=suitColor(c.s);t.el.innerHTML=cardSvg(c)}});renderOpen()}
 function openRules(){openOverlay(`<div class="panel rule"><h2>Skatregeln (ISkO)</h2>
 <h3>Ziel</h3><p>Der Alleinspieler braucht mindestens <b>61 Augen</b> (Skat zählt für ihn). Kartenwerte: Ass 11, Zehn 10, König 4, Dame 3, Bube 2, 9/8/7 je 0 – zusammen 120.</p>
@@ -1148,7 +1163,7 @@ function openRules(){openOverlay(`<div class="panel rule"><h2>Skatregeln (ISkO)<
 <h3>Sonderregel: Kontra & Re</h3><p>Nach der Spielansage darf ein Gegenspieler vor dem ersten Stich <b>„Kontra!“</b> sagen, wenn er glaubt, dass der Alleinspieler verliert. Der Alleinspieler kann mit <b>„Re!“</b> antworten. Kontra verdoppelt das Ergebnis, Kontra und Re vervierfachen es – gewonnen wie verloren.</p>
 <h3>Spielstärke</h3><p>🐣 Leicht: Gegner machen öfter Fehler und reizen wild. 😎 Gut: solide Kneipenspieler. 🧠 Schwer: Gegner zählen Karten und simulieren hunderte mögliche Kartenverteilungen vor jedem Zug (auch der 💡-Tipp nutzt das).</p>
 <h3>Bedienung</h3><p>Karte antippen zum Ausspielen · 💡 Tipp · ↻ letzter Stich · ⏩ Tempo · 👤 Spielliste & Coach.</p>
-<div class="row"><button class="pill sm" id="rOk">OK</button></div></div>`);$('#rOk').onclick=closeOverlay}
+<p style="text-align:center;opacity:.6;font-size:12px">Skat am Strand v${SKAT_VERSION}</p><div class="row"><button class="pill sm" id="rOk">OK</button></div></div>`);$('#rOk').onclick=closeOverlay}
 function showLast(){if(!S.lastTrick){toast('Noch kein Stich');return}const t=S.lastTrick;openOverlay(`<div class="panel"><h2>Letzter Stich – ${NM(t.winner)}</h2><div class="row" style="font-size:26px">${t.cards.map(x=>`<div style="text-align:center">${mcards([x.card])}<div style="font-size:14px">${NM(x.seat)}</div></div>`).join('')}</div><p style="text-align:center">${cardPts(t.cards.map(x=>x.card))} Augen</p><div class="row"><button class="pill sm" id="lOk">OK</button></div></div>`);$('#lOk').onclick=closeOverlay}
 function hint(){
  if(S.bidAsk){const m=S.coach.max;toast(m?`Coach: reizen bis ${m} (${gameName(S.coach.game)})`:'Coach: lieber passen');bubble(0,m>=S.bidAsk.val?'👍':'👎',1200);return}

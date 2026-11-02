@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.33.1 (2026-11-02): Skat version number
+
+- skat/index.html: SKAT_VERSION 1.8.1 shown in the Skat menu title and rules; new "Was ist neu" panel with the game's release history.
+
 ## 2.33.0 (2026-11-02): Skat actions and theme sounds
 
 - skat/index.html: state-driven play loop with snapshots for Zug zurücknehmen; ⏩ opens an action panel (Schenken for defenders / Aufgeben for the declarer before the first trick is done, Rest zu mir when every card left is a sure winner, Automatisch spielen, tempo). Synthesized theme sound effects in the ambience and on big tricks.
