@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.32.1 (2026-11-02): Skat Kontra and Re
+
+- skat/index.html: optional Kontra & Re house rule (cfg.kontra, default on). Defenders may say Kontra before the first trick, the declarer may answer Re; ×2 / ×4 on the score, shown in the result and Spielliste.
+
 ## 2.32.0 (2026-11-02): Skat am Strand button
 
 - New `skat/index.html`: the single-file Skat game (also published as a Claude artifact), hosted here so it's public and keeps its own score list in localStorage. apps.js: added Skat am Strand (`skat/`, emoji icon) before Claude. sw.js: `/skat/` is left to the network like `/checkup/`, so the game never replaces the hub's saved copy.

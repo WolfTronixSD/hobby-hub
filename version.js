@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.32.0";
+const APP_VERSION = "2.32.1";
 const CHANGELOG = [
+  {
+    version: "2.32.1",
+    date: "2026-11-02",
+    at: "2026-11-02T19:25:00Z",
+    title: "Skat: Kontra and Re",
+    changes: [
+      "🃏 Skat am Strand now has Kontra and Re: Kontra doubles the result, Kontra plus Re quadruples it (switch it off in the Skat menu)"
+    ]
+  },
   {
     version: "2.32.0",
     date: "2026-11-02",

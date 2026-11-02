@@ -273,7 +273,7 @@ const KEY='skat-strand-v1';
 let P={scores:[0,0,0],history:[],gameNo:0,dealer:2,date:null,names:['wolfi','Andy','Melli'],won:[0,0,0],lost:[0,0,0],cfg:{}};
 try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d&&d.scores)P=Object.assign(P,d);}catch(e){}
 if(!P.date)P.date=new Date().toISOString();
-P.cfg=Object.assign({theme:'beach',four:false,fast:false,level:1,spitze:true,saxon:true,sfx:true,amb:true,voice:true,music:true},P.cfg||{});BIDS=makeBids();
+P.cfg=Object.assign({kontra:true,theme:'beach',four:false,fast:false,level:1,spitze:true,saxon:true,sfx:true,amb:true,voice:true,music:true},P.cfg||{});BIDS=makeBids();
 function save(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
 const NM=i=>P.names[i];
 
@@ -620,7 +620,7 @@ function updatePlates(showScores){const lead=Math.max(...P.scores);
   else ps.textContent=(i===0?'Du sitzt ':'')+POSN[seatPos(i)]}
  $('#tmain').textContent=(S.practice?'Übung':'Spiel '+P.gameNo)}
 function setTurn(seat){[0,1,2].forEach(i=>$('#pl'+i).classList.toggle('turn',i===seat))}
-function updateInfo(){const gi=$('#gameInfo');const st=gi;if(S.phase!=='play'){gi.style.display='none';return}gi.style.display='flex';st.innerHTML=`${S.game.type==='suit'?`<span class="si" style="color:${S.game.trump<2?'#ff8a8a':'#fff'}">${suitSvg(S.game.trump)}</span>`:''}${gameName(S.game,false)} · ${S.bid} · Stich ${Math.min(10,S.trickNo+1)}/10`;return;
+function updateInfo(){const gi=$('#gameInfo');const st=gi;if(S.phase!=='play'){gi.style.display='none';return}gi.style.display='flex';st.innerHTML=`${S.game.type==='suit'?`<span class="si" style="color:${S.game.trump<2?'#ff8a8a':'#fff'}">${suitSvg(S.game.trump)}</span>`:''}${gameName(S.game,false)} · ${S.bid}${S.kontraBy>=0?(S.re?' · Re':' · Kontra'):''} · Stich ${Math.min(10,S.trickNo+1)}/10`;return;
  gi.style.display='flex';gi.innerHTML=`${S.game.type==='suit'?`<span class="si">${suitSvg(S.game.trump)}</span>`:''}${gameName(S.game)} · Reiz ${S.bid} · Stich ${Math.min(10,S.trickNo+1)}/10`;gi.querySelector('.si')&&(gi.querySelector('.si').style.color=S.game.type==='suit'?(S.game.trump<2?'#ff7a7a':'#fff'):'')}
 const ov=$('#overlay');
 function openOverlay(html,cls){ov.innerHTML=html;ov.classList.add('show');return ov}
@@ -871,7 +871,7 @@ async function playGame(){
  if(!S.replay)P.gameNo++;BIDS=makeBids();
  dealNew();if(!S.practice)S.dealer=P.dealer;
  S.dealt={hands:S.hands.map(h=>h.map(c=>c.id)),skat:S.skat.map(c=>c.id),dealer:S.dealer};
- Object.assign(S,{phase:'bid',game:null,declarer:-1,trick:[],played:[],skatFinal:null,lastTrick:null,trickLog:[],lastDelta:null,sel:new Set(),legalSet:null,hintId:null,mode:null,result:null,trickNo:0});
+ Object.assign(S,{kontraBy:-1,re:false,phase:'bid',game:null,declarer:-1,trick:[],played:[],skatFinal:null,lastTrick:null,trickLog:[],lastDelta:null,sel:new Set(),legalSet:null,hintId:null,mode:null,result:null,trickNo:0});
  S.hands[0]=sortHand(S.hands[0]);clearTable();updatePlates();updateInfo();renderOpen();
  S.coach=evalHand(S.hands[0],0);S.maxBid=[0,1,2].map(i=>evalHand(S.hands[i],riskFor(i)).max);
  sndShuffle();await sleep(TURBO?0:P.cfg.fast?500:900);showSkat(true);renderHand([L.deck[0],L.deck[1],true]);await sleep(700);
@@ -883,9 +883,24 @@ async function playGame(){
  S.hands[0]=sortHand(S.hands[0],S.game);renderHand();
  S.phase='play';updatePlates();updateInfo();renderOpen();
  toast(`${decl===0?'Du spielst':NM(decl)+' spielt'} ${gameName(S.game)}`,1800);await sleep(900);
+ if(P.cfg.kontra)await kontraPhase();
  await playPhase();S.phase='done';setTurn(-1);settle();
  {const r=S.result,d=r.d;if(d){emote(d,r.won?'happy':'sad',3500);quip(d,r.won?'won':'lost',.85)}[1,2].filter(x=>x!==d).forEach(x=>{emote(x,r.won?'sad':'happy',3500);if(!r.won)quip(x,'beat',.5)})}
  await showResult()}
+async function humanAsk(yes,no){const y=$('#bidYes'),n=$('#bidNo');y.textContent=yes;n.textContent=no;$('#bidUI').style.display='flex';const r=await waitInput();$('#bidUI').style.display='none';n.textContent='Passe';return r}
+function aiWantsKontra(seat){const g=S.game,h=S.hands[seat],lv=P.cfg.level;if(lv===0)return Math.random()<.12;
+ if(g.type==='null'){const low=h.filter(c=>c.r==='7'||c.r==='8').length;return low>=(lv===2?4:5)}
+ const T=h.filter(c=>isTrump(c,g)),hi=T.some(c=>c.r==='B'&&(g.type==='saxon'?c.s<=1:c.s>=2));
+ let sc=T.length+(hi?1.5:0);for(const s of [0,1,2,3]){const sc2=h.filter(c=>c.s===s&&!isTrump(c,g));if(sc2.some(c=>c.r==='A'))sc+=.9;if(sc2.some(c=>c.r==='A')&&sc2.some(c=>c.r==='10'))sc+=.5}
+ if(g.hand)sc+=.3;if(g.ouvert||g.schwarzA)sc+=1;return sc>=(lv===2?6.4:7)}
+function aiWantsRe(d){const g=S.game,h=S.hands[d];if(P.cfg.level===0)return Math.random()<.3;if(g.type==='null')return nullUnsafe(h).count===0;
+ return strength(h,g)-(g.type==='suit'?7:6.9)>=(P.cfg.level===2?3:3.6)}
+async function kontraPhase(){const d=S.declarer;const defs=[1,2,3].map(i=>(S.dealer+i)%3).filter(x=>x!==d);S.kontraBy=-1;S.re=false;
+ for(const x of defs){setTurn(x);let k;if(x===0&&!AUTO){toast('Glaubst du, der Alleinspieler verliert?',2200);k=await humanAsk('Kontra!','Weiter')}else{await think(.6);k=aiWantsKontra(x)}
+  if(k){S.kontraBy=x;bubble(x,'Kontra!',1800);say(x,'Kontra!');emote(d,'wow');break}}
+ if(S.kontraBy>=0){setTurn(d);let r;if(d===0&&!AUTO){toast(`${NM(S.kontraBy)} sagt Kontra!`,1800);r=await humanAsk('Re!','Nein')}else{await think(.8);r=aiWantsRe(d)}
+  S.re=!!r;if(r){bubble(d,'Re!',1800);say(d,'Re!');emote(S.kontraBy,'wow')}else if(d)quip(d,'lostT',.4)}
+ setTurn(-1);updateInfo();await sleep(400)}
 async function aiDeclarePhase(d){await think(1.2);const ch=aiDeclare(d,S.bid);
  if(ch.disc){bubble(d,'Skat',900);const o=L.origin[d];skatEls.forEach(el=>{setT(el,o[0],o[1],0,.3);el.style.opacity='0'});await sleep(500);showSkat(false);
   S.hands[d]=S.hands[d].concat(S.skat).filter(c=>!ch.disc.includes(c));S.skatFinal=ch.disc;await think()}
@@ -959,9 +974,9 @@ function settle(){const d=S.declarer,g=S.game,base=g.type==='null'?nullVal(g):gb
   r.won=declPts>=61;if(g.schneiderA&&declPts<90)r.won=false;if(g.schwarzA&&oppTricks>0)r.won=false;if(g.spitze&&!r.spitzeOK)r.won=false;
   if(r.value<S.bid){r.overbid=true;r.won=false;r.value=Math.ceil(S.bid/base)*base}
   r.lines.push([`${gameName({type:g.type,trump:g.trump},false)} ${base} × ${Math.round(r.value/base)} =`,r.value])}
- r.score=r.won?r.value:-2*r.value;S.result=r;
+ r.score=r.won?r.value:-2*r.value;r.kontra=S.kontraBy>=0;r.re=r.kontra&&S.re;r.kf=(r.kontra?2:1)*(r.re?2:1);r.score*=r.kf;S.result=r;
  if(!S.practice){P.scores[d]+=r.score;if(r.won)P.won[d]++;else P.lost[d]++;
-  P.history.push({no:P.gameNo,d,g,bid:S.bid,value:r.value,score:r.score,won:r.won,sp:r.sp||null,schneider:!!r.schneider,schwarz:!!r.schwarz,overbid:r.overbid,spitzeOK:!!r.spitzeOK,totals:P.scores.slice(),wl:[P.won.slice(),P.lost.slice()],
+  P.history.push({no:P.gameNo,kontra:r.kontra,re:r.re,kf:r.kf,d,g,bid:S.bid,value:r.value,score:r.score,won:r.won,sp:r.sp||null,schneider:!!r.schneider,schwarz:!!r.schwarz,overbid:r.overbid,spitzeOK:!!r.spitzeOK,totals:P.scores.slice(),wl:[P.won.slice(),P.lost.slice()],
    dealt:S.dealt,status:S.status.slice(),declPts,myPts:d===0?declPts:120-declPts-(S.game.type==='null'?0:0),coach:coachText(r),myStatus:S.status[0]});
   P.dealer=(P.dealer+1)%3;save()}
  S.lastDelta=[0,0,0];S.lastDelta[d]=S.practice?0:r.score}
@@ -984,7 +999,7 @@ async function showResult(){const r=S.result;const d=r.d;const meWin=(d===0&&r.w
  openOverlay(`<div class="result parch"><div class="l"><h2>${title}</h2>
   <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;justify-content:center">
   <div style="text-align:center;font-size:clamp(13px,3vh,17px)">${mcards(S.skatFinal)}<div>${S.game.hand?'Skat (Hand)':'Gedrückt'}</div><div style="margin-top:8px">${mcards(S.skat)}</div><div>Gefunden</div></div>
-  <table class="calcT" style="flex:1;min-width:200px"><tr class="hd"><td colspan="2">${gameName(r.g)}</td></tr>${rows}${r.overbid?'<tr><td colspan="2" style="color:#a01010;text-align:center">Überreizt!</td></tr>':''}${r.g.spitze||r.spitzeOK?`<tr><td colspan="2" style="text-align:center;color:${r.spitzeOK?'#1d7a2e':'#a01010'}">${r.spitzeOK?'Spitze! Letzter Stich mit '+(spitzeCard(r.g).r==='B'?SN[spitzeCard(r.g).s]+'-Bube':'der Trumpf-7'):'Angesagte Spitze verloren!'}</td></tr>`:''}<tr class="tot"><td colspan="2">${r.score>0?'+':''}${r.score} Punkte</td></tr></table></div>
+  <table class="calcT" style="flex:1;min-width:200px"><tr class="hd"><td colspan="2">${gameName(r.g)}</td></tr>${rows}${r.overbid?'<tr><td colspan="2" style="color:#a01010;text-align:center">Überreizt!</td></tr>':''}${r.g.spitze||r.spitzeOK?`<tr><td colspan="2" style="text-align:center;color:${r.spitzeOK?'#1d7a2e':'#a01010'}">${r.spitzeOK?'Spitze! Letzter Stich mit '+(spitzeCard(r.g).r==='B'?SN[spitzeCard(r.g).s]+'-Bube':'der Trumpf-7'):'Angesagte Spitze verloren!'}</td></tr>`:''}${r.kontra?`<tr><td>${r.won?'Gewonnen':'Verloren ('+(r.value*2)+')'} × ${r.re?'Kontra × Re':'Kontra'}</td><td>×${r.kf}</td></tr>`:''}<tr class="tot"><td colspan="2">${r.score>0?'+':''}${r.score} Punkte</td></tr></table></div>
   ${extra}${S.practice?'<p style="text-align:center;color:#a0521d">Übungsspiel – zählt nicht</p>':''}
   <div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rRep">Wiederholen</button></div></div>
   <div class="r"><div class="emo">${meWin?'🏆':'🌴'}</div><div class="bigscore">${S.practice?'—':(d===0?(r.score>0?'+':'')+r.score:(meWin?'Super!':'Schade'))}</div><button class="pill" id="rGo">Weiter</button></div></div>`);
@@ -1014,7 +1029,7 @@ function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{da
    <tr>${P.names.map(()=>'<th>Punkte</th><th class="v">Gewonnen</th><th class="v">Verloren</th>').join('')}</tr></thead>`;
   const body=P.history.map(h=>{if(h.passed)return`<tr><td>${h.no}</td><td colspan="11"><i>eingepasst</i></td>${[0,1,2].map(()=>'<td></td><td></td><td></td>').join('')}</tr>`;
    const g=h.g;const nul=g.type==='null';
-   return`<tr class="${h.won?'':'lost'}"><td>${h.no}</td><td>${gameIcon(g)}</td><td>${!nul&&h.sp&&h.sp.mit?h.sp.n:''}</td><td>${!nul&&h.sp&&!h.sp.mit?h.sp.n:''}</td><td>${X(g.hand)}</td><td>${X(h.schneider)}</td><td>${X(g.schneiderA)}</td><td>${X(h.schwarz)}</td><td>${X(g.schwarzA)}</td><td>${X(g.ouvert)}</td><td>${[h.overbid?'überreizt':'',g.spitze?'Spitze angesagt':h.spitzeOK?'Spitze':'',g.type==='saxon'?'Sächs.':'',nul?'Null':''].filter(Boolean).join(' ')}</td><td>${h.won?'':'−'}${h.won?h.value:2*h.value}</td>
+   return`<tr class="${h.won?'':'lost'}"><td>${h.no}</td><td>${gameIcon(g)}</td><td>${!nul&&h.sp&&h.sp.mit?h.sp.n:''}</td><td>${!nul&&h.sp&&!h.sp.mit?h.sp.n:''}</td><td>${X(g.hand)}</td><td>${X(h.schneider)}</td><td>${X(g.schneiderA)}</td><td>${X(h.schwarz)}</td><td>${X(g.schwarzA)}</td><td>${X(g.ouvert)}</td><td>${[h.overbid?'überreizt':'',g.spitze?'Spitze angesagt':h.spitzeOK?'Spitze':'',g.type==='saxon'?'Sächs.':'',h.re?'Kontra Re':h.kontra?'Kontra':'',nul?'Null':''].filter(Boolean).join(' ')}</td><td>${h.won?'':'−'}${Math.abs(h.score)}</td>
     ${[0,1,2].map(i=>i===h.d?`<td class="pc">${h.totals[i]}</td><td>${h.won?h.wl[0][i]:''}</td><td>${h.won?'':h.wl[1][i]}</td>`:'<td></td><td></td><td></td>').join('')}</tr>`}).join('')||`<tr><td colspan="21" style="padding:20px">Noch keine Spiele – viel Glück!</td></tr>`;
   return`<table class="list">${head}<tbody>${body}</tbody><tfoot><tr><td colspan="12" style="background:transparent;color:#5b4630;font-size:14px;text-align:right">Spielliste vom ${dt}</td>${P.scores.map(s=>`<td colspan="3">${s}</td>`).join('')}</tr></tfoot></table>
    <div class="row"><button class="pill sm tan" id="newList">Neue Liste</button></div>`}
@@ -1028,7 +1043,7 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  <div class="row"><button class="pill sm" id="mGo">Weiterspielen</button></div>
  <p class="mh">Thema</p><div class="row">${THEMES.map(([k,l])=>`<button class="chip${curTheme()===k?' sel':''}" data-th="${k}">${l}</button>`).join('')}</div>
  <p class="mh">Spielstärke</p><div class="row">${['Leicht','Gut','Schwer'].map((l,i)=>`<button class="chip${c.level===i?' sel':''}" data-l="${i}">${['🐣','😎','🧠'][i]} ${l}</button>`).join('')}</div>
- <p class="mh">Sonderregeln</p><div class="row">${ch('spitze','Spitze')}${ch('saxon','Sächsische Spitze')}</div>
+ <p class="mh">Sonderregeln</p><div class="row">${ch('spitze','Spitze')}${ch('saxon','Sächsische Spitze')}${ch('kontra','Kontra & Re')}</div>
  <p class="mh">Ton</p><div class="row">${ch('sfx','Kartengeräusche')}${ch('music','Musik')}${ch('amb','Meer & Möwen')}${ch('voice','Stimmen')}</div>
  <p class="mh">Ansicht</p><div class="row">${ch('four','Vierfarbenblatt')}${ch('fast','Schnelles Tempo')}</div>
  <div class="row"><button class="pill sm tan" id="mRules">Regeln</button><button class="pill sm tan" id="mList">Spielliste</button></div>
@@ -1050,6 +1065,7 @@ function openRules(){openOverlay(`<div class="panel rule"><h2>Skatregeln (ISkO)<
 <h3>Wertung</h3><p>Gewonnen: + Spielwert. Verloren: − doppelter Spielwert (nur beim Alleinspieler).</p>
 <h3>Sonderregel: Spitze</h3><p>Wer den niedrigsten Trumpf hält (Trumpf-7 im Farbspiel, Karo-Bube im Grand, Kreuz-Bube in der Sächsischen Spitze), darf „mit Spitze“ ansagen: Er muss den <b>letzten Stich mit genau dieser Karte</b> machen. Macht der Alleinspieler den letzten Stich mit dieser Karte, zählt <b>Spitze +1</b> – automatisch, auch ohne Ansage. Wer die Spitze vorher <b>ansagt</b>, bekommt <b>Spitze + angesagt = +2</b>; klappt es dann nicht, ist das Spiel verloren. Hand oder mit Skat erlaubt.</p>
 <h3>Sonderregel: Sächsische Spitze</h3><p>Ein „umgedrehter Grand“, Grundwert 20: nur Buben sind Trumpf, aber in umgekehrter Reihenfolge – <b>Karo-Bube ist der höchste</b>, dann Herz, Pik, Kreuz. In den Farben sticht die <b>7 am höchsten</b>: 7 8 9 D K 10 A. Die Augen der Karten bleiben gleich. Spitzen zählen vom Karo-Buben abwärts.</p>
+<h3>Sonderregel: Kontra & Re</h3><p>Nach der Spielansage darf ein Gegenspieler vor dem ersten Stich <b>„Kontra!“</b> sagen, wenn er glaubt, dass der Alleinspieler verliert. Der Alleinspieler kann mit <b>„Re!“</b> antworten. Kontra verdoppelt das Ergebnis, Kontra und Re vervierfachen es – gewonnen wie verloren.</p>
 <h3>Spielstärke</h3><p>🐣 Leicht: Gegner machen öfter Fehler und reizen wild. 😎 Gut: solide Kneipenspieler. 🧠 Schwer: Gegner zählen Karten und simulieren hunderte mögliche Kartenverteilungen vor jedem Zug (auch der 💡-Tipp nutzt das).</p>
 <h3>Bedienung</h3><p>Karte antippen zum Ausspielen · 💡 Tipp · ↻ letzter Stich · ⏩ Tempo · 👤 Spielliste & Coach.</p>
 <div class="row"><button class="pill sm" id="rOk">OK</button></div></div>`);$('#rOk').onclick=closeOverlay}
