@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.33.1";
+const APP_VERSION = "2.34.0";
 const CHANGELOG = [
+  {
+    version: "2.34.0",
+    date: "2026-11-02",
+    at: "2026-11-02T21:10:00Z",
+    title: "Skat: your own players and fonts",
+    changes: [
+      "🃏 Skat am Strand v1.9.0: rename the players and change their skin, hair, shirt, beard, glasses and voice",
+      "Pick a font (round, classic, funny, Western, space, Vegas or matching the theme) and text size S to XL"
+    ]
+  },
   {
     version: "2.33.1",
     date: "2026-11-02",

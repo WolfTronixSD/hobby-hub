@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.34.0 (2026-11-02): Skat players and fonts
+
+- skat/index.html v1.9.0: "Spieler anpassen" (names, skin/hair/shirt swatches, beard/glasses/freckles toggles, male/female voice) via SVG recoloring; "Schrift & Größe" with Google Fonts loaded on demand and a --uis size multiplier.
+
 ## 2.33.1 (2026-11-02): Skat version number
 
 - skat/index.html: SKAT_VERSION 1.8.1 shown in the Skat menu title and rules; new "Was ist neu" panel with the game's release history.
