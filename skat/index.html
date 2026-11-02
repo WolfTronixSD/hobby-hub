@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.9.1">
+<meta name="version" content="1.10.0">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -297,8 +297,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.9.1';
+const SKAT_VERSION='1.10.0';
 const SKAT_CHANGES=[
+ ['1.10.0','2026-11-02','🗣️ Dialekte: Badisch, Schwäbisch, Kölsch und Bayrisch · Kartengeräusch lauter und voller, Töne auch bei iPhone-Stummschalter'],
  ['1.9.1','2026-11-02','Runde Knöpfe nie mehr unter den Karten versteckt (iPhone mit Notch)'],
  ['1.9.0','2026-11-02','👤 Spieler anpassen: Namen, Haut, Haare, Shirt, Bart/Brille/Sommersprossen, Männer- oder Frauenstimme · 🔤 Schrift (Rund, Klassisch, Lustig, Western, Weltraum, Vegas, passend zum Thema) und Größe S–XL'],
  ['1.8.1','2026-11-02','Versionsnummer und „Was ist neu“ im Menü'],
@@ -687,8 +688,9 @@ function mcards(cards){return `<span class="mcs">${cards.map(c=>`<span class="mc
 
 /* ---------- sound & fx ---------- */
 let AC=null,NOISE=null,amb=null,MASTER=null,MUS=null;
-function ac(){if(TURBO||P.cfg.muted||!(P.cfg.sfx||P.cfg.amb||P.cfg.music))return null;try{if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();const n=AC.sampleRate*2;NOISE=AC.createBuffer(1,n,AC.sampleRate);const d=NOISE.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;
-  MASTER=AC.createGain();MASTER.gain.value=.9;const comp=AC.createDynamicsCompressor();comp.threshold.value=-14;comp.ratio.value=3;MASTER.connect(comp).connect(AC.destination);
+function ac(){try{if(navigator.audioSession&&navigator.audioSession.type!=='playback')navigator.audioSession.type='playback'}catch(e){}
+ if(TURBO||P.cfg.muted||!(P.cfg.sfx||P.cfg.amb||P.cfg.music))return null;try{if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();const n=AC.sampleRate*2;NOISE=AC.createBuffer(1,n,AC.sampleRate);const d=NOISE.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;
+  MASTER=AC.createGain();MASTER.gain.value=1;const comp=AC.createDynamicsCompressor();comp.threshold.value=-14;comp.ratio.value=3;MASTER.connect(comp).connect(AC.destination);
   const rl=AC.sampleRate*.5,ir=AC.createBuffer(2,rl,AC.sampleRate);for(let ch=0;ch<2;ch++){const x=ir.getChannelData(ch);for(let i=0;i<rl;i++)x[i]=(Math.random()*2-1)*Math.pow(1-i/rl,3.2)*(i<AC.sampleRate*.012?.3:1)}
   const rev=AC.createConvolver();rev.buffer=ir;const wet=AC.createGain();wet.gain.value=.06;MASTER.connect(rev).connect(wet).connect(comp)}
  if(AC.state==='suspended')AC.resume()}catch(e){return null}return AC}
@@ -697,10 +699,13 @@ function nsrc(a){const s=a.createBufferSource();s.buffer=NOISE;return s}
 function env(g,t,peak,att,dec){g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(peak,t+att);g.gain.exponentialRampToValueAtTime(.0001,t+att+dec)}
 function nburst(a,t,type,f1,f2,peak,att,dec,q=.8,pan=0){const s=nsrc(a),f=a.createBiquadFilter(),g=a.createGain();f.type=type;f.Q.value=q;f.frequency.setValueAtTime(f1,t);if(f2)f.frequency.exponentialRampToValueAtTime(f2,t+att+dec);s.connect(f).connect(g).connect(outFor(a,pan));env(g,t,peak,att,dec);s.start(t,Math.random()*1.5);s.stop(t+att+dec+.05)}
 const SEATPAN=[0,-.55,.55];
-function sndCard(seat=0){if(!P.cfg.sfx)return;const a=ac();if(!a)return;const t=a.currentTime+.05,r=.92+Math.random()*.16,pan=(SEATPAN[seat]||0)*.5;
- nburst(a,t,'highpass',1800*r,0,.5,.001,.018,.5,pan);
- nburst(a,t,'bandpass',900*r,0,.35,.0015,.035,1.4,pan);
- nburst(a,t+.003,'lowpass',320,0,.18,.002,.045,.7,pan)}
+function sndCard(seat=0){if(!P.cfg.sfx)return;const a=ac();if(!a)return;const t=a.currentTime+.02,r=.92+Math.random()*.16,pan=(SEATPAN[seat]||0)*.5;
+ nburst(a,t,'bandpass',1800*r,4200*r,.22,.03,.07,.9,pan);               // card swishes through the air
+ const t2=t+.09;
+ nburst(a,t2,'bandpass',3000*r,0,1,.0015,.03,.8,pan);                   // crisp slap
+ nburst(a,t2,'bandpass',1100*r,0,.75,.002,.07,1.6,pan);                 // cardboard body
+ nburst(a,t2,'lowpass',380,0,.55,.003,.09,.8,pan);                      // knock on the table
+ const o=a.createOscillator(),og=a.createGain();o.frequency.setValueAtTime(190*r,t2);o.frequency.exponentialRampToValueAtTime(80,t2+.08);o.connect(og).connect(outFor(a,pan));env(og,t2,.3,.003,.09);o.start(t2);o.stop(t2+.14)}
 function sndSweep(w=0){if(!P.cfg.sfx)return;const a=ac();if(!a)return;const t=a.currentTime,pan=(SEATPAN[w]||0)*.5;nburst(a,t,'bandpass',1200,2400,.035,.04,.14,.8,pan);nburst(a,t+.17,'highpass',1600,0,.25,.0015,.02,.5,pan);nburst(a,t+.17,'bandpass',700,0,.15,.002,.03,1.4,pan)}
 function sndShuffle(){if(!P.cfg.sfx)return;const a=ac();if(!a)return;let t=a.currentTime+.02;
  for(let k=0;k<2;k++){let dt=.028;for(let i=0;i<34;i++){const pn=(i%2?.25:-.25);nburst(a,t,'highpass',2800+Math.random()*1800,0,.05+Math.random()*.05,.0015,.016,.7,pn);nburst(a,t,'bandpass',700,0,.03,.002,.02,2,pn);t+=dt;dt=Math.max(.011,dt*.955)}
@@ -715,7 +720,7 @@ function sndLose(){if(!P.cfg.sfx)return;const a=ac();if(!a)return;const t=a.curr
 function sndTap(){if(!P.cfg.sfx)return;const a=ac();if(!a)return;mallet(a,1318.5,a.currentTime,.035,0,.25)}
 function sndPling(){if(!P.cfg.sfx)return;const a=ac();if(!a)return;const t=a.currentTime;mallet(a,1046.5,t,.045,0,.5);mallet(a,1568,t+.07,.035,0,.6)}
 /* themed music */
-function startMusic(){if(MUS||!P.cfg.music||TURBO)return;const a=ac();if(!a)return;const bus=a.createGain();bus.gain.value=.0001;bus.gain.exponentialRampToValueAtTime(.32,a.currentTime+4);bus.connect(MASTER);
+function startMusic(){if(MUS||!P.cfg.music||TURBO)return;const a=ac();if(!a)return;const bus=a.createGain();bus.gain.value=.0001;bus.gain.exponentialRampToValueAtTime(.24,a.currentTime+4);bus.connect(MASTER);
  const t0=curTheme();
  const tone=(f,t,v,dd,type='sine',att=.008,pan=0,lp)=>{const os=a.createOscillator(),g=a.createGain();os.type=type;os.frequency.value=f;let n=os;if(lp){const fl=a.createBiquadFilter();fl.type='lowpass';fl.frequency.value=lp;os.connect(fl);n=fl}
   const dest=pan&&a.createStereoPanner?(()=>{const p=a.createStereoPanner();p.pan.value=pan;p.connect(bus);return p})():bus;n.connect(g).connect(dest);env(g,t,v,att,dd);os.start(t);os.stop(t+att+dd+.1)};
@@ -806,7 +811,7 @@ const SAYS={yes:{1:['ja','hab ich','geht','jo','auch'],2:['ja','klar','hab ich',
  space:{yes:{1:['blörp ja','positiv'],2:['bestätigt','affirmativ']},no:{1:['blörp nein','negativ'],2:['abgebrochen','Mission abgebrochen']}},
  vegas:{yes:{1:['ich geh mit','ich erhöhe'],2:['ich bin dabei','na logo']},no:{1:['ich bin raus','die Bank gewinnt'],2:['ich steig aus','fold']}}};
 function sayBid(seat,val){if(!seat)return;let w=BIDWORD[val]||String(val);if(Array.isArray(w))w=Math.random()<.55?w[1]:w[0];say(seat,w)}
-function sayAnswer(seat,yes){if(!seat)return;const t=SAYS[curTheme()];const pool=SAYS[yes?'yes':'no'][seat].concat(t?t[yes?'yes':'no'][seat]:[]);const w=pick(pool);bubble(seat,w.charAt(0).toUpperCase()+w.slice(1),1400);say(seat,w)}
+function sayAnswer(seat,yes){if(!seat)return;{const dw=Math.random()<.85?diaPick(yes?'yes':'no'):null;if(dw){bubble(seat,dw.charAt(0).toUpperCase()+dw.slice(1),1400);say(seat,dw);return}}const t=SAYS[curTheme()];const pool=SAYS[yes?'yes':'no'][seat].concat(t?t[yes?'yes':'no'][seat]:[]);const w=pick(pool);bubble(seat,w.charAt(0).toUpperCase()+w.slice(1),1400);say(seat,w)}
 const QUIPS={beach:{1:{pass:['Ich pass.','Weg!','Nee, lass mal.'],big:['Ich bin noch dabei!','Na klar!','Immer weiter!'],winT:['Danke schön!','Den nehm ich mit!','Hehe, meiner!','Schön fett!','Wer schreibt, der bleibt!'],lostT:['Mist!','Na warte!','Hmpf.'],won:['Gelernt ist gelernt!','So spielt man Skat!','Ha! Wie früher!'],lost:['Das war Pech.','Die Karten waren gegen mich!','Ich brauch nen neuen Cocktail.'],beat:['Den hamm wir!','Zusammen sind wir stark!'],greet:['Moin! Achtzehn, zwanzig, zwo, null, vier!','Na, dann mischen wir mal!']},
  2:{pass:['Passe.','Ohne mich.','Nö.'],big:['Hihi, ja!','Logisch!','Klar doch!'],winT:['Juhu!','Meiner!','Danke für die Augen!'],lostT:['Menno!','Och nee!','Frechheit!'],won:['Gewonnen, juhu!','Ich liebe Skat!','Das war einfach!'],lost:['Uff, verloren.','Nächstes Mal!','Ich geh schwimmen.'],beat:['Gemeinsam stark!','Ätsch!'],greet:['Hallo ihr zwei! Sonne, Strand und Skat!']}},
  west:{1:{winT:['Yiihaa!','Der Sheriff kassiert!','Schneller als mein Schatten!','Hände hoch, das sind meine Augen!'],lostT:['Verdammte Klapperschlange!','Grrr, Banditen!','Bei meinen Sporen!'],won:['Und jetzt einen Whiskey!','Ich bin der schnellste Skatspieler im Westen!'],lost:['Mein Pferd hätte besser gespielt.','Ich reite in den Sonnenuntergang...'],beat:['Den haben wir eingefangen, Partner!'],big:['Ich lass mich nicht vertreiben!'],greet:['Howdy, Partner! Hier wird scharf gereizt.']},
@@ -815,7 +820,32 @@ const QUIPS={beach:{1:{pass:['Ich pass.','Weg!','Nee, lass mal.'],big:['Ich bin 
   2:{winT:['Stich erfasst.','Houston, ich hab den Stich!','Treffer.'],lostT:['Fehler. Fehler.','Schilde runter!'],won:['Berechnung korrekt. Gewonnen.'],lost:['Systemabsturz.','Neustart erforderlich.'],beat:['Ziel neutralisiert.'],big:['Schilde hoch!'],greet:['Countdown läuft. Drei, zwei, eins, Skat!']}},
  vegas:{1:{winT:['Jackpot, Baby!','Das Haus gewinnt!','Danke, danke, vielen Dank!'],lostT:['Da waren die Würfel gegen mich.','Ach du heiliger Einarmiger Bandit!'],won:['Viva Skat Vegas!','Ich bin der König von Vegas!'],lost:['Alles verspielt... wie immer.','Ich brauche einen Kredit.'],beat:['Die Bank ist gesprengt!'],big:['Alles auf Kreuz!'],greet:['Willkommen in Vegas, Baby! Heute spielen wir um die Ehre.']},
   2:{winT:['Bling bling!','Jackpot!','Glitzer!'],lostT:['Ach, Pech im Spiel...','Mein Lippenstift ist schuld.'],won:['Champagner für alle!','Showtime!'],lost:['Morgen sprengen wir die Bank.'],beat:['Rien ne va plus!'],big:['Ich setze alles!'],greet:['Showtime! Die Karten glitzern heute.']}}};
-function quip(seat,k,p=.5){if(seat===0||Math.random()>p)return;const t=curTheme();const th=(QUIPS[t]||{})[seat]||{};const base=QUIPS.beach[seat];
+/* ---------- dialects ---------- */
+const DIALECTS=[['hoch','Hochdeutsch'],['badisch','Badisch'],['schwaebisch','Schwäbisch'],['koelsch','Kölsch'],['bayrisch','Bayrisch']];
+const DIA={
+ badisch:{yes:['jo','hajo','jo gell','sowieso'],no:['nä','i bass','des mach i ned','ohne mi'],
+  winT:['Des isch meiner!','Hajo, so goht des!','Do guck her!','Gell, do schausch!'],lostT:['Jesses!','Ha noi!','So ä Mischt!','Oh je, oh je'],
+  won:['Hajo, gwonne!','Des hab i guet gmacht, gell?','So spielt mr in Bade!'],lost:['Ach Gottele, verlore.','Do kasch nix mache.','Jetzt brauch i ä Viertele.'],
+  beat:['Gell, den hän mir!','Mir zwei, mir kenne des!'],big:['I bin no debei!','Ha klar!'],greet:['Grüß Gott mitnand! Jetzt wird gspielt, gell!','Salli zämme! Mir fange a!'],
+  kontra:['Kontra, gell!','Kontra! Des schaffsch nie!'],re:['Re! Des glaubsch!','Re, jetzt grad!']},
+ schwaebisch:{yes:['jo','hano, jo','freilich','gwieß'],no:['noi','i bass','des lass i bleiba','ohne mi'],
+  winT:['Hano! Des isch meiner!','Schaffe, schaffe, Stich nehme!','Gell, do guckscht!'],lostT:['Heilandsack!','So ebbes!','Jetzetle!','Ha noi!'],
+  won:['Gwonne, ond koin Pfennig verschenkt!','Des hot sich glohnt!','Mir Schwoba könnet alles!'],lost:['Jetzt han i des Spiel verbockt.','Des koscht mi a Vermöga!','Mei Schpätzle send kalt worda.'],
+  beat:['Mir zwoi send halt guat!','Gell, so goht des!'],big:['Do gang i no mit!','Hano, freilich!'],greet:['Griaß Gott! Mir spielet, aber net um Geld, gell?','Hallole mitnand!'],
+  kontra:['Kontra! Des schaffscht du nie!','Kontra, gell!'],re:['Re! Do guckscht!','Re, jetzetle!']},
+ koelsch:{yes:['jo','jo, klor','dat mäht nix','sicher dat'],no:['nä','ich bin drusse','loss mer dat','nä, nä'],
+  winT:['Dä is minge!','Ach du jeck!','Jitz jeiht et loss!','Alaaf!'],lostT:['Och nä!','Wat e Schmölzje!','Dat is ävver nit nett!','Leck mich en de Täsch!'],
+  won:['Et hätt noch immer jot jejange!','Alaaf! Jewonne!','Do laachste dich kapott!'],lost:['Et kütt wie et kütt.','Wat fott es, es fott.','Dat bruch ich jetz e Kölsch.'],
+  beat:['Mer zwei sin de Beste!','Dat wor nix, Jung!'],big:['Ich ben dobei!','Jo, klor!'],greet:['Tach zesamme! Jitz weed jespillt!','Hallo Jecke! Mer fange aan!'],
+  kontra:['Kontra, Jung!','Kontra! Dat jläuvs de doch selvs nit!'],re:['Re! Do staunste!','Re, Jeck!']},
+ bayrisch:{yes:['jo mei','freilich','basst scho','ja, gwiss'],no:['naa','i bin raus','des konnst vergessn','ohne mi'],
+  winT:['Der ghert mia!','Jo mei, so a Stich!','Zefix, is des schee!','Hob di!'],lostT:['Zefix!','Sakra!','Kruzitürken!','Herrschaftszeitn!'],
+  won:['Gwunna! Des gibt a Mass!','Jo mei, wia im Bilderbuach!','Basst scho, gwunna!'],lost:['Verlorn. Jetzt brauch i a Weißbier.','Des war a Schmarrn.','Mei, so is des Lebn.'],
+  beat:['Mia zwoa san unschlagbar!','Schee wars!'],big:['Do bin i no dabei!','Freilich!'],greet:['Servus beinand! Jetzt werd Skat gspuit!','Griaß di! Pack mas!'],
+  kontra:['Kontra, Spezl!','Kontra! Des glaubst doch selba ned!'],re:['Re! Do schaugst!','Re, freilich!']}};
+const dia=()=>DIA[P.cfg.dialect]||null;
+function diaPick(key){const d=dia();return d&&d[key]?d[key][Math.floor(Math.random()*d[key].length)]:null}
+function quip(seat,k,p=.5){if(seat===0||Math.random()>p)return;{const dw=Math.random()<.75?diaPick(k):null;if(dw){bubble(seat,dw,1900);say(seat,dw);return}}const t=curTheme();const th=(QUIPS[t]||{})[seat]||{};const base=QUIPS.beach[seat];
  let pool=th[k]&&(t!=='beach')&&Math.random()<.75?th[k]:(base[k]||th[k]);if(!pool)return;const s=pick(pool);bubble(seat,s,1900);say(seat,s)}
 function emote(seat,kind,ms=1900){if(seat===0)return;const el=$('#av'+seat);el.classList.remove('happy','sad','wow');void el.offsetWidth;el.classList.add(kind);clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove(kind),TURBO?5:ms)}
 document.addEventListener('pointerdown',()=>{ac();startAmbient();startMusic();if(!window._spk&&'speechSynthesis' in window){window._spk=1;try{const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u)}catch(e){}}},{passive:true});
@@ -986,9 +1016,9 @@ function aiWantsRe(d){const g=S.game,h=S.hands[d];if(P.cfg.level===0)return Math
  return strength(h,g)-(g.type==='suit'?7:6.9)>=(P.cfg.level===2?3:3.6)}
 async function kontraPhase(){const d=S.declarer;const defs=[1,2,3].map(i=>(S.dealer+i)%3).filter(x=>x!==d);S.kontraBy=-1;S.re=false;
  for(const x of defs){setTurn(x);let k;if(x===0&&!AUTO){toast('Glaubst du, der Alleinspieler verliert?',2200);k=await humanAsk('Kontra!','Weiter')}else{await think(.6);k=aiWantsKontra(x)}
-  if(k){S.kontraBy=x;bubble(x,'Kontra!',1800);say(x,'Kontra!');emote(d,'wow');break}}
+  if(k){S.kontraBy=x;const kw=(x&&diaPick('kontra'))||'Kontra!';bubble(x,kw,2000);say(x,kw);emote(d,'wow');break}}
  if(S.kontraBy>=0){setTurn(d);let r;if(d===0&&!AUTO){toast(`${NM(S.kontraBy)} sagt Kontra!`,1800);r=await humanAsk('Re!','Nein')}else{await think(.8);r=aiWantsRe(d)}
-  S.re=!!r;if(r){bubble(d,'Re!',1800);say(d,'Re!');emote(S.kontraBy,'wow')}else if(d)quip(d,'lostT',.4)}
+  S.re=!!r;if(r){const rw=(d&&diaPick('re'))||'Re!';bubble(d,rw,2000);say(d,rw);emote(S.kontraBy,'wow')}else if(d)quip(d,'lostT',.4)}
  setTurn(-1);updateInfo();await sleep(400)}
 async function aiDeclarePhase(d){await think(1.2);const ch=aiDeclare(d,S.bid);
  if(ch.disc){bubble(d,'Skat',900);const o=L.origin[d];skatEls.forEach(el=>{setT(el,o[0],o[1],0,.3);el.style.opacity='0'});await sleep(500);showSkat(false);
@@ -1175,6 +1205,7 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  openOverlay(`<div class="panel"><h2>Skat am Strand <small style="font:500 14px system-ui;opacity:.7">v${SKAT_VERSION}</small></h2>
  <div class="row"><button class="pill sm" id="mGo">Weiterspielen</button></div>
  <p class="mh">Thema</p><div class="row">${THEMES.map(([k,l])=>`<button class="chip${curTheme()===k?' sel':''}" data-th="${k}">${l}</button>`).join('')}</div>
+ <p class="mh">Dialekt</p><div class="row">${DIALECTS.map(([k,l])=>`<button class="chip${(c.dialect||'hoch')===k?' sel':''}" data-dia="${k}">${l}</button>`).join('')}</div>
  <p class="mh">Spielstärke</p><div class="row">${['Leicht','Gut','Schwer'].map((l,i)=>`<button class="chip${c.level===i?' sel':''}" data-l="${i}">${['🐣','😎','🧠'][i]} ${l}</button>`).join('')}</div>
  <p class="mh">Sonderregeln</p><div class="row">${ch('spitze','Spitze')}${ch('saxon','Sächsische Spitze')}${ch('kontra','Kontra & Re')}</div>
  <p class="mh">Ton</p><div class="row">${ch('sfx','Kartengeräusche')}${ch('music','Musik')}${ch('amb','Meer & Möwen')}${ch('voice','Stimmen')}</div>
@@ -1184,6 +1215,7 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  <p style="text-align:center;opacity:.7;font-size:13px;margin-top:12px">Tipp: In Safari „Zum Home-Bildschirm“ für Vollbild.<br>Regeländerungen gelten ab dem nächsten Spiel.</p></div>`);
  $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mPl').onclick=openPlayers;$('#mFont').onclick=openFonts;$('#mList').onclick=()=>openSheet('list');
  ov.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{c.theme=b.dataset.th;save();applyTheme();openMenu()});
+ ov.querySelectorAll('[data-dia]').forEach(b=>b.onclick=()=>{c.dialect=b.dataset.dia;save();openMenu();setTimeout(()=>quip(1,'greet',1),300);setTimeout(()=>quip(2,'greet',1),2200)});
  ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{c.level=+b.dataset.l;save();openMenu()});
  ov.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;c[k]=!c[k];save();
   if(k==='four')restyle();if(k==='fast')$('#bFast').classList.toggle('on',c.fast);if(k==='amb'){if(c.amb){ac();startAmbient()}else stopAmbient()}if(k==='music'){if(c.music){ac();startMusic()}else stopMusic()}if(k==='voice'&&!c.voice)try{speechSynthesis.cancel()}catch(e){}

@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.35.0 (2026-11-02): Skat dialects
+
+- skat/index.html v1.10.0: cfg.dialect (hoch/badisch/schwaebisch/koelsch/bayrisch) for answers, quips, Kontra and Re; fuller card sound (swish, slap, body, knock); navigator.audioSession.type = "playback" so Web Audio ignores the silent switch.
+
 ## 2.34.1 (2026-11-02): Skat buttons visible
 
 - skat/index.html v1.9.1: round buttons above the card layer (z-index 80); landscape hand span leaves room for the side button columns and the safe-area inset.
