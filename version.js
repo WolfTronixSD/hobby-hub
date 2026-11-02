@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.34.0";
+const APP_VERSION = "2.34.1";
 const CHANGELOG = [
+  {
+    version: "2.34.1",
+    date: "2026-11-02",
+    at: "2026-11-02T21:20:00Z",
+    title: "Skat buttons always visible",
+    changes: [
+      "🃏 Skat am Strand v1.9.1: the round buttons no longer hide under the cards on iPhones with a notch"
+    ]
+  },
   {
     version: "2.34.0",
     date: "2026-11-02",

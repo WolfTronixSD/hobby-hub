@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.34.1 (2026-11-02): Skat buttons visible
+
+- skat/index.html v1.9.1: round buttons above the card layer (z-index 80); landscape hand span leaves room for the side button columns and the safe-area inset.
+
 ## 2.34.0 (2026-11-02): Skat players and fonts
 
 - skat/index.html v1.9.0: "Spieler anpassen" (names, skin/hair/shirt swatches, beard/glasses/freckles toggles, male/female voice) via SVG recoloring; "Schrift & Größe" with Google Fonts loaded on demand and a --uis size multiplier.
