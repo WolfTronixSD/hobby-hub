@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.32.0 (2026-11-02): Skat am Strand button
+
+- New `skat/index.html`: the single-file Skat game (also published as a Claude artifact), hosted here so it's public and keeps its own score list in localStorage. apps.js: added Skat am Strand (`skat/`, emoji icon) before Claude. sw.js: `/skat/` is left to the network like `/checkup/`, so the game never replaces the hub's saved copy.
+
 ## 2.31.0 (2026-11-01): Skyhawk School button
 
 - apps.js: added Skyhawk School (Jean-Jacques' Skyhawk School, the C172 sim at https://claude.ai/artifact/AZn6qTWHiQgFb2wbS4fYqD) to APPS, after NAV → KMYF. Emoji icon only. It's a private Claude artifact, so it needs a signed-in claude.ai session.

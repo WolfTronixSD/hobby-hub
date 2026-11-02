@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.31.0";
+const APP_VERSION = "2.32.0";
 const CHANGELOG = [
+  {
+    version: "2.32.0",
+    date: "2026-11-02",
+    at: "2026-11-02T18:50:00Z",
+    title: "Skat am Strand button",
+    changes: [
+      "🃏 New Skat am Strand button: play Skat against Andy and Melli with official rules, Spielliste, Coach and three difficulty levels",
+      "Themes: beach, Wild West, space and Las Vegas, with music, sound and German voices",
+      "Sonderregeln Spitze and Sächsische Spitze can be switched on or off in its menu"
+    ]
+  },
   {
     version: "2.31.0",
     date: "2026-11-01",

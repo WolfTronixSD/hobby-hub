@@ -24,6 +24,8 @@ const APPS = [
     url: "https://github.com/WolfTronixSD/SeasonHouse" },
   { id: "karaoke", name: "Karaoke Wolf", sub: "Sing & score", color: "#ec4899", emoji: "🎤",
     url: "https://wolftronixsd.github.io/karaoke-wolf/" },
+  { id: "skat", name: "Skat am Strand", sub: "Skat card game", color: "#16a34a", emoji: "🃏",
+    url: "skat/" },
   { id: "claude", name: "Claude", sub: "AI quick start", color: "#d97757", emoji: "✳️",
     url: "https://claude.ai/new", appLink: "claude://" }
 ];
