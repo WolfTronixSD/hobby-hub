@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.37.0";
+const APP_VERSION = "2.38.0";
 const CHANGELOG = [
+  {
+    version: "2.38.0",
+    date: "2026-11-02",
+    at: "2026-11-03T00:00:00Z",
+    title: "Skat: smarter players and bug reports",
+    changes: [
+      "🃏 Skat am Strand v1.13.0: Andy and Melli no longer throw away a trump ace or ten, or drop a ten on a trick the other side wins",
+      "🐞 Fehler melden: tap a bad move and the players remember to avoid it; copy a report to send to Claude",
+      "Pitch and speaking-speed sliders for each player's voice"
+    ]
+  },
   {
     version: "2.37.0",
     date: "2026-11-02",

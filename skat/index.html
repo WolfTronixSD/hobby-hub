@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.12.0">
+<meta name="version" content="1.13.0">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -246,6 +246,7 @@ html body .result h2{font-size:calc(clamp(20px,5vh,30px)*var(--uis))}html body .
 html body .pname{font-size:calc(18px*var(--uis))}
 .rbtn{z-index:80}#overlay{z-index:500}
 .vsel{font:600 14px system-ui;padding:6px 8px;border-radius:10px;border:2px solid #c8743a;background:#fffaf0;color:#4a3a28;max-width:190px}
+.vr{flex:1;max-width:200px;accent-color:#f08a12}
 #rotateHint{display:none}
 </style>
 </head>
@@ -298,8 +299,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.12.0';
+const SKAT_VERSION='1.13.0';
 const SKAT_CHANGES=[
+ ['1.13.0','2026-11-02','🎚️ Tonhöhe und Sprechtempo für jeden Mitspieler · 🧠 Klügere Mitspieler: kein Trumpf-Ass/-Zehn mehr verschenkt, keine Zehn auf einen Gegnerstich · 🐞 Fehler melden: Mitspieler merken sich dumme Züge, Bericht für Claude kopieren'],
  ['1.12.0','2026-11-02','🎙️ Stimme für jeden Mitspieler selbst wählen (auch heruntergeladene Enhanced/Premium-Stimmen) mit Test-Knopf'],
  ['1.11.0','2026-11-02','🔗 Einstellungen mitnehmen: ein Link nimmt Thema, Dialekt, Spielstärke, Schrift, Namen und Aussehen auf jedes Gerät mit'],
  ['1.10.0','2026-11-02','🗣️ Dialekte: Badisch, Schwäbisch, Kölsch und Bayrisch · Kartengeräusch lauter und voller, Töne auch bei iPhone-Stummschalter'],
@@ -808,7 +810,7 @@ function vGender(seat){return look(seat).voice==='f'?2:1}
 function vScore(v,seat){seat=vGender(seat);return(/premium|enhanced|erweitert|neural|natural|siri/i.test(v.name)?10:0)+((seat===1?MALEV:FEMV).test(v.name)?6:0)+((seat===1?FEMV:MALEV).test(v.name)?-6:0)+(v.localService?1:0)}
 const VP={beach:[0,[.78,.95],[1.25,1.07]],west:[0,[.55,.82],[1.1,.95]],space:[0,[1.9,1.2],[.35,.88]],vegas:[0,[.62,.9],[1.4,1.05]]};
 function say(seat,text){if(!P.cfg.voice||P.cfg.muted||TURBO||AUTO||seat===0||!('speechSynthesis' in window))return;try{if(!VOICES.length)loadVoices();const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';
- const want=look(seat).voiceName;const v=(want&&VOICES.find(x=>x.name===want))||VOICES.slice().sort((x,y)=>vScore(y,seat)-vScore(x,seat))[0];if(v)u.voice=v;const pr=VP[curTheme()][vGender(seat)];u.pitch=pr[0];u.rate=pr[1]*(.97+Math.random()*.06);u.volume=1;speechSynthesis.speak(u)}catch(e){}}
+ const want=look(seat).voiceName;const v=(want&&VOICES.find(x=>x.name===want))||VOICES.slice().sort((x,y)=>vScore(y,seat)-vScore(x,seat))[0];if(v)u.voice=v;const pr=VP[curTheme()][vGender(seat)];const LK=look(seat);u.pitch=Math.max(.1,Math.min(2,pr[0]*(LK.pitchF||1)));u.rate=Math.max(.5,Math.min(1.8,pr[1]*(LK.rateF||1)*(.97+Math.random()*.06)));u.volume=1;speechSynthesis.speak(u)}catch(e){}}
 const BIDWORD={18:'achtzehn',20:'zwanzig',22:['zweiundzwanzig','zwo'],23:['dreiundzwanzig','null'],24:['vierundzwanzig','vier'],27:['siebenundzwanzig','sieben'],30:'dreißig',33:'dreiunddreißig',35:['fünfunddreißig','fünf'],36:['sechsunddreißig','sechs'],40:'vierzig',44:'vierundvierzig',45:'fünfundvierzig',46:'sechsundvierzig',48:'achtundvierzig',50:'fünfzig'};
 const pick=a=>a[Math.floor(Math.random()*a.length)];
 const SAYS={yes:{1:['ja','hab ich','geht','jo','auch'],2:['ja','klar','hab ich','weiter','gerne']},no:{1:['weg','passe','ohne mich','bin raus'],2:['passe','nö','bin raus','weg']},
@@ -893,9 +895,42 @@ function maybeSpitze(seat,ch,bid){const g=ch.game;if(!P.cfg.spitze||!g||g.type==
  const hand=ch.disc?S.hands[seat].concat(S.skat).filter(c=>!ch.disc.includes(c)):S.hands[seat];if(!hand.some(c=>c.id===sc.id))return ch;
  const tn=hand.filter(c=>isTrump(c,g)).length;const sp=spitzen(g.hand?S.hands[seat]:S.hands[seat].concat(S.skat),g);const m=sp.n+1+(g.hand?1:0);
  if((gbase(g)*m<bid&&gbase(g)*(m+2)>=bid&&tn>=5)||(tn>=7&&ch.sc>=2.2)||(P.cfg.level===0&&tn>=5&&Math.random()<.3))g.spitze=true;return ch}
-function aiPlay(seat,forceHard){const legal=legalMoves(S.hands[seat],S.trick,S.game);if(legal.length===1)return legal[0];
+/* ---------- sanity rules + learning from reported mistakes ---------- */
+function moveKey(seat,c){const g=S.game;if(!g)return'';const isD=seat===S.declarer;let sit='lead';
+ if(S.trick.length){const wi=trickWinner(S.trick,g),ws=S.trick[wi].seat;const team=x=>x===S.declarer?0:1;sit=team(ws)===team(seat)?'ownwin':'oppwin';if(S.trick.length===2)sit+='-last'}
+ return `${g.type==='null'?'N':'G'}|${isD?'Alleinspieler':'Gegenspieler'}|${sit}|${isTrump(c,g)?'Trumpf':'Farbe'}|${c.r}`}
+function sane(seat,legal){const g=S.game;if(legal.length<2||!g)return legal;let L=legal;const learn=P.learn||{};
+ const l1=L.filter(c=>!learn[moveKey(seat,c)]);if(l1.length)L=l1;if(g.type==='null')return L;
+ const out=outsideCards(seat),isD=seat===S.declarer;
+ const topT=c=>!out.some(o=>isTrump(o,g)&&power(o,g)>power(c,g));
+ if(!isD&&!S.trick.length){const l2=L.filter(c=>!(isTrump(c,g)&&PTS[c.r]>=10&&!topT(c)));if(l2.length)L=l2}
+ if(S.trick.length===2){const wi=trickWinner(S.trick,g),ws=S.trick[wi].seat;const ownWin=(ws===S.declarer)===isD;
+  if(!ownWin){const beats=c=>{const t2=S.trick.concat([{seat,card:c}]);return trickWinner(t2,g)===2};const losers=L.filter(c=>!beats(c));
+   if(losers.length&&losers.length===L.length){const cheap=losers.filter(c=>PTS[c.r]<10);if(cheap.length)L=cheap}}}
+ return L}
+function logMove(seat,card,key){(S.moveLog=S.moveLog||[]).push({seat,card,key,trick:S.trickNo})}
+function cardTxt(c){return `${['♦','♥','♠','♣'][c.s]}${c.r}`}
+function openReport(onClose){const moves=(S.moveLog||[]).filter(m=>m.seat!==0).slice(-12).reverse();let picked=null;
+ const draw=()=>{openOverlay(`<div class="panel"><h2>🐞 Fehler melden</h2><p>Welcher Zug war dumm? Tippe ihn an. Die Mitspieler merken sich diese Art Zug auf diesem Gerät und machen ihn nicht mehr, wenn es eine bessere Karte gibt.</p>
+  <div class="row">${moves.length?moves.map((m,i)=>`<button class="chip${picked===i?' sel':''}" data-m="${i}">Stich ${m.trick+1}: ${NM(m.seat)} spielt ${cardTxt(m.card)}</button>`).join(''):'<p>Noch keine Züge der Mitspieler in diesem Spiel.</p>'}</div>
+  ${picked!=null?`<p style="text-align:center;font-size:13px">Merkt sich: <b>${moves[picked].key.split('|').slice(1).join(' · ').replace('oppwin','Gegner sticht').replace('ownwin','Partner sticht').replace('lead','spielt aus').replace('-last',' (zuletzt)')}</b> → vermeiden</p>`:''}
+  <div class="row"><button class="pill sm" id="rpSave" ${picked==null?'disabled':''}>Merken</button><button class="pill sm tan" id="rpCopy">Bericht kopieren</button><button class="pill sm tan" id="rpX">Schließen</button></div>
+  <p style="font-size:12px;opacity:.7;text-align:center">„Bericht kopieren“ erstellt einen Text mit Karten und Spielverlauf. Schick ihn an Claude, dann wird die Spiellogik für alle verbessert.${Object.keys(P.learn||{}).length?` · Gemerkte Fehler: ${Object.keys(P.learn).length} <button class="chip" id="rpReset">vergessen</button>`:''}</p></div>`);
+  ov.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{picked=+b.dataset.m;draw()});
+  $('#rpX').onclick=()=>{closeOverlay();if(onClose)onClose()};const rr=$('#rpReset');if(rr)rr.onclick=()=>{P.learn={};save();draw()};
+  $('#rpSave').onclick=()=>{const m=moves[picked];P.learn=P.learn||{};P.learn[m.key]=(P.learn[m.key]||0)+1;save();closeOverlay();if(onClose)setTimeout(onClose,50);toast(`🧠 Gemerkt! ${NM(m.seat)} macht das nicht mehr.`,2200);emote(m.seat,'sad');quip(m.seat,'lostT',1)};
+  $('#rpCopy').onclick=()=>{const txt=reportText(picked!=null?moves[picked]:null);const done=()=>toast('📋 Bericht kopiert – jetzt an Claude schicken',2200);try{navigator.clipboard.writeText(txt).then(done,()=>fallbackCopy(txt,done))}catch(e){fallbackCopy(txt,done)}}};
+ draw()}
+function fallbackCopy(txt,done){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();done()}
+function reportText(m){const g=S.game;const L=[];L.push(`Skat am Strand v${SKAT_VERSION} – Fehlerbericht`);L.push(`Stufe: ${['Leicht','Gut','Schwer'][P.cfg.level]} · Spiel: ${g?gameName(g):'–'} · Reizwert ${S.bid||'–'} · Alleinspieler: ${S.declarer>=0?NM(S.declarer):'–'}`);
+ if(m)L.push(`Gemeldeter Zug: Stich ${m.trick+1}, ${NM(m.seat)} spielt ${cardTxt(m.card)} (${m.key})`);
+ if(S.dealt){L.push('Ausgeteilt:');S.dealt.hands.forEach((h,i)=>L.push(`  ${NM(i)}: ${h.map(id=>cardTxt(DECK.find(c=>c.id===id))).join(' ')}`));L.push(`  Skat: ${S.dealt.skat.map(id=>cardTxt(DECK.find(c=>c.id===id))).join(' ')}`)}
+ if(S.skatFinal&&g&&!g.hand)L.push(`Gedrückt: ${S.skatFinal.map(cardTxt).join(' ')}`);
+ L.push('Stiche:');(S.trickLog||[]).forEach((t,i)=>L.push(`  ${i+1}. ${t.cards.map(x=>NM(x.seat)+' '+cardTxt(x.card)).join(', ')} → ${NM(t.winner)}`));
+ if(S.trick&&S.trick.length)L.push(`  laufend: ${S.trick.map(x=>NM(x.seat)+' '+cardTxt(x.card)).join(', ')}`);return L.join('\n')}
+function aiPlay(seat,forceHard){let legal=legalMoves(S.hands[seat],S.trick,S.game);if(legal.length===1)return legal[0];if(!SIM)legal=sane(seat,legal);if(legal.length===1)return legal[0];
  const lvl=forceHard?2:(window.__seatLevel?window.__seatLevel[seat]:P.cfg.level);
- if(lvl===0&&!SIM&&Math.random()<.35){const l2=spFilter(seat,legal);return l2[Math.floor(Math.random()*l2.length)]}
+ if(lvl===0&&!SIM&&Math.random()<.22){const l2=spFilter(seat,legal);return l2[Math.floor(Math.random()*l2.length)]}
  if(lvl===2&&!SIM)return mcChoose(seat,legal);
  return aiBasic(seat,legal)}
 function spFilter(seat,legal){const g=S.game;if(!(g.spitze||(P.cfg.spitze&&!SIM&&P.cfg.level>0))||g.type==='null'||seat!==S.declarer||S.hands[seat].length<=1)return legal;const sc=spitzeCard(g);const f=legal.filter(c=>c.id!==sc.id);return f.length?f:legal}
@@ -994,7 +1029,7 @@ async function playGame(){
  if(!S.replay)P.gameNo++;BIDS=makeBids();
  dealNew();if(!S.practice)S.dealer=P.dealer;
  S.dealt={hands:S.hands.map(h=>h.map(c=>c.id)),skat:S.skat.map(c=>c.id),dealer:S.dealer};
- Object.assign(S,{kontraBy:-1,re:false,phase:'bid',game:null,declarer:-1,trick:[],played:[],skatFinal:null,lastTrick:null,trickLog:[],lastDelta:null,sel:new Set(),legalSet:null,hintId:null,mode:null,result:null,trickNo:0});
+ Object.assign(S,{moveLog:[],kontraBy:-1,re:false,phase:'bid',game:null,declarer:-1,trick:[],played:[],skatFinal:null,lastTrick:null,trickLog:[],lastDelta:null,sel:new Set(),legalSet:null,hintId:null,mode:null,result:null,trickNo:0});
  S.hands[0]=sortHand(S.hands[0]);clearTable();updatePlates();updateInfo();renderOpen();
  S.coach=evalHand(S.hands[0],0);S.maxBid=[0,1,2].map(i=>evalHand(S.hands[i],riskFor(i)).max);
  sndShuffle();await sleep(TURBO?0:P.cfg.fast?500:900);showSkat(true);renderHand([L.deck[0],L.deck[1],true]);await sleep(700);
@@ -1098,7 +1133,7 @@ async function playPhase(){S.leader=(S.dealer+1)%3;S.won=[[],[],[]];S.tricks=[0,
   if(S.endBy)break;
   if(!legalMoves(S.hands[seat],S.trick,S.game).includes(card))console.error('illegal move',seat,card);
   if(S.trick.length){const led=eff(S.trick[0].card,S.game);if(eff(card,S.game)!==led)S.voids[seat][led]=true}
-  S.hands[seat]=S.hands[seat].filter(c=>c!==card);S.trick.push({seat,card});S.played.push(card);animatePlay(seat,card);renderOpen()}
+  logMove(seat,card,moveKey(seat,card));S.hands[seat]=S.hands[seat].filter(c=>c!==card);S.trick.push({seat,card});S.played.push(card);animatePlay(seat,card);renderOpen()}
  setTurn(-1);S.mode=null;S.legalSet=null;renderHand();renderOpen()}
 function claimRest(){const rest=[0,1,2].flatMap(x=>S.hands[x]);const n=S.hands[0].length;S.won[0].push(...rest);S.tricks[0]+=n;
  for(let k=0;k<n;k++){const cards=[0,1,2].map(x=>({seat:x,card:S.hands[x][k]})).filter(x=>x.card);S.trickLog.push({leader:0,cards,winner:0})}
@@ -1108,10 +1143,10 @@ function openActions(){const play=S.phase==='play',myTurn=S.mode==='play',d=S.de
  const canSchenk=play&&!S.trickLog.length&&S.game&&!S.endBy;const canUndo=myTurn&&!!S.undoSnap;const claim=myTurn&&canClaim();
  openOverlay(`<div class="actp"><button class="pill" id="aSch" ${canSchenk?'':'disabled'}>${amD?'Aufgeben':'Schenken'}</button><button class="pill" id="aRest" ${claim?'':'disabled'}>Rest zu mir</button>
   <button class="pill" id="aAuto" ${play?'':'disabled'}>${S.autoPlay?'Selbst spielen':'Automatisch spielen'}</button><button class="pill" id="aUndo" ${canUndo?'':'disabled'}>Zug zurücknehmen</button>
-  <button class="pill tan sm" id="aFast">${P.cfg.fast?'🐢 Normales Tempo':'⚡ Schnelles Tempo'}</button></div>`);
+  <button class="pill tan sm" id="aBug">🐞 Fehler melden</button><button class="pill tan sm" id="aFast">${P.cfg.fast?'🐢 Normales Tempo':'⚡ Schnelles Tempo'}</button></div>`);
  ov.classList.add('left');ov.onclick=e=>{if(e.target===ov)closeActions()};
  $('#aFast').onclick=()=>{P.cfg.fast=!P.cfg.fast;save();$('#bFast').classList.toggle('on',P.cfg.fast);closeActions()};
- $('#aUndo').onclick=()=>{closeActions();give('undo')};
+ $('#aUndo').onclick=()=>{closeActions();give('undo')};$('#aBug').onclick=()=>{closeActions();openReport()};
  $('#aRest').onclick=()=>{closeActions();give('claim')};
  $('#aAuto').onclick=()=>{S.autoPlay=!S.autoPlay;closeActions();toast(S.autoPlay?'🤖 Ich spiele für dich':'✋ Du spielst wieder',1300);if(S.autoPlay&&S.mode==='play')give('auto')};
  $('#aSch').onclick=()=>{closeActions();amD?concede():offerSchenken()}}
@@ -1169,10 +1204,10 @@ async function showResult(){const r=S.result;const d=r.d;const meWin=(d===0&&r.w
   <div style="text-align:center;font-size:clamp(13px,3vh,17px)">${mcards(S.skatFinal)}<div>${S.game.hand?'Skat (Hand)':'Gedrückt'}</div><div style="margin-top:8px">${mcards(S.skat)}</div><div>Gefunden</div></div>
   <table class="calcT" style="flex:1;min-width:200px"><tr class="hd"><td colspan="2">${gameName(r.g)}</td></tr>${rows}${r.overbid?'<tr><td colspan="2" style="color:#a01010;text-align:center">Überreizt!</td></tr>':''}${r.g.spitze||r.spitzeOK?`<tr><td colspan="2" style="text-align:center;color:${r.spitzeOK?'#1d7a2e':'#a01010'}">${r.spitzeOK?'Spitze! Letzter Stich mit '+(spitzeCard(r.g).r==='B'?SN[spitzeCard(r.g).s]+'-Bube':'der Trumpf-7'):'Angesagte Spitze verloren!'}</td></tr>`:''}${r.kontra?`<tr><td>${r.won?'Gewonnen':'Verloren ('+(r.value*2)+')'} × ${r.re?'Kontra × Re':'Kontra'}</td><td>×${r.kf}</td></tr>`:''}<tr class="tot"><td colspan="2">${r.score>0?'+':''}${r.score} Punkte</td></tr></table></div>
   ${extra}${S.practice?'<p style="text-align:center;color:#a0521d">Übungsspiel – zählt nicht</p>':''}
-  <div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rRep">Wiederholen</button></div></div>
+  <div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rRep">Wiederholen</button><button class="pill sm tan" id="rBug">🐞</button></div></div>
   <div class="r"><div class="emo">${meWin?'🏆':'🌴'}</div><div class="bigscore">${S.practice?'—':(d===0?(r.score>0?'+':'')+r.score:(meWin?'Super!':'Schade'))}</div><button class="pill" id="rGo">Weiter</button></div></div>`);
  return new Promise(res=>{$('#rGo').onclick=()=>{closeOverlay();res()};$('#rHist').onclick=()=>showTricks(()=>showResult().then(res));
-  $('#rRep').onclick=()=>{S.replay=S.dealt;closeOverlay();res()};if(AUTO)setTimeout(()=>{closeOverlay();res()},TURBO?5:400)})}
+  $('#rRep').onclick=()=>{S.replay=S.dealt;closeOverlay();res()};$('#rBug').onclick=()=>openReport(()=>showResult().then(res));if(AUTO)setTimeout(()=>{closeOverlay();res()},TURBO?5:400)})}
 function showTricks(back){const log=S.trickLog;openOverlay(`<div class="parch"><div class="tabs"><button class="tab on">Spielverlauf</button><button class="tabx" id="tx">✕</button></div><div class="tbody">
  ${log.map((t,i)=>`<div class="prow"><div class="who"><small>Stich ${i+1}</small><b>${NM(t.winner)}</b></div>${t.cards.map(x=>`<div style="text-align:center;font-size:13px">${mcards([x.card])}<div>${NM(x.seat)}</div></div>`).join('')}<div style="margin-left:auto">${cardPts(t.cards.map(x=>x.card))} Augen</div></div>`).join('')}
  <p style="text-align:center">Skat: ${mcards(S.skatFinal)} (${cardPts(S.skatFinal)} Augen)</p></div></div>`);$('#tx').onclick=back}
@@ -1228,9 +1263,12 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
 function openPlayers(){loadVoices();const c=P.cfg;c.look=c.look||{};const sw=(arr,k,key,i0)=>arr.map((x,i)=>`<button class="sw${(look(k)[key])===i?' sel':''}" data-k="${k}" data-key="${key}" data-i="${i}" title="${x[0]}" style="background:linear-gradient(${x[1]},${x[2]})"></button>`).join('');
  const tg=(k,key,l)=>`<button class="chip${look(k)[key]!==false?' sel':''}" data-tg="${key}" data-k="${k}">${l}</button>`;
  const sec=k=>`<div class="psec"><input class="pname" data-n="${k}" maxlength="12" value="${P.names[k].replace(/"/g,'')}"><div class="pl">Haut</div><div class="sws">${sw(SKINS,k,'skin')}</div><div class="pl">Haare</div><div class="sws">${sw(HAIRS,k,'hair')}</div><div class="pl">Shirt (Strand)</div><div class="sws">${sw(SHIRTS,k,'shirt')}</div>
-  <div class="row">${k===1?tg(1,'beard','Bart'):tg(2,'freckles','Sommersprossen')}${tg(k,'glasses','Brille')}<button class="chip sel" data-v="${k}">${look(k).voice==='f'?'👩 hoch':'👨 tief'}</button></div>
-  <div class="pl">Stimme</div><div class="row" style="margin-top:2px"><select class="vsel" data-k="${k}"><option value="">Automatisch (beste)</option>${VOICES.map(v=>`<option value="${v.name.replace(/"/g,'&quot;')}"${look(k).voiceName===v.name?' selected':''}>${v.name}${/premium|enhanced|erweitert/i.test(v.name)?' ⭐':''}</option>`).join('')}</select><button class="chip" data-test="${k}">▶ Test</button></div></div>`;
- openOverlay(`<div class="panel"><h2>Spieler anpassen</h2><p class="pl" style="text-align:center">Du</p><div class="row"><input class="pname" data-n="0" maxlength="12" value="${P.names[0].replace(/"/g,'')}"></div><div class="pgrid"><div><p class="pl" style="text-align:center">Links</p>${sec(1)}</div><div><p class="pl" style="text-align:center">Rechts</p>${sec(2)}</div></div>
+  <div class="row">${k===1?tg(1,'beard','Bart'):tg(2,'freckles','Sommersprossen')}${tg(k,'glasses','Brille')}</div>
+  <div class="pl">Stimme: Tonhöhe ${look(k).voice==='f'?'(hoch)':'(tief)'} · ${(look(k).pitchF||1).toFixed(1)}×</div><div class="row" style="margin-top:2px"><span>🐻</span><input type="range" class="vr" data-k="${k}" data-p="pitchF" min="0.4" max="2" step="0.1" value="${look(k).pitchF||1}"><span>🐭</span></div>
+  <div class="pl">Sprechtempo · ${(look(k).rateF||1).toFixed(1)}×</div><div class="row" style="margin-top:2px"><span>🐢</span><input type="range" class="vr" data-k="${k}" data-p="rateF" min="0.6" max="1.6" step="0.1" value="${look(k).rateF||1}"><span>🐇</span></div>
+  <div class="row"><button class="chip sel" data-v="${k}">${look(k).voice==='f'?'👩 Frauen-Grundton':'👨 Männer-Grundton'}</button></div>
+  <div class="pl">Stimme</div><div class="row" style="margin-top:2px"><select class="vsel" data-k="${k}"><option value="">Automatisch (beste)</option>${VOICES.length<2?'<option disabled>iPhone zeigt Webseiten nur 1 Stimme</option>':''}${VOICES.map(v=>`<option value="${v.name.replace(/"/g,'&quot;')}"${look(k).voiceName===v.name?' selected':''}>${v.name}${/premium|enhanced|erweitert/i.test(v.name)?' ⭐':''}</option>`).join('')}</select><button class="chip" data-test="${k}">▶ Test</button></div></div>`;
+ openOverlay(`<div class="panel"><h2>Spieler anpassen <small style="font:500 13px system-ui;opacity:.6">v${SKAT_VERSION}</small></h2><p class="pl" style="text-align:center">Du</p><div class="row"><input class="pname" data-n="0" maxlength="12" value="${P.names[0].replace(/"/g,'')}"></div><div class="pgrid"><div><p class="pl" style="text-align:center">Links</p>${sec(1)}</div><div><p class="pl" style="text-align:center">Rechts</p>${sec(2)}</div></div>
   <div class="row"><button class="pill sm tan" id="pReset">Zurücksetzen</button><button class="pill sm" id="pOk">Fertig</button></div></div>`);
  const upd=()=>{save();$('#av1').innerHTML=avatarSvg(1);$('#av2').innerHTML=avatarSvg(2);updatePlates(S.phase==='done')};
  const setL=(k,key,v)=>{c.look[k]=Object.assign({},c.look[k]||{},{[key]:v})};
@@ -1238,6 +1276,7 @@ function openPlayers(){loadVoices();const c=P.cfg;c.look=c.look||{};const sw=(ar
  ov.querySelectorAll('.sw').forEach(b=>b.onclick=()=>{setL(+b.dataset.k,b.dataset.key,+b.dataset.i);upd();openPlayers()});
  ov.querySelectorAll('[data-tg]').forEach(b=>b.onclick=()=>{const k=+b.dataset.k,key=b.dataset.tg;setL(k,key,look(k)[key]===false);upd();openPlayers()});
  ov.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{const k=+b.dataset.v;setL(k,'voice',look(k).voice==='f'?'m':'f');save();openPlayers();say(k,'Hallo, ich bin '+NM(k)+'!')});
+ ov.querySelectorAll('.vr').forEach(r=>r.onchange=()=>{const k=+r.dataset.k;setL(k,r.dataset.p,+r.value);save();try{speechSynthesis.cancel()}catch(e){}say(k,'Hallo, ich bin '+NM(k)+'!');openPlayers()});
  ov.querySelectorAll('.vsel').forEach(sl=>sl.onchange=()=>{const k=+sl.dataset.k;setL(k,'voiceName',sl.value||null);save();say(k,'Hallo, ich bin '+NM(k)+'. Achtzehn, zwanzig, zwo!')});
  ov.querySelectorAll('[data-test]').forEach(b=>b.onclick=()=>{const k=+b.dataset.test;try{speechSynthesis.cancel()}catch(e){}say(k,'Hallo, ich bin '+NM(k)+'. Kontra!')});
  if(!VOICES.length){loadVoices();if(VOICES.length)setTimeout(openPlayers,50);else ov.querySelector('.panel').insertAdjacentHTML('beforeend','<p style="text-align:center;font-size:13px">Keine deutschen Stimmen gefunden – Einstellungen → Bedienungshilfen → Vorlesen & Sprechen → Stimmen → Deutsch.</p>')}
