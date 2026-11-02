@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.37.0 (2026-11-02): Skat voice picker
+
+- skat/index.html v1.12.0: per-player voice select (look.voiceName) from speechSynthesis.getVoices() German voices, with test button; falls back to the automatic best voice.
+
 ## 2.36.0 (2026-11-02): Skat settings link
 
 - skat/index.html v1.11.0: settings + names exported as base64 JSON in `#s=` on the hub URL; imported and saved on load, then the hash is cleared. Asks for persistent storage.

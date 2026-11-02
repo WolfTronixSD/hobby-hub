@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.11.0">
+<meta name="version" content="1.12.0">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -245,6 +245,7 @@ html body table.list{font-size:calc(clamp(12px,2.8vh,17px)*var(--uis))}html body
 html body .result h2{font-size:calc(clamp(20px,5vh,30px)*var(--uis))}html body .tab{font-size:calc(clamp(13px,3.2vh,20px)*var(--uis))}
 html body .pname{font-size:calc(18px*var(--uis))}
 .rbtn{z-index:80}#overlay{z-index:500}
+.vsel{font:600 14px system-ui;padding:6px 8px;border-radius:10px;border:2px solid #c8743a;background:#fffaf0;color:#4a3a28;max-width:190px}
 #rotateHint{display:none}
 </style>
 </head>
@@ -297,8 +298,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.11.0';
+const SKAT_VERSION='1.12.0';
 const SKAT_CHANGES=[
+ ['1.12.0','2026-11-02','🎙️ Stimme für jeden Mitspieler selbst wählen (auch heruntergeladene Enhanced/Premium-Stimmen) mit Test-Knopf'],
  ['1.11.0','2026-11-02','🔗 Einstellungen mitnehmen: ein Link nimmt Thema, Dialekt, Spielstärke, Schrift, Namen und Aussehen auf jedes Gerät mit'],
  ['1.10.0','2026-11-02','🗣️ Dialekte: Badisch, Schwäbisch, Kölsch und Bayrisch · Kartengeräusch lauter und voller, Töne auch bei iPhone-Stummschalter'],
  ['1.9.1','2026-11-02','Runde Knöpfe nie mehr unter den Karten versteckt (iPhone mit Notch)'],
@@ -806,7 +808,7 @@ function vGender(seat){return look(seat).voice==='f'?2:1}
 function vScore(v,seat){seat=vGender(seat);return(/premium|enhanced|erweitert|neural|natural|siri/i.test(v.name)?10:0)+((seat===1?MALEV:FEMV).test(v.name)?6:0)+((seat===1?FEMV:MALEV).test(v.name)?-6:0)+(v.localService?1:0)}
 const VP={beach:[0,[.78,.95],[1.25,1.07]],west:[0,[.55,.82],[1.1,.95]],space:[0,[1.9,1.2],[.35,.88]],vegas:[0,[.62,.9],[1.4,1.05]]};
 function say(seat,text){if(!P.cfg.voice||P.cfg.muted||TURBO||AUTO||seat===0||!('speechSynthesis' in window))return;try{if(!VOICES.length)loadVoices();const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';
- const v=VOICES.slice().sort((x,y)=>vScore(y,seat)-vScore(x,seat))[0];if(v)u.voice=v;const pr=VP[curTheme()][vGender(seat)];u.pitch=pr[0];u.rate=pr[1]*(.97+Math.random()*.06);u.volume=1;speechSynthesis.speak(u)}catch(e){}}
+ const want=look(seat).voiceName;const v=(want&&VOICES.find(x=>x.name===want))||VOICES.slice().sort((x,y)=>vScore(y,seat)-vScore(x,seat))[0];if(v)u.voice=v;const pr=VP[curTheme()][vGender(seat)];u.pitch=pr[0];u.rate=pr[1]*(.97+Math.random()*.06);u.volume=1;speechSynthesis.speak(u)}catch(e){}}
 const BIDWORD={18:'achtzehn',20:'zwanzig',22:['zweiundzwanzig','zwo'],23:['dreiundzwanzig','null'],24:['vierundzwanzig','vier'],27:['siebenundzwanzig','sieben'],30:'dreißig',33:'dreiunddreißig',35:['fünfunddreißig','fünf'],36:['sechsunddreißig','sechs'],40:'vierzig',44:'vierundvierzig',45:'fünfundvierzig',46:'sechsundvierzig',48:'achtundvierzig',50:'fünfzig'};
 const pick=a=>a[Math.floor(Math.random()*a.length)];
 const SAYS={yes:{1:['ja','hab ich','geht','jo','auch'],2:['ja','klar','hab ich','weiter','gerne']},no:{1:['weg','passe','ohne mich','bin raus'],2:['passe','nö','bin raus','weg']},
@@ -1223,10 +1225,11 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  ov.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;c[k]=!c[k];save();
   if(k==='four')restyle();if(k==='fast')$('#bFast').classList.toggle('on',c.fast);if(k==='amb'){if(c.amb){ac();startAmbient()}else stopAmbient()}if(k==='music'){if(c.music){ac();startMusic()}else stopMusic()}if(k==='voice'&&!c.voice)try{speechSynthesis.cancel()}catch(e){}
   openMenu()})}
-function openPlayers(){const c=P.cfg;c.look=c.look||{};const sw=(arr,k,key,i0)=>arr.map((x,i)=>`<button class="sw${(look(k)[key])===i?' sel':''}" data-k="${k}" data-key="${key}" data-i="${i}" title="${x[0]}" style="background:linear-gradient(${x[1]},${x[2]})"></button>`).join('');
+function openPlayers(){loadVoices();const c=P.cfg;c.look=c.look||{};const sw=(arr,k,key,i0)=>arr.map((x,i)=>`<button class="sw${(look(k)[key])===i?' sel':''}" data-k="${k}" data-key="${key}" data-i="${i}" title="${x[0]}" style="background:linear-gradient(${x[1]},${x[2]})"></button>`).join('');
  const tg=(k,key,l)=>`<button class="chip${look(k)[key]!==false?' sel':''}" data-tg="${key}" data-k="${k}">${l}</button>`;
  const sec=k=>`<div class="psec"><input class="pname" data-n="${k}" maxlength="12" value="${P.names[k].replace(/"/g,'')}"><div class="pl">Haut</div><div class="sws">${sw(SKINS,k,'skin')}</div><div class="pl">Haare</div><div class="sws">${sw(HAIRS,k,'hair')}</div><div class="pl">Shirt (Strand)</div><div class="sws">${sw(SHIRTS,k,'shirt')}</div>
-  <div class="row">${k===1?tg(1,'beard','Bart'):tg(2,'freckles','Sommersprossen')}${tg(k,'glasses','Brille')}<button class="chip sel" data-v="${k}">${look(k).voice==='f'?'👩 Frauenstimme':'👨 Männerstimme'}</button></div></div>`;
+  <div class="row">${k===1?tg(1,'beard','Bart'):tg(2,'freckles','Sommersprossen')}${tg(k,'glasses','Brille')}<button class="chip sel" data-v="${k}">${look(k).voice==='f'?'👩 hoch':'👨 tief'}</button></div>
+  <div class="pl">Stimme</div><div class="row" style="margin-top:2px"><select class="vsel" data-k="${k}"><option value="">Automatisch (beste)</option>${VOICES.map(v=>`<option value="${v.name.replace(/"/g,'&quot;')}"${look(k).voiceName===v.name?' selected':''}>${v.name}${/premium|enhanced|erweitert/i.test(v.name)?' ⭐':''}</option>`).join('')}</select><button class="chip" data-test="${k}">▶ Test</button></div></div>`;
  openOverlay(`<div class="panel"><h2>Spieler anpassen</h2><p class="pl" style="text-align:center">Du</p><div class="row"><input class="pname" data-n="0" maxlength="12" value="${P.names[0].replace(/"/g,'')}"></div><div class="pgrid"><div><p class="pl" style="text-align:center">Links</p>${sec(1)}</div><div><p class="pl" style="text-align:center">Rechts</p>${sec(2)}</div></div>
   <div class="row"><button class="pill sm tan" id="pReset">Zurücksetzen</button><button class="pill sm" id="pOk">Fertig</button></div></div>`);
  const upd=()=>{save();$('#av1').innerHTML=avatarSvg(1);$('#av2').innerHTML=avatarSvg(2);updatePlates(S.phase==='done')};
@@ -1235,6 +1238,9 @@ function openPlayers(){const c=P.cfg;c.look=c.look||{};const sw=(arr,k,key,i0)=>
  ov.querySelectorAll('.sw').forEach(b=>b.onclick=()=>{setL(+b.dataset.k,b.dataset.key,+b.dataset.i);upd();openPlayers()});
  ov.querySelectorAll('[data-tg]').forEach(b=>b.onclick=()=>{const k=+b.dataset.k,key=b.dataset.tg;setL(k,key,look(k)[key]===false);upd();openPlayers()});
  ov.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{const k=+b.dataset.v;setL(k,'voice',look(k).voice==='f'?'m':'f');save();openPlayers();say(k,'Hallo, ich bin '+NM(k)+'!')});
+ ov.querySelectorAll('.vsel').forEach(sl=>sl.onchange=()=>{const k=+sl.dataset.k;setL(k,'voiceName',sl.value||null);save();say(k,'Hallo, ich bin '+NM(k)+'. Achtzehn, zwanzig, zwo!')});
+ ov.querySelectorAll('[data-test]').forEach(b=>b.onclick=()=>{const k=+b.dataset.test;try{speechSynthesis.cancel()}catch(e){}say(k,'Hallo, ich bin '+NM(k)+'. Kontra!')});
+ if(!VOICES.length){loadVoices();if(VOICES.length)setTimeout(openPlayers,50);else ov.querySelector('.panel').insertAdjacentHTML('beforeend','<p style="text-align:center;font-size:13px">Keine deutschen Stimmen gefunden – Einstellungen → Bedienungshilfen → Vorlesen & Sprechen → Stimmen → Deutsch.</p>')}
  $('#pReset').onclick=()=>{c.look={};P.names=['wolfi','Andy','Melli'];upd();openPlayers()};$('#pOk').onclick=openMenu}
 const FONTS=[['std','Standard',null,"inherit"],['theme','Passend zum Thema',null,null],['nunito','Rund','Nunito:wght@600;800',"'Nunito',system-ui,sans-serif"],['lora','Klassisch','Lora:wght@500;700',"'Lora',Georgia,serif"],['comic','Lustig','Comic+Neue:wght@700',"'Comic Neue','Comic Sans MS',cursive"],['rye','Western','Rye',"'Rye',Georgia,serif"],['orbitron','Weltraum','Orbitron:wght@600;800',"'Orbitron',system-ui,sans-serif"],['bungee','Vegas','Bungee',"'Bungee',Impact,sans-serif"],['fredoka','Comic dick','Fredoka:wght@500;700',"'Fredoka',system-ui,sans-serif"]];
 const THEMEFONT={beach:'nunito',west:'rye',space:'orbitron',vegas:'bungee'};

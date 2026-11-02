@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.36.0";
+const APP_VERSION = "2.37.0";
 const CHANGELOG = [
+  {
+    version: "2.37.0",
+    date: "2026-11-02",
+    at: "2026-11-02T23:40:00Z",
+    title: "Skat: pick each player's voice",
+    changes: [
+      "🃏 Skat am Strand v1.12.0: choose any German voice on your phone for Andy and Melli, including downloaded Enhanced and Premium voices, with a ▶ Test button"
+    ]
+  },
   {
     version: "2.36.0",
     date: "2026-11-02",
