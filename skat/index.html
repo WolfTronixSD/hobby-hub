@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.10.0">
+<meta name="version" content="1.11.0">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -297,8 +297,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.10.0';
+const SKAT_VERSION='1.11.0';
 const SKAT_CHANGES=[
+ ['1.11.0','2026-11-02','🔗 Einstellungen mitnehmen: ein Link nimmt Thema, Dialekt, Spielstärke, Schrift, Namen und Aussehen auf jedes Gerät mit'],
  ['1.10.0','2026-11-02','🗣️ Dialekte: Badisch, Schwäbisch, Kölsch und Bayrisch · Kartengeräusch lauter und voller, Töne auch bei iPhone-Stummschalter'],
  ['1.9.1','2026-11-02','Runde Knöpfe nie mehr unter den Karten versteckt (iPhone mit Notch)'],
  ['1.9.0','2026-11-02','👤 Spieler anpassen: Namen, Haut, Haare, Shirt, Bart/Brille/Sommersprossen, Männer- oder Frauenstimme · 🔤 Schrift (Rund, Klassisch, Lustig, Western, Weltraum, Vegas, passend zum Thema) und Größe S–XL'],
@@ -317,7 +318,9 @@ const KEY='skat-strand-v1';
 let P={scores:[0,0,0],history:[],gameNo:0,dealer:2,date:null,names:['wolfi','Andy','Melli'],won:[0,0,0],lost:[0,0,0],cfg:{}};
 try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d&&d.scores)P=Object.assign(P,d);}catch(e){}
 if(!P.date)P.date=new Date().toISOString();
-P.cfg=Object.assign({kontra:true,theme:'beach',four:false,fast:false,level:1,spitze:true,saxon:true,sfx:true,amb:true,voice:true,music:true},P.cfg||{});BIDS=makeBids();
+try{const m=location.hash.match(/s=([^&]+)/);if(m){const d=JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(m[1])))));if(d&&d.cfg){P.cfg=Object.assign({},P.cfg||{},d.cfg);if(Array.isArray(d.names)&&d.names.length===3)P.names=d.names;P.seen=true;window._importedCfg=1}history.replaceState(null,'',location.pathname+location.search)}}catch(e){}
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+P.cfg=Object.assign({kontra:true,theme:'beach',four:false,fast:false,level:1,spitze:true,saxon:true,sfx:true,amb:true,voice:true,music:true},P.cfg||{});BIDS=makeBids();if(window._importedCfg)setTimeout(()=>{save();toast('💾 Deine Einstellungen wurden übernommen',2200)},800);
 function save(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
 const NM=i=>P.names[i];
 
@@ -1211,9 +1214,9 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  <p class="mh">Ton</p><div class="row">${ch('sfx','Kartengeräusche')}${ch('music','Musik')}${ch('amb','Meer & Möwen')}${ch('voice','Stimmen')}</div>
  <p class="mh">Ansicht</p><div class="row">${ch('four','Vierfarbenblatt')}${ch('fast','Schnelles Tempo')}</div>
  <div class="row"><button class="pill sm tan" id="mRules">Regeln</button><button class="pill sm tan" id="mList">Spielliste</button><button class="pill sm tan" id="mNew">Was ist neu</button></div>
- <div class="row"><button class="pill sm" id="mPl">👤 Spieler anpassen</button><button class="pill sm" id="mFont">🔤 Schrift & Größe</button></div>
- <p style="text-align:center;opacity:.7;font-size:13px;margin-top:12px">Tipp: In Safari „Zum Home-Bildschirm“ für Vollbild.<br>Regeländerungen gelten ab dem nächsten Spiel.</p></div>`);
- $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mPl').onclick=openPlayers;$('#mFont').onclick=openFonts;$('#mList').onclick=()=>openSheet('list');
+ <div class="row"><button class="pill sm" id="mPl">👤 Spieler anpassen</button><button class="pill sm" id="mFont">🔤 Schrift & Größe</button><button class="pill sm" id="mLink">🔗 Einstellungen mitnehmen</button></div>
+ <p style="text-align:center;opacity:.7;font-size:13px;margin-top:12px">Alle Einstellungen werden automatisch gespeichert.<br>Regeländerungen gelten ab dem nächsten Spiel.</p></div>`);
+ $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mPl').onclick=openPlayers;$('#mFont').onclick=openFonts;$('#mLink').onclick=openTransfer;$('#mList').onclick=()=>openSheet('list');
  ov.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{c.theme=b.dataset.th;save();applyTheme();openMenu()});
  ov.querySelectorAll('[data-dia]').forEach(b=>b.onclick=()=>{c.dialect=b.dataset.dia;save();openMenu();setTimeout(()=>quip(1,'greet',1),300);setTimeout(()=>quip(2,'greet',1),2200)});
  ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{c.level=+b.dataset.l;save();openMenu()});
@@ -1246,6 +1249,15 @@ function openFonts(){const cur=P.cfg.font||'nunito';FONTS.forEach(f=>{if(f[2]&&!
  <p style="text-align:center;margin-top:12px">Andy spielt Kreuz Hand · Reiz 36 · Kontra!</p><div class="row"><button class="pill sm" id="fOk">Fertig</button></div></div>`);
  ov.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{P.cfg.font=b.dataset.f;save();applyFont();openFonts()});
  ov.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{P.cfg.fsize=+b.dataset.s;save();applyFont();openFonts()});$('#fOk').onclick=openMenu}
+const SKAT_HOME='https://wolftronixsd.github.io/hobby-hub/skat/';
+function settingsLink(){const d={cfg:Object.assign({},P.cfg,{muted:false}),names:P.names};return SKAT_HOME+'#s='+encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(d)))))}
+function openTransfer(){const link=settingsLink();openOverlay(`<div class="panel"><h2>🔗 Einstellungen mitnehmen</h2>
+ <p>Jeder Ort hat sein eigenes Gedächtnis: diese Claude-Seite, der Hobby-Hub-Link in Safari und ein Symbol auf dem Home-Bildschirm. Öffne diesen Link dort, wo du spielen willst, dann sind Thema, Dialekt, Spielstärke, Schrift, Namen und Aussehen gleich wieder da.</p>
+ <div class="row"><input class="pname" id="tLink" readonly value="${link}" style="max-width:100%;font-size:12px"></div>
+ <div class="row"><button class="pill sm" id="tCopy">Link kopieren</button><a class="pill sm tan" href="${link}" target="_blank" rel="noopener" style="text-decoration:none">Öffnen</a><button class="pill sm tan" id="tBack">Zurück</button></div>
+ <p style="font-size:13px;opacity:.75;text-align:center">Tipp: Öffne den Link in Safari und lege ihn dann mit Teilen → „Zum Home-Bildschirm“ ab.</p></div>`);
+ $('#tCopy').onclick=()=>{const done=()=>toast('📋 Link kopiert',1400);try{navigator.clipboard.writeText(link).then(done,()=>{$('#tLink').select();document.execCommand('copy');done()})}catch(e){$('#tLink').select();try{document.execCommand('copy')}catch(_){}done()}};
+ $('#tLink').onclick=()=>$('#tLink').select();$('#tBack').onclick=openMenu}
 function openNews(){openOverlay(`<div class="panel rule"><h2>Was ist neu · v${SKAT_VERSION}</h2>${SKAT_CHANGES.map(([v,d,t])=>`<h3>v${v} <small style="font:400 13px system-ui;opacity:.7">${new Date(d).toLocaleDateString('de-DE')}</small></h3><p>${t}</p>`).join('')}<div class="row"><button class="pill sm" id="nOk">OK</button></div></div>`);$('#nOk').onclick=openMenu}
 function restyle(){for(const[id,el]of handEls){const c=DECK.find(x=>x.id===id);el.style.color=suitColor(c.s);el.innerHTML=cardSvg(c)}trickEls.forEach(t=>{const c=DECK.find(x=>x.id===t.el.dataset.id);if(c){t.el.style.color=suitColor(c.s);t.el.innerHTML=cardSvg(c)}});renderOpen()}
 function openRules(){openOverlay(`<div class="panel rule"><h2>Skatregeln (ISkO)</h2>

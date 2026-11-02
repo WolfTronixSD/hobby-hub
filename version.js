@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.35.0";
+const APP_VERSION = "2.36.0";
 const CHANGELOG = [
+  {
+    version: "2.36.0",
+    date: "2026-11-02",
+    at: "2026-11-02T22:00:00Z",
+    title: "Skat settings travel with a link",
+    changes: [
+      "🃏 Skat am Strand v1.11.0: 🔗 Einstellungen mitnehmen makes a link that brings your theme, dialect, level, font, names and looks to any phone, browser or home-screen icon"
+    ]
+  },
   {
     version: "2.35.0",
     date: "2026-11-02",

@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.36.0 (2026-11-02): Skat settings link
+
+- skat/index.html v1.11.0: settings + names exported as base64 JSON in `#s=` on the hub URL; imported and saved on load, then the hash is cleared. Asks for persistent storage.
+
 ## 2.35.0 (2026-11-02): Skat dialects
 
 - skat/index.html v1.10.0: cfg.dialect (hoch/badisch/schwaebisch/koelsch/bayrisch) for answers, quips, Kontra and Re; fuller card sound (swish, slap, body, knock); navigator.audioSession.type = "playback" so Web Audio ignores the silent switch.
