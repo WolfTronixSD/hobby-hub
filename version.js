@@ -1,6 +1,16 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.32.1";
+const APP_VERSION = "2.33.0";
 const CHANGELOG = [
+  {
+    version: "2.33.0",
+    date: "2026-11-02",
+    at: "2026-11-02T20:15:00Z",
+    title: "Skat: Schenken, Zug zurück and funny sounds",
+    changes: [
+      "🃏 Skat am Strand: the ⏩ button now opens Schenken (or Aufgeben), Rest zu mir, Automatisch spielen and Zug zurücknehmen",
+      "Funny theme sounds: horses, gunshots and squeaky wagon wheels in the Wild West, laser blasts and flybys in space, slot machines and coins in Vegas"
+    ]
+  },
   {
     version: "2.32.1",
     date: "2026-11-02",

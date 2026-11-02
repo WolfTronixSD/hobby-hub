@@ -217,6 +217,12 @@ table.list tr.lost td.pc{color:#a01010}
 .avatar .sparkle{animation:tw 1.6s ease-in-out infinite}
 .prop .bub{animation:bub 2s ease-in infinite}@keyframes bub{0%{transform:translateY(8px);opacity:0}30%{opacity:1}100%{transform:translateY(-20px);opacity:0}}
 .prop .steam{animation:steam 3s ease-in-out infinite}@keyframes steam{50%{transform:translateY(-4px);opacity:.25}}
+
+#overlay.left{justify-content:flex-start;align-items:flex-end;background:rgba(0,0,0,.15)}
+.actp{background:linear-gradient(135deg,rgba(60,40,40,.92),rgba(40,30,30,.88));border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:10px;margin:0 0 4vh 9vw;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.portrait .actp{margin:0 0 20vh 4vw}
+.actp .pill{min-width:clamp(180px,24vw,260px);font-size:clamp(15px,3.8vh,22px)}
+.actp .pill:disabled{background:linear-gradient(#6a6060,#4a4242);color:#a59a9a;box-shadow:0 3px 0 #2e2828;opacity:1}
 #rotateHint{display:none}
 </style>
 </head>
@@ -685,13 +691,42 @@ function startMusic(){if(MUS||!P.cfg.music||TURBO)return;const a=ac();if(!a)retu
  sched();MUS={iv:setInterval(sched,120),bus,stop(){clearInterval(this.iv);try{bus.gain.cancelScheduledValues(a.currentTime);bus.gain.setValueAtTime(bus.gain.value,a.currentTime);bus.gain.exponentialRampToValueAtTime(.0001,a.currentTime+.8)}catch(e){}}}}
 function stopMusic(){if(MUS){MUS.stop();MUS=null}}
 /* themed ambience */
-function sndGull(){const a=ac();if(!a||!amb)return;const t0=curTheme();let t=a.currentTime;
- const voice=(f1,f2,f3,dur,type,vol,vib)=>{const o=a.createOscillator(),f=a.createBiquadFilter(),g=a.createGain(),v=a.createOscillator(),vg=a.createGain();o.type=type;f.type='bandpass';f.frequency.value=f2;f.Q.value=1.5;v.frequency.value=vib;vg.gain.value=f1*.03;v.connect(vg).connect(o.frequency);
-  o.frequency.setValueAtTime(f1,t);o.frequency.linearRampToValueAtTime(f2,t+dur*.3);o.frequency.exponentialRampToValueAtTime(f3,t+dur);o.connect(f).connect(g).connect(MASTER);env(g,t,vol,dur*.15,dur*.85);o.start(t);v.start(t);o.stop(t+dur+.1);v.stop(t+dur+.1)};
- if(t0==='beach'){const n=2+Math.floor(Math.random()*3);for(let i=0;i<n;i++){voice(1400,2300,1000,.38,'triangle',.012,28);t+=.42+Math.random()*.2}}
- if(t0==='west'){if(Math.random()<.6){voice(420,900,650,1.6,'sine',.02,6);t+=1.7;voice(500,950,600,1.1,'sine',.012,6)}else{for(let i=0;i<6;i++){mallet(a,2400+Math.random()*600,t,.008,.4,.15);t+=.09}}}
- if(t0==='space'){if(Math.random()<.5){for(let i=0;i<3;i++){const o=a.createOscillator(),g=a.createGain();o.frequency.setValueAtTime(1800,t);o.frequency.exponentialRampToValueAtTime(200,t+.18);o.connect(g).connect(outFor(a,(Math.random()-.5)));env(g,t,.02,.005,.18);o.start(t);o.stop(t+.25);t+=.22}}else{mallet(a,1320,t,.02,0,.4);mallet(a,1320,t+.6,.015,0,.4)}}
- if(t0==='vegas'){const n=5+Math.floor(Math.random()*6);for(let i=0;i<n;i++){mallet(a,[1046,1318,1568,2093][i%4],t,.016,.5,.25);t+=.07}if(Math.random()<.5)for(let i=0;i<8;i++)nburst(a,t+.1+i*.05,'highpass',5000,0,.05,.001,.03,.6,.5)}}
+/* ---------- funny theme sound effects ---------- */
+function fxOsc(a,{type='sine',f0,f1,f2,t,dur,vol,pan=0,vib=0,vibD=0,lp,bp,q=1}){const o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.setValueAtTime(f0,t);if(f1)o.frequency.linearRampToValueAtTime(f1,t+dur*(f2?.35:1));if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+dur);
+ let n=o;if(lp||bp){const fl=a.createBiquadFilter();fl.type=lp?'lowpass':'bandpass';fl.frequency.value=lp||bp;fl.Q.value=q;o.connect(fl);n=fl}
+ if(vib){const v=a.createOscillator(),vg=a.createGain();v.frequency.value=vib;vg.gain.value=vibD;v.connect(vg).connect(o.frequency);v.start(t);v.stop(t+dur+.05)}
+ n.connect(g).connect(outFor(a,pan));env(g,t,vol,Math.min(.05,dur*.2),dur*.85);o.start(t);o.stop(t+dur+.1)}
+const FX={
+ gun(a,t,pan=0){nburst(a,t,'lowpass',2500,300,.55,.002,.28,.7,pan);nburst(a,t,'highpass',3000,0,.4,.001,.04,.7,pan);fxOsc(a,{f0:90,f2:40,t,dur:.25,vol:.4,pan})},
+ ricochet(a,t,pan=0){fxOsc(a,{f0:3200,f1:2600,f2:900,t,dur:.6,vol:.05,pan,vib:30,vibD:120})},
+ whinny(a,t,pan=0){fxOsc(a,{type:'sawtooth',f0:700,f1:1150,f2:520,t,dur:1.3,vol:.05,pan,vib:13,vibD:90,bp:1300,q:1.6});nburst(a,t+1.35,'lowpass',900,200,.12,.01,.25,.7,pan)},
+ gallop(a,t){for(let i=0;i<14;i++){const b=Math.floor(i/3),k=i%3,tt=t+b*.42+k*.09,p=-1+i/7;nburst(a,tt,'bandpass',k===2?900:1400,0,.18,.002,.05,3,Math.max(-1,Math.min(1,p)))}},
+ squeak(a,t,pan=.6){for(let i=0;i<3;i++)fxOsc(a,{type:'sawtooth',f0:1100+i*60,f1:1500,f2:1000,t:t+i*.55,dur:.42,vol:.025,pan,vib:22,vibD:60,bp:1500,q:6})},
+ spurs(a,t,pan=-.4){for(let i=0;i<8;i++)mallet(a,3800+Math.random()*1800,t+i*.045+(i>3?.35:0),.012,pan,.25)},
+ moo(a,t){fxOsc(a,{type:'sawtooth',f0:150,f1:170,f2:110,t,dur:1.6,vol:.06,lp:700,vib:4,vibD:3,pan:.7})},
+ laser(a,t,pan=0){fxOsc(a,{type:'square',f0:2200,f2:180,t,dur:.22,vol:.035,pan,lp:3500})},
+ flyby(a,t){const s=nsrc(a),f=a.createBiquadFilter(),g=a.createGain();f.type='bandpass';f.Q.value=1.2;f.frequency.setValueAtTime(300,t);f.frequency.exponentialRampToValueAtTime(2400,t+1.2);f.frequency.exponentialRampToValueAtTime(250,t+2.6);
+  let dst=MASTER;if(a.createStereoPanner){const p=a.createStereoPanner();p.pan.setValueAtTime(-1,t);p.pan.linearRampToValueAtTime(1,t+2.6);p.connect(MASTER);dst=p}s.connect(f).connect(g).connect(dst);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.2,t+1.2);g.gain.exponentialRampToValueAtTime(.0001,t+2.7);s.start(t);s.stop(t+2.8);
+  fxOsc(a,{type:'sawtooth',f0:140,f1:160,f2:70,t,dur:2.6,vol:.04,lp:500})},
+ beeps(a,t,pan=.3){for(let i=0;i<7;i++){const f=500+Math.random()*2200;fxOsc(a,{f0:f,f1:f*(Math.random()<.5?1.6:.6),t:t+i*.11,dur:.09,vol:.03,pan})}},
+ hyper(a,t){nburst(a,t,'bandpass',200,4000,.12,.6,1.4,.8);fxOsc(a,{f0:80,f2:2400,t,dur:1.8,vol:.03})},
+ blorp(a,t,pan=-.5){fxOsc(a,{f0:180,f1:420,f2:120,t,dur:.35,vol:.08,pan,vib:18,vibD:40})},
+ slot(a,t,pan=.5){for(let i=0;i<10;i++)mallet(a,[784,988,1175,1568][i%4],t+i*.06,.02,pan,.2);for(let i=0;i<3;i++)mallet(a,2093,t+.7+i*.14,.03,pan,.4)},
+ coins(a,t,pan=.4){for(let i=0;i<16;i++)mallet(a,3000+Math.random()*3000,t+i*.035+Math.random()*.03,.018*(1-i/18),pan,.18)},
+ roulette(a,t){let tt=t,dt=.05;for(let i=0;i<28;i++){nburst(a,tt,'bandpass',2600,0,.06,.001,.02,4,-.3);tt+=dt;dt*=1.08}mallet(a,1800,tt+.05,.03,-.3,.3)},
+ cheer(a,t){const s=nsrc(a),f=a.createBiquadFilter(),g=a.createGain();f.type='bandpass';f.frequency.value=900;f.Q.value=.5;s.connect(f).connect(g).connect(MASTER);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.4);g.gain.exponentialRampToValueAtTime(.0001,t+1.8);s.start(t);s.stop(t+1.9)},
+ kaching(a,t,pan=0){mallet(a,2637,t,.05,pan,.9);mallet(a,3520,t+.08,.04,pan,.9);nburst(a,t,'highpass',4000,0,.15,.002,.12,.7,pan)},
+ boing(a,t,pan=0){fxOsc(a,{f0:120,f1:520,f2:300,t,dur:.5,vol:.07,pan,vib:16,vibD:50})},
+ horn(a,t){[110,165].forEach(f=>fxOsc(a,{type:'sawtooth',f0:f,t,dur:2.2,vol:.025,lp:500,pan:.8}))},
+ gull(a,t){const n=2+Math.floor(Math.random()*3);for(let i=0;i<n;i++)fxOsc(a,{type:'triangle',f0:1400,f1:2300,f2:1000,t:t+i*.45,dur:.38,vol:.014,bp:1900,q:2,vib:28,vibD:40,pan:(Math.random()-.5)})},
+ coyote(a,t){fxOsc(a,{f0:420,f1:900,f2:650,t,dur:1.6,vol:.025,vib:6,vibD:12,pan:-.7})}
+};
+const AMB_EVENTS={beach:[['gull',4],['boing',1],['horn',1]],west:[['whinny',2],['gallop',2],['gun',1,'ricochet'],['squeak',2],['spurs',1],['moo',1],['coyote',1]],
+ space:[['laser',2,'laser'],['flyby',2],['beeps',2],['hyper',1],['blorp',1]],vegas:[['slot',3],['coins',2],['roulette',1],['cheer',1],['kaching',1]]};
+function sndGull(){const a=ac();if(!a||!amb)return;const list=AMB_EVENTS[curTheme()];const tot=list.reduce((s,e)=>s+e[1],0);let r=Math.random()*tot,ev=list[0];for(const e of list){r-=e[1];if(r<=0){ev=e;break}}
+ const t=a.currentTime+.05,pan=(Math.random()-.5)*1.4;FX[ev[0]](a,t,pan);if(ev[2])FX[ev[2]](a,t+(ev[2]==='laser'?.25:.35),-pan)}
+function themeFx(kind,w){if(!P.cfg.sfx)return;const a=ac();if(!a)return;const t=a.currentTime+.05,pan=SEATPAN[w]||0;
+ ({beach:()=>FX.boing(a,t,pan),west:()=>{FX.gun(a,t,pan);FX.ricochet(a,t+.3,-pan)},space:()=>{FX.laser(a,t,pan);FX.laser(a,t+.2,pan)},vegas:()=>{FX.kaching(a,t,pan);FX.coins(a,t+.2,pan)}})[curTheme()]()}
 function startAmbient(){if(amb||!P.cfg.amb||TURBO)return;const a=ac();if(!a)return;const t0=curTheme();
  const len=a.sampleRate*6,b=a.createBuffer(1,len,a.sampleRate),d=b.getChannelData(0);let last=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;last=(last+.02*w)/1.02;d[i]=last*3.5}
  const cfg={beach:['lowpass',650,.06,.05,380,.12],west:['bandpass',500,.035,.03,300,.07],space:['lowpass',180,.05,.015,60,.05],vegas:['bandpass',700,.03,.012,200,.3]}[t0];
@@ -700,7 +735,7 @@ function startAmbient(){if(amb||!P.cfg.amb||TURBO)return;const a=ac();if(!a)retu
  const l2=a.createOscillator();l2.frequency.value=cfg[5];const lg2=a.createGain();lg2.gain.value=cfg[4];l2.connect(lg2).connect(lp.frequency);
  s.connect(lp).connect(g).connect(a.destination);s.start();l1.start();l2.start();const extra=[];
  if(t0==='space'){[55,82.4].forEach(f=>{const o=a.createOscillator(),og=a.createGain();o.frequency.value=f;og.gain.value=.012;o.connect(og).connect(a.destination);o.start();extra.push(o)})}
- amb={stop(){try{s.stop();l1.stop();l2.stop();extra.forEach(o=>o.stop())}catch(e){}clearInterval(this.t)},t:setInterval(()=>{if(Math.random()<.4)sndGull()},9000)};setTimeout(sndGull,2500)}
+ amb={stop(){try{s.stop();l1.stop();l2.stop();extra.forEach(o=>o.stop())}catch(e){}clearInterval(this.t)},t:setInterval(()=>{if(Math.random()<.55)sndGull()},7000)};setTimeout(sndGull,2500)}
 /* voices */
 function stopAmbient(){if(amb){amb.stop();amb=null}}
 /* voices */
@@ -884,7 +919,8 @@ async function playGame(){
  S.phase='play';updatePlates();updateInfo();renderOpen();
  toast(`${decl===0?'Du spielst':NM(decl)+' spielt'} ${gameName(S.game)}`,1800);await sleep(900);
  if(P.cfg.kontra)await kontraPhase();
- await playPhase();S.phase='done';setTurn(-1);settle();
+ S.endBy=null;await aiMaybeSchenken();
+ if(!S.endBy)await playPhase();else{S.won=[[],[],[]];S.tricks=[0,0,0];S.trickLog=[]}S.phase='done';setTurn(-1);settle();
  {const r=S.result,d=r.d;if(d){emote(d,r.won?'happy':'sad',3500);quip(d,r.won?'won':'lost',.85)}[1,2].filter(x=>x!==d).forEach(x=>{emote(x,r.won?'sad':'happy',3500);if(!r.won)quip(x,'beat',.5)})}
  await showResult()}
 async function humanAsk(yes,no){const y=$('#bidYes'),n=$('#bidNo');y.textContent=yes;n.textContent=no;$('#bidUI').style.display='flex';const r=await waitInput();$('#bidUI').style.display='none';n.textContent='Passe';return r}
@@ -943,22 +979,65 @@ function gameChoicePanel(hand){
    $('#gGo').onclick=()=>{closeOverlay();res(g)};const bk=$('#gBack');if(bk)bk.onclick=()=>{closeOverlay();res(null)}}
   S.hands[0]=sortHand(S.hands[0],g);renderHand();draw();
   if(AUTO){closeOverlay();res(g)}})}
-async function playPhase(){S.leader=(S.dealer+1)%3;S.won=[[],[],[]];S.tricks=[0,0,0];S.voids=[{},{},{}];
- for(let t=0;t<10;t++){S.trickNo=t;updateInfo();S.trick=[];
-  for(let i=0;i<3;i++){const seat=(S.leader+i)%3;setTurn(seat);let card;
-   if(seat===0&&!AUTO){S.legalSet=new Set(legalMoves(S.hands[0],S.trick,S.game).map(c=>c.id));S.mode='play';renderHand();card=await waitInput();S.mode=null;S.legalSet=null}
-   else{await think(i===0?1.1:.9);card=aiPlay(seat)}
-   if(!legalMoves(S.hands[seat],S.trick,S.game).includes(card))console.error('illegal move',seat,card);
-   if(S.trick.length){const led=eff(S.trick[0].card,S.game);if(eff(card,S.game)!==led)S.voids[seat][led]=true}
-   S.hands[seat]=S.hands[seat].filter(c=>c!==card);S.trick.push({seat,card});S.played.push(card);animatePlay(seat,card);renderOpen()}
-  setTurn(-1);renderHand();await sleep(P.cfg.fast?550:1050);
-  const w=S.trick[trickWinner(S.trick,S.game)].seat;S.won[w].push(...S.trick.map(x=>x.card));S.tricks[w]++;
-  S.lastTrick={cards:S.trick.slice(),winner:w};S.trickLog.push({leader:S.leader,cards:S.trick.slice(),winner:w});
-  const tp=cardPts(S.trick.map(x=>x.card)),d=S.declarer;
-  if(tp>=14){const team=x=>x===d?0:1;[1,2].forEach(x=>{if(team(x)===team(w)){emote(x,'happy');if(x===w)quip(x,'winT',.3)}else{emote(x,'sad');quip(x,'lostT',.2)}})}
-  await collectTrick(w);S.leader=w;
-  if(S.game.type==='null'&&w===S.declarer)break;if(S.game.schwarzA&&w!==S.declarer)break}
- renderOpen()}
+/* ---------- play loop (state driven, supports undo / claim / concede / autoplay) ---------- */
+function snapshot(){return{hands:S.hands.map(h=>h.slice()),trick:S.trick.slice(),played:S.played.slice(),voids:S.voids.map(v=>Object.assign({},v)),won:S.won.map(a=>a.slice()),tricks:S.tricks.slice(),trickLog:S.trickLog.slice(),leader:S.leader,trickNo:S.trickNo,lastTrick:S.lastTrick}}
+function restoreSnap(sn){Object.assign(S,{hands:sn.hands.map(h=>h.slice()),trick:sn.trick.slice(),played:sn.played.slice(),voids:sn.voids.map(v=>Object.assign({},v)),won:sn.won.map(a=>a.slice()),tricks:sn.tricks.slice(),trickLog:sn.trickLog.slice(),leader:sn.leader,trickNo:sn.trickNo,lastTrick:sn.lastTrick});
+ trickEls.forEach(t=>t.el.remove());trickEls=[];S.trick.forEach(t=>{const el=makeCardEl(t.card);el.style.pointerEvents='none';el.style.transition='none';layer.appendChild(el);el.style.zIndex=300+trickEls.length;const sl=L.slots[t.seat];setT(el,sl[0],sl[1],sl[2],L.ts);trickEls.push({el,seat:t.seat});requestAnimationFrame(()=>el.style.transition='')});
+ S.hands[0]=sortHand(S.hands[0],S.game);renderHand();renderOpen();updateInfo()}
+function canClaim(){const g=S.game;if(g.type==='null'||S.trick.length||S.leader!==0||!S.hands[0].length)return false;
+ const opp=[1,2].flatMap(x=>S.hands[x]);const T=c=>isTrump(c,g);const oppT=opp.filter(T);
+ if(oppT.length&&S.hands[0].some(c=>!T(c)))return false;
+ return S.hands[0].every(c=>!opp.some(o=>eff(o,g)===eff(c,g)&&power(o,g)>power(c,g)))}
+async function playPhase(){S.leader=(S.dealer+1)%3;S.won=[[],[],[]];S.tricks=[0,0,0];S.voids=[{},{},{}];S.trick=[];S.trickNo=0;S.undoSnap=null;S.autoPlay=false;S.endBy=null;
+ while(true){
+  if(S.trick.length===3){setTurn(-1);renderHand();await sleep(P.cfg.fast?550:1050);
+   const w=S.trick[trickWinner(S.trick,S.game)].seat;S.won[w].push(...S.trick.map(x=>x.card));S.tricks[w]++;
+   S.lastTrick={cards:S.trick.slice(),winner:w};S.trickLog.push({leader:S.leader,cards:S.trick.slice(),winner:w});
+   const tp=cardPts(S.trick.map(x=>x.card)),d=S.declarer;
+   if(tp>=14){const team=x=>x===d?0:1;[1,2].forEach(x=>{if(team(x)===team(w)){emote(x,'happy');if(x===w)quip(x,'winT',.3)}else{emote(x,'sad');quip(x,'lostT',.2)}})}
+   if(tp>=21)themeFx('big',w);
+   await collectTrick(w);S.leader=w;S.trick=[];S.trickNo++;updateInfo();
+   if(S.game.type==='null'&&w===S.declarer)break;if(S.game.schwarzA&&w!==S.declarer)break;if(!S.hands[0].length&&!S.hands[1].length&&!S.hands[2].length)break;continue}
+  const seat=(S.leader+S.trick.length)%3;setTurn(seat);let card;
+  if(seat===0&&!AUTO&&!S.autoPlay){const snap=snapshot();S.legalSet=new Set(legalMoves(S.hands[0],S.trick,S.game).map(c=>c.id));S.mode='play';renderHand();
+   card=await waitInput();S.mode=null;S.legalSet=null;S.hintId=null;
+   if(card==='undo'){if(S.undoSnap){restoreSnap(S.undoSnap);S.undoSnap=null;toast('↩️ Zug zurückgenommen',1200)}continue}
+   if(card==='auto'){renderHand();continue}
+   if(card==='claim'){claimRest();break}
+   if(card==='end')break;
+   S.undoSnap=snap}
+  else{await think(S.trick.length===0?1.1:.9);if(S.endBy)break;card=aiPlay(seat,seat===0)}
+  if(S.endBy)break;
+  if(!legalMoves(S.hands[seat],S.trick,S.game).includes(card))console.error('illegal move',seat,card);
+  if(S.trick.length){const led=eff(S.trick[0].card,S.game);if(eff(card,S.game)!==led)S.voids[seat][led]=true}
+  S.hands[seat]=S.hands[seat].filter(c=>c!==card);S.trick.push({seat,card});S.played.push(card);animatePlay(seat,card);renderOpen()}
+ setTurn(-1);S.mode=null;S.legalSet=null;renderHand();renderOpen()}
+function claimRest(){const rest=[0,1,2].flatMap(x=>S.hands[x]);const n=S.hands[0].length;S.won[0].push(...rest);S.tricks[0]+=n;
+ for(let k=0;k<n;k++){const cards=[0,1,2].map(x=>({seat:x,card:S.hands[x][k]})).filter(x=>x.card);S.trickLog.push({leader:0,cards,winner:0})}
+ S.hands=[[],[],[]];renderHand();toast('🙌 Rest zu mir!',1600);themeFx('big',0)}
+/* ---------- action panel (⏩) ---------- */
+function openActions(){const play=S.phase==='play',myTurn=S.mode==='play',d=S.declarer,amD=d===0;
+ const canSchenk=play&&!S.trickLog.length&&S.game&&!S.endBy;const canUndo=myTurn&&!!S.undoSnap;const claim=myTurn&&canClaim();
+ openOverlay(`<div class="actp"><button class="pill" id="aSch" ${canSchenk?'':'disabled'}>${amD?'Aufgeben':'Schenken'}</button><button class="pill" id="aRest" ${claim?'':'disabled'}>Rest zu mir</button>
+  <button class="pill" id="aAuto" ${play?'':'disabled'}>${S.autoPlay?'Selbst spielen':'Automatisch spielen'}</button><button class="pill" id="aUndo" ${canUndo?'':'disabled'}>Zug zurücknehmen</button>
+  <button class="pill tan sm" id="aFast">${P.cfg.fast?'🐢 Normales Tempo':'⚡ Schnelles Tempo'}</button></div>`);
+ ov.classList.add('left');ov.onclick=e=>{if(e.target===ov)closeActions()};
+ $('#aFast').onclick=()=>{P.cfg.fast=!P.cfg.fast;save();$('#bFast').classList.toggle('on',P.cfg.fast);closeActions()};
+ $('#aUndo').onclick=()=>{closeActions();give('undo')};
+ $('#aRest').onclick=()=>{closeActions();give('claim')};
+ $('#aAuto').onclick=()=>{S.autoPlay=!S.autoPlay;closeActions();toast(S.autoPlay?'🤖 Ich spiele für dich':'✋ Du spielst wieder',1300);if(S.autoPlay&&S.mode==='play')give('auto')};
+ $('#aSch').onclick=()=>{closeActions();amD?concede():offerSchenken()}}
+function closeActions(){ov.classList.remove('left');ov.onclick=null;closeOverlay()}
+function weakDefender(x){const g=S.game,h=S.hands[x];if(g.type==='null')return h.filter(c=>c.r==='7'||c.r==='8').length<3;const T=h.filter(c=>isTrump(c,g)).length;const A=h.filter(c=>c.r==='A'&&!isTrump(c,g)).length;return T+A<=3}
+async function offerSchenken(){const d=S.declarer,partner=[1,2].find(x=>x!==d);bubble(0,'Schenken?',1500);await sleep(700);
+ if(partner!==undefined&&!weakDefender(partner)&&Math.random()<.8){bubble(partner,'Nee, wir spielen!',1800);say(partner,'Nee, wir spielen!');return}
+ if(partner!==undefined){bubble(partner,'Okay…',1200);say(partner,'okay')}await sleep(800);
+ const strong=strength(S.hands[d],S.game.type==='null'?{type:'grand'}:S.game)-7>3.2;
+ if(S.game.type!=='null'&&strong){bubble(d,'Nix da, ich will Schneider!',2000);say(d,'Nix da! Ich will Schneider!');emote(d,'happy');return}
+ bubble(d,'Danke, angenommen!',1600);say(d,'Danke, angenommen');emote(d,'happy');S.endBy='geschenkt';give('end')}
+async function concede(){S.endBy='aufgegeben';toast('🏳️ Spiel aufgegeben',1400);[1,2].forEach(x=>emote(x,'happy'));quip(1,'beat',.6);give('end')}
+async function aiMaybeSchenken(){const d=S.declarer;if(d!==0||AUTO||S.game.type==='null')return;if(![1,2].every(weakDefender)||Math.random()>.5)return;
+ bubble(1,'Wir schenken!',1800);say(1,'Wir schenken!');const r=await humanAsk('Annehmen','Weiterspielen');if(r){S.endBy='geschenkt'}else{bubble(2,'Na dann los!',1400)}}
 function settle(){const d=S.declarer,g=S.game,base=g.type==='null'?nullVal(g):gbase(g);const skatPts=cardPts(S.skatFinal);
  const declPts=cardPts(S.won[d])+skatPts;const allTaken=S.won.reduce((s,a)=>s+a.length,0);const oppPts=cardPts([].concat(...S.won.filter((_,i)=>i!==d)));
  const dT=S.tricks[d],oT=10-dT-(10-allTaken/3);const oppTricks=S.tricks.reduce((s,v,i)=>i===d?s:s+v,0);
@@ -967,13 +1046,14 @@ function settle(){const d=S.declarer,g=S.game,base=g.type==='null'?nullVal(g):gb
  if(g.type==='null'){r.won=dT===0;r.value=base;r.lines=[[gameName(g),base]];r.mult=1}
  else{const sp=spitzen(S.declCards12,g);let m=sp.n+1;r.lines.push([`${sp.mit?'Mit':'Ohne'} ${sp.n}, Spiel`,m]);
   if(g.hand)r.lines.push(['Hand',++m]);
-  const schneider=declPts>=90||declPts<=30;const schwarz=oppTricks===0||dT===0;
+  const schneider=!S.endBy&&(declPts>=90||declPts<=30);const schwarz=!S.endBy&&(oppTricks===0||dT===0);
   if(schneider)r.lines.push(['Schneider',++m]);if(g.schneiderA)r.lines.push(['angesagt',++m]);if(schwarz)r.lines.push(['Schwarz',++m]);if(g.schwarzA)r.lines.push(['angesagt',++m]);if(g.ouvert)r.lines.push(['Ouvert',++m]);{const last=S.trickLog[9];const dc=last&&last.cards.find(x=>x.seat===d);r.spitzeOK=!!(P.cfg.spitze&&last&&last.winner===d&&dc&&dc.card.id===spitzeCard(g).id)}
   if(g.spitze){r.lines.push(['Spitze',++m],['angesagt',++m])}else if(r.spitzeOK){r.lines.push(['Spitze',++m])}
   r.sp=sp;r.mult=m;r.schneider=schneider;r.schwarz=schwarz;r.value=base*m;
   r.won=declPts>=61;if(g.schneiderA&&declPts<90)r.won=false;if(g.schwarzA&&oppTricks>0)r.won=false;if(g.spitze&&!r.spitzeOK)r.won=false;
   if(r.value<S.bid){r.overbid=true;r.won=false;r.value=Math.ceil(S.bid/base)*base}
   r.lines.push([`${gameName({type:g.type,trump:g.trump},false)} ${base} × ${Math.round(r.value/base)} =`,r.value])}
+ if(S.endBy==='geschenkt'&&!r.overbid)r.won=true;if(S.endBy==='aufgegeben')r.won=false;r.endBy=S.endBy;
  r.score=r.won?r.value:-2*r.value;r.kontra=S.kontraBy>=0;r.re=r.kontra&&S.re;r.kf=(r.kontra?2:1)*(r.re?2:1);r.score*=r.kf;S.result=r;
  if(!S.practice){P.scores[d]+=r.score;if(r.won)P.won[d]++;else P.lost[d]++;
   P.history.push({no:P.gameNo,kontra:r.kontra,re:r.re,kf:r.kf,d,g,bid:S.bid,value:r.value,score:r.score,won:r.won,sp:r.sp||null,schneider:!!r.schneider,schwarz:!!r.schwarz,overbid:r.overbid,spitzeOK:!!r.spitzeOK,totals:P.scores.slice(),wl:[P.won.slice(),P.lost.slice()],
@@ -995,7 +1075,7 @@ async function showResult(){const r=S.result;const d=r.d;const meWin=(d===0&&r.w
  const title=d===0?(r.won?'Du gewinnst':'Du verlierst'):(r.won?`${NM(d)} gewinnt`:`${NM(d)} verliert`);
  if(meWin){sndWin();if(d===0||!r.won)confetti()}else sndLose();
  const rows=r.lines.map((l,i)=>`<tr${i===r.lines.length-1&&r.g.type!=='null'?' style="font-weight:600"':''}><td>${l[0]}</td><td>${l[1]}</td></tr>`).join('');
- const extra=r.g.type==='null'?`<p style="text-align:center">${S.tricks[d]===0?'Kein Stich – Null gewonnen!':'Stich bekommen – Null verloren.'}</p>`:`<p style="text-align:center;margin:4px 0"><b>${r.declPts}</b> Augen Alleinspieler · <b>${120-r.declPts}</b> Gegenspieler</p>`;
+ const extra=r.endBy?`<p style="text-align:center">${r.endBy==='geschenkt'?'🎁 Die Gegenspieler haben geschenkt.':'🏳️ Der Alleinspieler hat aufgegeben.'}</p>`:r.g.type==='null'?`<p style="text-align:center">${S.tricks[d]===0?'Kein Stich – Null gewonnen!':'Stich bekommen – Null verloren.'}</p>`:`<p style="text-align:center;margin:4px 0"><b>${r.declPts}</b> Augen Alleinspieler · <b>${120-r.declPts}</b> Gegenspieler</p>`;
  openOverlay(`<div class="result parch"><div class="l"><h2>${title}</h2>
   <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;justify-content:center">
   <div style="text-align:center;font-size:clamp(13px,3vh,17px)">${mcards(S.skatFinal)}<div>${S.game.hand?'Skat (Hand)':'Gedrückt'}</div><div style="margin-top:8px">${mcards(S.skat)}</div><div>Gefunden</div></div>
@@ -1080,7 +1160,7 @@ function aiDeclareFor12(all){let best=null;for(let i=0;i<12;i++)for(let j=i+1;j<
 $('#btnBack').onclick=openMenu;$('#btnScore').onclick=()=>openSheet(S.phase==='done'?'cur':'list');$('#bInfo').onclick=openRules;$('#bLast').onclick=showLast;$('#btnHint').onclick=hint;
 function setMute(m){P.cfg.muted=m;save();$('#btnMute').classList.toggle('off',m);if(MASTER&&AC)MASTER.gain.setTargetAtTime(m?0:.9,AC.currentTime,.05);if(m){stopAmbient();stopMusic();try{speechSynthesis.cancel()}catch(e){}}else{ac();startAmbient();startMusic()}}
 $('#btnMute').onclick=()=>setMute(!P.cfg.muted);
-$('#bFast').onclick=()=>{P.cfg.fast=!P.cfg.fast;save();$('#bFast').classList.toggle('on',P.cfg.fast);$('#btnMute').classList.toggle('off',!!P.cfg.muted);toast(P.cfg.fast?'Schnelles Tempo':'Normales Tempo',900)};
+$('#bFast').onclick=openActions;
 
 /* ---------- boot ---------- */
 $('#stage').addEventListener('scroll',e=>{e.target.scrollTop=0;e.target.scrollLeft=0});applyTheme(true);$('#bFast').classList.toggle('on',P.cfg.fast);

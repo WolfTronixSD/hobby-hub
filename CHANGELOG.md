@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.33.0 (2026-11-02): Skat actions and theme sounds
+
+- skat/index.html: state-driven play loop with snapshots for Zug zurücknehmen; ⏩ opens an action panel (Schenken for defenders / Aufgeben for the declarer before the first trick is done, Rest zu mir when every card left is a sure winner, Automatisch spielen, tempo). Synthesized theme sound effects in the ambience and on big tricks.
+
 ## 2.32.1 (2026-11-02): Skat Kontra and Re
 
 - skat/index.html: optional Kontra & Re house rule (cfg.kontra, default on). Defenders may say Kontra before the first trick, the declarer may answer Re; ×2 / ×4 on the score, shown in the result and Spielliste.
