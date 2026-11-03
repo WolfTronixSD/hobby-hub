@@ -26,6 +26,10 @@ const APPS = [
     url: "https://wolftronixsd.github.io/karaoke-wolf/" },
   { id: "skat", name: "Skat am Strand", sub: "Skat card game", color: "#16a34a", emoji: "🃏",
     url: "skat/" },
+  { id: "stepperlab", name: "Stepper Lab", sub: "13 NEMA17 sims", color: "#f5a524", emoji: "⚙️",
+    url: "stepper-lab/" },
+  { id: "planepointer", name: "Plane Pointer", sub: "ADS-B tracker build", color: "#39c5cf", emoji: "✈️",
+    url: "plane-pointer/" },
   { id: "claude", name: "Claude", sub: "AI quick start", color: "#d97757", emoji: "✳️",
     url: "https://claude.ai/new", appLink: "claude://" }
 ];

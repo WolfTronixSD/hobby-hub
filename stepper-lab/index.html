@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WolfTronix Stepper Lab</title>
+<style>
+:root{--bg:#0d1117;--pn:#161b22;--pn2:#1c232d;--ln:#2a3340;--tx:#d6dde6;--dim:#8b96a3;--amb:#f5a524;--cy:#39c5cf;--gr:#3fb950;--rd:#f85149;--vi:#a371f7}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--ln);background:var(--pn)}
+header h1{font-size:16px;margin:0;font-weight:650;letter-spacing:.2px}
+header h1 span{color:var(--amb)}
+header .sub{color:var(--dim);font-size:12px}
+header .sp{flex:1}
+button{background:var(--pn2);color:var(--tx);border:1px solid var(--ln);border-radius:7px;padding:6px 11px;font:inherit;cursor:pointer}
+button:hover{border-color:var(--amb)}
+button.on{background:#3a2a08;border-color:var(--amb);color:#ffd27a}
+#app{display:grid;grid-template-columns:190px 1fr 290px;height:calc(100% - 51px)}
+nav{border-right:1px solid var(--ln);overflow:auto;padding:8px}
+nav button{display:flex;gap:8px;align-items:center;width:100%;text-align:left;margin-bottom:4px;border-color:transparent;background:transparent}
+nav button .ic{width:22px;text-align:center;font-size:15px}
+nav button.act{background:var(--pn2);border-color:var(--amb)}
+nav .grp{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.8px;margin:10px 6px 4px}
+main{display:flex;flex-direction:column;min-width:0}
+#desc{padding:10px 14px;border-bottom:1px solid var(--ln);color:var(--dim)}
+#desc b{color:var(--tx)}
+#cw{flex:1;position:relative;min-height:300px}
+canvas#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+aside{border-left:1px solid var(--ln);overflow:auto;padding:12px;background:var(--pn)}
+aside h3{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--dim);margin:14px 0 8px}
+aside h3:first-child{margin-top:0}
+.ctl{margin-bottom:10px}
+.ctl label{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin-bottom:3px}
+.ctl label b{color:var(--tx);font-weight:600}
+.ctl input[type=range]{width:100%;accent-color:var(--amb)}
+.ctl select,.ctl input[type=text]{width:100%;background:var(--pn2);color:var(--tx);border:1px solid var(--ln);border-radius:6px;padding:6px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.mot{background:var(--pn2);border:1px solid var(--ln);border-radius:8px;padding:7px 9px;margin-bottom:6px;font:12px/1.35 ui-monospace,SFMono-Regular,Consolas,monospace}
+.mot .h{display:flex;justify-content:space-between;color:var(--tx);font-weight:600;margin-bottom:3px}
+.mot .h i{font-style:normal;width:9px;height:9px;border-radius:50%;background:#333;display:inline-block;margin-top:3px}
+.mot .h i.run{background:var(--gr);box-shadow:0 0 6px var(--gr)}
+.mot .k{color:var(--dim)}
+.bar{height:4px;background:#0a0d12;border-radius:2px;margin-top:4px;overflow:hidden}
+.bar div{height:100%;background:var(--cy)}
+#log{font:11.5px/1.45 ui-monospace,Consolas,monospace;background:#0a0d12;border:1px solid var(--ln);border-radius:8px;padding:7px;height:150px;overflow:auto;color:#9fe3a8;white-space:pre-wrap}
+.note{font-size:12px;color:var(--dim);background:var(--pn2);border-left:3px solid var(--amb);padding:7px 9px;border-radius:4px}
+@media (max-width:900px){
+ #app{grid-template-columns:1fr;height:auto}
+ nav{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid var(--ln)}
+ nav button{width:auto;white-space:nowrap;margin-right:4px}
+ nav .grp{display:none}
+ #cw{height:58vh}
+ aside{border-left:0;border-top:1px solid var(--ln)}
+ header .sub{display:none}
+}
+</style>
+<style>
+#shareBtn{background:#3a2a08;border:1px solid #f5a524;color:#ffd27a;border-radius:7px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+#shareDlg{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:99}
+#shareDlg.open{display:flex}
+#shareDlg .box{background:#141922;border:1px solid #283240;border-radius:12px;padding:18px;width:min(440px,92vw);color:#dbe2ea;font:14px system-ui,sans-serif}
+#shareDlg h4{margin:0 0 4px;font-size:16px}#shareDlg p{margin:0 0 12px;color:#8d99a6;font-size:12.5px}
+#shareDlg .row{display:flex;gap:6px}#shareDlg input{flex:1;background:#0a0d12;color:#dbe2ea;border:1px solid #283240;border-radius:7px;padding:7px;font:12.5px ui-monospace,Consolas,monospace}
+#shareDlg button{background:#1b222d;color:#dbe2ea;border:1px solid #283240;border-radius:7px;padding:7px 11px;cursor:pointer;font:inherit;font-size:13px}
+#shareDlg button.ok{border-color:#3fb950;color:#3fb950}
+#shareDlg .soc{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+#shareDlg .soc a{background:#1b222d;border:1px solid #283240;border-radius:7px;padding:6px 10px;color:#dbe2ea;text-decoration:none;font-size:13px}
+#shareDlg .soc a:hover,#shareDlg button:hover{border-color:#f5a524}
+</style>
+</head>
+<body>
+<header>
+ <h1><span>WolfTronix</span> Stepper Lab</h1>
+ <div class="sub">4× NEMA17 · TMC2209 1/16 µstep · ESP32-S3 · DY-SV5W MP3 · Bambu X2D prints</div>
+ <div class="sp"></div>
+ <button id="shareBtn">🔗 Share</button>
+ <button id="bPause">⏸ Pause</button>
+ <button id="bSound">🔇 Sound off</button>
+</header>
+<div id="app">
+ <nav id="nav"></nav>
+ <main>
+  <div id="desc"></div>
+  <div id="cw"><canvas id="cv"></canvas></div>
+ </main>
+ <aside>
+  <h3>Controls</h3>
+  <div id="ctl"></div>
+  <h3>Steppers</h3>
+  <div id="mot"></div>
+  <h3>ESP32 / DY-SV5W log</h3>
+  <div id="log"></div>
+ </aside>
+</div>
+<script>
+"use strict";
+// ---------- helpers ----------
+const TAU=Math.PI*2, R=d=>d*Math.PI/180, D=r=>r*180/Math.PI;
+const clamp=(v,a,b)=>v<a?a:v>b?b:v, lerp=(a,b,t)=>a+(b-a)*t, rnd=(a,b)=>a+Math.random()*(b-a), pick=a=>a[Math.floor(Math.random()*a.length)];
+const wrap360=d=>((d%360)+360)%360, angDiff=(a,b)=>((a-b)%360+540)%360-180;
+const C={bg:'#0d1117',pn:'#161b22',ln:'#2a3340',tx:'#d6dde6',dim:'#8b96a3',amb:'#f5a524',cy:'#39c5cf',gr:'#3fb950',rd:'#f85149',vi:'#a371f7'};
+
+// ---------- stepper model ----------
+class Stepper{
+ constructor(name,o={}){
+  this.name=name;this.spr=o.spr||3200;this.gear=o.gear||1;this.vmax=o.vmax||4000;this.acc=o.acc||8000;
+  this.unit=o.unit||'°';this.perRev=o.perRev||360; // output units per output rev
+  this.pos=0;this.v=0;this.target=0;this.mode='pos';this.speed=0;this.total=0;this.note=o.note||'';
+ }
+ get stepsPerUnit(){return this.spr*this.gear/this.perRev}
+ moveTo(s){this.mode='pos';this.target=s}
+ moveToU(u){this.moveTo(u*this.stepsPerUnit)}
+ moveToWrap(d){const cur=this.target/this.stepsPerUnit;this.moveToU(cur+angDiff(d,cur))}
+ run(sps){this.mode='spd';this.speed=sps}
+ u(){return this.pos/this.stepsPerUnit}
+ tu(){return this.target/this.stepsPerUnit}
+ rpm(){return this.v/this.spr*60}
+ busy(){return this.mode==='spd'?Math.abs(this.v)>1:Math.abs(this.target-this.pos)>0.5||Math.abs(this.v)>1}
+ update(dt){
+  let want;
+  if(this.mode==='spd') want=clamp(this.speed,-this.vmax,this.vmax);
+  else{const d=this.target-this.pos;
+   if(Math.abs(d)<0.5&&Math.abs(this.v)<this.acc*dt*2){this.total+=Math.abs(d);this.pos=this.target;this.v=0;return}
+   want=Math.sign(d)*Math.min(this.vmax,Math.sqrt(2*this.acc*Math.abs(d)));}
+  const dv=clamp(want-this.v,-this.acc*dt,this.acc*dt);this.v+=dv;
+  let step=this.v*dt;
+  if(this.mode==='pos'){const d=this.target-this.pos;if(Math.sign(step)===Math.sign(d)&&Math.abs(step)>Math.abs(d)){step=d;}}
+  this.pos+=step;this.total+=Math.abs(step);
+ }
+}
+
+// ---------- audio / MP3 emulation ----------
+let soundOn=false,AC=null;
+function ac(){if(!AC){AC=new (window.AudioContext||window.webkitAudioContext)()}return AC}
+function tone(f,dur,o={}){if(!soundOn)return;try{const a=ac(),t=a.currentTime+(o.when||0);const os=a.createOscillator(),g=a.createGain();os.type=o.type||'sine';os.frequency.setValueAtTime(f,t);if(o.to)os.frequency.exponentialRampToValueAtTime(o.to,t+dur);const v=o.vol||0.12;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(v,t+0.008);g.gain.exponentialRampToValueAtTime(0.0001,t+dur);os.connect(g).connect(a.destination);os.start(t);os.stop(t+dur+0.05)}catch(e){}}
+function bell(f,when=0,vol=0.12){tone(f,2.2,{when,vol});tone(f*2.01,1.2,{when,vol:vol*0.35});tone(f*3.02,0.7,{when,vol:vol*0.15})}
+let noiseBuf=null;
+function clack(vol=0.25){if(!soundOn)return;try{const a=ac();if(!noiseBuf){noiseBuf=a.createBuffer(1,a.sampleRate*0.03,a.sampleRate);const d=noiseBuf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,4)}const s=a.createBufferSource(),g=a.createGain(),f=a.createBiquadFilter();f.type='bandpass';f.frequency.value=2500;s.buffer=noiseBuf;g.gain.value=vol;s.connect(f).connect(g).connect(a.destination);s.start()}catch(e){}}
+function say(text){if(!soundOn||!window.speechSynthesis)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.rate=1.02;speechSynthesis.speak(u)}catch(e){}}
+let mp3n=1;const logEl=document.getElementById('log');
+function log(msg){const t=new Date().toTimeString().slice(0,8);logEl.textContent+=`[${t}] ${msg}\n`;if(logEl.textContent.length>6000)logEl.textContent=logEl.textContent.slice(-4000);logEl.scrollTop=1e9}
+function mp3(desc,speak){log(`▶ DY-SV5W play /${String(mp3n++%200).padStart(5,'0')}.mp3  "${desc}"`);if(speak)say(speak)}
+
+// ---------- UI framework ----------
+const sims=[];let cur=null,paused=false;
+const nav=document.getElementById('nav'),ctl=document.getElementById('ctl'),motEl=document.getElementById('mot'),descEl=document.getElementById('desc');
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d');let W=0,H=0;
+function resize(){const r=cv.getBoundingClientRect(),dpr=window.devicePixelRatio||1;W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+window.addEventListener('resize',resize);
+const UI={
+ slider(label,min,max,step,val,fn,fmt=v=>v){const d=document.createElement('div');d.className='ctl';d.innerHTML=`<label>${label}<b></b></label><input type=range min=${min} max=${max} step=${step} value=${val}>`;const i=d.querySelector('input'),b=d.querySelector('b');const up=()=>{b.textContent=fmt(+i.value);fn(+i.value)};i.oninput=up;ctl.appendChild(d);b.textContent=fmt(val);fn(val);return i},
+ select(label,opts,fn,val){const d=document.createElement('div');d.className='ctl';d.innerHTML=`<label>${label}</label><select>${opts.map(o=>`<option>${o}</option>`).join('')}</select>`;const s=d.querySelector('select');if(val)s.value=val;s.onchange=()=>fn(s.value);ctl.appendChild(d);fn(s.value);return s},
+ text(label,val,fn){const d=document.createElement('div');d.className='ctl';d.innerHTML=`<label>${label}</label><input type=text value="${val}">`;const i=d.querySelector('input');i.onchange=()=>fn(i.value);i.onkeyup=e=>{if(e.key==='Enter')fn(i.value)};ctl.appendChild(d);return i},
+ buttons(list){const d=document.createElement('div');d.className='row';for(const [l,f] of list){const b=document.createElement('button');b.textContent=l;b.onclick=()=>f(b);d.appendChild(b)}ctl.appendChild(d);return d},
+ toggle(label,val,fn){const d=document.createElement('div');d.className='row';const b=document.createElement('button');const set=v=>{val=v;b.className=v?'on':'';b.textContent=(v?'✔ ':'○ ')+label;fn(v)};b.onclick=()=>set(!val);d.appendChild(b);ctl.appendChild(d);set(val);return d},
+ note(html){const d=document.createElement('div');d.className='note';d.innerHTML=html;ctl.appendChild(d)}
+};
+function select(i){
+ cur=sims[i];[...nav.querySelectorAll('button')].forEach(b=>b.classList.toggle('act',+b.dataset.i===i));
+ ctl.innerHTML='';motEl.innerHTML='';descEl.innerHTML=`<b>${cur.icon} ${cur.name}</b> — ${cur.desc}`;
+ cur.motors=[];cur.ready=false;cur.init(UI);buildMot();
+ log(`— ${cur.name} loaded —`);
+ try{location.hash=cur.id}catch(e){}
+}
+function buildMot(){
+ motEl.innerHTML=cur.motors.map((m,k)=>`<div class=mot><div class=h><span>M${k+1} · ${m.name}</span><i id=mi${k}></i></div><div id=mt${k} class=k></div><div class=bar><div id=mb${k}></div></div></div>`).join('');
+}
+let lastPanel=0;
+function panel(now){if(now-lastPanel<100)return;lastPanel=now;cur.motors.forEach((m,k)=>{const e=document.getElementById('mt'+k);if(!e)return;const out=m.u();e.textContent=`pos ${Math.round(m.pos).toString().padStart(8)} st\nout ${out.toFixed(1)}${m.unit}  ${m.rpm().toFixed(1)} rpm${m.gear!==1?`\ngear ${m.gear}:1`:''}${m.note?'  '+m.note:''}`;document.getElementById('mb'+k).style.width=clamp(Math.abs(m.v)/m.vmax*100,0,100)+'%';document.getElementById('mi'+k).className=m.busy()?'run':''})}
+let pointer={x:0,y:0,down:false};
+function ptr(e){const r=cv.getBoundingClientRect();pointer.x=e.clientX-r.left;pointer.y=e.clientY-r.top}
+cv.addEventListener('pointerdown',e=>{ptr(e);pointer.down=true;cv.setPointerCapture(e.pointerId);cur.down&&cur.down(pointer.x,pointer.y)});
+cv.addEventListener('pointermove',e=>{ptr(e);cur.move&&cur.move(pointer.x,pointer.y,pointer.down)});
+cv.addEventListener('pointerup',e=>{pointer.down=false;cur.up&&cur.up()});
+document.getElementById('bPause').onclick=e=>{paused=!paused;e.target.textContent=paused?'▶ Run':'⏸ Pause';e.target.className=paused?'on':''};
+document.getElementById('bSound').onclick=e=>{soundOn=!soundOn;e.target.textContent=soundOn?'🔊 Sound on':'🔇 Sound off';e.target.className=soundOn?'on':'';if(soundOn){try{ac().resume()}catch(x){}}else{try{speechSynthesis.cancel()}catch(x){}}};
+let last=performance.now();
+function frame(now){const dt=Math.min(0.05,(now-last)/1000);last=now;
+ if(cur){if(!paused){cur.update(dt);cur.motors.forEach(m=>m.update(dt));cur.post&&cur.post(dt)}
+  ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);ctx.save();cur.draw(ctx,W,H);ctx.restore();panel(now)}
+ requestAnimationFrame(frame)}
+function addSim(s){sims.push(s)}
+
+// drawing helpers
+function circ(x,y,r,fill,stroke,lw=1){ctx.beginPath();ctx.arc(x,y,r,0,TAU);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke()}}
+function line(x1,y1,x2,y2,c,lw=1){ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=c;ctx.lineWidth=lw;ctx.stroke()}
+function txt(s,x,y,c=C.tx,size=12,align='left',font='system-ui'){ctx.fillStyle=c;ctx.font=`${size}px ${font}`;ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillText(s,x,y)}
+function mono(s,x,y,c=C.tx,size=12,align='left'){txt(s,x,y,c,size,align,'ui-monospace,Consolas,monospace')}
+function rrect(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,r):ctx.rect(x,y,w,h);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke()}}
+// screen angle from compass degrees (0=up, clockwise)
+const cx=(x,a,r)=>x+Math.sin(R(a))*r, cy=(y,a,r)=>y-Math.cos(R(a))*r;
+
+// =====================================================================
+// 1. PLANE POINTER
+// =====================================================================
+addSim({id:'plane',grp:'Aviation & radio',name:'Plane Pointer',icon:'✈️',
+desc:'Pan/tilt arrow tracks aircraft from ADS-B. AZ + EL steppers on printed 3:1 gears; the DY-SV5W announces each new target. Click a plane to pick it.',
+init(ui){
+ this.az=new Stepper('AZ pan',{gear:3,vmax:7000,acc:7000});this.el=new Stepper('EL tilt',{gear:3,vmax:5000,acc:6000});
+ this.motors=[this.az,this.el];this.planes=[];this.range=30;this.ts=20;this.sel=null;this.tgt=null;this.trailT=0;
+ ui.select('Target mode',['Nearest','Click to pick','Lowest altitude','Fastest'],v=>this.mode=v);
+ ui.slider('Radar range',10,50,1,30,v=>this.range=v,v=>v+' km');
+ ui.slider('Sim speed',1,60,1,20,v=>this.ts=v,v=>'×'+v);
+ ui.slider('Aircraft',2,14,1,7,v=>{this.n=v;while(this.planes.length<v)this.planes.push(this.spawn(true));this.planes.length=v});
+ ui.buttons([['New traffic',()=>{this.planes=this.planes.map(()=>this.spawn(true))}]]);
+ ui.note('Home = Escondido. Real build: dump1090 / adsb.lol JSON → ESP32 → az = atan2(ΔE,ΔN), el = atan2(alt, dist). Optical end-stop homes AZ at north.');
+},
+spawn(any){const al=[['SWA','Southwest'],['ASA','Alaska'],['UAL','United'],['AAL','American'],['SKW','SkyWest'],['FDX','FedEx'],['N','November']];const a=pick(al);
+ const ph=['alpha','bravo','charlie','delta','echo','foxtrot','golf','hotel','kilo','lima','mike','papa','romeo','sierra','tango','victor','whiskey','x-ray','yankee','zulu'];
+ let cs,sp,alt,kt;if(a[0]==='N'){const n=Math.floor(rnd(100,999)),l=Math.floor(rnd(0,20));cs='N'+n+ph[l][0].toUpperCase();sp=`November ${String(n).split('').join(' ')} ${ph[l]}`;alt=rnd(2500,7500);kt=rnd(95,140)}
+ else{const n=Math.floor(rnd(100,2999));cs=a[0]+n;sp=`${a[1]} ${String(n).split('').join(' ')}`;alt=rnd(4000,24000);kt=rnd(230,420)}
+ const ang=rnd(0,TAU),r=any?rnd(2,this.range):this.range;const x=Math.sin(ang)*r,y=Math.cos(ang)*r;
+ const hdg=any?rnd(0,360):wrap360(D(Math.atan2(-x,-y))+rnd(-40,40));
+ return{cs,sp,x,y,hdg,alt,kt,dest:pick(['Lindbergh','Palomar','Montgomery','Los Angeles','Ontario','Phoenix']),trail:[]}},
+update(dt){
+ this.trailT+=dt;const addTrail=this.trailT>0.4;if(addTrail)this.trailT=0;
+ for(let i=0;i<this.planes.length;i++){const p=this.planes[i];const v=p.kt*1.852/3600*this.ts;p.hdg=wrap360(p.hdg+rnd(-3,3)*dt);p.x+=Math.sin(R(p.hdg))*v*dt;p.y+=Math.cos(R(p.hdg))*v*dt;p.alt=clamp(p.alt+rnd(-40,40)*dt*this.ts,1500,30000);
+  if(addTrail){p.trail.push([p.x,p.y]);if(p.trail.length>25)p.trail.shift()}
+  if(Math.hypot(p.x,p.y)>this.range*1.15)this.planes[i]=this.spawn(false)}
+ let t=null;const pl=this.planes;const d3=p=>Math.hypot(p.x,p.y,p.alt*0.0003048);
+ if(this.mode==='Click to pick'){t=pl.includes(this.sel)?this.sel:null}
+ else if(this.mode==='Lowest altitude')t=pl.reduce((a,b)=>!a||b.alt<a.alt?b:a,null);
+ else if(this.mode==='Fastest')t=pl.reduce((a,b)=>!a||b.kt>a.kt?b:a,null);
+ else t=pl.reduce((a,b)=>!a||d3(b)<d3(a)?b:a,null);
+ if(t!==this.tgt){this.tgt=t;if(t){const dist=Math.hypot(t.x,t.y);mp3(`${t.cs} ${Math.round(t.alt/100)*100} ft ${dist.toFixed(1)} km → ${t.dest}`,`${t.sp}, ${Math.round(t.alt/100)*100} feet, ${dist.toFixed(0)} kilometers, inbound ${t.dest}`)}}
+ if(t){const dist=Math.hypot(t.x,t.y);this.cmdAz=wrap360(D(Math.atan2(t.x,t.y)));this.cmdEl=clamp(D(Math.atan2(t.alt*0.0003048,dist)),0,89);this.az.moveToWrap(this.cmdAz);this.el.moveToU(this.cmdEl)}
+},
+down(x,y){if(this.mode!=='Click to pick')return;let best=null,bd=30;for(const p of this.planes){const sx=this.mx+p.x*this.ms,sy=this.my-p.y*this.ms;const d=Math.hypot(sx-x,sy-y);if(d<bd){bd=d;best=p}}if(best)this.sel=best},
+draw(c,W,H){
+ const mw=Math.min(W*0.62,H)-20;this.mx=10+mw/2;this.my=H/2;this.ms=mw/2/this.range;const mx=this.mx,my=this.my,ms=this.ms;
+ circ(mx,my,mw/2,'#0a1a12',C.ln);
+ for(let r=10;r<=this.range;r+=10){circ(mx,my,r*ms,null,'#1f3a2a');txt(r+' km',mx+3,my-r*ms+8,'#3d6b50',10)}
+ for(let a=0;a<360;a+=30)line(mx,my,cx(mx,a,mw/2),cy(my,a,mw/2),'#14281d');
+ txt('N',mx,my-mw/2+12,C.gr,12,'center');
+ // airports
+ for(const [n,x,y] of [['KMYF',-2,-27],['KCRQ',-25,4],['KSAN',-14,-34],['KRNM',9,-12]]){if(Math.hypot(x,y)<this.range){const sx=mx+x*ms,sy=my-y*ms;ctx.strokeStyle='#4b5d72';ctx.strokeRect(sx-3,sy-3,6,6);txt(n,sx+6,sy,'#5c7088',10)}}
+ // pointer actual
+ const aa=this.az.u(),ea=this.el.u();line(mx,my,cx(mx,aa,mw/2),cy(my,aa,mw/2),'rgba(57,197,207,.5)',2);
+ for(const p of this.planes){const sx=mx+p.x*ms,sy=my-p.y*ms;const isT=p===this.tgt;
+  c.beginPath();p.trail.forEach(([x,y],i)=>{const tx=mx+x*ms,ty=my-y*ms;i?c.lineTo(tx,ty):c.moveTo(tx,ty)});c.strokeStyle=isT?'rgba(245,165,36,.5)':'rgba(140,160,180,.25)';c.lineWidth=1;c.stroke();
+  c.save();c.translate(sx,sy);c.rotate(R(p.hdg));c.beginPath();c.moveTo(0,-8);c.lineTo(5,6);c.lineTo(0,3);c.lineTo(-5,6);c.closePath();c.fillStyle=isT?C.amb:'#9fb3c8';c.fill();c.restore();
+  txt(p.cs,sx+8,sy-6,isT?C.amb:'#9fb3c8',10);txt(Math.round(p.alt/100).toString().padStart(3,'0')+' '+Math.round(p.kt)+'kt',sx+8,sy+6,C.dim,9)}
+ circ(mx,my,4,C.cy);
+ // device view
+ const dx=Math.min(W*0.62,H)+(W-Math.min(W*0.62,H))/2,cw=W-Math.min(W*0.62,H);if(cw<160)return;
+ const r1=Math.min(cw*0.35,H*0.2);let y1=H*0.27;
+ txt('TOP VIEW — azimuth',dx,y1-r1-18,C.dim,11,'center');circ(dx,y1,r1,'#11161d',C.ln,2);
+ for(let a=0;a<360;a+=10)line(cx(dx,a,r1),cy(y1,a,r1),cx(dx,a,r1-(a%90?4:10)),cy(y1,a,r1-(a%90?4:10)),C.dim);
+ // gear teeth ring rotating
+ c.save();c.translate(dx,y1);c.rotate(R(aa));c.fillStyle=C.amb;c.beginPath();c.moveTo(0,-r1+14);c.lineTo(9,6);c.lineTo(0,0);c.lineTo(-9,6);c.closePath();c.fill();c.fillRect(-2,0,4,r1*0.45);c.restore();
+ if(this.cmdAz!=null)circ(cx(dx,this.cmdAz,r1-6),cy(y1,this.cmdAz,r1-6),4,null,C.cy,2);
+ let y2=H*0.72,r2=r1*1.1;txt('SIDE VIEW — elevation',dx,y2-r2-18,C.dim,11,'center');
+ c.beginPath();c.arc(dx-r2/2,y2,r2,-Math.PI/2,0);c.strokeStyle=C.ln;c.lineWidth=2;c.stroke();
+ for(let e=0;e<=90;e+=15){const a=R(e);line(dx-r2/2+Math.cos(a)*r2,y2-Math.sin(a)*r2,dx-r2/2+Math.cos(a)*(r2-8),y2-Math.sin(a)*(r2-8),C.dim);txt(e+'°',dx-r2/2+Math.cos(a)*(r2+14),y2-Math.sin(a)*(r2+14),C.dim,9,'center')}
+ const ear=R(ea);line(dx-r2/2,y2,dx-r2/2+Math.cos(ear)*r2*0.9,y2-Math.sin(ear)*r2*0.9,C.amb,4);rrect(dx-r2/2-14,y2,28,16,3,'#333a44');
+ const t=this.tgt;if(t){mono(`${t.cs}  → ${t.dest}`,dx,H-48,C.amb,12,'center');mono(`AZ cmd ${this.cmdAz.toFixed(1)}° act ${wrap360(aa).toFixed(1)}°`,dx,H-32,C.tx,11,'center');mono(`EL cmd ${this.cmdEl.toFixed(1)}° act ${ea.toFixed(1)}°`,dx,H-17,C.tx,11,'center')}
+}});
+
+// =====================================================================
+// 2. ANTENNA ROTATOR
+// =====================================================================
+addSim({id:'rotator',grp:'Aviation & radio',name:'Sat Antenna Rotator',icon:'📡',
+desc:'Az/El rotator for a small Yagi, fed by Gpredict over WiFi using the rotctld protocol. Watch tracking error during high-elevation passes, when the azimuth swings fast.',
+init(ui){
+ this.motors=[];this.mk=g=>{this.az=new Stepper('AZ worm',{gear:g,vmax:24000,acc:30000});this.el=new Stepper('EL worm',{gear:g,vmax:24000,acc:30000});this.motors.length=0;this.motors.push(this.az,this.el)};
+ this.mk(60);this.ts=10;this.beam=15;this.cmdT=0;
+ ui.select('Worm gear ratio',['60','10','30','100'],v=>{const a=this.az?this.az.u():0,e=this.el?this.el.u():0;this.mk(+v);this.az.pos=this.az.target=a*this.az.stepsPerUnit;this.el.pos=this.el.target=e*this.el.stepsPerUnit;if(this.ready)buildMot()});
+ ui.slider('Pass time warp',1,40,1,10,v=>this.ts=v,v=>'×'+v);
+ ui.slider('Antenna beamwidth',6,40,1,15,v=>this.beam=v,v=>'±'+v+'°');
+ ui.buttons([['New pass',()=>this.newPass()],['Overhead pass',()=>this.newPass(86)]]);
+ this.ready=true;ui.note('Gear ratio is a trade-off: high ratio = holds against wind and gives fine resolution, but slower slewing. Try 100:1 on an overhead pass.');
+ if(!this.pass)this.newPass();
+},
+newPass(maxEl){const n=pick(['ISS','SO-50','AO-91','AO-27','RS-44','NOAA-19']);maxEl=maxEl||rnd(12,80);const dd=1-maxEl/90;const pa=rnd(0,TAU);
+ this.pass={n,maxEl,d:dd,ang:pa,dur:rnd(480,720),t:-60};mp3(`${n} pass, max el ${maxEl.toFixed(0)}°`,`New pass. ${n.replace('-',' ')}, maximum elevation ${maxEl.toFixed(0)} degrees`);this.aos=false;this.los=false},
+satAt(t){const p=this.pass;const s=clamp(t/p.dur,0,1);const half=Math.sqrt(Math.max(0,1-p.d*p.d));const px=Math.cos(p.ang)*p.d,py=Math.sin(p.ang)*p.d;const dx=-Math.sin(p.ang),dy=Math.cos(p.ang);const x=px+dx*(s-0.5)*2*half,y=py+dy*(s-0.5)*2*half;const r=Math.hypot(x,y);return{az:wrap360(D(Math.atan2(x,y))),el:clamp(90*(1-r),0,90),x,y}},
+update(dt){const p=this.pass;p.t+=dt*this.ts;if(p.t>p.dur+60)this.newPass();
+ const s=this.satAt(p.t);this.sat=s;
+ if(p.t>=0&&!this.aos){this.aos=true;mp3(`AOS ${p.n}`,`Acquisition of signal`)}
+ if(p.t>=p.dur&&!this.los){this.los=true;mp3(`LOS ${p.n}`,`Loss of signal`)}
+ this.cmdT+=dt;if(this.cmdT>0.5){this.cmdT=0;log(`rotctld ← P ${s.az.toFixed(1)} ${s.el.toFixed(1)}`)}
+ this.az.moveToWrap(s.az);this.el.moveToU(p.t<0?0:s.el)},
+draw(c,W,H){const s=this.sat;if(!s)return;const r=Math.min(W*0.55,H)/2-24,mx=r+24,my=H/2;
+ circ(mx,my,r,'#0b1220',C.ln,1.5);[30,60].forEach(e=>{circ(mx,my,r*(1-e/90),null,'#1e2a3c');txt(e+'°',mx+3,my-r*(1-e/90)+8,C.dim,9)});
+ ['N','E','S','W'].forEach((l,i)=>txt(l,cx(mx,i*90,r+12),cy(my,i*90,r+12),C.dim,12,'center'));line(mx-r,my,mx+r,my,'#1e2a3c');line(mx,my-r,mx,my+r,'#1e2a3c');
+ // pass path
+ c.beginPath();for(let i=0;i<=60;i++){const q=this.satAt(i/60*this.pass.dur);const X=mx+q.x*r,Y=my-q.y*r;i?c.lineTo(X,Y):c.moveTo(X,Y)}c.setLineDash([4,4]);c.strokeStyle='#5c6f88';c.stroke();c.setLineDash([]);
+ const pt=(az,el)=>[mx+Math.sin(R(az))*r*(1-el/90),my-Math.cos(R(az))*r*(1-el/90)];
+ const [ax,ay]=pt(wrap360(this.az.u()),this.el.u());const [sx,sy]=pt(s.az,s.el);
+ circ(ax,ay,this.beam/90*r,'rgba(57,197,207,.12)',C.cy);circ(ax,ay,3,C.cy);
+ const vis=this.pass.t>=0&&this.pass.t<=this.pass.dur;circ(sx,sy,6,vis?C.amb:'#555');txt(this.pass.n,sx+9,sy,vis?C.amb:C.dim,11);
+ // error
+ const a1=R(s.el),a2=R(this.el.u()),dz=R(angDiff(s.az,this.az.u()));const err=D(Math.acos(clamp(Math.sin(a1)*Math.sin(a2)+Math.cos(a1)*Math.cos(a2)*Math.cos(dz),-1,1)));
+ // side panel
+ const px=mx+r+40,pw=W-px-10;if(pw<150)return;const bx=px+pw/2;
+ mono(`${this.pass.n}  max ${this.pass.maxEl.toFixed(0)}°`,bx,30,C.amb,13,'center');
+ const t=this.pass.t;mono(t<0?`AOS in ${(-t).toFixed(0)} s`:t<=this.pass.dur?`T+${t.toFixed(0)} s / ${this.pass.dur.toFixed(0)} s`:'LOS',bx,50,C.tx,12,'center');
+ mono(`SAT az ${s.az.toFixed(1)}° el ${s.el.toFixed(1)}°`,bx,76,C.tx,12,'center');mono(`ANT az ${wrap360(this.az.u()).toFixed(1)}° el ${this.el.u().toFixed(1)}°`,bx,94,C.cy,12,'center');
+ const ok=err<this.beam;rrect(bx-80,108,160,28,6,ok?'#123d1f':'#3d1414');mono(`${ok?'IN BEAM':'OFF TARGET'}  ${err.toFixed(1)}°`,bx,122,ok?C.gr:C.rd,13,'center');
+ // mast + yagi
+ const gy=H-30,mt=Math.max(160,H*0.45);line(bx,gy,bx,gy-mt,'#6b7684',5);line(bx-40,gy,bx+40,gy,'#6b7684',3);rrect(bx-14,gy-mt-10,28,20,4,'#333a44');
+ const el=R(this.el.u()),L=Math.min(pw*0.42,120);const azr=R(this.az.u());const fx=Math.sin(azr);// foreshortening via az
+ const ex=Math.cos(el)*L*(0.35+0.65*Math.abs(fx))*(fx<0?-1:1),ey=-Math.sin(el)*L;const yx=bx,yy=gy-mt;
+ line(yx-ex*0.3,yy-ey*0.3,yx+ex,yy+ey,'#c9d1d9',3);for(let i=0;i<6;i++){const f=-0.25+i*0.24;const ox=yx+ex*f,oy=yy+ey*f;const len=14-i*1.4;const nx=-ey/L*len,ny=ex/L*len;line(ox-nx,oy-ny,ox+nx,oy+ny,'#c9d1d9',2)}
+ txt('70 cm Yagi (printed boom clamps)',bx,gy+14,C.dim,10,'center')}
+});
+
+// =====================================================================
+// 3. GAUGE CLUSTER
+// =====================================================================
+addSim({id:'gauges',grp:'Aviation & radio',name:'METAR Gauge Cluster',icon:'🧭',
+desc:'Four stepper-driven needles show KMYF weather: wind direction, wind speed, altimeter, and nearby ADS-B traffic. Needles home with TMC2209 StallGuard (sensorless) against a printed stop.',
+init(ui){const o={vmax:9000,acc:16000};this.m=[new Stepper('Wind dir',o),new Stepper('Wind kt',o),new Stepper('Altimeter',o),new Stepper('Traffic',o)];this.motors=this.m;
+ this.m.forEach(m=>{m.pos=m.target=rnd(40,250)*m.stepsPerUnit});this.home();
+ this.w={dir:270,spd:8,gust:0,alt:29.92,t:18,dp:12,cl:'FEW020',tr:5};this.tm=0;this.tt=0;
+ ui.slider('METAR update every',4,60,1,12,v=>this.iv=v,v=>v+' s');ui.toggle('Speak new METAR',false,v=>this.speak=v);
+ ui.buttons([['Re-home (StallGuard)',()=>this.home()],['New METAR now',()=>this.newMetar()],['Santa Ana wind',()=>{this.w.dir=60;this.w.spd=28;this.w.gust=38;this.newMetar(true)}]]);
+ this.newMetar(true)},
+home(){this.homing=1.6;this.m.forEach((m,i)=>{if(i===0)return;m.moveToU(-400)});log('Homing: StallGuard SGTHRS=60, driving needles to stop…')},
+newMetar(keep){const w=this.w;if(!keep){w.dir=wrap360(w.dir+rnd(-40,40));w.spd=clamp(w.spd+rnd(-5,5),0,35);w.gust=Math.random()<0.25?w.spd+rnd(6,12):0;w.alt=clamp(w.alt+rnd(-0.06,0.06),29.5,30.5);w.t=clamp(w.t+rnd(-1,1),8,35);w.cl=pick(['SKC','FEW020','SCT035','BKN012','OVC008'])}
+ const now=new Date();const z=String(now.getUTCDate()).padStart(2,'0')+String(now.getUTCHours()).padStart(2,'0')+String(now.getUTCMinutes()).padStart(2,'0');
+ const d3=w.spd<1?'00000':String(Math.round(w.dir/10)*10%360||360).padStart(3,'0')+String(Math.round(w.spd)).padStart(2,'0');
+ this.metar=`KMYF ${z}Z ${d3}${w.gust?'G'+Math.round(w.gust):''}KT 10SM ${w.cl} ${Math.round(w.t)}/${Math.round(w.dp)} A${Math.round(w.alt*100)}`;
+ log('METAR '+this.metar);if(this.speak)mp3('ATIS-style weather',`Montgomery weather. Wind ${String(Math.round(w.dir/10)*10).split('').join(' ')} at ${Math.round(w.spd)}${w.gust?', gusting '+Math.round(w.gust):''}. Altimeter ${String(Math.round(w.alt*100)).split('').join(' ')}`)},
+update(dt){if(this.homing>0){this.homing-=dt;for(let i=1;i<4;i++){const m=this.m[i];if(m.u()<=0){m.pos=0;m.v=0;m.target=0}}if(this.homing<=0)log('Homed ✓ all needles zeroed');return}
+ this.tm+=dt;if(this.tm>this.iv){this.tm=0;this.newMetar()}this.tt+=dt;if(this.tt>3){this.tt=0;this.w.tr=clamp(Math.round(this.w.tr+rnd(-2.5,2.5)),0,20)}
+ const w=this.w;const gust=w.gust?w.gust:w.spd;const live=w.spd+(gust-w.spd)*(0.5+0.5*Math.sin(performance.now()/700));
+ this.m[0].moveToWrap(w.dir+Math.sin(performance.now()/1300)*4);this.m[1].moveToU(clamp(live/40,0,1)*270);this.m[2].moveToU(clamp((w.alt-29.5)/1,0,1)*270);this.m[3].moveToU(clamp(w.tr/20,0,1)*270)},
+gauge(x,y,r,title,deg,ticks,labels,unit){circ(x,y,r+6,'#1a1f27');circ(x,y,r,'#0b0e13',C.ln,2);
+ for(let i=0;i<=ticks;i++){const a=-135+270*i/ticks;const big=i%(ticks/(labels.length-1))===0;line(cx(x,a,r-2),cy(y,a,r-2),cx(x,a,r-(big?12:6)),cy(y,a,r-(big?12:6)),big?C.tx:C.dim,big?2:1)}
+ labels.forEach((l,i)=>{const a=-135+270*i/(labels.length-1);txt(l,cx(x,a,r-24),cy(y,a,r-24),C.tx,Math.max(9,r*0.11),'center')});
+ txt(title,x,y+r*0.45,C.dim,Math.max(10,r*0.11),'center');txt(unit,x,y+r*0.62,C.amb,Math.max(10,r*0.12),'center');
+ const a=-135+deg;line(x,y,cx(x,a,r*0.82),cy(y,a,r*0.82),C.amb,3);line(x,y,cx(x,a+180,r*0.18),cy(y,a+180,r*0.18),C.amb,3);circ(x,y,6,'#444',C.amb)},
+draw(c,W,H){const cols=W>H*1.4?4:2,rows=cols===4?1:2;const cw=W/cols,ch=(H-50)/rows;const r=Math.min(cw,ch)/2-22;const w=this.w;
+ const pos=i=>[cw*(i%cols)+cw/2,ch*Math.floor(i/cols)+ch/2+10];
+ // wind dir compass
+ {const [x,y]=pos(0);circ(x,y,r+6,'#1a1f27');circ(x,y,r,'#0b0e13',C.ln,2);for(let a=0;a<360;a+=10)line(cx(x,a,r-2),cy(y,a,r-2),cx(x,a,r-(a%30?6:12)),cy(y,a,r-(a%30?6:12)),a%30?C.dim:C.tx);
+  ['N','3','6','E','12','15','S','21','24','W','30','33'].forEach((l,i)=>txt(l,cx(x,i*30,r-24),cy(y,i*30,r-24),i%3?C.dim:C.tx,Math.max(9,r*0.11),'center'));
+  const a=this.m[0].u();ctx.save();ctx.translate(x,y);ctx.rotate(R(a));ctx.beginPath();ctx.moveTo(0,-r*0.8);ctx.lineTo(8,-r*0.55);ctx.lineTo(3,-r*0.55);ctx.lineTo(3,r*0.6);ctx.lineTo(-3,r*0.6);ctx.lineTo(-3,-r*0.55);ctx.lineTo(-8,-r*0.55);ctx.closePath();ctx.fillStyle=C.cy;ctx.fill();ctx.restore();circ(x,y,6,'#444',C.cy);txt('WIND FROM',x,y+r*0.35,C.dim,Math.max(10,r*0.1),'center');txt(Math.round(w.dir)+'°',x,y+r*0.5,C.cy,Math.max(11,r*0.13),'center')}
+ {const [x,y]=pos(1);this.gauge(x,y,r,'WIND',this.m[1].u(),40,['0','10','20','30','40'],`${Math.round(w.spd)}${w.gust?'G'+Math.round(w.gust):''} kt`)}
+ {const [x,y]=pos(2);this.gauge(x,y,r,'ALTIMETER',this.m[2].u(),20,['29.5','29.75','30.0','30.25','30.5'],w.alt.toFixed(2)+' inHg')}
+ {const [x,y]=pos(3);this.gauge(x,y,r,'ADS-B < 25 km',this.m[3].u(),20,['0','5','10','15','20'],w.tr+' aircraft')}
+ rrect(10,H-40,W-20,30,6,'#0a0d12',C.ln);mono(this.homing>0?'HOMING… StallGuard sensorless — needles drive into printed stop':this.metar,W/2,H-25,this.homing>0?C.amb:C.gr,Math.min(14,W/50),'center')}
+});
+
+// =====================================================================
+// 4. STEPPER CLOCK
+// =====================================================================
+addSim({id:'clock',grp:'Kinetic art & clocks',name:'Stepper Clock + Chimes',icon:'🕰️',
+desc:'Three steppers on concentric printed shafts drive the hour, minute and second hands. NTP sync at boot spins the hands to the right time. Westminster or Kuckuck chime from the MP3 on the hour.',
+init(ui){const o={vmax:12000,acc:20000};this.h=new Stepper('Hour hand',{...o,gear:2});this.mi=new Stepper('Minute hand',{...o,gear:2});this.s=new Stepper('Second hand',o);this.motors=[this.h,this.mi,this.s];
+ const n=new Date();this.t=n.getHours()*3600+n.getMinutes()*60+n.getSeconds()+n.getMilliseconds()/1000;this.lastH=Math.floor(this.t/3600);this.lastQ=Math.floor(this.t/900);this.sp=1;
+ log('NTP sync pool.ntp.org → '+n.toTimeString().slice(0,8)+' — spinning hands from 12:00');
+ const t0=this.t;[[this.h,t0/43200*360],[this.mi,t0/3600*360],[this.s,t0*6]].forEach(([m,u])=>{m.pos=m.target=(u-wrap360(u))*m.stepsPerUnit});
+ ui.select('Time speed',['×1 real time','×60','×600','×3600'],v=>this.sp=+v.split('×')[1].split(' ')[0]);
+ ui.select('Chime',['Westminster','Kuckuck','Ship bells','Off'],v=>this.ch=v);ui.toggle('Quarter-hour chimes',false,v=>this.qt=v);ui.select('Second hand',['Tick','Sweep'],v=>this.sw=v==='Sweep');
+ ui.buttons([['Test hour chime',()=>this.chime(Math.floor(this.t/3600)%12||12,0)],['Jump to :59:50',()=>{this.t=Math.floor(this.t/3600)*3600+3590;this.lastH=Math.floor(this.t/3600)}]])},
+chime(hr,q){if(this.ch==='Off')return;const E4=329.63,Fs=369.99,Gs=415.3,B3=246.94;const seq=[[Gs,Fs,E4,B3],[E4,Gs,Fs,B3],[E4,Fs,Gs,E4],[Gs,E4,Fs,B3],[B3,Fs,Gs,E4]];
+ if(this.ch==='Westminster'){const n=q===0?4:q;let w=0;for(let i=0;i<n;i++){for(const f of seq[i])bell(f,w,0.1),w+=0.55;w+=0.5}if(q===0){w+=0.6;for(let i=0;i<hr;i++)bell(164.81,w+i*1.4,0.14)}mp3(q===0?`Westminster + ${hr} strikes`:`Westminster quarter ${q}`)}
+ else if(this.ch==='Kuckuck'){if(q)return;for(let i=0;i<hr;i++){tone(698,0.25,{when:i*0.9,vol:0.2,type:'triangle'});tone(587,0.35,{when:i*0.9+0.3,vol:0.2,type:'triangle'})}mp3(`Kuckuck ×${hr}`,null)}
+ else{if(q)return;for(let i=0;i<hr;i++)bell(880,Math.floor(i/2)*1.1+(i%2)*0.35,0.1);mp3(`Ship bells ${hr}`)}},
+update(dt){this.t+=dt*this.sp;const t=this.t;const H=Math.floor(t/3600),Q=Math.floor(t/900);
+ if(H!==this.lastH){this.lastH=H;this.chime(H%12||12,0)}else if(Q!==this.lastQ&&this.qt){this.chime(0,Q%4)}this.lastQ=Q;
+ this.h.moveToU(t/43200*360);this.mi.moveToU(t/3600*360);this.s.moveToU(this.sw||this.sp>1?t*6:Math.floor(t)*6)},
+draw(c,W,H){const x=W/2,y=H/2,r=Math.min(W,H)/2-30;circ(x,y,r+10,'#2b1d10');circ(x,y,r,'#f3ead8');
+ for(let i=0;i<60;i++){const a=i*6;line(cx(x,a,r-6),cy(y,a,r-6),cx(x,a,r-(i%5?12:24)),cy(y,a,r-(i%5?12:24)),'#3a2a1a',i%5?1.5:4)}
+ for(let i=1;i<=12;i++)txt(['I','II','III','IIII','V','VI','VII','VIII','IX','X','XI','XII'][i-1],cx(x,i*30,r-44),cy(y,i*30,r-44),'#3a2a1a',r*0.1,'center','Georgia,serif');
+ txt('WolfTronix',x,y-r*0.32,'#7a5a3a',r*0.07,'center','Georgia,serif');txt('NEMA17 ×3',x,y+r*0.32,'#a08060',r*0.05,'center');
+ const hand=(a,len,wd,col,tail)=>{ctx.save();ctx.translate(x,y);ctx.rotate(R(a));ctx.beginPath();ctx.moveTo(-wd/2,tail);ctx.lineTo(-wd/3,-len);ctx.lineTo(0,-len-wd);ctx.lineTo(wd/3,-len);ctx.lineTo(wd/2,tail);ctx.closePath();ctx.fillStyle=col;ctx.fill();ctx.restore()};
+ hand(this.h.u(),r*0.5,r*0.06,'#1e1610',r*0.1);hand(this.mi.u(),r*0.75,r*0.04,'#1e1610',r*0.12);hand(this.s.u(),r*0.85,r*0.012,'#c0392b',r*0.2);circ(x,y,r*0.03,'#c0392b');
+ const t=this.t%86400;const hh=Math.floor(t/3600),mm=Math.floor(t/60)%60,ss=Math.floor(t)%60;mono(`${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`,W-14,20,C.amb,16,'right')}
+});
+
+// =====================================================================
+// 5. SAND TABLE
+// =====================================================================
+addSim({id:'sand',grp:'Kinetic art & clocks',name:'Sand Table',icon:'🌀',
+desc:'Polar sand table: θ (rotation) and ρ (radial arm on a GT2 belt) steppers drag a magnet under the sand to draw patterns. The X2D prints the frame and arm.',
+init(ui){this.th=new Stepper('θ rotation',{gear:6,vmax:9000,acc:12000});this.rho=new Stepper('ρ radial',{unit:'mm',perRev:40,vmax:7000,acc:12000,note:'GT2 20T'});this.motors=[this.th,this.rho];
+ this.Rmm=190;this.sand=document.createElement('canvas');this.sz=0;this.spd=1;this.auto=true;this.prev=null;
+ const pats=['Spiral out','Rose 7/3','Spirograph','Star spiral','Hilbert-ish zigzag','Erase (fine spiral)'];
+ this.ps=ui.select('Pattern',pats,v=>this.start(v));ui.slider('Draw speed',0.3,4,0.1,1.5,v=>this.spd=v,v=>'×'+v);ui.toggle('Auto playlist',true,v=>this.auto=v);
+ ui.buttons([['Smooth sand',()=>this.clearSand()]]);ui.note('Patterns stream as θ/ρ lists (.thr files, Sisyphus-compatible) from the ESP32 flash; play ambient tracks from the DY-SV5W.')},
+start(name){this.pat=name;this.s=0;this.rot=rnd(0,360);this.prevTh=null;mp3(`ambient track for "${name}"`)},
+pt(s){const n=this.pat;let x,y;
+ if(n==='Spiral out'){const a=s*14*TAU,r=s;x=r*Math.cos(a);y=r*Math.sin(a)}
+ else if(n==='Rose 7/3'){const a=s*6*Math.PI,r=Math.cos(7/3*a)*0.97;x=r*Math.cos(a);y=r*Math.sin(a)}
+ else if(n==='Spirograph'){const t=s*6*TAU,Rr=5,r=3,d=4.2;x=((Rr-r)*Math.cos(t)+d*Math.cos((Rr-r)/r*t))/6.3;y=((Rr-r)*Math.sin(t)-d*Math.sin((Rr-r)/r*t))/6.3}
+ else if(n==='Star spiral'){const k=s*40;const seg=Math.floor(k),f=k-seg;const sc=1-s*0.95;const P=i=>{const a=i*144*Math.PI/180+s*1.2;return[Math.cos(a)*sc,Math.sin(a)*sc]};const a=P(seg),b=P(seg+1);x=lerp(a[0],b[0],f);y=lerp(a[1],b[1],f)}
+ else if(n==='Hilbert-ish zigzag'){const rows=22;const k=s*rows;const row=Math.floor(k),f=k-row;const yy=-0.95+row/rows*1.9;const half=Math.sqrt(Math.max(0,1-yy*yy))*0.95;x=(row%2?1-f:f)*2*half-half;y=yy+Math.sin(f*TAU*8)*0.02}
+ else{const a=s*60*TAU,r=1-s;x=r*Math.cos(a);y=r*Math.sin(a)}
+ const ro=R(this.rot);return[x*Math.cos(ro)-y*Math.sin(ro),x*Math.sin(ro)+y*Math.cos(ro)]},
+setTarget(s){const [x,y]=this.pt(s);let th=D(Math.atan2(y,x));const rr=clamp(Math.hypot(x,y),0,1);
+ if(this.prevTh!=null){th=this.prevTh+angDiff(th,this.prevTh)}if(rr<0.02&&this.prevTh!=null)th=this.prevTh;this.prevTh=th;this.th.moveToU(th);this.rho.moveToU(rr*this.Rmm)},
+clearSand(){this.sz=0},
+update(dt){if(this.s==null)this.start(this.pat||'Spiral out');const ds=0.00012*this.spd/(this.pat==='Erase (fine spiral)'?3:1);
+ for(let i=0;i<40;i++){if(Math.abs(this.th.target-this.th.pos)<400*this.spd&&Math.abs(this.rho.target-this.rho.pos)<300*this.spd){this.s+=ds;if(this.s>1){if(this.auto){const nx=pick(['Spiral out','Rose 7/3','Spirograph','Star spiral','Hilbert-ish zigzag']);this.ps.value=nx;this.start(nx)}else{this.s=1}break}this.setTarget(this.s)}else break}
+ this.th.vmax=9000*this.spd;this.rho.vmax=7000*this.spd},
+draw(c,W,H){const r=Math.min(W,H)/2-26,x0=W/2,y0=H/2;const size=Math.ceil(r*2);
+ if(this.sz!==size){this.sz=size;this.sand.width=this.sand.height=size;const g=this.sand.getContext('2d');g.fillStyle='#d9c39a';g.fillRect(0,0,size,size);for(let i=0;i<size*size/18;i++){g.fillStyle=Math.random()<0.5?'rgba(255,240,210,.25)':'rgba(120,90,50,.18)';g.fillRect(Math.random()*size,Math.random()*size,1.3,1.3)}this.prev=null}
+ const a=R(this.th.u()),rr=this.rho.u()/this.Rmm*r*0.97;const bx=size/2+Math.cos(a)*rr,by=size/2-Math.sin(a)*rr;
+ if(this.prev){const g=this.sand.getContext('2d');g.lineCap='round';g.strokeStyle='rgba(245,228,190,.9)';g.lineWidth=r*0.05;g.beginPath();g.moveTo(this.prev[0],this.prev[1]-1);g.lineTo(bx,by-1);g.stroke();g.strokeStyle='#a98e60';g.lineWidth=r*0.03;g.beginPath();g.moveTo(this.prev[0],this.prev[1]);g.lineTo(bx,by);g.stroke()}this.prev=[bx,by];
+ circ(x0,y0,r+18,'#5a3a22');circ(x0,y0,r+6,'#3b2414');ctx.save();ctx.beginPath();ctx.arc(x0,y0,r,0,TAU);ctx.clip();ctx.drawImage(this.sand,x0-size/2,y0-size/2);
+ // arm ghost
+ ctx.globalAlpha=0.12;line(x0,y0,x0+Math.cos(a)*r,y0-Math.sin(a)*r,'#000',r*0.08);ctx.globalAlpha=1;ctx.restore();
+ const gx=x0-size/2+bx,gy=y0-size/2+by;const gr=ctx.createRadialGradient(gx-3,gy-3,1,gx,gy,r*0.035);gr.addColorStop(0,'#fff');gr.addColorStop(1,'#555');circ(gx,gy,r*0.035,gr);
+ mono(`${this.pat}  ${(this.s*100).toFixed(0)}%`,12,18,C.amb,13);mono(`θ ${this.th.u().toFixed(0)}°  ρ ${this.rho.u().toFixed(0)} mm`,12,36,C.tx,12)}
+});
+
+// =====================================================================
+// 6. KINETIC WAVE
+// =====================================================================
+addSim({id:'wave',grp:'Kinetic art & clocks',name:'Kinetic Wave Sculpture',icon:'🌊',
+desc:'Four steppers wind string pulleys. A flexible rod interpolates them across 24 printed slats with NeoPixels underneath. Modes include travelling waves, breathing, and beat-reactive (INMP441 mic).',
+init(ui){this.m=[0,1,2,3].map(i=>new Stepper('Pulley '+(i+1),{vmax:8000,acc:14000}));this.motors=this.m;this.t=0;this.beatT=0;this.env=0;
+ ui.select('Mode',['Travelling wave','Breathe','Ripple from centre','Chaos','Beat reactive'],v=>{this.mode=v;mp3('mode: '+v)});
+ ui.slider('Speed',0.1,2,0.05,0.6,v=>this.sp=v,v=>v.toFixed(2)+' Hz');ui.slider('Amplitude',20,140,1,110,v=>this.amp=v,v=>'±'+v+'°');ui.slider('BPM (beat mode)',70,160,1,118,v=>this.bpm=v)},
+update(dt){this.t+=dt;const t=this.t,A=this.amp,w=TAU*this.sp;
+ if(this.mode==='Beat reactive'){this.beatT+=dt;if(this.beatT>60/this.bpm){this.beatT=0;this.env=1;tone(110,0.25,{to:40,vol:0.35});if(Math.random()<0.5)clack(0.08)}this.env*=Math.exp(-dt*5)}
+ this.m.forEach((m,i)=>{let v;switch(this.mode){
+  case 'Breathe':v=A*Math.sin(w*t);break;
+  case 'Ripple from centre':v=A*Math.sin(w*t-Math.abs(i-1.5)*1.2);break;
+  case 'Chaos':v=A*(0.6*Math.sin(w*t*(1+i*0.37)+i)+0.4*Math.sin(w*t*0.53*(i+1)));break;
+  case 'Beat reactive':v=A*this.env*(i%2?1:-0.7)+A*0.25*Math.sin(w*t+i);break;
+  default:v=A*Math.sin(w*t-i*Math.PI/2)}
+  m.moveToU(v)})},
+h(x){const p=this.m.map(m=>m.u()/140);const s=x*3,i=clamp(Math.floor(s),0,2),f=s-i;const p0=p[Math.max(0,i-1)],p1=p[i],p2=p[i+1],p3=p[Math.min(3,i+2)];
+ return 0.5*((2*p1)+(-p0+p2)*f+(2*p0-5*p1+4*p2-p3)*f*f+(-p0+3*p1-3*p2+p3)*f*f*f)},
+draw(c,W,H){const n=24,base=H*0.62,sw=(W-80)/n;const amp=H*0.25;
+ // floor glow
+ for(let i=0;i<n;i++){const hv=this.h(i/(n-1));const hue=200+hv*120;const x=40+i*sw;
+  const g=ctx.createRadialGradient(x+sw/2,base+40,2,x+sw/2,base+40,sw*1.6);g.addColorStop(0,`hsla(${hue},90%,60%,.35)`);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.fillRect(x-sw,base,sw*3,90)}
+ for(let i=0;i<n;i++){const hv=this.h(i/(n-1));const x=40+i*sw,top=base-amp-hv*amp*0.9;const hue=200+hv*120;
+  line(x+sw/2,20,x+sw/2,top,'rgba(200,200,200,.25)',1);
+  ctx.fillStyle=`hsl(${hue},55%,${45+hv*15}%)`;ctx.fillRect(x+sw*0.12,top,sw*0.76,amp*0.9);ctx.fillStyle=`hsl(${hue},55%,${60+hv*15}%)`;ctx.fillRect(x+sw*0.12,top,sw*0.76,4);
+  circ(x+sw/2,base+30,Math.max(3,sw*0.18),`hsl(${hue},100%,60%)`)}
+ // rod
+ ctx.beginPath();for(let i=0;i<=60;i++){const x=40+i/60*(n-1)*sw+sw/2;const y=base-amp-this.h(i/60)*amp*0.9;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.strokeStyle=C.amb;ctx.lineWidth=2;ctx.stroke();
+ // pulleys
+ this.m.forEach((m,i)=>{const x=40+(i/3)*(n-1)*sw+sw/2,y=24;circ(x,y,13,'#222',C.amb,2);const a=R(m.u());line(x,y,x+Math.sin(a)*12,y-Math.cos(a)*12,C.amb,2);txt('M'+(i+1),x+18,y,C.dim,10)});
+ if(this.mode==='Beat reactive'){rrect(W-110,H-30,100*this.env+2,10,3,C.gr);txt('mic level',W-110,H-40,C.dim,10)}}
+});
+
+// =====================================================================
+// 7. SPLIT-FLAP
+// =====================================================================
+addSim({id:'flap',grp:'Kinetic art & clocks',name:'Split-Flap Display',icon:'🔤',
+desc:'Four split-flap modules, one stepper each, with 45 printed flaps per drum and a hall sensor for home. They only rotate forward, like the real ones, and every flap makes a clack. Type a word or pick a mode.',
+chars:' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789°$.-+!:/?',
+init(ui){this.N=this.chars.length;this.m=[0,1,2,3].map(i=>new Stepper('Drum '+(i+1),{vmax:3000,acc:9000}));this.motors=this.m;this.spf=this.m[0].spr/this.N;this.last=[-1,-1,-1,-1];this.cyc=0;this.idx=0;
+ this.m.forEach(m=>{m.pos=m.target=Math.floor(rnd(0,this.N))*this.spf});this.show('    ');log('Homing drums to blank flap via hall sensor A3144');
+ this.mode='Message playlist';
+ ui.select('Mode',['Message playlist','Stock ticker','Clock HH:MM','Custom text'],v=>{this.mode=v;this.cyc=99});
+ ui.text('Custom text (4 chars, Enter)','WOLF',v=>{this.mode='Custom text';this.show(v)});ui.slider('Flap speed',200,2000,50,900,v=>this.m.forEach(m=>m.vmax=v*this.spf/10),v=>v+'');
+ ui.note('Each NEMA17 is overkill for one drum, but a single driver board can multiplex them. With 4 drums on 4 drivers they flip in parallel.')},
+show(s){s=(s.toUpperCase()+'    ').slice(0,4);for(let i=0;i<4;i++){let k=this.chars.indexOf(s[i]);if(k<0)k=0;const m=this.m[i];const curI=Math.round(m.target/this.spf);const d=((k-curI)%this.N+this.N)%this.N;m.moveTo((curI+d)*this.spf)}this.text=s},
+update(dt){this.cyc+=dt;
+ if(this.mode==='Message playlist'&&this.cyc>6){this.cyc=0;const L=['WOLF','KMYF','72°F','HAM!','SKAT','73 !','TIDE','2:15'];this.show(L[this.idx++%L.length])}
+ if(this.mode==='Stock ticker'&&this.cyc>5){this.cyc=0;const L=[['NVDA','+2.1'],['AMD ','-0.8'],['TSM ','+1.4'],['AVGO','+0.6'],['PLTR','-3.2']];const q=L[Math.floor(this.idx/2)%L.length];this.show(q[this.idx%2]);this.idx++}
+ if(this.mode==='Clock HH:MM'&&this.cyc>1){this.cyc=0;const n=new Date();const s=(n.getSeconds()%10<5)?String(n.getHours()).padStart(2,'0')+String(n.getMinutes()).padStart(2,'0'):String(n.getMinutes()).padStart(2,'0')+':'+(n.getSeconds()<10?'0':'')+'';this.show(n.getSeconds()%10<5?String(n.getHours()).padStart(2,'0')+String(n.getMinutes()).padStart(2,'0'):'TIME')}},
+post(){this.m.forEach((m,i)=>{const k=Math.floor(m.pos/this.spf+1e-6);if(k!==this.last[i]){if(this.last[i]>=0)clack(0.18);this.last[i]=k}})},
+draw(c,W,H){const mw=Math.min((W-60)/4,(H-80)*0.62),mh=mw*1.5,gap=12,x0=(W-(mw*4+gap*3))/2,y0=(H-mh)/2;
+ rrect(x0-20,y0-20,mw*4+gap*3+40,mh+40,10,'#1b1b1b');
+ for(let i=0;i<4;i++){const m=this.m[i];const p=m.pos/this.spf;const k=((Math.floor(p+1e-6))%this.N+this.N)%this.N,f=p-Math.floor(p+1e-6);const nk=(k+1)%this.N;const x=x0+i*(mw+gap),y=y0,hm=mh/2;
+  const half=(ch,top,scale)=>{ctx.save();ctx.beginPath();if(top)ctx.rect(x,y,mw,hm-1);else ctx.rect(x,y+hm+1,mw,hm-1);ctx.clip();ctx.fillStyle=top?'#262626':'#202020';ctx.fillRect(x,y,mw,mh);ctx.translate(x+mw/2,y+hm);ctx.scale(1,scale);txt(ch,0,0,'#f2f2f2',Math.min(mh*0.72,mw*0.95),'center','"Helvetica Neue",Arial,sans-serif');ctx.restore()};
+  // static
+  half(this.chars[nk],true,1);half(this.chars[k],false,1);
+  if(f>0.001){if(f<0.5){ctx.save();ctx.beginPath();ctx.rect(x,y,mw,hm);ctx.clip();ctx.translate(0,y+hm);ctx.scale(1,1-2*f);ctx.translate(0,-(y+hm));half(this.chars[k],true,1);ctx.restore();ctx.fillStyle=`rgba(0,0,0,${f})`;ctx.fillRect(x,y+hm-(hm*(1-2*f)),mw,hm*(1-2*f))}
+   else{ctx.save();ctx.beginPath();ctx.rect(x,y+hm,mw,hm);ctx.clip();ctx.translate(0,y+hm);ctx.scale(1,2*f-1);ctx.translate(0,-(y+hm));half(this.chars[nk],false,1);ctx.restore()}}
+  else{half(this.chars[k],true,1)}
+  line(x,y+hm,x+mw,y+hm,'#000',2);circ(x+4,y+hm,3,'#555');circ(x+mw-4,y+hm,3,'#555')}
+ mono(`target "${this.text}"   mode: ${this.mode}`,W/2,H-20,C.dim,12,'center')}
+});
+
+// =====================================================================
+// 8. DROID HEAD
+// =====================================================================
+addSim({id:'droid',grp:'Props & display',name:'Radar Droid Head',icon:'🤖',
+desc:'An HLK-LD2450 radar tracks up to 3 people. The dome stepper turns to face the nearest one, and a periscope stepper (lead screw) rises when someone comes close. Droid beeps come from the MP3. Drag people around.',
+init(ui){this.dome=new Stepper('Dome',{gear:4,vmax:9000,acc:9000});this.peri=new Stepper('Periscope',{unit:'mm',perRev:8,vmax:5000,acc:8000,note:'T8 lead'});this.motors=[this.dome,this.peri];
+ this.people=[];for(let i=0;i<2;i++)this.addP();this.seen=new Set();this.idle=0;this.beepT=3;this.drag=null;
+ ui.slider('People',0,3,1,2,v=>{while(this.people.length<v)this.addP();this.people.length=v});ui.slider('Close zone',0.5,3,0.1,1.5,v=>this.close=v,v=>v.toFixed(1)+' m');
+ ui.toggle('Random chatter',true,v=>this.chat=v);ui.buttons([['Beep!',()=>this.beep(true)]])},
+addP(){this.people.push({x:rnd(-3,3),y:rnd(1,5.5),tx:rnd(-3,3),ty:rnd(0.5,5.5),id:this.people.length+1,wait:0})},
+beep(log1){const n=Math.floor(rnd(3,7));let w=0;for(let i=0;i<n;i++){const f=rnd(900,3200),d=rnd(0.05,0.16);tone(f,d,{when:w,to:Math.random()<0.5?f*rnd(0.5,1.8):undefined,type:pick(['sine','square','triangle']),vol:0.07});w+=d+rnd(0.01,0.06)}if(log1)mp3('droid chatter '+n+' notes')},
+inFov(p){const r=Math.hypot(p.x,p.y),a=D(Math.atan2(p.x,p.y));return r<6&&Math.abs(a)<60&&p.y>0},
+update(dt){for(const p of this.people){if(p===this.drag)continue;if(p.wait>0){p.wait-=dt;continue}const dx=p.tx-p.x,dy=p.ty-p.y,d=Math.hypot(dx,dy);if(d<0.1){p.tx=rnd(-3.5,3.5);p.ty=rnd(0.3,5.8);p.wait=rnd(0,3)}else{p.x+=dx/d*0.7*dt;p.y+=dy/d*0.7*dt}}
+ const vis=this.people.filter(p=>this.inFov(p));vis.forEach(p=>{p.rx=p.x+rnd(-0.04,0.04);p.ry=p.y+rnd(-0.04,0.04);if(!this.seen.has(p.id)){this.seen.add(p.id);this.beep(false);mp3(`target ${p.id} acquired`)}});
+ this.people.forEach(p=>{if(!this.inFov(p))this.seen.delete(p.id)});
+ const near=vis.reduce((a,b)=>!a||Math.hypot(b.x,b.y)<Math.hypot(a.x,a.y)?b:a,null);this.near=near;
+ if(near){this.dome.moveToWrap(D(Math.atan2(near.rx,near.ry)));const cl=Math.hypot(near.x,near.y)<this.close;this.peri.moveToU(cl?40:0);if(cl&&!this.wasClose){tone(1200,0.3,{to:2600,vol:0.08});tone(2600,0.4,{when:0.32,to:900,vol:0.08});mp3('whistle — someone is close')}this.wasClose=cl}
+ else{this.idle+=dt;this.dome.moveToU(Math.sin(this.idle*0.6)*55);this.peri.moveToU(0);this.wasClose=false}
+ if(this.chat){this.beepT-=dt;if(this.beepT<0){this.beepT=rnd(6,14);this.beep(true)}}},
+sc(x,y){return[this.ox+x*this.s,this.oy-y*this.s]},
+down(x,y){for(const p of this.people){const [sx,sy]=this.sc(p.x,p.y);if(Math.hypot(sx-x,sy-y)<20)this.drag=p}},
+move(x,y,d){if(this.drag&&d){this.drag.x=(x-this.ox)/this.s;this.drag.y=(this.oy-y)/this.s;this.drag.tx=this.drag.x;this.drag.ty=this.drag.y}},
+up(){this.drag=null},
+draw(c,W,H){this.s=Math.min(W/8.5,(H-40)/6.6);this.ox=W/2;this.oy=H-30;const s=this.s;
+ for(let x=-4;x<=4;x++){const [a,b]=this.sc(x,0),[e,f]=this.sc(x,6.3);line(a,b,e,f,'#161d26')}for(let y=0;y<=6;y++){const [a,b]=this.sc(-4,y),[e,f]=this.sc(4,y);line(a,b,e,f,'#161d26');txt(y+' m',a+2,b-6,C.dim,9)}
+ ctx.beginPath();ctx.moveTo(this.ox,this.oy);ctx.arc(this.ox,this.oy,6*s,R(-90-60),R(-90+60));ctx.closePath();ctx.fillStyle='rgba(63,185,80,.08)';ctx.fill();ctx.strokeStyle='rgba(63,185,80,.4)';ctx.stroke();
+ circ(this.ox,this.oy,this.close*s,null,'rgba(245,165,36,.4)');
+ for(const p of this.people){const [x,y]=this.sc(p.x,p.y);const v=this.inFov(p);circ(x,y,13,v?'#28465f':'#2a2f36',p===this.near?C.amb:C.dim,2);txt('🙂',x,y+1,C.tx,13,'center');if(v&&p.rx!=null){const [rx,ry]=this.sc(p.rx,p.ry);circ(rx,ry,3,C.gr);mono(`T${p.id} ${p.x.toFixed(2)},${p.y.toFixed(2)}`,x+16,y-10,C.gr,10)}}
+ // droid
+ const a=this.dome.u();const dr=Math.max(24,s*0.45);circ(this.ox,this.oy,dr,'#b8c2cc','#6b7684',2);ctx.save();ctx.translate(this.ox,this.oy);ctx.rotate(R(a));ctx.fillStyle='#2f6fd6';ctx.fillRect(-dr*0.5,-dr*0.15,dr,dr*0.25);circ(0,-dr*0.62,dr*0.22,'#111','#2f6fd6',3);circ(0,-dr*0.62,dr*0.08,this.near?'#ff4040':'#400');ctx.restore();
+ // periscope gauge
+ const ph=this.peri.u()/40;rrect(14,14,60,90,6,'#11161d',C.ln);rrect(36,92-ph*66,16,ph*66+4,3,'#6b7684');circ(44,88-ph*66,7,'#111','#2f6fd6',2);txt('periscope',44,112,C.dim,10,'center')}
+});
+
+// =====================================================================
+// 9. TURNTABLE
+// =====================================================================
+addSim({id:'turntable',grp:'Props & display',name:'Display Turntable',icon:'🎠',
+desc:'A motorized stand for your printed models. It turns slowly while idle. When the radar sees a visitor, it speeds up, the NeoPixel ring goes rainbow, and the MP3 plays a welcome.',
+init(ui){this.m=new Stepper('Turntable',{gear:5,vmax:6000,acc:2000,note:'printed ring gear'});this.motors=[this.m];this.vis=4;this.vt=0;this.state='idle';this.mus=0;
+ ui.select('Model on stand',['Rocket','Gem','Lattice cube','Wolf head (low-poly)'],v=>this.model=v);ui.slider('Idle RPM',0.5,5,0.1,1.5,v=>this.ir=v,v=>v+'');ui.slider('Show RPM',3,15,0.5,8,v=>this.sr=v,v=>v+'');
+ ui.select('Visitor',['Auto walk-by','Manual'],v=>this.vm=v);this.vsl=ui.slider('Visitor distance',0.3,5,0.1,4,v=>this.vman=v,v=>v.toFixed(1)+' m')},
+update(dt){this.vt+=dt;if(this.vm==='Auto walk-by'){this.vis=2.7+2.4*Math.sin(this.vt*0.25)}else this.vis=this.vman;
+ const ns=this.vis<1.5?'show':'idle';if(ns!==this.state){this.state=ns;if(ns==='show')mp3('welcome jingle','Welcome to the WolfTronix display!');else log('visitor left → idle')}
+ const rpm=this.state==='show'?this.sr:this.ir;this.m.run(rpm/60*this.m.spr*this.m.gear);
+ if(this.state==='show'){this.mus-=dt;if(this.mus<0){this.mus=0.24;const sc=[523,659,784,1047,784,659];this.k=(this.k||0)+1;tone(sc[this.k%6],0.2,{type:'triangle',vol:0.06})}}},
+geom(){const m=this.model;let V=[],E=[];
+ const lathe=(prof,seg)=>{prof.forEach(([r,y])=>{for(let i=0;i<seg;i++){const a=i/seg*TAU;V.push([Math.cos(a)*r,y,Math.sin(a)*r])}});for(let j=0;j<prof.length;j++)for(let i=0;i<seg;i++){const k=j*seg+i;E.push([k,j*seg+(i+1)%seg]);if(j<prof.length-1)E.push([k,k+seg])}};
+ if(m==='Rocket'){lathe([[0.01,1.4],[0.18,1.05],[0.3,0.6],[0.32,-0.3],[0.28,-0.6],[0.2,-0.75]],10);const b=V.length;[[0.3,-0.3],[0.62,-0.85],[0.3,-0.7]].forEach(()=>{});for(let f=0;f<3;f++){const a=f/3*TAU;const c=Math.cos(a),s=Math.sin(a);const k=V.length;V.push([c*0.3,-0.25,s*0.3],[c*0.65,-0.85,s*0.65],[c*0.3,-0.7,s*0.3]);E.push([k,k+1],[k+1,k+2],[k+2,k])}}
+ else if(m==='Gem'){lathe([[0.01,1.0],[0.7,0.2],[0.5,0.45],[0.01,-0.9]].sort((a,b)=>b[1]-a[1]),8)}
+ else if(m==='Lattice cube'){for(let x=-1;x<=1;x+=2)for(let y=-1;y<=1;y+=2)for(let z=-1;z<=1;z+=2)V.push([x*0.6,y*0.6,z*0.6]);for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){const d=V[i].reduce((s,v,k)=>s+(v!==V[j][k]),0);if(d===1)E.push([i,j])}const k=V.length;for(let x=-1;x<=1;x+=2)for(let y=-1;y<=1;y+=2)for(let z=-1;z<=1;z+=2)V.push([x*0.3,y*0.3,z*0.3]);for(let i=0;i<8;i++){E.push([i,k+i]);for(let j=i+1;j<8;j++){const d=V[k+i].reduce((s,v,q)=>s+(v!==V[k+j][q]),0);if(d===1)E.push([k+i,k+j])}}}
+ else{V=[[0,0.9,0],[-0.45,1.1,0.1],[0.45,1.1,0.1],[-0.55,0.3,0.2],[0.55,0.3,0.2],[0,0.2,0.9],[0,-0.3,0.75],[-0.35,-0.6,0.1],[0.35,-0.6,0.1],[0,0.1,-0.5],[-0.2,0.5,0.55],[0.2,0.5,0.55]];E=[[0,1],[0,2],[1,3],[2,4],[3,5],[4,5],[5,6],[3,7],[4,8],[7,6],[8,6],[1,9],[2,9],[7,9],[8,9],[0,10],[0,11],[10,5],[11,5],[10,3],[11,4],[1,10],[2,11]]}
+ return{V,E}},
+draw(c,W,H){const x0=W/2,y0=H*0.48,sc=Math.min(W,H)*0.22;const a=R(this.m.u()),tilt=R(18);const {V,E}=this.geom();
+ const P=V.map(([x,y,z])=>{const X=x*Math.cos(a)+z*Math.sin(a),Z=-x*Math.sin(a)+z*Math.cos(a);const Y=y*Math.cos(tilt)-Z*Math.sin(tilt),Z2=y*Math.sin(tilt)+Z*Math.cos(tilt);const f=3/(3+Z2);return[x0+X*sc*f,y0-Y*sc*f,Z2]});
+ // base
+ const by=y0+sc*1.15;ctx.beginPath();ctx.ellipse(x0,by,sc*1.1,sc*0.3,0,0,TAU);ctx.fillStyle='#1d232c';ctx.fill();ctx.strokeStyle=C.ln;ctx.stroke();
+ const n=24;for(let i=0;i<n;i++){const t=i/n*TAU;const px=x0+Math.cos(t)*sc*1.18,py=by+Math.sin(t)*sc*0.33+6;const show=this.state==='show';const hue=show?(i/n*360+performance.now()/8)%360:35;circ(px,py,4,show?`hsl(${hue},100%,60%)`:`hsla(35,100%,55%,${0.25+0.15*Math.sin(performance.now()/900+i)})`)}
+ // turntable marks rotate
+ for(let i=0;i<8;i++){const t=a+i/8*TAU;line(x0,by,x0+Math.cos(t)*sc*0.9,by+Math.sin(t)*sc*0.24,'#2c3540')}
+ E.forEach(([i,j])=>{const z=(P[i][2]+P[j][2])/2;line(P[i][0],P[i][1],P[j][0],P[j][1],`rgba(57,197,207,${0.45+0.4*(0.5-z/2)})`,1.6)});
+ // visitor bar
+ const vx=40,vy=H-30,vw=W-80;line(vx,vy,vx+vw,vy,C.ln,2);const zx=vx+1.5/5*vw;rrect(vx,vy-6,zx-vx,12,3,'rgba(245,165,36,.2)');txt('radar 1.5 m zone',vx+4,vy-14,C.amb,10);const px=vx+clamp(this.vis/5,0,1)*vw;txt('🚶',px,vy-2,C.tx,20,'center');
+ mono(`${this.state.toUpperCase()}  ${this.m.rpm().toFixed(0)} motor rpm → ${(this.m.rpm()/5).toFixed(1)} table rpm`,W/2,22,this.state==='show'?C.amb:C.dim,13,'center')}
+});
+
+// =====================================================================
+// 10. CAMERA SLIDER
+// =====================================================================
+addSim({id:'slider',grp:'Shop tools',name:'Camera Slider (3-axis)',icon:'🎥',
+desc:'1 m motion-control slider: belt-driven carriage, plus pan and tilt heads. Video or timelapse mode (shoot-move-shoot) with subject tracking. Drag the ★ subject.',
+init(ui){this.sl=new Stepper('Slide',{unit:'mm',perRev:40,vmax:4000,acc:4000,note:'GT2 20T'});this.pan=new Stepper('Pan',{gear:5,vmax:6000,acc:6000});this.tilt=new Stepper('Tilt',{gear:5,vmax:6000,acc:6000});this.motors=[this.sl,this.pan,this.tilt];
+ this.sub={x:520,y:600,h:300};this.run=false;this.p=0;this.shots=0;this.flash=0;
+ ui.select('Mode',['Video','Timelapse'],v=>this.mode=v);ui.slider('Move duration',5,60,1,15,v=>this.dur=v,v=>v+' s');ui.select('Easing',['Ease in-out','Linear','Ease out'],v=>this.ease=v);
+ ui.slider('Start A',0,500,10,80,v=>this.A=v,v=>v+' mm');ui.slider('End B',500,1000,10,920,v=>this.B=v,v=>v+' mm');ui.slider('Timelapse frames',10,120,1,40,v=>this.fr=v);ui.slider('Subject height',0,800,10,300,v=>this.sub.h=v,v=>v+' mm');
+ ui.toggle('Track subject',true,v=>this.track=v);ui.buttons([['▶ Start move',()=>{this.run=true;this.p=0;this.shots=0;mp3('move start beep');tone(1500,0.1)}],['⏹ Stop',()=>this.run=false],['⟲ Go to A',()=>{this.run=false;this.sl.moveToU(this.A)}]])},
+e(t){if(this.ease==='Linear')return t;if(this.ease==='Ease out')return 1-(1-t)*(1-t);return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2},
+update(dt){if(this.run){this.p+=dt/this.dur;if(this.p>=1){this.p=1;this.run=false;mp3('move complete',null);tone(1200,0.1);tone(1600,0.12,{when:0.15})}
+  if(this.mode==='Timelapse'){const k=Math.floor(this.p*this.fr);const target=lerp(this.A,this.B,this.e(Math.min(1,k/this.fr)));this.sl.moveToU(target);if(!this.sl.busy()&&k>=this.shots&&this.shots<=this.fr){this.shots++;this.flash=1;clack(0.12)}}
+  else this.sl.moveToU(lerp(this.A,this.B,this.e(this.p)))}
+ const cx=this.sl.u();const dx=this.sub.x-cx,dy=this.sub.y;if(this.track){this.pan.moveToU(D(Math.atan2(dx,dy)));this.tilt.moveToU(D(Math.atan2(this.sub.h-120,Math.hypot(dx,dy))))}else{this.pan.moveToU(lerp(-25,25,this.e(this.p)));this.tilt.moveToU(0)}
+ this.flash=Math.max(0,this.flash-dt*4)},
+down(x,y){if(Math.hypot(x-(this.ox+this.sub.x*this.s),y-(this.oy+this.sub.y*this.s))<25)this.drag=true},
+move(x,y,d){if(this.drag&&d){this.sub.x=clamp((x-this.ox)/this.s,-200,1200);this.sub.y=clamp((y-this.oy)/this.s,150,1100)}},
+up(){this.drag=false},
+draw(c,W,H){this.s=Math.min((W-80)/1250,(H-170)/1150);this.ox=40+200*this.s;this.oy=50;const s=this.s,ox=this.ox,oy=this.oy;
+ rrect(ox-10,oy-8,1000*s+20,16,4,'#3a4350');line(ox,oy,ox+1000*s,oy,'#8792a2',2);[this.A,this.B].forEach((v,i)=>{line(ox+v*s,oy-14,ox+v*s,oy+14,C.vi,2);txt(i?'B':'A',ox+v*s,oy-22,C.vi,11,'center')});
+ const x=ox+this.sl.u()*s;rrect(x-22,oy-14,44,28,5,'#222a33',C.amb);const pa=this.pan.u();
+ ctx.beginPath();ctx.moveTo(x,oy);ctx.lineTo(x+Math.sin(R(pa-20))*900*s,oy+Math.cos(R(pa-20))*900*s);ctx.lineTo(x+Math.sin(R(pa+20))*900*s,oy+Math.cos(R(pa+20))*900*s);ctx.closePath();ctx.fillStyle=`rgba(245,165,36,${0.08+this.flash*0.3})`;ctx.fill();
+ ctx.save();ctx.translate(x,oy);ctx.rotate(-R(pa));rrect(-10,4,20,26,3,'#111',C.cy);ctx.restore();
+ const sx=ox+this.sub.x*s,sy=oy+this.sub.y*s;txt('★',sx,sy,'#ffd27a',28,'center');txt('subject',sx,sy+20,C.dim,10,'center');
+ // viewfinder
+ const vw=Math.min(260,W*0.35),vh=vw*9/16,vx=W-vw-14,vy=H-vh-14;rrect(vx,vy,vw,vh,6,'#05070a',C.ln);
+ const ang=D(Math.atan2(this.sub.x-this.sl.u(),this.sub.y))-pa;const tAng=D(Math.atan2(this.sub.h-120,Math.hypot(this.sub.x-this.sl.u(),this.sub.y)))-this.tilt.u();
+ const fx=vx+vw/2-(ang/20)*vw/2,fy=vy+vh/2-(tAng/11.25)*vh/2;ctx.save();ctx.beginPath();ctx.rect(vx,vy,vw,vh);ctx.clip();line(vx+vw/3,vy,vx+vw/3,vy+vh,'#1c2430');line(vx+vw*2/3,vy,vx+vw*2/3,vy+vh,'#1c2430');line(vx,vy+vh/3,vx+vw,vy+vh/3,'#1c2430');line(vx,vy+vh*2/3,vx+vw,vy+vh*2/3,'#1c2430');txt('★',fx,fy,'#ffd27a',30,'center');ctx.fillStyle=`rgba(255,255,255,${this.flash*0.6})`;ctx.fillRect(vx,vy,vw,vh);ctx.restore();txt('VIEWFINDER',vx+6,vy+10,C.dim,9);
+ // progress
+ rrect(14,H-28,W-vw-50,10,4,'#11161d');rrect(14,H-28,(W-vw-50)*this.p,10,4,C.amb);mono(`${this.mode}  ${(this.p*100).toFixed(0)}%${this.mode==='Timelapse'?'  frames '+Math.min(this.shots,this.fr)+'/'+this.fr:''}   pan ${pa.toFixed(1)}°  tilt ${this.tilt.u().toFixed(1)}°`,14,H-44,C.tx,12)}
+});
+
+// =====================================================================
+// 11. COIL WINDER
+// =====================================================================
+addSim({id:'coil',grp:'Shop tools',name:'Coil Winder',icon:'🧵',
+desc:'One stepper spins the coil former; the traverse rides a T8 lead screw, electronically geared to lay the wire turn by turn and layer by layer. Live turn count, inductance (Wheeler) and DC resistance. Good for ham antenna loading coils and toroids.',
+awg:{'AWG 18 (1.02 mm)':1.024,'AWG 20 (0.81 mm)':0.812,'AWG 22 (0.64 mm)':0.644,'AWG 26 (0.40 mm)':0.405,'AWG 30 (0.25 mm)':0.255},
+init(ui){this.sp=new Stepper('Spindle',{unit:' turns',perRev:1,vmax:6000,acc:4000});this.tr=new Stepper('Traverse',{unit:'mm',perRev:8,vmax:12000,acc:30000,note:'T8 lead'});this.motors=[this.sp,this.tr];
+ ui.select('Wire',Object.keys(this.awg),v=>this.wd=this.awg[v],'AWG 22 (0.64 mm)');ui.slider('Former diameter',8,60,1,25,v=>this.D=v,v=>v+' mm');ui.slider('Winding length',10,60,1,30,v=>this.L=v,v=>v+' mm');ui.slider('Target turns',10,400,1,120,v=>this.N=v);ui.slider('Spindle RPM',30,600,10,240,v=>this.sp.vmax=v/60*this.sp.spr,v=>v+'');
+ ui.buttons([['▶ Wind',()=>{this.sp.moveToU(this.N);mp3('winding start',null);tone(1000,0.1)}],['⏸ Hold',()=>{this.sp.moveTo(this.sp.pos+Math.sign(this.sp.v)*this.sp.v*this.sp.v/(2*this.sp.acc))}],['↺ New former',()=>{this.sp.pos=this.sp.target=0;this.sp.v=0;this.tr.pos=this.tr.target=0;this.done=false}]]);this.done=false},
+update(){const t=this.sp.u();const tpl=Math.max(1,Math.floor(this.L/this.wd));const layer=Math.floor(t/tpl),w=t-layer*tpl;this.tpl=tpl;this.layer=layer;const x=(layer%2?tpl-w:w)*this.wd;this.tr.moveToU(x);
+ if(!this.done&&this.sp.target>0&&!this.sp.busy()&&Math.abs(t-this.N)<0.01){this.done=true;mp3(`done: ${this.N} turns`,`Coil complete. ${this.N} turns.`)}if(this.sp.busy())this.done=false},
+draw(c,W,H){const t=this.sp.u(),wd=this.wd,tpl=this.tpl||1;const s=Math.min((W-120)/(this.L+30),(H-200)/(this.D+30))*0.8;const x0=W/2-this.L*s/2,y0=H*0.5;const rr=this.D/2*s;
+ // former
+ rrect(x0-8,y0-rr-30,8,rr*2+60,2,'#555');rrect(x0+this.L*s,y0-rr-30,8,rr*2+60,2,'#555');rrect(x0,y0-rr,this.L*s,rr*2,0,'#e3d3a6');
+ // windings cross-section top & bottom
+ const full=Math.floor(t);const ws=wd*s;for(let i=0;i<full;i++){const l=Math.floor(i/tpl),p=i-l*tpl;const xp=(l%2?tpl-1-p:p)*ws+ws/2;const yo=rr+(l+0.5)*ws*0.87;const col=`hsl(25,${70-l*6}%,${48+(l%2)*8}%)`;circ(x0+xp,y0-yo,ws/2,col,'#5a2d0c',0.5);circ(x0+xp,y0+yo,ws/2,col,'#5a2d0c',0.5)}
+ // guide
+ const gx=x0+this.tr.u()*s+ws/2,lay=Math.floor(t/tpl);const gy=y0-rr-(lay+0.5)*ws*0.87;rrect(gx-6,40,12,30,3,'#444',C.amb);line(gx,70,gx,gy,'#c87533',Math.max(1,ws*0.6));
+ line(x0-40,40+15,x0+this.L*s+40,40+15,'#666',3);txt('T8 lead screw traverse',x0-40,30,C.dim,10);
+ // spindle disc
+ const a=R(this.sp.u()*360);circ(x0-50,y0,26,'#222',C.ln,2);line(x0-50,y0,x0-50+Math.sin(a)*24,y0-Math.cos(a)*24,C.amb,3);txt('spindle',x0-50,y0+40,C.dim,10,'center');
+ // calcs
+ const N=t;const layers=Math.ceil(N/tpl)||1;const b=layers*wd;const rmean=(this.D/2+b/2);let len=0;for(let l=0;l<layers;l++){const nl=Math.min(tpl,N-l*tpl);len+=Math.max(0,nl)*Math.PI*(this.D+(2*l+1)*wd)}
+ const rin=rmean/25.4,lin=Math.min(this.L,Math.max(wd,Math.min(N,tpl)*wd))/25.4,bin=b/25.4;const Luh=layers>1?0.8*rin*rin*N*N/(6*rin+9*lin+10*bin):rin*rin*N*N/(9*rin+10*lin);
+ const area=Math.PI*Math.pow(wd/2000,2),Rdc=1.72e-8*(len/1000)/area;
+ const lines=[`Turns ${N.toFixed(1)} / ${this.N}`,`Layer ${Math.min(layers,lay+1)}  (${tpl} turns/layer)`,`Wire ${(len/1000).toFixed(2)} m`,`L ≈ ${Luh<1000?Luh.toFixed(1)+' µH':(Luh/1000).toFixed(2)+' mH'}`,`R_dc ≈ ${Rdc<1?(Rdc*1000).toFixed(0)+' mΩ':Rdc.toFixed(2)+' Ω'}`,Luh>0.01?`Resonates with 100 pF at ${(1/(TAU*Math.sqrt(Luh*1e-6*100e-12))/1e6).toFixed(2)} MHz`:'Press ▶ Wind'];
+ lines.forEach((l,i)=>mono(l,16,H-110+i*17,i===3?C.amb:C.tx,12))}
+});
+
+// =====================================================================
+// 12. PEN PLOTTER
+// =====================================================================
+addSim({id:'plotter',grp:'Shop tools',name:'Pen Plotter',icon:'✏️',
+desc:'XY plotter (Cartesian or CoreXY kinematics) with a Z stepper for pen lift. On the real build, FluidNC on the ESP32 runs the G-code; here it\'s simulated with a feed-rate planner.',
+init(ui){this.a=new Stepper('X / A',{unit:'mm',perRev:40,vmax:16000,acc:40000});this.b=new Stepper('Y / B',{unit:'mm',perRev:40,vmax:16000,acc:40000});this.z=new Stepper('Z pen',{unit:'mm',perRev:8,vmax:8000,acc:30000});this.motors=[this.a,this.b,this.z];
+ this.Wp=200;this.Hp=140;this.ink=document.createElement('canvas');this.feed=60;this.kin='Cartesian';this.tool=[0,0];this.pen=false;this.prevXY=null;
+ this.ss=ui.select('Drawing',['WOLF','Star','Spirograph','Lissajous 3:4','Hilbert curve','Heart','Compass rose'],v=>this.load(v));ui.select('Kinematics',['Cartesian','CoreXY'],v=>{this.kin=v});ui.slider('Feed rate',10,200,5,60,v=>this.feed=v,v=>v+' mm/s');
+ ui.buttons([['New paper',()=>this.clear()],['Replot',()=>this.load(this.ss.value)]])},
+clear(){const g=this.ink.getContext('2d');g.clearRect(0,0,this.ink.width,this.ink.height)},
+load(n){const S=[];const cxp=100,cyp=70;
+ if(n==='WOLF'){const L=(pts)=>S.push(pts.map(([x,y])=>[25+x,35+y]));L([[0,0],[8,70],[18,25],[28,70],[36,0]]);const o=[];for(let i=0;i<=40;i++){const a=i/40*TAU;o.push([62+Math.cos(a)*16,70+Math.sin(a)*35])}S.push(o.map(([x,y])=>[25+x,y]));L([[90,0],[90,70],[118,70]]);L([[150,0],[128,0],[128,70]]);L([[128,35],[145,35]])}
+ else if(n==='Star'){const p=[];for(let i=0;i<=5;i++){const a=R(-90+i*144);p.push([cxp+Math.cos(a)*60,cyp+Math.sin(a)*60])}S.push(p);const q=[];for(let i=0;i<=5;i++){const a=R(-90+i*144);q.push([cxp+Math.cos(a)*30,cyp+Math.sin(a)*30])}S.push(q)}
+ else if(n==='Spirograph'){const p=[];for(let i=0;i<=1500;i++){const t=i/1500*14*Math.PI,R1=7,r=4,d=5.5;p.push([cxp+((R1-r)*Math.cos(t)+d*Math.cos((R1-r)/r*t))*7,cyp+((R1-r)*Math.sin(t)-d*Math.sin((R1-r)/r*t))*7])}S.push(p)}
+ else if(n==='Lissajous 3:4'){const p=[];for(let i=0;i<=800;i++){const t=i/800*TAU;p.push([cxp+Math.sin(3*t+Math.PI/2)*85,cyp+Math.sin(4*t)*60])}S.push(p)}
+ else if(n==='Hilbert curve'){const ord=5,N=1<<ord,p=[];for(let i=0;i<N*N;i++){let t=i,x=0,y=0;for(let s=1;s<N;s*=2){const rx=1&(t>>1),ry=1&(t^rx);if(ry===0){if(rx===1){x=s-1-x;y=s-1-y}[x,y]=[y,x]}x+=s*rx;y+=s*ry;t>>=2}p.push([cxp-62+x*4,cyp-62+y*4])}S.push(p)}
+ else if(n==='Heart'){const p=[];for(let i=0;i<=200;i++){const t=i/200*TAU;p.push([cxp+16*Math.pow(Math.sin(t),3)*3.6,cyp-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*3.6])}S.push(p)}
+ else{for(let r of [60,45]){const p=[];for(let i=0;i<=72;i++){const a=i/72*TAU;p.push([cxp+Math.cos(a)*r,cyp+Math.sin(a)*r])}S.push(p)}for(let i=0;i<16;i++){const a=R(i*22.5),l=i%4?(i%2?40:52):66;S.push([[cxp,cyp],[cxp+Math.sin(a)*l,cyp-Math.cos(a)*l]])}}
+ this.strokes=S;this.si=0;this.pi=0;this.phase='travel';this.drawn=0;this.tot=S.reduce((a,s)=>a+s.length,0);log(`G-code: ${S.length} strokes, ${this.tot} points → FluidNC`)},
+setXY(x,y){this.tool=[x,y];if(this.kin==='CoreXY'){this.a.moveToU(x+y);this.b.moveToU(x-y)}else{this.a.moveToU(x);this.b.moveToU(y)}},
+actualXY(){const A=this.a.u(),B=this.b.u();return this.kin==='CoreXY'?[(A+B)/2,(A-B)/2]:[A,B]},
+update(dt){if(!this.strokes)return;const settle=Math.abs(this.z.target-this.z.pos)<1;
+ if(this.si>=this.strokes.length){this.z.moveToU(0);if(!this.doneLog){this.doneLog=true;mp3('plot finished',`Plot finished.`)}return}this.doneLog=false;
+ const st=this.strokes[this.si];
+ if(this.phase==='travel'){this.z.moveToU(0);if(!settle)return;const tg=st[0];if(this.goto(tg,this.feed*3,dt)){this.phase='down';}}
+ else if(this.phase==='down'){this.z.moveToU(4);if(settle&&Math.abs(this.z.u()-4)<0.05){this.phase='draw';this.pi=1}}
+ else if(this.phase==='draw'){let budget=this.feed*dt;while(budget>0&&this.pi<st.length){const tg=st[this.pi];const [x,y]=this.tool;const d=Math.hypot(tg[0]-x,tg[1]-y);if(d<=budget){this.setXY(tg[0],tg[1]);budget-=d;this.pi++;this.drawn++}else{this.setXY(x+(tg[0]-x)/d*budget,y+(tg[1]-y)/d*budget);budget=0}}if(this.pi>=st.length){this.phase='up'}}
+ else if(this.phase==='up'){this.z.moveToU(0);if(settle){this.si++;this.phase='travel'}}},
+goto(tg,f,dt){const [x,y]=this.tool;const d=Math.hypot(tg[0]-x,tg[1]-y),st=f*dt;if(d<=st){this.setXY(tg[0],tg[1]);const [ax,ay]=this.actualXY();return Math.hypot(ax-tg[0],ay-tg[1])<0.3}this.setXY(x+(tg[0]-x)/d*st,y+(tg[1]-y)/d*st);return false},
+draw(c,W,H){if(!this.strokes)this.load('WOLF');const s=Math.min((W-80)/this.Wp,(H-90)/this.Hp);const ox=(W-this.Wp*s)/2,oy=40;
+ const iw=Math.ceil(this.Wp*s),ih=Math.ceil(this.Hp*s);if(this.ink.width!==iw||this.ink.height!==ih){this.ink.width=iw;this.ink.height=ih;this.sc=s;this.prevXY=null}
+ const [x,y]=this.actualXY();const pd=this.z.u()>3.5;if(pd&&this.prevXY){const g=this.ink.getContext('2d');g.strokeStyle='#1a3a8c';g.lineWidth=1.6;g.lineCap='round';g.beginPath();g.moveTo(this.prevXY[0]*this.sc,this.prevXY[1]*this.sc);g.lineTo(x*this.sc,y*this.sc);g.stroke()}this.prevXY=[x,y];
+ rrect(ox-24,oy-24,this.Wp*s+48,this.Hp*s+48,8,'#1a1f27',C.ln);ctx.fillStyle='#f7f5ef';ctx.fillRect(ox,oy,this.Wp*s,this.Hp*s);ctx.drawImage(this.ink,ox,oy,this.Wp*s,this.Hp*s);
+ // preview faint
+ ctx.globalAlpha=0.12;this.strokes.forEach(st=>{ctx.beginPath();st.forEach(([px,py],i)=>i?ctx.lineTo(ox+px*s,oy+py*s):ctx.moveTo(ox+px*s,oy+py*s));ctx.strokeStyle='#000';ctx.lineWidth=1;ctx.stroke()});ctx.globalAlpha=1;
+ // gantry
+ const gx=ox+x*s,gy=oy+y*s;rrect(ox-20,gy-6,this.Wp*s+40,12,3,'rgba(80,90,105,.85)');rrect(gx-6,oy-22,12,this.Hp*s+44,3,'rgba(80,90,105,.5)');circ(gx,gy,pd?5:9,pd?'#1a3a8c':'rgba(26,58,140,.35)',C.amb,2);
+ mono(`X ${x.toFixed(1)}  Y ${y.toFixed(1)}  Z ${this.z.u().toFixed(1)}  ${pd?'PEN DOWN':'pen up'}   ${this.kin}${this.kin==='CoreXY'?'  (A=X+Y, B=X−Y)':''}   ${Math.round(this.drawn/this.tot*100)}%`,W/2,H-22,C.tx,12,'center')}
+});
+
+// =====================================================================
+// 13. PET FEEDER
+// =====================================================================
+addSim({id:'feeder',grp:'Shop tools',name:'Pet Feeder (auger)',icon:'🐱',
+desc:'A printed auger on a NEMA17 meters out kibble on a schedule. StallGuard detects a jam and reverses to clear it, and the MP3 calls the cat for dinner.',
+init(ui){this.m=new Stepper('Auger',{unit:' rev',perRev:1,vmax:1600,acc:3000});this.motors=[this.m];this.gpr=8;this.hopper=900;this.bowl=0;this.parts=[];this.t=6.9*3600;this.feeding=false;this.lastMeal=-1;this.jamT=0;
+ ui.slider('Clock speed',1,1200,1,600,v=>this.ts=v,v=>'×'+v);ui.slider('Portion',10,80,5,40,v=>this.por=v,v=>v+' g');ui.toggle('Jam simulation',true,v=>this.jam=v);
+ ui.buttons([['Feed now',()=>this.feed('Snack')],['Refill hopper',()=>{this.hopper=900;log('hopper refilled 900 g')}]]);ui.note('Schedule: 07:00 breakfast · 12:30 lunch · 18:00 dinner. Calibrated at 8 g per auger revolution.')},
+feed(name){if(this.hopper<=0){mp3('hopper empty alert','Feeder empty. Please refill.');return}const revs=this.por/this.gpr;this.m.moveTo(this.m.target+revs*this.m.spr);this.feeding=true;this.jammed=false;mp3(name+' chime',`${name} time! Here kitty kitty!`);tone(880,0.15);tone(1175,0.2,{when:0.18})},
+update(dt){this.t+=dt*this.ts;const day=this.t%86400;const meals=[[7*3600,'Breakfast'],[12.5*3600,'Lunch'],[18*3600,'Dinner']];
+ meals.forEach(([mt,n],i)=>{const key=Math.floor(this.t/86400)*10+i;if(day>=mt&&day<mt+600*Math.max(1,this.ts/60)&&this.lastMeal<key){this.lastMeal=key;this.feed(n)}});
+ if(this.feeding&&this.jam&&!this.jammed&&Math.random()<dt*0.25&&this.m.v>200){this.jammed=true;const back=this.m.pos-0.5*this.m.spr;this.resume=this.m.target;this.m.moveTo(back);log('⚠ StallGuard SG_RESULT<60 → jam! reversing ½ rev');tone(300,0.2,{type:'square',vol:0.05})}
+ if(this.jammed&&!this.m.busy()){this.jammed=false;this.m.moveTo(this.resume);log('jam cleared, resuming')}
+ const dg=Math.max(0,this.m.v)*dt/this.m.spr*this.gpr;if(dg>0&&this.hopper>0){this.hopper-=dg;for(let i=0;i<dg*1.5;i++)this.parts.push({x:rnd(-6,6),y:0,vy:rnd(0,30)})}
+ if(this.feeding&&!this.m.busy()){this.feeding=false;log(`portion delivered ✓ hopper ${this.hopper.toFixed(0)} g`)}
+ for(const p of this.parts){p.vy+=400*dt;p.y+=p.vy*dt}const before=this.parts.length;this.parts=this.parts.filter(p=>p.y<this.fall);this.bowl+=(before-this.parts.length)/1.5;
+ this.bowl=Math.max(0,this.bowl-dt*this.ts*0.004)},
+draw(c,W,H){const s=Math.min(W/620,H/440);ctx.save();ctx.translate((W-620*s)/2,(H-440*s)/2);ctx.scale(s,s);this.fall=150;
+ // hopper
+ ctx.beginPath();ctx.moveTo(60,30);ctx.lineTo(260,30);ctx.lineTo(200,170);ctx.lineTo(120,170);ctx.closePath();ctx.fillStyle='#1a2029';ctx.fill();ctx.strokeStyle=C.ln;ctx.lineWidth=2;ctx.stroke();
+ const lv=clamp(this.hopper/900,0,1);ctx.save();ctx.clip();ctx.fillStyle='#8a5a2b';ctx.fillRect(40,170-lv*140,240,lv*140);for(let i=0;i<80*lv;i++){circ(70+((i*37)%180),170-((i*53)%Math.max(1,lv*140)),4,'#a8743d')}ctx.restore();txt(`hopper ${Math.max(0,this.hopper).toFixed(0)} g`,160,15,C.dim,13,'center');
+ // auger tube
+ rrect(100,170,330,44,10,'#222a33',C.ln);const ph=this.m.u()*TAU;ctx.save();ctx.beginPath();ctx.rect(104,174,322,36);ctx.clip();for(let x=90;x<440;x+=22){const off=((ph/TAU)*22)%22;const xx=x+off;line(xx,174,xx-14,210,'#c9d1d9',3)}ctx.restore();
+ rrect(60,176,40,32,4,'#333',C.amb);txt('M',80,192,C.amb,13,'center');
+ // chute
+ rrect(406,214,28,40,3,'#222a33',C.ln);
+ // particles
+ ctx.save();ctx.translate(420,254);for(const p of this.parts)circ(p.x,p.y,3.5,'#a8743d');ctx.restore();
+ // bowl
+ const bx=420,by=410;ctx.beginPath();ctx.ellipse(bx,by-30,70,16,0,0,TAU);ctx.fillStyle='#2f6fd6';ctx.fill();ctx.beginPath();ctx.moveTo(bx-70,by-30);ctx.lineTo(bx-52,by);ctx.lineTo(bx+52,by);ctx.lineTo(bx+70,by-30);ctx.fillStyle='#2457ab';ctx.fill();
+ const f=clamp(this.bowl/80,0,1);for(let i=0;i<f*60;i++)circ(bx-55+((i*29)%110),by-30-((i*13)%Math.max(1,f*14)),4,'#a8743d');
+ txt(this.bowl>3?'😺':'🐱',bx+130,by-40,C.tx,54,'center');txt(`bowl ${this.bowl.toFixed(0)} g`,bx,by+18,C.dim,13,'center');
+ // clock
+ const d=this.t%86400;mono(`${String(Math.floor(d/3600)).padStart(2,'0')}:${String(Math.floor(d/60)%60).padStart(2,'0')}`,40,300,C.amb,40);mono(this.jammed?'JAM — reversing':this.feeding?'FEEDING…':'idle',40,340,this.jammed?C.rd:this.feeding?C.gr:C.dim,16);
+ const nxt=[[7,'07:00 breakfast'],[12.5,'12:30 lunch'],[18,'18:00 dinner']].find(([h])=>h*3600>d)||[7,'07:00 breakfast'];mono('next: '+nxt[1],40,370,C.tx,14);ctx.restore()}
+});
+
+// ---------- nav ----------
+let g='';sims.forEach((s,i)=>{if(s.grp!==g){g=s.grp;const d=document.createElement('div');d.className='grp';d.textContent=g;nav.appendChild(d)}const b=document.createElement('button');b.dataset.i=i;b.innerHTML=`<span class=ic>${s.icon}</span>${s.name}`;b.onclick=()=>select(i);nav.appendChild(b)});
+resize();const hi=sims.findIndex(s=>'#'+s.id===location.hash);select(hi>=0?hi:0);requestAnimationFrame(frame);
+window.addEventListener('hashchange',()=>{const i=sims.findIndex(s=>'#'+s.id===location.hash);if(i>=0&&sims[i]!==cur)select(i)});
+</script>
+<div id="shareDlg"><div class="box"><h4>🔗 Share</h4><p>WolfTronix Stepper Lab — 13 interactive NEMA17 + ESP32 project simulations</p>
+<div class="row"><input id="shareUrl" readonly><button id="shareCopy">Copy</button></div>
+<div class="soc"><a id="sX" target="_blank" rel="noopener">X</a><a id="sF" target="_blank" rel="noopener">Facebook</a><a id="sR" target="_blank" rel="noopener">Reddit</a><a id="sW" target="_blank" rel="noopener">WhatsApp</a><button id="shareClose" style="margin-left:auto">Close</button></div></div></div>
+<script>
+(function(){const BASE='https://wolftronixsd.github.io/hobby-hub/stepper-lab/',TEXT='Check out my WolfTronix Stepper Lab: 13 stepper-motor project sims (ESP32 + NEMA17)';const d=document.getElementById('shareDlg'),inp=document.getElementById('shareUrl'),cp=document.getElementById('shareCopy');
+function link(){let h='';try{h=location.hash||""}catch(e){}return BASE+h}
+function open(){const u=link(),e=encodeURIComponent;inp.value=u;cp.textContent='Copy';cp.className='';
+ document.getElementById('sX').href='https://twitter.com/intent/tweet?text='+e(TEXT)+'&url='+e(u);
+ document.getElementById('sF').href='https://www.facebook.com/sharer/sharer.php?u='+e(u);
+ document.getElementById('sR').href='https://www.reddit.com/submit?url='+e(u)+'&title='+e(TEXT);
+ document.getElementById('sW').href='https://wa.me/?text='+e(TEXT+' '+u);
+ d.classList.add('open');inp.select()}
+document.getElementById('shareBtn').onclick=open;
+document.getElementById('shareClose').onclick=()=>d.classList.remove('open');
+d.onclick=e=>{if(e.target===d)d.classList.remove('open')};
+cp.onclick=async()=>{try{await navigator.clipboard.writeText(inp.value);cp.textContent='✓ Copied';cp.className='ok'}catch(e){inp.select();cp.textContent='Press Ctrl+C'}};
+})();
+</script>
+</body>
+</html>

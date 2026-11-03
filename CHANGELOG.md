@@ -2,6 +2,12 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.41.0 (2026-11-02): Stepper Lab and Plane Pointer pages
+
+- stepper-lab/index.html: single-file canvas sims (13 stepper projects) with share panel; deep links via #id.
+- plane-pointer/index.html: design page with embedded STL geometry (three.js from jsdelivr), BOM, wiring SVG, firmware notes; PlanePointer_v1.zip download.
+- apps.js: stepperlab and planepointer buttons. sw.js skips both folders.
+
 ## 2.40.3 (2026-11-02): Skat Spielverlauf hands
 
 - skat/index.html v1.15.3: dealHtml() shared by Aktuelles Spiel and showTricks; Spielverlauf starts with all hands + Skat.

@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.40.3";
+const APP_VERSION = "2.41.0";
 const CHANGELOG = [
+  {
+    version: "2.41.0",
+    date: "2026-11-02",
+    at: "2026-11-03T03:15:00Z",
+    title: "Stepper Lab and Plane Pointer",
+    changes: [
+      "⚙️ New button: Stepper Lab, 13 interactive NEMA17 + ESP32 project simulations (plane pointer, sat rotator, sand table, split-flap and more)",
+      "✈️ New button: Plane Pointer, the full design of a desk arrow that points at the nearest aircraft: 3D model, parts, wiring, firmware and a CAD download",
+      "Both have a 🔗 Share button that copies a public link"
+    ]
+  },
   {
     version: "2.40.3",
     date: "2026-11-02",

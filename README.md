@@ -18,3 +18,4 @@ A car-friendly hobby dashboard with big buttons: top 10 podcasts, top 10 YouTube
 - `checkup/` is Super Checkup, a self-contained goofy doctor's-office page (eyes, ears, reaction time, eye gym). `sw.js` skips it.
 - Lab Rodeo (cowboy lab-marker flash cards) lives in its own repo `lab-rodeo` at https://wolftronixsd.github.io/lab-rodeo/.
 - `morse/` redirects to Dit Dah Dojo, the Morse trainer, which now lives at https://wolftronixsd.github.io/morse-trainer/ (repo `morse-trainer`).
+- `stepper-lab/` is Stepper Lab, 13 single-file stepper-motor project simulations. `plane-pointer/` is the Plane Pointer design page (3D model, BOM, wiring) plus `PlanePointer_v1.zip` (STL/STEP/CadQuery/MicroPython). `sw.js` skips both.
