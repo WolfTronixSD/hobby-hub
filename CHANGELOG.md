@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.40.1 (2026-11-02): Skat prompt layout and info sheet
+
+- skat/index.html v1.15.1: body.asking hides #gameInfo and moves #bidUI below the toast; portrait toast/bubble wrap; dismissable() tap-outside close for overlays, sticky ✕ on rules; #bInfo opens openSheet(); S.prevDeal shows the last game's hands in Aktuelles Spiel.
+
 ## 2.40.0 (2026-11-02): Skat trick pile and real cards
 
 - skat/index.html v1.15.0: #pile (your side's won cards + Augen, tap = last trick), realCards() renderer for the result skat and Aktuelles Spiel hands, "sofort gepasst" when passing at 18.

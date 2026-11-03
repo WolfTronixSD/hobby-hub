@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.40.0";
+const APP_VERSION = "2.40.1";
 const CHANGELOG = [
+  {
+    version: "2.40.1",
+    date: "2026-11-02",
+    at: "2026-11-03T00:50:00Z",
+    title: "Skat: cleaner prompts, ⓘ opens the game sheet",
+    changes: [
+      "🃏 Skat am Strand v1.15.1: Kontra/Weiter no longer overlap the game info; long announcements wrap in portrait",
+      "Rules and other panels close when you tap outside them (or the ✕)",
+      "The ⓘ button opens Aktuelles Spiel / Spielliste / Coach and shows everyone's cards from the last game"
+    ]
+  },
   {
     version: "2.40.0",
     date: "2026-11-02",

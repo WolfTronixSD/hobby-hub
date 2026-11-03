@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.15.0">
+<meta name="version" content="1.15.1">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -256,8 +256,11 @@ html body .pname{font-size:calc(18px*var(--uis))}
 .rcs{position:relative;display:inline-block;vertical-align:middle}.rcs .card{position:absolute;left:3px;top:3px}
 #pile{position:absolute;z-index:35;display:none;cursor:pointer}#pile .card{position:absolute;left:0;top:0;transition:none}
 #pile b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9;min-width:2.1em;height:2.1em;border-radius:50%;background:rgba(30,30,34,.85);color:#fff;font:700 clamp(15px,4vh,24px)/2.1em system-ui;text-align:center;padding:0 .2em;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+body.asking #gameInfo{visibility:hidden}
+.landscape.asking #bidUI{top:35%;gap:2.6vh}.portrait.asking #bidUI{top:36%}
+.pclose{position:sticky;top:0;float:right;margin:-6px -8px 0 0;width:38px;height:38px;border-radius:50%;border:2px solid #c8743a;background:#fffaf0;color:#7a4a1a;font:700 18px system-ui;z-index:2}
 #rotateHint{display:none}
-</style>
+.portrait #toast{white-space:normal;width:max-content;max-width:90vw;border-radius:18px}.portrait .bubble{white-space:normal;width:max-content;max-width:56vw;text-align:center;line-height:1.15}.ps{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}</style>
 </head>
 <body>
 <div id="stage">
@@ -276,7 +279,7 @@ html body .pname{font-size:calc(18px*var(--uis))}
  <button class="rbtn" id="btnScore" aria-label="Spielliste"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c1-4 4-5.6 7.5-5.6s6.5 1.6 7.5 5.6"/></svg></button>
  <div id="leftIcons">
   <button class="rbtn" id="bLast" aria-label="Letzter Stich"><svg viewBox="0 0 24 24"><path d="M5 14a7.5 7.5 0 0 1 13.5-4.5"/><path d="M19 4.5v5h-5"/><circle cx="12" cy="15" r="1.6" fill="#fff"/></svg></button>
-  <button class="rbtn" id="bInfo" aria-label="Regeln"><svg viewBox="0 0 24 24"><path d="M12 10.5v7.5M9.5 18h5M10 10.5h2"/><circle cx="12" cy="6.3" r="1.3" fill="#fff"/></svg></button>
+  <button class="rbtn" id="bInfo" aria-label="Spielinfo"><svg viewBox="0 0 24 24"><path d="M12 10.5v7.5M9.5 18h5M10 10.5h2"/><circle cx="12" cy="6.3" r="1.3" fill="#fff"/></svg></button>
   <button class="rbtn" id="bFast" aria-label="Schnell"><svg viewBox="0 0 24 24"><path d="M3.5 6v12l7.5-6zM11 6v12l7.5-6zM20 6v12" fill="#fff"/></svg></button>
  </div>
  <button class="rbtn" id="btnHint" aria-label="Tipp"><svg viewBox="0 0 24 24"><path d="M9 17.5h6M9.8 20.5h4.4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1 1.3 1 2.2h5.2c0-.9.3-1.6 1-2.2A6 6 0 0 0 12 3z" fill="rgba(255,255,255,.85)" stroke="#fff"/></svg></button>
@@ -309,8 +312,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.15.0';
+const SKAT_VERSION='1.15.1';
 const SKAT_CHANGES=[
+ ['1.15.1','2026-11-02','Kontra-Knöpfe überdecken die Spielinfo nicht mehr · Regeln & Fenster schließen mit Tippen daneben (oder ✕) · ⓘ-Knopf öffnet Aktuelles Spiel / Spielliste / Coach · Karten des letzten Spiels sichtbar · lange Ansagen im Hochformat umbrochen'],
  ['1.15.0','2026-11-02','🂠 Stichstapel mit Augen-Zähler (antippen = letzter Stich) · echte Kartenbilder im Ergebnis und bei „Aktuelles Spiel“ · „sofort gepasst“'],
  ['1.14.0','2026-11-02','⚙️ Hausregeln: Spiele pro Liste (1–12) mit Siegerehrung · 🐷 Ramsch nach Eingepasst, Schieberamsch, Jungfrau, Durchmarsch, Dauerramsch, Grand Hand in Ramschrunde · 🐐 Bockrunden mit Auslösern und „3 Bock, 3 Ramsch“'],
  ['1.13.0','2026-11-02','🎚️ Tonhöhe und Sprechtempo für jeden Mitspieler · 🧠 Klügere Mitspieler: kein Trumpf-Ass/-Zehn mehr verschenkt, keine Zehn auf einen Gegnerstich · 🐞 Fehler melden: Mitspieler merken sich dumme Züge, Bericht für Claude kopieren'],
@@ -709,7 +713,8 @@ function setTurn(seat){[0,1,2].forEach(i=>$('#pl'+i).classList.toggle('turn',i==
 function updateInfo(){const gi=$('#gameInfo');const st=gi;if(S.phase!=='play'){gi.style.display='none';return}gi.style.display='flex';if(S.game&&S.game.ramsch){st.innerHTML=`🐷 Ramsch${S.bock?' · 🐐 Bock':''}${S.schiebCount?' · '+S.schiebCount+'× geschoben':''} · Stich ${Math.min(10,S.trickNo+1)}/10`;return}st.innerHTML=`${S.game.type==='suit'?`<span class="si" style="color:${S.game.trump<2?'#ff8a8a':'#fff'}">${suitSvg(S.game.trump)}</span>`:''}${S.bock?'🐐 ':''}${gameName(S.game,false)} · ${S.bid||'Hand'}${S.kontraBy>=0?(S.re?' · Re':' · Kontra'):''} · Stich ${Math.min(10,S.trickNo+1)}/10`;return;
  gi.style.display='flex';gi.innerHTML=`${S.game.type==='suit'?`<span class="si">${suitSvg(S.game.trump)}</span>`:''}${gameName(S.game)} · Reiz ${S.bid} · Stich ${Math.min(10,S.trickNo+1)}/10`;gi.querySelector('.si')&&(gi.querySelector('.si').style.color=S.game.type==='suit'?(S.game.trump<2?'#ff7a7a':'#fff'):'')}
 const ov=$('#overlay');
-function openOverlay(html,cls){ov.innerHTML=html;ov.classList.add('show');return ov}
+function dismissable(onClose){ov.onclick=e=>{if(e.target===ov){ov.onclick=null;if(onClose)onClose();else closeOverlay()}}}
+function openOverlay(html,cls){ov.onclick=null;ov.classList.remove('left');ov.innerHTML=html;ov.classList.add('show');return ov}
 function closeOverlay(){ov.classList.remove('show');ov.innerHTML=''}
 function realCards(cards,w=44,step=.42,tilt=0){const n=cards.length;if(!n)return'';const W=w*(1+step*(n-1))+6,H=w*1.5+6;
  return `<span class="rcs" style="font-size:${w}px;width:${W}px;height:${H}px">${cards.map((c,i)=>`<div class="card" style="color:${suitColor(c.s)};transform:translate(${(i*step).toFixed(2)}em,${tilt?Math.abs(i-(n-1)/2)*.03:0}em) rotate(${tilt?((i-(n-1)/2)*tilt).toFixed(1):0}deg);transition:none;pointer-events:none;z-index:${i}">${cardSvg(c)}</div>`).join('')}</span>`}
@@ -939,7 +944,7 @@ function openReport(onClose){const moves=(S.moveLog||[]).filter(m=>m.seat!==0).s
   <div class="row"><button class="pill sm" id="rpSave" ${picked==null?'disabled':''}>Merken</button><button class="pill sm tan" id="rpCopy">Bericht kopieren</button><button class="pill sm tan" id="rpX">Schließen</button></div>
   <p style="font-size:12px;opacity:.7;text-align:center">„Bericht kopieren“ erstellt einen Text mit Karten und Spielverlauf. Schick ihn an Claude, dann wird die Spiellogik für alle verbessert.${Object.keys(P.learn||{}).length?` · Gemerkte Fehler: ${Object.keys(P.learn).length} <button class="chip" id="rpReset">vergessen</button>`:''}</p></div>`);
   ov.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{picked=+b.dataset.m;draw()});
-  $('#rpX').onclick=()=>{closeOverlay();if(onClose)onClose()};const rr=$('#rpReset');if(rr)rr.onclick=()=>{P.learn={};save();draw()};
+  $('#rpX').onclick=()=>{closeOverlay();if(onClose)onClose()};dismissable(()=>{closeOverlay();if(onClose)onClose()});const rr=$('#rpReset');if(rr)rr.onclick=()=>{P.learn={};save();draw()};
   $('#rpSave').onclick=()=>{const m=moves[picked];P.learn=P.learn||{};P.learn[m.key]=(P.learn[m.key]||0)+1;save();closeOverlay();if(onClose)setTimeout(onClose,50);toast(`🧠 Gemerkt! ${NM(m.seat)} macht das nicht mehr.`,2200);emote(m.seat,'sad');quip(m.seat,'lostT',1)};
   $('#rpCopy').onclick=()=>{const txt=reportText(picked!=null?moves[picked]:null);const done=()=>toast('📋 Bericht kopiert – jetzt an Claude schicken',2200);try{navigator.clipboard.writeText(txt).then(done,()=>fallbackCopy(txt,done))}catch(e){fallbackCopy(txt,done)}}};
  draw()}
@@ -1074,7 +1079,7 @@ async function playDeclared(decl,preset){
  toast(`${decl===0?'Du spielst':NM(decl)+' spielt'} ${gameName(S.game)}${S.bock?' · 🐐 Bock':''}`,1800);await sleep(900);
  if(P.cfg.kontra)await kontraPhase();
  S.endBy=null;if(!preset)await aiMaybeSchenken();
- if(!S.endBy)await playPhase();else{S.won=[[],[],[]];S.tricks=[0,0,0];S.trickLog=[]}S.phase='done';setTurn(-1);settle();
+ if(!S.endBy)await playPhase();else{S.won=[[],[],[]];S.tricks=[0,0,0];S.trickLog=[]}S.phase='done';setTurn(-1);settle();S.prevDeal={dealt:S.dealt,status:(S.status||[]).slice(),game:S.game,no:P.gameNo,practice:S.practice};
  {const r=S.result,d=r.d;if(d){emote(d,r.won?'happy':'sad',3500);quip(d,r.won?'won':'lost',.85)}[1,2].filter(x=>x!==d).forEach(x=>{emote(x,r.won?'sad':'happy',3500);if(!r.won)quip(x,'beat',.5)})}
  await showResult()}
 /* ===================== Ramsch & Bock ===================== */
@@ -1109,7 +1114,7 @@ async function playRamsch(){S.game={type:'grand',ramsch:true};S.declarer=-1;S.bi
  const sch=S.ramschRound?P.cfg.schiebRunde:P.cfg.schiebPass;
  if(sch)await schiebPhase();else{S.skatFinal=S.skat.slice();showSkat(false)}
  S.hands[0]=sortHand(S.hands[0],S.game);renderHand();S.phase='play';updatePlates();updateInfo();
- await playPhase();S.phase='done';setTurn(-1);settleRamsch();
+ await playPhase();S.phase='done';setTurn(-1);settleRamsch();S.prevDeal={dealt:S.dealt,status:(S.status||[]).slice(),game:S.game,no:P.gameNo,practice:S.practice};
  const r=S.result;[1,2].forEach(x=>{const bad=r.losers&&r.losers.includes(x);emote(x,r.durch===x?'happy':bad?'sad':'happy',3500);if(bad)quip(x,'lost',.8);else if(r.durch===x)quip(x,'won',1)});
  await showResult()}
 function settleRamsch(){const sk=S.skatFinal||S.skat;const pts=[0,1,2].map(i=>cardPts(S.won[i]));const tr=S.tricks;
@@ -1161,9 +1166,9 @@ function openHouse(){const c=P.cfg;const sw=(k,l,d,sub)=>`<div class="hr${sub?' 
  <div class="row"><button class="pill sm" id="hOk">Fertig</button></div></div>`);
  ov.querySelectorAll('[data-hk]').forEach(b=>b.onclick=()=>{const k=b.dataset.hk;c[k]=!c[k];save();const st=ov.querySelector('.panel').scrollTop;openHouse();ov.querySelector('.panel').scrollTop=st});
  ov.querySelectorAll('[data-ll]').forEach(b=>b.onclick=()=>{c.listLen=+b.dataset.ll;save();const st=ov.querySelector('.panel').scrollTop;openHouse();ov.querySelector('.panel').scrollTop=st});
- const hc=$('#hClr');if(hc)hc.onclick=()=>{P.queue=[];save();openHouse()};$('#hOk').onclick=openMenu}
+ const hc=$('#hClr');if(hc)hc.onclick=()=>{P.queue=[];save();openHouse()};$('#hOk').onclick=openMenu;dismissable()}
 
-async function humanAsk(yes,no){const y=$('#bidYes'),n=$('#bidNo');y.textContent=yes;n.textContent=no;$('#bidUI').style.display='flex';const r=await waitInput();$('#bidUI').style.display='none';n.textContent='Passe';return r}
+async function humanAsk(yes,no){const y=$('#bidYes'),n=$('#bidNo');y.textContent=yes;n.textContent=no;$('#bidUI').style.display='flex';document.body.classList.add('asking');const r=await waitInput();$('#bidUI').style.display='none';document.body.classList.remove('asking');n.textContent='Passe';return r}
 function aiWantsKontra(seat){const g=S.game,h=S.hands[seat],lv=P.cfg.level;if(lv===0)return Math.random()<.12;
  if(g.type==='null'){const low=h.filter(c=>c.r==='7'||c.r==='8').length;return low>=(lv===2?4:5)}
  const T=h.filter(c=>isTrump(c,g)),hi=T.some(c=>c.r==='B'&&(g.type==='saxon'?c.s<=1:c.s>=2));
@@ -1327,7 +1332,7 @@ async function showResult(){renderPile();if(S.result&&S.result.ramsch)return sho
   $('#rRep').onclick=()=>{S.replay=S.dealt;closeOverlay();res()};$('#rBug').onclick=()=>openReport(()=>showResult().then(res));if(AUTO)setTimeout(()=>{closeOverlay();res()},TURBO?5:400)})}
 function showTricks(back){const log=S.trickLog;openOverlay(`<div class="parch"><div class="tabs"><button class="tab on">Spielverlauf</button><button class="tabx" id="tx">✕</button></div><div class="tbody">
  ${log.map((t,i)=>`<div class="prow"><div class="who"><small>Stich ${i+1}</small><b>${NM(t.winner)}</b></div>${t.cards.map(x=>`<div style="text-align:center;font-size:13px">${mcards([x.card])}<div>${NM(x.seat)}</div></div>`).join('')}<div style="margin-left:auto">${cardPts(t.cards.map(x=>x.card))} Augen</div></div>`).join('')}
- <p style="text-align:center">Skat: ${mcards(S.skatFinal)} (${cardPts(S.skatFinal)} Augen)</p></div></div>`);$('#tx').onclick=back}
+ <p style="text-align:center">Skat: ${mcards(S.skatFinal)} (${cardPts(S.skatFinal)} Augen)</p></div></div>`);$('#tx').onclick=back;dismissable(back)}
 
 /* ---------- score sheet (tabs) ---------- */
 function openSheet(tab='list'){const tabs=[['cur','Aktuelles Spiel'],['list','Spielliste'],['coach','Coach']];
@@ -1335,15 +1340,17 @@ function openSheet(tab='list'){const tabs=[['cur','Aktuelles Spiel'],['list','Sp
  ov.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>openSheet(b.dataset.tab));$('#tx').onclick=closeOverlay;
  const rp=$('#again');if(rp)rp.onclick=()=>{S.replay=S.dealt;closeOverlay();toast('Wird nach diesem Spiel wiederholt')};
  const cp=$('#copy');if(cp)cp.onclick=()=>{try{navigator.clipboard.writeText(shareText()).then(()=>toast('Kopiert'),()=>toast('Kopieren nicht möglich'))}catch(e){toast('Kopieren nicht möglich')}};
- const nl=$('#newList');if(nl)nl.onclick=()=>{if(nl.dataset.c){newList();closeOverlay();toast('Neue Spielliste')}else{nl.dataset.c=1;nl.textContent='Wirklich? Nochmal tippen'}}}
+ const nl=$('#newList');if(nl)nl.onclick=()=>{if(nl.dataset.c){newList();closeOverlay();toast('Neue Spielliste')}else{nl.dataset.c=1;nl.textContent='Wirklich? Nochmal tippen'}};dismissable()}
 function shareText(){return `Skat am Strand – ${P.names.map((n,i)=>`${n}: ${P.scores[i]}`).join(', ')} nach ${P.history.length} Spielen`}
 function newList(){P.gameNo=0;P.scores=[0,0,0];P.history=[];P.won=[0,0,0];P.lost=[0,0,0];P.date=new Date().toISOString();save();updatePlates(S.phase==='done')}
 function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'});
- if(tab==='cur'){if(!S.dealt)return'<p>Noch kein Spiel.</p>';const done=S.phase==='done'||S.phase==='idle';const g=S.game;
-  const rows=[0,1,2].map(k=>{const seat=(S.dealer+1+k)%3;const cards=S.dealt.hands[seat].map(id=>DECK.find(c=>c.id===id));const show=seat===0||done;const st=S.status&&S.status[seat]||'';
-   return`<div class="prow"><div class="who"><small>${POSN[k]}</small><b>${NM(seat)}</b><br>${st?`<span class="tag${st.startsWith('spielt')?' fill':''}">${st}</span>`:''}</div><div>${show?realCards(sortHand(cards,g),L.land?Math.min(52,innerHeight*.11):34,.5):'<i>verdeckt</i>'}</div></div>`}).join('');
+ if(tab==='cur'){if(!S.dealt)return'<p>Noch kein Spiel.</p>';const done=S.phase==='done'||S.phase==='idle';const g=S.game;const cw=L.land?Math.min(66,innerHeight*.16):40;
+  const deal=(D,open)=>{const rows=[0,1,2].map(k=>{const seat=(D.dealt.dealer+1+k)%3;const cards=D.dealt.hands[seat].map(id=>DECK.find(c=>c.id===id));const show=seat===0||open;const st=D.status&&D.status[seat]||'';
+   return`<div class="prow"><div class="who"><small>${POSN[k]}</small><b>${NM(seat)}</b><br>${st?`<span class="tag${st.startsWith('spielt')?' fill':''}">${st}</span>`:''}</div><div>${show?realCards(sortHand(cards,D.game),cw,.5):'<i>verdeckt</i>'}</div></div>`}).join('');
+   return rows+(open?`<div class="prow"><div class="who"><b>Skat</b></div><div>${realCards(D.dealt.skat.map(id=>DECK.find(c=>c.id===id)),cw,.5)}</div></div>`:'')};
+  const prev=!done&&S.prevDeal?`<p style="margin-top:14px"><b>Letztes Spiel${S.prevDeal.practice?' (Übung)':' '+S.prevDeal.no}</b>${S.prevDeal.game?` · ${gameName(S.prevDeal.game)}`:''}</p>${deal(S.prevDeal,true)}`:'';
   return`<div class="row" style="justify-content:flex-end;margin:0 0 8px"><button class="pill sm" id="again" ${done?'':'disabled'}>Erneut spielen</button><button class="pill sm" id="copy">Teilen…</button></div>
-   <p>${S.practice?'Übungsspiel':`Spiel ${P.gameNo} aus der Spielliste vom ${dt}`}${g?` · ${gameName(g)}`:''}</p>${rows}${done?`<div class="prow"><div class="who"><b>Skat</b></div><div>${realCards(S.dealt.skat.map(id=>DECK.find(c=>c.id===id)),L.land?Math.min(52,innerHeight*.11):34,.5)}</div></div>`:''}`}
+   <p>${S.practice?'Übungsspiel':`Spiel ${P.gameNo} aus der Spielliste vom ${dt}`}${g?` · ${gameName(g)}`:''}${done?'':' · läuft noch – Karten der Gegner nach Spielende'}</p>${deal({dealt:S.dealt,status:S.status,game:g},done)}${prev}`}
  if(tab==='list'){const X=b=>b?'X':'';
   const head=`<thead><tr><th class="v" rowspan="2">Spielnummer</th><th class="v" rowspan="2">Grundwert</th><th class="v" rowspan="2">Mit</th><th class="v" rowspan="2">Ohne</th><th class="v" rowspan="2">Hand</th><th class="v" rowspan="2">Schneider</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Schwarz</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Ouvert</th><th class="v" rowspan="2">Sonderregeln</th><th rowspan="2">Spiel-<br>wert</th>${P.names.map(n=>`<th class="pn" colspan="3">${n}</th>`).join('')}</tr>
    <tr>${P.names.map(()=>'<th>Punkte</th><th class="v">Gewonnen</th><th class="v">Verloren</th>').join('')}</tr></thead>`;
@@ -1376,7 +1383,7 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{c.level=+b.dataset.l;save();openMenu()});
  ov.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;c[k]=!c[k];save();
   if(k==='four')restyle();if(k==='fast')$('#bFast').classList.toggle('on',c.fast);if(k==='amb'){if(c.amb){ac();startAmbient()}else stopAmbient()}if(k==='music'){if(c.music){ac();startMusic()}else stopMusic()}if(k==='voice'&&!c.voice)try{speechSynthesis.cancel()}catch(e){}
-  openMenu()})}
+  openMenu()});dismissable()}
 function openPlayers(){loadVoices();const c=P.cfg;c.look=c.look||{};const sw=(arr,k,key,i0)=>arr.map((x,i)=>`<button class="sw${(look(k)[key])===i?' sel':''}" data-k="${k}" data-key="${key}" data-i="${i}" title="${x[0]}" style="background:linear-gradient(${x[1]},${x[2]})"></button>`).join('');
  const tg=(k,key,l)=>`<button class="chip${look(k)[key]!==false?' sel':''}" data-tg="${key}" data-k="${k}">${l}</button>`;
  const sec=k=>`<div class="psec"><input class="pname" data-n="${k}" maxlength="12" value="${P.names[k].replace(/"/g,'')}"><div class="pl">Haut</div><div class="sws">${sw(SKINS,k,'skin')}</div><div class="pl">Haare</div><div class="sws">${sw(HAIRS,k,'hair')}</div><div class="pl">Shirt (Strand)</div><div class="sws">${sw(SHIRTS,k,'shirt')}</div>
@@ -1397,7 +1404,7 @@ function openPlayers(){loadVoices();const c=P.cfg;c.look=c.look||{};const sw=(ar
  ov.querySelectorAll('.vsel').forEach(sl=>sl.onchange=()=>{const k=+sl.dataset.k;setL(k,'voiceName',sl.value||null);save();say(k,'Hallo, ich bin '+NM(k)+'. Achtzehn, zwanzig, zwo!')});
  ov.querySelectorAll('[data-test]').forEach(b=>b.onclick=()=>{const k=+b.dataset.test;try{speechSynthesis.cancel()}catch(e){}say(k,'Hallo, ich bin '+NM(k)+'. Kontra!')});
  if(!VOICES.length){loadVoices();if(VOICES.length)setTimeout(openPlayers,50);else ov.querySelector('.panel').insertAdjacentHTML('beforeend','<p style="text-align:center;font-size:13px">Keine deutschen Stimmen gefunden – Einstellungen → Bedienungshilfen → Vorlesen & Sprechen → Stimmen → Deutsch.</p>')}
- $('#pReset').onclick=()=>{c.look={};P.names=['wolfi','Andy','Melli'];upd();openPlayers()};$('#pOk').onclick=openMenu}
+ $('#pReset').onclick=()=>{c.look={};P.names=['wolfi','Andy','Melli'];upd();openPlayers()};$('#pOk').onclick=openMenu;dismissable()}
 const FONTS=[['std','Standard',null,"inherit"],['theme','Passend zum Thema',null,null],['nunito','Rund','Nunito:wght@600;800',"'Nunito',system-ui,sans-serif"],['lora','Klassisch','Lora:wght@500;700',"'Lora',Georgia,serif"],['comic','Lustig','Comic+Neue:wght@700',"'Comic Neue','Comic Sans MS',cursive"],['rye','Western','Rye',"'Rye',Georgia,serif"],['orbitron','Weltraum','Orbitron:wght@600;800',"'Orbitron',system-ui,sans-serif"],['bungee','Vegas','Bungee',"'Bungee',Impact,sans-serif"],['fredoka','Comic dick','Fredoka:wght@500;700',"'Fredoka',system-ui,sans-serif"]];
 const THEMEFONT={beach:'nunito',west:'rye',space:'orbitron',vegas:'bungee'};
 const SIZES=[['S',.9],['M',1],['L',1.15],['XL',1.3]];
@@ -1410,7 +1417,7 @@ function openFonts(){const cur=P.cfg.font||'nunito';FONTS.forEach(f=>{if(f[2]&&!
  <p class="pl" style="text-align:center;margin-top:14px">Größe</p><div class="row">${SIZES.map(([l,v])=>`<button class="chip${(P.cfg.fsize||1)===v?' sel':''}" data-s="${v}" style="font-size:${14*v}px">${l}</button>`).join('')}</div>
  <p style="text-align:center;margin-top:12px">Andy spielt Kreuz Hand · Reiz 36 · Kontra!</p><div class="row"><button class="pill sm" id="fOk">Fertig</button></div></div>`);
  ov.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{P.cfg.font=b.dataset.f;save();applyFont();openFonts()});
- ov.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{P.cfg.fsize=+b.dataset.s;save();applyFont();openFonts()});$('#fOk').onclick=openMenu}
+ ov.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{P.cfg.fsize=+b.dataset.s;save();applyFont();openFonts()});$('#fOk').onclick=openMenu;dismissable()}
 const SKAT_HOME='https://wolftronixsd.github.io/hobby-hub/skat/';
 function settingsLink(){const d={cfg:Object.assign({},P.cfg,{muted:false}),names:P.names};return SKAT_HOME+'#s='+encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(d)))))}
 function openTransfer(){const link=settingsLink();openOverlay(`<div class="panel"><h2>🔗 Einstellungen mitnehmen</h2>
@@ -1419,10 +1426,10 @@ function openTransfer(){const link=settingsLink();openOverlay(`<div class="panel
  <div class="row"><button class="pill sm" id="tCopy">Link kopieren</button><a class="pill sm tan" href="${link}" target="_blank" rel="noopener" style="text-decoration:none">Öffnen</a><button class="pill sm tan" id="tBack">Zurück</button></div>
  <p style="font-size:13px;opacity:.75;text-align:center">Tipp: Öffne den Link in Safari und lege ihn dann mit Teilen → „Zum Home-Bildschirm“ ab.</p></div>`);
  $('#tCopy').onclick=()=>{const done=()=>toast('📋 Link kopiert',1400);try{navigator.clipboard.writeText(link).then(done,()=>{$('#tLink').select();document.execCommand('copy');done()})}catch(e){$('#tLink').select();try{document.execCommand('copy')}catch(_){}done()}};
- $('#tLink').onclick=()=>$('#tLink').select();$('#tBack').onclick=openMenu}
-function openNews(){openOverlay(`<div class="panel rule"><h2>Was ist neu · v${SKAT_VERSION}</h2>${SKAT_CHANGES.map(([v,d,t])=>`<h3>v${v} <small style="font:400 13px system-ui;opacity:.7">${new Date(d).toLocaleDateString('de-DE')}</small></h3><p>${t}</p>`).join('')}<div class="row"><button class="pill sm" id="nOk">OK</button></div></div>`);$('#nOk').onclick=openMenu}
+ $('#tLink').onclick=()=>$('#tLink').select();$('#tBack').onclick=openMenu;dismissable()}
+function openNews(){openOverlay(`<div class="panel rule"><h2>Was ist neu · v${SKAT_VERSION}</h2>${SKAT_CHANGES.map(([v,d,t])=>`<h3>v${v} <small style="font:400 13px system-ui;opacity:.7">${new Date(d).toLocaleDateString('de-DE')}</small></h3><p>${t}</p>`).join('')}<div class="row"><button class="pill sm" id="nOk">OK</button></div></div>`);$('#nOk').onclick=openMenu;dismissable()}
 function restyle(){for(const[id,el]of handEls){const c=DECK.find(x=>x.id===id);el.style.color=suitColor(c.s);el.innerHTML=cardSvg(c)}trickEls.forEach(t=>{const c=DECK.find(x=>x.id===t.el.dataset.id);if(c){t.el.style.color=suitColor(c.s);t.el.innerHTML=cardSvg(c)}});renderOpen()}
-function openRules(){openOverlay(`<div class="panel rule"><h2>Skatregeln (ISkO)</h2>
+function openRules(onDone){openOverlay(`<div class="panel rule"><button class="pclose" id="rX">✕</button><h2>Skatregeln (ISkO)</h2>
 <h3>Ziel</h3><p>Der Alleinspieler braucht mindestens <b>61 Augen</b> (Skat zählt für ihn). Kartenwerte: Ass 11, Zehn 10, König 4, Dame 3, Bube 2, 9/8/7 je 0 – zusammen 120.</p>
 <h3>Reizen</h3><p>Mittelhand sagt Vorhand (18, 20, 22, 23, 24, 27, 30 …), Vorhand hört („Ja“) oder passt. Danach sagt Hinterhand dem Sieger. Passen alle, darf Vorhand für 18 spielen – sonst eingepasst.</p>
 <h3>Spiele & Grundwerte</h3><p>Karo 9 · Herz 10 · Pik 11 · Kreuz 12 · Grand 24. Null 23 · Null Hand 35 · Null Ouvert 46 · Null Ouvert Hand 59.</p>
@@ -1435,8 +1442,8 @@ function openRules(){openOverlay(`<div class="panel rule"><h2>Skatregeln (ISkO)<
 <h3>Sonderregel: Kontra & Re</h3><p>Nach der Spielansage darf ein Gegenspieler vor dem ersten Stich <b>„Kontra!“</b> sagen, wenn er glaubt, dass der Alleinspieler verliert. Der Alleinspieler kann mit <b>„Re!“</b> antworten. Kontra verdoppelt das Ergebnis, Kontra und Re vervierfachen es – gewonnen wie verloren.</p>
 <h3>Spielstärke</h3><p>🐣 Leicht: Gegner machen öfter Fehler und reizen wild. 😎 Gut: solide Kneipenspieler. 🧠 Schwer: Gegner zählen Karten und simulieren hunderte mögliche Kartenverteilungen vor jedem Zug (auch der 💡-Tipp nutzt das).</p>
 <h3>Bedienung</h3><p>Karte antippen zum Ausspielen · 💡 Tipp · ↻ letzter Stich · ⏩ Tempo · 👤 Spielliste & Coach.</p>
-<p style="text-align:center;opacity:.6;font-size:12px">Skat am Strand v${SKAT_VERSION}</p><div class="row"><button class="pill sm" id="rOk">OK</button></div></div>`);$('#rOk').onclick=closeOverlay}
-function showLast(){if(!S.lastTrick){toast('Noch kein Stich');return}const t=S.lastTrick;openOverlay(`<div class="panel"><h2>Letzter Stich – ${NM(t.winner)}</h2><div class="row" style="font-size:26px">${t.cards.map(x=>`<div style="text-align:center">${mcards([x.card])}<div style="font-size:14px">${NM(x.seat)}</div></div>`).join('')}</div><p style="text-align:center">${cardPts(t.cards.map(x=>x.card))} Augen</p><div class="row"><button class="pill sm" id="lOk">OK</button></div></div>`);$('#lOk').onclick=closeOverlay}
+<p style="text-align:center;opacity:.6;font-size:12px">Skat am Strand v${SKAT_VERSION}</p><div class="row"><button class="pill sm" id="rOk">OK</button></div></div>`);const done=()=>{closeOverlay();if(typeof onDone==='function')onDone()};$('#rOk').onclick=done;$('#rX').onclick=done;dismissable(done)}
+function showLast(){if(!S.lastTrick){toast('Noch kein Stich');return}const t=S.lastTrick;openOverlay(`<div class="panel"><h2>Letzter Stich – ${NM(t.winner)}</h2><div class="row" style="font-size:26px">${t.cards.map(x=>`<div style="text-align:center">${mcards([x.card])}<div style="font-size:14px">${NM(x.seat)}</div></div>`).join('')}</div><p style="text-align:center">${cardPts(t.cards.map(x=>x.card))} Augen</p><div class="row"><button class="pill sm" id="lOk">OK</button></div></div>`);$('#lOk').onclick=closeOverlay;dismissable()}
 function hint(){
  if(S.bidAsk){const m=S.coach.max;toast(m?`Coach: reizen bis ${m} (${gameName(S.coach.game)})`:'Coach: lieber passen');bubble(0,m>=S.bidAsk.val?'👍':'👎',1200);return}
  if(S.mode==='discard'){const all=S.hands[0];const save=S.hands[0];S.hands[0]=all.filter(c=>!S.skat.includes(c));const ch=aiDeclareFor12(all);S.hands[0]=save;S.sel=new Set(ch.disc.map(c=>c.id));renderHand();$('#abBtn').disabled=false;$('#abMsg').textContent=`Coach: drücken für ${gameName(ch.game)}`;return}
@@ -1444,7 +1451,7 @@ function hint(){
  toast('Tipp gibt’s wenn du dran bist')}
 function aiDeclareFor12(all){let best=null;for(let i=0;i<12;i++)for(let j=i+1;j<12;j++){const kept=all.filter((_,k)=>k!==i&&k!==j);const disc=[all[i],all[j]];
  for(const g of cands()){if(disc.some(c=>c.r==='B'))continue;const st=strength(kept,g)+cardPts(disc)*.03-(g.type!=='suit'?6.9:7);const v=gbase(g)*(spitzen(all,g).n+1);const sc=st+(v>=S.bid?5:0);if(!best||sc>best.sc)best={sc,game:g,disc}}}return best}
-$('#btnBack').onclick=openMenu;$('#btnScore').onclick=()=>openSheet(S.phase==='done'?'cur':'list');$('#bInfo').onclick=openRules;$('#bLast').onclick=showLast;$('#btnHint').onclick=hint;
+$('#btnBack').onclick=openMenu;$('#btnScore').onclick=()=>openSheet(S.phase==='done'?'cur':'list');$('#bInfo').onclick=()=>openSheet(S.phase==='done'?'cur':'list');$('#bLast').onclick=showLast;$('#btnHint').onclick=hint;
 function setMute(m){P.cfg.muted=m;save();$('#btnMute').classList.toggle('off',m);if(MASTER&&AC)MASTER.gain.setTargetAtTime(m?0:.9,AC.currentTime,.05);if(m){stopAmbient();stopMusic();try{speechSynthesis.cancel()}catch(e){}}else{ac();startAmbient();startMusic()}}
 $('#btnMute').onclick=()=>setMute(!P.cfg.muted);
 $('#bFast').onclick=openActions;
@@ -1454,7 +1461,7 @@ $('#stage').addEventListener('scroll',e=>{e.target.scrollTop=0;e.target.scrollLe
 addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(layout,120)});
 layout();
 window.__S=S;window.__P=P;window.__errors=[];
-(async function main(){updatePlates();if(!P.seen&&!AUTO){P.seen=true;save();openRules();await new Promise(r=>{$('#rOk').onclick=()=>{closeOverlay();r()}})}
+(async function main(){updatePlates();if(!P.seen&&!AUTO){P.seen=true;save();await new Promise(r=>openRules(r))}
  while(true){try{await playGame();if(!S.practice&&P.history.length>=(P.cfg.listLen||12))await listEnd()}catch(e){console.error(e);window.__errors.push(String(e&&e.stack||e));await sleep(1000)}}})();
 </script>
 </body>
