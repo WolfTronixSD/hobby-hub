@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.15.3">
+<meta name="version" content="1.15.4">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -312,8 +312,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.15.3';
+const SKAT_VERSION='1.15.4';
 const SKAT_CHANGES=[
+ ['1.15.4','2026-11-02','Fix: Spielnummer zählt jetzt genau die Spiele der Liste (nach Neuladen oder Wiederholen lief sie davon) · Liste endet sicher nach der eingestellten Anzahl'],
  ['1.15.3','2026-11-02','Spielverlauf nach dem Spiel zeigt zuerst die Karten aller Spieler (Melli, Andy, du) und den Skat, danach die Stiche'],
  ['1.15.2','2026-11-02','› in der Spielliste: Karten aller Spieler jedes gespielten Spiels ansehen (zum Lernen) · Erneut spielen auch für alte Spiele'],
  ['1.15.1','2026-11-02','Kontra-Knöpfe überdecken die Spielinfo nicht mehr · Regeln & Fenster schließen mit Tippen daneben (oder ✕) · ⓘ-Knopf öffnet Aktuelles Spiel / Spielliste / Coach · Karten des letzten Spiels sichtbar · › in der Spielliste zeigt die Karten aller Spieler jedes Spiels · lange Ansagen im Hochformat umbrochen'],
@@ -717,7 +718,8 @@ function updateInfo(){const gi=$('#gameInfo');const st=gi;if(S.phase!=='play'){g
 const ov=$('#overlay');
 function dismissable(onClose){ov.onclick=e=>{if(e.target===ov){ov.onclick=null;if(onClose)onClose();else closeOverlay()}}}
 function openOverlay(html,cls){ov.onclick=null;ov.classList.remove('left');ov.innerHTML=html;ov.classList.add('show');return ov}
-function closeOverlay(){ov.classList.remove('show');ov.innerHTML=''}
+let ON_CLOSE=null;
+function closeOverlay(){ov.classList.remove('show');ov.innerHTML='';if(ON_CLOSE){const f=ON_CLOSE;ON_CLOSE=null;f()}}
 function realCards(cards,w=44,step=.42,tilt=0){const n=cards.length;if(!n)return'';const W=w*(1+step*(n-1))+6,H=w*1.5+6;
  return `<span class="rcs" style="font-size:${w}px;width:${W}px;height:${H}px">${cards.map((c,i)=>`<div class="card" style="color:${suitColor(c.s)};transform:translate(${(i*step).toFixed(2)}em,${tilt?Math.abs(i-(n-1)/2)*.03:0}em) rotate(${tilt?((i-(n-1)/2)*tilt).toFixed(1):0}deg);transition:none;pointer-events:none;z-index:${i}">${cardSvg(c)}</div>`).join('')}</span>`}
 function mcards(cards){return `<span class="mcs">${cards.map(c=>`<span class="mc${c.r==='10'?' ten':''}" style="color:${suitColor(c.s)}"><span>${c.r}</span><i>${suitSvg(c.s)}</i></span>`).join('')}</span>`}
@@ -1056,7 +1058,7 @@ async function bidding(){const V=(S.dealer+1)%3,M=(S.dealer+2)%3,H=S.dealer;S.bi
 function dealNew(){if(S.replay){const r=S.replay;S.replay=null;S.practice=true;S.dealer=r.dealer;S.hands=r.hands.map(h=>h.map(id=>DECK.find(c=>c.id===id)));S.skat=r.skat.map(id=>DECK.find(c=>c.id===id));return}
  S.practice=false;const d=shuffle(DECK.slice());S.hands=[d.slice(0,10),d.slice(10,20),d.slice(20,30)];S.skat=d.slice(30,32)}
 async function playGame(){
- if(!S.replay)P.gameNo++;BIDS=makeBids();const mode=gameMode();
+ P.gameNo=P.history.length+1;BIDS=makeBids();const mode=gameMode();
  dealNew();if(!S.practice)S.dealer=P.dealer;
  S.dealt={hands:S.hands.map(h=>h.map(c=>c.id)),skat:S.skat.map(c=>c.id),dealer:S.dealer};
  Object.assign(S,{bock:mode==='bock',ramschRound:mode==='ramsch',firstLeader:null,schiebCount:0,bid:0,moveLog:[],kontraBy:-1,re:false,phase:'bid',game:null,declarer:-1,trick:[],played:[],skatFinal:null,lastTrick:null,trickLog:[],lastDelta:null,sel:new Set(),legalSet:null,hintId:null,mode:null,result:null,trickNo:0,status:['','','']});
@@ -1151,7 +1153,7 @@ async function listEnd(){const order=[0,1,2].sort((a,b)=>P.scores[b]-P.scores[a]
  openOverlay(`<div class="panel"><h2>🏁 Liste beendet!</h2><p style="text-align:center">${P.history.length} Spiele gespielt</p>${order.map((i,k)=>`<p style="text-align:center;font-size:${22-k*3}px">${['🥇','🥈','🥉'][k]} <b>${NM(i)}</b> · ${P.scores[i]} Punkte</p>`).join('')}
  <div class="row"><button class="pill sm tan" id="leList">Spielliste ansehen</button><button class="pill sm" id="leNew">Neue Liste</button></div></div>`);
  if(order[0])quip(order[0],'won',1);
- await new Promise(res=>{$('#leNew').onclick=()=>{closeOverlay();res()};$('#leList').onclick=()=>{openSheet('list');const x=$('#tx');if(x)x.onclick=()=>{closeOverlay();res()}};if(AUTO)setTimeout(()=>{closeOverlay();res()},5)});
+ await new Promise(res=>{$('#leNew').onclick=()=>{closeOverlay();res()};$('#leList').onclick=()=>{openSheet('list');ON_CLOSE=res};if(AUTO)setTimeout(()=>{closeOverlay();res()},5)});
  newList();P.queue=[];save()}
 /* ---------- house rules panel ---------- */
 function openHouse(){const c=P.cfg;const sw=(k,l,d,sub)=>`<div class="hr${sub?' sub':''}"><div><div class="hl">${l}</div>${d?`<div class="hd">${d}</div>`:''}</div><button class="tgl${c[k]?' on':''}" data-hk="${k}" aria-label="${l}"><i></i></button></div>`;
@@ -1472,7 +1474,7 @@ addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(la
 layout();
 window.__S=S;window.__P=P;window.__errors=[];
 (async function main(){updatePlates();if(!P.seen&&!AUTO){P.seen=true;save();await new Promise(r=>openRules(r))}
- while(true){try{await playGame();if(!S.practice&&P.history.length>=(P.cfg.listLen||12))await listEnd()}catch(e){console.error(e);window.__errors.push(String(e&&e.stack||e));await sleep(1000)}}})();
+ while(true){try{if(P.history.length>=(P.cfg.listLen||12))await listEnd();await playGame();if(!S.practice&&P.history.length>=(P.cfg.listLen||12))await listEnd()}catch(e){console.error(e);window.__errors.push(String(e&&e.stack||e));await sleep(1000)}}})();
 </script>
 </body>
 </html>

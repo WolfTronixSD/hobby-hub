@@ -2,6 +2,15 @@
 const APP_VERSION = "2.41.0";
 const CHANGELOG = [
   {
+    version: "2.40.4",
+    date: "2026-11-02",
+    at: "2026-11-03T03:50:00Z",
+    title: "Skat: list ends on time",
+    changes: [
+      "🃏 Skat am Strand v1.15.4: the game number now matches the Spielliste, so a 12-game list really ends after game 12"
+    ]
+  },
+  {
     version: "2.41.0",
     date: "2026-11-02",
     at: "2026-11-03T03:15:00Z",

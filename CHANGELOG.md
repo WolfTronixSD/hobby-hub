@@ -8,6 +8,10 @@ The site shows this history on its "What's new" page (source: `version.js`).
 - plane-pointer/index.html: design page with embedded STL geometry (three.js from jsdelivr), BOM, wiring SVG, firmware notes; PlanePointer_v1.zip download.
 - apps.js: stepperlab and planepointer buttons. sw.js skips both folders.
 
+## 2.40.4 (2026-11-02): Skat list-length fix
+
+- skat/index.html v1.15.4: P.gameNo derived from P.history.length+1 (it drifted on reloads/replays); listEnd also checked before dealing; ON_CLOSE hook so closing the list view after Liste beendet always continues.
+
 ## 2.40.3 (2026-11-02): Skat Spielverlauf hands
 
 - skat/index.html v1.15.3: dealHtml() shared by Aktuelles Spiel and showTricks; Spielverlauf starts with all hands + Skat.
