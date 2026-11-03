@@ -9,7 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.1">
+<meta name="version" content="1.17.2">
+<meta name="version" content="1.15.4">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -341,8 +342,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.1';
+const SKAT_VERSION='1.17.2';
 const SKAT_CHANGES=[
+ ['1.17.2','2026-11-03','Keine Augen mehr während des Spiels: Stichstapel, letzter Stich und Coach-Tipps zeigen erst am Ende Punkte'],
  ['1.17.1','2026-11-03','Lautsprecher-Knopf öffnet ein Mischpult: Gesamt, Musik, Hintergrund, Karten & Effekte, Stimmen einzeln regeln, an/aus und Alles stumm'],
  ['1.17.0','2026-11-03','Mischen & Austeilen mit Animation · Emoji-Feuerwerk bei großen Stichen (passend zum Thema) · Emoji-Reaktionen, Tanzen und Wackeln bei Kontra · Gegner-Handkarten mit Themen-Rückseite · Andy frech & riskant, Melli vorsichtig & schlau · Statistik & 17 Erfolge · Coach-Tipps während des Spiels · Tagesaufgabe mit Serie · Ukulele am Strand, Mundharmonika im Western'],
  ['1.16.3','2026-11-03','Lustige Kartenrückseiten passend zum Thema: Krabbe mit Sonnenbrille (Strand), Kaktus-Steckbrief (Western), UFO entführt Kuh (Weltraum), grinsende Würfel (Vegas)'],
@@ -738,7 +740,7 @@ function myPileCount(){if(!S.won)return 0;if(S.game&&S.game.ramsch||S.declarer==
 function renderPile(){const el=$('#pile');const n=myPileCount();if(!n||!L.cw||!(S.phase==='play'||S.phase==='done')){el.style.display='none';return}
  const w=L.cw*(L.land?.3:.34);el.style.display='block';el.style.fontSize=w+'px';el.style.width=w*1.25+'px';el.style.height=w*1.6+'px';
  if(L.land){el.style.left=`calc(env(safe-area-inset-left,0px) + 7% + ${Math.min(62,Math.max(40,innerHeight*.082))+14}px)`;el.style.top='57%'}else{el.style.left='64px';el.style.top='45%'}
- const k=Math.min(4,Math.ceil(n/3));el.innerHTML=Array.from({length:k},(_,i)=>`<div class="card back" style="transform:translate(${i*.05}em,${-i*.05}em) rotate(${(i%2?6:-4)+i}deg);z-index:${i}"></div>`).join('')+`<b>${myPilePts()}</b>`}
+ const k=Math.min(4,Math.ceil(n/3));el.innerHTML=Array.from({length:k},(_,i)=>`<div class="card back" style="transform:translate(${i*.05}em,${-i*.05}em) rotate(${(i%2?6:-4)+i}deg);z-index:${i}"></div>`).join('')+(S.phase==='done'?`<b>${myPilePts()}</b>`:'')}
 $('#pile').onclick=()=>showLast();
 function clearTable(){$('#pile').style.display='none';trickEls.forEach(t=>t.el.remove());trickEls=[];for(const[,el]of handEls)el.remove();handEls.clear();showSkat(false)}
 
@@ -1136,7 +1138,7 @@ async function playDeclared(decl,preset){
  toast(`${decl===0?'Du spielst':NM(decl)+' spielt'} ${gameName(S.game)}${S.bock?' · 🐐 Bock':''}`,1800);await sleep(900);
  if(P.cfg.kontra)await kontraPhase();
  S.endBy=null;if(!preset)await aiMaybeSchenken();
- if(!S.endBy)await playPhase();else{S.won=[[],[],[]];S.tricks=[0,0,0];S.trickLog=[]}S.phase='done';setTurn(-1);settle();S.prevDeal={dealt:S.dealt,status:(S.status||[]).slice(),game:S.game,no:P.gameNo,practice:S.practice};
+ if(!S.endBy)await playPhase();else{S.won=[[],[],[]];S.tricks=[0,0,0];S.trickLog=[]}S.phase='done';setTurn(-1);settle();renderPile();S.prevDeal={dealt:S.dealt,status:(S.status||[]).slice(),game:S.game,no:P.gameNo,practice:S.practice};
  {const r=S.result,d=r.d;if(d){emote(d,r.won?'happy':'sad',3500);quip(d,r.won?'won':'lost',.85)}[1,2].filter(x=>x!==d).forEach(x=>{emote(x,r.won?'sad':'happy',3500);if(!r.won)quip(x,'beat',.5)})}
  await showResult()}
 /* ===================== Ramsch & Bock ===================== */
@@ -1702,8 +1704,8 @@ function coachLive(){try{if(P.cfg.coachLive===false||AUTO||TURBO)return;const g=
  const team=x=>g.type==='ramsch'?x:(x===d?0:1),pre=S.trick.slice(0,2),mine=S.trick[2].card,hand=S.hands[0].concat([mine]);const legal=legalMoves(hand,pre,g);
  const win=c=>{const t=pre.concat([{seat:0,card:c}]);return t[trickWinner(t,g)].seat};const tp=cardPts(pre.map(x=>x.card));
  const w=win(mine);
- if(team(w)!==team(0)){const alt=legal.filter(c=>team(win(c))===team(0)).sort((a,b)=>PTS[b.r]-PTS[a.r])[0];if(alt&&tp+PTS[alt.r]>=10){coachTip(`Mit ${cardName(alt)} hättest du den Stich (${tp+PTS[alt.r]} Augen) bekommen.`);return}}
- else{const keep=legal.filter(c=>team(win(c))===team(0)&&eff(c,g)!=='T');const best=keep.sort((a,b)=>PTS[b.r]-PTS[a.r])[0];if(best&&PTS[best.r]-PTS[mine.r]>=10&&best!==mine){coachTip(`${w===0?'Der Stich war sicher':'Dein Partner hatte den Stich'} – mit ${cardName(best)} hättest du ${PTS[best.r]-PTS[mine.r]} Augen mehr geholt${w===0?'':' (schmieren!)'}.`)}}}catch(e){}}
+ if(team(w)!==team(0)){const alt=legal.filter(c=>team(win(c))===team(0)).sort((a,b)=>PTS[b.r]-PTS[a.r])[0];if(alt&&tp+PTS[alt.r]>=10){coachTip(`Mit ${cardName(alt)} hättest du diesen Stich bekommen.`);return}}
+ else{const keep=legal.filter(c=>team(win(c))===team(0)&&eff(c,g)!=='T');const best=keep.sort((a,b)=>PTS[b.r]-PTS[a.r])[0];if(best&&PTS[best.r]-PTS[mine.r]>=10&&best!==mine){coachTip(`${w===0?'Der Stich war sicher':'Dein Partner hatte den Stich'} – mit ${cardName(best)} hättest du mehr Augen geholt${w===0?'':' (schmieren!)'}.`)}}}catch(e){}}
 function coachTip(t){S.coachTips=(S.coachTips||0)+1;if(S.coachTips>3)return;const e=$('#coachTip')||(()=>{const x=document.createElement('div');x.id='coachTip';($('#stage')||document.body).appendChild(x);return x})();e.innerHTML='🧑‍🏫 '+t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),4200)}
 /* Tagesaufgabe */
 function dayKey(d=new Date()){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
@@ -1783,7 +1785,7 @@ function openRules(onDone){openOverlay(`<div class="panel rule"><button class="p
 <h3>Spielstärke</h3><p>🐣 Leicht: Gegner machen öfter Fehler und reizen wild. 😎 Gut: solide Kneipenspieler. 🧠 Schwer: Gegner zählen Karten und simulieren hunderte mögliche Kartenverteilungen vor jedem Zug (auch der 💡-Tipp nutzt das).</p>
 <h3>Bedienung</h3><p>Karte antippen zum Ausspielen · 💡 Tipp · ↻ letzter Stich · ⏩ Tempo · 👤 Spielliste & Coach.</p>
 <p style="text-align:center;opacity:.6;font-size:12px">Skat am Strand v${SKAT_VERSION}</p><div class="row"><button class="pill sm" id="rOk">OK</button></div></div>`);const done=()=>{closeOverlay();if(typeof onDone==='function')onDone()};$('#rOk').onclick=done;$('#rX').onclick=done;dismissable(done)}
-function showLast(){if(!S.lastTrick){toast('Noch kein Stich');return}const t=S.lastTrick;openOverlay(`<div class="panel"><h2>Letzter Stich – ${NM(t.winner)}</h2><div class="row" style="font-size:26px">${t.cards.map(x=>`<div style="text-align:center">${mcards([x.card])}<div style="font-size:14px">${NM(x.seat)}</div></div>`).join('')}</div><p style="text-align:center">${cardPts(t.cards.map(x=>x.card))} Augen</p><div class="row"><button class="pill sm" id="lOk">OK</button></div></div>`);$('#lOk').onclick=closeOverlay;dismissable()}
+function showLast(){if(!S.lastTrick){toast('Noch kein Stich');return}const t=S.lastTrick;openOverlay(`<div class="panel"><h2>Letzter Stich – ${NM(t.winner)}</h2><div class="row" style="font-size:26px">${t.cards.map(x=>`<div style="text-align:center">${mcards([x.card])}<div style="font-size:14px">${NM(x.seat)}</div></div>`).join('')}</div>${S.phase==='done'?`<p style="text-align:center">${cardPts(t.cards.map(x=>x.card))} Augen</p>`:''}<div class="row"><button class="pill sm" id="lOk">OK</button></div></div>`);$('#lOk').onclick=closeOverlay;dismissable()}
 function hint(){
  if(S.bidAsk){const m=S.coach.max;toast(m?`Coach: reizen bis ${m} (${gameName(S.coach.game)})`:'Coach: lieber passen');bubble(0,m>=S.bidAsk.val?'👍':'👎',1200);return}
  if(S.mode==='discard'){const all=S.hands[0];const save=S.hands[0];S.hands[0]=all.filter(c=>!S.skat.includes(c));const ch=aiDeclareFor12(all);S.hands[0]=save;S.sel=new Set(ch.disc.map(c=>c.id));renderHand();$('#abBtn').disabled=false;$('#abMsg').textContent=`Coach: drücken für ${gameName(ch.game)}`;return}
