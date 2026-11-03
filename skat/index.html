@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.15.2">
+<meta name="version" content="1.15.3">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -312,8 +312,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.15.2';
+const SKAT_VERSION='1.15.3';
 const SKAT_CHANGES=[
+ ['1.15.3','2026-11-02','Spielverlauf nach dem Spiel zeigt zuerst die Karten aller Spieler (Melli, Andy, du) und den Skat, danach die Stiche'],
  ['1.15.2','2026-11-02','› in der Spielliste: Karten aller Spieler jedes gespielten Spiels ansehen (zum Lernen) · Erneut spielen auch für alte Spiele'],
  ['1.15.1','2026-11-02','Kontra-Knöpfe überdecken die Spielinfo nicht mehr · Regeln & Fenster schließen mit Tippen daneben (oder ✕) · ⓘ-Knopf öffnet Aktuelles Spiel / Spielliste / Coach · Karten des letzten Spiels sichtbar · › in der Spielliste zeigt die Karten aller Spieler jedes Spiels · lange Ansagen im Hochformat umbrochen'],
  ['1.15.0','2026-11-02','🂠 Stichstapel mit Augen-Zähler (antippen = letzter Stich) · echte Kartenbilder im Ergebnis und bei „Aktuelles Spiel“ · „sofort gepasst“'],
@@ -1331,7 +1332,11 @@ async function showResult(){renderPile();if(S.result&&S.result.ramsch)return sho
   <div class="r"><div class="emo">${meWin?'🏆':'🌴'}</div><div class="bigscore">${S.practice?'—':(d===0?(r.score>0?'+':'')+r.score:(meWin?'Super!':'Schade'))}</div><button class="pill" id="rGo">Weiter</button></div></div>`);
  return new Promise(res=>{$('#rGo').onclick=()=>{closeOverlay();res()};$('#rHist').onclick=()=>showTricks(()=>showResult().then(res));
   $('#rRep').onclick=()=>{S.replay=S.dealt;closeOverlay();res()};$('#rBug').onclick=()=>openReport(()=>showResult().then(res));if(AUTO)setTimeout(()=>{closeOverlay();res()},TURBO?5:400)})}
+function dealHtml(D,open){const cw=L.land?Math.min(66,innerHeight*.16):40;const rows=[0,1,2].map(k=>{const seat=(D.dealt.dealer+1+k)%3;const cards=D.dealt.hands[seat].map(id=>DECK.find(c=>c.id===id));const show=seat===0||open;const st=D.status&&D.status[seat]||'';
+   return`<div class="prow"><div class="who"><small>${POSN[k]}</small><b>${NM(seat)}</b><br>${st?`<span class="tag${st.startsWith('spielt')?' fill':''}">${st}</span>`:''}</div><div>${show?realCards(sortHand(cards,D.game),cw,.5):'<i>verdeckt</i>'}</div></div>`}).join('');
+   return rows+(open?`<div class="prow"><div class="who"><b>Skat</b></div><div>${realCards(D.dealt.skat.map(id=>DECK.find(c=>c.id===id)),cw,.5)}</div></div>`:'')}
 function showTricks(back){const log=S.trickLog;openOverlay(`<div class="parch"><div class="tabs"><button class="tab on">Spielverlauf</button><button class="tabx" id="tx">✕</button></div><div class="tbody">
+ ${S.dealt?`<p><b>Karten aller Spieler</b>${S.game?' · '+gameName(S.game):''}</p>${dealHtml({dealt:S.dealt,status:S.status,game:S.game},true)}<p style="margin-top:14px"><b>Stiche</b></p>`:''}
  ${log.map((t,i)=>`<div class="prow"><div class="who"><small>Stich ${i+1}</small><b>${NM(t.winner)}</b></div>${t.cards.map(x=>`<div style="text-align:center;font-size:13px">${mcards([x.card])}<div>${NM(x.seat)}</div></div>`).join('')}<div style="margin-left:auto">${cardPts(t.cards.map(x=>x.card))} Augen</div></div>`).join('')}
  <p style="text-align:center">Skat: ${mcards(S.skatFinal)} (${cardPts(S.skatFinal)} Augen)</p></div></div>`);$('#tx').onclick=back;dismissable(back)}
 
@@ -1348,9 +1353,7 @@ function shareText(){return `Skat am Strand – ${P.names.map((n,i)=>`${n}: ${P.
 function newList(){P.gameNo=0;P.scores=[0,0,0];P.history=[];P.won=[0,0,0];P.lost=[0,0,0];P.date=new Date().toISOString();save();updatePlates(S.phase==='done')}
 function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'});
  if(tab==='cur'){if(!S.dealt)return'<p>Noch kein Spiel.</p>';const done=S.phase==='done'||S.phase==='idle';const g=S.game;const cw=L.land?Math.min(66,innerHeight*.16):40;
-  const deal=(D,open)=>{const rows=[0,1,2].map(k=>{const seat=(D.dealt.dealer+1+k)%3;const cards=D.dealt.hands[seat].map(id=>DECK.find(c=>c.id===id));const show=seat===0||open;const st=D.status&&D.status[seat]||'';
-   return`<div class="prow"><div class="who"><small>${POSN[k]}</small><b>${NM(seat)}</b><br>${st?`<span class="tag${st.startsWith('spielt')?' fill':''}">${st}</span>`:''}</div><div>${show?realCards(sortHand(cards,D.game),cw,.5):'<i>verdeckt</i>'}</div></div>`}).join('');
-   return rows+(open?`<div class="prow"><div class="who"><b>Skat</b></div><div>${realCards(D.dealt.skat.map(id=>DECK.find(c=>c.id===id)),cw,.5)}</div></div>`:'')};
+  const deal=dealHtml;
   const hName=h=>h.passed?'eingepasst':h.ramsch?'Ramsch':gameName(h.g)+(h.won?' · gewonnen':' · verloren')+(h.score!=null?` (${h.won?'':'−'}${Math.abs(h.score)})`:'');
   if(SHEET_HV!=null&&P.history[SHEET_HV]){const h=P.history[SHEET_HV];
    return`<div class="row" style="justify-content:flex-end;margin:0 0 8px"><button class="pill sm tan" id="toList">‹ Spielliste</button><button class="pill sm" id="again">Erneut spielen</button></div><p>Spiel ${h.no} aus der Spielliste vom ${dt} · ${hName(h)}</p>${deal({dealt:h.dealt,status:h.status,game:h.g},true)}`}

@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.40.3 (2026-11-02): Skat Spielverlauf hands
+
+- skat/index.html v1.15.3: dealHtml() shared by Aktuelles Spiel and showTricks; Spielverlauf starts with all hands + Skat.
+
 ## 2.40.2 (2026-11-02): Skat per-game hand review
 
 - skat/index.html v1.15.2: › button per Spielliste row opens openSheet('cur', index) with all hands + Skat from P.history[i].dealt; replay any listed deal.
