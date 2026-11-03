@@ -1,8 +1,8 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.41.0";
+const APP_VERSION = "2.41.1";
 const CHANGELOG = [
   {
-    version: "2.40.4",
+    version: "2.41.1",
     date: "2026-11-02",
     at: "2026-11-03T03:50:00Z",
     title: "Skat: list ends on time",
