@@ -1,6 +1,21 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.41.1";
+const APP_VERSION = "2.42.0";
 const CHANGELOG = [
+  {
+    version: "2.42.0",
+    date: "2026-11-02",
+    at: "2026-11-03T07:10:00Z",
+    title: "Skat: photos, own voices, sound mixer and more",
+    changes: [
+      "🃏 Skat am Strand v1.17.1: 🔊 button opens a mixer for overall, music, background, card sounds and voices",
+      "📷 Your own photos for Andy and Melli: the face is found and fitted, the background is removed (colorful, sticker or original style)",
+      "🎙️ Record your own voices (works here in the Hobby Hub) or pick audio files, with fun effects",
+      "🌊 9 background soundscapes, ukulele on the beach, harmonica in the West",
+      "🦀 Funny card backs per theme, deal animation, emoji fireworks on big tricks, emoji reactions",
+      "😎 Andy bids bold, 🧠 Melli plays smart; Bayrisch + Badisch dialect mix and warmer voices",
+      "📊 Statistics and 17 achievements, 🧑‍🏫 live coach tips, 📅 daily challenge, bigger and nicer cards, real glasses"
+    ]
+  },
   {
     version: "2.41.1",
     date: "2026-11-02",

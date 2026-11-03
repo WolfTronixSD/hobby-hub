@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.0 (2026-11-02): Skat v1.17.1
+
+- skat/index.html v1.17.1: audio buses (OUTB/MASTER=sfx/VBUS/AMBBUS/music) with a quick mixer on the speaker button; soundscapes (SCAPE); photo upload with MediaPipe face detection + selfie segmentation (assets base64-embedded in skat/mp/a/*.js, served through a fetch shim); custom voice clips in IndexedDB (recording only when the page is not framed); themed card backs (CARDBACK); deal animation, emoji effects, stats/achievements, live coach, seeded daily deal; dialect mix bayrisch/badisch.
+
 ## 2.41.1 (2026-11-02): Skat list-length fix
 
 - skat/index.html v1.15.4: P.gameNo derived from P.history.length+1 (it drifted on reloads/replays); listEnd also checked before dealing; ON_CLOSE hook so closing the list view after Liste beendet always continues.
