@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.14.0">
+<meta name="version" content="1.15.0">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -253,6 +253,9 @@ html body .pname{font-size:calc(18px*var(--uis))}
 .hl{font:600 15px system-ui}.hd{font:13px system-ui;opacity:.75;margin-top:2px}
 .tgl{flex:none;width:54px;height:30px;border-radius:999px;border:2px solid rgba(90,60,30,.35);background:#a89a86;position:relative;padding:0}.tgl i{position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#4a4a4a;transition:all .2s}
 .tgl.on{background:#d8c3a0}.tgl.on i{left:27px;background:radial-gradient(circle at 35% 30%,#ffb04a,#e86a0a)}
+.rcs{position:relative;display:inline-block;vertical-align:middle}.rcs .card{position:absolute;left:3px;top:3px}
+#pile{position:absolute;z-index:35;display:none;cursor:pointer}#pile .card{position:absolute;left:0;top:0;transition:none}
+#pile b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9;min-width:2.1em;height:2.1em;border-radius:50%;background:rgba(30,30,34,.85);color:#fff;font:700 clamp(15px,4vh,24px)/2.1em system-ui;text-align:center;padding:0 .2em;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 #rotateHint{display:none}
 </style>
 </head>
@@ -281,6 +284,7 @@ html body .pname{font-size:calc(18px*var(--uis))}
  <div id="bidUI"><button class="pill" id="bidYes">Ja, 18</button><button class="pill" id="bidNo">Passe</button></div>
  <div id="actionBar"><div class="msg" id="abMsg"></div><button class="pill sm" id="abBtn">Drücken</button></div>
  <div id="open1"></div><div id="open2"></div>
+ <div id="pile" aria-label="Deine Stiche"></div>
  <div id="cards"></div>
  <div id="toast"></div>
  <div id="overlay"></div>
@@ -305,8 +309,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.14.0';
+const SKAT_VERSION='1.15.0';
 const SKAT_CHANGES=[
+ ['1.15.0','2026-11-02','🂠 Stichstapel mit Augen-Zähler (antippen = letzter Stich) · echte Kartenbilder im Ergebnis und bei „Aktuelles Spiel“ · „sofort gepasst“'],
  ['1.14.0','2026-11-02','⚙️ Hausregeln: Spiele pro Liste (1–12) mit Siegerehrung · 🐷 Ramsch nach Eingepasst, Schieberamsch, Jungfrau, Durchmarsch, Dauerramsch, Grand Hand in Ramschrunde · 🐐 Bockrunden mit Auslösern und „3 Bock, 3 Ramsch“'],
  ['1.13.0','2026-11-02','🎚️ Tonhöhe und Sprechtempo für jeden Mitspieler · 🧠 Klügere Mitspieler: kein Trumpf-Ass/-Zehn mehr verschenkt, keine Zehn auf einen Gegnerstich · 🐞 Fehler melden: Mitspieler merken sich dumme Züge, Bericht für Claude kopieren'],
  ['1.12.0','2026-11-02','🎙️ Stimme für jeden Mitspieler selbst wählen (auch heruntergeladene Enhanced/Premium-Stimmen) mit Test-Knopf'],
@@ -651,7 +656,7 @@ function layout(){const W=innerWidth,H=innerHeight,land=W>=H;document.body.class
   L={W,H,land,cw,ch:cw*1.5,handCx:W*.5,handTop:H-cw*1.5*.9-sb,handSpan:W-22,ts:.9,
    slots:[[cx,cy+cw*.55,3],[cx-cw*.72,cy-cw*.2,-12],[cx+cw*.72,cy-cw*.28,10]],origin:[[W*.5,H+cw],[W*.14,H*.24],[W*.86,H*.24]],deck:[W*.5,H*.66]};}
  layer.style.fontSize=L.cw+'px';
- renderHand();trickEls.forEach(t=>{const s=L.slots[t.seat];setT(t.el,s[0],s[1],s[2],L.ts)});renderSkat();renderOpen();
+ renderHand();trickEls.forEach(t=>{const s=L.slots[t.seat];setT(t.el,s[0],s[1],s[2],L.ts)});renderSkat();renderOpen();if(typeof renderPile==='function')renderPile();
  const fx=$('#fx');fx.width=W;fx.height=H}
 function setT(el,x,y,rot,sc){el.style.transform=`translate(${x-L.cw/2}px,${y-L.ch/2}px) rotate(${rot||0}deg) scale(${sc==null?1:sc})`}
 function makeCardEl(c){const el=document.createElement('div');el.className='card';el.dataset.id=c.id;el.style.color=suitColor(c.s);el.innerHTML=cardSvg(c);return el}
@@ -677,7 +682,15 @@ function animatePlay(seat,card){let el;
  else{el=makeCardEl(card);el.style.pointerEvents='none';layer.appendChild(el);const o=L.origin[seat];setT(el,o[0],o[1],seat===1?-40:40,.35);el.getBoundingClientRect()}
  el.style.zIndex=300+trickEls.length;const s=L.slots[seat];setT(el,s[0],s[1],s[2],L.ts);trickEls.push({el,seat});if(seat===0)renderHand();sndCard(seat)}
 async function collectTrick(w){sndSweep(w);if(w===0)setTimeout(sndPling,150);const o=L.origin[w];trickEls.forEach(t=>{setT(t.el,o[0],o[1],w===1?-30:w===2?30:0,.3);t.el.style.opacity='0'});const old=trickEls;trickEls=[];await sleep(380);old.forEach(t=>t.el.remove())}
-function clearTable(){trickEls.forEach(t=>t.el.remove());trickEls=[];for(const[,el]of handEls)el.remove();handEls.clear();showSkat(false)}
+function myPilePts(){const r=S.result;if(S.phase==='done'&&r){if(r.ramsch)return r.pts[0];if(r.d===0)return r.declPts;return 120-r.declPts}
+ if(!S.won)return 0;if(S.game&&S.game.ramsch)return cardPts(S.won[0]);if(S.declarer===0)return cardPts(S.won[0]);return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+cardPts(S.won[i]),0)}
+function myPileCount(){if(!S.won)return 0;if(S.game&&S.game.ramsch||S.declarer===0)return S.won[0].length;return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+S.won[i].length,0)}
+function renderPile(){const el=$('#pile');const n=myPileCount();if(!n||!L.cw||!(S.phase==='play'||S.phase==='done')){el.style.display='none';return}
+ const w=L.cw*(L.land?.3:.34);el.style.display='block';el.style.fontSize=w+'px';el.style.width=w*1.25+'px';el.style.height=w*1.6+'px';
+ if(L.land){el.style.left=`calc(env(safe-area-inset-left,0px) + 7% + ${Math.min(62,Math.max(40,innerHeight*.082))+14}px)`;el.style.top='57%'}else{el.style.left='64px';el.style.top='45%'}
+ const k=Math.min(4,Math.ceil(n/3));el.innerHTML=Array.from({length:k},(_,i)=>`<div class="card back" style="transform:translate(${i*.05}em,${-i*.05}em) rotate(${(i%2?6:-4)+i}deg);z-index:${i}"></div>`).join('')+`<b>${myPilePts()}</b>`}
+$('#pile').onclick=()=>showLast();
+function clearTable(){$('#pile').style.display='none';trickEls.forEach(t=>t.el.remove());trickEls=[];for(const[,el]of handEls)el.remove();handEls.clear();showSkat(false)}
 
 /* ---------- UI bits ---------- */
 function bubble(seat,txt,ms=1500){const b=$('#bub'+seat);b.textContent=txt;b.classList.add('show');clearTimeout(b._t);if(ms)b._t=setTimeout(()=>b.classList.remove('show'),TURBO?5:ms)}
@@ -698,6 +711,8 @@ function updateInfo(){const gi=$('#gameInfo');const st=gi;if(S.phase!=='play'){g
 const ov=$('#overlay');
 function openOverlay(html,cls){ov.innerHTML=html;ov.classList.add('show');return ov}
 function closeOverlay(){ov.classList.remove('show');ov.innerHTML=''}
+function realCards(cards,w=44,step=.42,tilt=0){const n=cards.length;if(!n)return'';const W=w*(1+step*(n-1))+6,H=w*1.5+6;
+ return `<span class="rcs" style="font-size:${w}px;width:${W}px;height:${H}px">${cards.map((c,i)=>`<div class="card" style="color:${suitColor(c.s)};transform:translate(${(i*step).toFixed(2)}em,${tilt?Math.abs(i-(n-1)/2)*.03:0}em) rotate(${tilt?((i-(n-1)/2)*tilt).toFixed(1):0}deg);transition:none;pointer-events:none;z-index:${i}">${cardSvg(c)}</div>`).join('')}</span>`}
 function mcards(cards){return `<span class="mcs">${cards.map(c=>`<span class="mc${c.r==='10'?' ten':''}" style="color:${suitColor(c.s)}"><span>${c.r}</span><i>${suitSvg(c.s)}</i></span>`).join('')}</span>`}
 
 /* ---------- sound & fx ---------- */
@@ -1023,10 +1038,10 @@ async function humanBid(mode,val){const yes=$('#bidYes');yes.textContent=mode===
 async function bidSeat(seat,mode,val){if(seat===0&&!AUTO)return humanBid(mode,val);await think();return S.maxBid[seat]>=val}
 async function duel(sayer,lis){while(true){const nx=S.bidIdx+1;const val=BIDS[nx];setTurn(sayer);
  const says=await bidSeat(sayer,'say',val);if(says){bubble(sayer,String(val));sayBid(sayer,val)}else if(sayer)sayAnswer(sayer,false);else bubble(0,'Passe');if(says&&val>=30&&sayer)emote(3-sayer||1,'wow');
- if(!says){S.status[sayer]=S.status[sayer]||'gepasst';return lis}
+ if(!says){S.status[sayer]=S.status[sayer]||(val===18?'sofort gepasst':'gepasst');return lis}
  S.bidIdx=nx;S.status[sayer]=`bis ${val} gesagt`;setTurn(lis);
  const holds=await bidSeat(lis,'hear',val);if(lis)sayAnswer(lis,holds);else bubble(0,holds?'Ja':'Passe');if(!holds&&lis)emote(lis,'sad',1200);
- if(!holds){if(!S.status[lis])S.status[lis]='gepasst';return sayer}S.status[lis]=`bis ${val} gehört`}}
+ if(!holds){if(!S.status[lis])S.status[lis]=val===18?'sofort gepasst':'gepasst';return sayer}S.status[lis]=`bis ${val} gehört`}}
 async function bidding(){const V=(S.dealer+1)%3,M=(S.dealer+2)%3,H=S.dealer;S.bidIdx=-1;S.status=['','',''];
  const s1=await duel(M,V);const s2=await duel(H,s1);
  if(S.bidIdx<0){setTurn(V);const ok=await bidSeat(V,'say',18);bubble(V,ok?'18':'Passe');if(ok)sayBid(V,18);else if(V)sayAnswer(V,false);if(!ok){S.status[V]='gepasst';return -1}S.bidIdx=0}
@@ -1112,12 +1127,12 @@ function settleRamsch(){const sk=S.skatFinal||S.skat;const pts=[0,1,2].map(i=>ca
    dealt:S.dealt,status:['Ramsch','Ramsch','Ramsch'],myPts:pts[0],coach:pts[0]===Math.min(...pts)?`Ramsch: nur ${pts[0]} Augen, super gedrückt!`:`Ramsch: ${pts[0]} Augen. Tipp: hohe Karten früh auf fremde Stiche werfen.`,myStatus:'Ramsch'});
   P.dealer=(P.dealer+1)%3;save()}
  S.lastDelta=r.scores.slice()}
-async function showRamschResult(){const r=S.result;const me=r.scores[0];const good=r.durch===0||(!r.losers.includes(0));
+async function showRamschResult(){renderPile();const r=S.result;const me=r.scores[0];const good=r.durch===0||(!r.losers.includes(0));
  if(good){sndWin();if(r.durch===0||!r.losers.includes(0))confetti()}else sndLose();updatePlates(true);
  const title=r.durch!==undefined?`${r.durch===0?'Du machst':NM(r.durch)+' macht'} Durchmarsch!`:r.losers.includes(0)?(r.losers.length>1?'Ihr verliert den Ramsch':'Du verlierst den Ramsch'):`${r.losers.map(NM).join(' & ')} verliert den Ramsch`;
  const rows=[0,1,2].map(i=>`<tr><td>${NM(i)}${i===r.skatTo?' <small>(+ Skat)</small>':''}${S.tricks[i]===0?' 👼':''}</td><td>${r.pts[i]} Augen</td></tr>`).join('')+r.lines.map(l=>`<tr><td>${l[0]}</td><td>${l[1]}</td></tr>`).join('');
  openOverlay(`<div class="result parch"><div class="l"><h2>🐷 ${title}</h2><table class="calcT"><tr class="hd"><td colspan="2">Ramsch${r.bock?' · Bock':''}</td></tr>${rows}<tr class="tot"><td colspan="2">${r.durch!==undefined?NM(r.durch)+' +'+r.value:r.losers.map(NM).join(' & ')+' −'+r.value} Punkte</td></tr></table>
-  <p style="text-align:center;margin:6px 0">Skat: ${mcards(S.skatFinal||S.skat)}</p><div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rBug">🐞</button></div></div>
+  <p style="text-align:center;margin:6px 0">Skat ${realCards(S.skatFinal||S.skat,Math.min(44,innerHeight*.09),.55,7)}</p><div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rBug">🐞</button></div></div>
   <div class="r"><div class="emo">${good?'😇':'🐷'}</div><div class="bigscore">${S.practice?'—':me>0?'+'+me:me<0?me:'0'}</div><button class="pill" id="rGo">Weiter</button></div></div>`);
  return new Promise(res=>{$('#rGo').onclick=()=>{closeOverlay();res()};$('#rHist').onclick=()=>showTricks(()=>showRamschResult().then(res));$('#rBug').onclick=()=>openReport(()=>showRamschResult().then(res));if(AUTO)setTimeout(()=>{closeOverlay();res()},TURBO?5:400)})}
 function bockTriggers(r){if(S.practice||r.ramsch)return;const c=P.cfg,why=[];
@@ -1208,7 +1223,7 @@ function gameChoicePanel(hand){
 function snapshot(){return{hands:S.hands.map(h=>h.slice()),trick:S.trick.slice(),played:S.played.slice(),voids:S.voids.map(v=>Object.assign({},v)),won:S.won.map(a=>a.slice()),tricks:S.tricks.slice(),trickLog:S.trickLog.slice(),leader:S.leader,trickNo:S.trickNo,lastTrick:S.lastTrick}}
 function restoreSnap(sn){Object.assign(S,{hands:sn.hands.map(h=>h.slice()),trick:sn.trick.slice(),played:sn.played.slice(),voids:sn.voids.map(v=>Object.assign({},v)),won:sn.won.map(a=>a.slice()),tricks:sn.tricks.slice(),trickLog:sn.trickLog.slice(),leader:sn.leader,trickNo:sn.trickNo,lastTrick:sn.lastTrick});
  trickEls.forEach(t=>t.el.remove());trickEls=[];S.trick.forEach(t=>{const el=makeCardEl(t.card);el.style.pointerEvents='none';el.style.transition='none';layer.appendChild(el);el.style.zIndex=300+trickEls.length;const sl=L.slots[t.seat];setT(el,sl[0],sl[1],sl[2],L.ts);trickEls.push({el,seat:t.seat});requestAnimationFrame(()=>el.style.transition='')});
- S.hands[0]=sortHand(S.hands[0],S.game);renderHand();renderOpen();updateInfo()}
+ S.hands[0]=sortHand(S.hands[0],S.game);renderHand();renderOpen();updateInfo();renderPile()}
 function canClaim(){const g=S.game;if(g.type==='null'||S.trick.length||S.leader!==0||!S.hands[0].length)return false;
  const opp=[1,2].flatMap(x=>S.hands[x]);const T=c=>isTrump(c,g);const oppT=opp.filter(T);
  if(oppT.length&&S.hands[0].some(c=>!T(c)))return false;
@@ -1221,7 +1236,7 @@ async function playPhase(){S.leader=S.firstLeader!=null?S.firstLeader:(S.dealer+
    const tp=cardPts(S.trick.map(x=>x.card)),d=S.declarer;
    if(tp>=14){const team=x=>x===d?0:1;[1,2].forEach(x=>{if(team(x)===team(w)){emote(x,'happy');if(x===w)quip(x,'winT',.3)}else{emote(x,'sad');quip(x,'lostT',.2)}})}
    if(tp>=21)themeFx('big',w);
-   await collectTrick(w);S.leader=w;S.trick=[];S.trickNo++;updateInfo();
+   await collectTrick(w);S.leader=w;S.trick=[];S.trickNo++;updateInfo();renderPile();
    if(S.game.type==='null'&&w===S.declarer)break;if(S.game.schwarzA&&w!==S.declarer)break;if(!S.hands[0].length&&!S.hands[1].length&&!S.hands[2].length)break;continue}
   const seat=(S.leader+S.trick.length)%3;setTurn(seat);let card;
   if(seat===0&&!AUTO&&!S.autoPlay){const snap=snapshot();S.legalSet=new Set(legalMoves(S.hands[0],S.trick,S.game).map(c=>c.id));S.mode='play';renderHand();
@@ -1239,7 +1254,7 @@ async function playPhase(){S.leader=S.firstLeader!=null?S.firstLeader:(S.dealer+
  setTurn(-1);S.mode=null;S.legalSet=null;renderHand();renderOpen()}
 function claimRest(){const rest=[0,1,2].flatMap(x=>S.hands[x]);const n=S.hands[0].length;S.won[0].push(...rest);S.tricks[0]+=n;
  for(let k=0;k<n;k++){const cards=[0,1,2].map(x=>({seat:x,card:S.hands[x][k]})).filter(x=>x.card);S.trickLog.push({leader:0,cards,winner:0})}
- S.hands=[[],[],[]];renderHand();toast('🙌 Rest zu mir!',1600);themeFx('big',0)}
+ S.hands=[[],[],[]];renderHand();renderPile();toast('🙌 Rest zu mir!',1600);themeFx('big',0)}
 /* ---------- action panel (⏩) ---------- */
 function openActions(){const play=S.phase==='play',myTurn=S.mode==='play',d=S.declarer,amD=d===0;
  const canSchenk=play&&!S.trickLog.length&&S.game&&!S.endBy;const canUndo=myTurn&&!!S.undoSnap;const claim=myTurn&&canClaim();
@@ -1295,7 +1310,7 @@ function coachText(r){const c=S.coach,me=S.status[0]||'gepasst';const t=[];
  return t.join(' ')}
 
 /* ---------- result ---------- */
-async function showResult(){if(S.result&&S.result.ramsch)return showRamschResult();const r=S.result;const d=r.d;const meWin=(d===0&&r.won)||(d!==0&&!r.won);
+async function showResult(){renderPile();if(S.result&&S.result.ramsch)return showRamschResult();const r=S.result;const d=r.d;const meWin=(d===0&&r.won)||(d!==0&&!r.won);
  updatePlates(true);
  const title=d===0?(r.won?'Du gewinnst':'Du verlierst'):(r.won?`${NM(d)} gewinnt`:`${NM(d)} verliert`);
  if(meWin){sndWin();if(d===0||!r.won)confetti()}else sndLose();
@@ -1303,7 +1318,7 @@ async function showResult(){if(S.result&&S.result.ramsch)return showRamschResult
  const extra=r.endBy?`<p style="text-align:center">${r.endBy==='geschenkt'?'🎁 Die Gegenspieler haben geschenkt.':'🏳️ Der Alleinspieler hat aufgegeben.'}</p>`:r.g.type==='null'?`<p style="text-align:center">${S.tricks[d]===0?'Kein Stich – Null gewonnen!':'Stich bekommen – Null verloren.'}</p>`:`<p style="text-align:center;margin:4px 0"><b>${r.declPts}</b> Augen Alleinspieler · <b>${120-r.declPts}</b> Gegenspieler</p>`;
  openOverlay(`<div class="result parch"><div class="l"><h2>${title}</h2>
   <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;justify-content:center">
-  <div style="text-align:center;font-size:clamp(13px,3vh,17px)">${mcards(S.skatFinal)}<div>${S.game.hand?'Skat (Hand)':'Gedrückt'}</div><div style="margin-top:8px">${mcards(S.skat)}</div><div>Gefunden</div></div>
+  <div style="text-align:center;font-size:clamp(13px,3vh,17px)">${realCards(S.skatFinal,Math.min(48,innerHeight*.1),.55,7)}<div style="border-top:2px solid rgba(90,60,30,.4);margin-top:2px">${r.g.type==='null'||r.endBy?(S.game.hand?'Skat (Hand)':'Gedrückt'):r.declPts+' Augen'}</div><div style="margin-top:8px">${realCards(S.skat,Math.min(48,innerHeight*.1),.55,7)}</div><div style="border-top:2px solid rgba(90,60,30,.4);margin-top:2px">Gefunden</div></div>
   <table class="calcT" style="flex:1;min-width:200px"><tr class="hd"><td colspan="2">${gameName(r.g)}</td></tr>${rows}${r.overbid?'<tr><td colspan="2" style="color:#a01010;text-align:center">Überreizt!</td></tr>':''}${r.g.spitze||r.spitzeOK?`<tr><td colspan="2" style="text-align:center;color:${r.spitzeOK?'#1d7a2e':'#a01010'}">${r.spitzeOK?'Spitze! Letzter Stich mit '+(spitzeCard(r.g).r==='B'?SN[spitzeCard(r.g).s]+'-Bube':'der Trumpf-7'):'Angesagte Spitze verloren!'}</td></tr>`:''}${r.bock?`<tr><td>🐐 Bockrunde</td><td>×2</td></tr>`:''}${r.kontra?`<tr><td>${r.won?'Gewonnen':'Verloren ('+(r.value*2)+')'} × ${r.re?'Kontra × Re':'Kontra'}</td><td>×${r.kf}</td></tr>`:''}<tr class="tot"><td colspan="2">${r.score>0?'+':''}${r.score} Punkte</td></tr></table></div>
   ${extra}${S.practice?'<p style="text-align:center;color:#a0521d">Übungsspiel – zählt nicht</p>':''}${r.bockWhy?`<p style="text-align:center;color:#8a4a10">🐐 Neue Bockrunde: ${r.bockWhy.join(', ')}${P.cfg.ramschBock?' · danach 🐷 Ramschrunde':''}</p>`:''}
   <div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rRep">Wiederholen</button><button class="pill sm tan" id="rBug">🐞</button></div></div>
@@ -1326,9 +1341,9 @@ function newList(){P.gameNo=0;P.scores=[0,0,0];P.history=[];P.won=[0,0,0];P.lost
 function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'});
  if(tab==='cur'){if(!S.dealt)return'<p>Noch kein Spiel.</p>';const done=S.phase==='done'||S.phase==='idle';const g=S.game;
   const rows=[0,1,2].map(k=>{const seat=(S.dealer+1+k)%3;const cards=S.dealt.hands[seat].map(id=>DECK.find(c=>c.id===id));const show=seat===0||done;const st=S.status&&S.status[seat]||'';
-   return`<div class="prow"><div class="who"><small>${POSN[k]}</small><b>${NM(seat)}</b><br>${st?`<span class="tag${st.startsWith('spielt')?' fill':''}">${st}</span>`:''}</div><div style="font-size:clamp(14px,3.4vh,20px)">${show?mcards(sortHand(cards,g)):'<i>verdeckt</i>'}</div></div>`}).join('');
+   return`<div class="prow"><div class="who"><small>${POSN[k]}</small><b>${NM(seat)}</b><br>${st?`<span class="tag${st.startsWith('spielt')?' fill':''}">${st}</span>`:''}</div><div>${show?realCards(sortHand(cards,g),L.land?Math.min(52,innerHeight*.11):34,.5):'<i>verdeckt</i>'}</div></div>`}).join('');
   return`<div class="row" style="justify-content:flex-end;margin:0 0 8px"><button class="pill sm" id="again" ${done?'':'disabled'}>Erneut spielen</button><button class="pill sm" id="copy">Teilen…</button></div>
-   <p>${S.practice?'Übungsspiel':`Spiel ${P.gameNo} aus der Spielliste vom ${dt}`}${g?` · ${gameName(g)}`:''}</p>${rows}${done?`<div class="prow"><div class="who"><b>Skat</b></div><div style="font-size:20px">${mcards(S.dealt.skat.map(id=>DECK.find(c=>c.id===id)))}</div></div>`:''}`}
+   <p>${S.practice?'Übungsspiel':`Spiel ${P.gameNo} aus der Spielliste vom ${dt}`}${g?` · ${gameName(g)}`:''}</p>${rows}${done?`<div class="prow"><div class="who"><b>Skat</b></div><div>${realCards(S.dealt.skat.map(id=>DECK.find(c=>c.id===id)),L.land?Math.min(52,innerHeight*.11):34,.5)}</div></div>`:''}`}
  if(tab==='list'){const X=b=>b?'X':'';
   const head=`<thead><tr><th class="v" rowspan="2">Spielnummer</th><th class="v" rowspan="2">Grundwert</th><th class="v" rowspan="2">Mit</th><th class="v" rowspan="2">Ohne</th><th class="v" rowspan="2">Hand</th><th class="v" rowspan="2">Schneider</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Schwarz</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Ouvert</th><th class="v" rowspan="2">Sonderregeln</th><th rowspan="2">Spiel-<br>wert</th>${P.names.map(n=>`<th class="pn" colspan="3">${n}</th>`).join('')}</tr>
    <tr>${P.names.map(()=>'<th>Punkte</th><th class="v">Gewonnen</th><th class="v">Verloren</th>').join('')}</tr></thead>`;

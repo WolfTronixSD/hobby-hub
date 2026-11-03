@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.40.0 (2026-11-02): Skat trick pile and real cards
+
+- skat/index.html v1.15.0: #pile (your side's won cards + Augen, tap = last trick), realCards() renderer for the result skat and Aktuelles Spiel hands, "sofort gepasst" when passing at 18.
+
 ## 2.39.0 (2026-11-02): Skat Ramsch, Bock, list length
 
 - skat/index.html v1.14.0: P.queue of upcoming bock/ramsch games, gameMode() per deal; playRamsch (Schieben with no jacks, aiRamsch, Jungfrau/Durchmarsch/skat-to-last-trick scoring), Grand Hand in Ramsch rounds (declarer leads), Bock ×2 with configurable triggers, listLen 1–12 with listEnd ceremony; house-rules panel with switches.
