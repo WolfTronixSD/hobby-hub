@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.13.0">
+<meta name="version" content="1.14.0">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -247,6 +247,12 @@ html body .pname{font-size:calc(18px*var(--uis))}
 .rbtn{z-index:80}#overlay{z-index:500}
 .vsel{font:600 14px system-ui;padding:6px 8px;border-radius:10px;border:2px solid #c8743a;background:#fffaf0;color:#4a3a28;max-width:190px}
 .vr{flex:1;max-width:200px;accent-color:#f08a12}
+
+.hpan{max-width:min(94vw,760px)}.hsec{background:rgba(90,60,30,.07);border-radius:16px;padding:10px 14px;margin:10px 0}.hsec h3{margin:2px 0 6px;font:700 19px Georgia,serif}
+.hr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid rgba(90,60,30,.12)}.hr.sub{padding-left:22px}
+.hl{font:600 15px system-ui}.hd{font:13px system-ui;opacity:.75;margin-top:2px}
+.tgl{flex:none;width:54px;height:30px;border-radius:999px;border:2px solid rgba(90,60,30,.35);background:#a89a86;position:relative;padding:0}.tgl i{position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#4a4a4a;transition:all .2s}
+.tgl.on{background:#d8c3a0}.tgl.on i{left:27px;background:radial-gradient(circle at 35% 30%,#ffb04a,#e86a0a)}
 #rotateHint{display:none}
 </style>
 </head>
@@ -299,8 +305,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.13.0';
+const SKAT_VERSION='1.14.0';
 const SKAT_CHANGES=[
+ ['1.14.0','2026-11-02','⚙️ Hausregeln: Spiele pro Liste (1–12) mit Siegerehrung · 🐷 Ramsch nach Eingepasst, Schieberamsch, Jungfrau, Durchmarsch, Dauerramsch, Grand Hand in Ramschrunde · 🐐 Bockrunden mit Auslösern und „3 Bock, 3 Ramsch“'],
  ['1.13.0','2026-11-02','🎚️ Tonhöhe und Sprechtempo für jeden Mitspieler · 🧠 Klügere Mitspieler: kein Trumpf-Ass/-Zehn mehr verschenkt, keine Zehn auf einen Gegnerstich · 🐞 Fehler melden: Mitspieler merken sich dumme Züge, Bericht für Claude kopieren'],
  ['1.12.0','2026-11-02','🎙️ Stimme für jeden Mitspieler selbst wählen (auch heruntergeladene Enhanced/Premium-Stimmen) mit Test-Knopf'],
  ['1.11.0','2026-11-02','🔗 Einstellungen mitnehmen: ein Link nimmt Thema, Dialekt, Spielstärke, Schrift, Namen und Aussehen auf jedes Gerät mit'],
@@ -324,7 +331,7 @@ try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d&&d.scores)P=Objec
 if(!P.date)P.date=new Date().toISOString();
 try{const m=location.hash.match(/s=([^&]+)/);if(m){const d=JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(m[1])))));if(d&&d.cfg){P.cfg=Object.assign({},P.cfg||{},d.cfg);if(Array.isArray(d.names)&&d.names.length===3)P.names=d.names;P.seen=true;window._importedCfg=1}history.replaceState(null,'',location.pathname+location.search)}}catch(e){}
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
-P.cfg=Object.assign({kontra:true,theme:'beach',four:false,fast:false,level:1,spitze:true,saxon:true,sfx:true,amb:true,voice:true,music:true},P.cfg||{});BIDS=makeBids();if(window._importedCfg)setTimeout(()=>{save();toast('💾 Deine Einstellungen wurden übernommen',2200)},800);
+P.cfg=Object.assign({listLen:12,ramschPass:true,schiebPass:true,ramschBock:true,dauerRamsch:false,schiebRunde:true,grandHandRunde:true,skatLast:true,bock60:false,bockKL:true,bockKW:true,bockRL:true,bockRW:true,bockOppS:false,bockDeclS:false,bockGH:false,kontra:true,theme:'beach',four:false,fast:false,level:1,spitze:true,saxon:true,sfx:true,amb:true,voice:true,music:true},P.cfg||{});BIDS=makeBids();if(window._importedCfg)setTimeout(()=>{save();toast('💾 Deine Einstellungen wurden übernommen',2200)},800);
 function save(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
 const NM=i=>P.names[i];
 
@@ -354,7 +361,7 @@ function suitOrder(cards,g){const isN=g&&g.type==='null';const present=s=>cards.
 function sortHand(cards,g){g=g||{type:'grand'};const ord=suitOrder(cards,g);const isN=g.type==='null';
  const sx=g.type==='saxon';const key=c=>{if(!isN&&c.r==='B')return sx?100+c.s:100-c.s;return 200+ord.indexOf(c.s)*20-(isN?NULLO[c.r]:sx?6-NORM[c.r]:NORM[c.r])};
  return cards.slice().sort((a,b)=>key(a)-key(b))}
-function gameName(g,long){if(!g)return'';let n=g.type==='null'?'Null':g.type==='grand'?'Grand':g.type==='saxon'?'Sächs. Spitze':SN[g.trump];
+function gameName(g,long){if(!g)return'';if(g.ramsch)return 'Ramsch';let n=g.type==='null'?'Null':g.type==='grand'?'Grand':g.type==='saxon'?'Sächs. Spitze':SN[g.trump];
  if(g.hand)n+=' Hand';if(long!==false){if(g.schwarzA)n+=' Schwarz angesagt';else if(g.schneiderA)n+=' Schneider angesagt'}if(g.ouvert)n+=' Ouvert';if(g.spitze)n+=' Spitze angesagt';return n}
 
 /* ---------- SVG art ---------- */
@@ -365,7 +372,7 @@ const SUITPATH={
 3:'<circle cx="50" cy="27" r="21"/><circle cx="26" cy="60" r="21"/><circle cx="74" cy="60" r="21"/><rect x="41" y="36" width="18" height="30"/><path d="M45 55 L55 55 C55 78 60 89 70 97 L30 97 C40 89 45 78 45 55Z"/>'};
 const suitSvg=(s,cls='sv')=>`<svg viewBox="0 0 100 100" class="${cls}">${SUITPATH[s]}</svg>`;
 const suitIcon=s=>`<span class="gi" style="color:${suitColor(s)}">${suitSvg(s)}</span>`;
-const gameIcon=g=>!g?'':g.type==='suit'?suitIcon(g.trump):`<span class="gl">${g.type==='grand'?'G':g.type==='saxon'?'S':'N'}</span>`;
+const gameIcon=g=>!g?'':g.ramsch?'<span class="gl">R</span>':g.type==='suit'?suitIcon(g.trump):`<span class="gl">${g.type==='grand'?'G':g.type==='saxon'?'S':'N'}</span>`;
 /* realistic French-pattern card faces */
 const PIPS={'7':[[30,22],[70,22],[50,48],[30,75],[70,75],[30,128],[70,128]],
  '8':[[30,22],[70,22],[50,48],[30,75],[70,75],[50,102],[30,128],[70,128]],
@@ -686,7 +693,7 @@ function updatePlates(showScores){const lead=Math.max(...P.scores);
   else ps.textContent=(i===0?'Du sitzt ':'')+POSN[seatPos(i)]}
  $('#tmain').textContent=(S.practice?'Übung':'Spiel '+P.gameNo)}
 function setTurn(seat){[0,1,2].forEach(i=>$('#pl'+i).classList.toggle('turn',i===seat))}
-function updateInfo(){const gi=$('#gameInfo');const st=gi;if(S.phase!=='play'){gi.style.display='none';return}gi.style.display='flex';st.innerHTML=`${S.game.type==='suit'?`<span class="si" style="color:${S.game.trump<2?'#ff8a8a':'#fff'}">${suitSvg(S.game.trump)}</span>`:''}${gameName(S.game,false)} · ${S.bid}${S.kontraBy>=0?(S.re?' · Re':' · Kontra'):''} · Stich ${Math.min(10,S.trickNo+1)}/10`;return;
+function updateInfo(){const gi=$('#gameInfo');const st=gi;if(S.phase!=='play'){gi.style.display='none';return}gi.style.display='flex';if(S.game&&S.game.ramsch){st.innerHTML=`🐷 Ramsch${S.bock?' · 🐐 Bock':''}${S.schiebCount?' · '+S.schiebCount+'× geschoben':''} · Stich ${Math.min(10,S.trickNo+1)}/10`;return}st.innerHTML=`${S.game.type==='suit'?`<span class="si" style="color:${S.game.trump<2?'#ff8a8a':'#fff'}">${suitSvg(S.game.trump)}</span>`:''}${S.bock?'🐐 ':''}${gameName(S.game,false)} · ${S.bid||'Hand'}${S.kontraBy>=0?(S.re?' · Re':' · Kontra'):''} · Stich ${Math.min(10,S.trickNo+1)}/10`;return;
  gi.style.display='flex';gi.innerHTML=`${S.game.type==='suit'?`<span class="si">${suitSvg(S.game.trump)}</span>`:''}${gameName(S.game)} · Reiz ${S.bid} · Stich ${Math.min(10,S.trickNo+1)}/10`;gi.querySelector('.si')&&(gi.querySelector('.si').style.color=S.game.type==='suit'?(S.game.trump<2?'#ff7a7a':'#fff'):'')}
 const ov=$('#overlay');
 function openOverlay(html,cls){ov.innerHTML=html;ov.classList.add('show');return ov}
@@ -900,7 +907,7 @@ function moveKey(seat,c){const g=S.game;if(!g)return'';const isD=seat===S.declar
  if(S.trick.length){const wi=trickWinner(S.trick,g),ws=S.trick[wi].seat;const team=x=>x===S.declarer?0:1;sit=team(ws)===team(seat)?'ownwin':'oppwin';if(S.trick.length===2)sit+='-last'}
  return `${g.type==='null'?'N':'G'}|${isD?'Alleinspieler':'Gegenspieler'}|${sit}|${isTrump(c,g)?'Trumpf':'Farbe'}|${c.r}`}
 function sane(seat,legal){const g=S.game;if(legal.length<2||!g)return legal;let L=legal;const learn=P.learn||{};
- const l1=L.filter(c=>!learn[moveKey(seat,c)]);if(l1.length)L=l1;if(g.type==='null')return L;
+ const l1=L.filter(c=>!learn[moveKey(seat,c)]);if(l1.length)L=l1;if(g.type==='null'||g.ramsch)return L;
  const out=outsideCards(seat),isD=seat===S.declarer;
  const topT=c=>!out.some(o=>isTrump(o,g)&&power(o,g)>power(c,g));
  if(!isD&&!S.trick.length){const l2=L.filter(c=>!(isTrump(c,g)&&PTS[c.r]>=10&&!topT(c)));if(l2.length)L=l2}
@@ -934,7 +941,7 @@ function aiPlay(seat,forceHard){let legal=legalMoves(S.hands[seat],S.trick,S.gam
  if(lvl===2&&!SIM)return mcChoose(seat,legal);
  return aiBasic(seat,legal)}
 function spFilter(seat,legal){const g=S.game;if(!(g.spitze||(P.cfg.spitze&&!SIM&&P.cfg.level>0))||g.type==='null'||seat!==S.declarer||S.hands[seat].length<=1)return legal;const sc=spitzeCard(g);const f=legal.filter(c=>c.id!==sc.id);return f.length?f:legal}
-function aiBasic(seat,legal){legal=spFilter(seat,legal);if(legal.length===1)return legal[0];return S.game.type==='null'?aiNull(seat,legal):aiSuit(seat,legal)}
+function aiBasic(seat,legal){if(S.game.ramsch)return aiRamsch(seat,legal);legal=spFilter(seat,legal);if(legal.length===1)return legal[0];return S.game.type==='null'?aiNull(seat,legal):aiSuit(seat,legal)}
 /* Monte-Carlo (Schwer): sample unknown cards consistent with known voids, play out with heuristic, pick best average */
 function sampleDeal(seat){const g=S.game,d=S.declarer;const others=[0,1,2].filter(x=>x!==seat);let pool=outsideCards(seat);const fixed={};
  if(g.ouvert&&seat!==d){fixed[d]=S.hands[d].slice();const ids=new Set(fixed[d].map(c=>c.id));pool=pool.filter(c=>!ids.has(c.id))}
@@ -957,6 +964,7 @@ function simulate(seat,card,deal){const g=S.game,d=S.declarer;const knowSk=seat=
    if(S.trick.length<3)break;const w=S.trick[trickWinner(S.trick,g)].seat;S.won[w].push(...S.trick.map(x=>x.card));S.tricks[w]++;
    if(g.spitze&&!S.hands[0].length&&!S.hands[1].length&&!S.hands[2].length){const dc=S.trick.find(x=>x.seat===d);S.lastOK=w===d&&!!dc&&dc.card.id===spitzeCard(g).id}
    S.leader=w;S.trick=[];S.trickNo++;if(g.type==='null'&&w===d)break;if(g.schwarzA&&w!==d)break;if(!S.hands[w].length)break}
+  if(g.ramsch){const own=cardPts(S.won[seat]);return -own+(S.tricks[seat]===0?25:0)-(S.tricks[seat]===10?-150:0)}
   let u;if(g.type==='null')u=S.tricks[d]===0?100:0;
   else{const dp=cardPts(S.won[d])+cardPts(S.skatFinal||[]);const oT=S.tricks.reduce((a,v,i)=>i===d?a:a+v,0);
    u=dp+(dp>=61?60:0)+(dp>=90?12:0)-(dp<=30?12:0);if(g.spitze&&!S.lastOK)u-=90;if(g.schwarzA&&oT>0)u-=90;if(g.schneiderA&&dp<90)u-=60}
@@ -1006,7 +1014,7 @@ function give(v){if(resolver){const r=resolver;resolver=null;r(v)}}
 function onHandTap(id){if(S.mode==='play'&&S.legalSet&&S.legalSet.has(id)){const c=S.hands[0].find(x=>x.id===id);const sp=S.game.spitze&&S.declarer===0?spitzeCard(S.game):null;
  if(sp&&sp.id===id&&S.hands[0].length>1&&S.spWarn!==id){S.spWarn=id;toast('Deine Spitze! Erst im letzten Stich spielen.<br>Nochmal tippen = trotzdem spielen',2400);return}
  S.spWarn=null;S.hintId=null;give(c)}
- else if(S.mode==='discard'){if(S.sel.has(id))S.sel.delete(id);else if(S.sel.size<2)S.sel.add(id);else return;renderHand();$('#abBtn').disabled=S.sel.size!==2;$('#abMsg').textContent=S.sel.size===2?'Diese zwei drücken?':`Zwei Karten drücken (${S.sel.size}/2)`}}
+ else if(S.mode==='discard'){if(S.noJack&&!S.sel.has(id)&&id.startsWith('B_')){toast('Buben darf man beim Ramsch nicht schieben',1400);return}if(S.sel.has(id))S.sel.delete(id);else if(S.sel.size<2)S.sel.add(id);else return;renderHand();$('#abBtn').disabled=S.sel.size!==2;$('#abMsg').textContent=S.sel.size===2?'Diese zwei drücken?':`Zwei Karten drücken (${S.sel.size}/2)`}}
 $('#bidYes').onclick=()=>give(true);$('#bidNo').onclick=()=>give(false);$('#abBtn').onclick=()=>give('ok');
 async function humanBid(mode,val){const yes=$('#bidYes');yes.textContent=mode==='say'?String(val):`Ja, ${val}`;$('#bidUI').style.display='flex';S.bidAsk={mode,val};
  const r=await waitInput();$('#bidUI').style.display='none';S.bidAsk=null;return r}
@@ -1026,26 +1034,120 @@ async function bidding(){const V=(S.dealer+1)%3,M=(S.dealer+2)%3,H=S.dealer;S.bi
 function dealNew(){if(S.replay){const r=S.replay;S.replay=null;S.practice=true;S.dealer=r.dealer;S.hands=r.hands.map(h=>h.map(id=>DECK.find(c=>c.id===id)));S.skat=r.skat.map(id=>DECK.find(c=>c.id===id));return}
  S.practice=false;const d=shuffle(DECK.slice());S.hands=[d.slice(0,10),d.slice(10,20),d.slice(20,30)];S.skat=d.slice(30,32)}
 async function playGame(){
- if(!S.replay)P.gameNo++;BIDS=makeBids();
+ if(!S.replay)P.gameNo++;BIDS=makeBids();const mode=gameMode();
  dealNew();if(!S.practice)S.dealer=P.dealer;
  S.dealt={hands:S.hands.map(h=>h.map(c=>c.id)),skat:S.skat.map(c=>c.id),dealer:S.dealer};
- Object.assign(S,{moveLog:[],kontraBy:-1,re:false,phase:'bid',game:null,declarer:-1,trick:[],played:[],skatFinal:null,lastTrick:null,trickLog:[],lastDelta:null,sel:new Set(),legalSet:null,hintId:null,mode:null,result:null,trickNo:0});
+ Object.assign(S,{bock:mode==='bock',ramschRound:mode==='ramsch',firstLeader:null,schiebCount:0,bid:0,moveLog:[],kontraBy:-1,re:false,phase:'bid',game:null,declarer:-1,trick:[],played:[],skatFinal:null,lastTrick:null,trickLog:[],lastDelta:null,sel:new Set(),legalSet:null,hintId:null,mode:null,result:null,trickNo:0,status:['','','']});
  S.hands[0]=sortHand(S.hands[0]);clearTable();updatePlates();updateInfo();renderOpen();
  S.coach=evalHand(S.hands[0],0);S.maxBid=[0,1,2].map(i=>evalHand(S.hands[i],riskFor(i)).max);
  sndShuffle();await sleep(TURBO?0:P.cfg.fast?500:900);showSkat(true);renderHand([L.deck[0],L.deck[1],true]);await sleep(700);
+ if(S.bock){toast('🐐 Bockrunde – dieses Spiel zählt doppelt!',2000);say(1,'Bock!');await sleep(900)}
+ if(S.ramschRound){S.phase='bid';const gh=P.cfg.grandHandRunde?await grandHandAsk():-1;
+  if(gh<0){await playRamsch();return}
+  S.declarer=gh;S.bid=0;S.status[gh]='Grand Hand';S.declCards12=S.hands[gh].concat(S.skat);S.skatFinal=S.skat.slice();S.game={type:'grand',hand:true};S.firstLeader=gh;showSkat(false);
+  await playDeclared(gh,true);return}
  S.phase='bid';const decl=await bidding();setTurn(-1);
- if(decl<0){toast('Eingepasst – neu geben');await sleep(1600);hideBubbles();finishPassed();return}
+ if(decl<0){if(P.cfg.ramschPass){toast('Eingepasst – jetzt wird geramscht!',1800);await sleep(1400);hideBubbles();await playRamsch();return}
+  toast('Eingepasst – neu geben');await sleep(1600);hideBubbles();finishPassed();return}
  S.declarer=decl;S.bid=BIDS[S.bidIdx];S.status[decl]=`spielt bei ${S.bid}`;hideBubbles();
  S.declCards12=S.hands[decl].concat(S.skat);
  if(decl===0&&!AUTO)await humanDeclare();else await aiDeclarePhase(decl);
+ await playDeclared(decl,false)}
+async function playDeclared(decl,preset){
  S.hands[0]=sortHand(S.hands[0],S.game);renderHand();
  S.phase='play';updatePlates();updateInfo();renderOpen();
- toast(`${decl===0?'Du spielst':NM(decl)+' spielt'} ${gameName(S.game)}`,1800);await sleep(900);
+ toast(`${decl===0?'Du spielst':NM(decl)+' spielt'} ${gameName(S.game)}${S.bock?' · 🐐 Bock':''}`,1800);await sleep(900);
  if(P.cfg.kontra)await kontraPhase();
- S.endBy=null;await aiMaybeSchenken();
+ S.endBy=null;if(!preset)await aiMaybeSchenken();
  if(!S.endBy)await playPhase();else{S.won=[[],[],[]];S.tricks=[0,0,0];S.trickLog=[]}S.phase='done';setTurn(-1);settle();
  {const r=S.result,d=r.d;if(d){emote(d,r.won?'happy':'sad',3500);quip(d,r.won?'won':'lost',.85)}[1,2].filter(x=>x!==d).forEach(x=>{emote(x,r.won?'sad':'happy',3500);if(!r.won)quip(x,'beat',.5)})}
  await showResult()}
+/* ===================== Ramsch & Bock ===================== */
+function gameMode(){if(S.replay)return'normal';if(P.cfg.dauerRamsch)return'ramsch';P.queue=P.queue||[];const m=P.queue.length?P.queue.shift():'normal';save();return m}
+async function grandHandAsk(){for(let k=0;k<3;k++){const seat=(S.dealer+1+k)%3;setTurn(seat);let r;
+  if(seat===0&&!AUTO){toast('🐷 Ramschrunde – willst du Grand Hand spielen?',2400);r=await humanAsk('Grand Hand!','Ramsch')}
+  else{await think(.7);r=strength(S.hands[seat],{type:'grand'})>=9.2}
+  if(r){bubble(seat,'Grand Hand!',1800);say(seat,'Grand Hand!');return seat}}
+ setTurn(-1);return -1}
+function aiSchiebDiscard(seat,cards){const nj=cards.filter(c=>c.r!=='B');return nj.slice().sort((a,b)=>(PTS[b.r]*10+NORM[b.r])-(PTS[a.r]*10+NORM[a.r])).slice(0,2)}
+async function humanSchiebDiscard(){showSkat(false);const added=S.skat.map(c=>c.id);S.hands[0]=sortHand(S.hands[0].concat(S.skatCur),S.game);renderHand([L.deck[0],L.deck[1]]);
+ S.skatCur.forEach(c=>handEls.get(c.id)&&handEls.get(c.id).classList.add('newc'));
+ S.mode='discard';S.noJack=true;S.sel=new Set();$('#abMsg').textContent='Zwei Karten schieben (keine Buben)';$('#abBtn').textContent='Schieben';$('#abBtn').disabled=true;$('#actionBar').style.display='flex';renderHand();
+ await waitInput();$('#actionBar').style.display='none';S.mode=null;S.noJack=false;
+ const disc=S.hands[0].filter(c=>S.sel.has(c.id));S.sel=new Set();S.hands[0]=S.hands[0].filter(c=>!disc.includes(c));handEls.forEach(el=>el.classList.remove('newc'));renderHand();showSkat(true);return disc}
+async function schiebPhase(){S.skatCur=S.skat.slice();
+ for(let k=0;k<3;k++){const seat=(S.dealer+1+k)%3;setTurn(seat);let take;
+  if(seat===0&&!AUTO){toast('Skat nehmen und 2 Karten weiterschieben – oder ungesehen schieben (verdoppelt)?',2600);take=await humanAsk('Skat nehmen','Schieben')}
+  else{await think(.8);const h=S.hands[seat];take=h.filter(c=>c.r!=='B'&&PTS[c.r]>=10).length>=2||Math.random()<.45}
+  if(take){if(seat===0&&!AUTO){S.skatCur=await humanSchiebDiscard()}else{const all=S.hands[seat].concat(S.skatCur);const disc=aiSchiebDiscard(seat,all);S.hands[seat]=all.filter(c=>!disc.includes(c));S.skatCur=disc;bubble(seat,'Genommen',1200)}}
+  else{S.schiebCount++;bubble(seat,'Geschoben!',1400);say(seat,'geschoben');sndSweep(seat)}
+  await sleep(300)}
+ setTurn(-1);S.skatFinal=S.skatCur;showSkat(false)}
+function aiRamsch(seat,legal){const g=S.game,tr=S.trick;const out=outsideCards(seat);const minBy=(a,f)=>a.slice().sort((x,y)=>f(x)-f(y))[0];
+ const beats=c=>{const t2=tr.concat([{seat,card:c}]);return trickWinner(t2,g)===t2.length-1};
+ if(!tr.length)return minBy(legal,c=>{const e=eff(c,g);const hi=out.filter(o=>eff(o,g)===e&&power(o,g)>power(c,g)).length;const lo=out.filter(o=>eff(o,g)===e&&power(o,g)<power(c,g)).length;return(hi?0:60)+lo*3+PTS[c.r]*.4});
+ const losers=legal.filter(c=>!beats(c));
+ if(losers.length)return minBy(losers,c=>-(PTS[c.r]*10+power(c,g)));
+ return minBy(legal,c=>PTS[c.r]*10-power(c,g)*.5)}
+async function playRamsch(){S.game={type:'grand',ramsch:true};S.declarer=-1;S.bid=0;S.schiebCount=0;S.firstLeader=null;hideBubbles();
+ toast(`🐷 Ramsch${S.bock?' (Bock!)':''} – wer die meisten Augen hat, verliert!`,2400);say(1,'Ramsch!');await sleep(1200);
+ const sch=S.ramschRound?P.cfg.schiebRunde:P.cfg.schiebPass;
+ if(sch)await schiebPhase();else{S.skatFinal=S.skat.slice();showSkat(false)}
+ S.hands[0]=sortHand(S.hands[0],S.game);renderHand();S.phase='play';updatePlates();updateInfo();
+ await playPhase();S.phase='done';setTurn(-1);settleRamsch();
+ const r=S.result;[1,2].forEach(x=>{const bad=r.losers&&r.losers.includes(x);emote(x,r.durch===x?'happy':bad?'sad':'happy',3500);if(bad)quip(x,'lost',.8);else if(r.durch===x)quip(x,'won',1)});
+ await showResult()}
+function settleRamsch(){const sk=S.skatFinal||S.skat;const pts=[0,1,2].map(i=>cardPts(S.won[i]));const tr=S.tricks;
+ const r={ramsch:true,g:S.game,lines:[],losers:[],skatTo:-1,bock:!!S.bock,schieb:S.schiebCount||0};
+ const durch=[0,1,2].find(i=>tr[i]===10);
+ if(durch!==undefined){r.durch=durch;pts[durch]=120;r.value=120*(S.bock?2:1);r.scores=[0,0,0];r.scores[durch]=r.value;r.lines.push(['Durchmarsch!',120]);if(S.bock)r.lines.push(['Bock','×2'])}
+ else{const last=S.trickLog[S.trickLog.length-1];const mx0=Math.max(...pts);r.skatTo=P.cfg.skatLast&&last?last.winner:pts.indexOf(mx0);pts[r.skatTo]+=cardPts(sk);
+  const mx=Math.max(...pts);r.losers=[0,1,2].filter(i=>pts[i]===mx);const jung=[0,1,2].filter(i=>tr[i]===0);
+  let f=1;r.lines.push([`Meiste Augen (${r.losers.map(NM).join(' & ')})`,mx]);
+  jung.forEach(i=>{f*=2;r.lines.push([`Jungfrau: ${NM(i)}`,'×2'])});for(let i=0;i<r.schieb;i++){f*=2;r.lines.push(['Geschoben','×2'])}if(S.bock){f*=2;r.lines.push(['Bock','×2'])}
+  r.value=mx*f;r.scores=[0,1,2].map(i=>r.losers.includes(i)?-r.value:0)}
+ r.pts=pts;r.d=r.durch!==undefined?r.durch:r.losers[0];r.won=r.durch!==undefined;r.score=r.scores[r.d];S.result=r;
+ if(!S.practice){[0,1,2].forEach(i=>P.scores[i]+=r.scores[i]);
+  P.history.push({no:P.gameNo,ramsch:true,d:r.d,ds:[0,1,2].filter(i=>r.scores[i]),g:S.game,value:r.value,score:r.score,scores:r.scores,won:r.won,bock:r.bock,totals:P.scores.slice(),wl:[P.won.slice(),P.lost.slice()],
+   dealt:S.dealt,status:['Ramsch','Ramsch','Ramsch'],myPts:pts[0],coach:pts[0]===Math.min(...pts)?`Ramsch: nur ${pts[0]} Augen, super gedrückt!`:`Ramsch: ${pts[0]} Augen. Tipp: hohe Karten früh auf fremde Stiche werfen.`,myStatus:'Ramsch'});
+  P.dealer=(P.dealer+1)%3;save()}
+ S.lastDelta=r.scores.slice()}
+async function showRamschResult(){const r=S.result;const me=r.scores[0];const good=r.durch===0||(!r.losers.includes(0));
+ if(good){sndWin();if(r.durch===0||!r.losers.includes(0))confetti()}else sndLose();updatePlates(true);
+ const title=r.durch!==undefined?`${r.durch===0?'Du machst':NM(r.durch)+' macht'} Durchmarsch!`:r.losers.includes(0)?(r.losers.length>1?'Ihr verliert den Ramsch':'Du verlierst den Ramsch'):`${r.losers.map(NM).join(' & ')} verliert den Ramsch`;
+ const rows=[0,1,2].map(i=>`<tr><td>${NM(i)}${i===r.skatTo?' <small>(+ Skat)</small>':''}${S.tricks[i]===0?' 👼':''}</td><td>${r.pts[i]} Augen</td></tr>`).join('')+r.lines.map(l=>`<tr><td>${l[0]}</td><td>${l[1]}</td></tr>`).join('');
+ openOverlay(`<div class="result parch"><div class="l"><h2>🐷 ${title}</h2><table class="calcT"><tr class="hd"><td colspan="2">Ramsch${r.bock?' · Bock':''}</td></tr>${rows}<tr class="tot"><td colspan="2">${r.durch!==undefined?NM(r.durch)+' +'+r.value:r.losers.map(NM).join(' & ')+' −'+r.value} Punkte</td></tr></table>
+  <p style="text-align:center;margin:6px 0">Skat: ${mcards(S.skatFinal||S.skat)}</p><div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rBug">🐞</button></div></div>
+  <div class="r"><div class="emo">${good?'😇':'🐷'}</div><div class="bigscore">${S.practice?'—':me>0?'+'+me:me<0?me:'0'}</div><button class="pill" id="rGo">Weiter</button></div></div>`);
+ return new Promise(res=>{$('#rGo').onclick=()=>{closeOverlay();res()};$('#rHist').onclick=()=>showTricks(()=>showRamschResult().then(res));$('#rBug').onclick=()=>openReport(()=>showRamschResult().then(res));if(AUTO)setTimeout(()=>{closeOverlay();res()},TURBO?5:400)})}
+function bockTriggers(r){if(S.practice||r.ramsch)return;const c=P.cfg,why=[];
+ if(c.bock60&&r.declPts===60)why.push('60 Augen');if(c.bockKL&&r.kontra&&!r.won)why.push('Kontra verloren');if(c.bockKW&&r.kontra&&r.won)why.push('Kontra gewonnen');
+ if(c.bockRL&&r.re&&!r.won)why.push('Re verloren');if(c.bockRW&&r.re&&r.won)why.push('Re gewonnen');if(c.bockOppS&&r.declPts>=90)why.push('Gegenspieler Schneider');
+ if(c.bockDeclS&&r.declPts<=30&&r.g.type!=='null')why.push('Alleinspieler Schneider');if(c.bockGH&&r.g.type==='grand'&&r.g.hand)why.push('Grand Hand');
+ if(!why.length)return;P.queue=P.queue||[];P.queue.push('bock','bock','bock');if(c.ramschBock)P.queue.push('ramsch','ramsch','ramsch');save();r.bockWhy=why}
+async function listEnd(){const order=[0,1,2].sort((a,b)=>P.scores[b]-P.scores[a]);if(order[0]===0){sndWin();confetti()}
+ openOverlay(`<div class="panel"><h2>🏁 Liste beendet!</h2><p style="text-align:center">${P.history.length} Spiele gespielt</p>${order.map((i,k)=>`<p style="text-align:center;font-size:${22-k*3}px">${['🥇','🥈','🥉'][k]} <b>${NM(i)}</b> · ${P.scores[i]} Punkte</p>`).join('')}
+ <div class="row"><button class="pill sm tan" id="leList">Spielliste ansehen</button><button class="pill sm" id="leNew">Neue Liste</button></div></div>`);
+ if(order[0])quip(order[0],'won',1);
+ await new Promise(res=>{$('#leNew').onclick=()=>{closeOverlay();res()};$('#leList').onclick=()=>{openSheet('list');const x=$('#tx');if(x)x.onclick=()=>{closeOverlay();res()}};if(AUTO)setTimeout(()=>{closeOverlay();res()},5)});
+ newList();P.queue=[];save()}
+/* ---------- house rules panel ---------- */
+function openHouse(){const c=P.cfg;const sw=(k,l,d,sub)=>`<div class="hr${sub?' sub':''}"><div><div class="hl">${l}</div>${d?`<div class="hd">${d}</div>`:''}</div><button class="tgl${c[k]?' on':''}" data-hk="${k}" aria-label="${l}"><i></i></button></div>`;
+ openOverlay(`<div class="panel hpan"><h2>⚙️ Hausregeln</h2>
+ <div class="hsec"><h3>Spielliste</h3><div class="hl">Anzahl Spiele pro Liste</div><div class="row">${Array.from({length:12},(_,i)=>`<button class="chip${(c.listLen||12)===i+1?' sel':''}" data-ll="${i+1}">${i+1}</button>`).join('')}</div><div class="hd" style="text-align:center">Nach dem letzten Spiel gibt es die Siegerehrung und eine neue Liste.</div></div>
+ <div class="hsec"><h3>Sonderregeln</h3>${sw('kontra','Kontra & Re','Gegenspieler sagt Kontra (×2), Alleinspieler antwortet Re (×4).')}${sw('spitze','Spitze','Letzter Stich mit dem niedrigsten Trumpf: +1, angesagt +2.')}${sw('saxon','Sächsische Spitze','Umgedrehter Grand, Grundwert 20.')}</div>
+ <div class="hsec"><h3>Ramsch</h3><div class="hd">Bei Ramsch spielt jeder für sich allein. Ziel: so wenig Augen wie möglich. ‚Jungfrau‘: Wer keinen Stich bekommt, verdoppelt den Wert für den Verlierer. ‚Durchmarsch‘: Wer alle Stiche macht, gewinnt 120.</div>
+  ${sw('ramschPass','Mit Ramsch, nach eingepasstem Spiel')}${sw('schiebPass','Mit Schieben (Schieberamsch) nach Eingepasst','Reihum Skat aufnehmen und zwei Karten (keine Buben) weitergeben. Wer nicht aufnimmt, ‚schiebt‘ – der Wert verdoppelt sich.',1)}
+  ${sw('ramschBock','Mit Ramschrunde nach Bockrunde („3 Bock, 3 Ramsch“)','Braucht mindestens einen Auslöser für Bockrunden.')}${sw('dauerRamsch','Dauerramsch','Alle Runden sind Ramschrunden.')}
+  ${sw('schiebRunde','Mit Schieben (Schieberamsch) in Ramschrunde','',1)}${sw('grandHandRunde','Mit Grand Hand in Ramschrunde','Der Grand-Hand-Spieler spielt zum ersten Stich aus.',1)}${sw('skatLast','Skat an letzten Stich (statt meiste Augen)','Bei Ramsch geht der Skat an den Spieler, der den letzten Stich macht.')}</div>
+ <div class="hsec"><h3>Bockrunde</h3><div class="hd">Eine Bockrunde sind 3 Spiele, die doppelt zählen. Mit Bockrunde, falls:</div>
+  ${sw('bock60','Spiel mit 60 Augen','',1)}${sw('bockKL','Alleinspieler verliert Kontra','',1)}${sw('bockKW','Alleinspieler gewinnt Kontra','',1)}${sw('bockRL','Alleinspieler verliert Re','',1)}${sw('bockRW','Alleinspieler gewinnt Re','',1)}${sw('bockOppS','Gegenspieler werden Schneider','',1)}${sw('bockDeclS','Alleinspieler wird Schneider','',1)}${sw('bockGH','Grand Hand','',1)}
+  ${(P.queue||[]).length?`<p class="hd" style="text-align:center">Als Nächstes: ${P.queue.map(q=>q==='bock'?'🐐':'🐷').join(' ')} <button class="chip" id="hClr">löschen</button></p>`:''}</div>
+ <div class="row"><button class="pill sm" id="hOk">Fertig</button></div></div>`);
+ ov.querySelectorAll('[data-hk]').forEach(b=>b.onclick=()=>{const k=b.dataset.hk;c[k]=!c[k];save();const st=ov.querySelector('.panel').scrollTop;openHouse();ov.querySelector('.panel').scrollTop=st});
+ ov.querySelectorAll('[data-ll]').forEach(b=>b.onclick=()=>{c.listLen=+b.dataset.ll;save();const st=ov.querySelector('.panel').scrollTop;openHouse();ov.querySelector('.panel').scrollTop=st});
+ const hc=$('#hClr');if(hc)hc.onclick=()=>{P.queue=[];save();openHouse()};$('#hOk').onclick=openMenu}
+
 async function humanAsk(yes,no){const y=$('#bidYes'),n=$('#bidNo');y.textContent=yes;n.textContent=no;$('#bidUI').style.display='flex';const r=await waitInput();$('#bidUI').style.display='none';n.textContent='Passe';return r}
 function aiWantsKontra(seat){const g=S.game,h=S.hands[seat],lv=P.cfg.level;if(lv===0)return Math.random()<.12;
  if(g.type==='null'){const low=h.filter(c=>c.r==='7'||c.r==='8').length;return low>=(lv===2?4:5)}
@@ -1111,7 +1213,7 @@ function canClaim(){const g=S.game;if(g.type==='null'||S.trick.length||S.leader!
  const opp=[1,2].flatMap(x=>S.hands[x]);const T=c=>isTrump(c,g);const oppT=opp.filter(T);
  if(oppT.length&&S.hands[0].some(c=>!T(c)))return false;
  return S.hands[0].every(c=>!opp.some(o=>eff(o,g)===eff(c,g)&&power(o,g)>power(c,g)))}
-async function playPhase(){S.leader=(S.dealer+1)%3;S.won=[[],[],[]];S.tricks=[0,0,0];S.voids=[{},{},{}];S.trick=[];S.trickNo=0;S.undoSnap=null;S.autoPlay=false;S.endBy=null;
+async function playPhase(){S.leader=S.firstLeader!=null?S.firstLeader:(S.dealer+1)%3;S.won=[[],[],[]];S.tricks=[0,0,0];S.voids=[{},{},{}];S.trick=[];S.trickNo=0;S.undoSnap=null;S.autoPlay=false;S.endBy=null;
  while(true){
   if(S.trick.length===3){setTurn(-1);renderHand();await sleep(P.cfg.fast?550:1050);
    const w=S.trick[trickWinner(S.trick,S.game)].seat;S.won[w].push(...S.trick.map(x=>x.card));S.tricks[w]++;
@@ -1177,9 +1279,9 @@ function settle(){const d=S.declarer,g=S.game,base=g.type==='null'?nullVal(g):gb
   if(r.value<S.bid){r.overbid=true;r.won=false;r.value=Math.ceil(S.bid/base)*base}
   r.lines.push([`${gameName({type:g.type,trump:g.trump},false)} ${base} × ${Math.round(r.value/base)} =`,r.value])}
  if(S.endBy==='geschenkt'&&!r.overbid)r.won=true;if(S.endBy==='aufgegeben')r.won=false;r.endBy=S.endBy;
- r.score=r.won?r.value:-2*r.value;r.kontra=S.kontraBy>=0;r.re=r.kontra&&S.re;r.kf=(r.kontra?2:1)*(r.re?2:1);r.score*=r.kf;S.result=r;
+ r.score=r.won?r.value:-2*r.value;r.kontra=S.kontraBy>=0;r.re=r.kontra&&S.re;r.kf=(r.kontra?2:1)*(r.re?2:1);r.score*=r.kf;r.bock=!!S.bock;if(r.bock)r.score*=2;r.declPts=declPts;bockTriggers(r);S.result=r;
  if(!S.practice){P.scores[d]+=r.score;if(r.won)P.won[d]++;else P.lost[d]++;
-  P.history.push({no:P.gameNo,kontra:r.kontra,re:r.re,kf:r.kf,d,g,bid:S.bid,value:r.value,score:r.score,won:r.won,sp:r.sp||null,schneider:!!r.schneider,schwarz:!!r.schwarz,overbid:r.overbid,spitzeOK:!!r.spitzeOK,totals:P.scores.slice(),wl:[P.won.slice(),P.lost.slice()],
+  P.history.push({no:P.gameNo,bock:r.bock,kontra:r.kontra,re:r.re,kf:r.kf,d,g,bid:S.bid,value:r.value,score:r.score,won:r.won,sp:r.sp||null,schneider:!!r.schneider,schwarz:!!r.schwarz,overbid:r.overbid,spitzeOK:!!r.spitzeOK,totals:P.scores.slice(),wl:[P.won.slice(),P.lost.slice()],
    dealt:S.dealt,status:S.status.slice(),declPts,myPts:d===0?declPts:120-declPts-(S.game.type==='null'?0:0),coach:coachText(r),myStatus:S.status[0]});
   P.dealer=(P.dealer+1)%3;save()}
  S.lastDelta=[0,0,0];S.lastDelta[d]=S.practice?0:r.score}
@@ -1193,7 +1295,7 @@ function coachText(r){const c=S.coach,me=S.status[0]||'gepasst';const t=[];
  return t.join(' ')}
 
 /* ---------- result ---------- */
-async function showResult(){const r=S.result;const d=r.d;const meWin=(d===0&&r.won)||(d!==0&&!r.won);
+async function showResult(){if(S.result&&S.result.ramsch)return showRamschResult();const r=S.result;const d=r.d;const meWin=(d===0&&r.won)||(d!==0&&!r.won);
  updatePlates(true);
  const title=d===0?(r.won?'Du gewinnst':'Du verlierst'):(r.won?`${NM(d)} gewinnt`:`${NM(d)} verliert`);
  if(meWin){sndWin();if(d===0||!r.won)confetti()}else sndLose();
@@ -1202,8 +1304,8 @@ async function showResult(){const r=S.result;const d=r.d;const meWin=(d===0&&r.w
  openOverlay(`<div class="result parch"><div class="l"><h2>${title}</h2>
   <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;justify-content:center">
   <div style="text-align:center;font-size:clamp(13px,3vh,17px)">${mcards(S.skatFinal)}<div>${S.game.hand?'Skat (Hand)':'Gedrückt'}</div><div style="margin-top:8px">${mcards(S.skat)}</div><div>Gefunden</div></div>
-  <table class="calcT" style="flex:1;min-width:200px"><tr class="hd"><td colspan="2">${gameName(r.g)}</td></tr>${rows}${r.overbid?'<tr><td colspan="2" style="color:#a01010;text-align:center">Überreizt!</td></tr>':''}${r.g.spitze||r.spitzeOK?`<tr><td colspan="2" style="text-align:center;color:${r.spitzeOK?'#1d7a2e':'#a01010'}">${r.spitzeOK?'Spitze! Letzter Stich mit '+(spitzeCard(r.g).r==='B'?SN[spitzeCard(r.g).s]+'-Bube':'der Trumpf-7'):'Angesagte Spitze verloren!'}</td></tr>`:''}${r.kontra?`<tr><td>${r.won?'Gewonnen':'Verloren ('+(r.value*2)+')'} × ${r.re?'Kontra × Re':'Kontra'}</td><td>×${r.kf}</td></tr>`:''}<tr class="tot"><td colspan="2">${r.score>0?'+':''}${r.score} Punkte</td></tr></table></div>
-  ${extra}${S.practice?'<p style="text-align:center;color:#a0521d">Übungsspiel – zählt nicht</p>':''}
+  <table class="calcT" style="flex:1;min-width:200px"><tr class="hd"><td colspan="2">${gameName(r.g)}</td></tr>${rows}${r.overbid?'<tr><td colspan="2" style="color:#a01010;text-align:center">Überreizt!</td></tr>':''}${r.g.spitze||r.spitzeOK?`<tr><td colspan="2" style="text-align:center;color:${r.spitzeOK?'#1d7a2e':'#a01010'}">${r.spitzeOK?'Spitze! Letzter Stich mit '+(spitzeCard(r.g).r==='B'?SN[spitzeCard(r.g).s]+'-Bube':'der Trumpf-7'):'Angesagte Spitze verloren!'}</td></tr>`:''}${r.bock?`<tr><td>🐐 Bockrunde</td><td>×2</td></tr>`:''}${r.kontra?`<tr><td>${r.won?'Gewonnen':'Verloren ('+(r.value*2)+')'} × ${r.re?'Kontra × Re':'Kontra'}</td><td>×${r.kf}</td></tr>`:''}<tr class="tot"><td colspan="2">${r.score>0?'+':''}${r.score} Punkte</td></tr></table></div>
+  ${extra}${S.practice?'<p style="text-align:center;color:#a0521d">Übungsspiel – zählt nicht</p>':''}${r.bockWhy?`<p style="text-align:center;color:#8a4a10">🐐 Neue Bockrunde: ${r.bockWhy.join(', ')}${P.cfg.ramschBock?' · danach 🐷 Ramschrunde':''}</p>`:''}
   <div class="row"><button class="pill sm tan" id="rHist">Spielverlauf</button><button class="pill sm tan" id="rRep">Wiederholen</button><button class="pill sm tan" id="rBug">🐞</button></div></div>
   <div class="r"><div class="emo">${meWin?'🏆':'🌴'}</div><div class="bigscore">${S.practice?'—':(d===0?(r.score>0?'+':'')+r.score:(meWin?'Super!':'Schade'))}</div><button class="pill" id="rGo">Weiter</button></div></div>`);
  return new Promise(res=>{$('#rGo').onclick=()=>{closeOverlay();res()};$('#rHist').onclick=()=>showTricks(()=>showResult().then(res));
@@ -1220,7 +1322,7 @@ function openSheet(tab='list'){const tabs=[['cur','Aktuelles Spiel'],['list','Sp
  const cp=$('#copy');if(cp)cp.onclick=()=>{try{navigator.clipboard.writeText(shareText()).then(()=>toast('Kopiert'),()=>toast('Kopieren nicht möglich'))}catch(e){toast('Kopieren nicht möglich')}};
  const nl=$('#newList');if(nl)nl.onclick=()=>{if(nl.dataset.c){newList();closeOverlay();toast('Neue Spielliste')}else{nl.dataset.c=1;nl.textContent='Wirklich? Nochmal tippen'}}}
 function shareText(){return `Skat am Strand – ${P.names.map((n,i)=>`${n}: ${P.scores[i]}`).join(', ')} nach ${P.history.length} Spielen`}
-function newList(){P.scores=[0,0,0];P.history=[];P.won=[0,0,0];P.lost=[0,0,0];P.date=new Date().toISOString();save();updatePlates(S.phase==='done')}
+function newList(){P.gameNo=0;P.scores=[0,0,0];P.history=[];P.won=[0,0,0];P.lost=[0,0,0];P.date=new Date().toISOString();save();updatePlates(S.phase==='done')}
 function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{day:'numeric',month:'long',year:'numeric'});
  if(tab==='cur'){if(!S.dealt)return'<p>Noch kein Spiel.</p>';const done=S.phase==='done'||S.phase==='idle';const g=S.game;
   const rows=[0,1,2].map(k=>{const seat=(S.dealer+1+k)%3;const cards=S.dealt.hands[seat].map(id=>DECK.find(c=>c.id===id));const show=seat===0||done;const st=S.status&&S.status[seat]||'';
@@ -1230,13 +1332,13 @@ function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{da
  if(tab==='list'){const X=b=>b?'X':'';
   const head=`<thead><tr><th class="v" rowspan="2">Spielnummer</th><th class="v" rowspan="2">Grundwert</th><th class="v" rowspan="2">Mit</th><th class="v" rowspan="2">Ohne</th><th class="v" rowspan="2">Hand</th><th class="v" rowspan="2">Schneider</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Schwarz</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Ouvert</th><th class="v" rowspan="2">Sonderregeln</th><th rowspan="2">Spiel-<br>wert</th>${P.names.map(n=>`<th class="pn" colspan="3">${n}</th>`).join('')}</tr>
    <tr>${P.names.map(()=>'<th>Punkte</th><th class="v">Gewonnen</th><th class="v">Verloren</th>').join('')}</tr></thead>`;
-  const body=P.history.map(h=>{if(h.passed)return`<tr><td>${h.no}</td><td colspan="11"><i>eingepasst</i></td>${[0,1,2].map(()=>'<td></td><td></td><td></td>').join('')}</tr>`;
+  const body=P.history.map(h=>{if(h.ramsch)return`<tr class="lost"><td>${h.no}</td><td>${gameIcon(h.g)}</td><td colspan="8"><i>Ramsch${h.won?' · Durchmarsch':''}</i></td><td>${h.bock?'Bock':''}</td><td>${h.value}</td>${[0,1,2].map(i=>h.scores[i]?`<td class="pc">${h.totals[i]}</td><td></td><td></td>`:'<td></td><td></td><td></td>').join('')}</tr>`;if(h.passed)return`<tr><td>${h.no}</td><td colspan="11"><i>eingepasst</i></td>${[0,1,2].map(()=>'<td></td><td></td><td></td>').join('')}</tr>`;
    const g=h.g;const nul=g.type==='null';
-   return`<tr class="${h.won?'':'lost'}"><td>${h.no}</td><td>${gameIcon(g)}</td><td>${!nul&&h.sp&&h.sp.mit?h.sp.n:''}</td><td>${!nul&&h.sp&&!h.sp.mit?h.sp.n:''}</td><td>${X(g.hand)}</td><td>${X(h.schneider)}</td><td>${X(g.schneiderA)}</td><td>${X(h.schwarz)}</td><td>${X(g.schwarzA)}</td><td>${X(g.ouvert)}</td><td>${[h.overbid?'überreizt':'',g.spitze?'Spitze angesagt':h.spitzeOK?'Spitze':'',g.type==='saxon'?'Sächs.':'',h.re?'Kontra Re':h.kontra?'Kontra':'',nul?'Null':''].filter(Boolean).join(' ')}</td><td>${h.won?'':'−'}${Math.abs(h.score)}</td>
+   return`<tr class="${h.won?'':'lost'}"><td>${h.no}</td><td>${gameIcon(g)}</td><td>${!nul&&h.sp&&h.sp.mit?h.sp.n:''}</td><td>${!nul&&h.sp&&!h.sp.mit?h.sp.n:''}</td><td>${X(g.hand)}</td><td>${X(h.schneider)}</td><td>${X(g.schneiderA)}</td><td>${X(h.schwarz)}</td><td>${X(g.schwarzA)}</td><td>${X(g.ouvert)}</td><td>${[h.overbid?'überreizt':'',g.spitze?'Spitze angesagt':h.spitzeOK?'Spitze':'',g.type==='saxon'?'Sächs.':'',h.bock?'Bock':'',h.re?'Kontra Re':h.kontra?'Kontra':'',nul?'Null':''].filter(Boolean).join(' ')}</td><td>${h.won?'':'−'}${Math.abs(h.score)}</td>
     ${[0,1,2].map(i=>i===h.d?`<td class="pc">${h.totals[i]}</td><td>${h.won?h.wl[0][i]:''}</td><td>${h.won?'':h.wl[1][i]}</td>`:'<td></td><td></td><td></td>').join('')}</tr>`}).join('')||`<tr><td colspan="21" style="padding:20px">Noch keine Spiele – viel Glück!</td></tr>`;
   return`<table class="list">${head}<tbody>${body}</tbody><tfoot><tr><td colspan="12" style="background:transparent;color:#5b4630;font-size:14px;text-align:right">Spielliste vom ${dt}</td>${P.scores.map(s=>`<td colspan="3">${s}</td>`).join('')}</tr></tfoot></table>
    <div class="row"><button class="pill sm tan" id="newList">Neue Liste</button></div>`}
- const rows=P.history.slice().reverse().map(h=>{const cards=h.dealt.hands[0].map(id=>DECK.find(c=>c.id===id));const my=h.passed?null:(h.d===0?h.declPts:120-h.declPts);
+ const rows=P.history.slice().reverse().map(h=>{const cards=h.dealt.hands[0].map(id=>DECK.find(c=>c.id===id));const my=h.passed?null:h.ramsch?h.myPts:(h.d===0?h.declPts:120-h.declPts);
   return`<tr><td>${h.no}</td><td style="font-size:13px">${mcards(sortHand(cards,h.g))}</td><td>${h.myStatus||'gepasst'}</td><td>${h.passed?'–':gameIcon(h.g)}</td><td style="min-width:130px">${my==null?'':`<div class="bar"><i style="width:${my/1.2}%"></i><b style="left:25.8%"></b><b style="left:50.4%"></b><b style="left:75%"></b></div><small>${my} Augen ${h.d===0?'(Allein)':'(Gegenspiel)'}</small>`}</td><td style="text-align:left;font-size:13px;max-width:260px">${h.coach||''}</td></tr>`}).join('');
  return`<p>Coach analysiert deine Spiele – gratis. 🌴</p><table class="list"><thead><tr><th>Nr.</th><th>Deine Karten</th><th>Gereizt bis</th><th>Spiel</th><th>Erzielte Augen<br><small>31 · 61 · 90 · 120</small></th><th>Analyse</th></tr></thead><tbody>${rows||'<tr><td colspan="6" style="padding:20px">Noch keine Spiele.</td></tr>'}</tbody></table>`}
 
@@ -1247,13 +1349,13 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  <p class="mh">Thema</p><div class="row">${THEMES.map(([k,l])=>`<button class="chip${curTheme()===k?' sel':''}" data-th="${k}">${l}</button>`).join('')}</div>
  <p class="mh">Dialekt</p><div class="row">${DIALECTS.map(([k,l])=>`<button class="chip${(c.dialect||'hoch')===k?' sel':''}" data-dia="${k}">${l}</button>`).join('')}</div>
  <p class="mh">Spielstärke</p><div class="row">${['Leicht','Gut','Schwer'].map((l,i)=>`<button class="chip${c.level===i?' sel':''}" data-l="${i}">${['🐣','😎','🧠'][i]} ${l}</button>`).join('')}</div>
- <p class="mh">Sonderregeln</p><div class="row">${ch('spitze','Spitze')}${ch('saxon','Sächsische Spitze')}${ch('kontra','Kontra & Re')}</div>
+ <p class="mh">Regeln</p><div class="row"><button class="pill sm" id="mHouse">⚙️ Hausregeln: Liste, Ramsch, Bock …</button></div>
  <p class="mh">Ton</p><div class="row">${ch('sfx','Kartengeräusche')}${ch('music','Musik')}${ch('amb','Meer & Möwen')}${ch('voice','Stimmen')}</div>
  <p class="mh">Ansicht</p><div class="row">${ch('four','Vierfarbenblatt')}${ch('fast','Schnelles Tempo')}</div>
  <div class="row"><button class="pill sm tan" id="mRules">Regeln</button><button class="pill sm tan" id="mList">Spielliste</button><button class="pill sm tan" id="mNew">Was ist neu</button></div>
  <div class="row"><button class="pill sm" id="mPl">👤 Spieler anpassen</button><button class="pill sm" id="mFont">🔤 Schrift & Größe</button><button class="pill sm" id="mLink">🔗 Einstellungen mitnehmen</button></div>
  <p style="text-align:center;opacity:.7;font-size:13px;margin-top:12px">Alle Einstellungen werden automatisch gespeichert.<br>Regeländerungen gelten ab dem nächsten Spiel.</p></div>`);
- $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mPl').onclick=openPlayers;$('#mFont').onclick=openFonts;$('#mLink').onclick=openTransfer;$('#mList').onclick=()=>openSheet('list');
+ $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mPl').onclick=openPlayers;$('#mHouse').onclick=openHouse;$('#mFont').onclick=openFonts;$('#mLink').onclick=openTransfer;$('#mList').onclick=()=>openSheet('list');
  ov.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{c.theme=b.dataset.th;save();applyTheme();openMenu()});
  ov.querySelectorAll('[data-dia]').forEach(b=>b.onclick=()=>{c.dialect=b.dataset.dia;save();openMenu();setTimeout(()=>quip(1,'greet',1),300);setTimeout(()=>quip(2,'greet',1),2200)});
  ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{c.level=+b.dataset.l;save();openMenu()});
@@ -1338,7 +1440,7 @@ addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(la
 layout();
 window.__S=S;window.__P=P;window.__errors=[];
 (async function main(){updatePlates();if(!P.seen&&!AUTO){P.seen=true;save();openRules();await new Promise(r=>{$('#rOk').onclick=()=>{closeOverlay();r()}})}
- while(true){try{await playGame()}catch(e){console.error(e);window.__errors.push(String(e&&e.stack||e));await sleep(1000)}}})();
+ while(true){try{await playGame();if(!S.practice&&P.history.length>=(P.cfg.listLen||12))await listEnd()}catch(e){console.error(e);window.__errors.push(String(e&&e.stack||e));await sleep(1000)}}})();
 </script>
 </body>
 </html>

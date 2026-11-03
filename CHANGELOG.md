@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.39.0 (2026-11-02): Skat Ramsch, Bock, list length
+
+- skat/index.html v1.14.0: P.queue of upcoming bock/ramsch games, gameMode() per deal; playRamsch (Schieben with no jacks, aiRamsch, Jungfrau/Durchmarsch/skat-to-last-trick scoring), Grand Hand in Ramsch rounds (declarer leads), Bock ×2 with configurable triggers, listLen 1–12 with listEnd ceremony; house-rules panel with switches.
+
 ## 2.38.0 (2026-11-02): Skat sanity rules, bug reports, voice sliders
 
 - skat/index.html v1.13.0: sane() filter before every AI move (no defender lead of a non-top trump A/10, no losing 10/A when last to play on an opponent trick, avoids patterns in P.learn); Leicht random rate 35% → 22%. 🐞 report from ⏩ and the result screen stores moveKey patterns and copies a text report. Per-player pitch/rate multipliers (iOS Safari exposes only a limited voice list to web pages).
