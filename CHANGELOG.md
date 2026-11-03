@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.3 (2026-11-03): Skat pile position, landscape mixer
+
+- skat/index.html v1.17.4: pilePos(0) moved; #mixer.wide two-column layout beside the button in landscape, max-height with scroll.
+
 ## 2.42.2 (2026-11-02): Skat per-player trick piles
 
 - skat/index.html v1.17.3: renderPile draws #pile/#pile1/#pile2 from S.tricks (one back per trick, stacked upward, dashed slot when empty); collectTrick flies to pilePos(w).

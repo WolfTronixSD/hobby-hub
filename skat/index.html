@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.3">
+<meta name="version" content="1.17.4">
 <meta name="version" content="1.15.4">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
@@ -173,9 +173,10 @@ table.list tr.lost td.pc{color:#a01010}
 .stgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}.portrait .stgrid{grid-template-columns:1fr}.strow{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed rgba(128,100,60,.35);padding:3px 0;font:15px system-ui}
 .achs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}.ach{border-radius:14px;padding:8px;background:rgba(128,128,128,.12);opacity:.45;filter:grayscale(1);display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
 .ach.on{opacity:1;filter:none;background:rgba(255,213,74,.25);box-shadow:0 0 0 2px #ffd54a inset}.ach .ai{font-size:28px}.ach b{font:700 14px system-ui}.ach small{font:12px system-ui;opacity:.8}
-#mixer{position:absolute;z-index:700;width:min(86vw,300px);background:rgba(18,30,26,.94);color:#fff;border-radius:20px;padding:12px 14px;box-shadow:0 14px 40px rgba(0,0,0,.45);border:1.5px solid rgba(255,255,255,.18);animation:mxIn .18s ease-out;font:600 14px system-ui}
+#mixer{position:absolute;z-index:700;width:min(86vw,300px);max-height:calc(100% - 16px);overflow:auto;-webkit-overflow-scrolling:touch;background:rgba(18,30,26,.94);color:#fff;border-radius:20px;padding:12px 14px;box-shadow:0 14px 40px rgba(0,0,0,.45);border:1.5px solid rgba(255,255,255,.18);animation:mxIn .18s ease-out;font:600 14px system-ui}
 @keyframes mxIn{from{opacity:0;transform:translateY(-6px) scale(.97)}}
 #mixer .mxmute{width:100%;border:none;border-radius:12px;padding:9px;background:rgba(255,255,255,.12);color:#fff;font:700 15px system-ui;margin-bottom:6px}#mixer .mxmute.on{background:#d33}
+.mixer-x{}#mixer.wide{width:min(72vw,560px);display:grid;grid-template-columns:1fr 1fr;column-gap:16px;align-content:start}#mixer.wide .mxmute{grid-column:1/-1}
 .mxrow{display:flex;align-items:center;gap:10px;padding:5px 0}.mxrow.dim .mxc{opacity:.45}.mxic{width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.12);font-size:20px;flex:none}
 .mxc{flex:1;display:flex;flex-direction:column;gap:2px}.mxc input{width:100%;accent-color:#ffd54a;height:26px}
 .vrow{display:flex;align-items:center;gap:6px;margin:6px 0;flex-wrap:wrap}.vrow .vl{flex:1;min-width:150px;font:600 15px system-ui}.vrow .chip{padding:5px 10px}.chip.rec{background:#d22;color:#fff;border-color:#d22;animation:recP 1s infinite}@keyframes recP{50%{opacity:.6}}
@@ -343,8 +344,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.3';
+const SKAT_VERSION='1.17.4';
 const SKAT_CHANGES=[
+ ['1.17.4','2026-11-03','Dein Stichstapel liegt jetzt weiter links unten (nicht mehr unter Andy) · Mischpult im Querformat zweispaltig, alle Regler sichtbar'],
  ['1.17.3','2026-11-03','Jeder Spieler hat seinen eigenen Stichstapel: je mehr Stiche, desto höher der Stapel – leerer Platz = noch Jungfrau. Stiche fliegen zum Stapel des Gewinners'],
  ['1.17.2','2026-11-03','Keine Augen mehr während des Spiels: Stichstapel, letzter Stich und Coach-Tipps zeigen erst am Ende Punkte'],
  ['1.17.1','2026-11-03','Lautsprecher-Knopf öffnet ein Mischpult: Gesamt, Musik, Hintergrund, Karten & Effekte, Stimmen einzeln regeln, an/aus und Alles stumm'],
@@ -741,7 +743,7 @@ function myPilePts(){const r=S.result;if(S.phase==='done'&&r){if(r.ramsch)return
 function myPileCount(){if(!S.won)return 0;if(S.game&&S.game.ramsch||S.declarer===0)return S.won[0].length;return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+S.won[i].length,0)}
 function pileW(){return L.cw*(L.land?.28:.33)}
 function pilePos(seat){const w=pileW(),W=L.W,H=L.H;
- if(seat===0)return L.land?[safeSide()+W*.07+Math.min(62,Math.max(40,H*.082))+14+w*.65,H*.62]:[64+w*.65,H*.50];
+ if(seat===0)return L.land?[safeSide()+W*.07+Math.min(62,Math.max(40,H*.082))+14+w*.65,H*.74]:[12+w*.65,H*.77];
  if(L.land)return[seat===1?W*.3:W*.7,H*.52];
  return[seat===1?W*.17:W*.83,H*.395]}
 function pileEl(seat){if(seat===0)return $('#pile');let el=$('#pile'+seat);if(!el){el=document.createElement('div');el.id='pile'+seat;el.className='opile';el.onclick=()=>showLast();layer.parentNode.insertBefore(el,layer)}return el}
@@ -1814,7 +1816,7 @@ function openMixer(){let m=$('#mixer');if(m){m.remove();return}const r=$('#btnMu
   m.querySelectorAll('[data-v]').forEach(s=>{s.oninput=()=>setVol(s.dataset.v,+s.value);s.onchange=()=>{save();if(s.dataset.v==='voice'||s.dataset.v==='all'){try{speechSynthesis.cancel()}catch(e){}say(Math.random()<.5?1:2,'Hallo!')}else if(s.dataset.v==='sfx'){try{sndCard(0)}catch(e){}}}});
   m.querySelectorAll('[data-mt]').forEach(b=>b.onclick=()=>{const k=b.dataset.mt;if(k==='all'){setMute(!P.cfg.muted);draw();return}P.cfg[k]=!on(k);save();
    if(k==='music'){if(P.cfg.music){ac();startMusic()}else stopMusic()}if(k==='amb'){if(P.cfg.amb){ac();startAmbient()}else stopAmbient()}if(k==='voice'&&!P.cfg.voice)try{speechSynthesis.cancel()}catch(e){}draw()})};
- draw();($('#stage')||document.body).appendChild(m);const W=innerWidth;m.style.top=(r.bottom+8)+'px';m.style.right=Math.max(6,W-r.right-6)+'px';
+ draw();($('#stage')||document.body).appendChild(m);const W=innerWidth,H=innerHeight;if(W>H){m.classList.add('wide');m.style.top='8px';m.style.right=Math.max(6,W-r.left+8)+'px'}else{m.style.top=(r.bottom+8)+'px';m.style.right=Math.max(6,W-r.right-6)+'px'}
  setTimeout(()=>{const off=e=>{if(!m.contains(e.target)&&!$('#btnMute').contains(e.target)){m.remove();document.removeEventListener('pointerdown',off,true)}};document.addEventListener('pointerdown',off,true)},0)}
 $('#btnMute').onclick=e=>{e.stopPropagation();openMixer()};
 $('#bFast').onclick=openActions;
