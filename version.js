@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.42.1";
+const APP_VERSION = "2.42.2";
 const CHANGELOG = [
+  {
+    version: "2.42.2",
+    date: "2026-11-02",
+    at: "2026-11-03T07:22:00Z",
+    title: "Skat: everyone's trick pile",
+    changes: [
+      "🃏 Skat am Strand v1.17.3: each player has their own trick pile that grows with every trick, so you can see at a glance who is still a Jungfrau"
+    ]
+  },
   {
     version: "2.42.1",
     date: "2026-11-02",

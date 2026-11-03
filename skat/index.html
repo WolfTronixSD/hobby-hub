@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.2">
+<meta name="version" content="1.17.3">
 <meta name="version" content="1.15.4">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
@@ -279,7 +279,8 @@ html body .pname{font-size:calc(18px*var(--uis))}
 .tgl{flex:none;width:54px;height:30px;border-radius:999px;border:2px solid rgba(90,60,30,.35);background:#a89a86;position:relative;padding:0}.tgl i{position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#4a4a4a;transition:all .2s}
 .tgl.on{background:#d8c3a0}.tgl.on i{left:27px;background:radial-gradient(circle at 35% 30%,#ffb04a,#e86a0a)}
 .rcs{position:relative;display:inline-block;vertical-align:middle}.rcs .card{position:absolute;left:3px;top:3px}
-#pile{position:absolute;z-index:35;display:none;cursor:pointer}#pile .card{position:absolute;left:0;top:0;transition:none}
+#pile,.opile{position:absolute;z-index:35;display:none;cursor:pointer}#pile .card,.opile .card{position:absolute;left:0;top:0;transition:none;box-shadow:0 .02em .05em rgba(0,0,0,.35)}.opile{z-index:34}
+.pempty{position:absolute;left:0;bottom:0;width:1em;height:1.5em;border-radius:.08em;border:2px dashed rgba(255,255,255,.55);background:rgba(255,255,255,.08)}
 #pile b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9;min-width:2.1em;height:2.1em;border-radius:50%;background:rgba(30,30,34,.85);color:#fff;font:700 clamp(15px,4vh,24px)/2.1em system-ui;text-align:center;padding:0 .2em;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 body.asking #gameInfo{visibility:hidden}
 .landscape.asking #bidUI{top:35%;gap:2.6vh}.portrait.asking #bidUI{top:36%}
@@ -342,8 +343,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.2';
+const SKAT_VERSION='1.17.3';
 const SKAT_CHANGES=[
+ ['1.17.3','2026-11-03','Jeder Spieler hat seinen eigenen Stichstapel: je mehr Stiche, desto höher der Stapel – leerer Platz = noch Jungfrau. Stiche fliegen zum Stapel des Gewinners'],
  ['1.17.2','2026-11-03','Keine Augen mehr während des Spiels: Stichstapel, letzter Stich und Coach-Tipps zeigen erst am Ende Punkte'],
  ['1.17.1','2026-11-03','Lautsprecher-Knopf öffnet ein Mischpult: Gesamt, Musik, Hintergrund, Karten & Effekte, Stimmen einzeln regeln, an/aus und Alles stumm'],
  ['1.17.0','2026-11-03','Mischen & Austeilen mit Animation · Emoji-Feuerwerk bei großen Stichen (passend zum Thema) · Emoji-Reaktionen, Tanzen und Wackeln bei Kontra · Gegner-Handkarten mit Themen-Rückseite · Andy frech & riskant, Melli vorsichtig & schlau · Statistik & 17 Erfolge · Coach-Tipps während des Spiels · Tagesaufgabe mit Serie · Ukulele am Strand, Mundharmonika im Western'],
@@ -733,16 +735,23 @@ function animatePlay(seat,card){let el;
  if(seat===0&&handEls.has(card.id)){el=handEls.get(card.id);handEls.delete(card.id);el.classList.remove('dim','hint');el.style.pointerEvents='none'}
  else{el=makeCardEl(card);el.style.pointerEvents='none';layer.appendChild(el);const o=L.origin[seat];setT(el,o[0],o[1],seat===1?-40:40,.35);el.getBoundingClientRect()}
  el.style.zIndex=300+trickEls.length;const s=L.slots[seat];setT(el,s[0],s[1],s[2],L.ts);trickEls.push({el,seat});if(seat===0)renderHand();sndCard(seat)}
-async function collectTrick(w){sndSweep(w);if(w===0)setTimeout(sndPling,150);const o=L.origin[w];trickEls.forEach(t=>{setT(t.el,o[0],o[1],w===1?-30:w===2?30:0,.3);t.el.style.opacity='0'});const old=trickEls;trickEls=[];await sleep(380);old.forEach(t=>t.el.remove())}
+async function collectTrick(w){sndSweep(w);if(w===0)setTimeout(sndPling,150);const o=pilePos(w);trickEls.forEach(t=>{setT(t.el,o[0],o[1],w===1?-10:w===2?10:0,pileW()/L.cw);t.el.style.opacity='0'});const old=trickEls;trickEls=[];await sleep(380);old.forEach(t=>t.el.remove())}
 function myPilePts(){const r=S.result;if(S.phase==='done'&&r){if(r.ramsch)return r.pts[0];if(r.d===0)return r.declPts;return 120-r.declPts}
  if(!S.won)return 0;if(S.game&&S.game.ramsch)return cardPts(S.won[0]);if(S.declarer===0)return cardPts(S.won[0]);return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+cardPts(S.won[i]),0)}
 function myPileCount(){if(!S.won)return 0;if(S.game&&S.game.ramsch||S.declarer===0)return S.won[0].length;return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+S.won[i].length,0)}
-function renderPile(){const el=$('#pile');const n=myPileCount();if(!n||!L.cw||!(S.phase==='play'||S.phase==='done')){el.style.display='none';return}
- const w=L.cw*(L.land?.3:.34);el.style.display='block';el.style.fontSize=w+'px';el.style.width=w*1.25+'px';el.style.height=w*1.6+'px';
- if(L.land){el.style.left=`calc(env(safe-area-inset-left,0px) + 7% + ${Math.min(62,Math.max(40,innerHeight*.082))+14}px)`;el.style.top='57%'}else{el.style.left='64px';el.style.top='45%'}
- const k=Math.min(4,Math.ceil(n/3));el.innerHTML=Array.from({length:k},(_,i)=>`<div class="card back" style="transform:translate(${i*.05}em,${-i*.05}em) rotate(${(i%2?6:-4)+i}deg);z-index:${i}"></div>`).join('')+(S.phase==='done'?`<b>${myPilePts()}</b>`:'')}
+function pileW(){return L.cw*(L.land?.28:.33)}
+function pilePos(seat){const w=pileW(),W=L.W,H=L.H;
+ if(seat===0)return L.land?[safeSide()+W*.07+Math.min(62,Math.max(40,H*.082))+14+w*.65,H*.62]:[64+w*.65,H*.50];
+ if(L.land)return[seat===1?W*.3:W*.7,H*.52];
+ return[seat===1?W*.17:W*.83,H*.395]}
+function pileEl(seat){if(seat===0)return $('#pile');let el=$('#pile'+seat);if(!el){el=document.createElement('div');el.id='pile'+seat;el.className='opile';el.onclick=()=>showLast();layer.parentNode.insertBefore(el,layer)}return el}
+function renderPile(){for(const seat of [0,1,2]){const el=pileEl(seat);const show=L.cw&&S.tricks&&(S.phase==='play'||S.phase==='done')&&S.game;if(!show){el.style.display='none';continue}
+ const n=S.tricks[seat]||0,w=pileW(),dy=w*.17,[x,y]=pilePos(seat);el.style.display='block';el.style.fontSize=w+'px';el.style.width=w*1.3+'px';const h=w*1.5+Math.max(0,n-1)*dy;el.style.height=h+'px';
+ el.style.left=(x-w*.65)+'px';el.style.top=(y+w*.75-h)+'px';el.classList.toggle('virgin',n===0);
+ let html=n===0?`<div class="pempty"></div>`:Array.from({length:n},(_,i)=>`<div class="card back" style="top:${(n-1-i)*dy}px;transform:rotate(${[-4,3,-2,5,-5,2,-3,4,-1,3][i]}deg) translateX(${[0,.04,-.03,.02,-.04,.03,0,-.02,.04,-.01][i]}em);z-index:${i}"></div>`).join('');
+ if(seat===0&&S.phase==='done')html+=`<b>${myPilePts()}</b>`;el.innerHTML=html}}
 $('#pile').onclick=()=>showLast();
-function clearTable(){$('#pile').style.display='none';trickEls.forEach(t=>t.el.remove());trickEls=[];for(const[,el]of handEls)el.remove();handEls.clear();showSkat(false)}
+function clearTable(){$('#pile').style.display='none';[1,2].forEach(i=>{const e=$('#pile'+i);if(e)e.style.display='none'});trickEls.forEach(t=>t.el.remove());trickEls=[];for(const[,el]of handEls)el.remove();handEls.clear();showSkat(false)}
 
 /* ---------- UI bits ---------- */
 function bubble(seat,txt,ms=1500){const b=$('#bub'+seat);b.textContent=txt;b.classList.add('show');clearTimeout(b._t);if(ms)b._t=setTimeout(()=>b.classList.remove('show'),TURBO?5:ms)}

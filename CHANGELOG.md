@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.2 (2026-11-02): Skat per-player trick piles
+
+- skat/index.html v1.17.3: renderPile draws #pile/#pile1/#pile2 from S.tricks (one back per trick, stacked upward, dashed slot when empty); collectTrick flies to pilePos(w).
+
 ## 2.42.1 (2026-11-02): Skat hides points during play
 
 - skat/index.html v1.17.2: pile counter and last-trick Augen only when phase is done; coach tips without numbers; renderPile after settle.
