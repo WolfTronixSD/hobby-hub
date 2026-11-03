@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.5">
-<meta name="version" content="1.17.5">
+<meta name="version" content="1.17.6">
+<meta name="version" content="1.17.6">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -344,8 +344,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.5';
+const SKAT_VERSION='1.17.6';
 const SKAT_CHANGES=[
+ ['1.17.6','2026-11-03','Karten auf der Hand wieder enger zusammen (Knöpfe bleiben am Rand)'],
  ['1.17.5','2026-11-03','Runde Knöpfe näher an den Rand · mehr Platz für die Karten auf der Hand'],
  ['1.17.4','2026-11-03','Dein Stichstapel liegt jetzt weiter links unten (nicht mehr unter Andy) · Mischpult im Querformat zweispaltig, alle Regler sichtbar'],
  ['1.17.3','2026-11-03','Jeder Spieler hat seinen eigenen Stichstapel: je mehr Stiche, desto höher der Stapel – leerer Platz = noch Jungfrau. Stiche fliegen zum Stapel des Gewinners'],
@@ -707,7 +708,7 @@ function safeBottom(){const d=document.createElement('div');d.style.cssText='pos
 function layout(){const W=innerWidth,H=innerHeight,land=W>=H;document.body.classList.toggle('landscape',land);document.body.classList.toggle('portrait',!land);
  const sb=safeBottom();
  if(land){const cw=Math.min(H*.4,W*.16);const cx=W*.5,cy=H*.44;
-  L={W,H,land,cw,ch:cw*1.5,handCx:W*.5,handTop:H-cw*1.5*.62,handSpan:Math.min(W*.86,W-2*(safeSide()+W*.015+Math.min(62,Math.max(40,H*.082))+10)),ts:.74,
+  L={W,H,land,cw,ch:cw*1.5,handCx:W*.5,handTop:H-cw*1.5*.62,handSpan:Math.min(W*.72,W-2*(safeSide()+W*.015+Math.min(62,Math.max(40,H*.082))+10)),ts:.74,
    slots:[[cx,cy+H*.08,4],[cx-W*.085,cy-H*.01,-14],[cx+W*.085,cy-H*.02,12]],origin:[[W*.5,H+cw],[W*.26,H*.52],[W*.74,H*.52]],deck:[W*.5,H*.6]};
  }else{const cw=Math.min(W*.27,H*.165);const cx=W*.5,cy=H*.47;
   L={W,H,land,cw,ch:cw*1.5,handCx:W*.5,handTop:H-cw*1.5*.86-sb,handSpan:W-14,ts:.88,
