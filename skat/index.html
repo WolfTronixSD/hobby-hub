@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.4">
-<meta name="version" content="1.15.4">
+<meta name="version" content="1.17.5">
+<meta name="version" content="1.17.5">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -40,19 +40,19 @@ button{font-family:inherit;cursor:pointer}
 .rbtn{position:absolute;width:clamp(40px,8.2vh,62px);height:clamp(40px,8.2vh,62px);border-radius:50%;border:2.5px solid rgba(255,255,255,.92);background:rgba(255,255,255,.07);color:#fff;display:grid;place-items:center;padding:0;z-index:30}
 .rbtn svg{width:58%;height:58%;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .rbtn:active{transform:scale(.92)}.rbtn.on{background:rgba(255,213,74,.35)}
-#btnBack{left:calc(var(--sal) + 7%);top:calc(var(--sat) + 1.6vh)}
-#title{position:absolute;left:calc(var(--sal) + 7% + clamp(40px,8.2vh,62px) + 8px);top:calc(var(--sat) + 1.6vh);height:clamp(40px,8.2vh,62px);display:flex;align-items:center;color:#fff;font:clamp(16px,4vh,28px) Georgia,serif;text-shadow:0 1px 3px rgba(0,0,0,.4);z-index:30}
-#btnScore{right:calc(var(--sar) + 7%);top:calc(var(--sat) + 1.6vh)}
-#btnMute{right:calc(var(--sar) + 7%);top:calc(var(--sat) + 1.6vh + clamp(40px,8.2vh,62px) + 10px)}
+#btnBack{left:calc(var(--sal) + 1.5%);top:calc(var(--sat) + 1.6vh)}
+#title{position:absolute;left:calc(var(--sal) + 1.5% + clamp(40px,8.2vh,62px) + 8px);top:calc(var(--sat) + 1.6vh);height:clamp(40px,8.2vh,62px);display:flex;align-items:center;color:#fff;font:clamp(16px,4vh,28px) Georgia,serif;text-shadow:0 1px 3px rgba(0,0,0,.4);z-index:30}
+#btnScore{right:calc(var(--sar) + 1.5%);top:calc(var(--sat) + 1.6vh)}
+#btnMute{right:calc(var(--sar) + 1.5%);top:calc(var(--sat) + 1.6vh + clamp(40px,8.2vh,62px) + 10px)}
 .portrait #btnMute{right:62px;top:calc(var(--sat) + 6px)}
 #btnMute.off .w1{display:none}#btnMute.off .x1{display:inline!important}
-#gameInfo{position:absolute;left:calc(var(--sal) + 7%);top:calc(var(--sat) + 1.6vh + clamp(40px,8.2vh,62px) + 8px);background:rgba(0,0,0,.35);color:#fff;border-radius:14px;padding:4px 10px;font:600 clamp(11px,2.6vh,16px) system-ui;display:none;z-index:30;align-items:center;gap:6px}
+#gameInfo{position:absolute;left:calc(var(--sal) + 1.5%);top:calc(var(--sat) + 1.6vh + clamp(40px,8.2vh,62px) + 8px);background:rgba(0,0,0,.35);color:#fff;border-radius:14px;padding:4px 10px;font:600 clamp(11px,2.6vh,16px) system-ui;display:none;z-index:30;align-items:center;gap:6px}
 #gameInfo .si{width:1.1em;height:1.1em;display:inline-block;vertical-align:-.15em}
 .portrait #btnBack{left:10px;top:calc(var(--sat) + 6px)}.portrait #title{left:62px;top:calc(var(--sat) + 6px)}.portrait #btnScore{right:10px;top:calc(var(--sat) + 6px)}.portrait .rbtn{width:42px;height:42px}
 .portrait #title{height:42px;font-size:17px}.portrait #gameInfo{left:50%;transform:translateX(-50%);top:auto;bottom:calc(var(--sab) + 26vw + 60px);white-space:nowrap}
-#leftIcons .rbtn{left:calc(var(--sal) + 7%)}
+#leftIcons .rbtn{left:calc(var(--sal) + 1.5%)}
 .landscape #bLast{top:56%}.landscape #bInfo{top:70%}.landscape #bFast{top:84%}
-.landscape #btnHint{right:calc(var(--sar) + 7%);top:84%}
+.landscape #btnHint{right:calc(var(--sar) + 1.5%);top:84%}
 .portrait #leftIcons .rbtn{left:10px}.portrait #bLast{top:44%}.portrait #bInfo{top:51%}.portrait #bFast{top:58%}
 .portrait #btnHint{right:10px;top:58%}
 #bidUI{position:absolute;left:50%;transform:translateX(-50%);display:none;flex-direction:column;gap:4.5vh;align-items:center;z-index:60}
@@ -344,8 +344,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.4';
+const SKAT_VERSION='1.17.5';
 const SKAT_CHANGES=[
+ ['1.17.5','2026-11-03','Runde Knöpfe näher an den Rand · mehr Platz für die Karten auf der Hand'],
  ['1.17.4','2026-11-03','Dein Stichstapel liegt jetzt weiter links unten (nicht mehr unter Andy) · Mischpult im Querformat zweispaltig, alle Regler sichtbar'],
  ['1.17.3','2026-11-03','Jeder Spieler hat seinen eigenen Stichstapel: je mehr Stiche, desto höher der Stapel – leerer Platz = noch Jungfrau. Stiche fliegen zum Stapel des Gewinners'],
  ['1.17.2','2026-11-03','Keine Augen mehr während des Spiels: Stichstapel, letzter Stich und Coach-Tipps zeigen erst am Ende Punkte'],
@@ -706,7 +707,7 @@ function safeBottom(){const d=document.createElement('div');d.style.cssText='pos
 function layout(){const W=innerWidth,H=innerHeight,land=W>=H;document.body.classList.toggle('landscape',land);document.body.classList.toggle('portrait',!land);
  const sb=safeBottom();
  if(land){const cw=Math.min(H*.4,W*.16);const cx=W*.5,cy=H*.44;
-  L={W,H,land,cw,ch:cw*1.5,handCx:W*.5,handTop:H-cw*1.5*.62,handSpan:Math.min(W*.7,W-2*(safeSide()+W*.07+Math.min(62,Math.max(40,H*.082))+10)),ts:.74,
+  L={W,H,land,cw,ch:cw*1.5,handCx:W*.5,handTop:H-cw*1.5*.62,handSpan:Math.min(W*.86,W-2*(safeSide()+W*.015+Math.min(62,Math.max(40,H*.082))+10)),ts:.74,
    slots:[[cx,cy+H*.08,4],[cx-W*.085,cy-H*.01,-14],[cx+W*.085,cy-H*.02,12]],origin:[[W*.5,H+cw],[W*.26,H*.52],[W*.74,H*.52]],deck:[W*.5,H*.6]};
  }else{const cw=Math.min(W*.27,H*.165);const cx=W*.5,cy=H*.47;
   L={W,H,land,cw,ch:cw*1.5,handCx:W*.5,handTop:H-cw*1.5*.86-sb,handSpan:W-14,ts:.88,
@@ -743,7 +744,7 @@ function myPilePts(){const r=S.result;if(S.phase==='done'&&r){if(r.ramsch)return
 function myPileCount(){if(!S.won)return 0;if(S.game&&S.game.ramsch||S.declarer===0)return S.won[0].length;return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+S.won[i].length,0)}
 function pileW(){return L.cw*(L.land?.28:.33)}
 function pilePos(seat){const w=pileW(),W=L.W,H=L.H;
- if(seat===0)return L.land?[safeSide()+W*.07+Math.min(62,Math.max(40,H*.082))+14+w*.65,H*.74]:[12+w*.65,H*.77];
+ if(seat===0)return L.land?[safeSide()+W*.015+Math.min(62,Math.max(40,H*.082))+14+w*.65,H*.74]:[12+w*.65,H*.77];
  if(L.land)return[seat===1?W*.3:W*.7,H*.52];
  return[seat===1?W*.17:W*.83,H*.395]}
 function pileEl(seat){if(seat===0)return $('#pile');let el=$('#pile'+seat);if(!el){el=document.createElement('div');el.id='pile'+seat;el.className='opile';el.onclick=()=>showLast();layer.parentNode.insertBefore(el,layer)}return el}

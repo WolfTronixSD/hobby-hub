@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.4 (2026-11-03): Skat buttons to the edges
+
+- skat/index.html v1.17.5: landscape .rbtn/#title/#gameInfo offsets 7% → 1.5%; handSpan cap W*.7 → W*.86; pilePos(0) follows the left buttons.
+
 ## 2.42.3 (2026-11-03): Skat pile position, landscape mixer
 
 - skat/index.html v1.17.4: pilePos(0) moved; #mixer.wide two-column layout beside the button in landscape, max-height with scroll.
