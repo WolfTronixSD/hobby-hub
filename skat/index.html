@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.15.1">
+<meta name="version" content="1.15.2">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -260,7 +260,7 @@ body.asking #gameInfo{visibility:hidden}
 .landscape.asking #bidUI{top:35%;gap:2.6vh}.portrait.asking #bidUI{top:36%}
 .pclose{position:sticky;top:0;float:right;margin:-6px -8px 0 0;width:38px;height:38px;border-radius:50%;border:2px solid #c8743a;background:#fffaf0;color:#7a4a1a;font:700 18px system-ui;z-index:2}
 #rotateHint{display:none}
-.portrait #toast{white-space:normal;width:max-content;max-width:90vw;border-radius:18px}.portrait .bubble{white-space:normal;width:max-content;max-width:56vw;text-align:center;line-height:1.15}.ps{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}</style>
+.portrait #toast{white-space:normal;width:max-content;max-width:90vw;border-radius:18px}.portrait .bubble{white-space:normal;width:max-content;max-width:56vw;text-align:center;line-height:1.15}.ps{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.arr{width:34px;height:34px;border-radius:50%;border:2px solid #5b4630;background:transparent;color:#5b4630;font:700 22px/1 system-ui;padding:0 0 3px 2px;cursor:pointer}</style>
 </head>
 <body>
 <div id="stage">
@@ -312,9 +312,10 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.15.1';
+const SKAT_VERSION='1.15.2';
 const SKAT_CHANGES=[
- ['1.15.1','2026-11-02','Kontra-Knöpfe überdecken die Spielinfo nicht mehr · Regeln & Fenster schließen mit Tippen daneben (oder ✕) · ⓘ-Knopf öffnet Aktuelles Spiel / Spielliste / Coach · Karten des letzten Spiels sichtbar · lange Ansagen im Hochformat umbrochen'],
+ ['1.15.2','2026-11-02','› in der Spielliste: Karten aller Spieler jedes gespielten Spiels ansehen (zum Lernen) · Erneut spielen auch für alte Spiele'],
+ ['1.15.1','2026-11-02','Kontra-Knöpfe überdecken die Spielinfo nicht mehr · Regeln & Fenster schließen mit Tippen daneben (oder ✕) · ⓘ-Knopf öffnet Aktuelles Spiel / Spielliste / Coach · Karten des letzten Spiels sichtbar · › in der Spielliste zeigt die Karten aller Spieler jedes Spiels · lange Ansagen im Hochformat umbrochen'],
  ['1.15.0','2026-11-02','🂠 Stichstapel mit Augen-Zähler (antippen = letzter Stich) · echte Kartenbilder im Ergebnis und bei „Aktuelles Spiel“ · „sofort gepasst“'],
  ['1.14.0','2026-11-02','⚙️ Hausregeln: Spiele pro Liste (1–12) mit Siegerehrung · 🐷 Ramsch nach Eingepasst, Schieberamsch, Jungfrau, Durchmarsch, Dauerramsch, Grand Hand in Ramschrunde · 🐐 Bockrunden mit Auslösern und „3 Bock, 3 Ramsch“'],
  ['1.13.0','2026-11-02','🎚️ Tonhöhe und Sprechtempo für jeden Mitspieler · 🧠 Klügere Mitspieler: kein Trumpf-Ass/-Zehn mehr verschenkt, keine Zehn auf einen Gegnerstich · 🐞 Fehler melden: Mitspieler merken sich dumme Züge, Bericht für Claude kopieren'],
@@ -1335,10 +1336,12 @@ function showTricks(back){const log=S.trickLog;openOverlay(`<div class="parch"><
  <p style="text-align:center">Skat: ${mcards(S.skatFinal)} (${cardPts(S.skatFinal)} Augen)</p></div></div>`);$('#tx').onclick=back;dismissable(back)}
 
 /* ---------- score sheet (tabs) ---------- */
-function openSheet(tab='list'){const tabs=[['cur','Aktuelles Spiel'],['list','Spielliste'],['coach','Coach']];
+let SHEET_HV=null;
+function openSheet(tab='list',hv=null){SHEET_HV=hv;const tabs=[['cur','Aktuelles Spiel'],['list','Spielliste'],['coach','Coach']];
  openOverlay(`<div class="parch"><div class="tabs">${tabs.map(t=>`<button class="tab${t[0]===tab?' on':''}" data-tab="${t[0]}">${t[1]}</button>`).join('')}<button class="tabx" id="tx">✕</button></div><div class="tbody">${sheetBody(tab)}</div></div>`);
  ov.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>openSheet(b.dataset.tab));$('#tx').onclick=closeOverlay;
- const rp=$('#again');if(rp)rp.onclick=()=>{S.replay=S.dealt;closeOverlay();toast('Wird nach diesem Spiel wiederholt')};
+ ov.querySelectorAll('[data-hv]').forEach(b=>b.onclick=()=>openSheet('cur',+b.dataset.hv));const bl=$('#toList');if(bl)bl.onclick=()=>openSheet('list');
+ const rp=$('#again');if(rp)rp.onclick=()=>{S.replay=hv!=null&&P.history[hv]?P.history[hv].dealt:S.dealt;closeOverlay();toast('Wird nach diesem Spiel wiederholt')};
  const cp=$('#copy');if(cp)cp.onclick=()=>{try{navigator.clipboard.writeText(shareText()).then(()=>toast('Kopiert'),()=>toast('Kopieren nicht möglich'))}catch(e){toast('Kopieren nicht möglich')}};
  const nl=$('#newList');if(nl)nl.onclick=()=>{if(nl.dataset.c){newList();closeOverlay();toast('Neue Spielliste')}else{nl.dataset.c=1;nl.textContent='Wirklich? Nochmal tippen'}};dismissable()}
 function shareText(){return `Skat am Strand – ${P.names.map((n,i)=>`${n}: ${P.scores[i]}`).join(', ')} nach ${P.history.length} Spielen`}
@@ -1348,16 +1351,20 @@ function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{da
   const deal=(D,open)=>{const rows=[0,1,2].map(k=>{const seat=(D.dealt.dealer+1+k)%3;const cards=D.dealt.hands[seat].map(id=>DECK.find(c=>c.id===id));const show=seat===0||open;const st=D.status&&D.status[seat]||'';
    return`<div class="prow"><div class="who"><small>${POSN[k]}</small><b>${NM(seat)}</b><br>${st?`<span class="tag${st.startsWith('spielt')?' fill':''}">${st}</span>`:''}</div><div>${show?realCards(sortHand(cards,D.game),cw,.5):'<i>verdeckt</i>'}</div></div>`}).join('');
    return rows+(open?`<div class="prow"><div class="who"><b>Skat</b></div><div>${realCards(D.dealt.skat.map(id=>DECK.find(c=>c.id===id)),cw,.5)}</div></div>`:'')};
-  const prev=!done&&S.prevDeal?`<p style="margin-top:14px"><b>Letztes Spiel${S.prevDeal.practice?' (Übung)':' '+S.prevDeal.no}</b>${S.prevDeal.game?` · ${gameName(S.prevDeal.game)}`:''}</p>${deal(S.prevDeal,true)}`:'';
+  const hName=h=>h.passed?'eingepasst':h.ramsch?'Ramsch':gameName(h.g)+(h.won?' · gewonnen':' · verloren')+(h.score!=null?` (${h.won?'':'−'}${Math.abs(h.score)})`:'');
+  if(SHEET_HV!=null&&P.history[SHEET_HV]){const h=P.history[SHEET_HV];
+   return`<div class="row" style="justify-content:flex-end;margin:0 0 8px"><button class="pill sm tan" id="toList">‹ Spielliste</button><button class="pill sm" id="again">Erneut spielen</button></div><p>Spiel ${h.no} aus der Spielliste vom ${dt} · ${hName(h)}</p>${deal({dealt:h.dealt,status:h.status,game:h.g},true)}`}
+  const lh=P.history[P.history.length-1];
+  const prev=!done&&lh&&lh.dealt?`<p style="margin-top:14px"><b>Letztes Spiel ${lh.no}</b> · ${hName(lh)}</p>${deal({dealt:lh.dealt,status:lh.status,game:lh.g},true)}`:'';
   return`<div class="row" style="justify-content:flex-end;margin:0 0 8px"><button class="pill sm" id="again" ${done?'':'disabled'}>Erneut spielen</button><button class="pill sm" id="copy">Teilen…</button></div>
    <p>${S.practice?'Übungsspiel':`Spiel ${P.gameNo} aus der Spielliste vom ${dt}`}${g?` · ${gameName(g)}`:''}${done?'':' · läuft noch – Karten der Gegner nach Spielende'}</p>${deal({dealt:S.dealt,status:S.status,game:g},done)}${prev}`}
  if(tab==='list'){const X=b=>b?'X':'';
-  const head=`<thead><tr><th class="v" rowspan="2">Spielnummer</th><th class="v" rowspan="2">Grundwert</th><th class="v" rowspan="2">Mit</th><th class="v" rowspan="2">Ohne</th><th class="v" rowspan="2">Hand</th><th class="v" rowspan="2">Schneider</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Schwarz</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Ouvert</th><th class="v" rowspan="2">Sonderregeln</th><th rowspan="2">Spiel-<br>wert</th>${P.names.map(n=>`<th class="pn" colspan="3">${n}</th>`).join('')}</tr>
+  const head=`<thead><tr><th class="v" rowspan="2">Spielnummer</th><th class="v" rowspan="2">Grundwert</th><th class="v" rowspan="2">Mit</th><th class="v" rowspan="2">Ohne</th><th class="v" rowspan="2">Hand</th><th class="v" rowspan="2">Schneider</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Schwarz</th><th class="v" rowspan="2">– angesagt</th><th class="v" rowspan="2">Ouvert</th><th class="v" rowspan="2">Sonderregeln</th><th rowspan="2">Spiel-<br>wert</th>${P.names.map(n=>`<th class="pn" colspan="3">${n}</th>`).join('')}<th rowspan="2"></th></tr>
    <tr>${P.names.map(()=>'<th>Punkte</th><th class="v">Gewonnen</th><th class="v">Verloren</th>').join('')}</tr></thead>`;
-  const body=P.history.map(h=>{if(h.ramsch)return`<tr class="lost"><td>${h.no}</td><td>${gameIcon(h.g)}</td><td colspan="8"><i>Ramsch${h.won?' · Durchmarsch':''}</i></td><td>${h.bock?'Bock':''}</td><td>${h.value}</td>${[0,1,2].map(i=>h.scores[i]?`<td class="pc">${h.totals[i]}</td><td></td><td></td>`:'<td></td><td></td><td></td>').join('')}</tr>`;if(h.passed)return`<tr><td>${h.no}</td><td colspan="11"><i>eingepasst</i></td>${[0,1,2].map(()=>'<td></td><td></td><td></td>').join('')}</tr>`;
+  const body=P.history.map((h,hx)=>(h=>{if(h.ramsch)return`<tr class="lost"><td>${h.no}</td><td>${gameIcon(h.g)}</td><td colspan="8"><i>Ramsch${h.won?' · Durchmarsch':''}</i></td><td>${h.bock?'Bock':''}</td><td>${h.value}</td>${[0,1,2].map(i=>h.scores[i]?`<td class="pc">${h.totals[i]}</td><td></td><td></td>`:'<td></td><td></td><td></td>').join('')}</tr>`;if(h.passed)return`<tr><td>${h.no}</td><td colspan="11"><i>eingepasst</i></td>${[0,1,2].map(()=>'<td></td><td></td><td></td>').join('')}</tr>`;
    const g=h.g;const nul=g.type==='null';
    return`<tr class="${h.won?'':'lost'}"><td>${h.no}</td><td>${gameIcon(g)}</td><td>${!nul&&h.sp&&h.sp.mit?h.sp.n:''}</td><td>${!nul&&h.sp&&!h.sp.mit?h.sp.n:''}</td><td>${X(g.hand)}</td><td>${X(h.schneider)}</td><td>${X(g.schneiderA)}</td><td>${X(h.schwarz)}</td><td>${X(g.schwarzA)}</td><td>${X(g.ouvert)}</td><td>${[h.overbid?'überreizt':'',g.spitze?'Spitze angesagt':h.spitzeOK?'Spitze':'',g.type==='saxon'?'Sächs.':'',h.bock?'Bock':'',h.re?'Kontra Re':h.kontra?'Kontra':'',nul?'Null':''].filter(Boolean).join(' ')}</td><td>${h.won?'':'−'}${Math.abs(h.score)}</td>
-    ${[0,1,2].map(i=>i===h.d?`<td class="pc">${h.totals[i]}</td><td>${h.won?h.wl[0][i]:''}</td><td>${h.won?'':h.wl[1][i]}</td>`:'<td></td><td></td><td></td>').join('')}</tr>`}).join('')||`<tr><td colspan="21" style="padding:20px">Noch keine Spiele – viel Glück!</td></tr>`;
+    ${[0,1,2].map(i=>i===h.d?`<td class="pc">${h.totals[i]}</td><td>${h.won?h.wl[0][i]:''}</td><td>${h.won?'':h.wl[1][i]}</td>`:'<td></td><td></td><td></td>').join('')}</tr>`})(h).replace(/<\/tr>$/,`<td><button class="arr" data-hv="${hx}" aria-label="Karten ansehen">›</button></td></tr>`)).join('')||`<tr><td colspan="21" style="padding:20px">Noch keine Spiele – viel Glück!</td></tr>`;
   return`<table class="list">${head}<tbody>${body}</tbody><tfoot><tr><td colspan="12" style="background:transparent;color:#5b4630;font-size:14px;text-align:right">Spielliste vom ${dt}</td>${P.scores.map(s=>`<td colspan="3">${s}</td>`).join('')}</tr></tfoot></table>
    <div class="row"><button class="pill sm tan" id="newList">Neue Liste</button></div>`}
  const rows=P.history.slice().reverse().map(h=>{const cards=h.dealt.hands[0].map(id=>DECK.find(c=>c.id===id));const my=h.passed?null:h.ramsch?h.myPts:(h.d===0?h.declPts:120-h.declPts);

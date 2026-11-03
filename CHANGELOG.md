@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.40.2 (2026-11-02): Skat per-game hand review
+
+- skat/index.html v1.15.2: › button per Spielliste row opens openSheet('cur', index) with all hands + Skat from P.history[i].dealt; replay any listed deal.
+
 ## 2.40.1 (2026-11-02): Skat prompt layout and info sheet
 
 - skat/index.html v1.15.1: body.asking hides #gameInfo and moves #bidUI below the toast; portrait toast/bubble wrap; dismissable() tap-outside close for overlays, sticky ✕ on rules; #bInfo opens openSheet(); S.prevDeal shows the last game's hands in Aktuelles Spiel.
