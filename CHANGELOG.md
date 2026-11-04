@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.6 (2026-11-03): Skat queue strip, plate totals, Ramsch coach
+
+- skat/index.html v1.17.7: #qStrip renders P.qDone (crossed, current highlighted) + P.queue; P.scores in .ps .tot; coachLive has a g.ramsch branch (dodge / dump advice); landscape #toast top 12.5%.
+
 ## 2.42.5 (2026-11-03): Skat hand spread
 
 - skat/index.html v1.17.6: landscape handSpan cap W*.86 → W*.72.

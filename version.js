@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.42.5";
+const APP_VERSION = "2.42.6";
 const CHANGELOG = [
+  {
+    version: "2.42.6",
+    date: "2026-11-03",
+    at: "2026-11-04T03:35:00Z",
+    title: "Skat: Bock/Ramsch tracker and scores on the table",
+    changes: [
+      "🃏 Skat am Strand v1.17.7: a 🐐/🐷 strip on the right shows the Bock and Ramsch rounds, played ones crossed out",
+      "Each player's total points now show under their name",
+      "The coach's Ramsch tips are fixed: in Ramsch everyone plays alone"
+    ]
+  },
   {
     version: "2.42.5",
     date: "2026-11-03",
