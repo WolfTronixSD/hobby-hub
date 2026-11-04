@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.7 (2026-11-04): Skat game choice by expected value
+
+- skat/index.html v1.17.8: aiDeclare0 ranks candidates by aiEV(v,sc)=v*(3p-2) with p=logistic(1.6*(sc-1.5)) instead of sc alone (hand and pickup); aiDeclareFor12 (coach) likewise. Fixes Kreuz Spitze chosen over a sure Grand (3 Buben + 6 Kreuz A/10).
+
 ## 2.42.6 (2026-11-03): Skat queue strip, plate totals, Ramsch coach
 
 - skat/index.html v1.17.7: #qStrip renders P.qDone (crossed, current highlighted) + P.queue; P.scores in .ps .tot; coachLive has a g.ramsch branch (dodge / dump advice); landscape #toast top 12.5%.

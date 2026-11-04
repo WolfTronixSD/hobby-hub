@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.7">
-<meta name="version" content="1.17.7">
+<meta name="version" content="1.17.8">
+<meta name="version" content="1.17.8">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -344,8 +344,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.7';
+const SKAT_VERSION='1.17.8';
 const SKAT_CHANGES=[
+ ['1.17.8','2026-11-04','KI wählt das Spiel nach Erwartungswert: sicherer Grand wird nicht mehr als Farbspiel verschenkt (z. B. 3 Buben + 6 Kreuz mit A/10 → Grand statt Kreuz Spitze) · Coach-Drücktipp ebenso'],
  ['1.17.7','2026-11-03','Coach im Ramsch korrigiert (jeder spielt für sich) · Bock/Ramsch-Leiste rechts: gespielte Runden durchgestrichen, aktuelle leuchtet · Punktestand unter jedem Namen'],
  ['1.17.6','2026-11-03','Karten auf der Hand wieder enger zusammen (Knöpfe bleiben am Rand)'],
  ['1.17.5','2026-11-03','Runde Knöpfe näher an den Rand · mehr Platz für die Karten auf der Hand'],
@@ -977,16 +978,18 @@ function evalHand(cards,risk=0){let best=0,bg=null;
  for(const g of cands()){const st=strength(cards,g);const thr=(g.type!=='suit'?6.9:7.0)-risk;if(st>=thr){const sp=spitzen(cards,g);const hand=st>=thr+2.3;const v=gbase(g)*(sp.n+1+(hand?1:0));if(v>best){best=v;bg=Object.assign({},g,{hand})}}}
  const u=nullUnsafe(cards);if(u.count===0&&best<35){best=35;bg={type:'null',hand:true}}else if(u.count===1&&u.cards<=1&&best<23){best=23;bg={type:'null'}}
  return{max:best,game:bg}}
+/* v1.17.8: Spielwahl nach Erwartungswert statt nur nach Sicherheit – sonst wird ein sicherer Grand (120) als Kreuz (48) verschenkt */
+const aiWinP=sc=>1/(1+Math.exp(-1.6*(sc-1.5)));const aiEV=(v,sc)=>v*(3*aiWinP(sc)-2);
 function aiDeclare(seat,bid){return maybeSpitze(seat,aiDeclare0(seat,bid),bid)}
 function aiDeclare0(seat,bid){const h=S.hands[seat];let best=null;
- for(const g of cands()){const st=strength(h,g);const thr=g.type!=='suit'?6.9:7.0;const sp=spitzen(h,g);const v=gbase(g)*(sp.n+2);if(v>=bid&&st>=thr+2.3){const sc=st-thr;if(!best||sc>best.sc)best={sc,game:Object.assign({},g,{hand:true}),disc:null}}}
+ for(const g of cands()){const st=strength(h,g);const thr=g.type!=='suit'?6.9:7.0;const sp=spitzen(h,g);const v=gbase(g)*(sp.n+2);if(v>=bid&&st>=thr+2.3){const sc=st-thr,ev=aiEV(v,sc);if(!best||ev>best.ev)best={sc,ev,v,game:Object.assign({},g,{hand:true}),disc:null}}}
  const u=nullUnsafe(h);if(u.count===0&&bid<=35){const g={type:'null',hand:true};if(bid>35)g.ouvert=true;if(!best||best.sc<2.5)best={sc:3,game:g,disc:null}}
  if(best)return best;
  const all=h.concat(S.skat);let cand=[];
  for(let i=0;i<12;i++)for(let j=i+1;j<12;j++){const kept=all.filter((_,k)=>k!==i&&k!==j);const disc=[all[i],all[j]];const dp=cardPts(disc);
-  for(const g of cands()){if(disc.some(c=>isTrump(c,g)&&c.r==='B'))continue;const thr=g.type!=='suit'?6.9:7.0;const st=strength(kept,g)+dp*.03;const v=gbase(g)*(spitzen(all,g).n+1);cand.push({sc:st-thr+(g.type==='grand'?.9:0),v,game:Object.assign({},g,{hand:false}),disc})}
-  if(bid<=23){const uu=nullUnsafe(kept);const sc=uu.count===0?2.6:(uu.count===1&&uu.cards<=1?.1:-9);cand.push({sc,v:23,game:{type:'null',hand:false},disc})}}
- const valid=cand.filter(c=>c.v>=bid);if(valid.length)return valid.sort((a,b)=>b.sc-a.sc)[0];
+  for(const g of cands()){if(disc.some(c=>isTrump(c,g)&&c.r==='B'))continue;const thr=g.type!=='suit'?6.9:7.0;const st=strength(kept,g)+dp*.03;const v=gbase(g)*(spitzen(all,g).n+1);cand.push({sc:st-thr+(g.type==='grand'?.9:0),v,ev:aiEV(v,st-thr),game:Object.assign({},g,{hand:false}),disc})}
+  if(bid<=23){const uu=nullUnsafe(kept);const sc=uu.count===0?2.6:(uu.count===1&&uu.cards<=1?.1:-9);cand.push({sc,v:23,ev:aiEV(23,sc),game:{type:'null',hand:false},disc})}}
+ const valid=cand.filter(c=>c.v>=bid);if(valid.length)return valid.sort((a,b)=>b.ev-a.ev||b.sc-a.sc)[0];
  return cand.sort((a,b)=>b.v-a.v||b.sc-a.sc)[0]}
 function outsideCards(seat){const k=new Set();S.hands[seat].forEach(c=>k.add(c.id));S.played.forEach(c=>k.add(c.id));if(seat===S.declarer&&S.skatFinal&&!(S.game&&S.game.hand))S.skatFinal.forEach(c=>k.add(c.id));return DECK.filter(c=>!k.has(c.id))}
 let SIM=false;
@@ -1813,7 +1816,7 @@ function hint(){
  if(S.mode==='play'){const c=aiPlay(0,true);S.hintId=c.id;renderHand();return}
  toast('Tipp gibt’s wenn du dran bist')}
 function aiDeclareFor12(all){let best=null;for(let i=0;i<12;i++)for(let j=i+1;j<12;j++){const kept=all.filter((_,k)=>k!==i&&k!==j);const disc=[all[i],all[j]];
- for(const g of cands()){if(disc.some(c=>c.r==='B'))continue;const st=strength(kept,g)+cardPts(disc)*.03-(g.type!=='suit'?6.9:7);const v=gbase(g)*(spitzen(all,g).n+1);const sc=st+(v>=S.bid?5:0);if(!best||sc>best.sc)best={sc,game:g,disc}}}return best}
+ for(const g of cands()){if(disc.some(c=>c.r==='B'))continue;const st=strength(kept,g)+cardPts(disc)*.03-(g.type!=='suit'?6.9:7);const v=gbase(g)*(spitzen(all,g).n+1);const ev=(v>=S.bid?1000:0)+aiEV(v,st);const sc=st+(v>=S.bid?5:0);if(!best||ev>best.ev)best={sc,ev,game:g,disc}}}return best}
 $('#btnBack').onclick=openMenu;$('#btnScore').onclick=()=>openSheet(S.phase==='done'?'cur':'list');$('#bInfo').onclick=()=>openSheet(S.phase==='done'?'cur':'list');$('#bLast').onclick=showLast;$('#btnHint').onclick=hint;
 function setMute(m){P.cfg.muted=m;save();$('#btnMute').classList.toggle('off',m);if(OUTB&&AC)OUTB.gain.setTargetAtTime(m?0:vol('all'),AC.currentTime,.05);if(m){stopAmbient();stopMusic();try{speechSynthesis.cancel()}catch(e){}}else{ac();startAmbient();startMusic()}}
 function setVol(k,v){P.cfg.vol=Object.assign({},P.cfg.vol||{},{[k]:v});if(k==='amb')P.cfg.ambVol=v;const a=AC;if(!a)return;const T=a.currentTime;
