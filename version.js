@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.42.7";
+const APP_VERSION = "2.42.8";
 const CHANGELOG = [
+  {
+    version: "2.42.8",
+    date: "2026-11-04",
+    at: "2026-11-05T06:45:00Z",
+    title: "Skat: highscores, and your tricks swing to you",
+    changes: [
+      "🃏 Skat am Strand v1.17.9: 🏆 your 10 best games, best list, an all-time table (lists won and points for wolfi, Andy and Melli) and your last lists are kept, even after a new list",
+      "5 new achievements: Riesenspiel, Tausender, Listensieger, Seriensieger and Listen-Profi",
+      "Your own pile next to Andy is gone: when you win a trick, the cards swing down to you"
+    ]
+  },
   {
     version: "2.42.7",
     date: "2026-11-04",

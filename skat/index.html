@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.8">
-<meta name="version" content="1.17.8">
+<meta name="version" content="1.17.9">
+<meta name="version" content="1.17.9">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -171,6 +171,7 @@ table.list tr.lost td.pc{color:#a01010}
 #coachTip.show{opacity:1;transform:translate(-50%,0)}
 .pers{margin:4px 0 2px;font:600 13px system-ui;opacity:.8;text-align:center}
 .stgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}.portrait .stgrid{grid-template-columns:1fr}.strow{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed rgba(128,100,60,.35);padding:3px 0;font:15px system-ui}
+.hsT{width:100%;border-collapse:collapse;margin-top:8px;font:14px system-ui}.hsT th{font:600 12px system-ui;opacity:.75;text-align:right;padding:2px 4px}.hsT th:nth-child(2){text-align:left}.hsT td{padding:3px 4px;border-bottom:1px dashed rgba(128,100,60,.35);text-align:right}.hsT td:nth-child(2){text-align:left}.hsT tr.me td{font-weight:700}
 .achs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}.ach{border-radius:14px;padding:8px;background:rgba(128,128,128,.12);opacity:.45;filter:grayscale(1);display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
 .ach.on{opacity:1;filter:none;background:rgba(255,213,74,.25);box-shadow:0 0 0 2px #ffd54a inset}.ach .ai{font-size:28px}.ach b{font:700 14px system-ui}.ach small{font:12px system-ui;opacity:.8}
 #mixer{position:absolute;z-index:700;width:min(86vw,300px);max-height:calc(100% - 16px);overflow:auto;-webkit-overflow-scrolling:touch;background:rgba(18,30,26,.94);color:#fff;border-radius:20px;padding:12px 14px;box-shadow:0 14px 40px rgba(0,0,0,.45);border:1.5px solid rgba(255,255,255,.18);animation:mxIn .18s ease-out;font:600 14px system-ui}
@@ -344,8 +345,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.8';
+const SKAT_VERSION='1.17.9';
 const SKAT_CHANGES=[
+ ['1.17.9','2026-11-04','🏆 Highscores: deine 10 besten Spiele, beste Liste, Ewige Tabelle und letzte Listen bleiben gespeichert – auch nach neuer Liste · 5 neue Erfolge · Eigener Stich schwingt zu dir nach unten statt auf einen Stapel neben Andy'],
  ['1.17.8','2026-11-04','KI wählt das Spiel nach Erwartungswert: sicherer Grand wird nicht mehr als Farbspiel verschenkt (z. B. 3 Buben + 6 Kreuz mit A/10 → Grand statt Kreuz Spitze) · Coach-Drücktipp ebenso'],
  ['1.17.7','2026-11-03','Coach im Ramsch korrigiert (jeder spielt für sich) · Bock/Ramsch-Leiste rechts: gespielte Runden durchgestrichen, aktuelle leuchtet · Punktestand unter jedem Namen'],
  ['1.17.6','2026-11-03','Karten auf der Hand wieder enger zusammen (Knöpfe bleiben am Rand)'],
@@ -741,7 +743,14 @@ function animatePlay(seat,card){let el;
  if(seat===0&&handEls.has(card.id)){el=handEls.get(card.id);handEls.delete(card.id);el.classList.remove('dim','hint');el.style.pointerEvents='none'}
  else{el=makeCardEl(card);el.style.pointerEvents='none';layer.appendChild(el);const o=L.origin[seat];setT(el,o[0],o[1],seat===1?-40:40,.35);el.getBoundingClientRect()}
  el.style.zIndex=300+trickEls.length;const s=L.slots[seat];setT(el,s[0],s[1],s[2],L.ts);trickEls.push({el,seat});if(seat===0)renderHand();sndCard(seat)}
-async function collectTrick(w){sndSweep(w);if(w===0)setTimeout(sndPling,150);const o=pilePos(w);trickEls.forEach(t=>{setT(t.el,o[0],o[1],w===1?-10:w===2?10:0,pileW()/L.cw);t.el.style.opacity='0'});const old=trickEls;trickEls=[];await sleep(380);old.forEach(t=>t.el.remove())}
+async function collectTrick(w){sndSweep(w);if(w===0)setTimeout(sndPling,150);const old=trickEls;trickEls=[];
+ if(w===0){/* v1.17.9: eigener Stich schwingt zu mir nach unten, kein eigener Stapel mehr */const f=P.cfg.fast?.7:1,cx=L.W/2,cy=(L.slots[0][1]+L.slots[1][1]+L.slots[2][1])/3;
+  old.forEach((t,i)=>{t.el.style.transition=`transform ${.24*f}s cubic-bezier(.3,.7,.4,1)`;t.el.style.zIndex=400+i;setT(t.el,cx+(i-1)*L.cw*.1,cy-L.ch*.1,(i-1)*7,L.ts*1.08)});
+  await sleep(260*f);
+  old.forEach((t,i)=>{t.el.style.transition=`transform ${.55*f}s cubic-bezier(.5,-.35,.7,.95),opacity ${.22*f}s ease-in ${.34*f}s`;setT(t.el,cx+(i-1)*L.cw*.35,L.H+L.ch*.9,(i-1)*24+(i===1?-14:0),L.ts*.85);t.el.style.opacity='0'});
+  await sleep(580*f)}
+ else{const o=pilePos(w);old.forEach(t=>{setT(t.el,o[0],o[1],w===1?-10:w===2?10:0,pileW()/L.cw);t.el.style.opacity='0'});await sleep(380)}
+ old.forEach(t=>t.el.remove())}
 function myPilePts(){const r=S.result;if(S.phase==='done'&&r){if(r.ramsch)return r.pts[0];if(r.d===0)return r.declPts;return 120-r.declPts}
  if(!S.won)return 0;if(S.game&&S.game.ramsch)return cardPts(S.won[0]);if(S.declarer===0)return cardPts(S.won[0]);return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+cardPts(S.won[i]),0)}
 function myPileCount(){if(!S.won)return 0;if(S.game&&S.game.ramsch||S.declarer===0)return S.won[0].length;return [0,1,2].filter(i=>i!==S.declarer).reduce((a,i)=>a+S.won[i].length,0)}
@@ -751,7 +760,7 @@ function pilePos(seat){const w=pileW(),W=L.W,H=L.H;
  if(L.land)return[seat===1?W*.3:W*.7,H*.52];
  return[seat===1?W*.17:W*.83,H*.395]}
 function pileEl(seat){if(seat===0)return $('#pile');let el=$('#pile'+seat);if(!el){el=document.createElement('div');el.id='pile'+seat;el.className='opile';el.onclick=()=>showLast();layer.parentNode.insertBefore(el,layer)}return el}
-function renderPile(){for(const seat of [0,1,2]){const el=pileEl(seat);const show=L.cw&&S.tricks&&(S.phase==='play'||S.phase==='done')&&S.game;if(!show){el.style.display='none';continue}
+function renderPile(){for(const seat of [0,1,2]){const el=pileEl(seat);const show=seat!==0&&L.cw&&S.tricks&&(S.phase==='play'||S.phase==='done')&&S.game;if(!show){el.style.display='none';continue}
  const n=S.tricks[seat]||0,w=pileW(),dy=w*.17,[x,y]=pilePos(seat);el.style.display='block';el.style.fontSize=w+'px';el.style.width=w*1.3+'px';const h=w*1.5+Math.max(0,n-1)*dy;el.style.height=h+'px';
  el.style.left=(x-w*.65)+'px';el.style.top=(y+w*.75-h)+'px';el.classList.toggle('virgin',n===0);
  let html=n===0?`<div class="pempty"></div>`:Array.from({length:n},(_,i)=>`<div class="card back" style="top:${(n-1-i)*dy}px;transform:rotate(${[-4,3,-2,5,-5,2,-3,4,-1,3][i]}deg) translateX(${[0,.04,-.03,.02,-.04,.03,0,-.02,.04,-.01][i]}em);z-index:${i}"></div>`).join('');
@@ -1225,11 +1234,11 @@ function bockTriggers(r){if(S.practice||r.ramsch)return;const c=P.cfg,why=[];
  if(c.bockRL&&r.re&&!r.won)why.push('Re verloren');if(c.bockRW&&r.re&&r.won)why.push('Re gewonnen');if(c.bockOppS&&r.declPts>=90)why.push('Gegenspieler Schneider');
  if(c.bockDeclS&&r.declPts<=30&&r.g.type!=='null')why.push('Alleinspieler Schneider');if(c.bockGH&&r.g.type==='grand'&&r.g.hand)why.push('Grand Hand');
  if(!why.length)return;P.queue=P.queue||[];P.queue.push('bock','bock','bock');if(c.ramschBock)P.queue.push('ramsch','ramsch','ramsch');save();renderQueue();r.bockWhy=why}
-async function listEnd(){const order=[0,1,2].sort((a,b)=>P.scores[b]-P.scores[a]);if(order[0]===0){sndWin();confetti()}
- openOverlay(`<div class="panel"><h2>🏁 Liste beendet!</h2><p style="text-align:center">${P.history.length} Spiele gespielt</p>${order.map((i,k)=>`<p style="text-align:center;font-size:${22-k*3}px">${['🥇','🥈','🥉'][k]} <b>${NM(i)}</b> · ${P.scores[i]} Punkte</p>`).join('')}
- <div class="row"><button class="pill sm tan" id="leList">Spielliste ansehen</button><button class="pill sm" id="leNew">Neue Liste</button></div></div>`);
+async function listEnd(){const order=[0,1,2].sort((a,b)=>P.scores[b]-P.scores[a]);if(order[0]===0){sndWin();confetti()}const lr=recordList();
+ openOverlay(`<div class="panel"><h2>🏁 Liste beendet!</h2><p style="text-align:center">${P.history.length} Spiele gespielt</p>${lr.rec?'<p style="text-align:center;font-weight:700">🚀 Neuer Listen-Rekord für dich!</p>':''}${order.map((i,k)=>`<p style="text-align:center;font-size:${22-k*3}px">${['🥇','🥈','🥉'][k]} <b>${NM(i)}</b> · ${P.scores[i]} Punkte</p>`).join('')}
+ <div class="row"><button class="pill sm tan" id="leList">Spielliste ansehen</button><button class="pill sm tan" id="leHs">🏆 Bestenliste</button><button class="pill sm" id="leNew">Neue Liste</button></div></div>`);
  if(order[0])quip(order[0],'won',1);
- await new Promise(res=>{$('#leNew').onclick=()=>{closeOverlay();res()};$('#leList').onclick=()=>{openSheet('list');ON_CLOSE=res};if(AUTO)setTimeout(()=>{closeOverlay();res()},5)});
+ await new Promise(res=>{$('#leNew').onclick=()=>{closeOverlay();res()};$('#leList').onclick=()=>{openSheet('list');ON_CLOSE=res};$('#leHs').onclick=()=>{openStats();ON_CLOSE=res};if(AUTO)setTimeout(()=>{closeOverlay();res()},5)});
  newList();P.queue=[];P.qDone=[];save();renderQueue()}
 /* ---------- house rules panel ---------- */
 function openHouse(){const c=P.cfg;const sw=(k,l,d,sub)=>`<div class="hr${sub?' sub':''}"><div><div class="hl">${l}</div>${d?`<div class="hd">${d}</div>`:''}</div><button class="tgl${c[k]?' on':''}" data-hk="${k}" aria-label="${l}"><i></i></button></div>`;
@@ -1705,19 +1714,36 @@ const ACH=[['first','🎉','Erstes Spiel','Spiele dein erstes Spiel',s=>s.games>
  ['beatandy','🦀','Andy geschlagen','Schlage Andy als Gegenspieler 5×',s=>(s.beat1||0)>=5],['beatmelli','💖','Melli geschlagen','Schlage Melli als Gegenspielerin 5×',s=>(s.beat2||0)>=5],
  ['streak3','🔥','Heiße Serie','3 Siege hintereinander',s=>s.bestStreak>=3],['streak5','🌋','Unaufhaltsam','5 Siege hintereinander',s=>s.bestStreak>=5],
  ['kontra','💥','Kontra-Held','Gewinne ein Spiel mit Kontra/Re',s=>s.kontraWon>=1],['big','💎','Großes Spiel','Gewinne ein Spiel mit 96+ Punkten',s=>s.best>=96],
- ['games25','📚','Stammgast','Spiele 25 Spiele',s=>s.games>=25],['games100','🏖️','Strand-Legende','Spiele 100 Spiele',s=>s.games>=100],['daily','📅','Tagesaufgabe','Schaffe eine Tagesaufgabe',s=>(s.daily||0)>=1],['daily7','🗓️','Wochenheld','7 Tagesaufgaben geschafft',s=>(s.daily||0)>=7]];
-function stats(){P.stats=Object.assign({games:0,declGames:0,declWon:0,defGames:0,defWon:0,grandWon:0,grandHandWon:0,nullWon:0,schneider:0,schwarz:0,kontraWon:0,best:0,streak:0,bestStreak:0,points:0,beat1:0,beat2:0,daily:0,ach:{}},P.stats||{});return P.stats}
+ ['games25','📚','Stammgast','Spiele 25 Spiele',s=>s.games>=25],['games100','🏖️','Strand-Legende','Spiele 100 Spiele',s=>s.games>=100],['daily','📅','Tagesaufgabe','Schaffe eine Tagesaufgabe',s=>(s.daily||0)>=1],['daily7','🗓️','Wochenheld','7 Tagesaufgaben geschafft',s=>(s.daily||0)>=7],
+ ['huge','🚀','Riesenspiel','Gewinne ein Spiel mit 144+ Punkten',s=>s.best>=144],['pts1000','💯','Tausender','Sammle 1000 Punkte als Alleinspieler',s=>s.points>=1000],
+ ['list1','🥇','Listensieger','Gewinne eine Spielliste',s=>(s.listsWon||0)>=1],['list5','🏅','Seriensieger','Gewinne 5 Spiellisten',s=>(s.listsWon||0)>=5],['lists10','📜','Listen-Profi','Spiele 10 Listen zu Ende',s=>(s.listsPlayed||0)>=10]];
+function stats(){P.stats=Object.assign({games:0,declGames:0,declWon:0,defGames:0,defWon:0,grandWon:0,grandHandWon:0,nullWon:0,schneider:0,schwarz:0,kontraWon:0,best:0,streak:0,bestStreak:0,points:0,beat1:0,beat2:0,daily:0,ach:{},top:[],lists:[],listsWon:0,listsPlayed:0,tot:[0,0,0],ltw:[0,0,0]},P.stats||{});const s=P.stats;
+ if(!s.topSeeded){s.topSeeded=1;(P.history||[]).forEach(h=>{if(!h.ramsch&&h.d===0&&h.won&&h.score>0)s.top.push({v:h.score,g:gameName(h.g),t:Date.parse(P.date)||Date.now()})});s.top.sort((a,b)=>b.v-a.v);s.top=s.top.slice(0,10)}
+ return s}
+function addTop(r){const s=stats();const e={v:r.score,g:gameName(r.g),t:Date.now()};const wasBest=s.top.length?s.top[0].v:0;s.top.push(e);s.top.sort((a,b)=>b.v-a.v||a.t-b.t);s.top=s.top.slice(0,10);const rank=s.top.indexOf(e);
+ if(rank===0&&wasBest)setTimeout(()=>{toast(`🚀 Neuer Highscore: ${e.v} Punkte!`,2600);try{sndPling()}catch(x){}},900);else if(rank>0)setTimeout(()=>toast(`🏆 Platz ${rank+1} in deinen Highscores`,2000),900)}
+function recordList(){const s=stats();if(!P.history.length)return{rec:false};if(s.lists[0]&&s.lists[0].d===P.date)return{rec:s.lists[0].rec};const before=new Set(Object.keys(s.ach));const sc=P.scores.slice();const w=[0,1,2].sort((a,b)=>sc[b]-sc[a])[0];
+ const rec=s.lists.length>0&&sc[0]>Math.max(...s.lists.map(l=>l.sc[0]));s.listsPlayed++;s.ltw[w]++;if(w===0)s.listsWon++;for(let i=0;i<3;i++)s.tot[i]+=sc[i];
+ s.lists.unshift({t:Date.now(),d:P.date,n:P.history.length,sc,w,rec});s.lists=s.lists.slice(0,30);newAch(before);return{rec}}
 function recordStats(r){const s=stats(),before=new Set(Object.keys(s.ach));const d=r.d,me=d===0,won=me?r.won:!r.won;s.games++;
- if(me){s.declGames++;if(r.won){s.declWon++;s.points+=r.score;s.best=Math.max(s.best,r.score);const g=r.g;if(g.type==='grand'){s.grandWon++;if(g.hand)s.grandHandWon++}if(g.type==='null')s.nullWon++;if(r.schneider)s.schneider++;if(r.schwarz)s.schwarz++;if(r.kontra)s.kontraWon++}}
+ if(me){s.declGames++;if(r.won){s.declWon++;s.points+=r.score;s.best=Math.max(s.best,r.score);addTop(r);const g=r.g;if(g.type==='grand'){s.grandWon++;if(g.hand)s.grandHandWon++}if(g.type==='null')s.nullWon++;if(r.schneider)s.schneider++;if(r.schwarz)s.schwarz++;if(r.kontra)s.kontraWon++}}
  else{s.defGames++;if(won){s.defWon++;s['beat'+d]=(s['beat'+d]||0)+1}}
  if(won){s.streak++;s.bestStreak=Math.max(s.bestStreak,s.streak)}else s.streak=0;
  newAch(before)}
 function newAch(before){const s=stats();const got=[];ACH.forEach(a=>{if(!s.ach[a[0]]&&a[4](s)){s.ach[a[0]]=Date.now();got.push(a)}});save();
  got.forEach((a,i)=>setTimeout(()=>{toast(`🏅 Erfolg: ${a[1]} ${a[2]}`,2600);try{sndPling()}catch(e){}},1200+i*2700))}
+function hsHtml(s){const dt=t=>new Date(t).toLocaleDateString('de-DE',{day:'numeric',month:'numeric',year:'2-digit'});const md=['🥇','🥈','🥉'];
+ const top=s.top.length?s.top.map((e,i)=>`<div class="strow"><span>${md[i]||(i+1)+'.'} ${e.g}</span><b>${e.v} <small style="font-weight:400;opacity:.65">${dt(e.t)}</small></b></div>`).join(''):'<p class="hd" style="text-align:center">Gewinne ein Spiel als Alleinspieler – dann stehst du hier.</p>';
+ const bl=s.lists.length?Math.max(...s.lists.map(l=>l.sc[0])):null;
+ const tab=[0,1,2].map(i=>({i,w:s.ltw[i]||0,p:(s.tot[i]||0)+(P.scores[i]||0)})).sort((a,b)=>b.w-a.w||b.p-a.p).map((x,k)=>`<tr${x.i===0?' class="me"':''}><td>${md[k]}</td><td>${NM(x.i)}</td><td>${x.w}</td><td>${x.p}</td></tr>`).join('');
+ const last=s.lists.slice(0,5).map(l=>`<div class="strow"><span>${dt(l.t)} · ${l.n} Spiele${l.rec?' 🚀':''}</span><b>${[0,1,2].map(i=>i===l.w?`<u>${NM(i)} ${l.sc[i]}</u>`:`${NM(i)} ${l.sc[i]}`).join(' · ')}</b></div>`).join('');
+ return `<p class="mh" style="text-align:center;margin-top:14px">🏆 Highscores · deine besten Spiele</p>${top}
+ <p class="mh" style="text-align:center;margin-top:14px">📋 Spiellisten</p><div class="stgrid"><div class="strow"><span>Listen gespielt</span><b>${s.listsPlayed||0}</b></div><div class="strow"><span>Listen gewonnen</span><b>${s.listsWon||0}</b></div><div class="strow"><span>Beste Liste</span><b>${bl==null?'–':bl}</b></div><div class="strow"><span>Laufende Liste</span><b>${P.scores[0]} (${P.history.length} Spiele)</b></div></div>
+ <table class="hsT"><tr><th></th><th>Ewige Tabelle</th><th>Listen&nbsp;🥇</th><th>Punkte</th></tr>${tab}</table>${last?`<p class="hd" style="text-align:center;margin:8px 0 2px">Letzte Listen</p>${last}`:''}`}
 function openStats(){const s=stats();const pct=(a,b)=>b?Math.round(a/b*100)+'%':'–';
  const row=(l,v)=>`<div class="strow"><span>${l}</span><b>${v}</b></div>`;
  openOverlay(`<div class="panel"><h2>📊 Statistik & Erfolge</h2><div class="stgrid">${row('Spiele',s.games)}${row('Als Alleinspieler',`${s.declWon}/${s.declGames} (${pct(s.declWon,s.declGames)})`)}${row('Als Gegenspieler',`${s.defWon}/${s.defGames} (${pct(s.defWon,s.defGames)})`)}${row('Höchstes Spiel',s.best||'–')}${row('Serie (beste)',`${s.streak} (${s.bestStreak})`)}${row('Grands gewonnen',s.grandWon)}${row('Null gewonnen',s.nullWon)}${row('Schneider / Schwarz',`${s.schneider} / ${s.schwarz}`)}${row('Andy / Melli geschlagen',`${s.beat1||0} / ${s.beat2||0}`)}${row('Tagesaufgaben',s.daily||0)}</div>
-  <p class="mh" style="text-align:center;margin-top:14px">Erfolge · ${Object.keys(s.ach).length}/${ACH.length}</p><div class="achs">${ACH.map(a=>`<div class="ach${s.ach[a[0]]?' on':''}"><span class="ai">${a[1]}</span><b>${a[2]}</b><small>${a[3]}</small></div>`).join('')}</div>
+  ${hsHtml(s)}<p class="mh" style="text-align:center;margin-top:14px">Erfolge · ${Object.keys(s.ach).length}/${ACH.length}</p><div class="achs">${ACH.map(a=>`<div class="ach${s.ach[a[0]]?' on':''}"><span class="ai">${a[1]}</span><b>${a[2]}</b><small>${a[3]}</small></div>`).join('')}</div>
   <div class="row"><button class="pill sm tan" id="stBack">Zurück</button><button class="pill sm" id="stOk">Fertig</button></div></div>`);$('#stBack').onclick=openMenu;$('#stOk').onclick=closeOverlay;dismissable()}
 /* Live-Coach */
 const RN={A:'Ass',K:'König',D:'Dame',B:'Bube'};function cardName(c){return `${['Karo','Herz','Pik','Kreuz'][c.s]}-${RN[c.r]||c.r}`}

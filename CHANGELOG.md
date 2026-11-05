@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.8 (2026-11-04): Skat highscores, trick swing
+
+- skat/index.html v1.17.9: P.stats gains top (10 best won declarer games), lists (last 30 finished lists), listsWon/listsPlayed, tot/ltw all-time per player; recordList() in listEnd (guarded by P.date); hsHtml() in openStats; 5 new ACH; own pile (seat 0) hidden, collectTrick(0) gathers then swings the trick down off-screen.
+
 ## 2.42.7 (2026-11-04): Skat game choice by expected value
 
 - skat/index.html v1.17.8: aiDeclare0 ranks candidates by aiEV(v,sc)=v*(3p-2) with p=logistic(1.6*(sc-1.5)) instead of sc alone (hand and pickup); aiDeclareFor12 (coach) likewise. Fixes Kreuz Spitze chosen over a sure Grand (3 Buben + 6 Kreuz A/10).
