@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.9 (2026-11-04): Skat early finish, late Kontra
+
+- skat/index.html v1.17.10: sureRest(w)/autoRest(w) end play when the trick winner's cards beat every outstanding card (skipped while the Spitze card is out); #lateK button for a human defender until trick 2 starts (S.inPlay wrapper on playPhase), AI declarer answers Re; head glasses removed from Andy and Melli avatars.
+
 ## 2.42.8 (2026-11-04): Skat highscores, trick swing
 
 - skat/index.html v1.17.9: P.stats gains top (10 best won declarer games), lists (last 30 finished lists), listsWon/listsPlayed, tot/ltw all-time per player; recordList() in listEnd (guarded by P.date); hsHtml() in openStats; 5 new ACH; own pile (seat 0) hidden, collectTrick(0) gathers then swings the trick down off-screen.
