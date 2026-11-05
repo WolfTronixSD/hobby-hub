@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.11 (2026-11-05): Skat claim reveal
+
+- skat/index.html v1.17.12: autoRest(x) for x>0 fans the claimer's remaining cards face up in the table centre (~2 s), then sweeps them to the pile.
+
 ## 2.42.10 (2026-11-04): Skat Durchmarsch defence
 
 - skat/index.html v1.17.11: aiRamsch blocks a threatening Durchmarsch (another player holds all tricks, at least 2): lead sure winners or strongest card, overtake the threat cheaply, play strongest card while the threat is still to play; Monte-Carlo ramsch utility -160 when another player makes all 10 tricks.

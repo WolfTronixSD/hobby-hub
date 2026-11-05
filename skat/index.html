@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.11">
-<meta name="version" content="1.17.11">
+<meta name="version" content="1.17.12">
+<meta name="version" content="1.17.12">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -347,8 +347,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.11';
+const SKAT_VERSION='1.17.12';
 const SKAT_CHANGES=[
+ ['1.17.12','2026-11-05','👀 „Der Rest ist meins!“: Andy oder Melli decken ihre restlichen Karten kurz in der Tischmitte auf'],
  ['1.17.11','2026-11-04','🐷 Ramsch: Andy und Melli passen auf – hat einer bisher alle Stiche, holen sie sich gezielt einen Stich und verhindern den Durchmarsch'],
  ['1.17.10','2026-11-04','⏩ Spiel wird abgekürzt, sobald einer alle restlichen Stiche sicher hat · 💥 Kontra-Knopf bis nach dem ersten Stich · 🕶️ Keine Brillen mehr auf den Haaren'],
  ['1.17.9','2026-11-04','🏆 Highscores: deine 10 besten Spiele, beste Liste, Ewige Tabelle und letzte Listen bleiben gespeichert – auch nach neuer Liste · 5 neue Erfolge · Eigener Stich schwingt zu dir nach unten statt auf einen Stapel neben Andy'],
@@ -1378,9 +1379,15 @@ function sureRest(x){const g=S.game;if(!g||g.type==='null'||S.trick.length||S.le
  if(opp.some(T)&&S.hands[x].some(c=>!T(c)))return false;
  return S.hands[x].every(c=>!opp.some(o=>eff(o,g)===eff(c,g)&&power(o,g)>power(c,g)))}
 async function autoRest(x){const n=S.hands[x].length;await sleep(P.cfg.fast?300:600);
+ if(x!==0&&!TURBO){/* v1.17.12: Karten des Spielers kurz aufdecken */const g=S.game,cards=sortHand(S.hands[x],g),sc=.78,step=L.cw*sc*.62,o=L.origin[x];
+  const cy=(L.slots[0][1]+L.slots[1][1]+L.slots[2][1])/3,x0=L.W/2-step*(cards.length-1)/2;bubble(x,'Der Rest ist meins!',2400);
+  const els=cards.map((c,i)=>{const el=makeCardEl(c);el.style.pointerEvents='none';el.style.zIndex=420+i;layer.appendChild(el);setT(el,o[0],o[1],x===1?-30:30,.35);el.getBoundingClientRect();return el});
+  els.forEach((el,i)=>setTimeout(()=>{setT(el,x0+i*step,cy,(i-(els.length-1)/2)*3,sc);try{sndCard(x)}catch(e){}},i*70));
+  await sleep(els.length*70+(P.cfg.fast?1400:2300));
+  const pp=pilePos(x);els.forEach(el=>{setT(el,pp[0],pp[1],x===1?-10:10,pileW()/L.cw);el.style.opacity='0'});await sleep(400);els.forEach(el=>el.remove())}
  for(let k=0;k<n;k++){const cards=[0,1,2].map(i=>({seat:i,card:S.hands[i][k]})).filter(c=>c.card);S.trickLog.push({leader:x,cards,winner:x});S.won[x].push(...cards.map(c=>c.card));S.played.push(...cards.map(c=>c.card))}
  S.tricks[x]+=n;S.hands=[[],[],[]];S.trickNo=10;renderHand();renderOpen();renderPile();updateInfo();
- toast(x===0?'🙌 Die restlichen Stiche gehen an dich – Spiel abgekürzt':`${NM(x)} macht den Rest – Spiel abgekürzt`,2000);if(x)bubble(x,'Der Rest ist meins!',1600);await sleep(P.cfg.fast?700:1300)}
+ toast(x===0?'🙌 Die restlichen Stiche gehen an dich – Spiel abgekürzt':`${NM(x)} macht den Rest – Spiel abgekürzt`,2000);await sleep(P.cfg.fast?700:1300)}
 function claimRest(){const rest=[0,1,2].flatMap(x=>S.hands[x]);const n=S.hands[0].length;S.won[0].push(...rest);S.tricks[0]+=n;
  for(let k=0;k<n;k++){const cards=[0,1,2].map(x=>({seat:x,card:S.hands[x][k]})).filter(x=>x.card);S.trickLog.push({leader:0,cards,winner:0})}
  S.hands=[[],[],[]];renderHand();renderPile();toast('🙌 Rest zu mir!',1600);themeFx('big',0)}
