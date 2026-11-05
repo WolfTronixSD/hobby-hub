@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.10">
-<meta name="version" content="1.17.10">
+<meta name="version" content="1.17.11">
+<meta name="version" content="1.17.11">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -347,8 +347,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.10';
+const SKAT_VERSION='1.17.11';
 const SKAT_CHANGES=[
+ ['1.17.11','2026-11-04','🐷 Ramsch: Andy und Melli passen auf – hat einer bisher alle Stiche, holen sie sich gezielt einen Stich und verhindern den Durchmarsch'],
  ['1.17.10','2026-11-04','⏩ Spiel wird abgekürzt, sobald einer alle restlichen Stiche sicher hat · 💥 Kontra-Knopf bis nach dem ersten Stich · 🕶️ Keine Brillen mehr auf den Haaren'],
  ['1.17.9','2026-11-04','🏆 Highscores: deine 10 besten Spiele, beste Liste, Ewige Tabelle und letzte Listen bleiben gespeichert – auch nach neuer Liste · 5 neue Erfolge · Eigener Stich schwingt zu dir nach unten statt auf einen Stapel neben Andy'],
  ['1.17.8','2026-11-04','KI wählt das Spiel nach Erwartungswert: sicherer Grand wird nicht mehr als Farbspiel verschenkt (z. B. 3 Buben + 6 Kreuz mit A/10 → Grand statt Kreuz Spitze) · Coach-Drücktipp ebenso'],
@@ -1072,7 +1073,7 @@ function simulate(seat,card,deal){const g=S.game,d=S.declarer;const knowSk=seat=
    if(S.trick.length<3)break;const w=S.trick[trickWinner(S.trick,g)].seat;S.won[w].push(...S.trick.map(x=>x.card));S.tricks[w]++;
    if(g.spitze&&!S.hands[0].length&&!S.hands[1].length&&!S.hands[2].length){const dc=S.trick.find(x=>x.seat===d);S.lastOK=w===d&&!!dc&&dc.card.id===spitzeCard(g).id}
    S.leader=w;S.trick=[];S.trickNo++;if(g.type==='null'&&w===d)break;if(g.schwarzA&&w!==d)break;if(!S.hands[w].length)break}
-  if(g.ramsch){const own=cardPts(S.won[seat]);return -own+(S.tricks[seat]===0?25:0)-(S.tricks[seat]===10?-150:0)}
+  if(g.ramsch){const own=cardPts(S.won[seat]);const dm=[0,1,2].some(i=>i!==seat&&S.tricks[i]===10);return -own+(S.tricks[seat]===0?25:0)-(S.tricks[seat]===10?-150:0)-(dm?160:0)}
   let u;if(g.type==='null')u=S.tricks[d]===0?100:0;
   else{const dp=cardPts(S.won[d])+cardPts(S.skatFinal||[]);const oT=S.tricks.reduce((a,v,i)=>i===d?a:a+v,0);
    u=dp+(dp>=61?60:0)+(dp>=90?12:0)-(dp<=30?12:0);if(g.spitze&&!S.lastOK)u-=90;if(g.schwarzA&&oT>0)u-=90;if(g.schneiderA&&dp<90)u-=60}
@@ -1198,9 +1199,19 @@ async function schiebPhase(){S.skatCur=S.skat.slice();
 function aiRamsch(seat,legal){const g=S.game,tr=S.trick;const out=outsideCards(seat);const minBy=(a,f)=>a.slice().sort((x,y)=>f(x)-f(y))[0];
  const beats=c=>{const t2=tr.concat([{seat,card:c}]);return trickWinner(t2,g)===t2.length-1};
  if(!tr.length)return minBy(legal,c=>{const e=eff(c,g);const hi=out.filter(o=>eff(o,g)===e&&power(o,g)>power(c,g)).length;const lo=out.filter(o=>eff(o,g)===e&&power(o,g)<power(c,g)).length;return(hi?0:60)+lo*3+PTS[c.r]*.4});
+ /* v1.17.11: Durchmarsch verhindern – hat ein anderer bisher alle Stiche, wird ein Stich genommen */
+ const others=[0,1,2].filter(x=>x!==seat);const thr=S.tricks?others.find(x=>S.tricks[x]>=2&&S.tricks[x]===S.trickNo):undefined;
+ if(thr!==undefined&&!SIM_NO_DM){const T=c=>isTrump(c,g);
+  if(!tr.length){const sure=legal.filter(c=>!out.some(o=>eff(o,g)===eff(c,g)&&power(o,g)>power(c,g))&&(T(c)||!S.voids[thr][c.s]||!out.some(T)));
+   if(sure.length)return minBy(sure,c=>PTS[c.r]*3+power(c,g)*.1);
+   const nv=legal.filter(c=>T(c)||!S.voids[thr][c.s]);return minBy(nv.length?nv:legal,c=>-(power(c,g)+(T(c)?30:0))+PTS[c.r]*.05)}
+  const ws=tr[trickWinner(tr,g)].seat,thrDone=tr.some(x=>x.seat===thr);const win=legal.filter(beats);
+  if(ws===thr&&win.length)return thrDone?minBy(win,c=>PTS[c.r]*3+power(c,g)*.2):minBy(win,c=>-power(c,g)*3+PTS[c.r]*.2);
+  if(ws!==thr&&!thrDone){const strong=minBy(legal,c=>-power(c,g)*3+PTS[c.r]*.2);if(beats(strong)||eff(strong,g)===eff(tr[0].card,g))return strong}}
  const losers=legal.filter(c=>!beats(c));
  if(losers.length)return minBy(losers,c=>-(PTS[c.r]*10+power(c,g)));
  return minBy(legal,c=>PTS[c.r]*10-power(c,g)*.5)}
+let SIM_NO_DM=false;
 async function playRamsch(){S.game={type:'grand',ramsch:true};S.declarer=-1;S.bid=0;S.schiebCount=0;S.firstLeader=null;hideBubbles();
  toast(`🐷 Ramsch${S.bock?' (Bock!)':''} – wer die meisten Augen hat, verliert!`,2400);say(1,'Ramsch!');await sleep(1200);
  const sch=S.ramschRound?P.cfg.schiebRunde:P.cfg.schiebPass;

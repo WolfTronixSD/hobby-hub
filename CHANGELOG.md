@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.42.10 (2026-11-04): Skat Durchmarsch defence
+
+- skat/index.html v1.17.11: aiRamsch blocks a threatening Durchmarsch (another player holds all tricks, at least 2): lead sure winners or strongest card, overtake the threat cheaply, play strongest card while the threat is still to play; Monte-Carlo ramsch utility -160 when another player makes all 10 tricks.
+
 ## 2.42.9 (2026-11-04): Skat early finish, late Kontra
 
 - skat/index.html v1.17.10: sureRest(w)/autoRest(w) end play when the trick winner's cards beat every outstanding card (skipped while the Spitze card is out); #lateK button for a human defender until trick 2 starts (S.inPlay wrapper on playPhase), AI declarer answers Re; head glasses removed from Andy and Melli avatars.
