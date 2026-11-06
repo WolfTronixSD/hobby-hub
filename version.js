@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.43.1";
+const APP_VERSION = "2.44.0";
 const CHANGELOG = [
+  {
+    version: "2.44.0",
+    date: "2026-11-06",
+    at: "2026-11-06T13:55:00Z",
+    title: "Skat in English",
+    changes: [
+      "🃏 Skat am Strand v1.19.0: 🇬🇧 English language. Menu → \"Play in English\" (and back with \"Auf Deutsch spielen\")",
+      "Menus, rules, coach, results and Andy's and Melli's chatter in English, with English voices",
+      "New players whose phone is set to English, like invited friends, start in English automatically"
+    ]
+  },
   {
     version: "2.43.1",
     date: "2026-11-05",

@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.44.0 (2026-11-06): Skat English
+
+- skat/index.html v1.19.0: P.cfg.lang ('de'/'en'; new players detected from navigator.language, existing players stay German). English via TR_DICT (~660 German UI segments, {} placeholders compiled to regex) applied by a MutationObserver to text nodes and placeholder/title/aria-label; SN/RN/POSN swapped, gameName/cardName English; DIA.en chatter pack, English TTS voices and bid numbers. Menu toggle reloads the page.
+
 ## 2.43.1 (2026-11-05): Skat multiplayer reconnects
 
 - skat/index.html v1.18.1: host room id kept in localStorage (6 h) and reopened on visibilitychange/pageshow/start; unavailable-id retried; guest retries connect for 120 s with status and error codes; guest auto-reloads and rejoins (saved name) after a dropout; host panel shows connection status and iPhone background hint.
