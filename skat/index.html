@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.17.12">
-<meta name="version" content="1.17.12">
+<meta name="version" content="1.18.0">
+<meta name="version" content="1.18.0">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -172,6 +172,7 @@ table.list tr.lost td.pc{color:#a01010}
 #coachTip.show{opacity:1;transform:translate(-50%,0)}
 .pers{margin:4px 0 2px;font:600 13px system-ui;opacity:.8;text-align:center}
 .stgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}.portrait .stgrid{grid-template-columns:1fr}.strow{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed rgba(128,100,60,.35);padding:3px 0;font:15px system-ui}
+.mpGuest #btnScore,.mpGuest #bLast,.mpGuest #bInfo,.mpGuest #bFast,.mpGuest #btnHint,.mpGuest #lateK,.mpGuest #qStrip{display:none!important}
 .hsT{width:100%;border-collapse:collapse;margin-top:8px;font:14px system-ui}.hsT th{font:600 12px system-ui;opacity:.75;text-align:right;padding:2px 4px}.hsT th:nth-child(2){text-align:left}.hsT td{padding:3px 4px;border-bottom:1px dashed rgba(128,100,60,.35);text-align:right}.hsT td:nth-child(2){text-align:left}.hsT tr.me td{font-weight:700}
 .achs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}.ach{border-radius:14px;padding:8px;background:rgba(128,128,128,.12);opacity:.45;filter:grayscale(1);display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
 .ach.on{opacity:1;filter:none;background:rgba(255,213,74,.25);box-shadow:0 0 0 2px #ffd54a inset}.ach .ai{font-size:28px}.ach b{font:700 14px system-ui}.ach small{font:12px system-ui;opacity:.8}
@@ -347,8 +348,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.17.12';
+const SKAT_VERSION='1.18.0';
 const SKAT_CHANGES=[
+ ['1.18.0','2026-11-05','👥 Mehrspieler: Menü → Mehrspieler → Freund einladen. Bis zu zwei Freunde übernehmen per Link den Platz von Andy oder Melli und spielen auf ihrem eigenen Handy mit'],
  ['1.17.12','2026-11-05','👀 „Der Rest ist meins!“: Andy oder Melli decken ihre restlichen Karten kurz in der Tischmitte auf'],
  ['1.17.11','2026-11-04','🐷 Ramsch: Andy und Melli passen auf – hat einer bisher alle Stiche, holen sie sich gezielt einen Stich und verhindern den Durchmarsch'],
  ['1.17.10','2026-11-04','⏩ Spiel wird abgekürzt, sobald einer alle restlichen Stiche sicher hat · 💥 Kontra-Knopf bis nach dem ersten Stich · 🕶️ Keine Brillen mehr auf den Haaren'],
@@ -397,7 +399,7 @@ try{const m=location.hash.match(/s=([^&]+)/);if(m){const d=JSON.parse(decodeURIC
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 P.cfg=Object.assign({listLen:12,ramschPass:true,schiebPass:true,ramschBock:true,dauerRamsch:false,schiebRunde:true,grandHandRunde:true,skatLast:true,bock60:false,bockKL:true,bockKW:true,bockRL:true,bockRW:true,bockOppS:false,bockDeclS:false,bockGH:false,kontra:true,theme:'beach',four:false,fast:false,level:1,spitze:true,saxon:true,sfx:true,amb:true,voice:true,music:true},P.cfg||{});BIDS=makeBids();if(window._importedCfg)setTimeout(()=>{save();toast('💾 Deine Einstellungen wurden übernommen',2200)},800);
 function save(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
-const NM=i=>P.names[i];
+const NM=i=>(typeof NET!=='undefined'&&NET.role==='host'&&NET.names[i])||(typeof NET!=='undefined'&&NET.role==='guest'&&NET.vnames&&NET.vnames[i])||P.names[i];
 
 /* ---------- game state ---------- */
 let S={hands:[[],[],[]],skat:[],trick:[],phase:'idle',sel:new Set(),dealer:P.dealer};
@@ -1130,7 +1132,7 @@ async function humanBid(mode,val){const yes=$('#bidYes');yes.textContent=mode===
  const r=await waitInput();$('#bidUI').style.display='none';S.bidAsk=null;return r}
 
 /* ---------- flow ---------- */
-async function bidSeat(seat,mode,val){if(seat===0&&!AUTO)return humanBid(mode,val);await think();return S.maxBid[seat]>=val}
+async function bidSeat(seat,mode,val){if(seat===0&&!AUTO)return humanBid(mode,val);if(isRem(seat))return rAsk(seat,'bid',{mode,val},()=>S.maxBid[seat]>=val);await think();return S.maxBid[seat]>=val}
 async function duel(sayer,lis){while(true){const nx=S.bidIdx+1;const val=BIDS[nx];setTurn(sayer);
  const says=await bidSeat(sayer,'say',val);if(says){bubble(sayer,String(val));sayBid(sayer,val)}else if(sayer)sayAnswer(sayer,false);else bubble(0,'Passe');if(says&&val>=30&&sayer)emote(3-sayer||1,'wow');
  if(!says){S.status[sayer]=S.status[sayer]||(val===18?'sofort gepasst':'gepasst');return lis}
@@ -1161,7 +1163,7 @@ async function playGame(){
   toast('Eingepasst – neu geben');await sleep(1600);hideBubbles();finishPassed();return}
  S.declarer=decl;S.bid=BIDS[S.bidIdx];S.status[decl]=`spielt bei ${S.bid}`;hideBubbles();
  S.declCards12=S.hands[decl].concat(S.skat);
- if(decl===0&&!AUTO)await humanDeclare();else await aiDeclarePhase(decl);
+ if(decl===0&&!AUTO)await humanDeclare();else if(isRem(decl))await remoteDeclare(decl);else await aiDeclarePhase(decl);
  await playDeclared(decl,false)}
 async function playDeclared(decl,preset){
  S.hands[0]=sortHand(S.hands[0],S.game);renderHand();
@@ -1180,6 +1182,7 @@ function renderQueue(){let el=$('#qStrip');if(!el){el=document.createElement('di
  el.innerHTML=done.map((k,i)=>`<div class="q ${i===done.length-1&&(S.phase!=='done'&&S.phase!=='idle')?'now':'gone'}" title="${lb(k)}">${ic(k)}</div>`).join('')+todo.map(k=>`<div class="q" title="${lb(k)}">${ic(k)}</div>`).join('');el.style.display='flex'}
 async function grandHandAsk(){for(let k=0;k<3;k++){const seat=(S.dealer+1+k)%3;setTurn(seat);let r;
   if(seat===0&&!AUTO){toast('🐷 Ramschrunde – willst du Grand Hand spielen?',2400);r=await humanAsk('Grand Hand!','Ramsch')}
+  else if(isRem(seat)){r=await rAsk(seat,'yn',{msg:'🐷 Ramschrunde – willst du Grand Hand spielen?',yes:'Grand Hand!',no:'Ramsch'},()=>strength(S.hands[seat],{type:'grand'})>=9.2)}
   else{await think(.7);r=strength(S.hands[seat],{type:'grand'})>=9.2}
   if(r){bubble(seat,'Grand Hand!',1800);say(seat,'Grand Hand!');return seat}}
  setTurn(-1);return -1}
@@ -1192,6 +1195,7 @@ async function humanSchiebDiscard(){showSkat(false);const added=S.skat.map(c=>c.
 async function schiebPhase(){S.skatCur=S.skat.slice();
  for(let k=0;k<3;k++){const seat=(S.dealer+1+k)%3;setTurn(seat);let take;
   if(seat===0&&!AUTO){toast('Skat nehmen und 2 Karten weiterschieben – oder ungesehen schieben (verdoppelt)?',2600);take=await humanAsk('Skat nehmen','Schieben')}
+  else if(isRem(seat)){const h=S.hands[seat];take=await rAsk(seat,'yn',{msg:'Skat nehmen (die KI schiebt für dich 2 Karten weiter) – oder ungesehen schieben?',yes:'Skat nehmen',no:'Schieben'},()=>h.filter(c=>c.r!=='B'&&PTS[c.r]>=10).length>=2)}
   else{await think(.8);const h=S.hands[seat];take=h.filter(c=>c.r!=='B'&&PTS[c.r]>=10).length>=2||Math.random()<.45}
   if(take){if(seat===0&&!AUTO){S.skatCur=await humanSchiebDiscard()}else{const all=S.hands[seat].concat(S.skatCur);const disc=aiSchiebDiscard(seat,all);S.hands[seat]=all.filter(c=>!disc.includes(c));S.skatCur=disc;bubble(seat,'Genommen',1200)}}
   else{S.schiebCount++;bubble(seat,'Geschoben!',1400);say(seat,'geschoben');sndSweep(seat)}
@@ -1281,9 +1285,9 @@ function aiWantsKontra(seat){const g=S.game,h=S.hands[seat],lv=P.cfg.level;if(lv
 function aiWantsRe(d){const g=S.game,h=S.hands[d];if(P.cfg.level===0)return Math.random()<.3;if(g.type==='null')return nullUnsafe(h).count===0;
  return strength(h,g)-(g.type==='suit'?7:6.9)>=(P.cfg.level===2?3:3.6)}
 async function kontraPhase(){const d=S.declarer;const defs=[1,2,3].map(i=>(S.dealer+i)%3).filter(x=>x!==d);S.kontraBy=-1;S.re=false;
- for(const x of defs){setTurn(x);let k;if(x===0&&!AUTO){toast('Glaubst du, der Alleinspieler verliert?',2200);k=await humanAsk('Kontra!','Weiter')}else{await think(.6);k=aiWantsKontra(x)}
+ for(const x of defs){setTurn(x);let k;if(x===0&&!AUTO){toast('Glaubst du, der Alleinspieler verliert?',2200);k=await humanAsk('Kontra!','Weiter')}else if(isRem(x)){k=await rAsk(x,'yn',{msg:`${NM(d)} spielt ${gameName(S.game)} – glaubst du, das geht schief?`,yes:'Kontra!',no:'Weiter'},()=>aiWantsKontra(x))}else{await think(.6);k=aiWantsKontra(x)}
   if(k){S.kontraBy=x;const kw=(x&&diaPick('kontra',x))||'Kontra!';bubble(x,kw,2000);sayC(x,kw,'kontra');shake(x);emote(d,'wow');break}}
- if(S.kontraBy>=0){setTurn(d);let r;if(d===0&&!AUTO){toast(`${NM(S.kontraBy)} sagt Kontra!`,1800);r=await humanAsk('Re!','Nein')}else{await think(.8);r=aiWantsRe(d)}
+ if(S.kontraBy>=0){setTurn(d);let r;if(d===0&&!AUTO){toast(`${NM(S.kontraBy)} sagt Kontra!`,1800);r=await humanAsk('Re!','Nein')}else if(isRem(d)){r=await rAsk(d,'yn',{msg:`${NM(S.kontraBy)} sagt Kontra!`,yes:'Re!',no:'Nein'},()=>aiWantsRe(d))}else{await think(.8);r=aiWantsRe(d)}
   S.re=!!r;if(r){const rw=(d&&diaPick('re',d))||'Re!';bubble(d,rw,2000);sayC(d,rw,'re');shake(d);emote(S.kontraBy,'wow')}else if(d)quip(d,'lostT',.4)}
  setTurn(-1);updateInfo();await sleep(400)}
 async function aiDeclarePhase(d){await think(1.2);const ch=aiDeclare(d,S.bid);
@@ -1359,6 +1363,7 @@ async function playPhase0(){S.leader=S.firstLeader!=null?S.firstLeader:(S.dealer
    if(card==='claim'){claimRest();break}
    if(card==='end')break;
    S.undoSnap=snap}
+  else if(isRem(seat)){const lg=legalMoves(S.hands[seat],S.trick,S.game);const id=await rAsk(seat,'play',{legal:lg.map(c=>c.id)},()=>aiPlay(seat).id);if(S.endBy)break;card=lg.find(c=>c.id===id)||aiPlay(seat)}
   else{await think(S.trick.length===0?1.1:.9);if(S.endBy)break;card=aiPlay(seat,seat===0)}
   if(S.endBy)break;
   if(!legalMoves(S.hands[seat],S.trick,S.game).includes(card))console.error('illegal move',seat,card);
@@ -1412,7 +1417,7 @@ async function offerSchenken(){const d=S.declarer,partner=[1,2].find(x=>x!==d);b
  if(S.game.type!=='null'&&strong){bubble(d,'Nix da, ich will Schneider!',2000);say(d,'Nix da! Ich will Schneider!');emote(d,'happy');return}
  bubble(d,'Danke, angenommen!',1600);say(d,'Danke, angenommen');emote(d,'happy');S.endBy='geschenkt';give('end')}
 async function concede(){S.endBy='aufgegeben';toast('🏳️ Spiel aufgegeben',1400);[1,2].forEach(x=>emote(x,'happy'));quip(1,'beat',.6);give('end')}
-async function aiMaybeSchenken(){const d=S.declarer;if(d!==0||AUTO||S.game.type==='null')return;if(![1,2].every(weakDefender)||Math.random()>.5)return;
+async function aiMaybeSchenken(){const d=S.declarer;if(d!==0||AUTO||S.game.type==='null'||isRem(1)||isRem(2))return;if(![1,2].every(weakDefender)||Math.random()>.5)return;
  bubble(1,'Wir schenken!',1800);say(1,'Wir schenken!');const r=await humanAsk('Annehmen','Weiterspielen');if(r){S.endBy='geschenkt'}else{bubble(2,'Na dann los!',1400)}}
 function settle(){const d=S.declarer,g=S.game,base=g.type==='null'?nullVal(g):gbase(g);const skatPts=cardPts(S.skatFinal);
  const declPts=cardPts(S.won[d])+skatPts;const allTaken=S.won.reduce((s,a)=>s+a.length,0);const oppPts=cardPts([].concat(...S.won.filter((_,i)=>i!==d)));
@@ -1506,7 +1511,7 @@ function sheetBody(tab){const dt=new Date(P.date).toLocaleDateString('de-DE',{da
 /* ---------- menus ---------- */
 function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' sel':''}" data-k="${k}">${l}</button>`;
  openOverlay(`<div class="panel"><h2>Skat am Strand <small style="font:500 14px system-ui;opacity:.7">v${SKAT_VERSION}</small></h2>
- <div class="row"><button class="pill sm" id="mGo">Weiterspielen</button></div>
+ <div class="row"><button class="pill sm" id="mGo">Weiterspielen</button><button class="pill sm tan" id="mMp">👥 Mehrspieler</button></div>
  <p class="mh">Thema</p><div class="row">${THEMES.map(([k,l])=>`<button class="chip${curTheme()===k?' sel':''}" data-th="${k}">${l}</button>`).join('')}</div>
  <p class="mh">Dialekt</p><div class="row">${DIALECTS.map(([k,l])=>`<button class="chip${(c.dialect||'hoch')===k?' sel':''}" data-dia="${k}">${l}</button>`).join('')}</div>
  <p class="mh">Spielstärke</p><div class="row">${['Leicht','Gut','Schwer'].map((l,i)=>`<button class="chip${c.level===i?' sel':''}" data-l="${i}">${['🐣','😎','🧠'][i]} ${l}</button>`).join('')}</div>
@@ -1520,7 +1525,7 @@ function openMenu(){const c=P.cfg;const ch=(k,l)=>`<button class="chip${c[k]?' s
  <div class="row"><button class="pill sm tan" id="mRules">Regeln</button><button class="pill sm tan" id="mList">Spielliste</button><button class="pill sm tan" id="mNew">Was ist neu</button></div>
  <div class="row"><button class="pill sm" id="mPl">👤 Spieler anpassen</button><button class="pill sm" id="mFont">🔤 Schrift & Größe</button><button class="pill sm" id="mLink">🔗 Einstellungen mitnehmen</button></div>
  <p style="text-align:center;opacity:.7;font-size:13px;margin-top:12px">Alle Einstellungen werden automatisch gespeichert.<br>Regeländerungen gelten ab dem nächsten Spiel.</p></div>`);
- $('#mGo').onclick=closeOverlay;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mPl').onclick=openPlayers;$('#mVoices').onclick=openVoices;$('#mDaily').onclick=openDaily;$('#mStats').onclick=openStats;ov.querySelectorAll('[data-scape]').forEach(b=>b.onclick=()=>{c.scape=b.dataset.scape;c.amb=true;save();stopAmbient();ac();setTimeout(startAmbient,amb?50:50);openMenu()});{const r=$('#ambVol');r.oninput=()=>{c.ambVol=+r.value;if(AMBBUS)AMBBUS.gain.value=ambVol()*1.25};r.onchange=()=>save()}$('#mHouse').onclick=openHouse;$('#mFont').onclick=openFonts;$('#mLink').onclick=openTransfer;$('#mList').onclick=()=>openSheet('list');
+ $('#mGo').onclick=closeOverlay;$('#mMp').onclick=openMp;$('#mRules').onclick=openRules;$('#mNew').onclick=openNews;$('#mPl').onclick=openPlayers;$('#mVoices').onclick=openVoices;$('#mDaily').onclick=openDaily;$('#mStats').onclick=openStats;ov.querySelectorAll('[data-scape]').forEach(b=>b.onclick=()=>{c.scape=b.dataset.scape;c.amb=true;save();stopAmbient();ac();setTimeout(startAmbient,amb?50:50);openMenu()});{const r=$('#ambVol');r.oninput=()=>{c.ambVol=+r.value;if(AMBBUS)AMBBUS.gain.value=ambVol()*1.25};r.onchange=()=>save()}$('#mHouse').onclick=openHouse;$('#mFont').onclick=openFonts;$('#mLink').onclick=openTransfer;$('#mList').onclick=()=>openSheet('list');
  ov.querySelectorAll('[data-th]').forEach(b=>b.onclick=()=>{c.theme=b.dataset.th;save();applyTheme();openMenu()});
  ov.querySelectorAll('[data-dia]').forEach(b=>b.onclick=()=>{c.dialect=b.dataset.dia;save();openMenu();setTimeout(()=>quip(1,'greet',1),300);setTimeout(()=>quip(2,'greet',1),2200)});
  ov.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{c.level=+b.dataset.l;save();openMenu()});
@@ -1907,7 +1912,130 @@ $('#stage').addEventListener('scroll',e=>{e.target.scrollTop=0;e.target.scrollLe
 addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(layout,120)});
 layout();
 window.__S=S;window.__P=P;window.__errors=[];
-(async function main(){updatePlates();if(!P.seen&&!AUTO){P.seen=true;save();await new Promise(r=>openRules(r))}
+/* ===================== Mehrspieler mit Einladung (v1.18.0) ===================== */
+var NET={role:null,peer:null,conns:{},names:{},pending:{},seq:0,room:null,turn:-1,conn:null,view:null,busy:false,collecting:false,dealing:false,syncT:0};
+const JOIN=new URLSearchParams(location.search).get('join');
+const isRem=seat=>NET.role==='host'&&seat>0&&!!NET.conns[seat];
+const MPC=id=>DECK.find(c=>c.id===id);
+function mpLoadPeer(){return window.Peer?Promise.resolve():new Promise((res,rej)=>{const sc=document.createElement('script');sc.src='https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js';sc.onload=res;sc.onerror=()=>rej(new Error('PeerJS nicht ladbar'));document.head.appendChild(sc)})}
+const mpOpts=()=>Object.assign({debug:0},window.MP_PEER_OPTS||{});
+function mpLink(){const u=new URL(location.href);u.search='?join='+encodeURIComponent(NET.room);u.hash='';return u.toString()}
+/* ---- Host ---- */
+async function mpHost(){if(NET.role==='host'&&NET.peer&&!NET.peer.destroyed)return;await mpLoadPeer();const id='skatstrand-'+Math.random().toString(36).slice(2,8);
+ const peer=new Peer(id,mpOpts());await new Promise((res,rej)=>{peer.on('open',res);peer.on('error',rej);setTimeout(()=>rej(new Error('Zeitüberschreitung')),15000)});
+ NET.peer=peer;NET.role='host';NET.room=id;
+ peer.on('connection',c=>{c.on('open',()=>{const seat=[1,2].find(x=>!NET.conns[x]);if(!seat){try{c.send({t:'full'})}catch(e){}setTimeout(()=>c.close(),600);return}
+   NET.conns[seat]=c;c.seat=seat;c.seen=Date.now();c.on('data',d=>{c.seen=Date.now();mpHostRecv(seat,d)});c.on('close',()=>mpDrop(seat));c.on('error',()=>mpDrop(seat))})});
+ peer.on('disconnected',()=>{try{peer.reconnect()}catch(e){}});peer.on('error',e=>console.warn('peer',e&&e.type));
+ clearInterval(NET.hb);NET.hb=setInterval(()=>{for(const st of [1,2]){const c=NET.conns[st];if(!c)continue;if(Date.now()-c.seen>15000){mpDrop(st);continue}try{c.send({t:'ping'})}catch(e){}}},4000)}
+function mpHostRecv(seat,d){if(!d||typeof d!=='object')return;
+ if(d.t==='hello'){NET.names[seat]=String(d.name||'Gast').replace(/[<>&"]/g,'').slice(0,14)||'Gast';toast(`👋 ${NET.names[seat]} spielt jetzt für ${['','Andy','Melli'][seat]} mit`,2600);try{sndPling()}catch(e){}updatePlates();try{NET.conns[seat].send({t:'seat',seat})}catch(e){}mpSync(seat);mpPanelRefresh()}
+ else if(d.t==='ans'){const p=NET.pending[d.id];if(p){delete NET.pending[d.id];p.res(d.v)}}
+ else if(d.t==='bye')mpDrop(seat)}
+function mpDrop(seat){const c=NET.conns[seat];if(!c)return;delete NET.conns[seat];const n=NET.names[seat];delete NET.names[seat];try{c.close()}catch(e){}
+ toast(`${n||'Gast'} ist weg – ${['','Andy','Melli'][seat]} spielt wieder selbst`,2600);for(const k in NET.pending){const p=NET.pending[k];if(p.seat===seat){delete NET.pending[k];p.res(p.fb())}}updatePlates();mpPanelRefresh()}
+function mpStop(){clearInterval(NET.hb);for(const s of [1,2])if(NET.conns[s]){try{NET.conns[s].send({t:'end'})}catch(e){}mpDrop(s)}try{NET.peer&&NET.peer.destroy()}catch(e){}NET.peer=null;NET.role=null;NET.room=null;updatePlates()}
+function rAsk(seat,kind,data,fb){const c=NET.conns[seat];if(!c)return Promise.resolve(fb());const id=++NET.seq;mpSyncNow(seat);
+ return new Promise(res=>{NET.pending[id]={res,seat,fb};try{c.send({t:'ask',id,kind,data})}catch(e){delete NET.pending[id];res(fb())}})}
+function mpView(g){const R=v=>(v+g)%3,V=r=>(r==null||r<0)?-1:(r-g+3)%3,ids=a=>(a||[]).map(c=>c.id);const ouv=S.game&&S.game.ouvert&&S.phase==='play';
+ return{hands:[0,1,2].map(v=>{const r=R(v),h=S.hands[r]||[];return(v===0||(ouv&&r===S.declarer))?ids(h):h.length}),
+  trick:(S.trick||[]).map(x=>({seat:V(x.seat),id:x.card.id})),dealer:V(S.dealer),declarer:V(S.declarer),game:S.game||null,bid:S.bid||0,phase:S.phase,
+  status:[0,1,2].map(v=>(S.status||[])[R(v)]||''),tricks:[0,1,2].map(v=>(S.tricks||[0,0,0])[R(v)]||0),won:[0,1,2].map(v=>ids((S.won||[[],[],[]])[R(v)])),
+  trickNo:S.trickNo||0,kontraBy:V(S.kontraBy),re:!!S.re,bock:!!S.bock,schiebCount:S.schiebCount||0,leader:V(S.leader),
+  names:[0,1,2].map(v=>NM(R(v))),scores:[0,1,2].map(v=>P.scores[R(v)]),skatOn:skatEls.length>0,turn:V(NET.turn),gameNo:P.gameNo||0}}
+function mpSyncNow(seat){const c=NET.conns[seat];if(!c)return;try{c.send({t:'st',v:mpView(seat)})}catch(e){}}
+function mpSync(seat){if(seat!=null)return mpSyncNow(seat);if(NET.role!=='host')return;clearTimeout(NET.syncT);NET.syncT=setTimeout(()=>{for(const s of [1,2])mpSyncNow(s)},30)}
+function mpEv(e,o){if(NET.role!=='host')return;for(const s of [1,2]){const c=NET.conns[s];if(!c)continue;const V=r=>(r==null||r<0)?-1:(r-s+3)%3;const m=Object.assign({t:'ev',e},o);if('seat' in m)m.seat=V(m.seat);try{c.send(m)}catch(x){}}}
+/* Hooks: Spielablauf an die Gäste melden */
+{const _st=setTurn;setTurn=function(seat){NET.turn=seat;_st(seat);mpSync()};
+ const _ui=updateInfo;updateInfo=function(){_ui();mpSync()};
+ const _rh=renderHand;renderHand=function(sp){_rh(sp);mpSync()};
+ const _ss=showSkat;showSkat=function(on){_ss(on);mpSync()};
+ const _ap=animatePlay;animatePlay=function(seat,card){mpEv('play',{seat,id:card.id});_ap(seat,card)};
+ const _ct=collectTrick;collectTrick=function(w){mpEv('collect',{seat:w});return _ct(w)};
+ const _bu=bubble;bubble=function(seat,txt,ms){_bu(seat,txt,ms);mpEv('bub',{seat,txt:String(txt),ms:ms||1500})};
+ const _da=dealAnim;dealAnim=function(){mpEv('deal',{});return _da()};
+ const _sr=showResult;showResult=function(){mpEv('res',{txt:mpResText()});mpSync();return _sr()};
+ const _sy=say;say=function(seat,t){if(isRem(seat))return;_sy(seat,t)};
+ const _qu=quip;quip=function(seat,k,p){if(isRem(seat))return;_qu(seat,k,p)};
+ const _sa=sayAnswer;sayAnswer=function(seat,yes){if(isRem(seat)){bubble(seat,yes?'Ja':'Passe',1400);return}_sa(seat,yes)};
+ const _em=emote;emote=function(seat,k,ms){if(isRem(seat))return;_em(seat,k,ms)}}
+function mpResText(){const r=S.result;if(!r)return'';try{
+ if(r.ramsch){if(r.durch!==undefined)return`${NM(r.durch)} macht Durchmarsch! (+${r.value})`;return`Ramsch: ${r.losers.map(NM).join(' & ')} verliert (${r.value})`}
+ const sc=r.score>0?'+'+r.score:String(r.score);return`${NM(r.d)} ${r.won?'gewinnt':'verliert'} ${gameName(r.g||S.game)}${r.declPts!=null?' mit '+r.declPts+' Augen':''} · ${sc}`}catch(e){return''}}
+async function remoteDeclare(d){const r=await rAsk(d,'declare',{hand:S.hands[d].map(c=>c.id),skat:S.skat.map(c=>c.id),bid:S.bid},()=>null);
+ const all=S.hands[d].concat(S.skat);const disc=r&&r.game&&!r.game.hand?all.filter(c=>(r.disc||[]).includes(c.id)):null;
+ if(!r||!r.game||(!r.game.hand&&(!disc||disc.length!==2))){await aiDeclarePhase(d);return}
+ if(r.game.hand){S.skatFinal=S.skat.slice();bubble(d,'Hand!',900)}else{S.hands[d]=all.filter(c=>!disc.includes(c));S.skatFinal=disc;bubble(d,'Skat',900)}
+ showSkat(false);await sleep(500);S.game=r.game;bubble(d,gameName(S.game),1800)}
+/* Host-Panel */
+function mpPanelRefresh(){if(document.getElementById('mpPanel'))openMp()}
+async function openMp(){const seatRow=s=>`<div class="strow"><span>${['','🦀 Platz von Andy','💖 Platz von Melli'][s]}</span><b>${NET.conns[s]?'📱 '+NET.names[s]:'🤖 KI'}</b></div>`;
+ const on=NET.role==='host'&&NET.room;
+ openOverlay(`<div class="panel" id="mpPanel"><h2>👥 Mehrspieler</h2>
+ <p style="text-align:center">Lade bis zu zwei Freunde ein. Sie übernehmen den Platz von Andy oder Melli und spielen auf ihrem eigenen Handy mit. Freie Plätze spielt weiter die KI.</p>
+ ${on?`<p class="mh" style="text-align:center">Einladungslink</p><div style="word-break:break-all;background:rgba(0,0,0,.08);padding:8px 10px;border-radius:10px;font:13px ui-monospace,monospace;user-select:text;-webkit-user-select:text">${mpLink()}</div>
+ <div class="row" style="margin-top:8px">${navigator.share?'<button class="pill sm" id="mpShare">📤 Teilen</button>':''}<button class="pill sm tan" id="mpCopy">📋 Kopieren</button></div>
+ <p class="mh" style="text-align:center;margin-top:12px">Am Tisch</p><div class="strow"><span>🏖️ Du</span><b>${NM(0)}</b></div>${seatRow(1)}${seatRow(2)}
+ <p class="hd" style="text-align:center">Die Gäste machen ab ihrer nächsten Entscheidung mit. Lass die App offen, solange ihr spielt – du bist der Tisch.</p>
+ <div class="row"><button class="pill sm tan" id="mpEnd">Mehrspieler beenden</button><button class="pill sm" id="mpOk">Weiterspielen</button></div>`
+ :`<div class="row"><button class="pill sm" id="mpStart">📨 Freund einladen</button></div><div class="row"><button class="pill sm tan" id="mpOk">Zurück</button></div>`}</div>`);
+ const q=id=>document.getElementById(id);
+ if(q('mpStart'))q('mpStart').onclick=async()=>{q('mpStart').disabled=true;q('mpStart').textContent='Verbinde …';try{await mpHost();openMp()}catch(e){toast('Mehrspieler-Server nicht erreichbar – Internet prüfen und nochmal versuchen',3000);openMp()}};
+ if(q('mpShare'))q('mpShare').onclick=()=>navigator.share({title:'Skat am Strand',text:`${NM(0)} lädt dich zu einer Runde Skat ein 🃏`,url:mpLink()}).catch(()=>{});
+ if(q('mpCopy'))q('mpCopy').onclick=()=>{(navigator.clipboard?navigator.clipboard.writeText(mpLink()):Promise.reject()).then(()=>toast('Link kopiert',1200)).catch(()=>toast('Link markieren und kopieren',1600))};
+ if(q('mpEnd'))q('mpEnd').onclick=()=>{mpStop();openMp()};
+ q('mpOk').onclick=()=>closeOverlay()}
+/* ---- Gast ---- */
+function mpApply(v){NET.view=v;if(NET.busy||NET.dealing)return;
+ const H=x=>Array.isArray(x)?x.map(MPC).filter(Boolean):Array.from({length:x},(_,i)=>({id:'hid'+i,s:0,r:'7',hid:1}));
+ Object.assign(S,{hands:v.hands.map(H),game:v.game,bid:v.bid,phase:v.phase,status:v.status,dealer:v.dealer,declarer:v.declarer,tricks:v.tricks,won:v.won.map(a=>a.map(MPC)),
+  trickNo:v.trickNo,kontraBy:v.kontraBy,re:v.re,bock:v.bock,schiebCount:v.schiebCount,leader:v.leader});
+ NET.vnames=v.names;P.scores=v.scores;P.gameNo=v.gameNo;S.hands[0]=S.game?sortHand(S.hands[0],S.game):sortHand(S.hands[0]);
+ if(!NET.collecting)mpTrickSync(v.trick);
+ if(v.skatOn!==skatEls.length>0)showSkat(v.skatOn);
+ setTurn(v.turn);updatePlates();updateInfo();renderHand();renderOpen();renderPile()}
+function mpTrickSync(tr){const cur=trickEls.map(t=>t.seat+':'+t.id).join(),want=tr.map(t=>t.seat+':'+t.id).join();if(cur===want)return;
+ trickEls.forEach(t=>t.el.remove());trickEls=[];tr.forEach((t,i)=>{const c=MPC(t.id);if(!c)return;const el=makeCardEl(c);el.style.pointerEvents='none';el.style.zIndex=300+i;layer.appendChild(el);const sl=L.slots[t.seat];setT(el,sl[0],sl[1],sl[2],L.ts);trickEls.push({el,seat:t.seat,id:t.id})})}
+async function mpGuestEv(m){
+ if(m.e==='play'){const c=MPC(m.id);if(!c||trickEls.some(t=>t.id===m.id))return;if(m.seat===0){S.hands[0]=S.hands[0].filter(x=>x.id!==m.id)}animatePlay(m.seat,c);trickEls[trickEls.length-1].id=m.id}
+ else if(m.e==='collect'){NET.collecting=true;try{await collectTrick(m.seat)}finally{NET.collecting=false;if(NET.view)mpApply(NET.view)}}
+ else if(m.e==='bub')bubble(m.seat,m.txt,m.ms);
+ else if(m.e==='deal'){NET.dealing=true;closeOverlay();hideBubbles();clearTable();try{await dealAnim()}finally{NET.dealing=false;if(NET.view){mpApply(NET.view)}}}
+ else if(m.e==='res'){updatePlates(true);if(m.txt)openOverlay(`<div class="panel"><h2>Spielende</h2><p style="text-align:center;font-size:17px">${m.txt}</p>${[0,1,2].map(i=>`<div class="strow"><span>${NM(i)}</span><b>${P.scores[i]}</b></div>`).join('')}<p class="hd" style="text-align:center">${NM(NET.hostSeatV)} gibt das nächste Spiel.</p><div class="row"><button class="pill sm" id="mpRok">OK</button></div></div>`),document.getElementById('mpRok').onclick=()=>closeOverlay()}}
+async function mpGuestAsk(m){const{id,kind,data}=m;let v=null;
+ try{if(kind==='bid')v=await humanBid(data.mode,data.val);
+  else if(kind==='yn'){if(data.msg)toast(data.msg,2800);v=await humanAsk(data.yes,data.no)}
+  else if(kind==='play'){S.legalSet=new Set(data.legal);S.mode='play';renderHand();let c;do{c=await waitInput()}while(!c||typeof c!=='object');S.mode=null;S.legalSet=null;renderHand();v=c.id}
+  else if(kind==='declare'){NET.busy=true;S.hands[0]=sortHand(data.hand.map(MPC));S.skat=data.skat.map(MPC);S.bid=data.bid;S.declarer=0;S.skatFinal=null;S.game=null;renderHand();showSkat(true);
+   await humanDeclare();v={game:S.game,disc:(S.skatFinal||[]).map(c=>c.id)};NET.busy=false}}
+ catch(e){console.error(e);NET.busy=false}
+ try{NET.conn.send({t:'ans',id,v})}catch(e){}if(NET.view)mpApply(NET.view)}
+async function mpGuest(){save=function(){};document.body.classList.add('mpGuest');
+ const name=await new Promise(res=>{openOverlay(`<div class="panel"><h2>🃏 Skat am Strand</h2><p style="text-align:center">Du wurdest zu einer Runde Skat eingeladen!</p><p class="mh" style="text-align:center">Dein Name</p>
+  <input id="mpName" maxlength="14" value="${(localStorage.getItem('skatMpName')||'').replace(/"/g,'')}" placeholder="Name" style="width:100%;font:18px system-ui;padding:10px;border-radius:10px;border:1px solid #bba;-webkit-user-select:text;user-select:text">
+  <div class="row" style="margin-top:10px"><button class="pill sm" id="mpJoin">Mitspielen</button></div></div>`);
+  const go=()=>{const n=document.getElementById('mpName').value.trim()||'Gast';try{localStorage.setItem('skatMpName',n)}catch(e){}res(n)};document.getElementById('mpJoin').onclick=go;document.getElementById('mpName').onkeydown=e=>{if(e.key==='Enter')go()}});
+ openOverlay('<div class="panel"><h2>Verbinde …</h2><p style="text-align:center">Einen Moment, ich suche den Tisch.</p></div>');
+ try{await mpLoadPeer();const peer=new Peer(mpOpts());await new Promise((res,rej)=>{peer.on('open',res);peer.on('error',rej);setTimeout(()=>rej(new Error('t')),15000)});NET.peer=peer;
+  const c=peer.connect(JOIN,{reliable:true});await new Promise((res,rej)=>{c.on('open',res);c.on('error',rej);peer.on('error',rej);setTimeout(()=>rej(new Error('t')),15000)});NET.conn=c;NET.role='guest'}
+ catch(e){openOverlay('<div class="panel"><h2>Tisch nicht gefunden</h2><p style="text-align:center">Der Einladungslink ist abgelaufen oder der Gastgeber hat die App geschlossen. Bitte um einen neuen Link.</p><div class="row"><button class="pill sm" id="mpRe">Nochmal</button></div></div>');document.getElementById('mpRe').onclick=()=>location.reload();return}
+ const q=[];let busy=false;const pump=async()=>{if(busy)return;busy=true;while(q.length){const m=q.shift();try{if(m.t==='ev')await mpGuestEv(m)}catch(e){console.error(e)}}busy=false};
+ NET.conn.on('data',m=>{if(!m||typeof m!=='object')return;
+  if(m.t==='st'){if(NET.view==null){closeOverlay();toast(`Du bist am Tisch! 🏖️`,2000)}NET.hostSeatV=(3-(NET.seat||1))%3;mpApply(m.v)}
+  else if(m.t==='seat'){NET.seat=m.seat;const t=curTheme();[1,2].forEach(v=>{const r=(v+m.seat)%3;$('#av'+v).innerHTML=r?avatarSvg(r,t):''})}
+  else if(m.t==='ask')mpGuestAsk(m);
+  else if(m.t==='ping'){try{NET.conn.send({t:'pong'})}catch(e){}}
+  else if(m.t==='ev'){if(m.e==='play'||m.e==='bub'){mpGuestEv(m)}else{q.push(m);pump()}}
+  else if(m.t==='full'){openOverlay('<div class="panel"><h2>Tisch ist voll</h2><p style="text-align:center">Es spielen schon drei Leute.</p></div>')}
+  else if(m.t==='end'){openOverlay('<div class="panel"><h2>Runde beendet</h2><p style="text-align:center">Der Gastgeber hat die Mehrspieler-Runde beendet. Danke fürs Mitspielen!</p></div>')}});
+ NET.conn.on('close',()=>{if(NET.left)return;openOverlay('<div class="panel"><h2>Verbindung weg</h2><p style="text-align:center">Die Verbindung zum Gastgeber ist abgerissen.</p><div class="row"><button class="pill sm" id="mpRe">Neu verbinden</button></div></div>');document.getElementById('mpRe').onclick=()=>location.reload()});
+ NET.conn.send({t:'hello',name});addEventListener('pagehide',()=>{try{NET.conn.send({t:'bye'})}catch(e){}});
+ $('#btnBack').onclick=()=>{openOverlay(`<div class="panel"><h2>👥 Mehrspieler</h2><p style="text-align:center">Du spielst am Tisch von ${NM(NET.hostSeatV)}.</p><div class="row"><button class="pill sm tan" id="mpLeave">Verlassen</button><button class="pill sm" id="mpStay">Weiterspielen</button></div></div>`);
+  document.getElementById('mpStay').onclick=()=>closeOverlay();document.getElementById('mpLeave').onclick=()=>{NET.left=true;try{NET.conn.send({t:'bye'})}catch(e){}setTimeout(()=>{location.href=location.pathname},300)}};
+ openOverlay('<div class="panel"><h2>Verbunden ✅</h2><p style="text-align:center">Warte auf das nächste Spiel …</p></div>')}
+
+(async function main(){if(JOIN&&!AUTO){updatePlates();await mpGuest();return}updatePlates();if(!P.seen&&!AUTO){P.seen=true;save();await new Promise(r=>openRules(r))}
  while(true){try{if(P.history.length>=(P.cfg.listLen||12))await listEnd();await playGame();if(!S.practice&&P.history.length>=(P.cfg.listLen||12))await listEnd()}catch(e){console.error(e);window.__errors.push(String(e&&e.stack||e));await sleep(1000)}}})();
 </script>
 </body>

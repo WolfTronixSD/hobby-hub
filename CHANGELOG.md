@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.43.0 (2026-11-05): Skat multiplayer with invite
+
+- skat/index.html v1.18.0: PeerJS (unpkg CDN, public PeerJS broker) host-authoritative multiplayer. Host = table, runs the engine; guests join via ?join=<peer id> and take seat 1/2. Host asks remote seats via rAsk (bid, declare incl. skat/press/game choice, Kontra/Re, card play, Ramsch Grand-Hand/Schieben) with AI fallback on drop; state mirrored to guests as rotated snapshots (mpView) plus play/collect/bubble/deal/result events. Heartbeat drops silent guests after 15 s. Guest mode disables save().
+
 ## 2.42.11 (2026-11-05): Skat claim reveal
 
 - skat/index.html v1.17.12: autoRest(x) for x>0 fans the claimer's remaining cards face up in the table centre (~2 s), then sweeps them to the pile.
