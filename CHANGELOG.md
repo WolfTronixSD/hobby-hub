@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.43.1 (2026-11-05): Skat multiplayer reconnects
+
+- skat/index.html v1.18.1: host room id kept in localStorage (6 h) and reopened on visibilitychange/pageshow/start; unavailable-id retried; guest retries connect for 120 s with status and error codes; guest auto-reloads and rejoins (saved name) after a dropout; host panel shows connection status and iPhone background hint.
+
 ## 2.43.0 (2026-11-05): Skat multiplayer with invite
 
 - skat/index.html v1.18.0: PeerJS (unpkg CDN, public PeerJS broker) host-authoritative multiplayer. Host = table, runs the engine; guests join via ?join=<peer id> and take seat 1/2. Host asks remote seats via rAsk (bid, declare incl. skat/press/game choice, Kontra/Re, card play, Ramsch Grand-Hand/Schieben) with AI fallback on drop; state mirrored to guests as rotated snapshots (mpView) plus play/collect/bubble/deal/result events. Heartbeat drops silent guests after 15 s. Guest mode disables save().

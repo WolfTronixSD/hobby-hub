@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.43.0";
+const APP_VERSION = "2.43.1";
 const CHANGELOG = [
+  {
+    version: "2.43.1",
+    date: "2026-11-05",
+    at: "2026-11-06T06:55:00Z",
+    title: "Skat: multiplayer reconnects",
+    changes: [
+      "🃏 Skat am Strand v1.18.1: your table reopens with the same invite link after the app was in the background or reloaded",
+      "Friends keep looking for the table for up to 2 minutes and reconnect on their own after a dropout",
+      "Clearer messages when a friend can't find the table"
+    ]
+  },
   {
     version: "2.43.0",
     date: "2026-11-05",

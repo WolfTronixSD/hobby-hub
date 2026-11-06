@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.18.0">
-<meta name="version" content="1.18.0">
+<meta name="version" content="1.18.1">
+<meta name="version" content="1.18.1">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -348,8 +348,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.18.0';
+const SKAT_VERSION='1.18.1';
 const SKAT_CHANGES=[
+ ['1.18.1','2026-11-05','👥 Mehrspieler stabiler: Tisch öffnet nach Hintergrund/Neuladen automatisch wieder mit demselben Link · Gast sucht bis zu 2 Minuten nach dem Tisch statt sofort aufzugeben · klarere Fehlermeldungen'],
  ['1.18.0','2026-11-05','👥 Mehrspieler: Menü → Mehrspieler → Freund einladen. Bis zu zwei Freunde übernehmen per Link den Platz von Andy oder Melli und spielen auf ihrem eigenen Handy mit'],
  ['1.17.12','2026-11-05','👀 „Der Rest ist meins!“: Andy oder Melli decken ihre restlichen Karten kurz in der Tischmitte auf'],
  ['1.17.11','2026-11-04','🐷 Ramsch: Andy und Melli passen auf – hat einer bisher alle Stiche, holen sie sich gezielt einen Stich und verhindern den Durchmarsch'],
@@ -1921,12 +1922,18 @@ function mpLoadPeer(){return window.Peer?Promise.resolve():new Promise((res,rej)
 const mpOpts=()=>Object.assign({debug:0},window.MP_PEER_OPTS||{});
 function mpLink(){const u=new URL(location.href);u.search='?join='+encodeURIComponent(NET.room);u.hash='';return u.toString()}
 /* ---- Host ---- */
-async function mpHost(){if(NET.role==='host'&&NET.peer&&!NET.peer.destroyed)return;await mpLoadPeer();const id='skatstrand-'+Math.random().toString(36).slice(2,8);
- const peer=new Peer(id,mpOpts());await new Promise((res,rej)=>{peer.on('open',res);peer.on('error',rej);setTimeout(()=>rej(new Error('Zeitüberschreitung')),15000)});
- NET.peer=peer;NET.role='host';NET.room=id;
+function mpSaved(){try{const r=JSON.parse(localStorage.getItem('skatMpRoom')||'null');return r&&Date.now()-r.t<6*3600e3?r:null}catch(e){return null}}
+function mpSave(on){try{if(on)localStorage.setItem('skatMpRoom',JSON.stringify({id:NET.room,t:Date.now()}));else localStorage.removeItem('skatMpRoom')}catch(e){}}
+async function mpOpenPeer(id){for(let k=0;k<8;k++){const peer=new Peer(id,mpOpts());
+  try{await new Promise((res,rej)=>{peer.on('open',res);peer.on('error',rej);setTimeout(()=>rej({type:'timeout'}),15000)});return peer}
+  catch(e){try{peer.destroy()}catch(x){}if(e&&e.type==='unavailable-id'){await sleep(2500);continue}throw e}}
+ throw{type:'unavailable-id'}}
+async function mpHost(reuse){if(NET.role==='host'&&NET.peer&&!NET.peer.destroyed)return;await mpLoadPeer();const sv=mpSaved();const id=(reuse||sv&&sv.id)||('skatstrand-'+Math.random().toString(36).slice(2,8));
+ const peer=await mpOpenPeer(id);
+ NET.peer=peer;NET.role='host';NET.room=id;NET.ok=true;mpSave(true);
  peer.on('connection',c=>{c.on('open',()=>{const seat=[1,2].find(x=>!NET.conns[x]);if(!seat){try{c.send({t:'full'})}catch(e){}setTimeout(()=>c.close(),600);return}
    NET.conns[seat]=c;c.seat=seat;c.seen=Date.now();c.on('data',d=>{c.seen=Date.now();mpHostRecv(seat,d)});c.on('close',()=>mpDrop(seat));c.on('error',()=>mpDrop(seat))})});
- peer.on('disconnected',()=>{try{peer.reconnect()}catch(e){}});peer.on('error',e=>console.warn('peer',e&&e.type));
+ peer.on('disconnected',()=>{NET.ok=false;mpPanelRefresh();setTimeout(()=>{try{if(!peer.destroyed)peer.reconnect()}catch(e){}},800)});peer.on('open',()=>{NET.ok=true;mpPanelRefresh()});peer.on('error',e=>console.warn('peer',e&&e.type));peer.on('close',()=>{NET.ok=false});
  clearInterval(NET.hb);NET.hb=setInterval(()=>{for(const st of [1,2]){const c=NET.conns[st];if(!c)continue;if(Date.now()-c.seen>15000){mpDrop(st);continue}try{c.send({t:'ping'})}catch(e){}}},4000)}
 function mpHostRecv(seat,d){if(!d||typeof d!=='object')return;
  if(d.t==='hello'){NET.names[seat]=String(d.name||'Gast').replace(/[<>&"]/g,'').slice(0,14)||'Gast';toast(`👋 ${NET.names[seat]} spielt jetzt für ${['','Andy','Melli'][seat]} mit`,2600);try{sndPling()}catch(e){}updatePlates();try{NET.conns[seat].send({t:'seat',seat})}catch(e){}mpSync(seat);mpPanelRefresh()}
@@ -1934,7 +1941,7 @@ function mpHostRecv(seat,d){if(!d||typeof d!=='object')return;
  else if(d.t==='bye')mpDrop(seat)}
 function mpDrop(seat){const c=NET.conns[seat];if(!c)return;delete NET.conns[seat];const n=NET.names[seat];delete NET.names[seat];try{c.close()}catch(e){}
  toast(`${n||'Gast'} ist weg – ${['','Andy','Melli'][seat]} spielt wieder selbst`,2600);for(const k in NET.pending){const p=NET.pending[k];if(p.seat===seat){delete NET.pending[k];p.res(p.fb())}}updatePlates();mpPanelRefresh()}
-function mpStop(){clearInterval(NET.hb);for(const s of [1,2])if(NET.conns[s]){try{NET.conns[s].send({t:'end'})}catch(e){}mpDrop(s)}try{NET.peer&&NET.peer.destroy()}catch(e){}NET.peer=null;NET.role=null;NET.room=null;updatePlates()}
+function mpStop(){clearInterval(NET.hb);mpSave(false);for(const s of [1,2])if(NET.conns[s]){try{NET.conns[s].send({t:'end'})}catch(e){}mpDrop(s)}try{NET.peer&&NET.peer.destroy()}catch(e){}NET.peer=null;NET.role=null;NET.room=null;updatePlates()}
 function rAsk(seat,kind,data,fb){const c=NET.conns[seat];if(!c)return Promise.resolve(fb());const id=++NET.seq;mpSyncNow(seat);
  return new Promise(res=>{NET.pending[id]={res,seat,fb};try{c.send({t:'ask',id,kind,data})}catch(e){delete NET.pending[id];res(fb())}})}
 function mpView(g){const R=v=>(v+g)%3,V=r=>(r==null||r<0)?-1:(r-g+3)%3,ids=a=>(a||[]).map(c=>c.id);const ouv=S.game&&S.game.ouvert&&S.phase==='play';
@@ -1968,6 +1975,11 @@ async function remoteDeclare(d){const r=await rAsk(d,'declare',{hand:S.hands[d].
  if(!r||!r.game||(!r.game.hand&&(!disc||disc.length!==2))){await aiDeclarePhase(d);return}
  if(r.game.hand){S.skatFinal=S.skat.slice();bubble(d,'Hand!',900)}else{S.hands[d]=all.filter(c=>!disc.includes(c));S.skatFinal=disc;bubble(d,'Skat',900)}
  showSkat(false);await sleep(500);S.game=r.game;bubble(d,gameName(S.game),1800)}
+/* Tisch nach Hintergrund/Neuladen wieder öffnen (iPhone pausiert Apps im Hintergrund) */
+async function mpWake(){if(JOIN||NET.role==='guest')return;if(NET.role==='host'&&NET.peer){if(NET.peer.destroyed){NET.peer=null;NET.role=null;try{await mpHost(NET.room);toast('👥 Tisch ist wieder offen',1600)}catch(e){}}else if(NET.peer.disconnected){try{NET.peer.reconnect()}catch(e){}}return}
+ const sv=mpSaved();if(sv&&!NET.role){try{await mpHost(sv.id);toast('👥 Dein Mehrspieler-Tisch ist wieder offen',2200)}catch(e){}}}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(mpWake,300)});
+addEventListener('pageshow',()=>setTimeout(mpWake,300));
 /* Host-Panel */
 function mpPanelRefresh(){if(document.getElementById('mpPanel'))openMp()}
 async function openMp(){const seatRow=s=>`<div class="strow"><span>${['','🦀 Platz von Andy','💖 Platz von Melli'][s]}</span><b>${NET.conns[s]?'📱 '+NET.names[s]:'🤖 KI'}</b></div>`;
@@ -1977,11 +1989,12 @@ async function openMp(){const seatRow=s=>`<div class="strow"><span>${['','🦀 P
  ${on?`<p class="mh" style="text-align:center">Einladungslink</p><div style="word-break:break-all;background:rgba(0,0,0,.08);padding:8px 10px;border-radius:10px;font:13px ui-monospace,monospace;user-select:text;-webkit-user-select:text">${mpLink()}</div>
  <div class="row" style="margin-top:8px">${navigator.share?'<button class="pill sm" id="mpShare">📤 Teilen</button>':''}<button class="pill sm tan" id="mpCopy">📋 Kopieren</button></div>
  <p class="mh" style="text-align:center;margin-top:12px">Am Tisch</p><div class="strow"><span>🏖️ Du</span><b>${NM(0)}</b></div>${seatRow(1)}${seatRow(2)}
- <p class="hd" style="text-align:center">Die Gäste machen ab ihrer nächsten Entscheidung mit. Lass die App offen, solange ihr spielt – du bist der Tisch.</p>
+ <p style="text-align:center;font-weight:700">${NET.ok&&NET.peer&&!NET.peer.disconnected?'🟢 Tisch ist offen':'🟠 Verbindung zum Server weg – verbinde neu …'}</p>
+ <p class="hd" style="text-align:center">Wichtig auf dem iPhone: Nach dem Teilen <b>gleich zurück in die App</b> wechseln und sie offen lassen. Solange die App im Hintergrund ist, ist der Tisch zu und der Freund sieht „Tisch nicht gefunden“. Der Link bleibt gültig, er kann es dann einfach nochmal probieren.</p>
  <div class="row"><button class="pill sm tan" id="mpEnd">Mehrspieler beenden</button><button class="pill sm" id="mpOk">Weiterspielen</button></div>`
  :`<div class="row"><button class="pill sm" id="mpStart">📨 Freund einladen</button></div><div class="row"><button class="pill sm tan" id="mpOk">Zurück</button></div>`}</div>`);
  const q=id=>document.getElementById(id);
- if(q('mpStart'))q('mpStart').onclick=async()=>{q('mpStart').disabled=true;q('mpStart').textContent='Verbinde …';try{await mpHost();openMp()}catch(e){toast('Mehrspieler-Server nicht erreichbar – Internet prüfen und nochmal versuchen',3000);openMp()}};
+ if(q('mpStart'))q('mpStart').onclick=async()=>{q('mpStart').disabled=true;q('mpStart').textContent='Verbinde …';try{await mpHost();openMp()}catch(e){toast(`Mehrspieler-Server nicht erreichbar (${e&&e.type||e&&e.message||'?'}) – Internet prüfen und nochmal versuchen`,3500);openMp()}};
  if(q('mpShare'))q('mpShare').onclick=()=>navigator.share({title:'Skat am Strand',text:`${NM(0)} lädt dich zu einer Runde Skat ein 🃏`,url:mpLink()}).catch(()=>{});
  if(q('mpCopy'))q('mpCopy').onclick=()=>{(navigator.clipboard?navigator.clipboard.writeText(mpLink()):Promise.reject()).then(()=>toast('Link kopiert',1200)).catch(()=>toast('Link markieren und kopieren',1600))};
  if(q('mpEnd'))q('mpEnd').onclick=()=>{mpStop();openMp()};
@@ -2012,14 +2025,25 @@ async function mpGuestAsk(m){const{id,kind,data}=m;let v=null;
  catch(e){console.error(e);NET.busy=false}
  try{NET.conn.send({t:'ans',id,v})}catch(e){}if(NET.view)mpApply(NET.view)}
 async function mpGuest(){save=function(){};document.body.classList.add('mpGuest');
- const name=await new Promise(res=>{openOverlay(`<div class="panel"><h2>🃏 Skat am Strand</h2><p style="text-align:center">Du wurdest zu einer Runde Skat eingeladen!</p><p class="mh" style="text-align:center">Dein Name</p>
+ let auto=null;try{auto=sessionStorage.getItem('skatMpAuto')&&localStorage.getItem('skatMpName');sessionStorage.removeItem('skatMpAuto')}catch(e){}
+ const name=auto||await new Promise(res=>{openOverlay(`<div class="panel"><h2>🃏 Skat am Strand</h2><p style="text-align:center">Du wurdest zu einer Runde Skat eingeladen!</p><p class="mh" style="text-align:center">Dein Name</p>
   <input id="mpName" maxlength="14" value="${(localStorage.getItem('skatMpName')||'').replace(/"/g,'')}" placeholder="Name" style="width:100%;font:18px system-ui;padding:10px;border-radius:10px;border:1px solid #bba;-webkit-user-select:text;user-select:text">
   <div class="row" style="margin-top:10px"><button class="pill sm" id="mpJoin">Mitspielen</button></div></div>`);
   const go=()=>{const n=document.getElementById('mpName').value.trim()||'Gast';try{localStorage.setItem('skatMpName',n)}catch(e){}res(n)};document.getElementById('mpJoin').onclick=go;document.getElementById('mpName').onkeydown=e=>{if(e.key==='Enter')go()}});
- openOverlay('<div class="panel"><h2>Verbinde …</h2><p style="text-align:center">Einen Moment, ich suche den Tisch.</p></div>');
- try{await mpLoadPeer();const peer=new Peer(mpOpts());await new Promise((res,rej)=>{peer.on('open',res);peer.on('error',rej);setTimeout(()=>rej(new Error('t')),15000)});NET.peer=peer;
-  const c=peer.connect(JOIN,{reliable:true});await new Promise((res,rej)=>{c.on('open',res);c.on('error',rej);peer.on('error',rej);setTimeout(()=>rej(new Error('t')),15000)});NET.conn=c;NET.role='guest'}
- catch(e){openOverlay('<div class="panel"><h2>Tisch nicht gefunden</h2><p style="text-align:center">Der Einladungslink ist abgelaufen oder der Gastgeber hat die App geschlossen. Bitte um einen neuen Link.</p><div class="row"><button class="pill sm" id="mpRe">Nochmal</button></div></div>');document.getElementById('mpRe').onclick=()=>location.reload();return}
+ const stat=(n,why)=>openOverlay(`<div class="panel"><h2>Suche den Tisch …</h2><p style="text-align:center">${why||'Einen Moment.'}</p><p class="hd" style="text-align:center">Versuch ${n} · Der Gastgeber muss Skat am Strand gerade <b>offen</b> haben (nicht im Hintergrund).</p></div>`);
+ let last='';stat(1);
+ try{await mpLoadPeer()}catch(e){last='script'}
+ if(last!=='script'){const t0=Date.now();
+  for(let n=1;Date.now()-t0<120000;n++){
+   try{if(!NET.peer||NET.peer.destroyed||NET.peer.disconnected){try{NET.peer&&NET.peer.destroy()}catch(x){}NET.peer=new Peer(mpOpts());const pr=NET.peer;await new Promise((res,rej)=>{pr.on('open',res);pr.on('error',rej);setTimeout(()=>rej({type:'server-timeout'}),12000)})}
+    const pr=NET.peer;const c=pr.connect(JOIN,{reliable:true});
+    await new Promise((res,rej)=>{let done=0;const ok=()=>{if(!done){done=1;res()}},no=e=>{if(!done){done=1;rej(e)}};c.on('open',ok);c.on('error',no);pr.once('error',no);setTimeout(()=>no({type:'no-answer'}),12000)});
+    NET.conn=c;NET.role='guest';last='';break}
+   catch(e){last=(e&&e.type)||'?';try{NET.peer&&NET.peer.off&&NET.peer.off('error')}catch(x){}
+    stat(n+1,last==='peer-unavailable'?'Der Tisch ist gerade nicht erreichbar – wahrscheinlich ist die App beim Gastgeber im Hintergrund. Ich versuche es weiter …':last==='no-answer'?'Der Tisch antwortet nicht – evtl. blockiert das WLAN die Verbindung. Ich versuche es weiter …':'Ich versuche es weiter …');
+    if(last==='peer-unavailable'||last==='network'||last==='server-timeout'){try{NET.peer.destroy()}catch(x){}NET.peer=null}await sleep(3000)}}}
+ if(NET.role!=='guest'){const tip=last==='script'?'Die Mehrspieler-Bibliothek ließ sich nicht laden – Internetverbindung prüfen.':last==='no-answer'?'Der Tisch wurde gefunden, aber die direkte Verbindung klappt nicht. Probier es im Handynetz statt im WLAN (oder umgekehrt).':'Der Gastgeber muss die App offen haben, nicht im Hintergrund. Sag ihm, er soll zurück in Skat am Strand wechseln.';
+  openOverlay(`<div class="panel"><h2>Tisch nicht gefunden</h2><p style="text-align:center">${tip}</p><p class="hd" style="text-align:center">Fehlercode: ${last||'?'}</p><div class="row"><button class="pill sm" id="mpRe">Nochmal</button></div></div>`);document.getElementById('mpRe').onclick=()=>location.reload();return}
  const q=[];let busy=false;const pump=async()=>{if(busy)return;busy=true;while(q.length){const m=q.shift();try{if(m.t==='ev')await mpGuestEv(m)}catch(e){console.error(e)}}busy=false};
  NET.conn.on('data',m=>{if(!m||typeof m!=='object')return;
   if(m.t==='st'){if(NET.view==null){closeOverlay();toast(`Du bist am Tisch! 🏖️`,2000)}NET.hostSeatV=(3-(NET.seat||1))%3;mpApply(m.v)}
@@ -2028,14 +2052,14 @@ async function mpGuest(){save=function(){};document.body.classList.add('mpGuest'
   else if(m.t==='ping'){try{NET.conn.send({t:'pong'})}catch(e){}}
   else if(m.t==='ev'){if(m.e==='play'||m.e==='bub'){mpGuestEv(m)}else{q.push(m);pump()}}
   else if(m.t==='full'){openOverlay('<div class="panel"><h2>Tisch ist voll</h2><p style="text-align:center">Es spielen schon drei Leute.</p></div>')}
-  else if(m.t==='end'){openOverlay('<div class="panel"><h2>Runde beendet</h2><p style="text-align:center">Der Gastgeber hat die Mehrspieler-Runde beendet. Danke fürs Mitspielen!</p></div>')}});
- NET.conn.on('close',()=>{if(NET.left)return;openOverlay('<div class="panel"><h2>Verbindung weg</h2><p style="text-align:center">Die Verbindung zum Gastgeber ist abgerissen.</p><div class="row"><button class="pill sm" id="mpRe">Neu verbinden</button></div></div>');document.getElementById('mpRe').onclick=()=>location.reload()});
+  else if(m.t==='end'){NET.ended=true;openOverlay('<div class="panel"><h2>Runde beendet</h2><p style="text-align:center">Der Gastgeber hat die Mehrspieler-Runde beendet. Danke fürs Mitspielen!</p></div>')}});
+ NET.conn.on('close',()=>{if(NET.left||NET.ended)return;openOverlay('<div class="panel"><h2>Verbindung weg</h2><p style="text-align:center">Die Verbindung zum Gastgeber ist abgerissen – ich verbinde neu …</p></div>');try{sessionStorage.setItem('skatMpAuto','1')}catch(e){}setTimeout(()=>location.reload(),2500)});
  NET.conn.send({t:'hello',name});addEventListener('pagehide',()=>{try{NET.conn.send({t:'bye'})}catch(e){}});
  $('#btnBack').onclick=()=>{openOverlay(`<div class="panel"><h2>👥 Mehrspieler</h2><p style="text-align:center">Du spielst am Tisch von ${NM(NET.hostSeatV)}.</p><div class="row"><button class="pill sm tan" id="mpLeave">Verlassen</button><button class="pill sm" id="mpStay">Weiterspielen</button></div></div>`);
   document.getElementById('mpStay').onclick=()=>closeOverlay();document.getElementById('mpLeave').onclick=()=>{NET.left=true;try{NET.conn.send({t:'bye'})}catch(e){}setTimeout(()=>{location.href=location.pathname},300)}};
  openOverlay('<div class="panel"><h2>Verbunden ✅</h2><p style="text-align:center">Warte auf das nächste Spiel …</p></div>')}
 
-(async function main(){if(JOIN&&!AUTO){updatePlates();await mpGuest();return}updatePlates();if(!P.seen&&!AUTO){P.seen=true;save();await new Promise(r=>openRules(r))}
+(async function main(){if(JOIN&&!AUTO){updatePlates();await mpGuest();return}updatePlates();if(!AUTO&&mpSaved())setTimeout(mpWake,1500);if(!P.seen&&!AUTO){P.seen=true;save();await new Promise(r=>openRules(r))}
  while(true){try{if(P.history.length>=(P.cfg.listLen||12))await listEnd();await playGame();if(!S.practice&&P.history.length>=(P.cfg.listLen||12))await listEnd()}catch(e){console.error(e);window.__errors.push(String(e&&e.stack||e));await sleep(1000)}}})();
 </script>
 </body>
