@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.45.0 (2026-11-07): Skat multiplayer over MQTT relay
+
+- skat/index.html v1.20.0: replaced PeerJS/WebRTC with MQTT over WebSockets (mqtt.js 5.10.1 from unpkg; public brokers EMQX, HiveMQ, Mosquitto, first reachable wins, index in invite link &b=). Topics skatstrand/v2/<room>/h and /g/<guestId>, QoS 1 with per-sender sequence dedupe; guest re-sends hello until seated, host answers unknown guests with 'who'; host/guest heartbeats; room saved as skatMpRoom2. Fixed catastrophic regex backtracking in the English fallback translator (froze pages on long untranslated text).
+
 ## 2.44.0 (2026-11-06): Skat English
 
 - skat/index.html v1.19.0: P.cfg.lang ('de'/'en'; new players detected from navigator.language, existing players stay German). English via TR_DICT (~660 German UI segments, {} placeholders compiled to regex) applied by a MutationObserver to text nodes and placeholder/title/aria-label; SN/RN/POSN swapped, gameName/cardName English; DIA.en chatter pack, English TTS voices and bid numbers. Menu toggle reloads the page.
