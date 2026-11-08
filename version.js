@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.45.0";
+const APP_VERSION = "2.45.1";
 const CHANGELOG = [
+  {
+    version: "2.45.1",
+    date: "2026-11-07",
+    at: "2026-11-08T01:00:00Z",
+    title: "Skat: full multiplayer lists",
+    changes: [
+      "🃏 Skat am Strand v1.20.1: before inviting, choose how many games the multiplayer list has (3 to 36)",
+      "The whole list is played with everyone, with the result for all players at the end, then a new list starts",
+      "Your own list is kept aside and comes back when you end multiplayer; the top shows \"Spiel 3/12\""
+    ]
+  },
   {
     version: "2.45.0",
     date: "2026-11-07",

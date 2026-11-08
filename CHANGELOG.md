@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.45.1 (2026-11-07): Skat multiplayer list length
+
+- skat/index.html v1.20.1: Mehrspieler panel asks list length (3/6/9/12/18/24/36, P.cfg.mpLen); new list starts with the next game (playGame wrapper), solo list backed up in P.soloBak and restored by mpStop; listEnd notifies guests; view carries listLen; title shows Spiel n/len.
+
 ## 2.45.0 (2026-11-07): Skat multiplayer over MQTT relay
 
 - skat/index.html v1.20.0: replaced PeerJS/WebRTC with MQTT over WebSockets (mqtt.js 5.10.1 from unpkg; public brokers EMQX, HiveMQ, Mosquitto, first reachable wins, index in invite link &b=). Topics skatstrand/v2/<room>/h and /g/<guestId>, QoS 1 with per-sender sequence dedupe; guest re-sends hello until seated, host answers unknown guests with 'who'; host/guest heartbeats; room saved as skatMpRoom2. Fixed catastrophic regex backtracking in the English fallback translator (froze pages on long untranslated text).
