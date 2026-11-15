@@ -1,6 +1,18 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.46.0";
+const APP_VERSION = "2.47.0";
 const CHANGELOG = [
+  {
+    version: "2.47.0",
+    date: "2026-11-15",
+    at: "2026-11-15T23:00:00Z",
+    title: "Skat: voice messages, photos, rematch",
+    changes: [
+      "🃏 Skat am Strand v1.22.0: 🎙️ voice messages in multiplayer. Hold the button and speak (up to 6 seconds)",
+      "📷 Your own photo instead of Andy or Melli: friends appear at the table with their face, and you appear for them",
+      "📋 Friends see the game list and the coach analysis of their own games",
+      "🔁 Rematch button after the final results"
+    ]
+  },
   {
     version: "2.46.0",
     date: "2026-11-15",

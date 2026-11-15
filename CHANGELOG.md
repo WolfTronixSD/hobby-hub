@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.47.0 (2026-11-15): Skat voice, photos, guest list, rematch
+
+- skat/index.html v1.22.0: push-to-talk (#bTalk, MediaRecorder audio/mp4 or webm at 32 kbit/s, max 6 s, base64 over MQTT, host relays with mpEv skip); multiplayer photo (pickPhoto slot 9, shrunk to 180x208 PNG, skatMpPhoto) shown via getPhoto/look overrides and mpAvatar (host's photo on Andy's figure for guests); rotated history sync (mpRotH, 'hist' messages) with guest-side coach texts and openSheet wrapper; Revanche / Mehrspieler beenden buttons in listEnd for multiplayer hosts.
+
 ## 2.46.0 (2026-11-15): Skat multiplayer lobby and resilience
 
 - skat/index.html v1.21.0: lobby (guests watch, isRem only after start), host taps Los geht's -> mpStartNow saves list and reloads into game 1; host re-hosts on load when a list runs and waits up to 25 s for saved guests (skatMpSeats). Persistent MQTT sessions (clean:false, stable client ids), epochs drop stale messages, unique ask ids, pending asks re-sent on hello; no drops on silence (away marker, host can let the AI take over), guests wait with a banner instead of reloading. Guest settings menu (sound, scene, voices) saved to skatGuestCfg, AI speech relayed to guests, quick chat. Skat and own trick slot kept above the hand; guarded onHandTap when no game.
