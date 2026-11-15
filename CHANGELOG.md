@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.46.0 (2026-11-15): Skat multiplayer lobby and resilience
+
+- skat/index.html v1.21.0: lobby (guests watch, isRem only after start), host taps Los geht's -> mpStartNow saves list and reloads into game 1; host re-hosts on load when a list runs and waits up to 25 s for saved guests (skatMpSeats). Persistent MQTT sessions (clean:false, stable client ids), epochs drop stale messages, unique ask ids, pending asks re-sent on hello; no drops on silence (away marker, host can let the AI take over), guests wait with a banner instead of reloading. Guest settings menu (sound, scene, voices) saved to skatGuestCfg, AI speech relayed to guests, quick chat. Skat and own trick slot kept above the hand; guarded onHandTap when no game.
+
 ## 2.45.1 (2026-11-07): Skat multiplayer list length
 
 - skat/index.html v1.20.1: Mehrspieler panel asks list length (3/6/9/12/18/24/36, P.cfg.mpLen); new list starts with the next game (playGame wrapper), solo list backed up in P.soloBak and restored by mpStop; listEnd notifies guests; view carries listLen; title shows Spiel n/len.
