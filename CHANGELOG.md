@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.47.2 (2026-11-15): Skat host on all brokers
+
+- skat/index.html v1.22.2: host connects to all MQTT brokers in parallel (NET.mqs) and replies to each guest via the broker its messages came in on, so a guest that falls back to another broker still reaches the table; panel opens automatically and a floating Los geht's button shows when a guest joins before the list starts.
+
 ## 2.47.1 (2026-11-15): Skat multiplayer freeze fix
 
 - skat/index.html v1.22.1: guest processes events and asks strictly in order through one queue (trick sync paused while busy); collect waits until the last card was visible 1.3 s; a newer host epoch aborts a stale ask (it blocked the queue forever after a host reload); stale-epoch asks skipped; host re-sends unanswered asks every 25 s, guest re-shows the UI or re-sends its answer; event steps time out after 9 s; photo/voice size caps; no asks during the Los geht's reload.

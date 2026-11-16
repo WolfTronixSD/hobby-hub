@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Skat">
 <meta name="theme-color" content="#3aa6d8">
 <title>Skat am Strand</title>
-<meta name="version" content="1.22.1">
-<meta name="version" content="1.22.1">
+<meta name="version" content="1.22.2">
+<meta name="version" content="1.22.2">
 <style>
 :root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -174,6 +174,7 @@ table.list tr.lost td.pc{color:#a01010}
 .stgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}.portrait .stgrid{grid-template-columns:1fr}.strow{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed rgba(128,100,60,.35);padding:3px 0;font:15px system-ui}
 .mpGuest #mMp,.mpGuest #mList,.mpGuest #mPl,.mpGuest #mLink,.mpGuest #mNew,.mpGuest .row:has(#mHouse),.mpGuest p.mh:has(+ .row #mHouse),.mpGuest .row:has(#mDaily),.mpGuest p.mh:has(+ .row #mDaily),.mpGuest .row:has([data-k=coachLive]),.mpGuest .row:has([data-l]),.mpGuest p.mh:has(+ .row [data-l]),.mpGuest .row:has([data-dia]),.mpGuest p.mh:has(+ .row [data-dia]),.mpGuest [data-k=fast],.mpGuest #mVoices{display:none!important}
 #mpBan{position:absolute;left:50%;top:calc(var(--sat) + 52%);transform:translate(-50%,-50%);z-index:470;background:rgba(20,30,25,.85);color:#fff;padding:.5em 1em;border-radius:14px;font:600 16px system-ui;pointer-events:none}
+#mpGoBtn{display:none;position:absolute;left:50%;transform:translateX(-50%);top:calc(var(--sat) + 30%);z-index:465;animation:lkP 1s ease-in-out infinite alternate}.mpLobby #mpGoBtn{display:block}
 #bTalk{display:none;right:calc(var(--sar) + 1.5%);top:calc(var(--sat) + 1.6vh + 3*clamp(40px,8.2vh,62px) + 30px);font-size:22px;touch-action:none;-webkit-user-select:none}.portrait #bTalk{right:170px;top:calc(var(--sat) + 6px)}.mpOn #bTalk{display:grid}#bTalk.rec{background:#e5392b;animation:lkP .6s ease-in-out infinite alternate}
 #bChat{display:none;right:calc(var(--sar) + 1.5%);top:calc(var(--sat) + 1.6vh + 2*clamp(40px,8.2vh,62px) + 20px);font-size:22px}.portrait #bChat{right:116px;top:calc(var(--sat) + 6px)}.mpOn #bChat{display:grid}
 .chatP{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.chatP button{font-size:20px}
@@ -316,6 +317,7 @@ body.asking #gameInfo{visibility:hidden}
  <div class="plate" id="pl0"><div class="nm"></div><div class="ps"></div></div>
  <div class="plate" id="pl2"><div class="nm"></div><div class="ps"></div></div>
  <button class="rbtn" id="btnMute" aria-label="Ton" data-x><svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="#fff"/><path class="w1" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="x1" d="M16 9.5l5 5M21 9.5l-5 5" style="display:none"/></svg></button>
+ <button class="pill" id="mpGoBtn">▶️ Los geht’s</button>
  <button class="rbtn" id="bChat" aria-label="Chat">💬</button>
  <button class="rbtn" id="bTalk" aria-label="Sprechen">🎙️</button>
  <button class="rbtn" id="btnScore" aria-label="Spielliste"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20c1-4 4-5.6 7.5-5.6s6.5 1.6 7.5 5.6"/></svg></button>
@@ -355,8 +357,9 @@ const CANDS0=[{type:'suit',trump:3},{type:'suit',trump:2},{type:'suit',trump:1},
 const cands=()=>P.cfg.saxon?CANDS0.concat([{type:'saxon'}]):CANDS0;
 
 /* ---------- version ---------- */
-const SKAT_VERSION='1.22.1';
+const SKAT_VERSION='1.22.2';
 const SKAT_CHANGES=[
+ ['1.22.2','2026-11-15','👥 Mehrspieler: dein Tisch lauscht jetzt auf allen drei Servern gleichzeitig – Freunde finden ihn auch, wenn ihr Netz (z. B. am PC/Firmen-WLAN) einen Server blockiert · Sobald ein Freund am Tisch sitzt, erscheint groß „▶️ Los geht’s“'],
  ['1.22.1','2026-11-15','👥 Mehrspieler-Fix: Gäste froren nach dem Spielende ein (Reizfrage verschwand beim neuen Geben) · gespielte Karten bleiben bei Gästen mindestens gut eine Sekunde liegen · Züge erscheinen bei Gästen immer in der richtigen Reihenfolge'],
  ['1.22.0','2026-11-15','🎙️ Sprachnachrichten: Knopf gedrückt halten und sprechen (bis 6 Sek.) · 📷 Eigenes Foto statt Andy/Melli – Gäste erscheinen mit ihrem Gesicht am Tisch, du auch bei ihnen · 📋 Gäste sehen Spielliste und Coach-Analyse ihrer eigenen Spiele · 🔁 Revanche-Knopf nach der Siegerehrung'],
  ['1.21.0','2026-11-15','👥 Mehrspieler: Anzahl Spiele wählen, Freunde einladen, dann „Los geht’s“ – die Liste startet mit Spiel 1 · App kurz wechseln stoppt nichts mehr: das Spiel wartet, bis alle wieder da sind, und Gäste behalten ihren Platz · Gäste können Ton, Musik, Szene und Stimmen einstellen und hören Andy und Melli sprechen · 💬 Schnell-Chat mit Emojis und Sprüchen · Skat-Karten verdecken die Hand nicht mehr'],
@@ -1961,7 +1964,7 @@ function mpLoadLib(){return window.mqtt?Promise.resolve():new Promise((res,rej)=
 function mqConnect(url,cid){return new Promise((res,rej)=>{let c;try{c=mqtt.connect(url,{clientId:cid||('ss_'+Math.random().toString(36).slice(2,12)),clean:!cid,connectTimeout:8000,reconnectPeriod:2500,keepalive:20,protocolVersion:4})}catch(e){return rej({type:'broker'})}
  const t=setTimeout(()=>{try{c.end(true)}catch(e){}rej({type:'broker-timeout'})},9000);c.once('connect',()=>{clearTimeout(t);res(c)});c.on('error',()=>{})})}
 async function mqConnectAny(pref,cid){const urls=mqUrls();const order=[...new Set([pref,0,1,2].filter(i=>i!=null&&i<urls.length))];let last;for(const i of order){try{return{c:await mqConnect(urls[i],cid),i}}catch(e){last=e}}throw last||{type:'broker'}}
-function mqSend(topic,m){if(!NET.mq)return;NET.n=(NET.n||0)+1;try{NET.mq.publish(topic,JSON.stringify(Object.assign({f:NET.me,n:NET.n,e:NET.epoch||0},m)),{qos:1})}catch(e){}}
+function mqSend(topic,m,cli){cli=cli||NET.mq;if(!cli)return;NET.n=(NET.n||0)+1;try{cli.publish(topic,JSON.stringify(Object.assign({f:NET.me,n:NET.n,e:NET.epoch||0},m)),{qos:1})}catch(e){}}
 function mqFresh(m){if(!m||typeof m!=='object'||!m.f)return false;NET.ep=NET.ep||{};const src=m.g||'host';if((m.e||0)<(NET.ep[src]||0))return false;const newer=NET.ep[src]&&(m.e||0)>NET.ep[src];NET.ep[src]=Math.max(NET.ep[src]||0,m.e||0);if(newer&&src==='host'&&NET.role==='guest')mpHostRestarted();NET.lastN=NET.lastN||{};if(m.n<=(NET.lastN[m.f]||0))return false;NET.lastN[m.f]=m.n;return true}
 function mqOnMsg(fn){NET.mq.on('message',(tp,buf)=>{let m;try{m=JSON.parse(buf.toString())}catch(e){return}if(mqFresh(m))fn(m)})}
 {const _at=applyTheme;applyTheme=function(first){_at(first);if(typeof NET!=='undefined'&&NET.role&&(NET.role==='guest'?NET.seat:(NET.photo&&(NET.photo[1]||NET.photo[2]))))mpRenderAvatars()}}
@@ -1972,19 +1975,24 @@ function mpLink(){const u=new URL(location.href);u.search='?join='+encodeURIComp
 function mpSaved(){try{const r=JSON.parse(localStorage.getItem('skatMpRoom2')||'null');return r&&Date.now()-r.t<6*3600e3?r:null}catch(e){return null}}
 function mpSave(on){try{if(on)localStorage.setItem('skatMpRoom2',JSON.stringify({id:NET.room,b:NET.bi,t:Date.now()}));else localStorage.removeItem('skatMpRoom2')}catch(e){}}
 async function mpHost(){if(NET.role==='host'&&NET.mq)return;await mpLoadLib();const sv=mpSaved();const room=(sv&&sv.id)||Math.random().toString(36).slice(2,10);
- const {c,i}=await mqConnectAny(sv?sv.b:null,'ssh_'+room);NET.mq=c;NET.bi=i;NET.room=room;NET.me='h'+Math.random().toString(36).slice(2,8);NET.epoch=Date.now();NET.seq=Math.floor(Date.now()/1000)*100;NET.role='host';NET.ok=true;mpSave(true);NET.started=!!P.soloBak;if(P.soloBak)NET.listLen=P.cfg.listLen;
- const sub=()=>c.subscribe(mqT('h'),{qos:1});sub();const callBack=()=>{for(const e of Object.values(mpSeats()))if(e.gid&&!NET.conns[e.seat])mqSend(mqT('g/'+e.gid),{t:'who'})};setTimeout(callBack,300);
- c.on('connect',()=>{NET.ok=true;sub();callBack();mpPanelRefresh()});c.on('offline',()=>{NET.ok=false;mpPanelRefresh()});c.on('close',()=>{NET.ok=false});
- mqOnMsg(m=>{const gid=m.g;if(!gid)return;let seat=[1,2].find(x=>NET.conns[x]&&NET.conns[x].gid===gid);
-  if(m.t==='hello'){if(!seat){const map=mpSeats();const pref=map[gid]&&map[gid].seat;seat=(pref&&!NET.conns[pref])?pref:[1,2].find(x=>!NET.conns[x]&&!Object.values(map).some(e=>e.seat===x&&e.gid!==gid&&Date.now()-e.t<600e3))||[1,2].find(x=>!NET.conns[x]);if(!seat){mqSend(mqT('g/'+gid),{t:'full'});return}
-    NET.conns[seat]={gid,seat,seen:Date.now(),send:mm=>mqSend(mqT('g/'+gid),mm),close(){}};map[gid]={seat,gid,name:m.name,t:Date.now()};mpSeatsSave(map)}}
-  else if(!seat){if(m.t!=='bye')mqSend(mqT('g/'+gid),{t:'who'});return}
-  NET.conns[seat].seen=Date.now();mpHostRecv(seat,m)});
+ /* v1.22.2: auf allen Servern gleichzeitig lauschen – Gäste finden den Tisch auch, wenn ihr Netz einen Server blockiert */
+ const urls=mqUrls();const rs=await Promise.allSettled(urls.map(u=>mqConnect(u,'ssh_'+room)));const cl=[];rs.forEach((r,i)=>{if(r.status==='fulfilled'){r.value._i=i;cl.push(r.value)}});
+ if(!cl.length)throw (rs[0]&&rs[0].reason)||{type:'broker'};
+ NET.mqs=cl;NET.mq=(sv&&cl.find(c=>c._i===sv.b))||cl[0];NET.bi=NET.mq._i;NET.room=room;NET.me='h'+Math.random().toString(36).slice(2,8);NET.epoch=Date.now();NET.seq=Math.floor(Date.now()/1000)*100;NET.role='host';NET.ok=true;mpSave(true);NET.started=!!P.soloBak;if(P.soloBak)NET.listLen=P.cfg.listLen;
+ const callBack=()=>{for(const e of Object.values(mpSeats()))if(e.gid&&!NET.conns[e.seat])for(const c of NET.mqs)mqSend(mqT('g/'+e.gid),{t:'who'},c)};setTimeout(callBack,300);
+ const onMsg=(m,cli)=>{const gid=m.g;if(!gid)return;let seat=[1,2].find(x=>NET.conns[x]&&NET.conns[x].gid===gid);
+  if(m.t==='hello'){if(!seat){const map=mpSeats();const pref=map[gid]&&map[gid].seat;seat=(pref&&!NET.conns[pref])?pref:[1,2].find(x=>!NET.conns[x]&&!Object.values(map).some(e=>e.seat===x&&e.gid!==gid&&Date.now()-e.t<600e3))||[1,2].find(x=>!NET.conns[x]);if(!seat){mqSend(mqT('g/'+gid),{t:'full'},cli);return}
+    const cc={gid,seat,seen:Date.now(),via:cli,close(){}};cc.send=mm=>mqSend(mqT('g/'+gid),mm,cc.via);NET.conns[seat]=cc;map[gid]={seat,gid,name:m.name,t:Date.now()};mpSeatsSave(map)}}
+  else if(!seat){if(m.t!=='bye')mqSend(mqT('g/'+gid),{t:'who'},cli);return}
+  NET.conns[seat].via=cli;NET.conns[seat].seen=Date.now();mpHostRecv(seat,m)};
+ for(const c of cl){const sub=()=>c.subscribe(mqT('h'),{qos:1});sub();
+  c.on('connect',()=>{NET.ok=true;sub();callBack();mpPanelRefresh()});c.on('offline',()=>{NET.ok=NET.mqs.some(x=>x.connected);mpPanelRefresh()});
+  c.on('message',(tp,buf)=>{let m;try{m=JSON.parse(buf.toString())}catch(e){return}if(mqFresh(m))onMsg(m,c)})}
  clearInterval(NET.hb);NET.hb=setInterval(()=>{for(const st of [1,2]){const cc=NET.conns[st];if(!cc)continue;const aw=Date.now()-cc.seen>15000;if(aw!==!!cc.away){cc.away=aw;updatePlates();mpPanelRefresh();if(aw)toast(`💤 ${NET.names[st]||'Gast'} ist kurz weg – wir warten`,2200);else toast(`✅ ${NET.names[st]||'Gast'} ist wieder da`,1500)}cc.send({t:'ping'});if(!aw)for(const k in NET.pending){const pp=NET.pending[k];if(pp.seat===st&&Date.now()-pp.t>25000){pp.t=Date.now();cc.send({t:'ask',id:+k,kind:pp.kind,data:pp.data})}}}},4000)}
 function mpSeats(){try{return JSON.parse(localStorage.getItem('skatMpSeats')||'{}')}catch(e){return{}}}
 function mpSeatsSave(m){try{localStorage.setItem('skatMpSeats',JSON.stringify(m))}catch(e){}}
 function mpHostRecv(seat,d){if(!d||typeof d!=='object')return;
- if(d.t==='hello'){const nn=String(d.name||'Gast').replace(/[<>&"]/g,'').slice(0,14)||'Gast';const fresh=NET.names[seat]!==nn;NET.names[seat]=nn;if(fresh)toast(`👋 ${NET.names[seat]} spielt jetzt für ${['','Andy','Melli'][seat]} mit`,2600);try{sndPling()}catch(e){}updatePlates();try{NET.conns[seat].send({t:'seat',seat,started:!!NET.started,len:NET.started?NET.listLen:(P.cfg.mpLen||12),host:NM(0)})}catch(e){}mpSync(seat);for(const k in NET.pending){const pp=NET.pending[k];if(pp.seat===seat)NET.conns[seat].send({t:'ask',id:+k,kind:pp.kind,data:pp.data})}NET.hs=NET.hs||{};NET.hs[seat]=-1;mpSyncNow(seat);{const mine=myMpPhoto();if(mine)NET.conns[seat].send({t:'photo',seat:0,data:mine});for(const st of [1,2])if(st!==seat&&NET.photo&&NET.photo[st])NET.conns[seat].send({t:'photo',seat:st,data:NET.photo[st]})}mpPanelRefresh()}
+ if(d.t==='hello'){const nn=String(d.name||'Gast').replace(/[<>&"]/g,'').slice(0,14)||'Gast';const fresh=NET.names[seat]!==nn;NET.names[seat]=nn;if(fresh)toast(`👋 ${NET.names[seat]} spielt jetzt für ${['','Andy','Melli'][seat]} mit`,2600);if(fresh&&!NET.started&&!document.querySelector('#overlay.show'))setTimeout(openMp,400);try{sndPling()}catch(e){}updatePlates();try{NET.conns[seat].send({t:'seat',seat,started:!!NET.started,len:NET.started?NET.listLen:(P.cfg.mpLen||12),host:NM(0)})}catch(e){}mpSync(seat);for(const k in NET.pending){const pp=NET.pending[k];if(pp.seat===seat)NET.conns[seat].send({t:'ask',id:+k,kind:pp.kind,data:pp.data})}NET.hs=NET.hs||{};NET.hs[seat]=-1;mpSyncNow(seat);{const mine=myMpPhoto();if(mine)NET.conns[seat].send({t:'photo',seat:0,data:mine});for(const st of [1,2])if(st!==seat&&NET.photo&&NET.photo[st])NET.conns[seat].send({t:'photo',seat:st,data:NET.photo[st]})}mpPanelRefresh()}
  else if(d.t==='chat'){const tx=String(d.txt||'').slice(0,40);if(tx)bubble(seat,tx,2600)}
  else if(d.t==='voice'){if(typeof d.data==='string'&&d.data.length<200000){playVoice(seat,d.data,d.mime);mpEv('voice',{seat,data:d.data,mime:d.mime},seat)}}
  else if(d.t==='photo'){NET.photo=NET.photo||{};if(typeof d.data==='string'&&d.data.startsWith('data:image/')&&d.data.length<200000)NET.photo[seat]=d.data;else delete NET.photo[seat];mpRenderAvatars();for(const st of [1,2])if(st!==seat&&NET.conns[st])NET.conns[st].send({t:'photo',seat,data:NET.photo[seat]||null})}
@@ -1999,7 +2007,7 @@ function mpRestoreSolo(){const b=P.soloBak;if(!b)return;Object.assign(P,{scores:
   const t0=Date.now();let shown=false;while(want.some(x=>!NET.conns[x])&&Date.now()-t0<25000){if(!shown){toast('👥 Warte auf deine Mitspieler …',2500);shown=true}await sleep(500)}}return _pg()}}
 async function mpStartNow(len){mpStartList(len);for(const st of [1,2])if(NET.conns[st])NET.conns[st].send({t:'restart',len});mpSave(true);save();await sleep(700);location.reload()}
 {const _le=listEnd;listEnd=async function(){if(NET.role==='host'){const o=[0,1,2].sort((a,b)=>P.scores[b]-P.scores[a]);mpEv('res',{txt:`🏁 Liste beendet! ${NM(o[0])} gewinnt mit ${P.scores[o[0]]} Punkten. ${NM(0)} entscheidet über die Revanche.`})}return _le()}}
-function mpStop(){clearInterval(NET.hb);mpSave(false);mpSeatsSave({});NET.started=false;setTimeout(mpRestoreSolo,50);for(const s of [1,2])if(NET.conns[s]){try{NET.conns[s].send({t:'end'})}catch(e){}mpDrop(s)}const mq=NET.mq;setTimeout(()=>{try{mq&&mq.end()}catch(e){}},500);NET.mq=null;NET.role=null;NET.room=null;updatePlates()}
+function mpStop(){clearInterval(NET.hb);mpSave(false);mpSeatsSave({});NET.started=false;setTimeout(mpRestoreSolo,50);for(const s of [1,2])if(NET.conns[s]){try{NET.conns[s].send({t:'end'})}catch(e){}mpDrop(s)}const mqs=NET.mqs||[NET.mq];setTimeout(()=>{for(const mq of mqs)try{mq&&mq.end()}catch(e){}},500);NET.mq=null;NET.mqs=null;NET.role=null;NET.room=null;updatePlates()}
 function rAsk(seat,kind,data,fb){const c=NET.conns[seat];if(!c)return Promise.resolve(fb());const id=++NET.seq;mpSyncNow(seat);
  return new Promise(res=>{NET.pending[id]={res,seat,fb,kind,data,t:Date.now()};try{c.send({t:'ask',id,kind,data})}catch(e){delete NET.pending[id];res(fb())}})}
 function mpView(g){const R=v=>(v+g)%3,V=r=>(r==null||r<0)?-1:(r-g+3)%3,ids=a=>(a||[]).map(c=>c.id);const ouv=S.game&&S.game.ouvert&&S.phase==='play';
@@ -2038,7 +2046,7 @@ async function remoteDeclare(d){const r=await rAsk(d,'declare',{hand:S.hands[d].
  if(r.game.hand){S.skatFinal=S.skat.slice();bubble(d,'Hand!',900)}else{S.hands[d]=all.filter(c=>!disc.includes(c));S.skatFinal=disc;bubble(d,'Skat',900)}
  showSkat(false);await sleep(500);S.game=r.game;bubble(d,gameName(S.game),1800)}
 /* Tisch nach Hintergrund/Neuladen wieder öffnen (iPhone pausiert Apps im Hintergrund) */
-async function mpWake(){if(JOIN||NET.role==='guest')return;if(NET.role==='host'&&NET.mq){if(!NET.mq.connected){try{NET.mq.reconnect()}catch(e){}}return}
+async function mpWake(){if(JOIN||NET.role==='guest')return;if(NET.role==='host'&&NET.mq){for(const c of NET.mqs||[NET.mq])if(!c.connected){try{c.reconnect()}catch(e){}}return}
  const sv=mpSaved();if(sv&&!NET.role&&P.soloBak){try{await mpHost();toast('👥 Dein Mehrspieler-Tisch ist wieder offen',2200)}catch(e){}}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(mpWake,300)});
 addEventListener('pageshow',()=>setTimeout(mpWake,300));
@@ -2051,7 +2059,7 @@ async function openMp(){const seatRow=s=>`<div class="strow"><span>${['','🦀 P
  ${on?`<p class="mh" style="text-align:center">Einladungslink</p><div style="word-break:break-all;background:rgba(0,0,0,.08);padding:8px 10px;border-radius:10px;font:13px ui-monospace,monospace;user-select:text;-webkit-user-select:text">${mpLink()}</div>
  <div class="row" style="margin-top:8px">${navigator.share?'<button class="pill sm" id="mpShare">📤 Teilen</button>':''}<button class="pill sm tan" id="mpCopy">📋 Kopieren</button></div>
  ${NET.started?`<p style="text-align:center">📋 Liste: <b>${(NET.listLen||P.cfg.listLen)+' Spiele · Spiel '+Math.min(P.history.length+1,NET.listLen||P.cfg.listLen)}</b></p>`:`<p class="mh" style="text-align:center">Wie viele Spiele?</p><div class="row" style="flex-wrap:wrap">${[3,6,9,12,18,24,36].map(n=>`<button class="chip${(P.cfg.mpLen||12)===n?' sel':''}" data-ml="${n}">${n}</button>`).join('')}</div>`}<div class="row"><button class="pill sm tan" id="mpPh">📷 ${myMpPhoto()?'Anderes Foto':'Mein Foto für die Freunde'}</button></div><p class="mh" style="text-align:center;margin-top:12px">Am Tisch</p><div class="strow"><span>🏖️ Du</span><b>${NM(0)}</b></div>${seatRow(1)}${seatRow(2)}
- <p style="text-align:center;font-weight:700">${NET.ok&&NET.mq&&NET.mq.connected?'🟢 Tisch ist offen':'🟠 Verbindung zum Server weg – verbinde neu …'}</p>
+ <p style="text-align:center;font-weight:700">${(NET.mqs||[]).some(c=>c.connected)?'🟢 Tisch ist offen':'🟠 Verbindung zum Server weg – verbinde neu …'}</p>
  <p class="hd" style="text-align:center">Kurz die App wechseln ist kein Problem – das Spiel wartet, bis alle wieder da sind. Solange deine App im Hintergrund ist, steht der Tisch still.</p>
  ${NET.started?'':`<div class="row"><button class="pill" id="mpGo">▶️ Los geht’s – ${P.cfg.mpLen||12} Spiele</button></div><p class="hd" style="text-align:center">Warte, bis deine Freunde am Tisch sitzen, dann starten. Die Liste beginnt mit Spiel 1, ein laufendes Spiel wird abgebrochen. Deine eigene Liste wird aufgehoben.</p>`}<div class="row"><button class="pill sm tan" id="mpEnd">Mehrspieler beenden</button><button class="pill sm" id="mpOk">${NET.started?'Weiterspielen':'Schließen'}</button></div>`
  :`<p class="mh" style="text-align:center">Wie viele Spiele soll die Liste haben?</p><div class="row" style="flex-wrap:wrap">${[3,6,9,12,18,24,36].map(n=>`<button class="chip${(P.cfg.mpLen||12)===n?' sel':''}" data-ml="${n}">${n}</button>`).join('')}</div><p class="hd" style="text-align:center">Erst einladen, dann starten, wenn alle da sind. Die Liste beginnt mit Spiel 1.</p><div class="row"><button class="pill sm" id="mpStart">📨 Freunde einladen</button></div><div class="row"><button class="pill sm tan" id="mpOk">Zurück</button></div>`}</div>`);
@@ -2091,6 +2099,8 @@ const CHATS=['👍','😂','😮','😡','🍀','🙈','Gut gespielt!','Mist!','
 function openChat(){openOverlay(`<div class="panel"><h2>💬 Kurz was sagen</h2><div class="chatP">${CHATS.map((t,i)=>`<button class="pill sm tan" data-ct="${i}">${t}</button>`).join('')}</div><div class="row"><button class="pill sm" id="ctX">Zurück</button></div></div>`);
  document.getElementById('ctX').onclick=()=>closeOverlay();document.querySelectorAll('[data-ct]').forEach(b=>b.onclick=()=>{const tx=tr(CHATS[+b.dataset.ct]);closeOverlay();if(NET.role==='guest'){bubble(0,tx,2600);NET.lastChat=Date.now();NET.lastChatTx=tx;NET.conn.send({t:'chat',txt:tx})}else if(NET.role==='host')bubble(0,tx,2600)})}
 $('#bChat').onclick=e=>{e.stopPropagation();if(NET.role)openChat()};
+$('#mpGoBtn').onclick=e=>{e.stopPropagation();openMp()};
+setInterval(()=>document.body.classList.toggle('mpLobby',!!(NET.role==='host'&&!NET.started&&(NET.conns[1]||NET.conns[2]))),1000);
 setInterval(()=>document.body.classList.toggle('mpOn',!!(NET.role==='guest'?NET.seat:(NET.role==='host'&&(NET.conns[1]||NET.conns[2])))),1500);
 function mpGuestCoach(h){if(h.passed){const c=evalHand(h.dealt.hands[0].map(MPC),0);return c.max?`Coach hätte bis ${c.max} gereizt (${gameName(c.game)}).`:'Kein Spiel auf der Hand – Passen war richtig.'}
  if(h.ramsch){const all=[0,1,2];return h.myPts!=null?(h.ds&&!h.ds.includes(0)?`Ramsch: nur ${h.myPts} Augen, super gedrückt!`:`Ramsch: ${h.myPts} Augen. Tipp: hohe Karten früh auf fremde Stiche werfen.`):''}
