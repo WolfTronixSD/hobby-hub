@@ -1,6 +1,17 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.47.0";
+const APP_VERSION = "2.47.1";
 const CHANGELOG = [
+  {
+    version: "2.47.1",
+    date: "2026-11-15",
+    at: "2026-11-16T04:00:00Z",
+    title: "Skat: multiplayer freeze fixed",
+    changes: [
+      "🃏 Skat am Strand v1.22.1: friends' phones no longer freeze when the host's app reloads or was in the background",
+      "Played cards stay visible for friends for at least a second, and moves always show up in the right order",
+      "Unanswered questions are re-sent automatically"
+    ]
+  },
   {
     version: "2.47.0",
     date: "2026-11-15",

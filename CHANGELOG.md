@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.47.1 (2026-11-15): Skat multiplayer freeze fix
+
+- skat/index.html v1.22.1: guest processes events and asks strictly in order through one queue (trick sync paused while busy); collect waits until the last card was visible 1.3 s; a newer host epoch aborts a stale ask (it blocked the queue forever after a host reload); stale-epoch asks skipped; host re-sends unanswered asks every 25 s, guest re-shows the UI or re-sends its answer; event steps time out after 9 s; photo/voice size caps; no asks during the Los geht's reload.
+
 ## 2.47.0 (2026-11-15): Skat voice, photos, guest list, rematch
 
 - skat/index.html v1.22.0: push-to-talk (#bTalk, MediaRecorder audio/mp4 or webm at 32 kbit/s, max 6 s, base64 over MQTT, host relays with mpEv skip); multiplayer photo (pickPhoto slot 9, shrunk to 180x208 PNG, skatMpPhoto) shown via getPhoto/look overrides and mpAvatar (host's photo on Andy's figure for guests); rotated history sync (mpRotH, 'hist' messages) with guest-side coach texts and openSheet wrapper; Revanche / Mehrspieler beenden buttons in listEnd for multiplayer hosts.
