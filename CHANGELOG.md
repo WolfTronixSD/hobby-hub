@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.47.3 (2026-11-15): Skat figures and catch-up
+
+- skat/index.html v1.22.3: human seats render via mpAvatar with chosen figure (fig 1/2, GUEST_LOOK hair/shirt, optional photo; phOverride with 'in' semantics, lookOv); figure picked on the join screen, guest menu and host panel, sent with hello/photo messages; host always announces its own figure to guests. Guest event queue fast-forwards animations when the tab is hidden or 2+ events are queued and resyncs on becoming visible.
+
 ## 2.47.2 (2026-11-15): Skat host on all brokers
 
 - skat/index.html v1.22.2: host connects to all MQTT brokers in parallel (NET.mqs) and replies to each guest via the broker its messages came in on, so a guest that falls back to another broker still reaches the table; panel opens automatically and a floating Los geht's button shows when a guest joins before the list starts.
