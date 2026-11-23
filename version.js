@@ -1,6 +1,15 @@
 // Bump APP_VERSION and the ?v= numbers in index.html, and add an entry at the top of CHANGELOG for every release.
-const APP_VERSION = "2.47.3";
+const APP_VERSION = "2.47.4";
 const CHANGELOG = [
+  {
+    version: "2.47.4",
+    date: "2026-11-23",
+    at: "2026-11-23T20:20:00Z",
+    title: "Skat: clear questions",
+    changes: [
+      "🃏 Skat am Strand v1.22.4: every question now stays visible above the buttons (bid 18?, Kontra?, Re?, Grand Hand?, push?), so bidding and Kontra can't be mixed up"
+    ]
+  },
   {
     version: "2.47.3",
     date: "2026-11-15",

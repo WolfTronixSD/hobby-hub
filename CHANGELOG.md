@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.47.4 (2026-11-23): Skat question labels
+
+- skat/index.html v1.22.4: askQ label above the bid buttons for humanBid (say/hold value) and every humanAsk (Kontra, Re, Grand Hand, Schieben, Schenken; guests get the host's question text) instead of a short toast.
+
 ## 2.47.3 (2026-11-15): Skat figures and catch-up
 
 - skat/index.html v1.22.3: human seats render via mpAvatar with chosen figure (fig 1/2, GUEST_LOOK hair/shirt, optional photo; phOverride with 'in' semantics, lookOv); figure picked on the join screen, guest menu and host panel, sent with hello/photo messages; host always announces its own figure to guests. Guest event queue fast-forwards animations when the tab is hidden or 2+ events are queued and resyncs on becoming visible.
