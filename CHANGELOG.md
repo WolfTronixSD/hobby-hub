@@ -2,6 +2,10 @@
 
 The site shows this history on its "What's new" page (source: `version.js`).
 
+## 2.47.5 (2026-11-24): Skat audit and design review
+
+- skat/index.html v1.22.5: compact portrait Spielliste/Coach (innerWidth<620), mixer removed on openOverlay, emote z-index below overlays, sentence-split fallback in the English translator plus new TR_DICT entries. Audited with ~240 automated games across 5 rule sets (no invariant violations or JS errors) and the multiplayer regression.
+
 ## 2.47.4 (2026-11-23): Skat question labels
 
 - skat/index.html v1.22.4: askQ label above the bid buttons for humanBid (say/hold value) and every humanAsk (Kontra, Re, Grand Hand, Schieben, Schenken; guests get the host's question text) instead of a short toast.
